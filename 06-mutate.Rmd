@@ -8,9 +8,9 @@ NOTE: Most journalism tutorials do group_by/summarise BEFORE they introduce muta
 * mutate is the same thing as creating a new column in Excel with a formula
 * There are several common mutate tasks. The most important for us are:
 
-      * Convert unstandardized data into standardized, such as yes-or-no variables or all lower case
-      * Use arithmetic on numeric variables
-      * Use conditional statements to put different values on variables, instead of filtering one at a time.
+  * Convert unstandardized data into standardized, such as yes-or-no variables or all lower case
+  * Use arithmetic on numeric variables
+  * Use conditional statements to put different values on variables, instead of filtering one at a time.
       
 * OPTIONAL:
 

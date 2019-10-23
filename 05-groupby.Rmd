@@ -1,4 +1,4 @@
-# Verbs #2: group_by and summarise
+# Verbs 2: group_by and summarise
 
 
 ## Key takeaways
