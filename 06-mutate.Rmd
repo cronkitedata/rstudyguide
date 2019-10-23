@@ -11,11 +11,13 @@ NOTE: Most journalism tutorials do group_by/summarise BEFORE they introduce muta
   * Convert unstandardized data into standardized, such as yes-or-no variables or all lower case
   * Use arithmetic on numeric variables
   * Use conditional statements to put different values on variables, instead of filtering one at a time.
-      
+
+
+
 * OPTIONAL:
 
-      * Mutate can replace text or values
-      * Change the data *type* from, say, text to date and time.
+  * Mutate can replace text or values
+  * Change the data *type* from, say, text to date and time.
 
 ## Read in some data
 
@@ -115,7 +117,8 @@ There are several problems that often come with datasets in the wild: They have 
 
 murders %>%
   select ( agency) %>%
-  mutate (agency = tolower(agency))
+  mutate (agency = tolower(agency))  %>%
+  head()
 
 ```
 
