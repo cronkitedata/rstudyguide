@@ -1,0 +1,248 @@
+# Verbs #1: Select and filter
+
+
+
+## Key takeaways 
+
+* Verb 1 -  **select**  to subset the data frame vertically (pick out / rename columns)  
+* Verb 2 - **filter ** to subset the data frame horizontally (pick out rows)
+* Verb 3 - **arrange** to display the data in a certain order  
+* Troubleshooting common error messages
+
+
+## Load the tidyverse and the data
+
+
+```{r include=FALSE}
+library(tidyverse)
+```
+
+
+We're going to use some standard ways to pick out information from a data frame using verbs: *select* and *filter*. This is all part of the tidyverse, so it must be run every time you want to use the verbs. 
+
+
+First, we'll load some data that has been saved from the Tempe Open Data site -- a list of suspected opioid EMS calls in the city. This should look familiar:
+
+```{r message=FALSE}
+
+my_link <- "https://cronkitedata.github.io/cronkite-docs/assets/data/csv/opioidemscalls.csv"
+
+
+#use it in a read_csv command
+
+opioid_calls_orig <- read_csv(
+         url(my_link)
+         )
+
+```
+
+If you followed along, you should have 650 observations and 21 variables in your "Environment" tab in the upper right.
+
+## Create a new data frame from an old one
+
+Using the tidyverse (and specifically, a package included in it called DPLYR), we can build our queries a little at a time, checking as we go to see how they worked. 
+
+Remember, create a *new* version of a variable using the "<-" operator:
+
+      new_version <- (think of it as pushing the right side into the left side)
+
+
+Now we'll add an operator that looks similar, but is completely different -- the "%>%" operator
+
+      do this %>% (think of this as the words "and then...")
+      do that
+
+
+## Select - choosing columns
+
+In Excel, we never had the opportunity of just pulling little cuts of our data vertically -- we could show only some of the rows, but we had to start a whole new sheet (or manually hide some columns) if it was too wide.
+
+The "select" verb picks out COLUMNS of your data, and allows you to rename at the same time. 
+
+<p style="background-color:#e6f0ff;padding:10px;"> Note that R is <b>case-sensitive</b>, meaning that the variable named <i>Age</i> is not the same thing as the variable named <i>age</i>. This is one reason rename columns using a common pattern -- you don't have to think about it again. It's also useful to remove spaces and special characters from your column names, which are difficult to reference with them. </p>
+
+
+This code chunk selects only some of the variables from our original data frame and saves them in a new data frame: 
+
+```{r}
+
+opioid_calls <-                                    #create a new data frame, "opioid_calls"
+  
+    opioid_calls_orig   %>%                       #start with the old data frame  and then..
+  
+    select (id = OBJECTID,                        #pick out only some columns, and change their names at the same time
+            incident_date =  IncidentDate,
+            dow = Day_of_Week_Sort, 
+            narcan = `Narcan/Naloxone Given`,       #you have to use back-ticks for special characters
+            impression = Primary_Impression, 
+            age  = Age,
+            gender = Patient_Gender,
+             asu_yn = Is_ASU_student,
+             vet_yn = Is_Veteran,
+             homeless_yn = Is_Homeles,
+             special_population = Spec_Pop  
+            )
+
+
+
+```
+
+Here's what it the first few columns look like: 
+
+```{r echo=FALSE}
+knitr::kable(head(opioid_calls))
+
+```
+
+### Optional: Other ways to select
+
+R has a lot of shortcuts so you don't have to type as much as in some other languages. You can identify columns by their position in the file, by the kind of data they hold (numbers, characters, etc.), or by the words their names contain. Here's one example
+
+```{r results='hide', eval=F}
+
+opioid_calls %>%
+  select ( id, 
+           weekday = dow,
+           narcan :  gender,  #vars narcan through gender in the list 
+           contains ("yn")    # has "yn" in the name
+           ) 
+   
+
+```
+
+
+## Filter - choosing rows
+
+*Filter** is the verb you use to choose which rows are included in your output. If "select" works on columns, "filter" works on rows.
+
+To filter, you can nest and combine conditions. Here are the common operators: 
+
+        ==   equals 
+        >    Is more than
+        <    Is less than 
+        %in%   Is in a list of values
+        !=   does NOT equal
+        
+Connect them with logical operators, including:
+        
+        |    "Or" -- think of it as "this or that"
+        &    "And"  -- both things must be true
+        
+        
+**"==" isn't "=" ! You always need two equals signs for comparison. A single = sign is used to assign something to another value.**
+
+### One filter
+
+If you don't assign the result to another variable, or to itself, it will just print out on the screen:
+
+```{r}
+
+opioid_calls %>%
+  filter ( 
+    narcan == "Yes"
+    
+  ) %>%
+  
+glimpse  # look at the output shown by variable, which shows the column names and one lines' worth of data
+
+```
+
+### A compound filter
+
+```{r eval=F, results="hide"}
+
+opioid_calls %>%
+    filter (narcan == "Yes" & asu_yn == "Yes") 
+
+```
+
+### An even more compound filter
+
+#### OR conditions
+
+Say we want either asu OR veterans who got Narcan. Here's a query that combines the **and** (&) condition with an **or** (|) condition: 
+
+```{r results='hide', eval=F}
+
+opioid_calls %>%
+  filter (    narcan == "Yes" &
+                 (asu_yn == "Yes" | vet_yn == "Yes"  ) 
+  )  
+
+```
+
+#### %in% conditions
+
+Use the operator %in% when you want to pick among several possible answers. Say I want to look at anyone aged 20 to 29. Instead of "or", I can use %in% because it's only one column:
+
+```{r results='hide'}
+
+opioid_calls %>%
+  filter (age %in% c("20 to 24", "25 to 29")) 
+
+```
+
+## Arrange - change the order
+
+"Arrange" is the equivalent of "Sort" in a spreadsheet - it's more precise in its meaning, and instructs R to re-arrange the rows of a data frame using the order identified in one or more columns. Try to piece together what this does: 
+
+```{r}
+
+opioid_calls %>%
+  select (dow, narcan, age, gender, asu_yn) %>%
+  filter (dow %in% c("(6) Saturday", "(7) Sunday")  &
+            narcan == "Yes") %>%
+  arrange ( age )
+
+```
+
+## Traps
+
+### Case-sensitivity
+
+R is always case-sensitive, which means that it makes a difference whether an object, a column name or the value of a variable (like Male) is upper-case, lower-case or some proper case. For example:
+
+        filter (opioid_calls, narcan == "yes")
+
+will result in 0 cases, because narcan is shown as "Yes", not as "yes".  Instead, match the case to what you have in your data. 
+
+### Equals versus double-equals
+
+You'll get this weird error if you try to use an equals sign as a comparison operator: 
+
+```{r error=TRUE}
+filter(opioid_calls, narcan = "Yes")
+
+```
+Note that R is guessing that you meant "==" instead. It won't always be so kind.
+
+
+### Forgetting the "and then" operator (%>%)
+
+You also get a weird error if you forget to string together commands without the %>%. 
+In this example, it prints the first list with the filter, then doesn't know what to do with the group_by(dow) part, and says that it can't find an object called "dow". 
+This is very common and hard to remember.
+
+A code chunk that looks like this: 
+
+      filter (opioid_calls, narcan == "Yes")
+           arrange (dow)
+
+
+will result in the error that says, 
+
+      Error in arrange(dow) : object 'dow' not found
+      
+It doesn't make much sense, except it's telling you that it is no longer finding a field called *dow*. So it does the filter, gives you the results, then tries to run another command.
+
+This is really common and a pain. R thought you had TWO things you wanted to do -- one is just the filter, the other  is an error. The fix is to put the %>% after the filter.
+
+## Resources
+
+### Tutorials
+
+* "[Teaching R](https://teachingr.com/)" videos. They're a little more detailed than we need, but it's a useful review of most of what we've done. 
+* Andrew Ba Tran's "[Lesson 3: Wrangling data](https://learn.r-journalism.com/en/wrangling/)" from the R for Journalists website
+* Matt Waite's [chapter on filters](http://mattwaite.github.io/sports/filters-and-selections.html) -- note that it has a verb we haven't looked at yet, called "mutate"
+* Data School "[Faster data maipulation with dplyr](https://www.dataschool.io/dplyr-tutorial-for-faster-data-manipulation-in-r/)", which is a little more in-depth than we need but is easy to follow. 
+

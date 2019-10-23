@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter1 R an R Studio tour | book-example.utf8.md</title>
+  <meta name="description" content="" />
+  <meta name="generator" content="bookdown 0.14 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter1 R an R Studio tour | book-example.utf8.md" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter1 R an R Studio tour | book-example.utf8.md" />
+  
+  
+  
+
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="index.html"/>
+<link rel="next" href="r-markdown.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">R Study Guide for Cronkite Students</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a></li>
+<li class="chapter" data-level="1" data-path="r-an-r-studio-tour.html"><a href="r-an-r-studio-tour.html"><i class="fa fa-check"></i><b>1</b> R an R Studio tour</a><ul>
+<li class="chapter" data-level="1.1" data-path="r-an-r-studio-tour.html"><a href="r-an-r-studio-tour.html#key-takeaways"><i class="fa fa-check"></i><b>1.1</b> Key takeaways</a></li>
+<li class="chapter" data-level="1.2" data-path="r-an-r-studio-tour.html"><a href="r-an-r-studio-tour.html#why-program"><i class="fa fa-check"></i><b>1.2</b> Why program?</a><ul>
+<li class="chapter" data-level="1.2.1" data-path="r-an-r-studio-tour.html"><a href="r-an-r-studio-tour.html#why-r"><i class="fa fa-check"></i><b>1.2.1</b> Why R?</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="r-an-r-studio-tour.html"><a href="r-an-r-studio-tour.html#setting-up-r-and-r-studio"><i class="fa fa-check"></i><b>1.3</b> Setting up R and R Studio</a><ul>
+<li class="chapter" data-level="1.3.1" data-path="r-an-r-studio-tour.html"><a href="r-an-r-studio-tour.html#rstudio-cloud"><i class="fa fa-check"></i><b>1.3.1</b> RStudio Cloud</a></li>
+<li class="chapter" data-level="1.3.2" data-path="r-an-r-studio-tour.html"><a href="r-an-r-studio-tour.html#install-yourself"><i class="fa fa-check"></i><b>1.3.2</b> Install yourself</a></li>
+<li class="chapter" data-level="1.3.3" data-path="r-an-r-studio-tour.html"><a href="r-an-r-studio-tour.html#an-r-studio-tour"><i class="fa fa-check"></i><b>1.3.3</b> An R Studio tour</a></li>
+<li class="chapter" data-level="1.3.4" data-path="r-an-r-studio-tour.html"><a href="r-an-r-studio-tour.html#the-console"><i class="fa fa-check"></i><b>1.3.4</b> The Console</a></li>
+<li class="chapter" data-level="1.3.5" data-path="r-an-r-studio-tour.html"><a href="r-an-r-studio-tour.html#packages"><i class="fa fa-check"></i><b>1.3.5</b> Packages</a></li>
+<li class="chapter" data-level="1.3.6" data-path="r-an-r-studio-tour.html"><a href="r-an-r-studio-tour.html#work-in-projects"><i class="fa fa-check"></i><b>1.3.6</b> Work in projects</a></li>
+<li class="chapter" data-level="1.3.7" data-path="r-an-r-studio-tour.html"><a href="r-an-r-studio-tour.html#error-messages"><i class="fa fa-check"></i><b>1.3.7</b> Error messages</a></li>
+</ul></li>
+<li class="chapter" data-level="1.4" data-path="r-an-r-studio-tour.html"><a href="r-an-r-studio-tour.html#resources-and-exercises"><i class="fa fa-check"></i><b>1.4</b> Resources and exercises</a><ul>
+<li class="chapter" data-level="1.4.1" data-path="r-an-r-studio-tour.html"><a href="r-an-r-studio-tour.html#take-the-swirl-tutorial"><i class="fa fa-check"></i><b>1.4.1</b> Take the swirl() tutorial</a></li>
+<li class="chapter" data-level="1.4.2" data-path="r-an-r-studio-tour.html"><a href="r-an-r-studio-tour.html#programming-concepts"><i class="fa fa-check"></i><b>1.4.2</b> Programming concepts</a></li>
+<li class="chapter" data-level="1.4.3" data-path="r-an-r-studio-tour.html"><a href="r-an-r-studio-tour.html#r-and-r-studio"><i class="fa fa-check"></i><b>1.4.3</b> R and R Studio</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="r-markdown.html"><a href="r-markdown.html"><i class="fa fa-check"></i><b>2</b> R Markdown</a><ul>
+<li class="chapter" data-level="2.1" data-path="r-markdown.html"><a href="r-markdown.html#key-takeaways-1"><i class="fa fa-check"></i><b>2.1</b> Key takeaways</a></li>
+<li class="chapter" data-level="2.2" data-path="r-markdown.html"><a href="r-markdown.html#understanding-markdown"><i class="fa fa-check"></i><b>2.2</b> Understanding Markdown</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="r-markdown.html"><a href="r-markdown.html#formatting-in-markdown"><i class="fa fa-check"></i><b>2.2.1</b> Formatting in Markdown</a></li>
+<li class="chapter" data-level="2.2.2" data-path="r-markdown.html"><a href="r-markdown.html#code-chunks"><i class="fa fa-check"></i><b>2.2.2</b> Code chunks</a></li>
+<li class="chapter" data-level="2.2.3" data-path="r-markdown.html"><a href="r-markdown.html#viewing-your-document"><i class="fa fa-check"></i><b>2.2.3</b> Viewing your document</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="r-markdown.html"><a href="r-markdown.html#resources"><i class="fa fa-check"></i><b>2.3</b> Resources</a><ul>
+<li class="chapter" data-level="2.3.1" data-path="r-markdown.html"><a href="r-markdown.html#exercises-and-assignments"><i class="fa fa-check"></i><b>2.3.1</b> Exercises and assignments</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="data-frames-and-the-tidyverse.html"><a href="data-frames-and-the-tidyverse.html"><i class="fa fa-check"></i><b>3</b> Data frames and the tidyverse</a><ul>
+<li class="chapter" data-level="3.1" data-path="data-frames-and-the-tidyverse.html"><a href="data-frames-and-the-tidyverse.html#the-tidyverse"><i class="fa fa-check"></i><b>3.1</b> The tidyverse</a></li>
+<li class="chapter" data-level="3.2" data-path="data-frames-and-the-tidyverse.html"><a href="data-frames-and-the-tidyverse.html#loading-data"><i class="fa fa-check"></i><b>3.2</b> Loading data</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="data-frames-and-the-tidyverse.html"><a href="data-frames-and-the-tidyverse.html#column-names"><i class="fa fa-check"></i><b>3.2.1</b> Column names</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="data-frames-and-the-tidyverse.html"><a href="data-frames-and-the-tidyverse.html#what-you-learned"><i class="fa fa-check"></i><b>3.3</b> What you learned</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="verbs-1-select-and-filter.html"><a href="verbs-1-select-and-filter.html"><i class="fa fa-check"></i><b>4</b> Verbs #1: Select and filter</a><ul>
+<li class="chapter" data-level="4.1" data-path="verbs-1-select-and-filter.html"><a href="verbs-1-select-and-filter.html#key-takeaways-2"><i class="fa fa-check"></i><b>4.1</b> Key takeaways</a></li>
+<li class="chapter" data-level="4.2" data-path="verbs-1-select-and-filter.html"><a href="verbs-1-select-and-filter.html#load-the-tidyverse-and-the-data"><i class="fa fa-check"></i><b>4.2</b> Load the tidyverse and the data</a></li>
+<li class="chapter" data-level="4.3" data-path="verbs-1-select-and-filter.html"><a href="verbs-1-select-and-filter.html#create-a-new-data-frame-from-an-old-one"><i class="fa fa-check"></i><b>4.3</b> Create a new data frame from an old one</a></li>
+<li class="chapter" data-level="4.4" data-path="verbs-1-select-and-filter.html"><a href="verbs-1-select-and-filter.html#select---choosing-columns"><i class="fa fa-check"></i><b>4.4</b> Select - choosing columns</a><ul>
+<li class="chapter" data-level="4.4.1" data-path="verbs-1-select-and-filter.html"><a href="verbs-1-select-and-filter.html#optional-other-ways-to-select"><i class="fa fa-check"></i><b>4.4.1</b> Optional: Other ways to select</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="verbs-1-select-and-filter.html"><a href="verbs-1-select-and-filter.html#filter---choosing-rows"><i class="fa fa-check"></i><b>4.5</b> Filter - choosing rows</a><ul>
+<li class="chapter" data-level="4.5.1" data-path="verbs-1-select-and-filter.html"><a href="verbs-1-select-and-filter.html#one-filter"><i class="fa fa-check"></i><b>4.5.1</b> One filter</a></li>
+<li class="chapter" data-level="4.5.2" data-path="verbs-1-select-and-filter.html"><a href="verbs-1-select-and-filter.html#a-compound-filter"><i class="fa fa-check"></i><b>4.5.2</b> A compound filter</a></li>
+<li class="chapter" data-level="4.5.3" data-path="verbs-1-select-and-filter.html"><a href="verbs-1-select-and-filter.html#an-even-more-compound-filter"><i class="fa fa-check"></i><b>4.5.3</b> An even more compound filter</a></li>
+</ul></li>
+<li class="chapter" data-level="4.6" data-path="verbs-1-select-and-filter.html"><a href="verbs-1-select-and-filter.html#arrange---change-the-order"><i class="fa fa-check"></i><b>4.6</b> Arrange - change the order</a></li>
+<li class="chapter" data-level="4.7" data-path="verbs-1-select-and-filter.html"><a href="verbs-1-select-and-filter.html#traps"><i class="fa fa-check"></i><b>4.7</b> Traps</a><ul>
+<li class="chapter" data-level="4.7.1" data-path="verbs-1-select-and-filter.html"><a href="verbs-1-select-and-filter.html#case-sensitivity"><i class="fa fa-check"></i><b>4.7.1</b> Case-sensitivity</a></li>
+<li class="chapter" data-level="4.7.2" data-path="verbs-1-select-and-filter.html"><a href="verbs-1-select-and-filter.html#equals-versus-double-equals"><i class="fa fa-check"></i><b>4.7.2</b> Equals versus double-equals</a></li>
+<li class="chapter" data-level="4.7.3" data-path="verbs-1-select-and-filter.html"><a href="verbs-1-select-and-filter.html#forgetting-the-and-then-operator"><i class="fa fa-check"></i><b>4.7.3</b> Forgetting the “and then” operator (%&gt;%)</a></li>
+</ul></li>
+<li class="chapter" data-level="4.8" data-path="verbs-1-select-and-filter.html"><a href="verbs-1-select-and-filter.html#resources-1"><i class="fa fa-check"></i><b>4.8</b> Resources</a><ul>
+<li class="chapter" data-level="4.8.1" data-path="verbs-1-select-and-filter.html"><a href="verbs-1-select-and-filter.html#tutorials"><i class="fa fa-check"></i><b>4.8.1</b> Tutorials</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="verbs-2-group-by-and-summarise.html"><a href="verbs-2-group-by-and-summarise.html"><i class="fa fa-check"></i><b>5</b> Verbs #2: group_by and summarise</a><ul>
+<li class="chapter" data-level="5.1" data-path="verbs-2-group-by-and-summarise.html"><a href="verbs-2-group-by-and-summarise.html#key-takeaways-3"><i class="fa fa-check"></i><b>5.1</b> Key takeaways</a></li>
+<li class="chapter" data-level="5.2" data-path="verbs-2-group-by-and-summarise.html"><a href="verbs-2-group-by-and-summarise.html#read-in-some-data"><i class="fa fa-check"></i><b>5.2</b> Read in some data</a></li>
+<li class="chapter" data-level="5.3" data-path="verbs-2-group-by-and-summarise.html"><a href="verbs-2-group-by-and-summarise.html#group_by-summarise-verbs"><i class="fa fa-check"></i><b>5.3</b> group_by / summarise () verbs</a><ul>
+<li class="chapter" data-level="5.3.1" data-path="verbs-2-group-by-and-summarise.html"><a href="verbs-2-group-by-and-summarise.html#summarizing-data-with-group_by"><i class="fa fa-check"></i><b>5.3.1</b> Summarizing data with group_by</a></li>
+<li class="chapter" data-level="5.3.2" data-path="verbs-2-group-by-and-summarise.html"><a href="verbs-2-group-by-and-summarise.html#another-example-by-state"><i class="fa fa-check"></i><b>5.3.2</b> Another example: by state</a></li>
+<li class="chapter" data-level="5.3.3" data-path="verbs-2-group-by-and-summarise.html"><a href="verbs-2-group-by-and-summarise.html#optional-subtotals"><i class="fa fa-check"></i><b>5.3.3</b> Optional: Subtotals</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="verbs-2-group-by-and-summarise.html"><a href="verbs-2-group-by-and-summarise.html#resources-2"><i class="fa fa-check"></i><b>5.4</b> Resources</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="verbs-3-mutate.html"><a href="verbs-3-mutate.html"><i class="fa fa-check"></i><b>6</b> Verbs 3: mutate</a><ul>
+<li class="chapter" data-level="6.1" data-path="verbs-3-mutate.html"><a href="verbs-3-mutate.html#key-takeaways-4"><i class="fa fa-check"></i><b>6.1</b> Key takeaways</a></li>
+<li class="chapter" data-level="6.2" data-path="verbs-3-mutate.html"><a href="verbs-3-mutate.html#read-in-some-data-1"><i class="fa fa-check"></i><b>6.2</b> Read in some data</a></li>
+<li class="chapter" data-level="6.3" data-path="verbs-3-mutate.html"><a href="verbs-3-mutate.html#simple-arithmetic"><i class="fa fa-check"></i><b>6.3</b> Simple arithmetic</a></li>
+<li class="chapter" data-level="6.4" data-path="verbs-3-mutate.html"><a href="verbs-3-mutate.html#create-categories"><i class="fa fa-check"></i><b>6.4</b> Create categories</a></li>
+<li class="chapter" data-level="6.5" data-path="verbs-3-mutate.html"><a href="verbs-3-mutate.html#standardize-data"><i class="fa fa-check"></i><b>6.5</b> Standardize data</a></li>
+<li class="chapter" data-level="6.6" data-path="verbs-3-mutate.html"><a href="verbs-3-mutate.html#resources-3"><i class="fa fa-check"></i><b>6.6</b> Resources</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./"></a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="r-an-r-studio-tour" class="section level1">
+<h1><span class="header-section-number">Chapter1</span> R an R Studio tour</h1>
+<blockquote>
+“In every project you have at least one other collaborator: future-you. You don’t want future-you to curse past-you.” - Hadley Wickham
+</blockquote>
+<div id="key-takeaways" class="section level2">
+<h2><span class="header-section-number">1.1</span> Key takeaways</h2>
+<ul>
+<li>How to get access to R and R Studio either in the cloud or on your own computer, or both</li>
+<li>R is a programming language, and R Studio is a way of interacting with the programming language</li>
+<li>What the Console is</li>
+<li>How to create a variable from scratch, including a vector (list), a number, or text</li>
+<li>How to install a package and how to invoke it</li>
+</ul>
+</div>
+<div id="why-program" class="section level2">
+<h2><span class="header-section-number">1.2</span> Why program?</h2>
+<p>All programming languages have one thing in common: You write instructions, called algorithms, and the program executes your statements in order. You might need to use a mouse, but the instructions are done without much interaction on your part. It means you can do more complicated work in computer programming than in point-and-click parts of Excel.</p>
+<p>It can also scale – you can repeat your instructions millions of times, tweak it a little, and re-run the program without messing anything else up.</p>
+<p>Some common programming languages used in journalism are:</p>
+<ul>
+<li><p>Structured Query Language, or SQL. We usually teach data journalism using this language, which is the standard language for creating, updating and querying very large and complicated databases in business. Banks run on SQL. So do human resources departments. You should know it exists, and you may even want to learn it at some point. The basics are easy. But the main functions that we use in SQL are available in R: filtering, grouping, sorting and joining are all implemented in R.</p></li>
+<li><p>Python and some frameworks to work with it. Python is a relatively simple program to use, is very intuitive, and is in widespread use throughout industry and on the business side of journalism organizations. It’s much easier to scrape a website with Python than with R. It’s also well-suited to building entire data-driven websites, through the use of frameworks. (Two examples are Django and Flask)</p></li>
+<li><p>Ruby and the framework called Rails. Ruby is best known as a language suited for building responsive Web sites.</p></li>
+</ul>
+<div id="why-r" class="section level3">
+<h3><span class="header-section-number">1.2.1</span> Why R?</h3>
+<ul>
+<li>It’s become the de facto tool for statistical and data analysis in many newsrooms and in academic settings. (Python remains popular for corporate and production-related uses.)</li>
+<li>Some news data teams will not consider an intern who has had zero experience with R. It doesn’t need to be a lot, but some familiarity is required or highly valued.</li>
+<li>There is an enormous user base. The only trick is to search on “RStats” rather than R when you’re looking for answers.</li>
+<li>It has some of the most robust exploratory graphics.</li>
+<li>It is free. As in beer and as in speech.</li>
+</ul>
+</div>
+</div>
+<div id="setting-up-r-and-r-studio" class="section level2">
+<h2><span class="header-section-number">1.3</span> Setting up R and R Studio</h2>
+<div id="rstudio-cloud" class="section level3">
+<h3><span class="header-section-number">1.3.1</span> RStudio Cloud</h3>
+<p>The easiest way to get set up in R is to open a <a href="https://rstudio.cloud">free account on RStudio Cloud</a> It runs just the way it works on your laptop, but can be a little slow. Just be sure to <strong>save often</strong> , as it’s easy to forget to save your code, and it can crash every once in a while. If you use very large files – usually files that contain images or maps – you may outpace your allocated workspace, but by then you should be more comfortable with the platform.</p>
+</div>
+<div id="install-yourself" class="section level3">
+<h3><span class="header-section-number">1.3.2</span> Install yourself</h3>
+<p>If you want to install on your laptop, try these steps.</p>
+<div id="mac-users-install-command-line-tools-for-mac" class="section level4">
+<h4><span class="header-section-number">1.3.2.1</span> MAC USERS: Install command line tools for Mac**</h4>
+<p>This is a pain, but it only has to happen once. There are some things that won’t work if you skip this step.</p>
+<p>In your terminal (found under Utilities in the Applications folder), type:</p>
+<pre><code>xcode-select --install</code></pre>
+<p>You’ll get an error message saying that it can’t be done because you don’t have command line tools, and would you like to install them now? Say yes. Once it’s done, just close out your terminal. You never really wanted the thing that you asked to install in the first place.</p>
+</div>
+<div id="everyone" class="section level4">
+<h4><span class="header-section-number">1.3.2.2</span> EVERYONE</h4>
+<ul>
+<li>Install <a href="https://rweb.crmda.ku.edu/cran/">R for your computer</a>. Use the most recent binaries for your operating system.</li>
+<li>Install <a href="https://www.rstudio.com/products/rstudio/download/#download">R Studio Desktop</a> for your computer ONLY AFTER YOU HAVE INSTALLED R. Use the free community version.</li>
+</ul>
+</div>
+</div>
+<div id="an-r-studio-tour" class="section level3">
+<h3><span class="header-section-number">1.3.3</span> An R Studio tour</h3>
+<p>We’ll be interacting with R using R Studio, which is a simple way to see all of the different pieces of any project.</p>
+</div>
+<div id="the-console" class="section level3">
+<h3><span class="header-section-number">1.3.4</span> The Console</h3>
+<p>The Console is where you can type commands. Try it.</p>
+<div class="figure">
+<img src="images/21-rintro-rstudio.png" alt="console" />
+<p class="caption">console</p>
+</div>
+<pre><code>5+5           #when you type this
+[1] 10        #this is what you get back
+
+&quot;Sarah&quot;       #when you type this
+[1] &quot;Sarah&quot;   #this is what you get back</code></pre>
+<p>The console just gives you the answer from your latest command.</p>
+<p>We will do very little in the console, but it’s a good place to test little commands that you aren’t sure of.</p>
+</div>
+<div id="packages" class="section level3">
+<h3><span class="header-section-number">1.3.5</span> Packages</h3>
+<p>Packages in R are just what they sound like – packages of programs that users have found useful to extend the base R language. R is almost useless without them.</p>
+<p>As a general rule of thumb:</p>
+<ul>
+<li>Install packages using the console. They must be installed once on every computer, or in every project when you use RStudio Cloud.</li>
+<li>Then activate them using the library() command in your program.</li>
+</ul>
+<p>For this class, the packages you must have installed are:</p>
+<pre><code>   install.packages(&quot;tidyverse&quot;)
+   install.packages(&quot;rmarkdown&quot;)</code></pre>
+<ul>
+<li><p>For a first look at R, we’ll want to install the Swirl package as well:</p>
+<pre><code>install.packages(&quot;swirl&quot;)</code></pre></li>
+</ul>
+</div>
+<div id="work-in-projects" class="section level3">
+<h3><span class="header-section-number">1.3.6</span> Work in projects</h3>
+<p>The easiest way to keep yourself organized is to work in R Studio projects rather than individual files. This means you don’t have to worry about what directories or folders your computer thinks you are using at any one time, and creates a compact package. If you’re using RStudio.cloud, every project is already self-contained.</p>
+<p>Instead of creating a new file when you start R, create a new project, and tell R where to put the directory when prompted.</p>
+<p>Then, when you want to return to the project, open the project rather than a file:</p>
+<div class="figure">
+<img src="images/21-rintro-project-open.png" alt="save as" />
+<p class="caption">save as</p>
+</div>
+</div>
+<div id="error-messages" class="section level3">
+<h3><span class="header-section-number">1.3.7</span> Error messages</h3>
+<p>The hardeset part of R is getting used to the error messages. Here’s an example:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" title="1"><span class="dv">5</span> <span class="op">+</span><span class="st"> &quot;three&quot;</span></a></code></pre></div>
+<pre><code>## Error in 5 + &quot;three&quot;: non-numeric argument to binary operator</code></pre>
+<p>This is saying that you’re trying to use a number and text in the same phrase.</p>
+<p>When you get into R Markdown documents, you’ll see a few other common errors and ways to troubleshoot them. For now, you can Google the specific error message (“non-numeric argument …”) . Be sure if you ask for help to describe</p>
+<ol style="list-style-type: decimal">
+<li>What you were trying to do</li>
+<li>The code you used to do it.</li>
+<li>The specific error message.</li>
+</ol>
+</div>
+</div>
+<div id="resources-and-exercises" class="section level2">
+<h2><span class="header-section-number">1.4</span> Resources and exercises</h2>
+<div id="take-the-swirl-tutorial" class="section level3">
+<h3><span class="header-section-number">1.4.1</span> Take the swirl() tutorial</h3>
+<p>If you haven’t done it already, install the swirl() package, and activate it using the library(swirl) command. Do this in the Console:</p>
+<pre><code>    install.packages(&quot;swirl&quot;)</code></pre>
+<p>Once it’s installed, you need to activate the package and invoke the program every time you want to use it in a new session:</p>
+<pre><code>    library(swirl)
+    swirl()
+    </code></pre>
+<p>Then just follow the prompts. Don’t worry that they’re red – it doesn’t mean there’s anything wrong. It’s just trying to distinguish what you typed from what it replied. You only want the first chapterl, “1: R Programming: The basics of programming in R”, then just the first lesson, called “Basic Building Blocks”. At the end, just hit the escape key.</p>
+</div>
+<div id="programming-concepts" class="section level3">
+<h3><span class="header-section-number">1.4.2</span> Programming concepts</h3>
+<ul>
+<li>The <a href="https://cronkitedata.github.io/cronkite-docs/general/06-programming-concepts.html">Intro to coding</a> from our course website.</li>
+<li>The <a href="https://cronkitedata.github.io/cronkite-docs/excel/xlguides/xl-tidydata.html">Data types and tidy data</a> section of our Excel training.</li>
+<li>"<a href="https://youtu.be/7MUErafri48">Beyond Binary</a>, Lesson 1 from a Google engineer’s drag queen persona named Anna Lytical. This video gives you a good handle on what a computer program does.</li>
+</ul>
+</div>
+<div id="r-and-r-studio" class="section level3">
+<h3><span class="header-section-number">1.4.3</span> R and R Studio</h3>
+<ul>
+<li>Introduction and “Getting started” chapters of Sharon Machlis’ <a href="http://www.machlis.com/R4Journalists/index.html">Practical R for Mass Communications and Journalism</a></li>
+</ul>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="r-markdown.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "section",
+"scroll_highlight": true
+}
+});
+});
+</script>
+
+</body>
+
+</html>

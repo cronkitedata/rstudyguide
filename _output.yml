@@ -1,0 +1,11 @@
+bookdown::gitbook:
+  config:
+    toc:
+      before: |
+        <li><a href="./">R Study Guide for Cronkite Students</a></li>
+      collapse: section
+      scroll_highlight: yes
+    fontsettings:
+      theme: white
+      family: sans
+      size: 2
