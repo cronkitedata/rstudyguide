@@ -1,0 +1,189 @@
+<!-- Add link to the drag queen coding class. See if there are other good first-day programming aides I should add.-->
+# (APPENDIX) Appendix {-}
+
+# A gentle intro to programming  
+
+## Key takeaways
+
+* All programming languages (yes, including Excel) have certain things in common: *objects*, *operators*, *functions* and *loops*.
+* An *algorithm* is a set of instructions, carried out in order.
+* No one is born knowing how to code. It takes practice.
+
+
+::: { .info}
+The examples here are shown mainly using R syntax. Another language might look a little different. 
+:::
+
+## Building blocks
+
+Once you learn to program in one language, learning others is much simpler. That's because you have the basic concepts down: How to assign values to variables, how to loop through lists, or how to import data. This chapter walks through some of the more universal concepts in programming. 
+
+
+### Variables and objects {-}
+
+Objects can be simple, like a variable called my_name that holds the value, "Sarah". Or they can be quite complex, such as a multi-level data frame containing details from a Spotify playlist. 
+
+#. **Literals**
+
+   The most basic kind of object is a single variable that contains a single value of a specific type:
+
+       my_name <- "Sarah"
+       my_value <- 1.0
+
+   These are called "literals", which usually include text, numeric, logical (usually true/false but sometimes yes/no or 1/0) and date or date/time. ([Return to our tutorial on data types](https://cronkitedata.github.io/cronkite-docs/excel/xlguides/xl-tidydata) if you need a refresher.) ^[ There are two special types that we'll deal with later, but can cause a lot of headaches: `NA` values and factors. You don't have to deal with them yet.]
+
+
+#. **Lists / arrays / vectors**
+
+   Most languages have some concept of a list of items called an array, vector or dictionary. In R, you create a vector using the "c" operator, short for "combine". Python uses a square bracket to indicate a list. Once you have your items in a list or a vector, you can apply the same function across all of them or work on them in order.
+
+    my_list <- c(1, 2, 3, 4, 5) creates a vector of the values 1 through 5 in R
+    my_list = [1, 2, 3, 4, 5] creates a list of values 1 through 5 in Python
+
+#. **Data frames or tables**
+
+   Data frames or data tables are really a special version of a list, and are equivalent to a tidy Excel spreadsheet:  rectangular data with field names and observations. You don't need to know much about this yet, but just understand that it will become an important part of your vocabulary.
+
+### Operators & assignment {-}
+
+   Operators are simple aritmetic or similar operations, like adding, subtracting, dividing and multiplying.
+
+       Arithmethic: add (+), subtract (-), multiply (*), or divide (/).
+
+       Text: Smush together phrases by concatenating (often + or &)
+
+       Comparison: Greater than (>) , less than (<), equal to (often == to distinguish from =),
+                      not equal to (often !=).
+
+
+   "Assignment" means pushing a value into a var iable name using either "=" or "<-". It's amazing how many different ways there are to think of this. Some might call "naming a value", others might consider it "setting a variable".  (A *variable* is just a name you'll use later on to refer to your value. It can *vary*, depending on what you do to it.)
+     
+     my_name <- "Sarah"
+     my_value = 1.0
+
+
+### Functions {-}
+
+   A function is a set of instructions that is either built into the programming language, is added through a package or library, or is created by you. You can save them for later use or apply them on the fly. Usually, you write the name of the function, then put its *arguments* inside parentheses. You did this in Excel:
+
+    =SUM(A1:A15)
+     
+
+   Generally, there are categories of functions that depend on what data type they act on. An example in R is the function *tolower()*, which converts anything inside the parentheses to lower case.  There can be several different pieces of information in a function. There can also be optional arguments. A maddening example in R is: 
+
+     sum ( variable_name )    
+
+   This adds the values of a variable. BUT it will come out to NA if you try to include a row that was NA to begin with. Instead, you have to provide an optional arbument to get rid of NA's before starting: 
+ 
+     sum (variable_name, na.rm=TRUE)
+
+### Loops {-}
+
+   A loop is a way to repeat your instructions over and over without having to re-write them every time. They usually work by stepping through some kind of a list, like a directory of files, or by using a counter, such as every year between 2005 and 2018.
+
+Excel and Google Sheets don't really have loops, unless you learn the more complicated programming language behind them. This is why many people move to Python and R -- to get the power of loops.
+
+## Make an omelet with a function
+
+
+![](images/00-katie-smith-unsplash.jpg){width=50%}
+
+::: { .credit-line}
+Ingredients by Katie Smith via Unsplash
+:::
+
+Suppose you want to make an omelet. Before you even start, you need to know at least two things: which ingredients you have on hand, and what kind of omelet you want to make.
+
+A function that creates an omelet might look something like this. The first row creates a function called make_omelet, which requires the two pieces of information as *arguments*. Once you've made the function, you can refer to that set of instruction by its name by giving it the arguments it needs.
+
+    function make_omelet (ingredients_on_hand, what_kind) {
+
+         check for necessary ingredients (are all elements of what_kind in ingredients_on_hand?)
+             quit now if you don't have them all.
+             return the error message
+
+         prepare the ingredients for (which_kind)
+
+         whisk the eggs
+
+         melt some butter in a pan
+
+         pour in the eggs
+
+         add ingredients for what_kind except cheese (what_kind - "cheese")
+
+         flip the omelet
+
+         if you have cheese in both what_kind and ingredients_on_hand ,
+             fold in cheese
+
+         remove from pan
+
+         return the omelet
+
+    }
+
+
+Now, when you want to make an omelet, you can just make your list of ingredients and the kind of omelet you want, and execute the function:
+
+Let's start with setting up those items:
+
+
+    ingredients <-
+            c("butter", "eggs", "cheese", "spinach", "tomatoes")
+
+    kind <-
+            c("spinach", "cheese")
+
+    make_omelet (ingredients, kind)
+
+    (Note that what you give it doesn't have to have the same name that it had in your definition.)
+
+### Open a restaurant with loops {-}
+
+
+
+
+Now, you'd have to repeat this over and over if you had a restaurant. It might look like this:
+
+      make_omelet (ingredients,kind)
+      ** change the ingredients and the kind**
+      make_omelet (ingredients2, kind2)
+      ** change the ingredients ant the kind**
+      make_omelet (ingredients3, kind3)
+      ... and so on.
+
+ You'd have a program hundreds of lines long -- one for each customer. Instead, you could *loop* through the customers and do the same thing:
+
+    customers <- c("Bob", "Jon", "Christie", "Lauren")
+
+    for (c in customers) {
+      request what kind they want
+      make_omelet (kind, ingredients_on_hand)
+      give omelet to customer c
+      update your ingredients list if you ran out of something or went shopping
+    }
+
+## Applications
+
+Many of the functions we use are already built into R and Python, or are in libraries that we borrow -- someone else has already written them for you.
+
+Examples include:
+
+* reading a csv or Excel file
+* calculating the average or sum
+* counting
+* finding phrases within text
+
+The more common applications are things we haven't done yet:
+
+* Gather identical spreadsheets into one dataset, as in [this example using refugee statistics](https://cronkitedata.github.io/rstats-training/refugees-loop.html).
+
+* Loop through a list of links, download a page, then scrape it to extract information. Here's [an example from the Maricopa County sheriff's department mugshots](https://cronkitedata.github.io/rstats-training/rscraping/mugshot-scrape.html). (It won't work -- the census changes each time, so the ID numbers are out of date.)
+
+## More resources
+
+* The [Data types and tidy data](https://cronkitedata.github.io/cronkite-docs/excel/xlguides/xl-tidydata.html) section of our Excel training.
+* "[Beyond Binary](https://youtu.be/7MUErafri48), Lesson 1 from a Google engineer's drag queen persona named Anna Lytical. This video gives you a good handle on what a computer program does.
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/7MUErafri48" style="align:center;" frameborder="0" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>

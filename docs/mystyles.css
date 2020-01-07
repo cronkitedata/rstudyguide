@@ -1,0 +1,22 @@
+h4 {
+  font-size: 1em;
+  font-weight: bold;
+}
+
+.info {
+  background-color: #E7F2F6;
+  margin-left: 20px;
+  margin-right: 20px;
+  font-size: .9em;
+}
+
+.credit-line {
+  color: grey;
+  font-size: .75em;
+}
+
+.em_purple {
+  color: salmon;
+  font-weight: bolder;
+  font-variant: small-caps;
+}

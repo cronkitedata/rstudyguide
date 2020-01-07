@@ -1,5 +1,13 @@
-book_filename: "book-example"
+book_filename: "data-journalism"
 language: 
    ui: 
-      chapter_name: "Chapter"
+      chapter_name: ""
 delete_merged_file: true
+rmd_files: ["index.Rmd", 
+            "01-r-install.Rmd",
+            "02-r-markdown.Rmd",
+            "03-data-frames.Rmd",
+            "04-select-filter.Rmd",
+            "00-programming.Rmd"
+            ] 
+output_dir: "docs"

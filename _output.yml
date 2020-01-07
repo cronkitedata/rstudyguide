@@ -2,10 +2,13 @@ bookdown::gitbook:
   config:
     toc:
       before: |
-        <li><a href="./">R Study Guide for Cronkite Students</a></li>
+        <li><a href="./">Study Guide for Cronkite Students</a></li>
       collapse: section
       scroll_highlight: yes
+    toc_depth: 2
     fontsettings:
       theme: white
       family: sans
-      size: 2
+      size: 1
+  split_by: "rmd"
+  css: mystyles.css

@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Preface | data-journalism.utf8</title>
+  <title>1 An R and R Studio tour | data-journalism.utf8</title>
   <meta name="description" content="" />
   <meta name="generator" content="bookdown 0.14 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Preface | data-journalism.utf8" />
+  <meta property="og:title" content="1 An R and R Studio tour | data-journalism.utf8" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Preface | data-journalism.utf8" />
+  <meta name="twitter:title" content="1 An R and R Studio tour | data-journalism.utf8" />
   
   
   
@@ -29,8 +29,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-
-<link rel="next" href="01-r-install.html"/>
+<link rel="prev" href="index.html"/>
+<link rel="next" href="02-r-markdown.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -140,7 +140,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1.4.2" data-path="01-r-install.html"><a href="01-r-install.html#packages"><i class="fa fa-check"></i><b>1.4.2</b> Packages</a></li>
 <li class="chapter" data-level="1.4.3" data-path="01-r-install.html"><a href="01-r-install.html#work-in-projects"><i class="fa fa-check"></i><b>1.4.3</b> Work in projects</a></li>
 </ul></li>
-<li class="chapter" data-level="1.5" data-path="01-r-install.html"><a href="01-r-install.html#resources-and-exercises"><i class="fa fa-check"></i><b>1.5</b> Resources and exercises</a></li>
+<li class="chapter" data-level="1.5" data-path="01-r-install.html"><a href="01-r-install.html#variables"><i class="fa fa-check"></i><b>1.5</b> Variables</a></li>
+<li class="chapter" data-level="1.6" data-path="01-r-install.html"><a href="01-r-install.html#resources-and-exercises"><i class="fa fa-check"></i><b>1.6</b> Resources and exercises</a></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="02-r-markdown.html"><a href="02-r-markdown.html"><i class="fa fa-check"></i><b>2</b> R Markdown</a><ul>
 <li class="chapter" data-level="2.1" data-path="02-r-markdown.html"><a href="02-r-markdown.html#key-takeaways-1"><i class="fa fa-check"></i><b>2.1</b> Key takeaways</a></li>
@@ -180,11 +181,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.3.3" data-path="04-select-filter.html"><a href="04-select-filter.html#even-more-compound-filters"><i class="fa fa-check"></i><b>4.3.3</b> Even more compound filters</a></li>
 </ul></li>
 <li class="chapter" data-level="4.4" data-path="04-select-filter.html"><a href="04-select-filter.html#arrange---change-the-order"><i class="fa fa-check"></i><b>4.4</b> Arrange - change the order</a></li>
-<li class="chapter" data-level="4.5" data-path="04-select-filter.html"><a href="04-select-filter.html#traps"><i class="fa fa-check"></i><b>4.5</b> Traps</a><ul>
-<li class="chapter" data-level="4.5.1" data-path="04-select-filter.html"><a href="04-select-filter.html#case-sensitivity"><i class="fa fa-check"></i><b>4.5.1</b> Case-sensitivity</a></li>
-<li class="chapter" data-level="4.5.2" data-path="04-select-filter.html"><a href="04-select-filter.html#equals-versus-double-equals"><i class="fa fa-check"></i><b>4.5.2</b> Equals versus double-equals</a></li>
-<li class="chapter" data-level="4.5.3" data-path="04-select-filter.html"><a href="04-select-filter.html#forgetting-the-and-then-operator"><i class="fa fa-check"></i><b>4.5.3</b> Forgetting the “and then” operator (%&gt;%)</a></li>
-</ul></li>
+<li class="chapter" data-level="4.5" data-path="04-select-filter.html"><a href="04-select-filter.html#traps"><i class="fa fa-check"></i><b>4.5</b> Traps</a></li>
 <li class="chapter" data-level="4.6" data-path="04-select-filter.html"><a href="04-select-filter.html#resources-1"><i class="fa fa-check"></i><b>4.6</b> Resources</a><ul>
 <li class="chapter" data-level="4.6.1" data-path="04-select-filter.html"><a href="04-select-filter.html#tutorials"><i class="fa fa-check"></i><b>4.6.1</b> Tutorials</a></li>
 </ul></li>
@@ -221,24 +218,149 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<!--bookdown:title:end-->
-<!--bookdown:title:start-->
-<div id="preface" class="section level1 unnumbered">
-<h1>Preface</h1>
-<p>This online book is serving as a study guide for students in my data journalism classes at the Cronkite School of Journalism. Eventually, this will put together the resources for the whole class, but for now it just includes the section on learning R and R Markdown.</p>
-<p>I’m grateful for all of the experts and teachers out there who have made their training materials open to the world, and helped build a wealth of materials for students of all types. I’ve particularly leaned on Matt Waite, of the University of Nebraska and Jesse Lecy of Arizona State University, who generously share their course materials.</p>
+<div id="rstudio-tour" class="section level1">
+<h1><span class="header-section-number">1</span> An R and R Studio tour</h1>
+<div id="key-takeaways" class="section level2">
+<h2><span class="header-section-number">1.1</span> Key takeaways</h2>
+<ul>
+<li>The benefits of learning a programming language</li>
+<li>Accessing R and RStudio on the cloud, or installing it on your computer</li>
+<li>Distinguishing the programming language R from the way you interact with it, RStudio.</li>
+<li>Getting accustomed to the RStudio screen.</li>
+<li>Interacting with the Console</li>
+<li>Understanding, installing and invoking packages.</li>
+<li>Storing values in variables for later use.</li>
+</ul>
+</div>
+<div id="why-program" class="section level2">
+<h2><span class="header-section-number">1.2</span> Why program?</h2>
+<p>All programming languages have one thing in common: You write instructions, called algorithms, and the program executes your statements in order. It means you can do more complicated work in computer programming than in point-and-click parts of Excel.</p>
+<p>It can also scale – you can repeat your instructions millions of times, tweak it a little, and re-run the program without messing anything else up. The computer won’t mind – really.</p>
+<p>Finally, writing code can be self-documenting. You can largely eliminate those painstaking Excel data diaries and replace them with documents that explain your work as you go. You’ll still need to record information about your interviews and decisions, but you’ll no longer have to write down every mouse click.</p>
+<div id="why-r" class="section level4 unnumbered">
+<h4>Why R?</h4>
+<p>It’s free and open source – you will be able to get access to most of what R has to offer without ever paying for a service or a piece of software.</p>
+<p>More importantly, R has become the de facto tool for statistical and data analysis in many newsrooms and academic settings. Some news organizations strongly prefer interns and entry level data reporters who have at least a little experience with the language. There’s also a huge user base, with many people willing and even eager to help newcomers.</p>
+<p>R also has extensions, called packages, that cover most tasks you need as a reporter. Other lanugagees like Python can also be extended this way – choosing which one to use is largely a matter of taste and comfort.</p>
+</div>
+</div>
+<div id="setting-up-r-and-r-studio" class="section level2">
+<h2><span class="header-section-number">1.3</span> Setting up R and R Studio</h2>
+<p>Andrew Heiss, who teaches BYU’s Data Science for Public management, has <a href="https://statsf18.classes.andrewheiss.com/install/">a detailed walkthrough</a> on getting access to R and R Studio. This is the short version.</p>
+<div id="rstudio-cloud" class="section level4 unnumbered">
+<h4>RStudio Cloud</h4>
+<p>The very easiest approach to getting most everything you need is to sign up for a <a href="https://rstudio.cloud">free account on RStudio Cloud</a>. You’ll use the program through your web browser instead of putting it on your computer. It’s nearly identical to the program you’d run on your laptop.</p>
+<p>It can be a little slow to start up, and it can crash every once in a while. Be patient, careful and <strong>save often</strong>.</p>
+</div>
+<div id="install-yourself" class="section level4 unnumbered">
+<h4>Install yourself</h4>
+<p>If you want to install on your laptop, try these steps. You’ll have to be an administrator allowed to install software on your computer, for it to work.</p>
+<p><strong>MAC users only:</strong></p>
+<p>To get R Studio to work properly, your computer should have command line tools installed. These aren’t installed by default in Apple’s operating system. This is a pain, but you only need to do it once. You’ll get annoying errors in R Studio if you don’t do this.</p>
+<p>Open up a terminal window, found in your Applications folder under Utilities. First, check to see if it’s already installed by typing <code>xcode-select -p</code>. If it replies with a path to a folder, you can skip this part – you already have it.</p>
+<p>If not, type <code>xcode-select --install</code>. You’ll get an error message saying that it can’t be done because you don’t have command line tools, and would you like to install them now? Say yes. Once it’s done, just close out your terminal. You never wanted that thing you asked to install in the first place.</p>
+<p><strong>Everyone</strong>:</p>
+<ul>
+<li><p>Download and install <a href="https://rweb.crmda.ku.edu/cran/">R for your computer</a>. Use the most recent binaries for your operating system.</p></li>
+<li><p>Install <a href="https://www.rstudio.com/products/rstudio/download/#download">R Studio Desktop</a> for your computer ONLY AFTER YOU HAVE INSTALLED R. Use the free community version.</p></li>
+</ul>
+</div>
+</div>
+<div id="an-r-studio-tour" class="section level2">
+<h2><span class="header-section-number">1.4</span> An R Studio tour</h2>
+<p><img src="images/21-choose-rstudio.png" style="float:right;margin-left:1em;width:150px;">
+Now you’re ready to start using R and R Studio. R is the underlying programming language, which you will probably never use on its own. R Studio is an interface to that language that helps you organize projects, write code, see your results and keep track of your work.</p>
+<p>Fire up R Studio, not the R language to get started.</p>
+<div class="figure">
+<img src="images/21-rintro-rstudio.png" alt="console" />
+<p class="caption">console</p>
+</div>
+<div id="the-console" class="section level3">
+<h3><span class="header-section-number">1.4.1</span> The Console</h3>
+<p>The Console is where you can type commands and interact directly with the programming language. Think of it as a very powerful calculator at first.</p>
+<p>When you type this: <code>5+5</code> after the &gt; prompt, you’ll get this back:
+<code>[1] 10</code></p>
+<p>When you type this: <code>"Sarah"</code> (with quotes) after the &gt; prompt, you’ll get this back:
+<code>[1] "Sarah"</code></p>
+<p>But if you type this: <code>Sarah</code> (without quotes) after the &gt; prompt, you’ll get this error: <code>Error: object 'Sarah' not found</code>. That’s because it thinks you want to use a variable named Sarah, not the literal letters S-a-r-a-h</p>
+</div>
+<div id="packages" class="section level3">
+<h3><span class="header-section-number">1.4.2</span> Packages</h3>
+<p>The real power of R comes with packages. Packages are bundles of programs that others have found useful to extend the base R language. R is almost useless without them. There are thousands of packages available for R, each doing a special job.</p>
+<p>As a general rule of thumb, install packages using the console. They must be installed once on every computer, or in every project when you use RStudio Cloud.</p>
+<p>You have to activate packages every time you start R, even if you’re just picking up where you left off. Invoke the package by using the library() command.</p>
+<div id="a-quick-note-on-the-tidyverse" class="section level4 unnumbered">
+<h4>A quick note on the tidyverse</h4>
+<p>Almost all of the materials you see related to programming in R have some reference to this thing called the “tidyverse”. One problem with having a lot of packages, often written by hobbyists, is that they’re not very consistent. One might use a comma where another uses some dots, for example.</p>
+<p>The tidyverse packages up a whole set of other packages, ensuring they all work together smoothly and have similar commands. It’s made for the kind of work reporters do – importing, cleaning and analyzing data that we get from others and can’t control how it’s structured.</p>
+<p>For many reporters (myself included), R was too difficult to learn before the tidyverse came around. We’ll be working almost exclusively within the tidyverse in this book.</p>
+<p>The tidyverse is the brainchild of <a href="http://hadley.nz/">Hadley Wickham</a>, a statistician from New Zealand, who famously identified the <a href="https://cronkitedata.github.io/cronkite-docs/excel/xlguides/xl-tidydata">tidy data principles</a> we’ve followed all semester. He’s currently the chief data scientist for RStudio in Houston.</p>
+</div>
+<div id="packages-for-this-class" class="section level4 unnumbered">
+<h4>Packages for this class</h4>
+<p>Using the Console, install the packages we need for class:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1"><span class="kw">install.packages</span>(<span class="st">&quot;tidyverse&quot;</span>)  </a>
+<a class="sourceLine" id="cb1-2" title="2"><span class="kw">install.packages</span>(<span class="st">&quot;rmarkdown&quot;</span>)</a>
+<a class="sourceLine" id="cb1-3" title="3"><span class="kw">install.packages</span>(<span class="st">&quot;swirl&quot;</span>)</a></code></pre></div>
+</div>
+</div>
+<div id="work-in-projects" class="section level3">
+<h3><span class="header-section-number">1.4.3</span> Work in projects</h3>
+<p>One of the things that trips up new users of R is that it’s hard to tell the program where to find things on your computer. The “working directory” can be confusing.</p>
+<p><img src="images/21-rintro-project-open.png" alt="open project" style="width:40%;float:right;margin:10px;"></p>
+<p>One way to get around that is to always work in projects. Projects in R isolate your work in a single folder, which can be transferred from computer to computer without worrying about what’s missing. If you’re using RStudio.cloud, every project is already self-contained.</p>
+<p>Instead of creating a new file when you start R, create a new project, and tell R where to put the directory when prompted.</p>
+<p>Then, when you want to return to the project, open the project rather than a file.</p>
+</div>
+</div>
+<div id="variables" class="section level2">
+<h2><span class="header-section-number">1.5</span> Variables</h2>
+<p>A variable s a container for a value, a list or some kind of object. At its simplest, it might hold a number or a word. To make a variable, use the assignment operator: <code>&lt;-</code> . Think of it as a value being pushed into a name:</p>
+<pre><code>my_variable &lt;- 13</code></pre>
+<p>When you hit the return button, nothing happens. Instead of printing it, it’s stored it in a variable and it’s added to your Global Environment pane. Now you can use the name instead of the value.</p>
+<p><img src="images/21-my-variable.png" /></p>
+<div id="using-variables-in-new-variables" class="section level4 unnumbered">
+<h4>Using variables in new variables</h4>
+<p>You can always use a variable you already computed to calculate something new:</p>
+<p><img src="images/21-var-with-var.jpg" /></p>
+</div>
+<div id="working-with-lists" class="section level4 unnumbered">
+<h4>Working with lists</h4>
+<p>One of the most powerful characteristics of a programming language is that it lets you work on a whole set of values at once, usually through a list. In R, they’re called vectors. Think of them as the values in a column of a spreadsheet.</p>
+<p>Create a vector with the <code>c</code> operator, short for “combine”:</p>
+<pre><code>  c( &quot;me&quot;, &quot;you&quot;, &quot;everyone&quot;)
+  c( 1, 2, 3)</code></pre>
+<p>In most contexts, they have to all be the same data type.</p>
+</div>
+</div>
+<div id="resources-and-exercises" class="section level2">
+<h2><span class="header-section-number">1.6</span> Resources and exercises</h2>
+<p>Before you move on in this book, you should make sure that you have a way to get RStudio, either on your computer or on RStudio Cloud, and that it’s installed properly.</p>
+<div id="take-the-swirl-tutorial" class="section level4 unnumbered">
+<h4>Take the swirl() tutorial</h4>
+<p>If you haven’t done it already, install the swirl() package. Do this in the Console: <code>install.packages("swirl")</code></p>
+<p>Once it’s installed, activate it using the library command and start it up.</p>
+<pre><code>    library(swirl)
+    swirl()</code></pre>
+<p>Then just follow the prompts. Don’t worry that they’re red – it doesn’t mean there’s anything wrong. You should do the first section of the first chapter: “1: R Programming: The basics of programming in R” -&gt; “Basic Building Blocks”. At the end, hit the escape key.</p>
+</div>
+<div id="other-resources" class="section level4 unnumbered">
+<h4>Other resources</h4>
+<p>Sharon Machlis’ <a href="http://www.machlis.com/R4Journalists/a-brief-introduction-to-rstudio.html">Practical R for Mass Communications and Journalism</a> has an intro to R and R Studio beginning in chapter 2.3</p>
+<p>Ben Stenhaug created a fast-paced video introducing the R Studio interface. Don’t worry too much about what some of it means just yet – just see if you can get used to the different parts of the screen.</p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/lTTJPRwnONE" frameborder="0" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+</iframe>
 
 </div>
-
-
-
+</div>
+</div>
             </section>
 
           </div>
         </div>
       </div>
-
-<a href="01-r-install.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="02-r-markdown.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
