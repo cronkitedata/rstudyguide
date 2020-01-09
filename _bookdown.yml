@@ -9,6 +9,7 @@ rmd_files: ["index.Rmd",
             "022-data-frames.Rmd",
             "030-intro-verbs.Rmd",
             "031-select-filter.Rmd",
+            "033-groupby.Rmd",
             "A02-programming.Rmd",
             "A01-resources.Rmd"
             ] 
