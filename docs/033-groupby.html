@@ -53,6 +53,68 @@
 <script src="libs/pagedtable-1.1/js/pagedtable.js"></script>
 
 
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
 
 <link rel="stylesheet" href="mystyles.css" type="text/css" />
 </head>
@@ -145,8 +207,17 @@
 </ul></li>
 <li class="chapter" data-level="6" data-path="033-groupby.html"><a href="033-groupby.html"><i class="fa fa-check"></i><b>6</b> Verbs 2: group_by and summarise</a><ul>
 <li class="chapter" data-level="6.1" data-path="033-groupby.html"><a href="033-groupby.html#key-takeaways-5"><i class="fa fa-check"></i><b>6.1</b> Key takeaways</a></li>
-<li class="chapter" data-level="6.2" data-path="033-groupby.html"><a href="033-groupby.html#group_by-summarise-basics"><i class="fa fa-check"></i><b>6.2</b> group_by / summarise basics</a></li>
-<li class="chapter" data-level="6.3" data-path="033-groupby.html"><a href="033-groupby.html#resources-2"><i class="fa fa-check"></i><b>6.3</b> Resources</a></li>
+<li class="chapter" data-level="6.2" data-path="033-groupby.html"><a href="033-groupby.html#group_by-summarise-basics"><i class="fa fa-check"></i><b>6.2</b> group_by / summarise basics</a><ul>
+<li class="chapter" data-level="6.2.1" data-path="033-groupby.html"><a href="033-groupby.html#other-summary-functions"><i class="fa fa-check"></i><b>6.2.1</b> Other summary functions</a></li>
+<li class="chapter" data-level="6.2.2" data-path="033-groupby.html"><a href="033-groupby.html#grouping-by-more-than-one-variable"><i class="fa fa-check"></i><b>6.2.2</b> Grouping by more than one variable</a></li>
+<li class="chapter" data-level="6.2.3" data-path="033-groupby.html"><a href="033-groupby.html#rolling-up-to-the-next-level"><i class="fa fa-check"></i><b>6.2.3</b> Rolling up to the next level</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="033-groupby.html"><a href="033-groupby.html#restructuring-for-a-report-with-pivot_longer"><i class="fa fa-check"></i><b>6.3</b> Restructuring for a report with <code>pivot_longer()</code></a><ul>
+<li class="chapter" data-level="6.3.1" data-path="033-groupby.html"><a href="033-groupby.html#a-note-on-restructuring-your-data-frames"><i class="fa fa-check"></i><b>6.3.1</b> A note on restructuring your data frames</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="033-groupby.html"><a href="033-groupby.html#resources-exercises"><i class="fa fa-check"></i><b>6.4</b> Resources &amp; exercises</a><ul>
+<li class="chapter" data-level="6.4.1" data-path="033-groupby.html"><a href="033-groupby.html#exercises-1"><i class="fa fa-check"></i><b>6.4.1</b> Exercises</a></li>
+</ul></li>
 </ul></li>
 <li class="appendix"><span><b>Appendix</b></span></li>
 <li class="chapter" data-level="A" data-path="A02-programming.html"><a href="A02-programming.html"><i class="fa fa-check"></i><b>A</b> A gentle intro to programming</a><ul>
@@ -194,29 +265,135 @@
 <li>Together, they’re usually used to answer questions like “how many?” and “how much?”.</li>
 <li>You will rarely use <code>group_by</code> without <code>summarise</code>.</li>
 <li><code>group_by</code> is picky - it will create a separate answer for every variant of a category: “Lettuce” could be one, and “lettuce” could be another.</li>
-<li>“How many?” is such a common question that there are some shortcuts for it.</li>
-<li>How to roll up your answers so you can computer percent</li>
+<li>Rolling up your totals to allow for percentage changes</li>
+<li>Rearranging your data for easier reading with <code>pivot_wider</code></li>
 </ul>
-<p>This continues with the Arizona immunization data from chapter 4. If you’ve started a new project, you can <a href="https://github.com/cronkitedata/rstudyguide/blob/master/data/az-immunizations-grade6.Rda?raw=true">re-download the data in R form</a>, and then issue the command</p>
+<p>This continues with the Arizona immunization data from chapter 4 and assumes you’ve gone through that chapter. It uses some of the other verbs introduced there. If you’ve started a new project, you can <a href="https://github.com/cronkitedata/rstudyguide/blob/master/data/az-immunizations-grade6.Rda?raw=true">re-download the data in R form</a>, and the load it in an R Markdown code chunk with this line:</p>
 <pre><code>load(&quot;az-immunizations-grade6.Rda&quot;)</code></pre>
 <p>(Be sure to preface it with a subfolder name if you’ve saved it in one.)</p>
+<p>When you run your first code chunk you should have a data frame called <code>grade6_counts</code> in your environment tab:</p>
+<p><img src="images/33-loadfile.png" /></p>
 </div>
 <div id="group_by-summarise-basics" class="section level2">
 <h2><span class="header-section-number">6.2</span> group_by / summarise<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a> basics</h2>
-<p>Think of grouping as making piles of things , and summarise as adding up or counting items within the piles.</p>
+<p>Think of grouping as making piles of things while summarise counts, adds or creates other summary statistics.</p>
 <p>Where filtering and selecting let you hone in on individual items that meet specific criteria, grouping and summarising help you answer the questions of “how many?” and “how much?” They’re the equivalent to pivot tables in Excel.</p>
+<p>To refresh your memory, this query counts the number of schools and adds up the number of students by type of school while giving them descriptive names:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" title="1">grade6_counts <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb2-2" title="2"><span class="st">  </span><span class="kw">group_by</span> (school_type) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb2-3" title="3"><span class="st">  </span><span class="kw">summarise</span> ( <span class="dt">schools =</span> <span class="kw">n</span>() ,</a>
+<a class="sourceLine" id="cb2-4" title="4">              <span class="dt">student =</span> <span class="kw">sum</span> (enrolled, <span class="dt">na.rm=</span><span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb2-5" title="5">      )</a></code></pre></div>
+<p>Notice the <code>na.rm=TRUE</code> in the sum() function. You should almost always add this to any summary math function, like sum(), median(), mean(), etc. If you don’t, a single missing value (<code>NA</code>) will result in an answer of <code>NA</code>. That’s good practice and it makes sense: you should <em>want</em> to know if your data has missing or invalid information. But normally you have no choice but to ignore it.</p>
+<div id="other-summary-functions" class="section level3">
+<h3><span class="header-section-number">6.2.1</span> Other summary functions</h3>
+<p>Counting and summing are the most common, but you might also use these functions:</p>
+<table>
+<thead>
+<tr class="header">
+<th>Function</th>
+<th>description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>n_distinct ()</td>
+<td>the number of unique values of the variable you name</td>
+</tr>
+<tr class="even">
+<td>median () , mean()</td>
+<td>The median or mean of a numeric variable</td>
+</tr>
+<tr class="odd">
+<td>min() , max()</td>
+<td>Just what it looks like</td>
+</tr>
+</tbody>
+</table>
 </div>
-<div id="resources-2" class="section level2">
-<h2><span class="header-section-number">6.3</span> Resources</h2>
+<div id="grouping-by-more-than-one-variable" class="section level3">
+<h3><span class="header-section-number">6.2.2</span> Grouping by more than one variable</h3>
+<p>An example of counting by school type, and whether a school nurse is on staff:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" title="1">grade6_counts <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb3-2" title="2"><span class="st">  </span><span class="kw">group_by</span> ( school_type, school_nurse) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb3-3" title="3"><span class="st">  </span><span class="kw">summarise</span> ( <span class="dt">num_schools =</span> <span class="kw">n</span>() ) </a></code></pre></div>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["school_type"],"name":[1],"type":["chr"],"align":["left"]},{"label":["school_nurse"],"name":[2],"type":["chr"],"align":["left"]},{"label":["num_schools"],"name":[3],"type":["int"],"align":["right"]}],"data":[{"1":"CHARTER","2":"NO","3":"169"},{"1":"CHARTER","2":"YES","3":"24"},{"1":"PRIVATE","2":"NO","3":"32"},{"1":"PRIVATE","2":"YES","3":"35"},{"1":"PUBLIC","2":"NO","3":"240"},{"1":"PUBLIC","2":"YES","3":"408"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+<p>It produces every combination of the school_type and school_nurse.</p>
+</div>
+<div id="rolling-up-to-the-next-level" class="section level3">
+<h3><span class="header-section-number">6.2.3</span> Rolling up to the next level</h3>
+<p>If you wanted to know what percent of schools are charter, you’d need the total number of schools as a variable in your data frame. You can roll up to the next level this way:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" title="1">grade6_counts <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb4-2" title="2"><span class="st">  </span><span class="kw">group_by</span>( school_type ) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb4-3" title="3"><span class="st">  </span><span class="kw">summarise</span> (<span class="dt">schools =</span> <span class="kw">n</span>() ) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb4-4" title="4"><span class="st">  </span><span class="kw">mutate</span>  ( <span class="dt">total =</span> <span class="kw">sum</span>( schools),</a>
+<a class="sourceLine" id="cb4-5" title="5">            <span class="dt">pct_total =</span> schools<span class="op">/</span><span class="st"> </span>total <span class="op">*</span><span class="st"> </span><span class="dv">100</span> ) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb4-6" title="6"><span class="st">  </span><span class="kw">arrange</span> ( <span class="kw">desc</span> (schools))</a></code></pre></div>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["school_type"],"name":[1],"type":["chr"],"align":["left"]},{"label":["schools"],"name":[2],"type":["int"],"align":["right"]},{"label":["total"],"name":[3],"type":["int"],"align":["right"]},{"label":["pct_total"],"name":[4],"type":["dbl"],"align":["right"]}],"data":[{"1":"PUBLIC","2":"648","3":"908","4":"71.365639"},{"1":"CHARTER","2":"193","3":"908","4":"21.255507"},{"1":"PRIVATE","2":"67","3":"908","4":"7.378855"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+<div id="a-note-on-count-and-tally" class="section level4">
+<h4><span class="header-section-number">6.2.3.1</span> {-} A note on count() and tally()</h4>
+<p>You may see other tutorials in which the group_by / summarise is shortened to use two other verbs, <code>tally()</code> and <code>count()</code>. They’re perfectly good for a very quick review of the data, but it’s a little hard to follow how they work. For now, sticking with the group_by / summarise sequence will help you cement it in your mind while at the same time making it closer to what you’ll find in other programming languages.</p>
+</div>
+</div>
+</div>
+<div id="restructuring-for-a-report-with-pivot_longer" class="section level2">
+<h2><span class="header-section-number">6.3</span> Restructuring for a report with <code>pivot_longer()</code></h2>
+<p>It’s hard to read multi-level groupings, so the tidyverse offers a way to spread one variable across the top with the other down the side. This is just like dragging one column into the “Columns” area in a pivot table, and another into the “Rows”. Here is how you’d make a crosstab like those in Excel using this method:</p>
+<p><img src="images/33-pivot-wider.png" /></p>
+<p>Here’s a full example of creating “column” percentages and then showing them as a crosstab. See if you can piece together what’s going on. If not, try moving pieces of the query outside the code chunk (and remove your <code>%&gt;%</code> operator) and run it piece by piece.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" title="1">grade6_counts <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb5-2" title="2"><span class="st">  </span><span class="kw">group_by</span> (school_type, school_nurse) <span class="op">%&gt;%</span><span class="st">                           </span><span class="co"># See 1</span></a>
+<a class="sourceLine" id="cb5-3" title="3"><span class="st">  </span><span class="kw">summarise</span> ( <span class="dt">schools =</span> <span class="kw">n</span>() ) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb5-4" title="4"><span class="st">  </span><span class="kw">mutate</span> ( <span class="dt">types =</span> <span class="kw">sum</span>(schools),                                     <span class="co"># See 2</span></a>
+<a class="sourceLine" id="cb5-5" title="5">           <span class="dt">pct_types =</span> schools<span class="op">/</span>types<span class="op">*</span><span class="dv">100</span>) <span class="op">%&gt;%</span><span class="st">                        </span><span class="co"># See 3 </span></a>
+<a class="sourceLine" id="cb5-6" title="6"><span class="st">  </span><span class="kw">select</span> (school_type, school_nurse, pct_types) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb5-7" title="7"><span class="st">  </span><span class="kw">pivot_wider</span> ( <span class="dt">names_from =</span> school_type, <span class="dt">values_from =</span> pct_types)   <span class="co">#See 4</span></a></code></pre></div>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["school_nurse"],"name":[1],"type":["chr"],"align":["left"]},{"label":["CHARTER"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["PRIVATE"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["PUBLIC"],"name":[4],"type":["dbl"],"align":["right"]}],"data":[{"1":"NO","2":"87.56477","3":"47.76119","4":"37.03704"},{"1":"YES","2":"12.43523","3":"52.23881","4":"62.96296"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+<p>Now you have a crosstab showing that public schools are five times as likely to have a school nurse as charter schools (63/12), and private schools are in between. Remember the rule:</p>
+<blockquote>
+<p>The independent variable, or the thing that comes first, is in your column and the thing that comes
+second is in your rows. Then calculate the column percentage</p>
+</blockquote>
+<p>Walking through this code:</p>
+<ol style="list-style-type: decimal">
+<li>Do a usual group_by/summarise by the type of school and whether there are school nurses. The order matters, in order to get the right percentages.</li>
+<li>Calcuate the sum <em>at the next level</em>, which is by school type – this is a hidden feature of group_by, in that it rolls up sequentially through the variables you have grouped on – to get the total by school_nurse, then calcuate the percentage off of that.</li>
+<li>Keep only the variables you want to see in the end.</li>
+<li>pivot it!</li>
+</ol>
+<div id="a-note-on-restructuring-your-data-frames" class="section level3">
+<h3><span class="header-section-number">6.3.1</span> A note on restructuring your data frames</h3>
+<p><code>pivot_wider</code> is part of a whole set of functions designed to work with tidy data, and fix untidy data. You’ll sometimes see it called <code>spread</code>, which is from an older version of the tidyverse, and is harder to understand. We’ll come back to some of this later on.</p>
+</div>
+</div>
+<div id="resources-exercises" class="section level2">
+<h2><span class="header-section-number">6.4</span> Resources &amp; exercises</h2>
+<p>If you got through this, congratulations! You’ve mastered one of the things that people new to data analysis struggle find difficult to wrap their heads around. If you’re still unsure, don’t worry – many people are. Maybe some of these resources will help:</p>
 <ul>
-<li>Andrew Ba Tran’s “R for Journalists”, bottom of chapter 3, “<a href="https://learn.r-journalism.com/en/wrangling/dplyr/dplyr/">Wrangling data</a>”<br />
-</li>
 <li>Mary Jo Webster’s “<a href="https://mjwebster.github.io/DataJ/R/IntroAnalysisWithR.html">Intro to analysis with Tidyverse</a>” is a walkthrough aimed at group by / summarise.</li>
-<li>Go back to Pivot Tables in Excel - it’s the same thing.</li>
+<li>Go back to <a href="https://cronkitedata.github.io/cronkite-docs/excel/practice/12-excel-baseball">Pivot Tables in Excel</a> - it’s the same thing.</li>
 <li>Susan Baert’s dplyr tutorial: <a href="https://suzan.rbind.io/2018/04/dplyr-tutorial-4/">summarizing data</a></li>
 <li>Matt Waite’s “<a href="http://mattwaite.github.io/sports/aggregates.html">Aggregates</a>” chapter</li>
 </ul>
+<div id="exercises-1" class="section level3">
+<h3><span class="header-section-number">6.4.1</span> Exercises</h3>
+<ul>
+<li>Using one of the datasets you worked with in pivot tables, try to replicate at least some of your work in R.</li>
+</ul>
 
+</div>
 </div>
 </div>
 
