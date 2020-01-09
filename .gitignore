@@ -3,7 +3,6 @@
 .Rapp.history
 # Session Data files
 .RData
-.Rhistory
 # Example code in package build process
 *-Ex.R
 # Output files from R CMD build
@@ -25,4 +24,4 @@ vignettes/*.pdf
 *.knit.md
 # Shiny token, see https://shiny.rstudio.com/articles/shinyapps.html
 rsconnect/
-htmlbook.yml
+
