@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Preface | data-journalism.utf8</title>
+  <title>3 Data frames and the tidyverse | data-journalism.utf8</title>
   <meta name="description" content="" />
   <meta name="generator" content="bookdown 0.14 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Preface | data-journalism.utf8" />
+  <meta property="og:title" content="3 Data frames and the tidyverse | data-journalism.utf8" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Preface | data-journalism.utf8" />
+  <meta name="twitter:title" content="3 Data frames and the tidyverse | data-journalism.utf8" />
   
   
   
@@ -29,8 +29,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-
-<link rel="next" href="011-r-install.html"/>
+<link rel="prev" href="021-r-markdown.html"/>
+<link rel="next" href="030-intro-verbs.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -248,24 +248,257 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<!--bookdown:title:end-->
-<!--bookdown:title:start-->
-<div id="preface" class="section level1 unnumbered">
-<h1>Preface</h1>
-<p>This online book is serving as a study guide for students in my data journalism classes at the Cronkite School of Journalism. Eventually, this will put together the resources for the whole class, but for now it just includes the section on learning R and R Markdown.</p>
-<p>I’m grateful for all of the experts and teachers out there who have made their training materials open to the world, and helped build a wealth of materials for students of all types. I’ve particularly leaned on Matt Waite, of the University of Nebraska and Jesse Lecy of Arizona State University, who generously share their course materials.</p>
+<div id="data-frames-and-the-tidyverse" class="section level1">
+<h1><span class="header-section-number">3</span> Data frames and the tidyverse</h1>
+<div id="key-takeaways-2" class="section level2">
+<h2><span class="header-section-number">3.1</span> Key takeaways</h2>
+<ul>
+<li>Loading the tidyverse</li>
+<li>Reading data from from Excel or from a text file.</li>
+<li>Looking at your data</li>
+<li>Introducing the “pipe” (%&gt;%) and a verb</li>
+</ul>
+<p>But first….</p>
+<p><img src="images/22-take-a-break.jpg" /></p>
+</div>
+<div id="getting-started" class="section level2">
+<h2><span class="header-section-number">3.2</span> Getting started</h2>
+<p>Every time you start up R, you will need to load any packages you intend to use. That’s usually the first code chunk in your R Markdown document. If you put all of the libraries you need there, anyone you share with will know which ones have to be installed in the future. Here’s how I start up a new project with a new document:</p>
+<p><img src="images/22-load-library.gif" /></p>
+<p>I usually add “message=FALSE” to the r in the brackets to prevent a whole bunch of largely meaningless but scary messages. If there’s a real problem, R will still let me know:</p>
+<p><img src="images/21-tidyverse-messageoff.png" /></p>
+<p>(From now on, you’ll only see the code in between the three backtics. They’re invisible in the output.)</p>
+</div>
+<div id="the-data-frame" class="section level2">
+<h2><span class="header-section-number">3.3</span> The data frame</h2>
+<p>A data frame is an R “object”, and is treated like any other variable. The difference is that it contains columns and rows, just like a spreadsheet.</p>
+<p>The best data frames follow the same <a href="https://cronkitedata.github.io/cronkite-docs/excel/xlguides/xl-tidydata.html">tidy data</a> principles that we went over in Excel:</p>
+<ul>
+<li>Each column contains one kind of information – race, sex, address, etc.</li>
+<li>Each row contains one example of each of those columns, all at the same unit of analysis.</li>
+<li>Each data frame contains different levels or types of information.</li>
+</ul>
+<div id="loading-and-looking-at-data" class="section level3">
+<h3><span class="header-section-number">3.3.1</span> Loading and looking at data</h3>
+<p>Much of the data you use in R starts out as a CSV text file or one of its cousins. (See the <a href="https://cronkitedata.github.io/cronkite-docs/general/05-file-formats.html">file format tutorial</a> if you don’t remember what that is.)</p>
+<p>Generally, R will guess what <em>type</em> of column each one is – number, text or date. (See the <a href="https://cronkitedata.github.io/cronkite-docs/excel/xl-tidy-data">data types tutorial</a> if you forgot what that means.) There are ways to override its guess, but it’s often right.</p>
+<p>The following code chunk:</p>
+<ol style="list-style-type: decimal">
+<li>Creates a <em>variable</em> to store the long address. That makes it easier to troubleshoot or change later on.<br />
+</li>
+<li>Asks the tidyverse to execute the function <em>read_csv</em> on the stored link address. The function can read files stored on the web or on your computer.</li>
+</ol>
+<p>This data is from the Phoenix open government site, and contains staff salaries as of 2018</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" title="1"><span class="co">#the location on the Web for the data set&#39;s csv download</span></a>
+<a class="sourceLine" id="cb7-2" title="2">my_link &lt;-<span class="st"> &quot;https://www.phoenixopendata.com/dataset/0c02bbfd-08d9-41e9-a00c-97848a9f7350/resource/3a5c2950-88e3-4cb4-b436-c78d2a266c75/download/open-data-staff-salaries-as-of-12-31-2018.csv&quot;</span></a>
+<a class="sourceLine" id="cb7-3" title="3"></a>
+<a class="sourceLine" id="cb7-4" title="4"></a>
+<a class="sourceLine" id="cb7-5" title="5"><span class="co">#use it in a read_csv command</span></a>
+<a class="sourceLine" id="cb7-6" title="6">phx_salaries &lt;-<span class="st"> </span><span class="kw">read_csv</span>( my_link  )</a></code></pre></div>
+<p>When you run this code, you’ll rececive a scary looking message. Don’t worry - it’s just giving you some information about what it found in the online file:</p>
+<div class="figure">
+<img src="images/21-rdataframe-parse-message.png" alt="Parsing message from import" />
+<p class="caption">Parsing message from import</p>
+</div>
+<p>Notice that the column names are set automatically using the first name of the file. One of the first things you’ll often want to do with a csv file is change the names using a standard style. I usually prefer lower case names with underscores between words. If I always use those, I won’t have to remember which.</p>
+<p>The <code>read_csv</code> command, or function, is part of the tidyverse. The import functions you’ll use the most are:</p>
+<pre><code>read_csv()
+read_excel()
+read_delimited()</code></pre>
+<p>They all work pretty much the same way on slightly different types of data files.</p>
+</div>
+<div id="examine-your-data" class="section level3">
+<h3><span class="header-section-number">3.3.2</span> Examine your data</h3>
+<p>You should now see the name of the data frame in your Global Environment. Click on it to View it, or issue the <code>View(phx_salaries)</code> command.</p>
+<p><img src="images/23-view-salaries.jpg" /></p>
+<p>You can look at your data by clicking on its name in the “Global Environment” window, or by using some standard functions in R to explore them. Use the head() function to look at the top and the tail() function to look at the bottom:</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" title="1"><span class="kw">head</span>(phx_salaries)</a></code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th align="left">LAST_NAME</th>
+<th align="left">FIRST_NAME</th>
+<th align="left">DESCR</th>
+<th align="right">ANNUAL RATE</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Aamodt</td>
+<td align="left">Gail</td>
+<td align="left">Police Officer</td>
+<td align="right">72425.60</td>
+</tr>
+<tr class="even">
+<td align="left">Abbitt</td>
+<td align="left">Ryan</td>
+<td align="left">Firefighter 56hr</td>
+<td align="right">67974.82</td>
+</tr>
+<tr class="odd">
+<td align="left">Abbott</td>
+<td align="left">Christie</td>
+<td align="left">Forensic Scientist IV</td>
+<td align="right">99195.20</td>
+</tr>
+</tbody>
+</table>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" title="1"><span class="kw">tail</span>(phx_salaries)</a></code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th align="left">LAST_NAME</th>
+<th align="left">FIRST_NAME</th>
+<th align="left">DESCR</th>
+<th align="right">ANNUAL RATE</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">de la Fuente</td>
+<td align="left">Mariana</td>
+<td align="left">Curriculum/Trng Coord*Supv Dev</td>
+<td align="right">77334.4</td>
+</tr>
+<tr class="even">
+<td align="left">de los Rios Jr</td>
+<td align="left">Ruben</td>
+<td align="left">Police Officer</td>
+<td align="right">54475.2</td>
+</tr>
+<tr class="odd">
+<td align="left">von Kampen</td>
+<td align="left">Michele</td>
+<td align="left">Caseworker II</td>
+<td align="right">57283.2</td>
+</tr>
+</tbody>
+</table>
+<p>.. and use the “structure” command to see the variable names and types.</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" title="1"><span class="kw">str</span>(phx_salaries)</a></code></pre></div>
+<pre><code>## Classes &#39;spec_tbl_df&#39;, &#39;tbl_df&#39;, &#39;tbl&#39; and &#39;data.frame&#39;: 11956 obs. of  4 variables:
+##  $ LAST_NAME  : chr  &quot;Aamodt&quot; &quot;Abbitt&quot; &quot;Abbott&quot; &quot;Abdellatif&quot; ...
+##  $ FIRST_NAME : chr  &quot;Gail&quot; &quot;Ryan&quot; &quot;Christie&quot; &quot;Tariq&quot; ...
+##  $ DESCR      : chr  &quot;Police Officer&quot; &quot;Firefighter 56hr&quot; &quot;Forensic Scientist IV&quot; &quot;Environmental Quality Spec&quot; ...
+##  $ ANNUAL RATE: num  72426 67975 99195 73653 35714 ...
+##  - attr(*, &quot;spec&quot;)=
+##   .. cols(
+##   ..   LAST_NAME = col_character(),
+##   ..   FIRST_NAME = col_character(),
+##   ..   DESCR = col_character(),
+##   ..   `ANNUAL RATE` = col_double()
+##   .. )</code></pre>
+</div>
+</div>
+<div id="introducing-the-pipe" class="section level2">
+<h2><span class="header-section-number">3.4</span> Introducing the pipe</h2>
+<blockquote class="twitter-tweet">
+<p lang="en" dir="ltr">
+This is how I explain the ‘pipe’ to <a href="https://twitter.com/hashtag/rstats?src=hash&amp;ref_src=twsrc%5Etfw">#rstats</a> newbies… <a href="https://t.co/VdAFTLzijy">pic.twitter.com/VdAFTLzijy</a>
+</p>
+— We are R-Ladies (<span class="citation">@WeAreRLadies</span>) <a href="https://twitter.com/WeAreRLadies/status/1172576445794803713?ref_src=twsrc%5Etfw">September 13, 2019</a>
+</blockquote>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<p>You’ll be seeing a lot of R code that has this format:</p>
+<pre><code>  data_set_name %&gt;%
+     verb ( nouns ) %&gt;%
+     verb ( nouns ) %&gt;%
+     etc...</code></pre>
+<p>That little symbol, <code>%&gt;%</code> is called the “pipe”. It means “and then…”</p>
+<p>Here’s a simple example with a verb called <code>rename</code>. It takes the names of the variables from the first line, AND THEN renames them!</p>
+<p>This is something you often have to do because R will assume that the first row of the csv file contains the names of your variables. Using them, though, can be a pain – you have to remember whether they’re upper or lower case, and you have to put back-ticks (`) around any names with spaces or special characters.</p>
+<p>Here’s what using the pipe looks like to create a NEW data frame out of the old one with the names changed to lower case with underscores, a common pattern in many computer programs:</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" title="1">phx_salaries_renamed &lt;-<span class="st">                   </span><span class="co">#create a new data frame out of the next set of commands</span></a>
+<a class="sourceLine" id="cb14-2" title="2"><span class="st">   </span>phx_salaries <span class="op">%&gt;%</span><span class="st">                       </span><span class="co">#start with the original data frame name, AND THEN</span></a>
+<a class="sourceLine" id="cb14-3" title="3"><span class="st">   </span><span class="kw">rename</span> (  <span class="dt">last_name=</span>LAST_NAME,         <span class="co"># A list of new_name = old_name pairs, separated by commas</span></a>
+<a class="sourceLine" id="cb14-4" title="4">             <span class="dt">first_name=</span>FIRST_NAME,</a>
+<a class="sourceLine" id="cb14-5" title="5">             <span class="dt">job_title =</span> DESCR,</a>
+<a class="sourceLine" id="cb14-6" title="6">             <span class="dt">annual_pay =</span> <span class="st">`</span><span class="dt">ANNUAL RATE</span><span class="st">`</span>   <span class="co">#note the crazy back-ticks that you have to type for two-word names</span></a>
+<a class="sourceLine" id="cb14-7" title="7">           )                         </a>
+<a class="sourceLine" id="cb14-8" title="8"></a>
+<a class="sourceLine" id="cb14-9" title="9"><span class="kw">head</span> (phx_salaries_renamed)    <span class="co"># print out the first few rows.</span></a></code></pre></div>
+<p>You can leave out any name you don’t want to save. (There are fancier, faster ways to do this, but don’t worry abou that just yet. This is the easiest to remember.) This code chunk results in something that looks like this:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">last_name</th>
+<th align="left">first_name</th>
+<th align="left">job_title</th>
+<th align="right">annual_pay</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Aamodt</td>
+<td align="left">Gail</td>
+<td align="left">Police Officer</td>
+<td align="right">72425.60</td>
+</tr>
+<tr class="even">
+<td align="left">Abbitt</td>
+<td align="left">Ryan</td>
+<td align="left">Firefighter 56hr</td>
+<td align="right">67974.82</td>
+</tr>
+<tr class="odd">
+<td align="left">Abbott</td>
+<td align="left">Christie</td>
+<td align="left">Forensic Scientist IV</td>
+<td align="right">99195.20</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="take-a-break" class="section level2">
+<h2><span class="header-section-number">3.5</span> Take a break</h2>
+<p>If you’ve gotten this far, congratulations – you’ve started programming in R.</p>
+<p>I’ve skipped a lot of details that don’t matter much right now. You’ll see examples of using options and slightly different commands for the same things as we move along. But the process of</p>
+<ol style="list-style-type: decimal">
+<li>reading data into R,</li>
+<li>taking a quick look at it, and</li>
+<li>acting on it to create a new dataset</li>
+</ol>
+<p>is one you’ll be doing a lot.</p>
+<p><img src="images/and-breathe.jpg" /></p>
+<div class="credit-line">
+<p>Max van den Oetelaar via Unsplash</p>
+</div>
+</div>
+<div id="other-resources-1" class="section level2">
+<h2><span class="header-section-number">3.6</span> Other resources</h2>
+<p>Take a look at Jesse Lecy’s lesson on “<a href="http://ds4ps.org/dp4ss-textbook/ch-032-learning_r.html">Learning How to Learn</a>” from his data science class at ASU. It will make you feel better, I swear.</p>
+<p>Hadley Wickham’s “R for Data Science” <a href="https://r4ds.had.co.nz/data-import.html">chapter on importing data</a> goes into a lot of the options and variants of the read_csv command. RStudio has one of its many <a href="https://resources.rstudio.com/rstudio-cheatsheets/data-import-cheat-sheet">cheat sheets on the read_csv function</a> and its cousins.</p>
+<p>Unfortunately, a lot of the other resources we’ve seen don’t use the tidyverse versions of the import commands and they work somewhat differently. I think they’ll just be confusing, since we’re not dealing with the “base R” program.</p>
+<div id="on-your-own" class="section level3">
+<h3><span class="header-section-number">3.6.1</span> On your own</h3>
+<ul>
+<li>Start a new project in R.</li>
+<li>Download this Excel file into the folder.</li>
+<li>Create an R Markdown document and document where you got the file and where it’s stored.</li>
+<li>Try importing the file into R using the <code>read_excel</code> function, which works just like <code>read_csv</code>. Take a look at its structure (<code>str</code>), its top (<code>head</code>) and its bottom (<code>tail</code>).</li>
+<li>Try creating a NEW data frame from the original and rename a couple of columns.</li>
+<li>If you can get past the errors, knit the document and bask in the knowledge that you’ve come a long way. You can be quietly proud.</li>
+</ul>
+<p>You will likely have some errors to puzzle through if you’ve never programmed anything before. Don’t get discouraged – copy and paste the code from this tutorial, and then adapt it to your needs. Try to read any error messages. Follow the 20-minute rule: If you have been working for 20 minutes <strong>without ANY progress</strong> and are out of ideas or don’t understand what you’re trying to do, step away from the computer. When you come back, if you’re still stuck, get help.</p>
 
+</div>
+</div>
 </div>
 
 
 
+ table {
+   font-size: .8em;
+ }
+</style>
+</div>
             </section>
 
           </div>
         </div>
       </div>
-
-<a href="011-r-install.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="021-r-markdown.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="030-intro-verbs.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

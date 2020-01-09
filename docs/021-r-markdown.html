@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Preface | data-journalism.utf8</title>
+  <title>2 R Markdown | data-journalism.utf8</title>
   <meta name="description" content="" />
   <meta name="generator" content="bookdown 0.14 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Preface | data-journalism.utf8" />
+  <meta property="og:title" content="2 R Markdown | data-journalism.utf8" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Preface | data-journalism.utf8" />
+  <meta name="twitter:title" content="2 R Markdown | data-journalism.utf8" />
   
   
   
@@ -29,8 +29,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-
-<link rel="next" href="011-r-install.html"/>
+<link rel="prev" href="011-r-install.html"/>
+<link rel="next" href="022-data-frames.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -248,24 +248,167 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<!--bookdown:title:end-->
-<!--bookdown:title:start-->
-<div id="preface" class="section level1 unnumbered">
-<h1>Preface</h1>
-<p>This online book is serving as a study guide for students in my data journalism classes at the Cronkite School of Journalism. Eventually, this will put together the resources for the whole class, but for now it just includes the section on learning R and R Markdown.</p>
-<p>I’m grateful for all of the experts and teachers out there who have made their training materials open to the world, and helped build a wealth of materials for students of all types. I’ve particularly leaned on Matt Waite, of the University of Nebraska and Jesse Lecy of Arizona State University, who generously share their course materials.</p>
+<div id="r-markdown" class="section level1">
+<h1><span class="header-section-number">2</span> R Markdown</h1>
+<style>
+   table {
+      font-size:.9em;
+   }
+</style>
+<div id="key-takeaways-1" class="section level2">
+<h2><span class="header-section-number">2.1</span> Key takeaways</h2>
+<ul>
+<li>Markdown makes documenting your work easy</li>
+<li>Formatting commands in Markdown: headings, links, lists and images.</li>
+<li>Adding and running code chunks</li>
+<li>Knitting your markdown into a finished document with code and results.</li>
+</ul>
+</div>
+<div id="getting-started-with-r-markdown" class="section level2">
+<h2><span class="header-section-number">2.2</span> Getting started with R Markdown</h2>
+<p>Markdown was invented as an easy way for early contributors to Wikipedia to author documents that would translate to the web. It uses simple formatting rules that don’t require any background in programming, HTML or CSS formatting code. This book is written using Markdown. Variants of markdown are used to create many web sites, including those hosted on Github.</p>
+<p>R Markdown is an enhanced version of markdown. In it, you write your document around chunks of R code, which integrates your analysis with your writing. (R Markdown is also designed to output your work in other formats, like an actual printed book or slides.) Some news organizations do much of their internal work using R Markdown documents and code.</p>
+<p>You must install the rmarkdown package before you can use this feature. Install it in the Console. You only have to do this once on each computer, or in each project on rstudio.cloud:</p>
+<pre><code>  install.packages(&quot;rmarkdown&quot;)</code></pre>
+<p>Unlike other packages, it’s automatically loaded when you start up R Studio.</p>
+</div>
+<div id="the-anatomy-of-a-document" class="section level2">
+<h2><span class="header-section-number">2.3</span> The anatomy of a document</h2>
+<p>Markdown uses simple punctuation to create outline levels, lists, links and other elements of a page.</p>
+<p>There are four parts to an R Markdown document:</p>
+<ol style="list-style-type: decimal">
+<li>The “front matter”, or YAML.</li>
+<li>Plain text with formatting indicators.</li>
+<li>Code chunks – your R computer code.</li>
+<li>The results of code chunks - what you get back when you execute the code.</li>
+</ol>
+<p>The plain text follows a few basic rules. <a href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet">This markdown cheatsheet from Adam Pritchard</a> goes through them, but the most common are:</p>
+<table>
+<thead>
+<tr class="header">
+<th>Symbol</th>
+<th>Format</th>
+<th>Comments</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>#</code></td>
+<td>First level outline</td>
+<td>usually reserved for the title</td>
+</tr>
+<tr class="even">
+<td><code>##</code></td>
+<td>Second level outline</td>
+<td>… and so on</td>
+</tr>
+<tr class="odd">
+<td><code>*</code></td>
+<td>A bulleted list item</td>
+<td>Separate from the text by one empty line</td>
+</tr>
+<tr class="even">
+<td><code>1</code></td>
+<td>A numbered list</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><code>[]()</code></td>
+<td>A link</td>
+<td><code>[my link words](http....)</code></td>
+</tr>
+<tr class="even">
+<td><code>![]()</code></td>
+<td>An image link</td>
+<td><code>![alt-text](path/to/myimage.jpg)</code></td>
+</tr>
+<tr class="odd">
+<td><code>&lt;&gt;</code></td>
+<td>A simple link shown as an address</td>
+<td><code>&lt;https/cronkitedata.github...</code>&gt;</td>
+</tr>
+<tr class="even">
+<td><code>**</code></td>
+<td>Bold text</td>
+<td><code>**This would be bold**</code></td>
+</tr>
+<tr class="odd">
+<td><code>*</code></td>
+<td>Italic text</td>
+<td><code>*This would be italic*</code></td>
+</tr>
+</tbody>
+</table>
+<div id="front-matter-yaml-at-the-top" class="section level4 unnumbered">
+<h4>Front matter / YAML at the top</h4>
+<p>The way the R knows to do these things is by reading the very top of the file and looking at the section between the three dashes, which gives values to specific items R Markdown is expecting in a format called YAML. It’s very picky about this, so if you get an error, look there for a problem.</p>
+<p>The good news is that the YAML is created for you when you create a new R Markdown document. When you get more comfortable, you may want to tweak the look and feel of your document by adding parts to this section.</p>
+<pre><code>---
+title: &quot;Title for your page&quot;
+author: &quot;Sarah Cohen&quot;
+date: &quot;1/6/2020&quot;
+output: html_document
+---</code></pre>
+</div>
+</div>
+<div id="knitting-your-document" class="section level2">
+<h2><span class="header-section-number">2.4</span> Knitting your document</h2>
+<p>Look at the top of your screen, and you’ll see a knitting needle and the word, “Knit”. Pressing that button will convert your markdown into the finished document.</p>
+<p>Here’s how it looks pre-knitted and after knitting:</p>
+<p><img src="images/21-first-markdown.png" /></p>
+<p>There are three reasons it might not work:</p>
+<ol style="list-style-type: decimal">
+<li>You haven’t saved the document yet.</li>
+<li>There is an error in that top YAML section. Just copy one that works and try again.</li>
+<li>There is an error in your R code. (You’ll see how to skip a chunk with an error later on.)</li>
+</ol>
+<p>I usually change one default option: I have a large screen so I like to see my document in RStudio rather than as a separate document so I don’t have to flip back and forth between windows. To do that, change the options by clicking on the little gear near the knit button:</p>
+<p><img src="images/21-knitter.png" /></p>
+</div>
+<div id="code-chunks" class="section level2">
+<h2><span class="header-section-number">2.5</span> Code chunks</h2>
+<p>So far, this is just a simple document. It doesn’t contain any R code. To add code, you insert a “code chunk”. You can add it by clicking the +Insert button at the top of the document, or by pressing <em>Option/Alt-Cmd-i</em> Add your code in the gray area between the triple-backtic symbols. Run the code chunk by pressing the arrow button within it, or by pressing Cmd/Ctl-Shft-Enter (either Cmd or Ctl)</p>
+<p><img src="images/22-code-chunk.gif" /></p>
+<p>This might not seem like much, but think about how it helps you do your analysis. You can write all of your notes right where you do the work. You don’t have to copy and paste information from one place to another, or share out-of-date spreadsheets with your teammates.</p>
+<div id="r-markdown-starts-from-scratch" class="section level4 unnumbered">
+<h4>R Markdown starts from scratch</h4>
+<p>Every time you close down your computer or restart R, you have to run every code chunk to get back to where you left off. This includes loading any libraries and data. This is actually good – it ensures that your project is reproducable. But it can be confusing at first. I just knit my program as soon as I start up R each time, which takes me to where I left off.</p>
+</div>
+</div>
+<div id="resources-and-exercises-1" class="section level2">
+<h2><span class="header-section-number">2.6</span> Resources and exercises</h2>
+<div id="resources" class="section level3 unnumbered">
+<h3>Resources</h3>
+<ul>
+<li>“<a href="https://ds4ps.org/docs/#what-are-data-driven-docs">Data driven docs</a>” walkthrough on DS4PS (or, Data Science for the Public Sector)</li>
+<li>RStudio has a <a href="https://rmarkdown.rstudio.com/authoring_quick_tour.html">quick tour of R Markdown</a> that goes through more than you even need. It goes a little fast.</li>
+</ul>
+</div>
+<div id="exercises" class="section level3 unnumbered">
+<h3>Exercises</h3>
+<p>Make sure you have already installed the <code>rmarkdown</code> package before going further.</p>
+<p>Create a new R Markdown document with the following elements:</p>
+<ul>
+<li>Front matter with your name, the date and a title for your page.</li>
+<li>A heading introducing a subtopic</li>
+<li>Within that heading, a list of three things about yourself or about a topic you love, in a bulleted list.</li>
+<li>Another heading</li>
+<li>An image that you like</li>
+<li>Another heading</li>
+<li>A code chunk, in which you create a variable and assign it a value.</li>
+</ul>
+<p>Then knit the document and compare the sections.</p>
 
 </div>
-
-
-
+</div>
+</div>
             </section>
 
           </div>
         </div>
       </div>
-
-<a href="011-r-install.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="011-r-install.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="022-data-frames.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

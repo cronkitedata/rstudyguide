@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Preface | data-journalism.utf8</title>
+  <title>4 A quick tour of verbs | data-journalism.utf8</title>
   <meta name="description" content="" />
   <meta name="generator" content="bookdown 0.14 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Preface | data-journalism.utf8" />
+  <meta property="og:title" content="4 A quick tour of verbs | data-journalism.utf8" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Preface | data-journalism.utf8" />
+  <meta name="twitter:title" content="4 A quick tour of verbs | data-journalism.utf8" />
   
   
   
@@ -29,8 +29,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-
-<link rel="next" href="011-r-install.html"/>
+<link rel="prev" href="022-data-frames.html"/>
+<link rel="next" href="031-select-filter.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -248,24 +248,202 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<!--bookdown:title:end-->
-<!--bookdown:title:start-->
-<div id="preface" class="section level1 unnumbered">
-<h1>Preface</h1>
-<p>This online book is serving as a study guide for students in my data journalism classes at the Cronkite School of Journalism. Eventually, this will put together the resources for the whole class, but for now it just includes the section on learning R and R Markdown.</p>
-<p>I’m grateful for all of the experts and teachers out there who have made their training materials open to the world, and helped build a wealth of materials for students of all types. I’ve particularly leaned on Matt Waite, of the University of Nebraska and Jesse Lecy of Arizona State University, who generously share their course materials.</p>
-
+<div id="a-quick-tour-of-verbs" class="section level1">
+<h1><span class="header-section-number">4</span> A quick tour of verbs</h1>
+<div id="key-takeaways-3" class="section level2">
+<h2><span class="header-section-number">4.1</span> Key takeaways</h2>
+<ul>
+<li>Verbs are functions; nouns are variables or objects.</li>
+<li>Do one thing at a time using the “and then” operator (<code>%&gt;%</code>).</li>
+<li>You only really need a few verbs to get a lot done:
+<ul>
+<li><code>select</code>, <code>filter</code>, <code>arrange</code>: Pick out and sort specific items</li>
+<li><code>group_by</code>, <code>summarise</code> : count and sum by category</li>
+<li><code>mutate</code> : create new columns with formulas</li>
+<li><code>xxx_join</code> : merge data frames by a common set of variables</li>
+</ul></li>
+<li>You’ve probably done most of this before in Excel</li>
+<li>These are similar to other database languages such as SQL.</li>
+</ul>
+<p>This chapter will go through the very basics of each verb. Subsequent chapters will go into more detail on how to make them work in a variety of circumstances.</p>
+<div id="data-for-this-walkthrough" class="section level3 unnumbered">
+<h3>Data for this walkthrough</h3>
+<p>All of these sections will be based on the 2017-2018 <a href="https://cronkitedata.github.io/cronkite-docs/assets/data/xlexamples/2017-arizona-reporting-schools-coverage.xlsx">Arizona immunization data</a>. The data was downloaded from the <a href="https://www.azdhs.gov/preparedness/epidemiology-disease-control/immunization/index.php#reports-immunization-coverage">Arizona Department of Health</a>. The link for “Arizona Reporting Schools Coverage” under each year is the Excel file.</p>
+<p>The following changes were made to the original file:</p>
+<ol style="list-style-type: decimal">
+<li>Remove any specific immunizations other than MMR, for measles</li>
+<li>Remove schools with under 20 students, for which the state did not report any data individually. It accounted for 113 schools, or about 10 percent of the schools. Estimating all of those schools at their maximum possible (19), it would account for about 2.5 percent of the students.</li>
+<li>Estimate the number of children in each category by multiplying the percentage by the enrollment. There is room for rounding error in this.</li>
+</ol>
+<table>
+<colgroup>
+<col width="33%" />
+<col width="33%" />
+<col width="33%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Variable name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>school_name</td>
+<td>chr</td>
+<td>upper case</td>
+</tr>
+<tr class="even">
+<td>address</td>
+<td>chr</td>
+<td>upper case</td>
+</tr>
+<tr class="odd">
+<td>city</td>
+<td>chr</td>
+<td>upper case</td>
+</tr>
+<tr class="even">
+<td>zip_code</td>
+<td>chr</td>
+<td>5-digit zip code, leading 0 if needed</td>
+</tr>
+<tr class="odd">
+<td>school_nurse</td>
+<td>chr</td>
+<td>“YES”/“NO”</td>
+</tr>
+<tr class="even">
+<td>school_type</td>
+<td>chr</td>
+<td>“PUBLIC” / “CHARTER” / “PRIVATE”</td>
+</tr>
+<tr class="odd">
+<td>enrolled</td>
+<td>num</td>
+<td>6th grade enrollment</td>
+</tr>
+<tr class="even">
+<td>num_immune_mmr</td>
+<td>num</td>
+<td># of immunized students for measles</td>
+</tr>
+<tr class="odd">
+<td>num_exempt_mmr</td>
+<td>num</td>
+<td># of student exempt from requirement for measles</td>
+</tr>
+<tr class="even">
+<td>num_compliance_mmr</td>
+<td>num</td>
+<td>total of immune + exempt (in compliance with rules)</td>
+</tr>
+<tr class="odd">
+<td>num_pbe</td>
+<td>num</td>
+<td># with personal believe exempt. for at least 1 immunization</td>
+</tr>
+<tr class="even">
+<td>num_medical_exempt</td>
+<td>num</td>
+<td># who have a medical exemption for at least 1 immunization</td>
+</tr>
+<tr class="odd">
+<td>num_pbe_exempt_all</td>
+<td>num</td>
+<td># who have personal believe exemption for every shot</td>
+</tr>
+</tbody>
+</table>
+<p>Note: It seems that some students who <em>could</em> be exempt from mmr get it anyway – there are cases in which there are larger numbers with pbe exemptions for all immunizations than the number with mmr exemptions.</p>
+</div>
+<div id="the-operator-and-then" class="section level3 unnumbered">
+<h3>The <code>%&gt;%</code> operator: … and then…</h3>
+<p>The tidyverse encourages you to do your work one step at a time. Instead of packing everything into one command, stack them by saying “start here, and then.. and then .. etc.”</p>
+<pre><code>grade6_counts %&gt;%            # start with the data frame, AND THEN...
+    select (school_name) %&gt;%     # pick out the school name only AND THEN ...
+    arrange (school_name)        # put them in alphabetical order</code></pre>
+</div>
+</div>
+<div id="looking-at-your-data-in-pieces-and-in-order" class="section level2">
+<h2><span class="header-section-number">4.2</span> Looking at your data in pieces and in order</h2>
+<div id="select-to-pick-out-columns" class="section level3">
+<h3><span class="header-section-number">4.2.1</span> <code>select</code> to pick out columns</h3>
+<p>In Excel, there was no easy way to filter data <em>vertically</em>. We could only filter rows. The <code>select</code> verb picks out specific columns. Rename them at the same time by putting the new name on the left side of an equal sign:</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb16-1" title="1">grade6_counts <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb16-2" title="2"><span class="st">    </span><span class="kw">select</span> ( <span class="dt">school =</span> school_name,</a>
+<a class="sourceLine" id="cb16-3" title="3">             county, </a>
+<a class="sourceLine" id="cb16-4" title="4">             enrolled) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb16-5" title="5"><span class="st">    </span><span class="kw">head</span>(<span class="dv">3</span>)</a></code></pre></div>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["school"],"name":[1],"type":["chr"],"align":["left"]},{"label":["county"],"name":[2],"type":["chr"],"align":["left"]},{"label":["enrolled"],"name":[3],"type":["dbl"],"align":["right"]}],"data":[{"1":"ABRAHAM LINCOLN TRADITIONAL SCHOOL","2":"MARICOPA","3":"59"},{"1":"ACACIA ELEMENTARY SCHOOL","2":"MARICOPA","3":"134"},{"1":"ACADEMY DEL SOL - HOPE","2":"PIMA","3":"53"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+<div id="arrange-to-sort" class="section level3">
+<h3><span class="header-section-number">4.2.2</span> <code>arrange</code> to sort</h3>
+<p>In Excel, the “Sort” menu item is used to arrange data alphabetically or in numeric order. That’s confusing, because “sorting” can be construed a lot of different ways. For instance, you might “sort” M&amp;Ms into their colors.</p>
+<p>But in R, the verb is “arrange”, which is much clearer conceptually. The <code>arrange</code> verb puts the rows in order based on the column or columns you specify.</p>
+<p>This arranges the data from the highest to lowest enrollment by using the <code>desc</code> indicator. You can have more than one column, which takes over when there’s a tie.</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb17-1" title="1">grade6_counts <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb17-2" title="2"><span class="st">    </span><span class="kw">select</span> ( <span class="dt">school =</span> school_name,</a>
+<a class="sourceLine" id="cb17-3" title="3">             county, </a>
+<a class="sourceLine" id="cb17-4" title="4">             enrolled) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb17-5" title="5"><span class="st">    </span><span class="kw">arrange</span> ( <span class="kw">desc</span>(enrolled)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb17-6" title="6"><span class="st">    </span><span class="kw">head</span>(<span class="dv">3</span>)</a></code></pre></div>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["school"],"name":[1],"type":["chr"],"align":["left"]},{"label":["county"],"name":[2],"type":["chr"],"align":["left"]},{"label":["enrolled"],"name":[3],"type":["dbl"],"align":["right"]}],"data":[{"1":"MARC T ATKINSON MIDDLE SCHOOL","2":"MARICOPA","3":"422"},{"1":"ESTRELLA MIDDLE SCHOOL","2":"MARICOPA","3":"406"},{"1":"KYRENE APRENDE MIDDLE SCHOOL","2":"MARICOPA","3":"364"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+<div id="filter-to-pick-out-rows" class="section level3">
+<h3><span class="header-section-number">4.2.3</span> <code>filter</code> to pick out rows</h3>
+<p>This is one place where the Excel terminology carries over to R. There is a whole chapter on filtering – it can get quite sophisticated – but just remember that it is much more picky than you’re accustomed to. The computer sees <em>MARICOPA</em> as a completely different word than <em>Maricopa</em>, for example.</p>
+<p>Use two equals sign to test for a match (<code>==</code>) : and they have to match exactly.</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb18-1" title="1">grade6_counts <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb18-2" title="2"><span class="st">    </span><span class="kw">select</span> (school_name, enrolled) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb18-3" title="3"><span class="st">    </span><span class="kw">filter</span> ( school_name <span class="op">==</span><span class="st"> &quot;AMPHITHEATER MIDDLE SCHOOL&quot;</span>)</a></code></pre></div>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["school_name"],"name":[1],"type":["chr"],"align":["left"]},{"label":["enrolled"],"name":[2],"type":["dbl"],"align":["right"]}],"data":[{"1":"AMPHITHEATER MIDDLE SCHOOL","2":"295"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+</div>
+<div id="group_by-and-summarise-to-count-and-sum" class="section level2">
+<h2><span class="header-section-number">4.3</span> <code>group_by</code> and <code>summarise</code> to count and sum</h2>
+<p>The group_by and summarise command is just like a pivot table, but it has a lot more power when you get to know it. At its simplest, it does just what a pivot table does:</p>
+<p><img src="images/30-pivot-to-summary.png" /></p>
+<p><code>group_by</code> puts each row into categories, such as the school types above. <code>summarise</code> calculates summary statistics such as counts – or <code>n()</code> – and sums:</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb19-1" title="1">grade6_counts <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb19-2" title="2"><span class="st">    </span><span class="kw">filter</span> ( county <span class="op">==</span><span class="st"> &quot;MARICOPA&quot;</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb19-3" title="3"><span class="st">    </span><span class="kw">group_by</span> ( school_type ) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb19-4" title="4"><span class="st">    </span><span class="kw">summarise</span> ( <span class="kw">sum</span> (enrolled),</a>
+<a class="sourceLine" id="cb19-5" title="5">                <span class="kw">n</span>()</a>
+<a class="sourceLine" id="cb19-6" title="6">    ) </a></code></pre></div>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["school_type"],"name":[1],"type":["chr"],"align":["left"]},{"label":["sum(enrolled)"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["n()"],"name":[3],"type":["int"],"align":["right"]}],"data":[{"1":"CHARTER","2":"9091","3":"124"},{"1":"PRIVATE","2":"1808","3":"41"},{"1":"PUBLIC","2":"45654","3":"434"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
 </div>
 
-
-
+<style>
+ table {
+   font-size: .9em;
+ }
+</style>
+</div>
+</div>
             </section>
 
           </div>
         </div>
       </div>
-
-<a href="011-r-install.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="022-data-frames.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="031-select-filter.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

@@ -9,6 +9,9 @@ bookdown::gitbook:
     fontsettings:
       theme: white
       family: sans
-      size: 1
+      size: 2
   split_by: "rmd"
   css: mystyles.css
+  df_print: paged
+bookdown::html_book:
+  css: toc.css

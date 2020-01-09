@@ -1,0 +1,4 @@
+bookdown::html_book:
+  css: 
+    - toc.css
+    - mystyles.css

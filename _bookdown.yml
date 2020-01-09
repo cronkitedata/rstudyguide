@@ -4,10 +4,12 @@ language:
       chapter_name: ""
 delete_merged_file: true
 rmd_files: ["index.Rmd", 
-            "01-r-install.Rmd",
-            "02-r-markdown.Rmd",
-            "03-data-frames.Rmd",
-            "04-select-filter.Rmd",
-            "00-programming.Rmd"
+            "011-r-install.Rmd",
+            "021-r-markdown.Rmd",
+            "022-data-frames.Rmd",
+            "030-intro-verbs.Rmd",
+            "031-select-filter.Rmd",
+            "A02-programming.Rmd",
+            "A01-resources.Rmd"
             ] 
 output_dir: "docs"

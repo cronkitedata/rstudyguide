@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Preface | data-journalism.utf8</title>
+  <title>B Great R Resources | data-journalism.utf8</title>
   <meta name="description" content="" />
   <meta name="generator" content="bookdown 0.14 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Preface | data-journalism.utf8" />
+  <meta property="og:title" content="B Great R Resources | data-journalism.utf8" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Preface | data-journalism.utf8" />
+  <meta name="twitter:title" content="B Great R Resources | data-journalism.utf8" />
   
   
   
@@ -29,8 +29,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
+<link rel="prev" href="A02-programming.html"/>
 
-<link rel="next" href="011-r-install.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -248,14 +248,178 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<!--bookdown:title:end-->
-<!--bookdown:title:start-->
-<div id="preface" class="section level1 unnumbered">
-<h1>Preface</h1>
-<p>This online book is serving as a study guide for students in my data journalism classes at the Cronkite School of Journalism. Eventually, this will put together the resources for the whole class, but for now it just includes the section on learning R and R Markdown.</p>
-<p>I’m grateful for all of the experts and teachers out there who have made their training materials open to the world, and helped build a wealth of materials for students of all types. I’ve particularly leaned on Matt Waite, of the University of Nebraska and Jesse Lecy of Arizona State University, who generously share their course materials.</p>
+<div id="great-r-resources" class="section level1">
+<h1><span class="header-section-number">B</span> Great R Resources</h1>
+<div id="key-takeaways-6" class="section level2">
+<h2><span class="header-section-number">B.1</span> Key takeaways</h2>
+<ul>
+<li>If this set of resources doesn’t fit your learning style, there are lots of others that might</li>
+<li>In our class, we are working almost entirely in the “tidyverse”, and in R Markdown documents. Some of the resources you’ll find elsewhere might not.</li>
+</ul>
+</div>
+<div id="coursework-in-r" class="section level2">
+<h2><span class="header-section-number">B.2</span> Coursework in R</h2>
+<p>Other professors and universities are also trying to teach R in journalism and other classes. Here are a few that have particularly rich materials for their students:</p>
+<ul>
+<li><p>Jesse Lecy’s “Introduction to data science for the social sector,” an ASU course that teaches R in the context of non-profit management. His site, <a href="https://ds4ps.org/cpp-526-fall-2019/" class="uri">https://ds4ps.org/cpp-526-fall-2019/</a> has a <a href="https://ds4ps.org/cpp-526-fall-2019/textbook/">custom-made textbook</a> that covers much of the same material as us.</p></li>
+<li><p>Matt Waite at the University of Nebraska has been teach R in the context of a sports journalism class. <a href="http://mattwaite.github.io/sports/index.html">His textbook</a> also has great resources and approaches to learning. One minor difference that might trip you up: We’re using R Markdown, and he’s using R Notebooks. They’re very similar, but the “knit” option isn’t there when you use Notebooks – only a “Preview”. You’ll know what that means when we get moving.</p></li>
+</ul>
+</div>
+<div id="instructional-screencasts-and-videos" class="section level2">
+<h2><span class="header-section-number">B.3</span> Instructional screencasts and videos</h2>
+<ul>
+<li><p>Andrew Ba Tran’s <a href="http://learn.r-journalism.com/en/">R for Journalists</a> course, originall created for a MOOC offered by the Knight Center for the Americas. Previous Cronkite students say that it goes a little fast for someone with no experience in other lanugages, but it has most of what you’d need.</p></li>
+<li><p>Ben Stenhaug, a Data Science for Social Good fellow at Stanford, has put together some screencasts and exercises called <a href="https://teachingr.com/">teachR</a> on starting out in R and the tidyverse.</p></li>
+<li><p>“Tidy Tuesday” screencasts from David Robinson, <a href="(https://www.youtube.com/channel/UCeiiqmVK07qhY-wvg3IZiZQ)">an example</a> using fivethirtyeight.com data on education and salaries. These are very long – up to an hour – but they walk through what it’s really like to take a dataset from scratch and try to find something interesting. I disagree with one thing he does though – I believe you should read the documentation FIRST, not after you’ve done a lot of guessing about what columns mean.</p></li>
+<li><p>Sharon Machliss’ “<a href="https://www.youtube.com/playlist?list=PL7D2RMSmRO9JOvPC1gbA8Mc3azvSfm8Vv">Do More with R</a>” YouTube series. These are fairly advanced single-topic, short videos.</p></li>
+</ul>
+</div>
+<div id="building-blocks-1" class="section level2">
+<h2><span class="header-section-number">B.4</span> Building blocks</h2>
+<p>Once you learn to program in one language, learning others is much simpler. That’s because you have the basic concepts down: How to assign values to variables, how to loop through lists, or how to import data. This chapter walks through some of the more universal concepts in programming.</p>
+<p>There are four concepts in every programming language that will help you accomplish most tasks. They are <em>objects</em>, <em>operators</em>, <em>functions</em> , and <em>loops</em>.</p>
+<div id="variables-and-objects-1" class="section level3 unnumbered">
+<h3>Variables and objects</h3>
+<p>Objects can be simple, like a variable called my_name that holds the value, “Sarah”. Or they can be quite complex, such as a multi-level data frame containing details from a Spotify playlist.</p>
+<ol>
+<li><p><strong>Literals</strong></p>
+<p>The most basic kind of object is a single variable that contains a single value of a specific type:</p>
+<pre><code>my_name &lt;- &quot;Sarah&quot;
+my_value &lt;- 1.0</code></pre>
+<p>These are actually called “literals”, and they can be text, numeric, logical (usually true/false but sometimes yes/no or 1/0) and date or date/time. Dates are the most difficult to translate across languages, since they are actually either text or numeric variables designed to work like dates.</p>
+<p>One important kind of literal is the value of NA in R, or NULL in some other languages. These indicate missing information, and they can wreak havoc on your work if you don’t pay attention. It means that the program won’t assume anything, and will give you back a new NA or NULL any time you try to combine it with other data.</p></li>
+<li><p><strong>Lists / arrays / vectors</strong></p>
+<p>Most languages have some concept of a list of items called an array, vector or dictionary. In R, you create a vector using the “c” operator, short for “combine”. Python uses a square bracket to indicate a list. Once you have your items in a list or a vector, you can apply the same function across all of them or work on them in order.</p>
+<p>my_list &lt;- c(1, 2, 3, 4, 5) creates a vector of the values 1 through 5 in R
+my_list = [1, 2, 3, 4, 5] creates a list of values 1 through 5 in Python</p></li>
+<li><p><strong>Data frames or tables</strong></p>
+<p>Data frames or data tables are really a special version of a list, and are equivalent to a tidy Excel spreadsheet: rectangular data with field names and observations. You don’t need to know much about this yet, but just understand that it will become an important part of your vocabulary.</p></li>
+</ol>
+</div>
+<div id="operators-assignment-1" class="section level3 unnumbered">
+<h3>Operators &amp; assignment</h3>
+<p>Operators are simple aritmetic or similar operations, like adding, subtracting, dividing and multiplying.</p>
+<pre><code>   Arithmethic: add (+), subtract (-), multiply (*), or divide (/).
+
+   Text: Smush together phrases by concatenating (often + or &amp;)
+
+   Comparison: Greater than (&gt;) , less than (&lt;), equal to (often == to distinguish from =),
+                  not equal to (often !=).</code></pre>
+<p>“Assignment” means pushing a value into a variable name using either “=” or “&lt;-”. It’s amazing how many different ways there are to think of this. Some might call “naming a value”, others might consider it “setting a variable”. (A <em>variable</em> is just a name you’ll use later on to refer to your value. It can <em>vary</em>, depending on what you do to it.)</p>
+<pre><code> my_name &lt;- &quot;Sarah&quot;
+ my_value = 1.0</code></pre>
+</div>
+<div id="functions-1" class="section level3 unnumbered">
+<h3>Functions</h3>
+<p>A function is a set of instructions that is either built into the programming language, is added through a package or library, or is created by you. You can save them for later use or apply them on the fly. Usually, you write the name of the function, then put its <em>arguments</em> inside parentheses. You did this in Excel:</p>
+<pre><code>=SUM(A1:A15)
+ </code></pre>
+<p>Generally, there are categories of functions that depend on what data type they act on. An example in R is the function <em>tolower()</em>, which converts anything inside the parentheses to lower case. There can be several different pieces of information in a function. There can also be optional arguments. A maddening example in R is:</p>
+<pre><code> sum ( variable_name )    </code></pre>
+<p>This adds the values of a variable. BUT it will come out to NA if you try to include a row that was NA to begin with. Instead, you have to provide an optional arbument to get rid of NA’s before starting:</p>
+<pre><code> sum (variable_name, na.rm=TRUE)</code></pre>
+</div>
+<div id="loops-1" class="section level3 unnumbered">
+<h3>Loops</h3>
+<p>A loop is a way to repeat your instructions over and over without having to re-write them every time. They usually work by stepping through some kind of a list, like a directory of files, or by using a counter, such as every year between 2005 and 2018.</p>
+<p>Excel and Google Sheets don’t really have loops, unless you learn the more complicated programming language behind them. This is why many people move to Python and R – to get the power of loops.</p>
+</div>
+</div>
+<div id="make-an-omelet-with-a-function-1" class="section level2">
+<h2><span class="header-section-number">B.5</span> Make an omelet with a function</h2>
+<p><img src="images/00-katie-smith-unsplash.jpg" style="width:50.0%" /></p>
+<div class="credit-line">
+<p>Ingredients by Katie Smith via Unsplash</p>
+</div>
+<p>Suppose you want to make an omelet. Before you even start, you need to know at least two things: which ingredients you have on hand, and what kind of omelet you want to make.</p>
+<p>A function that creates an omelet might look something like this. The first row creates a function called make_omelet, which requires the two pieces of information as <em>arguments</em>. Once you’ve made the function, you can refer to that set of instruction by its name by giving it the arguments it needs.</p>
+<pre><code>function make_omelet (ingredients_on_hand, what_kind) {
+
+     check for necessary ingredients (are all elements of what_kind in ingredients_on_hand?)
+         quit now if you don&#39;t have them all.
+         return the error message
+
+     prepare the ingredients for (which_kind)
+
+     whisk the eggs
+
+     melt some butter in a pan
+
+     pour in the eggs
+
+     add ingredients for what_kind except cheese (what_kind - &quot;cheese&quot;)
+
+     flip the omelet
+
+     if you have cheese in both what_kind and ingredients_on_hand ,
+         fold in cheese
+
+     remove from pan
+
+     return the omelet
+
+}</code></pre>
+<p>Now, when you want to make an omelet, you can just make your list of ingredients and the kind of omelet you want, and execute the function:</p>
+<p>Let’s start with setting up those items:</p>
+<pre><code>ingredients &lt;-
+        c(&quot;butter&quot;, &quot;eggs&quot;, &quot;cheese&quot;, &quot;spinach&quot;, &quot;tomatoes&quot;)
+
+kind &lt;-
+        c(&quot;spinach&quot;, &quot;cheese&quot;)
+
+make_omelet (ingredients, kind)
+
+(Note that what you give it doesn&#39;t have to have the same name that it had in your definition.)</code></pre>
+<div id="open-a-restaurant-with-loops-1" class="section level3 unnumbered">
+<h3>Open a restaurant with loops</h3>
+<p>Now, you’d have to repeat this over and over if you had a restaurant. It might look like this:</p>
+<pre><code>  make_omelet (ingredients,kind)
+  ** change the ingredients and the kind**
+  make_omelet (ingredients2, kind2)
+  ** change the ingredients ant the kind**
+  make_omelet (ingredients3, kind3)
+  ... and so on.</code></pre>
+<p>You’d have a program hundreds of lines long – one for each customer. Instead, you could <em>loop</em> through the customers and do the same thing:</p>
+<pre><code>customers &lt;- c(&quot;Bob&quot;, &quot;Jon&quot;, &quot;Christie&quot;, &quot;Lauren&quot;)
+
+for (c in customers) {
+  request what kind they want
+  make_omelet (kind, ingredients_on_hand)
+  give omelet to customer c
+  update your ingredients list if you ran out of something or went shopping
+}</code></pre>
+</div>
+</div>
+<div id="applications-1" class="section level2">
+<h2><span class="header-section-number">B.6</span> Applications</h2>
+<p>Many of the functions we use are already built into R and Python, or are in libraries that we borrow – someone else has already written them for you.</p>
+<p>Examples include:</p>
+<ul>
+<li>reading a csv or Excel file</li>
+<li>calculating the average or sum</li>
+<li>counting</li>
+<li>finding phrases within text</li>
+</ul>
+<p>The more common applications are things we haven’t done yet:</p>
+<ul>
+<li><p>Gather identical spreadsheets into one dataset, as in <a href="https://cronkitedata.github.io/rstats-training/refugees-loop.html">this example using refugee statistics</a>.</p></li>
+<li><p>Loop through a list of links, download a page, then scrape it to extract information. Here’s <a href="https://cronkitedata.github.io/rstats-training/rscraping/mugshot-scrape.html">an example from the Maricopa County sheriff’s department mugshots</a>. (It won’t work – the census changes each time, so the ID numbers are out of date.)</p></li>
+</ul>
+</div>
+<div id="more-resources-1" class="section level2">
+<h2><span class="header-section-number">B.7</span> More resources</h2>
+<ul>
+<li>The <a href="https://cronkitedata.github.io/cronkite-docs/excel/xlguides/xl-tidydata.html">Data types and tidy data</a> section of our Excel training.</li>
+<li>"<a href="https://youtu.be/7MUErafri48">Beyond Binary</a>, Lesson 1 from a Google engineer’s drag queen persona named Anna Lytical. This video gives you a good handle on what a computer program does.</li>
+</ul>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/7MUErafri48" style="align:center;" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+</iframe>
 
 </div>
+</div>
+
+
+
 
 
 
@@ -264,8 +428,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           </div>
         </div>
       </div>
+<a href="A02-programming.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 
-<a href="011-r-install.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

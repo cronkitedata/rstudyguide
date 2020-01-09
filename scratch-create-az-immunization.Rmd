@@ -1,0 +1,78 @@
+---
+title: "Arizona immunization import and clean"
+author: "Sarah Cohen"
+date: "1/8/2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(readxl)
+library(janitor)
+
+```
+
+Check the sheet names: 
+
+```{r}
+location <- "~/Documents/Github/cronkite-docs/docs/assets/data/xlexamples/2017-arizona-reporting-schools-coverage.xlsx"
+excel_sheets( location)
+
+grade6_orig <- read_excel(location, sheet="6th Grade", na="N/A") %>%
+   clean_names()
+
+# get rid of small schools
+
+grade6_v2 <- 
+  grade6_orig %>%
+  filter (enrolledcount != "< 20") %>%
+  mutate (enrolled = as.numeric(enrolledcount))
+
+colnames(grade6_v2)
+  
+```
+
+Went from 1021 to 908 schools. That's fine. 
+
+Select just the ones we want. We don't exactly have the numbers we want -- we have compliance mmr, pbe_exempt_all, pct_medical_exempt, pct_pbe but not the number of pbe for mmr.  We'll have to write around that. 
+
+```{r}
+grade6 <- 
+  grade6_v2 %>%
+  select ( school_name,
+           address,
+           city, county, zip, school_nurse,
+           school_type = schooltype, enrolled, 
+           pct_immune_mmr, pct_exempt_mmr, pct_compliance_mmr,
+           pct_pbe, pct_medical_exempt, pct_pbe_exempt_all)
+
+
+```
+
+
+There's going to be a lot of floating point issues here. Let's see how it goes going back and estimating the number of kids. 
+
+```{r}
+
+#see if i can figure out mutate_at
+grade6_counts <- 
+  grade6 %>% 
+  mutate_at (vars(starts_with("pct")),
+             funs ( round(. * enrolled, digits=0))
+  ) %>%
+  rename_at (vars(starts_with("pct")),
+             funs (str_replace_all (., "pct",  "num"))
+             ) %>%
+  mutate (zip_code = format(zip, leading="0", width=5)) %>%
+  select (school_name:county, zip_code, school_nurse:num_pbe_exempt_all)
+
+glimpse(grade6_counts)
+
+sum(grade6$enrolled)
+(1021-908) * 19  #2147
+(1021-908) * 19 + sum(grade6$enrolled) # 86186
+2147/86186
+
+```
+

@@ -156,17 +156,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="3" data-path="03-data-frames.html"><a href="03-data-frames.html"><i class="fa fa-check"></i><b>3</b> Data frames and the tidyverse</a><ul>
 <li class="chapter" data-level="3.1" data-path="03-data-frames.html"><a href="03-data-frames.html#key-takeaways-2"><i class="fa fa-check"></i><b>3.1</b> Key takeaways</a></li>
-<li class="chapter" data-level="3.2" data-path="03-data-frames.html"><a href="03-data-frames.html#loading-libraries"><i class="fa fa-check"></i><b>3.2</b> Loading libraries</a></li>
+<li class="chapter" data-level="3.2" data-path="03-data-frames.html"><a href="03-data-frames.html#getting-started"><i class="fa fa-check"></i><b>3.2</b> Getting started</a></li>
 <li class="chapter" data-level="3.3" data-path="03-data-frames.html"><a href="03-data-frames.html#the-data-frame"><i class="fa fa-check"></i><b>3.3</b> The data frame</a><ul>
-<li class="chapter" data-level="" data-path="03-data-frames.html"><a href="03-data-frames.html#activate-the-tidyverse---always"><i class="fa fa-check"></i>Activate the tidyverse - always</a></li>
+<li class="chapter" data-level="3.3.1" data-path="03-data-frames.html"><a href="03-data-frames.html#loading-and-looking-at-data"><i class="fa fa-check"></i><b>3.3.1</b> Loading and looking at data</a></li>
+<li class="chapter" data-level="3.3.2" data-path="03-data-frames.html"><a href="03-data-frames.html#examine-your-data"><i class="fa fa-check"></i><b>3.3.2</b> Examine your data</a></li>
 </ul></li>
-<li class="chapter" data-level="3.4" data-path="03-data-frames.html"><a href="03-data-frames.html#loading-and-looking-at-data"><i class="fa fa-check"></i><b>3.4</b> Loading and looking at data</a><ul>
-<li class="chapter" data-level="3.4.1" data-path="03-data-frames.html"><a href="03-data-frames.html#examine-your-data"><i class="fa fa-check"></i><b>3.4.1</b> Examine your data</a></li>
-</ul></li>
-<li class="chapter" data-level="3.5" data-path="03-data-frames.html"><a href="03-data-frames.html#introducing-the-pipe"><i class="fa fa-check"></i><b>3.5</b> Introducing the pipe</a></li>
-<li class="chapter" data-level="3.6" data-path="03-data-frames.html"><a href="03-data-frames.html#take-a-break"><i class="fa fa-check"></i><b>3.6</b> Take a break</a></li>
-<li class="chapter" data-level="3.7" data-path="03-data-frames.html"><a href="03-data-frames.html#other-resources-1"><i class="fa fa-check"></i><b>3.7</b> Other resources</a><ul>
-<li class="chapter" data-level="3.7.1" data-path="03-data-frames.html"><a href="03-data-frames.html#on-your-own"><i class="fa fa-check"></i><b>3.7.1</b> On your own</a></li>
+<li class="chapter" data-level="3.4" data-path="03-data-frames.html"><a href="03-data-frames.html#introducing-the-pipe"><i class="fa fa-check"></i><b>3.4</b> Introducing the pipe</a></li>
+<li class="chapter" data-level="3.5" data-path="03-data-frames.html"><a href="03-data-frames.html#take-a-break"><i class="fa fa-check"></i><b>3.5</b> Take a break</a></li>
+<li class="chapter" data-level="3.6" data-path="03-data-frames.html"><a href="03-data-frames.html#other-resources-1"><i class="fa fa-check"></i><b>3.6</b> Other resources</a><ul>
+<li class="chapter" data-level="3.6.1" data-path="03-data-frames.html"><a href="03-data-frames.html#on-your-own"><i class="fa fa-check"></i><b>3.6.1</b> On your own</a></li>
 </ul></li>
 </ul></li>
 <li class="part"><span><b>II The Verbs of the Tidyverse</b></span></li>
@@ -241,7 +239,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h4>Why R?</h4>
 <p>It’s free and open source – you will be able to get access to most of what R has to offer without ever paying for a service or a piece of software.</p>
 <p>More importantly, R has become the de facto tool for statistical and data analysis in many newsrooms and academic settings. Some news organizations strongly prefer interns and entry level data reporters who have at least a little experience with the language. There’s also a huge user base, with many people willing and even eager to help newcomers.</p>
-<p>R also has extensions, called packages, that cover most tasks you need as a reporter. Other lanugagees like Python can also be extended this way – choosing which one to use is largely a matter of taste and comfort.</p>
+<p>R also has extensions, called packages, that cover most tasks you need as a reporter. Other lanugagees like Python can also be extended this way – choosing which one to use is largely a matter of taste and comfort. Many employers don’t care which programming language you know because it’s relatively easy to learn another once you’re comfortable with the concepts.</p>
 </div>
 </div>
 <div id="setting-up-r-and-r-studio" class="section level2">
@@ -289,13 +287,6 @@ Now you’re ready to start using R and R Studio. R is the underlying programmin
 <p>The real power of R comes with packages. Packages are bundles of programs that others have found useful to extend the base R language. R is almost useless without them. There are thousands of packages available for R, each doing a special job.</p>
 <p>As a general rule of thumb, install packages using the console. They must be installed once on every computer, or in every project when you use RStudio Cloud.</p>
 <p>You have to activate packages every time you start R, even if you’re just picking up where you left off. Invoke the package by using the library() command.</p>
-<div id="a-quick-note-on-the-tidyverse" class="section level4 unnumbered">
-<h4>A quick note on the tidyverse</h4>
-<p>Almost all of the materials you see related to programming in R have some reference to this thing called the “tidyverse”. One problem with having a lot of packages, often written by hobbyists, is that they’re not very consistent. One might use a comma where another uses some dots, for example.</p>
-<p>The tidyverse packages up a whole set of other packages, ensuring they all work together smoothly and have similar commands. It’s made for the kind of work reporters do – importing, cleaning and analyzing data that we get from others and can’t control how it’s structured.</p>
-<p>For many reporters (myself included), R was too difficult to learn before the tidyverse came around. We’ll be working almost exclusively within the tidyverse in this book.</p>
-<p>The tidyverse is the brainchild of <a href="http://hadley.nz/">Hadley Wickham</a>, a statistician from New Zealand, who famously identified the <a href="https://cronkitedata.github.io/cronkite-docs/excel/xlguides/xl-tidydata">tidy data principles</a> we’ve followed all semester. He’s currently the chief data scientist for RStudio in Houston.</p>
-</div>
 <div id="packages-for-this-class" class="section level4 unnumbered">
 <h4>Packages for this class</h4>
 <p>Using the Console, install the packages we need for class:</p>
@@ -303,11 +294,18 @@ Now you’re ready to start using R and R Studio. R is the underlying programmin
 <a class="sourceLine" id="cb1-2" title="2"><span class="kw">install.packages</span>(<span class="st">&quot;rmarkdown&quot;</span>)</a>
 <a class="sourceLine" id="cb1-3" title="3"><span class="kw">install.packages</span>(<span class="st">&quot;swirl&quot;</span>)</a></code></pre></div>
 </div>
+<div id="a-quick-note-on-the-tidyverse" class="section level4 unnumbered">
+<h4>A quick note on the tidyverse</h4>
+<p>Almost all of the materials you see related to programming in R have some reference to this thing called the “tidyverse”. One problem with having a lot of packages, often written by hobbyists, is that they’re not very consistent. One might use a comma where another uses some dots, for example.</p>
+<p>The tidyverse packages up a whole set of other packages, ensuring they all work together smoothly and have similar commands. It’s made for the kind of work reporters do – importing, cleaning and analyzing data that we get from others and can’t control how it’s structured.</p>
+<p>For many reporters (myself included), R was too difficult to learn before the tidyverse came around. We’ll be working almost exclusively within the tidyverse in this book.</p>
+<p>The tidyverse is the brainchild of <a href="http://hadley.nz/">Hadley Wickham</a>, a statistician from New Zealand, who famously identified the <a href="https://cronkitedata.github.io/cronkite-docs/excel/xlguides/xl-tidydata">tidy data principles</a> we’ve followed all semester. He’s currently the chief data scientist for RStudio in Houston.</p>
+</div>
 </div>
 <div id="work-in-projects" class="section level3">
 <h3><span class="header-section-number">1.4.3</span> Work in projects</h3>
 <p>One of the things that trips up new users of R is that it’s hard to tell the program where to find things on your computer. The “working directory” can be confusing.</p>
-<p><img src="images/21-rintro-project-open.png" alt="open project" style="width:40%;float:right;margin:10px;"></p>
+<p><img src="images/21-rintro-project-open.png" alt="open project" style="width:25%;float:right;margin:10px;"></p>
 <p>One way to get around that is to always work in projects. Projects in R isolate your work in a single folder, which can be transferred from computer to computer without worrying about what’s missing. If you’re using RStudio.cloud, every project is already self-contained.</p>
 <p>Instead of creating a new file when you start R, create a new project, and tell R where to put the directory when prompted.</p>
 <p>Then, when you want to return to the project, open the project rather than a file.</p>
@@ -315,7 +313,7 @@ Now you’re ready to start using R and R Studio. R is the underlying programmin
 </div>
 <div id="variables" class="section level2">
 <h2><span class="header-section-number">1.5</span> Variables</h2>
-<p>A variable s a container for a value, a list or some kind of object. At its simplest, it might hold a number or a word. To make a variable, use the assignment operator: <code>&lt;-</code> . Think of it as a value being pushed into a name:</p>
+<p>A variable is a container for a value, a list or some other kind of object. At its simplest, it might hold a number or a word. To make a variable, use the assignment operator: <code>&lt;-</code> . Think of it as a value being pushed into a name:</p>
 <pre><code>my_variable &lt;- 13</code></pre>
 <p>When you hit the return button, nothing happens. Instead of printing it, it’s stored it in a variable and it’s added to your Global Environment pane. Now you can use the name instead of the value.</p>
 <p><img src="images/21-my-variable.png" /></p>
