@@ -1,4 +1,11 @@
-
+---
+title: "R Study Guide for Cronkite School of Journalism"
+author: "Sarah Cohen, Knight Chair in Journalism"
+url: "https://cronkitedata.github.io/rstudyguide"
+github-repo: "cronkitedata/rstudyguide"
+favicon: "favicon.io" 
+description: "A companion book for the Cronkite School's data journalism class for graduate students. A work in progress."
+---
 
 # Preface {-}
 

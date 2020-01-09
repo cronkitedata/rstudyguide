@@ -10,8 +10,10 @@ bookdown::gitbook:
       theme: white
       family: sans
       size: 2
+    sharing:
+      twitter: yes
+      github: yes
+      all: ['twitter', 'github']
   split_by: "rmd"
   css: mystyles.css
   df_print: paged
-bookdown::html_book:
-  css: toc.css

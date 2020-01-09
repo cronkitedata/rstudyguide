@@ -4,23 +4,24 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>5 Verbs Part 1: Picking and choosing | data-journalism.utf8</title>
-  <meta name="description" content="" />
+  <title>5 Verbs Part 1: Picking and choosing | R Study Guide for Cronkite School of Journalism</title>
+  <meta name="description" content="A companion book for the Cronkite School’s data journalism class for graduate students. A work in progress." />
   <meta name="generator" content="bookdown 0.14 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="5 Verbs Part 1: Picking and choosing | data-journalism.utf8" />
+  <meta property="og:title" content="5 Verbs Part 1: Picking and choosing | R Study Guide for Cronkite School of Journalism" />
   <meta property="og:type" content="book" />
+  <meta property="og:url" content="https://cronkitedata.github.io/rstudyguide" />
   
-  
-  
-  
+  <meta property="og:description" content="A companion book for the Cronkite School’s data journalism class for graduate students. A work in progress." />
+  <meta name="github-repo" content="cronkitedata/rstudyguide" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="5 Verbs Part 1: Picking and choosing | data-journalism.utf8" />
+  <meta name="twitter:title" content="5 Verbs Part 1: Picking and choosing | R Study Guide for Cronkite School of Journalism" />
   
-  
+  <meta name="twitter:description" content="A companion book for the Cronkite School’s data journalism class for graduate students. A work in progress." />
   
 
+<meta name="author" content="Sarah Cohen, Knight Chair in Journalism" />
 
 
 
@@ -28,7 +29,7 @@
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
-  
+  <link rel="shortcut icon" href="favicon.io" type="image/x-icon" />
 <link rel="prev" href="030-intro-verbs.html"/>
 <link rel="next" href="A02-programming.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
@@ -182,7 +183,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.2.2" data-path="030-intro-verbs.html"><a href="030-intro-verbs.html#arrange-to-sort"><i class="fa fa-check"></i><b>4.2.2</b> <code>arrange</code> to sort</a></li>
 <li class="chapter" data-level="4.2.3" data-path="030-intro-verbs.html"><a href="030-intro-verbs.html#filter-to-pick-out-rows"><i class="fa fa-check"></i><b>4.2.3</b> <code>filter</code> to pick out rows</a></li>
 </ul></li>
-<li class="chapter" data-level="4.3" data-path="030-intro-verbs.html"><a href="030-intro-verbs.html#group_by-and-summarise-to-count-and-sum"><i class="fa fa-check"></i><b>4.3</b> <code>group_by</code> and <code>summarise</code> to count and sum</a></li>
+<li class="chapter" data-level="4.3" data-path="030-intro-verbs.html"><a href="030-intro-verbs.html#group_by-and-summarise-to-count-and-sum"><i class="fa fa-check"></i><b>4.3</b> <code>group_by</code> and <code>summarise</code> to count and sum</a><ul>
+<li class="chapter" data-level="4.3.1" data-path="030-intro-verbs.html"><a href="030-intro-verbs.html#mutate-to-calculate-something-new"><i class="fa fa-check"></i><b>4.3.1</b> <code>mutate</code> to calculate something new</a></li>
+<li class="chapter" data-level="4.3.2" data-path="030-intro-verbs.html"><a href="030-intro-verbs.html#tk-left_join-to-merge-with-other-tables."><i class="fa fa-check"></i><b>4.3.2</b> TK <code>left_join</code> to merge with other tables.</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="030-intro-verbs.html"><a href="030-intro-verbs.html#resources-and-exercises-2"><i class="fa fa-check"></i><b>4.4</b> Resources and exercises</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="031-select-filter.html"><a href="031-select-filter.html"><i class="fa fa-check"></i><b>5</b> Verbs Part 1: Picking and choosing</a><ul>
 <li class="chapter" data-level="5.1" data-path="031-select-filter.html"><a href="031-select-filter.html#key-takeaways-4"><i class="fa fa-check"></i><b>5.1</b> Key takeaways</a></li>
@@ -219,17 +224,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="B.1" data-path="A01-resources.html"><a href="A01-resources.html#key-takeaways-6"><i class="fa fa-check"></i><b>B.1</b> Key takeaways</a></li>
 <li class="chapter" data-level="B.2" data-path="A01-resources.html"><a href="A01-resources.html#coursework-in-r"><i class="fa fa-check"></i><b>B.2</b> Coursework in R</a></li>
 <li class="chapter" data-level="B.3" data-path="A01-resources.html"><a href="A01-resources.html#instructional-screencasts-and-videos"><i class="fa fa-check"></i><b>B.3</b> Instructional screencasts and videos</a></li>
-<li class="chapter" data-level="B.4" data-path="A01-resources.html"><a href="A01-resources.html#building-blocks-1"><i class="fa fa-check"></i><b>B.4</b> Building blocks</a><ul>
-<li class="chapter" data-level="" data-path="A01-resources.html"><a href="A01-resources.html#variables-and-objects-1"><i class="fa fa-check"></i>Variables and objects</a></li>
-<li class="chapter" data-level="" data-path="A01-resources.html"><a href="A01-resources.html#operators-assignment-1"><i class="fa fa-check"></i>Operators &amp; assignment</a></li>
-<li class="chapter" data-level="" data-path="A01-resources.html"><a href="A01-resources.html#functions-1"><i class="fa fa-check"></i>Functions</a></li>
-<li class="chapter" data-level="" data-path="A01-resources.html"><a href="A01-resources.html#loops-1"><i class="fa fa-check"></i>Loops</a></li>
-</ul></li>
-<li class="chapter" data-level="B.5" data-path="A01-resources.html"><a href="A01-resources.html#make-an-omelet-with-a-function-1"><i class="fa fa-check"></i><b>B.5</b> Make an omelet with a function</a><ul>
-<li class="chapter" data-level="" data-path="A01-resources.html"><a href="A01-resources.html#open-a-restaurant-with-loops-1"><i class="fa fa-check"></i>Open a restaurant with loops</a></li>
-</ul></li>
-<li class="chapter" data-level="B.6" data-path="A01-resources.html"><a href="A01-resources.html#applications-1"><i class="fa fa-check"></i><b>B.6</b> Applications</a></li>
-<li class="chapter" data-level="B.7" data-path="A01-resources.html"><a href="A01-resources.html#more-resources-1"><i class="fa fa-check"></i><b>B.7</b> More resources</a></li>
 </ul></li>
 </ul>
 
@@ -240,7 +234,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./"></a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R Study Guide for Cronkite School of Journalism</a>
           </h1>
         </div>
 
@@ -264,12 +258,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p style="background-color:#e6f0ff;text-align:center;font-weight:bold;">
 Don’t forget to load the tidyverse!
 </p>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb20-1" title="1"><span class="kw">library</span>(tidyverse)</a></code></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb21-1" title="1"><span class="kw">library</span>(tidyverse)</a></code></pre></div>
 <p>This tutorial uses data that was downloaded in 2019 from the Tempe, Ariz., Open data site. It’s since been removed. It contains a list of opioid-related EMS calls for the city. There was virtually no documentation on the site to explain the variables. (Tempe officials have said that they are planning to republish it with less detail.)</p>
-<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb21-1" title="1">my_link &lt;-<span class="st"> &quot;https://cronkitedata.github.io/cronkite-docs/assets/data/csv/opioidemscalls.csv&quot;</span></a>
-<a class="sourceLine" id="cb21-2" title="2"></a>
-<a class="sourceLine" id="cb21-3" title="3"><span class="co">#use it in a read_csv command</span></a>
-<a class="sourceLine" id="cb21-4" title="4">opioid_calls_orig &lt;-<span class="st"> </span><span class="kw">read_csv</span>(my_link)</a></code></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb22-1" title="1">my_link &lt;-<span class="st"> &quot;https://cronkitedata.github.io/cronkite-docs/assets/data/csv/opioidemscalls.csv&quot;</span></a>
+<a class="sourceLine" id="cb22-2" title="2"></a>
+<a class="sourceLine" id="cb22-3" title="3"><span class="co">#use it in a read_csv command</span></a>
+<a class="sourceLine" id="cb22-4" title="4">opioid_calls_orig &lt;-<span class="st"> </span><span class="kw">read_csv</span>(my_link)</a></code></pre></div>
 <p>Once read in, the dataset has 650 rows and 21 columns:</p>
 <p><img src="images/24-opioid-orig.jpg" /></p>
 </div>
@@ -281,22 +275,22 @@ Don’t forget to load the tidyverse!
 Note that R is <b>case-sensitive</b>, meaning that the variable named <i>Age</i> is not the same thing as the variable named <i>age</i>. This is one reason rename columns using a common pattern – you don’t have to think about it again. It’s also useful to remove spaces and special characters from your column names, which are difficult to reference with them.
 </p>
 <p>This code chunk selects only some of the variables from our original data frame and saves them in a new data frame:</p>
-<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb22-1" title="1">opioid_calls &lt;-<span class="st">                                    </span><span class="co">#create a new data frame, &quot;opioid_calls&quot;</span></a>
-<a class="sourceLine" id="cb22-2" title="2"><span class="st">  </span></a>
-<a class="sourceLine" id="cb22-3" title="3"><span class="st">    </span>opioid_calls_orig   <span class="op">%&gt;%</span><span class="st">                       </span><span class="co">#start with the old data frame  and then..</span></a>
-<a class="sourceLine" id="cb22-4" title="4"><span class="st">  </span></a>
-<a class="sourceLine" id="cb22-5" title="5"><span class="st">    </span><span class="kw">select</span> (<span class="dt">id =</span> OBJECTID,                        <span class="co">#pick out only some columns, and change their names at the same time</span></a>
-<a class="sourceLine" id="cb22-6" title="6">            <span class="dt">incident_date =</span>  IncidentDate,</a>
-<a class="sourceLine" id="cb22-7" title="7">            <span class="dt">dow =</span> Day_of_Week_Sort, </a>
-<a class="sourceLine" id="cb22-8" title="8">            <span class="dt">narcan =</span> <span class="st">`</span><span class="dt">Narcan/Naloxone Given</span><span class="st">`</span>,       <span class="co">#you have to use back-ticks for special characters</span></a>
-<a class="sourceLine" id="cb22-9" title="9">            <span class="dt">impression =</span> Primary_Impression, </a>
-<a class="sourceLine" id="cb22-10" title="10">            <span class="dt">age  =</span> Age,</a>
-<a class="sourceLine" id="cb22-11" title="11">            <span class="dt">gender =</span> Patient_Gender,</a>
-<a class="sourceLine" id="cb22-12" title="12">             <span class="dt">asu_yn =</span> Is_ASU_student,</a>
-<a class="sourceLine" id="cb22-13" title="13">             <span class="dt">vet_yn =</span> Is_Veteran,</a>
-<a class="sourceLine" id="cb22-14" title="14">             <span class="dt">homeless_yn =</span> Is_Homeles,</a>
-<a class="sourceLine" id="cb22-15" title="15">             <span class="dt">special_population =</span> Spec_Pop  </a>
-<a class="sourceLine" id="cb22-16" title="16">            )</a></code></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb23-1" title="1">opioid_calls &lt;-<span class="st">                                    </span><span class="co">#create a new data frame, &quot;opioid_calls&quot;</span></a>
+<a class="sourceLine" id="cb23-2" title="2"><span class="st">  </span></a>
+<a class="sourceLine" id="cb23-3" title="3"><span class="st">    </span>opioid_calls_orig   <span class="op">%&gt;%</span><span class="st">                       </span><span class="co">#start with the old data frame  and then..</span></a>
+<a class="sourceLine" id="cb23-4" title="4"><span class="st">  </span></a>
+<a class="sourceLine" id="cb23-5" title="5"><span class="st">    </span><span class="kw">select</span> (<span class="dt">id =</span> OBJECTID,                        <span class="co">#pick out only some columns, and change their names at the same time</span></a>
+<a class="sourceLine" id="cb23-6" title="6">            <span class="dt">incident_date =</span>  IncidentDate,</a>
+<a class="sourceLine" id="cb23-7" title="7">            <span class="dt">dow =</span> Day_of_Week_Sort, </a>
+<a class="sourceLine" id="cb23-8" title="8">            <span class="dt">narcan =</span> <span class="st">`</span><span class="dt">Narcan/Naloxone Given</span><span class="st">`</span>,       <span class="co">#you have to use back-ticks for special characters</span></a>
+<a class="sourceLine" id="cb23-9" title="9">            <span class="dt">impression =</span> Primary_Impression, </a>
+<a class="sourceLine" id="cb23-10" title="10">            <span class="dt">age  =</span> Age,</a>
+<a class="sourceLine" id="cb23-11" title="11">            <span class="dt">gender =</span> Patient_Gender,</a>
+<a class="sourceLine" id="cb23-12" title="12">             <span class="dt">asu_yn =</span> Is_ASU_student,</a>
+<a class="sourceLine" id="cb23-13" title="13">             <span class="dt">vet_yn =</span> Is_Veteran,</a>
+<a class="sourceLine" id="cb23-14" title="14">             <span class="dt">homeless_yn =</span> Is_Homeles,</a>
+<a class="sourceLine" id="cb23-15" title="15">             <span class="dt">special_population =</span> Spec_Pop  </a>
+<a class="sourceLine" id="cb23-16" title="16">            )</a></code></pre></div>
 <p>Here’s what it the first few rows of our selected columns looks like. (It might be chopped of on the right in your browser.)</p>
 <table>
 <thead>
@@ -359,12 +353,12 @@ Note that R is <b>case-sensitive</b>, meaning that the variable named <i>Age</i>
 <div id="optional-other-ways-to-select" class="section level3 unnumbered">
 <h3>Optional: Other ways to select</h3>
 <p>R has a lot of shortcuts so you don’t have to type as much as in some other languages. You can identify columns by their position in the file, by the kind of data they hold (numbers, characters, etc.), or by the words their names contain. Here’s an example:</p>
-<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb23-1" title="1">opioid_calls <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb23-2" title="2"><span class="st">  </span><span class="kw">select</span> ( id, </a>
-<a class="sourceLine" id="cb23-3" title="3">           <span class="dt">weekday =</span> dow,</a>
-<a class="sourceLine" id="cb23-4" title="4">           narcan <span class="op">:</span><span class="st">  </span>gender,  <span class="co">#vars narcan through gender in the list </span></a>
-<a class="sourceLine" id="cb23-5" title="5">           <span class="kw">contains</span> (<span class="st">&quot;yn&quot;</span>)    <span class="co"># has &quot;yn&quot; in the name</span></a>
-<a class="sourceLine" id="cb23-6" title="6">           ) </a></code></pre></div>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb24-1" title="1">opioid_calls <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb24-2" title="2"><span class="st">  </span><span class="kw">select</span> ( id, </a>
+<a class="sourceLine" id="cb24-3" title="3">           <span class="dt">weekday =</span> dow,</a>
+<a class="sourceLine" id="cb24-4" title="4">           narcan <span class="op">:</span><span class="st">  </span>gender,  <span class="co">#vars narcan through gender in the list </span></a>
+<a class="sourceLine" id="cb24-5" title="5">           <span class="kw">contains</span> (<span class="st">&quot;yn&quot;</span>)    <span class="co"># has &quot;yn&quot; in the name</span></a>
+<a class="sourceLine" id="cb24-6" title="6">           ) </a></code></pre></div>
 </div>
 </div>
 <div id="filter---choosing-rows" class="section level2">
@@ -386,9 +380,9 @@ Note that R is <b>case-sensitive</b>, meaning that the variable named <i>Age</i>
 <p>If you don’t create a new data frame using the <code>&lt;-</code> assignment, it will just print out on the screen. Use the “glimpse” verb to take a peek at it vertically in a way the fits on the screen.</p>
 <p><img src="images/24-filter-literal.jpg" /></p>
 <p>Put the name of the column on the left side of the comparison, connect it with two equal signs, and put the value you want to look for (in quotes if it’s text) on the right. The two equal signs means that it must be EXACTLY the same – not sort of the same – including upper and lower case.</p>
-<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb26-1" title="1">opioid_calls <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb26-2" title="2"><span class="st">  </span><span class="kw">filter</span> (  narcan <span class="op">==</span><span class="st"> &quot;Yes&quot;</span> ) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb26-3" title="3"><span class="st">  </span>glimpse  </a></code></pre></div>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb27-1" title="1">opioid_calls <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb27-2" title="2"><span class="st">  </span><span class="kw">filter</span> (  narcan <span class="op">==</span><span class="st"> &quot;Yes&quot;</span> ) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb27-3" title="3"><span class="st">  </span>glimpse  </a></code></pre></div>
 <pre><code>## Observations: 370
 ## Variables: 11
 ## $ id                 &lt;dbl&gt; 3, 7, 11, 12, 13, 18, 20, 21, 25, 29, 30, 34,…
@@ -408,35 +402,35 @@ Note that R is <b>case-sensitive</b>, meaning that the variable named <i>Age</i>
 <div id="a-compound-filter" class="section level3">
 <h3><span class="header-section-number">5.3.2</span> A compound filter</h3>
 <p>Filter for more than one condition that must be true using the “and” operator: &amp;.</p>
-<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb28-1" title="1">opioid_calls <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb28-2" title="2"><span class="st">    </span><span class="kw">filter</span> (narcan <span class="op">==</span><span class="st"> &quot;Yes&quot;</span> <span class="op">&amp;</span><span class="st"> </span>asu_yn <span class="op">==</span><span class="st"> &quot;Yes&quot;</span>) </a></code></pre></div>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb29-1" title="1">opioid_calls <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb29-2" title="2"><span class="st">    </span><span class="kw">filter</span> (narcan <span class="op">==</span><span class="st"> &quot;Yes&quot;</span> <span class="op">&amp;</span><span class="st"> </span>asu_yn <span class="op">==</span><span class="st"> &quot;Yes&quot;</span>) </a></code></pre></div>
 </div>
 <div id="even-more-compound-filters" class="section level3">
 <h3><span class="header-section-number">5.3.3</span> Even more compound filters</h3>
 <div id="or-conditions" class="section level4 unnumbered">
 <h4>OR conditions</h4>
 <p>Say we want either asu OR veterans who got Narcan. Here’s a query that combines the <strong>and</strong> (&amp;) condition with an <strong>or</strong> (|) condition:</p>
-<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb29-1" title="1">opioid_calls <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb29-2" title="2"><span class="st">  </span><span class="kw">filter</span> (    narcan <span class="op">==</span><span class="st"> &quot;Yes&quot;</span> <span class="op">&amp;</span></a>
-<a class="sourceLine" id="cb29-3" title="3"><span class="st">                 </span>(asu_yn <span class="op">==</span><span class="st"> &quot;Yes&quot;</span> <span class="op">|</span><span class="st"> </span>vet_yn <span class="op">==</span><span class="st"> &quot;Yes&quot;</span>  ) </a>
-<a class="sourceLine" id="cb29-4" title="4">  )  </a></code></pre></div>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb30-1" title="1">opioid_calls <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb30-2" title="2"><span class="st">  </span><span class="kw">filter</span> (    narcan <span class="op">==</span><span class="st"> &quot;Yes&quot;</span> <span class="op">&amp;</span></a>
+<a class="sourceLine" id="cb30-3" title="3"><span class="st">                 </span>(asu_yn <span class="op">==</span><span class="st"> &quot;Yes&quot;</span> <span class="op">|</span><span class="st"> </span>vet_yn <span class="op">==</span><span class="st"> &quot;Yes&quot;</span>  ) </a>
+<a class="sourceLine" id="cb30-4" title="4">  )  </a></code></pre></div>
 </div>
 <div id="in-conditions" class="section level4 unnumbered">
 <h4>%in% conditions</h4>
 <p>Use the operator %in% when you want to pick among several possible answers. Say I want to look at anyone aged 20 to 29. Instead of “or”, I can use %in% because it’s only one column:</p>
-<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb30-1" title="1">opioid_calls <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb30-2" title="2"><span class="st">  </span><span class="kw">filter</span> (age <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;20 to 24&quot;</span>, <span class="st">&quot;25 to 29&quot;</span>)) </a></code></pre></div>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb31-1" title="1">opioid_calls <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb31-2" title="2"><span class="st">  </span><span class="kw">filter</span> (age <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;20 to 24&quot;</span>, <span class="st">&quot;25 to 29&quot;</span>)) </a></code></pre></div>
 </div>
 </div>
 </div>
 <div id="arrange---change-the-order" class="section level2">
 <h2><span class="header-section-number">5.4</span> Arrange - change the order</h2>
 <p>“Arrange” is the equivalent of “Sort” in a spreadsheet - it’s more precise in its meaning, and instructs R to re-arrange the rows of a data frame using the order identified in one or more columns. Try to piece together what this does:</p>
-<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb31-1" title="1">opioid_calls <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb31-2" title="2"><span class="st">  </span><span class="kw">select</span> (dow, narcan, age, gender, asu_yn) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb31-3" title="3"><span class="st">  </span><span class="kw">filter</span> (dow <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;(6) Saturday&quot;</span>, <span class="st">&quot;(7) Sunday&quot;</span>)  <span class="op">&amp;</span></a>
-<a class="sourceLine" id="cb31-4" title="4"><span class="st">            </span>narcan <span class="op">==</span><span class="st"> &quot;Yes&quot;</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb31-5" title="5"><span class="st">  </span><span class="kw">arrange</span> ( age )</a></code></pre></div>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb32-1" title="1">opioid_calls <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb32-2" title="2"><span class="st">  </span><span class="kw">select</span> (dow, narcan, age, gender, asu_yn) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb32-3" title="3"><span class="st">  </span><span class="kw">filter</span> (dow <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;(6) Saturday&quot;</span>, <span class="st">&quot;(7) Sunday&quot;</span>)  <span class="op">&amp;</span></a>
+<a class="sourceLine" id="cb32-4" title="4"><span class="st">            </span>narcan <span class="op">==</span><span class="st"> &quot;Yes&quot;</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb32-5" title="5"><span class="st">  </span><span class="kw">arrange</span> ( age )</a></code></pre></div>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
 {"columns":[{"label":["dow"],"name":[1],"type":["chr"],"align":["left"]},{"label":["narcan"],"name":[2],"type":["chr"],"align":["left"]},{"label":["age"],"name":[3],"type":["chr"],"align":["left"]},{"label":["gender"],"name":[4],"type":["chr"],"align":["left"]},{"label":["asu_yn"],"name":[5],"type":["chr"],"align":["left"]}],"data":[{"1":"(7) Sunday","2":"Yes","3":"15 to 19","4":"Male","5":"Unknown"},{"1":"(7) Sunday","2":"Yes","3":"15 to 19","4":"Male","5":"Yes"},{"1":"(6) Saturday","2":"Yes","3":"15 to 19","4":"Male","5":"No"},{"1":"(6) Saturday","2":"Yes","3":"15 to 19","4":"Female","5":"Unknown"},{"1":"(6) Saturday","2":"Yes","3":"15 to 19","4":"Male","5":"No"},{"1":"(7) Sunday","2":"Yes","3":"15 to 19","4":"Female","5":"Unknown"},{"1":"(6) Saturday","2":"Yes","3":"15 to 19","4":"Female","5":"Unknown"},{"1":"(7) Sunday","2":"Yes","3":"15 to 19","4":"Male","5":"No"},{"1":"(6) Saturday","2":"Yes","3":"15 to 19","4":"Female","5":"No"},{"1":"(6) Saturday","2":"Yes","3":"20 to 24","4":"Female","5":"Unknown"},{"1":"(7) Sunday","2":"Yes","3":"20 to 24","4":"Male","5":"No"},{"1":"(6) Saturday","2":"Yes","3":"20 to 24","4":"Male","5":"No"},{"1":"(7) Sunday","2":"Yes","3":"20 to 24","4":"Female","5":"Unknown"},{"1":"(6) Saturday","2":"Yes","3":"20 to 24","4":"Male","5":"Unknown"},{"1":"(6) Saturday","2":"Yes","3":"20 to 24","4":"Male","5":"No"},{"1":"(6) Saturday","2":"Yes","3":"20 to 24","4":"Male","5":"Unknown"},{"1":"(7) Sunday","2":"Yes","3":"20 to 24","4":"Male","5":"No"},{"1":"(6) Saturday","2":"Yes","3":"20 to 24","4":"Male","5":"No"},{"1":"(6) Saturday","2":"Yes","3":"20 to 24","4":"Female","5":"No"},{"1":"(6) Saturday","2":"Yes","3":"20 to 24","4":"Male","5":"No"},{"1":"(6) Saturday","2":"Yes","3":"20 to 24","4":"Male","5":"Yes"},{"1":"(6) Saturday","2":"Yes","3":"20 to 24","4":"Male","5":"No"},{"1":"(7) Sunday","2":"Yes","3":"20 to 24","4":"Female","5":"Unknown"},{"1":"(7) Sunday","2":"Yes","3":"20 to 24","4":"Female","5":"Unknown"},{"1":"(6) Saturday","2":"Yes","3":"20 to 24","4":"Male","5":"No"},{"1":"(7) Sunday","2":"Yes","3":"20 to 24","4":"Female","5":"No"},{"1":"(7) Sunday","2":"Yes","3":"25 to 29","4":"Female","5":"No"},{"1":"(7) Sunday","2":"Yes","3":"25 to 29","4":"Female","5":"Unknown"},{"1":"(6) Saturday","2":"Yes","3":"25 to 29","4":"Female","5":"Unknown"},{"1":"(7) Sunday","2":"Yes","3":"25 to 29","4":"Female","5":"No"},{"1":"(7) Sunday","2":"Yes","3":"25 to 29","4":"Female","5":"No"},{"1":"(6) Saturday","2":"Yes","3":"25 to 29","4":"Male","5":"Unknown"},{"1":"(6) Saturday","2":"Yes","3":"25 to 29","4":"Male","5":"Unknown"},{"1":"(7) Sunday","2":"Yes","3":"25 to 29","4":"Female","5":"No"},{"1":"(6) Saturday","2":"Yes","3":"25 to 29","4":"Male","5":"Unknown"},{"1":"(7) Sunday","2":"Yes","3":"25 to 29","4":"Male","5":"No"},{"1":"(6) Saturday","2":"Yes","3":"25 to 29","4":"Male","5":"Unknown"},{"1":"(6) Saturday","2":"Yes","3":"25 to 29","4":"Male","5":"No"},{"1":"(6) Saturday","2":"Yes","3":"25 to 29","4":"Female","5":"No"},{"1":"(6) Saturday","2":"Yes","3":"25 to 29","4":"Male","5":"No"},{"1":"(7) Sunday","2":"Yes","3":"25 to 29","4":"Male","5":"No"},{"1":"(7) Sunday","2":"Yes","3":"25 to 29","4":"Male","5":"No"},{"1":"(7) Sunday","2":"Yes","3":"25 to 29","4":"Female","5":"No"},{"1":"(6) Saturday","2":"Yes","3":"25 to 29","4":"Male","5":"No"},{"1":"(7) Sunday","2":"Yes","3":"25 to 29","4":"Male","5":"No"},{"1":"(6) Saturday","2":"Yes","3":"25 to 29","4":"Male","5":"No"},{"1":"(6) Saturday","2":"Yes","3":"25 to 29","4":"Male","5":"No"},{"1":"(7) Sunday","2":"Yes","3":"25 to 29","4":"Female","5":"No"},{"1":"(6) Saturday","2":"Yes","3":"25 to 29","4":"Male","5":"No"},{"1":"(7) Sunday","2":"Yes","3":"25 to 29","4":"Male","5":"No"},{"1":"(7) Sunday","2":"Yes","3":"25 to 29","4":"Male","5":"Unknown"},{"1":"(7) Sunday","2":"Yes","3":"25 to 29","4":"Male","5":"Unknown"},{"1":"(7) Sunday","2":"Yes","3":"30 to 34","4":"Male","5":"Unknown"},{"1":"(6) Saturday","2":"Yes","3":"30 to 34","4":"Male","5":"Unknown"},{"1":"(6) Saturday","2":"Yes","3":"30 to 34","4":"Male","5":"No"},{"1":"(7) Sunday","2":"Yes","3":"30 to 34","4":"Male","5":"No"},{"1":"(6) Saturday","2":"Yes","3":"30 to 34","4":"Female","5":"No"},{"1":"(7) Sunday","2":"Yes","3":"30 to 34","4":"Male","5":"No"},{"1":"(6) Saturday","2":"Yes","3":"30 to 34","4":"Male","5":"No"},{"1":"(7) Sunday","2":"Yes","3":"30 to 34","4":"Female","5":"No"},{"1":"(7) Sunday","2":"Yes","3":"30 to 34","4":"Male","5":"No"},{"1":"(6) Saturday","2":"Yes","3":"30 to 34","4":"Male","5":"No"},{"1":"(6) Saturday","2":"Yes","3":"35 to 39","4":"Female","5":"No"},{"1":"(7) Sunday","2":"Yes","3":"35 to 39","4":"Female","5":"No"},{"1":"(7) Sunday","2":"Yes","3":"35 to 39","4":"Male","5":"Unknown"},{"1":"(6) Saturday","2":"Yes","3":"35 to 39","4":"Male","5":"No"},{"1":"(7) Sunday","2":"Yes","3":"35 to 39","4":"Male","5":"No"},{"1":"(7) Sunday","2":"Yes","3":"35 to 39","4":"Unknown (Unable to Determine)","5":"No"},{"1":"(6) Saturday","2":"Yes","3":"35 to 39","4":"Male","5":"Unknown"},{"1":"(6) Saturday","2":"Yes","3":"35 to 39","4":"Male","5":"No"},{"1":"(6) Saturday","2":"Yes","3":"35 to 39","4":"Female","5":"No"},{"1":"(7) Sunday","2":"Yes","3":"35 to 39","4":"Female","5":"No"},{"1":"(7) Sunday","2":"Yes","3":"40 to 44","4":"Male","5":"No"},{"1":"(6) Saturday","2":"Yes","3":"40 to 44","4":"Male","5":"No"},{"1":"(7) Sunday","2":"Yes","3":"40 to 44","4":"Female","5":"No"},{"1":"(7) Sunday","2":"Yes","3":"40 to 44","4":"Male","5":"No"},{"1":"(6) Saturday","2":"Yes","3":"40 to 44","4":"Male","5":"No"},{"1":"(6) Saturday","2":"Yes","3":"40 to 44","4":"Male","5":"Unknown"},{"1":"(7) Sunday","2":"Yes","3":"40 to 44","4":"Male","5":"Unknown"},{"1":"(7) Sunday","2":"Yes","3":"40 to 44","4":"Female","5":"No"},{"1":"(6) Saturday","2":"Yes","3":"40 to 44","4":"Male","5":"No"},{"1":"(6) Saturday","2":"Yes","3":"40 to 44","4":"Male","5":"N/A"},{"1":"(6) Saturday","2":"Yes","3":"40 to 44","4":"Female","5":"No"},{"1":"(7) Sunday","2":"Yes","3":"45 to 49","4":"Female","5":"No"},{"1":"(7) Sunday","2":"Yes","3":"45 to 49","4":"Female","5":"No"},{"1":"(6) Saturday","2":"Yes","3":"45 to 49","4":"Female","5":"No"},{"1":"(6) Saturday","2":"Yes","3":"45 to 49","4":"Male","5":"Unknown"},{"1":"(7) Sunday","2":"Yes","3":"45 to 49","4":"Female","5":"No"},{"1":"(6) Saturday","2":"Yes","3":"45 to 49","4":"Female","5":"No"},{"1":"(6) Saturday","2":"Yes","3":"45 to 49","4":"Male","5":"Unknown"},{"1":"(7) Sunday","2":"Yes","3":"45 to 49","4":"Male","5":"No"},{"1":"(6) Saturday","2":"Yes","3":"45 to 49","4":"Male","5":"Unknown"},{"1":"(7) Sunday","2":"Yes","3":"50 to 54","4":"N/A","5":"No"},{"1":"(7) Sunday","2":"Yes","3":"50 to 54","4":"Male","5":"Unknown"},{"1":"(6) Saturday","2":"Yes","3":"50 to 54","4":"Female","5":"Unknown"},{"1":"(6) Saturday","2":"Yes","3":"50 to 54","4":"Male","5":"No"},{"1":"(7) Sunday","2":"Yes","3":"50 to 54","4":"Female","5":"No"},{"1":"(7) Sunday","2":"Yes","3":"50 to 54","4":"Female","5":"No"},{"1":"(7) Sunday","2":"Yes","3":"55 to 59","4":"Male","5":"No"},{"1":"(6) Saturday","2":"Yes","3":"55 to 59","4":"Male","5":"Unknown"},{"1":"(6) Saturday","2":"Yes","3":"55 to 59","4":"Male","5":"No"},{"1":"(7) Sunday","2":"Yes","3":"55 to 59","4":"Male","5":"No"},{"1":"(7) Sunday","2":"Yes","3":"60 to 64","4":"Male","5":"No"},{"1":"(6) Saturday","2":"Yes","3":"60 to 64","4":"Male","5":"No"},{"1":"(7) Sunday","2":"Yes","3":"60 to 64","4":"Male","5":"No"},{"1":"(7) Sunday","2":"Yes","3":"60 to 64","4":"Male","5":"No"},{"1":"(6) Saturday","2":"Yes","3":"60 to 64","4":"Female","5":"No"},{"1":"(7) Sunday","2":"Yes","3":"60 to 64","4":"Female","5":"Unknown"},{"1":"(7) Sunday","2":"Yes","3":"65 to 69","4":"Male","5":"No"},{"1":"(7) Sunday","2":"Yes","3":"65 to 69","4":"Male","5":"Unknown"},{"1":"(6) Saturday","2":"Yes","3":"70 to 74","4":"Female","5":"No"},{"1":"(6) Saturday","2":"Yes","3":"70 to 74","4":"Female","5":"No"},{"1":"(6) Saturday","2":"Yes","3":"70 to 74","4":"Female","5":"No"},{"1":"(6) Saturday","2":"Yes","3":"75 to 79","4":"Male","5":"No"},{"1":"(6) Saturday","2":"Yes","3":"80 to 84","4":"Male","5":"No"},{"1":"(7) Sunday","2":"Yes","3":"95 to 99","4":"Male","5":"No"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
@@ -449,8 +443,8 @@ Note that R is <b>case-sensitive</b>, meaning that the variable named <i>Age</i>
 <div id="case-sensitivity" class="section level4 unnumbered">
 <h4>Case-sensitivity</h4>
 <p>R is always case-sensitive, which means that it makes a difference whether an object, a column name or the value of a variable (like Male) is upper-case, lower-case or some proper case. For example:</p>
-<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb32-1" title="1">opioid_calls <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb32-2" title="2"><span class="st">  </span><span class="kw">filter</span> (narcan <span class="op">==</span><span class="st"> &quot;yes&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb33-1" title="1">opioid_calls <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb33-2" title="2"><span class="st">  </span><span class="kw">filter</span> (narcan <span class="op">==</span><span class="st"> &quot;yes&quot;</span>)</a></code></pre></div>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
 {"columns":[{"label":["id"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["incident_date"],"name":[2],"type":["chr"],"align":["left"]},{"label":["dow"],"name":[3],"type":["chr"],"align":["left"]},{"label":["narcan"],"name":[4],"type":["chr"],"align":["left"]},{"label":["impression"],"name":[5],"type":["chr"],"align":["left"]},{"label":["age"],"name":[6],"type":["chr"],"align":["left"]},{"label":["gender"],"name":[7],"type":["chr"],"align":["left"]},{"label":["asu_yn"],"name":[8],"type":["chr"],"align":["left"]},{"label":["vet_yn"],"name":[9],"type":["chr"],"align":["left"]},{"label":["homeless_yn"],"name":[10],"type":["chr"],"align":["left"]},{"label":["special_population"],"name":[11],"type":["chr"],"align":["left"]}],"data":[],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
@@ -461,7 +455,7 @@ Note that R is <b>case-sensitive</b>, meaning that the variable named <i>Age</i>
 <div id="equals-versus-double-equals" class="section level4 unnumbered">
 <h4>Equals versus double-equals</h4>
 <p>You’ll get this weird error if you try to use an equals sign as a comparison operator:</p>
-<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb33-1" title="1"><span class="kw">filter</span>(opioid_calls, <span class="dt">narcan =</span> <span class="st">&quot;Yes&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb34-1" title="1"><span class="kw">filter</span>(opioid_calls, <span class="dt">narcan =</span> <span class="st">&quot;Yes&quot;</span>)</a></code></pre></div>
 <pre><code>## Error: `narcan` (`narcan = &quot;Yes&quot;`) must not be named, do you need `==`?</code></pre>
 <p>Note that R is guessing that you meant “==” instead. It won’t always be so kind.</p>
 </div>
@@ -522,7 +516,7 @@ Note that R is <b>case-sensitive</b>, meaning that the variable named <i>Age</i>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
 "sharing": {
-"github": false,
+"github": true,
 "facebook": true,
 "twitter": true,
 "google": false,
@@ -530,7 +524,7 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
-"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+"all": ["twitter", "github"]
 },
 "fontsettings": {
 "theme": "white",
