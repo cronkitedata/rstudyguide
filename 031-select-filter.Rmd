@@ -1,8 +1,6 @@
-# (PART) The Verbs of the Tidyverse {-}
-
 <style>
  table {
-   font-size: .8em;
+   font-size: .9em;
  }
 </style>
 

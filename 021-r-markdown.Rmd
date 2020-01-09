@@ -17,7 +17,7 @@
 
 Markdown was invented as an easy way for early contributors to Wikipedia to author documents that would translate to the web. It uses simple formatting rules that don't require any background in programming, HTML or CSS formatting code. This book is written using Markdown. Variants of markdown are used to create many web sites, including those hosted on Github.  
 
-R Markdown is a slightly enhanced version of markdown. It lets you write your document around chunks of R code, which integrates your analysis with your writing. (It also lets you produce actual printed books, slides and other media.) Some news organizations do much of their internal work using R Markdown documents and code. 
+R Markdown is an enhanced version of markdown. In it, you write your document around chunks of R code, which integrates your analysis with your writing. (R Markdown is also designed to output your work in other formats, like an actual printed book or slides.) Some news organizations do much of their internal work using R Markdown documents and code. 
 
 You must install the rmarkdown package before you can use this feature. Install it in the Console. You only have to do this once on each computer, or in each project on rstudio.cloud: 
 

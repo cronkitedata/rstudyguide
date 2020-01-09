@@ -27,7 +27,7 @@ It's free and open source -- you will be able to get access to most of what R ha
 
 More importantly, R has become the de facto tool for statistical and data analysis in many newsrooms and academic settings. Some news organizations strongly prefer interns and entry level data reporters who have at least a little experience with the language. There's also a huge user base, with many people willing and even eager to help newcomers. 
 
-R also has extensions, called packages, that cover most tasks you need as a reporter. Other lanugagees like Python can also be extended this way -- choosing which one to use is largely a matter of taste and comfort.
+R also has extensions, called packages, that cover most tasks you need as a reporter. Other lanugagees like Python can also be extended this way -- choosing which one to use is largely a matter of taste and comfort. Many employers don't care which programming language you know because it's relatively easy to learn another once you're comfortable with the concepts.
 
 ## Setting up R and R Studio 
 
@@ -90,15 +90,6 @@ As a general rule of thumb, install packages using the console. They must be ins
 
 You have to activate packages every time you start R, even if you're just picking up where you left off. Invoke the package by using the library() command. 
 
-#### A quick note on the tidyverse {-}
-
-Almost all of the materials you see related to programming in R have some reference to this thing called the "tidyverse". One problem with having a lot of packages, often written by hobbyists,  is that they're not very consistent. One might use a comma where another uses some dots, for example. 
-
-The tidyverse packages up a whole set of other packages, ensuring they all work together smoothly and have similar commands. It's made for the kind of work reporters do -- importing, cleaning and analyzing data that we get from others and can't control how it's structured. 
-
-For many reporters (myself included), R was too difficult to learn before the tidyverse came around. We'll be working almost exclusively within the tidyverse in this book. 
-
-The tidyverse is the brainchild of [Hadley Wickham](http://hadley.nz/), a statistician from New Zealand, who famously identified the [tidy data principles](https://cronkitedata.github.io/cronkite-docs/excel/xlguides/xl-tidydata)  we've followed all semester. He's currently the chief data scientist for RStudio in Houston.
 
 #### Packages for this class {-}
 
@@ -112,12 +103,24 @@ install.packages("swirl")
 
 ```
 
+
+#### A quick note on the tidyverse {-}
+
+Almost all of the materials you see related to programming in R have some reference to this thing called the "tidyverse". One problem with having a lot of packages, often written by hobbyists,  is that they're not very consistent. One might use a comma where another uses some dots, for example. 
+
+The tidyverse packages up a whole set of other packages, ensuring they all work together smoothly and have similar commands. It's made for the kind of work reporters do -- importing, cleaning and analyzing data that we get from others and can't control how it's structured. 
+
+For many reporters (myself included), R was too difficult to learn before the tidyverse came around. We'll be working almost exclusively within the tidyverse in this book. 
+
+The tidyverse is the brainchild of [Hadley Wickham](http://hadley.nz/), a statistician from New Zealand, who famously identified the [tidy data principles](https://cronkitedata.github.io/cronkite-docs/excel/xlguides/xl-tidydata)  we've followed all semester. He's currently the chief data scientist for RStudio in Houston.
+
+
 ### Work in projects 
 
 
 One of the things that trips up new users of R is that it's hard to tell the program where to find things on your computer. The "working directory" can be confusing. 
 
-<img src="images/21-rintro-project-open.png" alt="open project" style="width:40%;float:right;margin:10px;">
+<img src="images/21-rintro-project-open.png" alt="open project" style="width:25%;float:right;margin:10px;">
 
 One way to get around that is to always work in projects. Projects in R isolate your work in a single folder, which can be transferred from computer to computer without worrying about what's missing.  If you're using RStudio.cloud, every project is already self-contained.
 
@@ -127,7 +130,7 @@ Then, when you want to return to the project, open the project rather than a fil
 
 ## Variables
 
-A variable s a container for a value, a list or some kind of object. At its simplest, it might hold a number or a word. To make a variable, use the assignment operator: `<-` . Think of it as a value being pushed into a name: 
+A variable is a container for a value, a list or some other kind of object. At its simplest, it might hold a number or a word. To make a variable, use the assignment operator: `<-` . Think of it as a value being pushed into a name: 
 
     my_variable <- 13
 
@@ -168,6 +171,12 @@ Once it's installed, activate it using the library command and start it up.
         swirl()
 
 Then just follow the prompts. Don't worry that they're red -- it doesn't mean there's anything wrong. You should do the first section of the first chapter:  "1: R Programming: The basics of programming in R" ->  "Basic Building Blocks". At the end,  hit the escape key.
+
+### Googling for help
+
+There are a few tricks to getting a good Google answer. First, set the time frame for the answer to the last year. It doesn't always work, but at least you're trying to get more recent answers. R has changed A LOT over the last 3-5 years. You don't want to get bogged down in the "old" way. 
+
+Add the name of any package you're using. If you aren't sure which one is tripping you up, just add the word "tidyverse" to the query. That will get you closer.
 
 
 #### Other resources {-}
