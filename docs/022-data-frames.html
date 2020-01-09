@@ -140,12 +140,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1.3" data-path="011-r-install.html"><a href="011-r-install.html#setting-up-r-and-r-studio"><i class="fa fa-check"></i><b>1.3</b> Setting up R and R Studio</a></li>
 <li class="chapter" data-level="1.4" data-path="011-r-install.html"><a href="011-r-install.html#an-r-studio-tour"><i class="fa fa-check"></i><b>1.4</b> An R Studio tour</a><ul>
 <li class="chapter" data-level="1.4.1" data-path="011-r-install.html"><a href="011-r-install.html#the-console"><i class="fa fa-check"></i><b>1.4.1</b> The Console</a></li>
-<li class="chapter" data-level="1.4.2" data-path="011-r-install.html"><a href="011-r-install.html#packages"><i class="fa fa-check"></i><b>1.4.2</b> Packages</a></li>
-<li class="chapter" data-level="1.4.3" data-path="011-r-install.html"><a href="011-r-install.html#work-in-projects"><i class="fa fa-check"></i><b>1.4.3</b> Work in projects</a></li>
+<li class="chapter" data-level="1.4.2" data-path="011-r-install.html"><a href="011-r-install.html#work-in-projects"><i class="fa fa-check"></i><b>1.4.2</b> Work in projects</a></li>
 </ul></li>
-<li class="chapter" data-level="1.5" data-path="011-r-install.html"><a href="011-r-install.html#variables"><i class="fa fa-check"></i><b>1.5</b> Variables</a></li>
-<li class="chapter" data-level="1.6" data-path="011-r-install.html"><a href="011-r-install.html#resources-and-exercises"><i class="fa fa-check"></i><b>1.6</b> Resources and exercises</a><ul>
-<li class="chapter" data-level="1.6.1" data-path="011-r-install.html"><a href="011-r-install.html#googling-for-help"><i class="fa fa-check"></i><b>1.6.1</b> Googling for help</a></li>
+<li class="chapter" data-level="1.5" data-path="011-r-install.html"><a href="011-r-install.html#unlocking-packages"><i class="fa fa-check"></i><b>1.5</b> Unlocking packages</a></li>
+<li class="chapter" data-level="1.6" data-path="011-r-install.html"><a href="011-r-install.html#variables"><i class="fa fa-check"></i><b>1.6</b> Variables</a></li>
+<li class="chapter" data-level="1.7" data-path="011-r-install.html"><a href="011-r-install.html#resources-and-exercises"><i class="fa fa-check"></i><b>1.7</b> Resources and exercises</a><ul>
+<li class="chapter" data-level="1.7.1" data-path="011-r-install.html"><a href="011-r-install.html#googling-for-help"><i class="fa fa-check"></i><b>1.7.1</b> Googling for help</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="021-r-markdown.html"><a href="021-r-markdown.html"><i class="fa fa-check"></i><b>2</b> R Markdown</a><ul>
@@ -283,12 +283,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Asks the tidyverse to execute the function <em>read_csv</em> on the stored link address. The function can read files stored on the web or on your computer.</li>
 </ol>
 <p>This data is from the Phoenix open government site, and contains staff salaries as of 2018</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" title="1"><span class="co">#the location on the Web for the data set&#39;s csv download</span></a>
-<a class="sourceLine" id="cb7-2" title="2">my_link &lt;-<span class="st"> &quot;https://www.phoenixopendata.com/dataset/0c02bbfd-08d9-41e9-a00c-97848a9f7350/resource/3a5c2950-88e3-4cb4-b436-c78d2a266c75/download/open-data-staff-salaries-as-of-12-31-2018.csv&quot;</span></a>
-<a class="sourceLine" id="cb7-3" title="3"></a>
-<a class="sourceLine" id="cb7-4" title="4"></a>
-<a class="sourceLine" id="cb7-5" title="5"><span class="co">#use it in a read_csv command</span></a>
-<a class="sourceLine" id="cb7-6" title="6">phx_salaries &lt;-<span class="st"> </span><span class="kw">read_csv</span>( my_link  )</a></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1"><span class="co">#the location on the Web for the data set&#39;s csv download</span></a>
+<a class="sourceLine" id="cb1-2" title="2">my_link &lt;-<span class="st"> &quot;https://www.phoenixopendata.com/dataset/0c02bbfd-08d9-41e9-a00c-97848a9f7350/resource/3a5c2950-88e3-4cb4-b436-c78d2a266c75/download/open-data-staff-salaries-as-of-12-31-2018.csv&quot;</span></a>
+<a class="sourceLine" id="cb1-3" title="3"></a>
+<a class="sourceLine" id="cb1-4" title="4"></a>
+<a class="sourceLine" id="cb1-5" title="5"><span class="co">#use it in a read_csv command</span></a>
+<a class="sourceLine" id="cb1-6" title="6">phx_salaries &lt;-<span class="st"> </span><span class="kw">read_csv</span>( my_link  )</a></code></pre></div>
 <p>When you run this code, you’ll rececive a scary looking message. Don’t worry - it’s just giving you some information about what it found in the online file:</p>
 <div class="figure">
 <img src="images/21-rdataframe-parse-message.png" alt="Parsing message from import" />
@@ -306,7 +306,7 @@ read_delimited()</code></pre>
 <p>You should now see the name of the data frame in your Global Environment. Click on it to View it, or issue the <code>View(phx_salaries)</code> command.</p>
 <p><img src="images/23-view-salaries.jpg" /></p>
 <p>You can look at your data by clicking on its name in the “Global Environment” window, or by using some standard functions in R to explore them. Use the head() function to look at the top and the tail() function to look at the bottom:</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" title="1"><span class="kw">head</span>(phx_salaries)</a></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" title="1"><span class="kw">head</span>(phx_salaries)</a></code></pre></div>
 <table>
 <thead>
 <tr class="header">
@@ -337,7 +337,7 @@ read_delimited()</code></pre>
 </tr>
 </tbody>
 </table>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" title="1"><span class="kw">tail</span>(phx_salaries)</a></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" title="1"><span class="kw">tail</span>(phx_salaries)</a></code></pre></div>
 <table>
 <thead>
 <tr class="header">
@@ -369,7 +369,7 @@ read_delimited()</code></pre>
 </tbody>
 </table>
 <p>.. and use the “structure” command to see the variable names and types.</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" title="1"><span class="kw">str</span>(phx_salaries)</a></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" title="1"><span class="kw">str</span>(phx_salaries)</a></code></pre></div>
 <pre><code>## Classes &#39;spec_tbl_df&#39;, &#39;tbl_df&#39;, &#39;tbl&#39; and &#39;data.frame&#39;: 11956 obs. of  4 variables:
 ##  $ LAST_NAME  : chr  &quot;Aamodt&quot; &quot;Abbitt&quot; &quot;Abbott&quot; &quot;Abdellatif&quot; ...
 ##  $ FIRST_NAME : chr  &quot;Gail&quot; &quot;Ryan&quot; &quot;Christie&quot; &quot;Tariq&quot; ...
@@ -402,15 +402,15 @@ This is how I explain the ‘pipe’ to <a href="https://twitter.com/hashtag/rst
 <p>Here’s a simple example with a verb called <code>rename</code>. It takes the names of the variables from the first line, AND THEN renames them!</p>
 <p>This is something you often have to do because R will assume that the first row of the csv file contains the names of your variables. Using them, though, can be a pain – you have to remember whether they’re upper or lower case, and you have to put back-ticks (`) around any names with spaces or special characters.</p>
 <p>Here’s what using the pipe looks like to create a NEW data frame out of the old one with the names changed to lower case with underscores, a common pattern in many computer programs:</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" title="1">phx_salaries_renamed &lt;-<span class="st">                   </span><span class="co">#create a new data frame out of the next set of commands</span></a>
-<a class="sourceLine" id="cb14-2" title="2"><span class="st">   </span>phx_salaries <span class="op">%&gt;%</span><span class="st">                       </span><span class="co">#start with the original data frame name, AND THEN</span></a>
-<a class="sourceLine" id="cb14-3" title="3"><span class="st">   </span><span class="kw">rename</span> (  <span class="dt">last_name=</span>LAST_NAME,         <span class="co"># A list of new_name = old_name pairs, separated by commas</span></a>
-<a class="sourceLine" id="cb14-4" title="4">             <span class="dt">first_name=</span>FIRST_NAME,</a>
-<a class="sourceLine" id="cb14-5" title="5">             <span class="dt">job_title =</span> DESCR,</a>
-<a class="sourceLine" id="cb14-6" title="6">             <span class="dt">annual_pay =</span> <span class="st">`</span><span class="dt">ANNUAL RATE</span><span class="st">`</span>   <span class="co">#note the crazy back-ticks that you have to type for two-word names</span></a>
-<a class="sourceLine" id="cb14-7" title="7">           )                         </a>
-<a class="sourceLine" id="cb14-8" title="8"></a>
-<a class="sourceLine" id="cb14-9" title="9"><span class="kw">head</span> (phx_salaries_renamed)    <span class="co"># print out the first few rows.</span></a></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" title="1">phx_salaries_renamed &lt;-<span class="st">                   </span><span class="co">#create a new data frame out of the next set of commands</span></a>
+<a class="sourceLine" id="cb8-2" title="2"><span class="st">   </span>phx_salaries <span class="op">%&gt;%</span><span class="st">                       </span><span class="co">#start with the original data frame name, AND THEN</span></a>
+<a class="sourceLine" id="cb8-3" title="3"><span class="st">   </span><span class="kw">rename</span> (  <span class="dt">last_name=</span>LAST_NAME,         <span class="co"># A list of new_name = old_name pairs, separated by commas</span></a>
+<a class="sourceLine" id="cb8-4" title="4">             <span class="dt">first_name=</span>FIRST_NAME,</a>
+<a class="sourceLine" id="cb8-5" title="5">             <span class="dt">job_title =</span> DESCR,</a>
+<a class="sourceLine" id="cb8-6" title="6">             <span class="dt">annual_pay =</span> <span class="st">`</span><span class="dt">ANNUAL RATE</span><span class="st">`</span>   <span class="co">#note the crazy back-ticks that you have to type for two-word names</span></a>
+<a class="sourceLine" id="cb8-7" title="7">           )                         </a>
+<a class="sourceLine" id="cb8-8" title="8"></a>
+<a class="sourceLine" id="cb8-9" title="9"><span class="kw">head</span> (phx_salaries_renamed)    <span class="co"># print out the first few rows.</span></a></code></pre></div>
 <p>You can leave out any name you don’t want to save. (There are fancier, faster ways to do this, but don’t worry abou that just yet. This is the easiest to remember.) This code chunk results in something that looks like this:</p>
 <table>
 <thead>
@@ -467,13 +467,15 @@ This is how I explain the ‘pipe’ to <a href="https://twitter.com/hashtag/rst
 <h3><span class="header-section-number">3.6.1</span> On your own</h3>
 <ul>
 <li>Start a new project in R.</li>
-<li>Download this Excel file into the folder.</li>
+<li>Download <a href="https://cronkitedata.github.io/cronkite-docs/assets/data/xlexamples/nea_grants.xlsx">this Excel file</a> into the folder.</li>
 <li>Create an R Markdown document and document where you got the file and where it’s stored.</li>
-<li>Try importing the file into R using the <code>read_excel</code> function, which works just like <code>read_csv</code>. Take a look at its structure (<code>str</code>), its top (<code>head</code>) and its bottom (<code>tail</code>).</li>
+<li>Invoke two packages: the <code>tidyverse</code> and <code>readxl</code><a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a></li>
+<li>Try importing the file into R using the <code>read_excel</code> function, which works just like <code>read_csv</code>. Take a look at its structure (<code>str</code>), its top (<code>head</code>) and its bottom (<code>tail</code>). You’ve seen this data before.</li>
 <li>Try creating a NEW data frame from the original and rename a couple of columns.</li>
 <li>If you can get past the errors, knit the document and bask in the knowledge that you’ve come a long way. You can be quietly proud.</li>
 </ul>
-<p>You will likely have some errors to puzzle through if you’ve never programmed anything before. Don’t get discouraged – copy and paste the code from this tutorial, and then adapt it to your needs. Try to read any error messages. Follow the 20-minute rule: If you have been working for 20 minutes <strong>without ANY progress</strong> and are out of ideas or don’t understand what you’re trying to do, step away from the computer. When you come back, if you’re still stuck, get help.</p>
+<p>You will likely have some errors to puzzle through if you’ve never programmed anything before. Don’t get discouraged – copy and paste the code from this tutorial, and then adapt it to your needs. Try to read any error messages.</p>
+<p>Follow the 20-minute rule: If you have been working for 20 minutes <strong>without ANY progress</strong> and are out of ideas or don’t understand what you’re trying to do, step away from the computer. When you come back, if you’re still stuck, get help on the Slack #sos channel. Be sure to say what exactly you’re trying to do when you get an error and copy the code chunk and the error message.</p>
 
 </div>
 </div>
@@ -481,10 +483,11 @@ This is how I explain the ‘pipe’ to <a href="https://twitter.com/hashtag/rst
 
 
 
- table {
-   font-size: .8em;
- }
-</style>
+<div class="footnotes">
+<hr />
+<ol start="1">
+<li id="fn1"><p>You don’t have to install readxl – it’s part of the tidyverse but it’s not automatically activated.<a href="022-data-frames.html#fnref1" class="footnote-back">↩</a></p></li>
+</ol>
 </div>
             </section>
 

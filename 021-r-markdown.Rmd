@@ -114,7 +114,7 @@ Create a new R Markdown document with the following elements:
 * A heading introducing a subtopic 
 * Within that heading, a list of three things about yourself or about a topic you love, in a bulleted list.
 * Another heading
-* An image that you like
+* An image that you like (you'll have to save it in your project.)
 * Another heading
 * A code chunk, in which you create a variable and assign it a value.
 

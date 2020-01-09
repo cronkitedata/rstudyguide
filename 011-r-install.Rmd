@@ -81,14 +81,27 @@ When you type this: `"Sarah"` (with quotes) after the > prompt, you'll get this 
 But if you type this: `Sarah` (without quotes)  after the > prompt, you'll get this error: `Error: object 'Sarah' not found`. That's because it thinks you want to use a variable named Sarah, not the literal letters S-a-r-a-h
 
 
+### Work in projects 
 
-### Packages
+
+One of the things that trips up new users of R is that it's hard to tell the program where to find things on your computer. The "working directory" can be confusing. 
+
+<img src="images/21-rintro-project-open.png" alt="open project" style="width:25%;float:right;margin:10px;">
+
+One way to get around that is to always work in projects. Projects in R isolate your work in a single folder, which can be transferred from computer to computer without worrying about what's missing.  If you're using RStudio.cloud, every project is already self-contained.
+
+Instead of creating a new file when you start R, create a new project, and tell R where to put the directory when prompted.  
+
+Then, when you want to return to the project, open the project rather than a file. 
+
+## Unlocking packages
 
 The real power of R comes with packages. Packages are bundles of programs that others have found useful to extend the base R language. R is almost useless without them. There are thousands of packages available for R, each doing a special job.
 
-As a general rule of thumb, install packages using the console. They must be installed once on every computer, or in every project when you use RStudio Cloud.  
+As a general rule of thumb, install packages using the console. They must be installed once on every computer, or in every project when you use RStudio Cloud.  Activate them using the `library()` command
 
-You have to activate packages every time you start R, even if you're just picking up where you left off. Invoke the package by using the library() command. 
+    install.packages("tidyverse")     # quoted, only do this once in the Console
+    library(tidyverse)                # not quoted, every time in your program
 
 
 #### Packages for this class {-}
@@ -108,25 +121,13 @@ install.packages("swirl")
 
 Almost all of the materials you see related to programming in R have some reference to this thing called the "tidyverse". One problem with having a lot of packages, often written by hobbyists,  is that they're not very consistent. One might use a comma where another uses some dots, for example. 
 
-The tidyverse packages up a whole set of other packages, ensuring they all work together smoothly and have similar commands. It's made for the kind of work reporters do -- importing, cleaning and analyzing data that we get from others and can't control how it's structured. 
+The tidyverse packages up a whole set of other packages that are designed to work together smoothly with similar grammar and syntax. It's particularly useful for the kind of work reporters do -- importing, cleaning and analyzing data that we get from others and can't control how it's structured. 
 
-For many reporters (myself included), R was too difficult to learn before the tidyverse came around. We'll be working almost exclusively within the tidyverse in this book. 
+For many reporters (myself included), R was too difficult to learn before the tidyverse came around. We'll be working almost exclusively within the tidyverse in this course. 
 
 The tidyverse is the brainchild of [Hadley Wickham](http://hadley.nz/), a statistician from New Zealand, who famously identified the [tidy data principles](https://cronkitedata.github.io/cronkite-docs/excel/xlguides/xl-tidydata)  we've followed all semester. He's currently the chief data scientist for RStudio in Houston.
 
 
-### Work in projects 
-
-
-One of the things that trips up new users of R is that it's hard to tell the program where to find things on your computer. The "working directory" can be confusing. 
-
-<img src="images/21-rintro-project-open.png" alt="open project" style="width:25%;float:right;margin:10px;">
-
-One way to get around that is to always work in projects. Projects in R isolate your work in a single folder, which can be transferred from computer to computer without worrying about what's missing.  If you're using RStudio.cloud, every project is already self-contained.
-
-Instead of creating a new file when you start R, create a new project, and tell R where to put the directory when prompted.  
-
-Then, when you want to return to the project, open the project rather than a file. 
 
 ## Variables
 

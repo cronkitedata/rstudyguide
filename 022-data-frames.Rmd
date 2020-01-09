@@ -184,12 +184,15 @@ Unfortunately, a lot of the other resources we've seen don't use the tidyverse v
 ### On your own
 
 * Start a new project in R. 
-* Download this Excel file into the folder. 
+* Download [this Excel file](https://cronkitedata.github.io/cronkite-docs/assets/data/xlexamples/nea_grants.xlsx) into the folder. 
 * Create an R Markdown document and document where you got the file and where it's stored. 
-* Try importing the file into R using the `read_excel` function, which works just like `read_csv`. Take a look at its structure (`str`), its top (`head`) and its bottom (`tail`). 
+* Invoke two packages: the `tidyverse` and `readxl`^[You don't have to install readxl -- it's part of the tidyverse but it's not automatically activated.]
+* Try importing the file into R using the `read_excel` function, which works just like `read_csv`. Take a look at its structure (`str`), its top (`head`) and its bottom (`tail`).  You've seen this data before.
 * Try creating a NEW data frame from the original and rename a couple of columns.
 * If you can get past the errors, knit the document and bask in the knowledge that you've come a long way. You can be quietly proud.
 
-You will likely have some errors to puzzle through if you've never programmed anything before. Don't get discouraged -- copy and paste the code from this tutorial, and then adapt it to your needs. Try to read any error messages. Follow the 20-minute rule: If you have been working for 20 minutes **without ANY progress** and are out of ideas or don't understand what you're trying to do, step away from the computer. When you come back, if you're still stuck, get help.
+You will likely have some errors to puzzle through if you've never programmed anything before. Don't get discouraged -- copy and paste the code from this tutorial, and then adapt it to your needs. Try to read any error messages. 
+
+Follow the 20-minute rule: If you have been working for 20 minutes **without ANY progress** and are out of ideas or don't understand what you're trying to do, step away from the computer. When you come back, if you're still stuck, get help on the Slack #sos channel. Be sure to say what exactly you're trying to do when you get an error and copy the code chunk and the error message.
 
 
