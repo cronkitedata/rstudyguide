@@ -77,12 +77,13 @@ grade6_counts %>%
 
 ```
 
-#### {-} A note on count() and tally()
+#### A note on count() and tally() {-}
 
 You may see other tutorials in which the group_by / summarise is shortened to use two other verbs, `tally()` and `count()`. They're perfectly good for a very quick review of the data, but it's a little hard to follow how they work. For now, sticking with the group_by / summarise sequence will help you cement it in your mind while at the same time making it closer to what you'll find in other programming languages. 
 
+When you get further along, you'll notice that count() is really useful to isolate lines that could be duplicates. 
 
-## Restructuring for a report with `pivot_longer()`
+## Restructuring for a report with `pivot_wider()`
 
 It's hard to read multi-level groupings, so the tidyverse offers a way to spread one variable across the top with the other down the side. This is just like dragging one column into the "Columns" area in a pivot table, and another into the "Rows".  Here is how you'd make a crosstab like those in Excel using this method: 
 
