@@ -212,7 +212,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6.2.2" data-path="033-groupby.html"><a href="033-groupby.html#grouping-by-more-than-one-variable"><i class="fa fa-check"></i><b>6.2.2</b> Grouping by more than one variable</a></li>
 <li class="chapter" data-level="6.2.3" data-path="033-groupby.html"><a href="033-groupby.html#rolling-up-to-the-next-level"><i class="fa fa-check"></i><b>6.2.3</b> Rolling up to the next level</a></li>
 </ul></li>
-<li class="chapter" data-level="6.3" data-path="033-groupby.html"><a href="033-groupby.html#restructuring-for-a-report-with-pivot_longer"><i class="fa fa-check"></i><b>6.3</b> Restructuring for a report with <code>pivot_longer()</code></a><ul>
+<li class="chapter" data-level="6.3" data-path="033-groupby.html"><a href="033-groupby.html#restructuring-for-a-report-with-pivot_wider"><i class="fa fa-check"></i><b>6.3</b> Restructuring for a report with <code>pivot_wider()</code></a><ul>
 <li class="chapter" data-level="6.3.1" data-path="033-groupby.html"><a href="033-groupby.html#a-note-on-restructuring-your-data-frames"><i class="fa fa-check"></i><b>6.3.1</b> A note on restructuring your data frames</a></li>
 </ul></li>
 <li class="chapter" data-level="6.4" data-path="033-groupby.html"><a href="033-groupby.html#resources-exercises"><i class="fa fa-check"></i><b>6.4</b> Resources &amp; exercises</a><ul>
@@ -338,14 +338,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 {"columns":[{"label":["school_type"],"name":[1],"type":["chr"],"align":["left"]},{"label":["schools"],"name":[2],"type":["int"],"align":["right"]},{"label":["total"],"name":[3],"type":["int"],"align":["right"]},{"label":["pct_total"],"name":[4],"type":["dbl"],"align":["right"]}],"data":[{"1":"PUBLIC","2":"648","3":"908","4":"71.365639"},{"1":"CHARTER","2":"193","3":"908","4":"21.255507"},{"1":"PRIVATE","2":"67","3":"908","4":"7.378855"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
-<div id="a-note-on-count-and-tally" class="section level4">
-<h4><span class="header-section-number">6.2.3.1</span> {-} A note on count() and tally()</h4>
+<div id="a-note-on-count-and-tally" class="section level4 unnumbered">
+<h4>A note on count() and tally()</h4>
 <p>You may see other tutorials in which the group_by / summarise is shortened to use two other verbs, <code>tally()</code> and <code>count()</code>. They’re perfectly good for a very quick review of the data, but it’s a little hard to follow how they work. For now, sticking with the group_by / summarise sequence will help you cement it in your mind while at the same time making it closer to what you’ll find in other programming languages.</p>
+<p>When you get further along, you’ll notice that count() is really useful to isolate lines that could be duplicates.</p>
 </div>
 </div>
 </div>
-<div id="restructuring-for-a-report-with-pivot_longer" class="section level2">
-<h2><span class="header-section-number">6.3</span> Restructuring for a report with <code>pivot_longer()</code></h2>
+<div id="restructuring-for-a-report-with-pivot_wider" class="section level2">
+<h2><span class="header-section-number">6.3</span> Restructuring for a report with <code>pivot_wider()</code></h2>
 <p>It’s hard to read multi-level groupings, so the tidyverse offers a way to spread one variable across the top with the other down the side. This is just like dragging one column into the “Columns” area in a pivot table, and another into the “Rows”. Here is how you’d make a crosstab like those in Excel using this method:</p>
 <p><img src="images/33-pivot-wider.png" /></p>
 <p>Here’s a full example of creating “column” percentages and then showing them as a crosstab. See if you can piece together what’s going on. If not, try moving pieces of the query outside the code chunk (and remove your <code>%&gt;%</code> operator) and run it piece by piece.</p>
