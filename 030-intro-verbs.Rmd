@@ -134,7 +134,7 @@ grade6_counts %>%
      
 ```
 
-### `mutate` to calculate something new
+## `mutate` to calculate something new
 
 The verb `mutate` means to take old information and turn it into a new column. The most obvious example in this data is to get the schools with the lowest immunization rates:
 
@@ -150,9 +150,17 @@ grade6_counts %>%
 
 Note that the percentage has to be multiplied by 100 -- there is no simple formatting that will keep the numbers in tact the way there was in Excel. Don't worry about the ugly numbers for now -- you'll see ways to improve on that later.
 
-### TK `left_join` to merge with other tables. 
+## `join` to merge tables together by column
 
-( Stay tuned..)
+Sometimes you need to apply information from one data frame to another. Some examples include :
 
-## Resources and exercises
+* Adding demographics to geographic information, such as county level data, from Census
+* Converting codes to words, such as Zip Code to town name.
+* Finding rows that match across two data frames, such as contributors to a campaign and contractors. (This is often hard)
+* Creating standardization tables to fix spelling and other issues in an existing dataset.
+* Linking information from one unit of analysis (say, companies) to another (say, inspections or violations)
+
+See the chapter on joining for more details. For now, just knowing it exists is all you need.
+
+
 

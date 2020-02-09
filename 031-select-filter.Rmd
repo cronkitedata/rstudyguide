@@ -252,6 +252,10 @@ Missing information is recorded in R as `NA`. The problem is, this isn't a value
 
 ## Resources
 
+### Exercises
+
+You have read "The Serial Killer Detective", from the New Yorker, profiling Hargrove's attempt to get better murder data than the government has available. I have taken the data from that project and converted it into an R data object that includes only murders in the West. 
+
 ### Tutorials
 
 * "[Teaching R](https://teachingr.com/)" videos. They're a little more detailed than we need, but it's a useful review of most of what we've done. 
