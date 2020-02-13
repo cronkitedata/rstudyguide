@@ -24,7 +24,7 @@ This chapter will go through the very basics of each verb. Subsequent chapters w
 
 ### Data for this walkthrough {-}
 
-All of these sections will be based on the 2017-2018 [Arizona immunization data](https://cronkitedata.github.io/cronkite-docs/assets/data/xlexamples/2017-arizona-reporting-schools-coverage.xlsx). The data was downloaded from the [Arizona Department of Health](https://www.azdhs.gov/preparedness/epidemiology-disease-control/immunization/index.php#reports-immunization-coverage). The link for "Arizona Reporting Schools Coverage" under each year is the Excel file.
+All of these sections will be based on the 2017-2018 Arizona immunization data. The data was downloaded from the [Arizona Department of Health](https://www.azdhs.gov/preparedness/epidemiology-disease-control/immunization/index.php#reports-immunization-coverage). The link for "Arizona Reporting Schools Coverage" under each year is the Excel file.
 
 The following changes were made to the original file: 
 
@@ -51,14 +51,33 @@ num_pbe_exempt_all | num | # who have personal believe exemption for every shot
 
 Note: It seems that some students who *could* be exempt from mmr get it anyway -- there are cases in which there are larger numbers with pbe exemptions for all immunizations than the number with mmr exemptions.  
 
-```{r include=FALSE}
+
+### Follow along
+
+To follow along with this tutorial, download [this R dataset](https://github.com/cronkitedata/rstudyguide/blob/master/data/az-immunizations-grade6.Rda?raw=true), put it in your project folder (or upload to your rstudio.cloud project) and include the following code chunk. You may need to install "DT" and "scales" if you haven't already :
+
+
+```{r }
 library(tidyverse)
 library(DT)
 library(scales)
+
+#this loads a pre-created R data file. Note that here, it's saved in a subfolder called "data". 
+# You'll need to remove that folder path if you saved it elsewhere.
+
 load(file="data/az-immunizations-grade6.Rda")
 
+# this suppresses scientific notation.
 options(scipen=999, digits=7)
 ```
+
+Possible errors: 
+
+* Some variation of "file not found": Look at the path to the file name. If your data isn't saved there, it won't be found. Another possibility is that you have opened your R Markdown file as a file, not created it as part of a project, so the default path is wrong.
+
+* Some variation of "object" or "package" not found: You may have to install some of these packages before you can invoke them. 
+
+
 
 ### The `%>%` operator: ... and then... {-}
 
@@ -150,9 +169,9 @@ grade6_counts %>%
 
 Note that the percentage has to be multiplied by 100 -- there is no simple formatting that will keep the numbers in tact the way there was in Excel. Don't worry about the ugly numbers for now -- you'll see ways to improve on that later.
 
-## `join` to merge tables together by column
+## `join` to merge tables together by column; `union` to add rows
 
-Sometimes you need to apply information from one data frame to another. Some examples include :
+Sometimes you need to apply information from one data frame to another. In most computer languages, this is called "joining". Some examples include :
 
 * Adding demographics to geographic information, such as county level data, from Census
 * Converting codes to words, such as Zip Code to town name.
@@ -163,4 +182,4 @@ Sometimes you need to apply information from one data frame to another. Some exa
 See the chapter on joining for more details. For now, just knowing it exists is all you need.
 
 
-
+Sometimes you need to combine two datasets by stacking one on top of the other. These are called `set operations` and are done with some form of `union`. We'll get to that later.
