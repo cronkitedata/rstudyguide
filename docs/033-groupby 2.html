@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>2 R Markdown | R Study Guide for Cronkite School of Journalism</title>
+  <title>6 Verbs 2: group_by and summarise | R Study Guide for Cronkite School of Journalism</title>
   <meta name="description" content="A companion book for the Cronkite School’s data journalism class for graduate students. A work in progress." />
   <meta name="generator" content="bookdown 0.17 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="2 R Markdown | R Study Guide for Cronkite School of Journalism" />
+  <meta property="og:title" content="6 Verbs 2: group_by and summarise | R Study Guide for Cronkite School of Journalism" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="https://cronkitedata.github.io/rstudyguide" />
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="cronkitedata/rstudyguide" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="2 R Markdown | R Study Guide for Cronkite School of Journalism" />
+  <meta name="twitter:title" content="6 Verbs 2: group_by and summarise | R Study Guide for Cronkite School of Journalism" />
   
   <meta name="twitter:description" content="A companion book for the Cronkite School’s data journalism class for graduate students. A work in progress." />
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   <link rel="shortcut icon" href="favicon.io" type="image/x-icon" />
-<link rel="prev" href="011-r-install.html"/>
-<link rel="next" href="022-data-frames.html"/>
+<link rel="prev" href="031-select-filter.html"/>
+<link rel="next" href="A02-programming.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -176,7 +176,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4" data-path="030-intro-verbs.html"><a href="030-intro-verbs.html"><i class="fa fa-check"></i><b>4</b> A quick tour of verbs</a><ul>
 <li class="chapter" data-level="4.1" data-path="030-intro-verbs.html"><a href="030-intro-verbs.html#key-takeaways-3"><i class="fa fa-check"></i><b>4.1</b> Key takeaways</a><ul>
 <li class="chapter" data-level="" data-path="030-intro-verbs.html"><a href="030-intro-verbs.html#data-for-this-walkthrough"><i class="fa fa-check"></i>Data for this walkthrough</a></li>
-<li class="chapter" data-level="4.1.1" data-path="030-intro-verbs.html"><a href="030-intro-verbs.html#follow-along"><i class="fa fa-check"></i><b>4.1.1</b> Follow along</a></li>
 <li><a href="030-intro-verbs.html#the-operator-and-then">The <code>%&gt;%</code> operator: … and then…</a></li>
 </ul></li>
 <li class="chapter" data-level="4.2" data-path="030-intro-verbs.html"><a href="030-intro-verbs.html#looking-at-your-data-in-pieces-and-in-order"><i class="fa fa-check"></i><b>4.2</b> Looking at your data in pieces and in order</a><ul>
@@ -184,9 +183,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.2.2" data-path="030-intro-verbs.html"><a href="030-intro-verbs.html#arrange-to-sort"><i class="fa fa-check"></i><b>4.2.2</b> <code>arrange</code> to sort</a></li>
 <li class="chapter" data-level="4.2.3" data-path="030-intro-verbs.html"><a href="030-intro-verbs.html#filter-to-pick-out-rows"><i class="fa fa-check"></i><b>4.2.3</b> <code>filter</code> to pick out rows</a></li>
 </ul></li>
-<li class="chapter" data-level="4.3" data-path="030-intro-verbs.html"><a href="030-intro-verbs.html#group_by-and-summarise-to-count-and-sum"><i class="fa fa-check"></i><b>4.3</b> <code>group_by</code> and <code>summarise</code> to count and sum</a></li>
-<li class="chapter" data-level="4.4" data-path="030-intro-verbs.html"><a href="030-intro-verbs.html#mutate-to-calculate-something-new"><i class="fa fa-check"></i><b>4.4</b> <code>mutate</code> to calculate something new</a></li>
-<li class="chapter" data-level="4.5" data-path="030-intro-verbs.html"><a href="030-intro-verbs.html#join-to-merge-tables-together-by-column-union-to-add-rows"><i class="fa fa-check"></i><b>4.5</b> <code>join</code> to merge tables together by column; <code>union</code> to add rows</a></li>
+<li class="chapter" data-level="4.3" data-path="030-intro-verbs.html"><a href="030-intro-verbs.html#group_by-and-summarise-to-count-and-sum"><i class="fa fa-check"></i><b>4.3</b> <code>group_by</code> and <code>summarise</code> to count and sum</a><ul>
+<li class="chapter" data-level="4.3.1" data-path="030-intro-verbs.html"><a href="030-intro-verbs.html#mutate-to-calculate-something-new"><i class="fa fa-check"></i><b>4.3.1</b> <code>mutate</code> to calculate something new</a></li>
+<li class="chapter" data-level="4.3.2" data-path="030-intro-verbs.html"><a href="030-intro-verbs.html#tk-left_join-to-merge-with-other-tables."><i class="fa fa-check"></i><b>4.3.2</b> TK <code>left_join</code> to merge with other tables.</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="030-intro-verbs.html"><a href="030-intro-verbs.html#resources-and-exercises-2"><i class="fa fa-check"></i><b>4.4</b> Resources and exercises</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="031-select-filter.html"><a href="031-select-filter.html"><i class="fa fa-check"></i><b>5</b> Verbs Part 1: Picking and choosing</a><ul>
 <li class="chapter" data-level="5.1" data-path="031-select-filter.html"><a href="031-select-filter.html#key-takeaways-4"><i class="fa fa-check"></i><b>5.1</b> Key takeaways</a></li>
@@ -201,8 +202,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.4" data-path="031-select-filter.html"><a href="031-select-filter.html#arrange---change-the-order"><i class="fa fa-check"></i><b>5.4</b> Arrange - change the order</a></li>
 <li class="chapter" data-level="5.5" data-path="031-select-filter.html"><a href="031-select-filter.html#traps"><i class="fa fa-check"></i><b>5.5</b> Traps</a></li>
 <li class="chapter" data-level="5.6" data-path="031-select-filter.html"><a href="031-select-filter.html#resources-1"><i class="fa fa-check"></i><b>5.6</b> Resources</a><ul>
-<li class="chapter" data-level="5.6.1" data-path="031-select-filter.html"><a href="031-select-filter.html#exercises-1"><i class="fa fa-check"></i><b>5.6.1</b> Exercises</a></li>
-<li class="chapter" data-level="5.6.2" data-path="031-select-filter.html"><a href="031-select-filter.html#tutorials"><i class="fa fa-check"></i><b>5.6.2</b> Tutorials</a></li>
+<li class="chapter" data-level="5.6.1" data-path="031-select-filter.html"><a href="031-select-filter.html#tutorials"><i class="fa fa-check"></i><b>5.6.1</b> Tutorials</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="033-groupby.html"><a href="033-groupby.html"><i class="fa fa-check"></i><b>6</b> Verbs 2: group_by and summarise</a><ul>
@@ -216,7 +216,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6.3.1" data-path="033-groupby.html"><a href="033-groupby.html#a-note-on-restructuring-your-data-frames"><i class="fa fa-check"></i><b>6.3.1</b> A note on restructuring your data frames</a></li>
 </ul></li>
 <li class="chapter" data-level="6.4" data-path="033-groupby.html"><a href="033-groupby.html#resources-exercises"><i class="fa fa-check"></i><b>6.4</b> Resources &amp; exercises</a><ul>
-<li class="chapter" data-level="6.4.1" data-path="033-groupby.html"><a href="033-groupby.html#exercises-2"><i class="fa fa-check"></i><b>6.4.1</b> Exercises</a></li>
+<li class="chapter" data-level="6.4.1" data-path="033-groupby.html"><a href="033-groupby.html#exercises-1"><i class="fa fa-check"></i><b>6.4.1</b> Exercises</a></li>
 </ul></li>
 </ul></li>
 <li class="appendix"><span><b>Appendix</b></span></li>
@@ -256,167 +256,164 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="r-markdown" class="section level1">
-<h1><span class="header-section-number">2</span> R Markdown</h1>
-<style>
-   table {
-      font-size:.9em;
-   }
-</style>
-<div id="key-takeaways-1" class="section level2">
-<h2><span class="header-section-number">2.1</span> Key takeaways</h2>
+<div id="verbs-2-group_by-and-summarise" class="section level1">
+<h1><span class="header-section-number">6</span> Verbs 2: group_by and summarise</h1>
+<div id="key-takeaways-5" class="section level2">
+<h2><span class="header-section-number">6.1</span> Key takeaways</h2>
 <ul>
-<li>Markdown makes documenting your work easy</li>
-<li>Formatting commands in Markdown: headings, links, lists and images.</li>
-<li>Adding and running code chunks</li>
-<li>Knitting your markdown into a finished document with code and results.</li>
+<li><code>group_by</code> and <code>summarise</code> are the R equivalent to Excel’s pivot tables</li>
+<li>Together, they’re usually used to answer questions like “how many?” and “how much?”.</li>
+<li>You will rarely use <code>group_by</code> without <code>summarise</code>.</li>
+<li><code>group_by</code> is picky - it will create a separate answer for every variant of a category: “Lettuce” could be one, and “lettuce” could be another.</li>
+<li>Rolling up your totals to allow for percentage changes</li>
+<li>Rearranging your data for easier reading with <code>pivot_wider</code></li>
 </ul>
+<p>This continues with the Arizona immunization data from chapter 4 and assumes you’ve gone through that chapter. It uses some of the other verbs introduced there. If you’ve started a new project, you can <a href="https://github.com/cronkitedata/rstudyguide/blob/master/data/az-immunizations-grade6.Rda?raw=true">re-download the data in R form</a>, and the load it in an R Markdown code chunk with this line:</p>
+<pre><code>load(&quot;az-immunizations-grade6.Rda&quot;)</code></pre>
+<p>(Be sure to preface it with a subfolder name if you’ve saved it in one.)</p>
+<p>When you run your first code chunk you should have a data frame called <code>grade6_counts</code> in your environment tab:</p>
+<p><img src="images/33-loadfile.png" /></p>
 </div>
-<div id="getting-started-with-r-markdown" class="section level2">
-<h2><span class="header-section-number">2.2</span> Getting started with R Markdown</h2>
-<p>Markdown was invented as an easy way for early contributors to Wikipedia to author documents that would translate to the web. It uses simple formatting rules that don’t require any background in programming, HTML or CSS formatting code. This book is written using Markdown. Variants of markdown are used to create many web sites, including those hosted on Github.</p>
-<p>R Markdown is an enhanced version of markdown. In it, you write your document around chunks of R code, which integrates your analysis with your writing. (R Markdown is also designed to output your work in other formats, like an actual printed book or slides.) Some news organizations do much of their internal work using R Markdown documents and code.</p>
-<p>You must install the rmarkdown package before you can use this feature. Install it in the Console. You only have to do this once on each computer, or in each project on rstudio.cloud:</p>
-<pre><code>  install.packages(&quot;rmarkdown&quot;)</code></pre>
-<p>Unlike other packages, it’s automatically loaded when you start up R Studio.</p>
-</div>
-<div id="the-anatomy-of-a-document" class="section level2">
-<h2><span class="header-section-number">2.3</span> The anatomy of a document</h2>
-<p>Markdown uses simple punctuation to create outline levels, lists, links and other elements of a page.</p>
-<p>There are four parts to an R Markdown document:</p>
-<ol style="list-style-type: decimal">
-<li>The “front matter”, or YAML.</li>
-<li>Plain text with formatting indicators.</li>
-<li>Code chunks – your R computer code.</li>
-<li>The results of code chunks - what you get back when you execute the code.</li>
-</ol>
-<p>The plain text follows a few basic rules. <a href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet">This markdown cheatsheet from Adam Pritchard</a> goes through them, but the most common are:</p>
+<div id="group_by-summarise-basics" class="section level2">
+<h2><span class="header-section-number">6.2</span> group_by / summarise<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a> basics</h2>
+<p>Think of grouping as making piles of things while summarise counts, adds or creates other summary statistics.</p>
+<p>Where filtering and selecting let you hone in on individual items that meet specific criteria, grouping and summarising help you answer the questions of “how many?” and “how much?” They’re the equivalent to pivot tables in Excel.</p>
+<p>To refresh your memory, this query counts the number of schools and adds up the number of students by type of school while giving them descriptive names:</p>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb40-1" title="1">grade6_counts <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb40-2" title="2"><span class="st">  </span><span class="kw">group_by</span> (school_type) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb40-3" title="3"><span class="st">  </span><span class="kw">summarise</span> ( <span class="dt">schools =</span> <span class="kw">n</span>() ,</a>
+<a class="sourceLine" id="cb40-4" title="4">              <span class="dt">student =</span> <span class="kw">sum</span> (enrolled, <span class="dt">na.rm=</span><span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb40-5" title="5">      )</a></code></pre></div>
+<p>Notice the <code>na.rm=TRUE</code> in the sum() function. You should almost always add this to any summary math function, like sum(), median(), mean(), etc. If you don’t, a single missing value (<code>NA</code>) will result in an answer of <code>NA</code>. That’s good practice and it makes sense: you should <em>want</em> to know if your data has missing or invalid information. But normally you have no choice but to ignore it.</p>
+<div id="other-summary-functions" class="section level3">
+<h3><span class="header-section-number">6.2.1</span> Other summary functions</h3>
+<p>Counting and summing are the most common, but you might also use these functions:</p>
 <table>
 <thead>
 <tr class="header">
-<th>Symbol</th>
-<th>Format</th>
-<th>Comments</th>
+<th>Function</th>
+<th>description</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td><code>#</code></td>
-<td>First level outline</td>
-<td>usually reserved for the title</td>
+<td>n_distinct ()</td>
+<td>the number of unique values of the variable you name</td>
 </tr>
 <tr class="even">
-<td><code>##</code></td>
-<td>Second level outline</td>
-<td>… and so on</td>
+<td>median () , mean()</td>
+<td>The median or mean of a numeric variable</td>
 </tr>
 <tr class="odd">
-<td><code>*</code></td>
-<td>A bulleted list item</td>
-<td>Separate from the text by one empty line</td>
-</tr>
-<tr class="even">
-<td><code>1</code></td>
-<td>A numbered list</td>
-<td></td>
-</tr>
-<tr class="odd">
-<td><code>[]()</code></td>
-<td>A link</td>
-<td><code>[my link words](http....)</code></td>
-</tr>
-<tr class="even">
-<td><code>![]()</code></td>
-<td>An image link</td>
-<td><code>![alt-text](path/to/myimage.jpg)</code></td>
-</tr>
-<tr class="odd">
-<td><code>&lt;&gt;</code></td>
-<td>A simple link shown as an address</td>
-<td><code>&lt;https/cronkitedata.github...</code>&gt;</td>
-</tr>
-<tr class="even">
-<td><code>**</code></td>
-<td>Bold text</td>
-<td><code>**This would be bold**</code></td>
-</tr>
-<tr class="odd">
-<td><code>*</code></td>
-<td>Italic text</td>
-<td><code>*This would be italic*</code></td>
+<td>min() , max()</td>
+<td>Just what it looks like</td>
 </tr>
 </tbody>
 </table>
-<div id="front-matter-yaml-at-the-top" class="section level4 unnumbered">
-<h4>Front matter / YAML at the top</h4>
-<p>The way the R knows to do these things is by reading the very top of the file and looking at the section between the three dashes, which gives values to specific items R Markdown is expecting in a format called YAML. It’s very picky about this, so if you get an error, look there for a problem.</p>
-<p>The good news is that the YAML is created for you when you create a new R Markdown document. When you get more comfortable, you may want to tweak the look and feel of your document by adding parts to this section.</p>
-<pre><code>---
-title: &quot;Title for your page&quot;
-author: &quot;Sarah Cohen&quot;
-date: &quot;1/6/2020&quot;
-output: html_document
----</code></pre>
+</div>
+<div id="grouping-by-more-than-one-variable" class="section level3">
+<h3><span class="header-section-number">6.2.2</span> Grouping by more than one variable</h3>
+<p>An example of counting by school type, and whether a school nurse is on staff:</p>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb41-1" title="1">grade6_counts <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb41-2" title="2"><span class="st">  </span><span class="kw">group_by</span> ( school_type, school_nurse) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb41-3" title="3"><span class="st">  </span><span class="kw">summarise</span> ( <span class="dt">num_schools =</span> <span class="kw">n</span>() ) </a></code></pre></div>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["school_type"],"name":[1],"type":["chr"],"align":["left"]},{"label":["school_nurse"],"name":[2],"type":["chr"],"align":["left"]},{"label":["num_schools"],"name":[3],"type":["int"],"align":["right"]}],"data":[{"1":"CHARTER","2":"NO","3":"169"},{"1":"CHARTER","2":"YES","3":"24"},{"1":"PRIVATE","2":"NO","3":"32"},{"1":"PRIVATE","2":"YES","3":"35"},{"1":"PUBLIC","2":"NO","3":"240"},{"1":"PUBLIC","2":"YES","3":"408"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+<p>It produces every combination of the school_type and school_nurse.</p>
+</div>
+<div id="rolling-up-to-the-next-level" class="section level3">
+<h3><span class="header-section-number">6.2.3</span> Rolling up to the next level</h3>
+<p>If you wanted to know what percent of schools are charter, you’d need the total number of schools as a variable in your data frame. You can roll up to the next level this way:</p>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb42-1" title="1">grade6_counts <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb42-2" title="2"><span class="st">  </span><span class="kw">group_by</span>( school_type ) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb42-3" title="3"><span class="st">  </span><span class="kw">summarise</span> (<span class="dt">schools =</span> <span class="kw">n</span>() ) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb42-4" title="4"><span class="st">  </span><span class="kw">mutate</span>  ( <span class="dt">total =</span> <span class="kw">sum</span>( schools),</a>
+<a class="sourceLine" id="cb42-5" title="5">            <span class="dt">pct_total =</span> schools<span class="op">/</span><span class="st"> </span>total <span class="op">*</span><span class="st"> </span><span class="dv">100</span> ) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb42-6" title="6"><span class="st">  </span><span class="kw">arrange</span> ( <span class="kw">desc</span> (schools))</a></code></pre></div>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["school_type"],"name":[1],"type":["chr"],"align":["left"]},{"label":["schools"],"name":[2],"type":["int"],"align":["right"]},{"label":["total"],"name":[3],"type":["int"],"align":["right"]},{"label":["pct_total"],"name":[4],"type":["dbl"],"align":["right"]}],"data":[{"1":"PUBLIC","2":"648","3":"908","4":"71.365639"},{"1":"CHARTER","2":"193","3":"908","4":"21.255507"},{"1":"PRIVATE","2":"67","3":"908","4":"7.378855"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+<div id="a-note-on-count-and-tally" class="section level4 unnumbered">
+<h4>A note on count() and tally()</h4>
+<p>You may see other tutorials in which the group_by / summarise is shortened to use two other verbs, <code>tally()</code> and <code>count()</code>. They’re perfectly good for a very quick review of the data, but it’s a little hard to follow how they work. For now, sticking with the group_by / summarise sequence will help you cement it in your mind while at the same time making it closer to what you’ll find in other programming languages.</p>
+<p>When you get further along, you’ll notice that count() is really useful to isolate lines that could be duplicates.</p>
 </div>
 </div>
-<div id="knitting-your-document" class="section level2">
-<h2><span class="header-section-number">2.4</span> Knitting your document</h2>
-<p>Look at the top of your screen, and you’ll see a knitting needle and the word, “Knit”. Pressing that button will convert your markdown into the finished document.</p>
-<p>Here’s how it looks pre-knitted and after knitting:</p>
-<p><img src="images/21-first-markdown.png" /></p>
-<p>There are three reasons it might not work:</p>
+</div>
+<div id="restructuring-for-a-report-with-pivot_wider" class="section level2">
+<h2><span class="header-section-number">6.3</span> Restructuring for a report with <code>pivot_wider()</code></h2>
+<p>It’s hard to read multi-level groupings, so the tidyverse offers a way to spread one variable across the top with the other down the side. This is just like dragging one column into the “Columns” area in a pivot table, and another into the “Rows”. Here is how you’d make a crosstab like those in Excel using this method:</p>
+<p><img src="images/33-pivot-wider.png" /></p>
+<p>Here’s a full example of creating “column” percentages and then showing them as a crosstab. See if you can piece together what’s going on. If not, try moving pieces of the query outside the code chunk (and remove your <code>%&gt;%</code> operator) and run it piece by piece.</p>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb43-1" title="1">grade6_counts <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb43-2" title="2"><span class="st">  </span><span class="kw">group_by</span> (school_type, school_nurse) <span class="op">%&gt;%</span><span class="st">                           </span><span class="co"># See 1</span></a>
+<a class="sourceLine" id="cb43-3" title="3"><span class="st">  </span><span class="kw">summarise</span> ( <span class="dt">schools =</span> <span class="kw">n</span>() ) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb43-4" title="4"><span class="st">  </span><span class="kw">mutate</span> ( <span class="dt">types =</span> <span class="kw">sum</span>(schools),                                     <span class="co"># See 2</span></a>
+<a class="sourceLine" id="cb43-5" title="5">           <span class="dt">pct_types =</span> schools<span class="op">/</span>types<span class="op">*</span><span class="dv">100</span>) <span class="op">%&gt;%</span><span class="st">                        </span><span class="co"># See 3 </span></a>
+<a class="sourceLine" id="cb43-6" title="6"><span class="st">  </span><span class="kw">select</span> (school_type, school_nurse, pct_types) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb43-7" title="7"><span class="st">  </span><span class="kw">pivot_wider</span> ( <span class="dt">names_from =</span> school_type, <span class="dt">values_from =</span> pct_types)   <span class="co">#See 4</span></a></code></pre></div>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["school_nurse"],"name":[1],"type":["chr"],"align":["left"]},{"label":["CHARTER"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["PRIVATE"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["PUBLIC"],"name":[4],"type":["dbl"],"align":["right"]}],"data":[{"1":"NO","2":"87.56477","3":"47.76119","4":"37.03704"},{"1":"YES","2":"12.43523","3":"52.23881","4":"62.96296"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+<p>Now you have a crosstab showing that public schools are five times as likely to have a school nurse as charter schools (63/12), and private schools are in between. Remember the rule:</p>
+<blockquote>
+<p>The independent variable, or the thing that comes first, is in your column and the thing that comes
+second is in your rows. Then calculate the column percentage</p>
+</blockquote>
+<p>Walking through this code:</p>
 <ol style="list-style-type: decimal">
-<li>You haven’t saved the document yet.</li>
-<li>There is an error in that top YAML section. Just copy one that works and try again.</li>
-<li>There is an error in your R code. (You’ll see how to skip a chunk with an error later on.)</li>
+<li>Do a usual group_by/summarise by the type of school and whether there are school nurses. The order matters, in order to get the right percentages.</li>
+<li>Calcuate the sum <em>at the next level</em>, which is by school type – this is a hidden feature of group_by, in that it rolls up sequentially through the variables you have grouped on – to get the total by school_nurse, then calcuate the percentage off of that.</li>
+<li>Keep only the variables you want to see in the end.</li>
+<li>pivot it!</li>
 </ol>
-<p>I usually change one default option: I have a large screen so I like to see my document in RStudio rather than as a separate document so I don’t have to flip back and forth between windows. To do that, change the options by clicking on the little gear near the knit button:</p>
-<p><img src="images/21-knitter.png" /></p>
-</div>
-<div id="code-chunks" class="section level2">
-<h2><span class="header-section-number">2.5</span> Code chunks</h2>
-<p>So far, this is just a simple document. It doesn’t contain any R code. To add code, you insert a “code chunk”. You can add it by clicking the +Insert button at the top of the document, or by pressing <em>Option/Alt-Cmd-i</em> Add your code in the gray area between the triple-backtic symbols. Run the code chunk by pressing the arrow button within it, or by pressing Cmd/Ctl-Shft-Enter (either Cmd or Ctl)</p>
-<p><img src="images/22-code-chunk.gif" /></p>
-<p>This might not seem like much, but think about how it helps you do your analysis. You can write all of your notes right where you do the work. You don’t have to copy and paste information from one place to another, or share out-of-date spreadsheets with your teammates.</p>
-<div id="r-markdown-starts-from-scratch" class="section level4 unnumbered">
-<h4>R Markdown starts from scratch</h4>
-<p>Every time you close down your computer or restart R, you have to run every code chunk to get back to where you left off. This includes loading any libraries and data. This is actually good – it ensures that your project is reproducable. But it can be confusing at first. I just knit my program as soon as I start up R each time, which takes me to where I left off.</p>
+<div id="a-note-on-restructuring-your-data-frames" class="section level3">
+<h3><span class="header-section-number">6.3.1</span> A note on restructuring your data frames</h3>
+<p><code>pivot_wider</code> is part of a whole set of functions designed to work with tidy data, and fix untidy data. You’ll sometimes see it called <code>spread</code>, which is from an older version of the tidyverse, and is harder to understand. We’ll come back to some of this later on.</p>
 </div>
 </div>
-<div id="resources-and-exercises-1" class="section level2">
-<h2><span class="header-section-number">2.6</span> Resources and exercises</h2>
-<div id="resources" class="section level3 unnumbered">
-<h3>Resources</h3>
+<div id="resources-exercises" class="section level2">
+<h2><span class="header-section-number">6.4</span> Resources &amp; exercises</h2>
+<p>If you got through this, congratulations! You’ve mastered one of the things that people new to data analysis struggle find difficult to wrap their heads around. If you’re still unsure, don’t worry – many people are. Maybe some of these resources will help:</p>
 <ul>
-<li>“<a href="https://ds4ps.org/docs/#what-are-data-driven-docs">Data driven docs</a>” walkthrough on DS4PS (or, Data Science for the Public Sector)</li>
-<li>RStudio has a <a href="https://rmarkdown.rstudio.com/authoring_quick_tour.html">quick tour of R Markdown</a> that goes through more than you even need. It goes a little fast.</li>
+<li>Mary Jo Webster’s “<a href="https://mjwebster.github.io/DataJ/R/IntroAnalysisWithR.html">Intro to analysis with Tidyverse</a>” is a walkthrough aimed at group by / summarise.</li>
+<li>Go back to <a href="https://cronkitedata.github.io/cronkite-docs/excel/practice/12-excel-baseball">Pivot Tables in Excel</a> - it’s the same thing.</li>
+<li>Susan Baert’s dplyr tutorial: <a href="https://suzan.rbind.io/2018/04/dplyr-tutorial-4/">summarizing data</a></li>
+<li>Matt Waite’s “<a href="http://mattwaite.github.io/sports/aggregates.html">Aggregates</a>” chapter</li>
 </ul>
-</div>
-<div id="exercises" class="section level3 unnumbered">
-<h3>Exercises</h3>
-<p>Make sure you have already installed the <code>rmarkdown</code> package before going further.</p>
-<p>Create a new R Markdown document with the following elements:</p>
+<div id="exercises-1" class="section level3">
+<h3><span class="header-section-number">6.4.1</span> Exercises</h3>
 <ul>
-<li>Front matter with your name, the date and a title for your page.</li>
-<li>A heading introducing a subtopic</li>
-<li>Within that heading, a list of three things about yourself or about a topic you love, in a bulleted list.</li>
-<li>Another heading</li>
-<li>An image that you like (you’ll have to save it in your project.)</li>
-<li>Another heading</li>
-<li>A code chunk, in which you create a variable and assign it a value.</li>
+<li>Using one of the datasets you worked with in pivot tables, try to replicate at least some of your work in R.</li>
 </ul>
-<p>Then knit the document and compare the sections.</p>
 
+<!-- Add link to the drag queen coding class. See if there are other good first-day programming aides I should add.-->
 </div>
 </div>
+</div>
+
+
+
+<div class="footnotes">
+<hr />
+<ol start="2">
+<li id="fn2"><p>The tidyverse uses the British spelling of a lot of words. You can use the American spelling, but you’ll usually see it this way.<a href="033-groupby.html#fnref2" class="footnote-back">↩</a></p></li>
+</ol>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="011-r-install.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="022-data-frames.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="031-select-filter.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="A02-programming.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
