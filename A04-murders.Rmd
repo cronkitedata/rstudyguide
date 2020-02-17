@@ -8,7 +8,7 @@
 </style>
 
 
-The Murder Accountability Project was profiled in the New Yorker in November, 2017, and was used by Andrew Ba Tran in his R for Journalists' course for the Knight Center. This set of tutorials adapts his exercises for people using this textbook. You should consider taking his entire free full course if you want to get more detail. 
+The Murder Accountability Project was profiled in the [New Yorker in November, 2017](https://www.newyorker.com/magazine/2017/11/27/the-serial-killer-detector). Andrew B Tran brilliantly decided to use its data as a vehicle for learning R in his [R for Journalists' online class](https://learn.r-journalism.com/en/).  This set of tutorials adapts his exercises for people using this textbook. You should consider taking his entire free full course if you want to get more detail. 
 
 ```{r include=FALSE}
 
@@ -66,7 +66,7 @@ Try doing these one step at a time by adding to a query :
     
 3. List all of the murders in which the killer was the husband of the victim. This can be done using either the relationship or the relationship_code.
 
-4. Add a condition that the wifes were at least 60 years old. 
+4. Add a condition that the wives were at least 60 years old. 
 
 5. Sort the answer by oldest to youngest
 
@@ -80,7 +80,7 @@ Finding out what codes are in the data could be done with a `group_by`/`summaris
            arrange (weapon_code)
 
 
-The verb `distinct` is used instead of `select` to just show a list of values that are never repeated. When you run that code, you can see why it's sometimes useful to keep codes as well as words in a dataset -- codes 1 through 5 refer to some kind of gun. 
+The verb `distinct` is used instead of `select` to just show a list of values that are never repeated. When you run that code, you can see why it's sometimes useful to keep codes as well as words in a dataset -- codes "11" through "15" refer to some kind of gun. 
 
 **Q: Find all gun-related murders of young black or Hispanic men since 2015.
 You can define "young" however you want, but in my example I'll use victims between 15 and 29. 
@@ -140,7 +140,7 @@ Guns:
 
         ... weapon_code %in% c("11", "12", "13", "14", "15")
 
-(This is a text variable even though it looks like numbers - that means you need the quotes. Don't forget to use the "c" for "combine into a list" before the list of values)
+(This is a text variable even though it looks like numbers - that means you need the quotes. Don't forget to use the "c" for "combine into a list" before the list of values)^[ If you wanted to go further with filtering, you might look at the `regular expressions` available for more sophisticated filtering using the `str_detect` function. In this case,  `str_detect (weapon_code, "^1")` searches for anything in the field that begins with a "1".]
 
 Since 2015:
 
@@ -162,7 +162,7 @@ Black and Hispanic victims:
         (vic_race_code  == "B" | vic_ethnic_code = "H")
         
 
-That last one is the trickiest -- If you want to find both African-American AND Hispanic victims, you need to look for a race code of "B" OR an ethnicity code of "H". Those have to be in a parenthese in order not to be confused with the other conditions. (I'm going to select just some of the columns and order it by the year and month of the murder, showing only the most recent)
+That last one is the trickiest -- If you want to find both African-American AND Hispanic victims, you need to look for a race code of "B" OR an ethnicity code of "H". Those have to be in a parenthese in order not to be confused with the other conditions. (I'm going to select just some of the columns and order it by the year and month of the murder, showing only the most recent). (NOTE: Eliminate the last line of this code if you haven't installed and activated the "DT" package, which makes searchable, sortable tables.)  
 
 
 ```{r}
