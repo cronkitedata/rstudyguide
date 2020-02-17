@@ -11,6 +11,7 @@ rmd_files: ["index.Rmd",
             "031-select-filter.Rmd",
             "033-groupby.Rmd",
             "A02-programming.Rmd",
-            "A01-resources.Rmd"
+            "A01-resources.Rmd",
+            "A04-murders.Rmd"
             ] 
 output_dir: "docs"

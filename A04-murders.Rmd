@@ -1,0 +1,189 @@
+# Murder Accountability Project exercises
+
+
+<style>
+   table {
+      font-size:.8em;
+   }
+</style>
+
+
+The Murder Accountability Project was profiled in the New Yorker in November, 2017, and was used by Andrew Ba Tran in his R for Journalists' course for the Knight Center. This set of tutorials adapts his exercises for people using this textbook. You should consider taking his entire free full course if you want to get more detail. 
+
+```{r include=FALSE}
+
+library(tidyverse)
+library (DT)
+load("data/murder_data.Rda")
+
+
+```
+
+
+
+## The data
+
+[Download the data](https://github.com/cronkitedata/rstudyguide/blob/master/data/murder_data.Rda) into a new or existing R project, then load it using the `load(file="murder_data.Rda")` command in a code chunk. 
+
+This R dataset was created by subsetting only mountain states and Oregon and Washington from the national dataset, and converting the codes used in the original SPSS data into codes and their labels in separate variables. The data runs from 1976 through 2018. Here are the fields included: 
+
+
+```{r echo=FALSE}
+glimpse(murder_data)
+
+```
+
+Any variable that begins with `off` refers to the offender; any variable that begins with `vic` refers to the victim. Most variables are pretty self-explanatory, but here are a few details: 
+
+* `fip` and `state_fip` are standard codes used across many databases to identify geographic areas -- in this case, counties and states.
+* `msa_code` and `msa_name` refer to Metropolitan Statistical Areas, which combine nearby counties regardless of state into areas that are often considered on large metropolitan area, such as Washington DC and the Virginia and Maryland suburbs.
+* `ori`, `agency` and `agency_type` refer to the law enforcement agency -- police or sheriff's office -- that investigated the murder. An ORI is a standard code for each agency from the FBI. 
+* `relationship_code` and `relationship` can be confusing. They refer to the relationship of the victim to the offender, not the other way around. For example, "Wife" means that the victim was the killer's wife, not that the killer was the victim's wife. This is unclear in the FBI documentation. 
+
+More details are available in [this detailed record layout and data dictionary](https://www.dropbox.com/s/lo6tgo8nnbpqeru/MAPdefinitionsSHR.pdf?dl=1). 
+
+
+
+## Exercises by chapter
+
+### Select and filter exercises
+
+Here are some suggested exercises to practice what you learned in Chapter 3.1, Select and Filter: 
+
+
+#### Older wives as victims in Arizona {-}
+
+1. Create a new data frame called `arizona_murders` based on just the murders that were reported in that state.  
+
+Try doing these one step at a time by adding to a query : 
+
+2. Pick out just following variables to work with:  
+    * year
+    * name of the county and the police department, 
+    * whether it was solved, 
+    * demographics (eg, age, race, sex, ethnicity) of the victim and the offender, 
+    * information on the weapon and the relationship
+    
+3. List all of the murders in which the killer was the husband of the victim. This can be done using either the relationship or the relationship_code.
+
+4. Add a condition that the wifes were at least 60 years old. 
+
+5. Sort the answer by oldest to youngest
+
+
+#### Gun-related killings {-}
+
+Finding out what codes are in the data could be done with a `group_by`/`summarise` query, but there is another verb that can show you every **unique** value in a dataset. Use this code to show you every type of weapon used in the dataset: 
+
+        murder_data %>%
+           distinct (weapon_code, weapon) %>%
+           arrange (weapon_code)
+
+
+The verb `distinct` is used instead of `select` to just show a list of values that are never repeated. When you run that code, you can see why it's sometimes useful to keep codes as well as words in a dataset -- codes 1 through 5 refer to some kind of gun. 
+
+**Q: Find all gun-related murders of young black or Hispanic men since 2015.
+You can define "young" however you want, but in my example I'll use victims between 15 and 29. 
+
+In this example, you'll have to combine OR conditions, with others. Remember you can use BETWEEN for ranges of values or %in% for a list of values. 
+
+
+## Answers to exercises
+
+### Select and filter
+
+#### Arizona wives {-}
+
+1. Create a new dataset with just arizona: 
+
+```{r}
+arizona_murders <- 
+  murder_data %>%
+  filter ( state_abbr == "AZ")
+
+
+```
+
+
+You should have 15,443 rows in this dataset.
+
+2. The final set of queries might look like this. (You might have noticed you that you had one victim age 999 when you sorted. That means "unknown" in this dataset, so you'll want to filter that out as well.)
+
+```{r}
+
+arizona_murders  %>%
+  select ( year, cnty_name, agency, solved, 
+           starts_with("vic"), starts_with("off"), 
+           contains ("relationship")) %>%
+  filter (relationship == "Wife"  & 
+          vic_age >= 60 & 
+          vic_age < 999 )  %>%
+  arrange ( desc(vic_age)) 
+
+  
+
+```
+
+You could also use 
+      
+      relationship == "Wife"  & 
+          between (vic_age, 60, 998)  
+          
+
+You might also notice that there is a Male "wife" as a victim, reflecting how poorly many police agencies fill out these forms. 
+
+
+#### Gun-related killings {-}
+
+This is actually much more difficult than it sounds. Try to build it one piece at a time.  Here is how I might build the conditions: 
+Guns:
+
+        ... weapon_code %in% c("11", "12", "13", "14", "15")
+
+(This is a text variable even though it looks like numbers - that means you need the quotes. Don't forget to use the "c" for "combine into a list" before the list of values)
+
+Since 2015:
+
+        weapon_code %in% c("11", "12", "13", "14", "15") &
+        year >= 2015
+
+
+Young men: 
+
+        weapon_code %in% c("11", "12", "13", "14", "15") &
+        year >= 2015 & 
+        between (vic_age, 15, 29)
+
+Black and Hispanic victims:
+
+        weapon_code %in% c("11", "12", "13", "14", "15") &
+        year >= 2015 & 
+        between (vic_age, 15, 29)  &
+        (vic_race_code  == "B" | vic_ethnic_code = "H")
+        
+
+That last one is the trickiest -- If you want to find both African-American AND Hispanic victims, you need to look for a race code of "B" OR an ethnicity code of "H". Those have to be in a parenthese in order not to be confused with the other conditions. (I'm going to select just some of the columns and order it by the year and month of the murder, showing only the most recent)
+
+
+```{r}
+
+murder_data %>%
+  filter ( weapon_code %in% c("11", "12", "13", "14", "15") &
+           year >= 2015 & 
+           between (vic_age, 15, 29)  &
+           (vic_race_code  == "B" | vic_ethnic_code == "H")
+        ) %>%
+  select (year, month, cnty_name, state_abbr, solved, vic_age, vic_race, vic_ethnic,  weapon, relationship, circumstance ) %>%
+  arrange (year, month) %>%
+  tail (50) %>%
+  datatable( options = list(scrollX = '500px'))
+
+
+```
+
+If this complex filter seems too complex, you can always chain one filter after another to check your data as you go. For example, you could do this: 
+
+         murder_data %>%
+            filter ( weapon_code %in% c("11", "12", "13", "14", "15") ) %>%
+            filter ( vic_race_code == "B" | vic_ethnic_code == "H") ....
+  

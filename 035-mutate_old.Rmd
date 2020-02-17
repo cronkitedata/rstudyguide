@@ -1,0 +1,131 @@
+# Verbs 3: mutate
+
+## Key takeaways
+
+
+* *mutate* just means "compute", or convert one or more variables into something new. 
+* mutate is the same thing as creating a new column in Excel with a formula
+* There are several common mutate tasks. The most important for us are:
+  * Convert unstandardized data into standardized, such as yes-or-no variables or all lower case
+  * Use arithmetic on numeric variables
+  * Use conditional statements to put different values on variables, instead of filtering one at a time.
+
+* OPTIONAL:
+  * Mutate can replace text or values
+  * Change the data *type* from, say, text to date and time.
+
+## Read in some data
+
+We've read the Serial Killer Detective from the New Yorker in class. The project makes the dataset public, and Andrew Ba Tran uses the entire country's data in his online course at [R for Journalists](https://learn.r-journalism.com/en/). I've taken that dataset, made it a little simpler and pulled out just the Arizona cases. 
+
+As always, load the tidyverse
+
+```{r message=FALSE}
+
+library(tidyverse)
+
+```
+
+
+And load a dataset saved in native R format from our course website: 
+
+```{r}
+
+
+load (url("https://cronkitedata.github.io/cronkite-docs/assets/data/r-data/murders.Rda"))
+#print out the structure of the dataset
+str(murders)
+
+
+```
+
+
+## Simple arithmetic
+
+Use the usual arithmetic operators to calculate numbers: 
+
+      + Addition
+      - Subtraction
+      * Multiplication
+      / Division
+      
+
+Using Andrew's example, calcuate the difference in age between the victim and the offender, but only when both exist. (The dataset codes the age as 999 when it's not available.)
+
+```{r}
+
+murders %>%
+  select ( id, state, agency, solved, year, victim_age, offender_age) %>%
+  filter ( victim_age < 999 & offender_age < 999) %>%
+  mutate (  age_diff_from_offender  = 
+                offender_age - victim_age) %>%
+  head()
+
+```
+
+## Create categories
+
+In this case, we might just want to note whether the offender was older or younger than the victim. This is a conditional statement. R has two ways to do conditionals: 
+
+* if_else  : Use it when there are only two possible outcomes, yes or no
+* case_when : Use it when there are several different possible conditions or outcomes.
+      
+
+We'll stick with if_else for now, which has the syntax: 
+
+        if_else   (   condition , 
+                      value if true, 
+                      value if false
+                      )
+
+
+
+Here's what the new variable might look like: 
+
+
+```{r}
+murders %>%
+  select ( id, state, agency, solved, year, victim_age, offender_age) %>%
+  filter ( victim_age < 999 & offender_age < 999) %>%
+  mutate (  victim_younger_older = 
+                if_else (victim_age < offender_age, 
+                         "Younger", 
+                         "Older or the same")
+          ) %>%    
+  select (-year, -solved)   %>% # ex. take away vars with minus sign
+  head()
+
+
+```
+
+Note that because we only have two choices, we have to code people of the same age in one of the two groups. You'd use case_when if you wanted to create three groups. 
+
+Keep this in mind when we get to group_by. It's a way to create categories you can use in groups.
+
+## Standardize data
+
+There are several problems that often come with datasets in the wild: They have extra spaces floating around that are considered important characters, or they're in mixed case form, or they use different words for the same thing. When you find these, you'll want to use "string" operations to standardize them. One example is lower-casing all words so you don't need to pay attention to them. In this case, we're replacing the original variable with its lower-cased one. 
+
+(This generally isn't a good idea -- you'd usually create a new variable, because you may need to get back to the original some day. But if you're creating a new dataset, it's not as important.): 
+
+```{r}
+
+murders %>%
+  select ( agency) %>%
+  mutate (agency = tolower(agency))  %>%
+  head()
+
+```
+
+
+
+## Resources
+
+* Andrew Ba Tran's "R for Journalists", bottom of chapter 3, "[Wrangling data](https://learn.r-journalism.com/en/wrangling/dplyr/dplyr/)"  
+* Mary Jo Webster's "[Intro to analysis with Tidyverse](https://mjwebster.github.io/DataJ/R/IntroAnalysisWithR.html)" is a walkthrough aimed at group by / summarise.
+* Go back to Pivot Tables in Excel - it's the same thing. 
+* Susan Baert's dplyr tutorial: [summarizing data](https://suzan.rbind.io/2018/04/dplyr-tutorial-4/)
+* Matt Waite's "[Aggregates](http://mattwaite.github.io/sports/aggregates.html)" chapter
+
+
+

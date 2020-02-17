@@ -51,6 +51,14 @@
 
 <link href="libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet" />
 <script src="libs/pagedtable-1.1/js/pagedtable.js"></script>
+<script src="libs/htmlwidgets-1.5.1/htmlwidgets.js"></script>
+<link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
+<script src="libs/datatables-binding-0.11/datatables.js"></script>
+<link href="libs/dt-core-1.10.19/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="libs/dt-core-1.10.19/css/jquery.dataTables.extra.css" rel="stylesheet" />
+<script src="libs/dt-core-1.10.19/js/jquery.dataTables.min.js"></script>
+<link href="libs/crosstalk-1.0.0/css/crosstalk.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.0.0/js/crosstalk.min.js"></script>
 
 
 <style type="text/css">
@@ -239,6 +247,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="B.2" data-path="A01-resources.html"><a href="A01-resources.html#coursework-in-r"><i class="fa fa-check"></i><b>B.2</b> Coursework in R</a></li>
 <li class="chapter" data-level="B.3" data-path="A01-resources.html"><a href="A01-resources.html#instructional-screencasts-and-videos"><i class="fa fa-check"></i><b>B.3</b> Instructional screencasts and videos</a></li>
 </ul></li>
+<li class="chapter" data-level="C" data-path="A04-murders.html"><a href="A04-murders.html"><i class="fa fa-check"></i><b>C</b> Murder Accountability Project exercises</a><ul>
+<li class="chapter" data-level="C.1" data-path="A04-murders.html"><a href="A04-murders.html#the-data"><i class="fa fa-check"></i><b>C.1</b> The data</a></li>
+<li class="chapter" data-level="C.2" data-path="A04-murders.html"><a href="A04-murders.html#exercises-by-chapter"><i class="fa fa-check"></i><b>C.2</b> Exercises by chapter</a><ul>
+<li class="chapter" data-level="C.2.1" data-path="A04-murders.html"><a href="A04-murders.html#select-and-filter-exercises"><i class="fa fa-check"></i><b>C.2.1</b> Select and filter exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="C.3" data-path="A04-murders.html"><a href="A04-murders.html#answers-to-exercises"><i class="fa fa-check"></i><b>C.3</b> Answers to exercises</a><ul>
+<li class="chapter" data-level="C.3.1" data-path="A04-murders.html"><a href="A04-murders.html#select-and-filter"><i class="fa fa-check"></i><b>C.3.1</b> Select and filter</a></li>
+</ul></li>
+</ul></li>
 </ul>
 
       </nav>
@@ -279,11 +296,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Think of grouping as making piles of things while summarise counts, adds or creates other summary statistics.</p>
 <p>Where filtering and selecting let you hone in on individual items that meet specific criteria, grouping and summarising help you answer the questions of “how many?” and “how much?” They’re the equivalent to pivot tables in Excel.</p>
 <p>To refresh your memory, this query counts the number of schools and adds up the number of students by type of school while giving them descriptive names:</p>
-<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb40-1" title="1">grade6_counts <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb40-2" title="2"><span class="st">  </span><span class="kw">group_by</span> (school_type) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb40-3" title="3"><span class="st">  </span><span class="kw">summarise</span> ( <span class="dt">schools =</span> <span class="kw">n</span>() ,</a>
-<a class="sourceLine" id="cb40-4" title="4">              <span class="dt">student =</span> <span class="kw">sum</span> (enrolled, <span class="dt">na.rm=</span><span class="ot">TRUE</span>)</a>
-<a class="sourceLine" id="cb40-5" title="5">      )</a></code></pre></div>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb41-1" title="1">grade6_counts <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb41-2" title="2"><span class="st">  </span><span class="kw">group_by</span> (school_type) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb41-3" title="3"><span class="st">  </span><span class="kw">summarise</span> ( <span class="dt">schools =</span> <span class="kw">n</span>() ,</a>
+<a class="sourceLine" id="cb41-4" title="4">              <span class="dt">student =</span> <span class="kw">sum</span> (enrolled, <span class="dt">na.rm=</span><span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb41-5" title="5">      )</a></code></pre></div>
 <p>Notice the <code>na.rm=TRUE</code> in the sum() function. You should almost always add this to any summary math function, like sum(), median(), mean(), etc. If you don’t, a single missing value (<code>NA</code>) will result in an answer of <code>NA</code>. That’s good practice and it makes sense: you should <em>want</em> to know if your data has missing or invalid information. But normally you have no choice but to ignore it.</p>
 <div id="other-summary-functions" class="section level3">
 <h3><span class="header-section-number">6.2.1</span> Other summary functions</h3>
@@ -314,9 +331,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="grouping-by-more-than-one-variable" class="section level3">
 <h3><span class="header-section-number">6.2.2</span> Grouping by more than one variable</h3>
 <p>An example of counting by school type, and whether a school nurse is on staff:</p>
-<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb41-1" title="1">grade6_counts <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb41-2" title="2"><span class="st">  </span><span class="kw">group_by</span> ( school_type, school_nurse) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb41-3" title="3"><span class="st">  </span><span class="kw">summarise</span> ( <span class="dt">num_schools =</span> <span class="kw">n</span>() ) </a></code></pre></div>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb42-1" title="1">grade6_counts <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb42-2" title="2"><span class="st">  </span><span class="kw">group_by</span> ( school_type, school_nurse) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb42-3" title="3"><span class="st">  </span><span class="kw">summarise</span> ( <span class="dt">num_schools =</span> <span class="kw">n</span>() ) </a></code></pre></div>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
 {"columns":[{"label":["school_type"],"name":[1],"type":["chr"],"align":["left"]},{"label":["school_nurse"],"name":[2],"type":["chr"],"align":["left"]},{"label":["num_schools"],"name":[3],"type":["int"],"align":["right"]}],"data":[{"1":"CHARTER","2":"NO","3":"169"},{"1":"CHARTER","2":"YES","3":"24"},{"1":"PRIVATE","2":"NO","3":"32"},{"1":"PRIVATE","2":"YES","3":"35"},{"1":"PUBLIC","2":"NO","3":"240"},{"1":"PUBLIC","2":"YES","3":"408"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
@@ -327,12 +344,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="rolling-up-to-the-next-level" class="section level3">
 <h3><span class="header-section-number">6.2.3</span> Rolling up to the next level</h3>
 <p>If you wanted to know what percent of schools are charter, you’d need the total number of schools as a variable in your data frame. You can roll up to the next level this way:</p>
-<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb42-1" title="1">grade6_counts <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb42-2" title="2"><span class="st">  </span><span class="kw">group_by</span>( school_type ) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb42-3" title="3"><span class="st">  </span><span class="kw">summarise</span> (<span class="dt">schools =</span> <span class="kw">n</span>() ) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb42-4" title="4"><span class="st">  </span><span class="kw">mutate</span>  ( <span class="dt">total =</span> <span class="kw">sum</span>( schools),</a>
-<a class="sourceLine" id="cb42-5" title="5">            <span class="dt">pct_total =</span> schools<span class="op">/</span><span class="st"> </span>total <span class="op">*</span><span class="st"> </span><span class="dv">100</span> ) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb42-6" title="6"><span class="st">  </span><span class="kw">arrange</span> ( <span class="kw">desc</span> (schools))</a></code></pre></div>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb43-1" title="1">grade6_counts <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb43-2" title="2"><span class="st">  </span><span class="kw">group_by</span>( school_type ) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb43-3" title="3"><span class="st">  </span><span class="kw">summarise</span> (<span class="dt">schools =</span> <span class="kw">n</span>() ) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb43-4" title="4"><span class="st">  </span><span class="kw">mutate</span>  ( <span class="dt">total =</span> <span class="kw">sum</span>( schools),</a>
+<a class="sourceLine" id="cb43-5" title="5">            <span class="dt">pct_total =</span> schools<span class="op">/</span><span class="st"> </span>total <span class="op">*</span><span class="st"> </span><span class="dv">100</span> ) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb43-6" title="6"><span class="st">  </span><span class="kw">arrange</span> ( <span class="kw">desc</span> (schools))</a></code></pre></div>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
 {"columns":[{"label":["school_type"],"name":[1],"type":["chr"],"align":["left"]},{"label":["schools"],"name":[2],"type":["int"],"align":["right"]},{"label":["total"],"name":[3],"type":["int"],"align":["right"]},{"label":["pct_total"],"name":[4],"type":["dbl"],"align":["right"]}],"data":[{"1":"PUBLIC","2":"648","3":"908","4":"71.365639"},{"1":"CHARTER","2":"193","3":"908","4":"21.255507"},{"1":"PRIVATE","2":"67","3":"908","4":"7.378855"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
@@ -350,13 +367,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>It’s hard to read multi-level groupings, so the tidyverse offers a way to spread one variable across the top with the other down the side. This is just like dragging one column into the “Columns” area in a pivot table, and another into the “Rows”. Here is how you’d make a crosstab like those in Excel using this method:</p>
 <p><img src="images/33-pivot-wider.png" /></p>
 <p>Here’s a full example of creating “column” percentages and then showing them as a crosstab. See if you can piece together what’s going on. If not, try moving pieces of the query outside the code chunk (and remove your <code>%&gt;%</code> operator) and run it piece by piece.</p>
-<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb43-1" title="1">grade6_counts <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb43-2" title="2"><span class="st">  </span><span class="kw">group_by</span> (school_type, school_nurse) <span class="op">%&gt;%</span><span class="st">                           </span><span class="co"># See 1</span></a>
-<a class="sourceLine" id="cb43-3" title="3"><span class="st">  </span><span class="kw">summarise</span> ( <span class="dt">schools =</span> <span class="kw">n</span>() ) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb43-4" title="4"><span class="st">  </span><span class="kw">mutate</span> ( <span class="dt">types =</span> <span class="kw">sum</span>(schools),                                     <span class="co"># See 2</span></a>
-<a class="sourceLine" id="cb43-5" title="5">           <span class="dt">pct_types =</span> schools<span class="op">/</span>types<span class="op">*</span><span class="dv">100</span>) <span class="op">%&gt;%</span><span class="st">                        </span><span class="co"># See 3 </span></a>
-<a class="sourceLine" id="cb43-6" title="6"><span class="st">  </span><span class="kw">select</span> (school_type, school_nurse, pct_types) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb43-7" title="7"><span class="st">  </span><span class="kw">pivot_wider</span> ( <span class="dt">names_from =</span> school_type, <span class="dt">values_from =</span> pct_types)   <span class="co">#See 4</span></a></code></pre></div>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb44-1" title="1">grade6_counts <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb44-2" title="2"><span class="st">  </span><span class="kw">group_by</span> (school_type, school_nurse) <span class="op">%&gt;%</span><span class="st">                           </span><span class="co"># See 1</span></a>
+<a class="sourceLine" id="cb44-3" title="3"><span class="st">  </span><span class="kw">summarise</span> ( <span class="dt">schools =</span> <span class="kw">n</span>() ) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb44-4" title="4"><span class="st">  </span><span class="kw">mutate</span> ( <span class="dt">types =</span> <span class="kw">sum</span>(schools),                                     <span class="co"># See 2</span></a>
+<a class="sourceLine" id="cb44-5" title="5">           <span class="dt">pct_types =</span> schools<span class="op">/</span>types<span class="op">*</span><span class="dv">100</span>) <span class="op">%&gt;%</span><span class="st">                        </span><span class="co"># See 3 </span></a>
+<a class="sourceLine" id="cb44-6" title="6"><span class="st">  </span><span class="kw">select</span> (school_type, school_nurse, pct_types) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb44-7" title="7"><span class="st">  </span><span class="kw">pivot_wider</span> ( <span class="dt">names_from =</span> school_type, <span class="dt">values_from =</span> pct_types)   <span class="co">#See 4</span></a></code></pre></div>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
 {"columns":[{"label":["school_nurse"],"name":[1],"type":["chr"],"align":["left"]},{"label":["CHARTER"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["PRIVATE"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["PUBLIC"],"name":[4],"type":["dbl"],"align":["right"]}],"data":[{"1":"NO","2":"87.56477","3":"47.76119","4":"37.03704"},{"1":"YES","2":"12.43523","3":"52.23881","4":"62.96296"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
