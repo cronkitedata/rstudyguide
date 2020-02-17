@@ -88,6 +88,18 @@ You can define "young" however you want, but in my example I'll use victims betw
 In this example, you'll have to combine OR conditions, with others. Remember you can use BETWEEN for ranges of values or %in% for a list of values. 
 
 
+#### Advanced exercises using other conditions
+
+If you're feeling adventurous, try figuring out how you might find: 
+
+* Any domestic-violence related incidents. Hint: This would be an `%in%` condition once you look at your options using either "distinct" or a group-by query. 
+
+* Try using `str_detect` when you want to use wild cards instead of exact matches. These take regular expressions as arguments. So to find any gun in this dataset, you'd use 
+
+      str_detect(weapon_code, "^1")
+
+(For more details on regular expressions, try the [Regex101 tutorial](https://cronkitedata.github.io/cronkite-docs/special/regex-beginning.html) on our class website. Using regular expressions is often a way to make queries shorter and less fussy, but they are not as clear to a reader -- they often take some puzzling through.)
+
 ## Answers to exercises
 
 ### Select and filter

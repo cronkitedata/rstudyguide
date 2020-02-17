@@ -387,15 +387,22 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>To follow along with this tutorial, download <a href="https://github.com/cronkitedata/rstudyguide/blob/master/data/az-immunizations-grade6.Rda?raw=true">this R dataset</a>, put it in your project folder (or upload to your rstudio.cloud project) and include the following code chunk. You may need to install “DT” and “scales” if you haven’t already :</p>
 <div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb16-1" title="1"><span class="kw">library</span>(tidyverse)</a>
 <a class="sourceLine" id="cb16-2" title="2"><span class="kw">library</span>(DT)</a>
-<a class="sourceLine" id="cb16-3" title="3"><span class="kw">library</span>(scales)</a>
-<a class="sourceLine" id="cb16-4" title="4"></a>
-<a class="sourceLine" id="cb16-5" title="5"><span class="co">#this loads a pre-created R data file. Note that here, it&#39;s saved in a subfolder called &quot;data&quot;. </span></a>
-<a class="sourceLine" id="cb16-6" title="6"><span class="co"># You&#39;ll need to remove that folder path if you saved it elsewhere.</span></a>
-<a class="sourceLine" id="cb16-7" title="7"></a>
-<a class="sourceLine" id="cb16-8" title="8"><span class="kw">load</span>(<span class="dt">file=</span><span class="st">&quot;data/az-immunizations-grade6.Rda&quot;</span>)</a>
-<a class="sourceLine" id="cb16-9" title="9"></a>
-<a class="sourceLine" id="cb16-10" title="10"><span class="co"># this suppresses scientific notation.</span></a>
-<a class="sourceLine" id="cb16-11" title="11"><span class="kw">options</span>(<span class="dt">scipen=</span><span class="dv">999</span>, <span class="dt">digits=</span><span class="dv">7</span>)</a></code></pre></div>
+<a class="sourceLine" id="cb16-3" title="3"><span class="kw">library</span>(scales)</a></code></pre></div>
+<pre><code>## 
+## Attaching package: &#39;scales&#39;</code></pre>
+<pre><code>## The following object is masked from &#39;package:purrr&#39;:
+## 
+##     discard</code></pre>
+<pre><code>## The following object is masked from &#39;package:readr&#39;:
+## 
+##     col_factor</code></pre>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb20-1" title="1"><span class="co">#this loads a pre-created R data file. Note that here, it&#39;s saved in a subfolder called &quot;data&quot;. </span></a>
+<a class="sourceLine" id="cb20-2" title="2"><span class="co"># You&#39;ll need to remove that folder path if you saved it elsewhere.</span></a>
+<a class="sourceLine" id="cb20-3" title="3"></a>
+<a class="sourceLine" id="cb20-4" title="4"><span class="kw">load</span>(<span class="dt">file=</span><span class="st">&quot;data/az-immunizations-grade6.Rda&quot;</span>)</a>
+<a class="sourceLine" id="cb20-5" title="5"></a>
+<a class="sourceLine" id="cb20-6" title="6"><span class="co"># this suppresses scientific notation.</span></a>
+<a class="sourceLine" id="cb20-7" title="7"><span class="kw">options</span>(<span class="dt">scipen=</span><span class="dv">999</span>, <span class="dt">digits=</span><span class="dv">7</span>)</a></code></pre></div>
 <p>Possible errors:</p>
 <ul>
 <li><p>Some variation of “file not found”: Look at the path to the file name. If your data isn’t saved there, it won’t be found. Another possibility is that you have opened your R Markdown file as a file, not created it as part of a project, so the default path is wrong.</p></li>
@@ -415,11 +422,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="select-to-pick-out-columns" class="section level3">
 <h3><span class="header-section-number">4.2.1</span> <code>select</code> to pick out columns</h3>
 <p>In Excel, there was no easy way to filter data <em>vertically</em>. We could only filter rows. The <code>select</code> verb picks out specific columns. Rename them at the same time by putting the new name on the left side of an equal sign:</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb18-1" title="1">grade6_counts <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb18-2" title="2"><span class="st">    </span><span class="kw">select</span> ( <span class="dt">school =</span> school_name,</a>
-<a class="sourceLine" id="cb18-3" title="3">             county, </a>
-<a class="sourceLine" id="cb18-4" title="4">             enrolled) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb18-5" title="5"><span class="st">    </span><span class="kw">head</span>(<span class="dv">3</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb22-1" title="1">grade6_counts <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb22-2" title="2"><span class="st">    </span><span class="kw">select</span> ( <span class="dt">school =</span> school_name,</a>
+<a class="sourceLine" id="cb22-3" title="3">             county, </a>
+<a class="sourceLine" id="cb22-4" title="4">             enrolled) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb22-5" title="5"><span class="st">    </span><span class="kw">head</span>(<span class="dv">3</span>)</a></code></pre></div>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
 {"columns":[{"label":["school"],"name":[1],"type":["chr"],"align":["left"]},{"label":["county"],"name":[2],"type":["chr"],"align":["left"]},{"label":["enrolled"],"name":[3],"type":["dbl"],"align":["right"]}],"data":[{"1":"ABRAHAM LINCOLN TRADITIONAL SCHOOL","2":"MARICOPA","3":"59"},{"1":"ACACIA ELEMENTARY SCHOOL","2":"MARICOPA","3":"134"},{"1":"ACADEMY DEL SOL - HOPE","2":"PIMA","3":"53"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
@@ -431,12 +438,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>In Excel, the “Sort” menu item is used to arrange data alphabetically or in numeric order. That’s confusing, because “sorting” can be construed a lot of different ways. For instance, you might “sort” M&amp;Ms into their colors.</p>
 <p>But in R, the verb is “arrange”, which is much clearer conceptually. The <code>arrange</code> verb puts the rows in order based on the column or columns you specify.</p>
 <p>This arranges the data from the highest to lowest enrollment by using the <code>desc</code> indicator. You can have more than one column, which takes over when there’s a tie.</p>
-<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb19-1" title="1">grade6_counts <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb19-2" title="2"><span class="st">    </span><span class="kw">select</span> ( <span class="dt">school =</span> school_name,</a>
-<a class="sourceLine" id="cb19-3" title="3">             county, </a>
-<a class="sourceLine" id="cb19-4" title="4">             enrolled) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb19-5" title="5"><span class="st">    </span><span class="kw">arrange</span> ( <span class="kw">desc</span>(enrolled)) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb19-6" title="6"><span class="st">    </span><span class="kw">head</span>(<span class="dv">3</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb23-1" title="1">grade6_counts <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb23-2" title="2"><span class="st">    </span><span class="kw">select</span> ( <span class="dt">school =</span> school_name,</a>
+<a class="sourceLine" id="cb23-3" title="3">             county, </a>
+<a class="sourceLine" id="cb23-4" title="4">             enrolled) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb23-5" title="5"><span class="st">    </span><span class="kw">arrange</span> ( <span class="kw">desc</span>(enrolled)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb23-6" title="6"><span class="st">    </span><span class="kw">head</span>(<span class="dv">3</span>)</a></code></pre></div>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
 {"columns":[{"label":["school"],"name":[1],"type":["chr"],"align":["left"]},{"label":["county"],"name":[2],"type":["chr"],"align":["left"]},{"label":["enrolled"],"name":[3],"type":["dbl"],"align":["right"]}],"data":[{"1":"MARC T ATKINSON MIDDLE SCHOOL","2":"MARICOPA","3":"422"},{"1":"ESTRELLA MIDDLE SCHOOL","2":"MARICOPA","3":"406"},{"1":"KYRENE APRENDE MIDDLE SCHOOL","2":"MARICOPA","3":"364"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
@@ -447,9 +454,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3><span class="header-section-number">4.2.3</span> <code>filter</code> to pick out rows</h3>
 <p>This is one place where the Excel terminology carries over to R. There is a whole chapter on filtering – it can get quite sophisticated – but just remember that it is much more picky than you’re accustomed to. The computer sees <em>MARICOPA</em> as a completely different word than <em>Maricopa</em>, for example.</p>
 <p>Use two equals sign to test for a match (<code>==</code>) : and they have to match exactly.</p>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb20-1" title="1">grade6_counts <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb20-2" title="2"><span class="st">    </span><span class="kw">select</span> (school_name, enrolled) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb20-3" title="3"><span class="st">    </span><span class="kw">filter</span> ( school_name <span class="op">==</span><span class="st"> &quot;AMPHITHEATER MIDDLE SCHOOL&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb24-1" title="1">grade6_counts <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb24-2" title="2"><span class="st">    </span><span class="kw">select</span> (school_name, enrolled) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb24-3" title="3"><span class="st">    </span><span class="kw">filter</span> ( school_name <span class="op">==</span><span class="st"> &quot;AMPHITHEATER MIDDLE SCHOOL&quot;</span>)</a></code></pre></div>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
 {"columns":[{"label":["school_name"],"name":[1],"type":["chr"],"align":["left"]},{"label":["enrolled"],"name":[2],"type":["dbl"],"align":["right"]}],"data":[{"1":"AMPHITHEATER MIDDLE SCHOOL","2":"295"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
@@ -462,12 +469,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>The group_by and summarise command is just like a pivot table, but it has a lot more power when you get to know it. At its simplest, it does just what a pivot table does:</p>
 <p><img src="images/30-pivot-to-summary.png" /></p>
 <p><code>group_by</code> puts each row into categories, such as the school types above. <code>summarise</code> calculates summary statistics such as counts – or <code>n()</code> – and sums:</p>
-<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb21-1" title="1">grade6_counts <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb21-2" title="2"><span class="st">    </span><span class="kw">filter</span> ( county <span class="op">==</span><span class="st"> &quot;MARICOPA&quot;</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb21-3" title="3"><span class="st">    </span><span class="kw">group_by</span> ( school_type ) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb21-4" title="4"><span class="st">    </span><span class="kw">summarise</span> ( <span class="kw">sum</span> (enrolled),</a>
-<a class="sourceLine" id="cb21-5" title="5">                <span class="kw">n</span>()</a>
-<a class="sourceLine" id="cb21-6" title="6">    ) </a></code></pre></div>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb25-1" title="1">grade6_counts <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb25-2" title="2"><span class="st">    </span><span class="kw">filter</span> ( county <span class="op">==</span><span class="st"> &quot;MARICOPA&quot;</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb25-3" title="3"><span class="st">    </span><span class="kw">group_by</span> ( school_type ) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb25-4" title="4"><span class="st">    </span><span class="kw">summarise</span> ( <span class="kw">sum</span> (enrolled),</a>
+<a class="sourceLine" id="cb25-5" title="5">                <span class="kw">n</span>()</a>
+<a class="sourceLine" id="cb25-6" title="6">    ) </a></code></pre></div>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
 {"columns":[{"label":["school_type"],"name":[1],"type":["chr"],"align":["left"]},{"label":["sum(enrolled)"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["n()"],"name":[3],"type":["int"],"align":["right"]}],"data":[{"1":"CHARTER","2":"9091","3":"124"},{"1":"PRIVATE","2":"1808","3":"41"},{"1":"PUBLIC","2":"45654","3":"434"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
@@ -477,11 +484,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="mutate-to-calculate-something-new" class="section level2">
 <h2><span class="header-section-number">4.4</span> <code>mutate</code> to calculate something new</h2>
 <p>The verb <code>mutate</code> means to take old information and turn it into a new column. The most obvious example in this data is to get the schools with the lowest immunization rates:</p>
-<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb22-1" title="1">grade6_counts <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb22-2" title="2"><span class="st">    </span><span class="kw">mutate</span> (<span class="dt">pct_immune =</span> (num_immune_mmr <span class="op">/</span><span class="st"> </span>enrolled) <span class="op">*</span><span class="st"> </span><span class="dv">100</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb22-3" title="3"><span class="st">    </span><span class="kw">arrange</span> (pct_immune) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb22-4" title="4"><span class="st">    </span><span class="kw">select</span>  (school_name, pct_immune, num_immune_mmr, enrolled) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb22-5" title="5"><span class="st">    </span><span class="kw">head</span>(<span class="dv">10</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb26-1" title="1">grade6_counts <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb26-2" title="2"><span class="st">    </span><span class="kw">mutate</span> (<span class="dt">pct_immune =</span> (num_immune_mmr <span class="op">/</span><span class="st"> </span>enrolled) <span class="op">*</span><span class="st"> </span><span class="dv">100</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb26-3" title="3"><span class="st">    </span><span class="kw">arrange</span> (pct_immune) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb26-4" title="4"><span class="st">    </span><span class="kw">select</span>  (school_name, pct_immune, num_immune_mmr, enrolled) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb26-5" title="5"><span class="st">    </span><span class="kw">head</span>(<span class="dv">10</span>)</a></code></pre></div>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
 {"columns":[{"label":["school_name"],"name":[1],"type":["chr"],"align":["left"]},{"label":["pct_immune"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["num_immune_mmr"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["enrolled"],"name":[4],"type":["dbl"],"align":["right"]}],"data":[{"1":"SHEPHERD OF THE DESERT LUTHERAN SCHOOL","2":"47.82609","3":"11","4":"23"},{"1":"WELLTON ELEMENTARY SCHOOL","2":"56.00000","3":"14","4":"25"},{"1":"MOUNTAIN OAK CHARTER SCHOOL","2":"59.09091","3":"13","4":"22"},{"1":"DESERT STAR COMMUNITY SCHOOL","2":"60.86957","3":"14","4":"23"},{"1":"KINDERTOTS","2":"60.86957","3":"14","4":"23"},{"1":"DESERT MARIGOLD SCHOOL","2":"64.28571","3":"18","4":"28"},{"1":"PATHFINDER ACADEMY","2":"66.66667","3":"30","4":"45"},{"1":"SAINT AGNES CATHOLIC SCHOOL","2":"66.66667","3":"18","4":"27"},{"1":"TRINITY CHRISTIAN SCHOOL","2":"66.66667","3":"14","4":"21"},{"1":"PINE FOREST CHARTER SCHOOL","2":"69.23077","3":"18","4":"26"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
