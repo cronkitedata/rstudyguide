@@ -88,7 +88,7 @@ You can define "young" however you want, but in my example I'll use victims betw
 In this example, you'll have to combine OR conditions, with others. Remember you can use BETWEEN for ranges of values or %in% for a list of values. 
 
 
-#### Advanced exercises using other conditions
+#### Advanced exercises using other conditions {-}
 
 If you're feeling adventurous, try figuring out how you might find: 
 
@@ -99,6 +99,22 @@ If you're feeling adventurous, try figuring out how you might find:
       str_detect(weapon_code, "^1")
 
 (For more details on regular expressions, try the [Regex101 tutorial](https://cronkitedata.github.io/cronkite-docs/special/regex-beginning.html) on our class website. Using regular expressions is often a way to make queries shorter and less fussy, but they are not as clear to a reader -- they often take some puzzling through.)
+
+
+### Group by and summarise
+
+The group by exercises are just like a pivot table. In fact, to turn it on its head, you use the command "pivot_wider"
+
+#### Relationship by sex {-}
+
+One value of group_by queries is to look for combinations that should never happen and get a sense of how inconsistent your data is. Try creating a query that: 
+
+* Counts the murders by relationship. That is, how many are there that say "Wife", "Husband", etc. Keep both the relationship_code and the relationship variables in your query. 
+
+* Filter just for husbands and wives in the relationship, then add the gender of the victim and offender to your query.  
+
+You should see that there are some errors in the coding in the original data. IRL, you'd have to figure out what to do with that.
+
 
 ## Answers to exercises
 
@@ -198,4 +214,34 @@ If this complex filter seems too complex, you can always chain one filter after 
          murder_data %>%
             filter ( weapon_code %in% c("11", "12", "13", "14", "15") ) %>%
             filter ( vic_race_code == "B" | vic_ethnic_code == "H") ....
+            
+            
+            
+### Group by 
+
+#### Murders by relationship {-}
+
+```{r}
+
+murder_data %>%
+  group_by (relationship_code, relationship) %>%
+  summarise (num_of_cases = n() )
+
+```
+
+#### Add in sex of victim and offender {-}
+
+Filter using either the relationship_code or the relationship. You can use the %in% operator for this. Try arranging by the most number of cases to the least
+
+```{r}
+
+murder_data %>%
+  filter ( relationship %in% c("Husband", "Wife")) %>%
+  group_by (relationship, vic_sex, off_sex) %>%
+  summarise ( num_of_cases = n() ) %>%
+  arrange ( desc (num_of_cases) )
+
+
+```
+  
   
