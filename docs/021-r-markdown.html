@@ -166,6 +166,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="021-r-markdown.html"><a href="021-r-markdown.html#resources"><i class="fa fa-check"></i>Resources</a></li>
 <li class="chapter" data-level="" data-path="021-r-markdown.html"><a href="021-r-markdown.html#exercises"><i class="fa fa-check"></i>Exercises</a></li>
 </ul></li>
+<li class="chapter" data-level="2.7" data-path="021-r-markdown.html"><a href="021-r-markdown.html#bonus-styling-your-r-markdown-documents"><i class="fa fa-check"></i><b>2.7</b> Bonus: Styling your R Markdown documents</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="022-data-frames.html"><a href="022-data-frames.html"><i class="fa fa-check"></i><b>3</b> Data frames and the tidyverse</a><ul>
 <li class="chapter" data-level="3.1" data-path="022-data-frames.html"><a href="022-data-frames.html#key-takeaways-2"><i class="fa fa-check"></i><b>3.1</b> Key takeaways</a></li>
@@ -425,8 +426,55 @@ output: html_document
 <li>A code chunk, in which you create a variable and assign it a value.</li>
 </ul>
 <p>Then knit the document and compare the sections.</p>
-
 </div>
+</div>
+<div id="bonus-styling-your-r-markdown-documents" class="section level2">
+<h2><span class="header-section-number">2.7</span> Bonus: Styling your R Markdown documents</h2>
+<p>Once you’re familiar with R Markdown and comfortable with it, you’ll probably want to make your documents look a little more 21st century than the default. Here are a few things you can do to make it look better:</p>
+<p>You can change most style options of a document through the YAML front matter that we’ve largely left alone so far. When you create a new document, that front matter is created for you between three dashes at the top. It might usually look like this:</p>
+<pre><code>  ---
+  title: &quot;My title&quot;
+  author: &quot;My name&quot;
+  date: &quot;1/24/2020&quot;
+  output: html_document
+  ---</code></pre>
+<p>This section is <em>really</em> picky, which is why we’ve left it alone so far. But you can change several styling options very easily if you’re careful.</p>
+<p>Among the most simple things to change are:</p>
+<ul>
+<li>A new theme with more modern colors and fonts.</li>
+<li>Tables that are “paged” rather than simple text output</li>
+<li>A table of contents for links to each heading.</li>
+</ul>
+<p>Without doing much else, you can change the look and feel of the knitted document by using free <a href="https://bootswatch.com/3/">Bootswatch themes</a> (toward the bottom of the page on the bootswatch site). You’ll have to be careful changing the front matter when you use them – it’s very sensitive to exact syntax, including indentation.</p>
+<p>This example does three things:</p>
+<ol style="list-style-type: decimal">
+<li><p>Uses the “journal” theme from Bootswatch</p></li>
+<li><p>Creates a table of contents that goes to the 2nd outline level (<code>##</code> in your markdown)</p></li>
+<li><p>Prints tables in a more fancy way, that pages both vertically and horizonatally. Just be careful with this: It will print up to 10,000 rows, even if you can’t see them, bringing your browser to a halt pretty quickly.</p>
+<pre><code>   ---
+   title: &quot;My title&quot;
+   author: &quot;My name&quot;
+   date: &quot;1/24/2020&quot;
+   output: 
+      html_document:
+         df_print: paged
+         theme: journal
+         toc: true
+         toc_depth: 2
+   ---</code></pre></li>
+</ol>
+<p>Here’s a preview of what my example markdown would look like with these options:</p>
+<div class="figure">
+<img src="images/21-journal-example.png" alt="journal example with toc" />
+<p class="caption">journal example with toc</p>
+</div>
+<p>There are a lot of other ways to style these documents using other packages. A few you might look into if you’re interested:</p>
+<ul>
+<li><code>prettydocs</code>, which tries to match up with the default Github Pages themes.</li>
+<li><a href="https://cran.r-project.org/web/packages/kableExtra/vignettes/awesome_table_in_html.html"><code>kable</code> and <code>kableExtra</code></a> to work with styling tables.</li>
+<li><a href="https://rstudio.github.io/DT/"><code>DT</code></a> datatables that latches into the Javascript DataTables library, making sortable, searchable tables with tight control over formatting. (Not for the faint of heart if you don’t already know Javascript.)</li>
+</ul>
+
 </div>
 </div>
             </section>

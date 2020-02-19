@@ -166,6 +166,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="021-r-markdown.html"><a href="021-r-markdown.html#resources"><i class="fa fa-check"></i>Resources</a></li>
 <li class="chapter" data-level="" data-path="021-r-markdown.html"><a href="021-r-markdown.html#exercises"><i class="fa fa-check"></i>Exercises</a></li>
 </ul></li>
+<li class="chapter" data-level="2.7" data-path="021-r-markdown.html"><a href="021-r-markdown.html#bonus-styling-your-r-markdown-documents"><i class="fa fa-check"></i><b>2.7</b> Bonus: Styling your R Markdown documents</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="022-data-frames.html"><a href="022-data-frames.html"><i class="fa fa-check"></i><b>3</b> Data frames and the tidyverse</a><ul>
 <li class="chapter" data-level="3.1" data-path="022-data-frames.html"><a href="022-data-frames.html#key-takeaways-2"><i class="fa fa-check"></i><b>3.1</b> Key takeaways</a></li>
@@ -316,12 +317,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Asks the tidyverse to execute the function <em>read_csv</em> on the stored link address. The function can read files stored on the web or on your computer.</li>
 </ol>
 <p>This data is from the Phoenix open government site, and contains staff salaries as of 2018</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" title="1"><span class="co">#the location on the Web for the data set&#39;s csv download</span></a>
-<a class="sourceLine" id="cb8-2" title="2">my_link &lt;-<span class="st"> &quot;https://www.phoenixopendata.com/dataset/0c02bbfd-08d9-41e9-a00c-97848a9f7350/resource/3a5c2950-88e3-4cb4-b436-c78d2a266c75/download/open-data-staff-salaries-as-of-12-31-2018.csv&quot;</span></a>
-<a class="sourceLine" id="cb8-3" title="3"></a>
-<a class="sourceLine" id="cb8-4" title="4"></a>
-<a class="sourceLine" id="cb8-5" title="5"><span class="co">#use it in a read_csv command</span></a>
-<a class="sourceLine" id="cb8-6" title="6">phx_salaries &lt;-<span class="st"> </span><span class="kw">read_csv</span>( my_link  )</a></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" title="1"><span class="co">#the location on the Web for the data set&#39;s csv download</span></a>
+<a class="sourceLine" id="cb10-2" title="2">my_link &lt;-<span class="st"> &quot;https://www.phoenixopendata.com/dataset/0c02bbfd-08d9-41e9-a00c-97848a9f7350/resource/3a5c2950-88e3-4cb4-b436-c78d2a266c75/download/open-data-staff-salaries-as-of-12-31-2018.csv&quot;</span></a>
+<a class="sourceLine" id="cb10-3" title="3"></a>
+<a class="sourceLine" id="cb10-4" title="4"></a>
+<a class="sourceLine" id="cb10-5" title="5"><span class="co">#use it in a read_csv command</span></a>
+<a class="sourceLine" id="cb10-6" title="6">phx_salaries &lt;-<span class="st"> </span><span class="kw">read_csv</span>( my_link  )</a></code></pre></div>
 <p>When you run this code, you’ll rececive a scary looking message. Don’t worry - it’s just giving you some information about what it found in the online file:</p>
 <div class="figure">
 <img src="images/21-rdataframe-parse-message.png" alt="Parsing message from import" />
@@ -339,7 +340,7 @@ read_delimited()</code></pre>
 <p>You should now see the name of the data frame in your Global Environment. Click on it to View it, or issue the <code>View(phx_salaries)</code> command.</p>
 <p><img src="images/23-view-salaries.jpg" /></p>
 <p>You can look at your data by clicking on its name in the “Global Environment” window, or by using some standard functions in R to explore them. Use the head() function to look at the top and the tail() function to look at the bottom:</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" title="1"><span class="kw">head</span>(phx_salaries)</a></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" title="1"><span class="kw">head</span>(phx_salaries)</a></code></pre></div>
 <table>
 <thead>
 <tr class="header">
@@ -370,7 +371,7 @@ read_delimited()</code></pre>
 </tr>
 </tbody>
 </table>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" title="1"><span class="kw">tail</span>(phx_salaries)</a></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" title="1"><span class="kw">tail</span>(phx_salaries)</a></code></pre></div>
 <table>
 <thead>
 <tr class="header">
@@ -402,7 +403,7 @@ read_delimited()</code></pre>
 </tbody>
 </table>
 <p>.. and use the “structure” command to see the variable names and types.</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" title="1"><span class="kw">str</span>(phx_salaries)</a></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" title="1"><span class="kw">str</span>(phx_salaries)</a></code></pre></div>
 <pre><code>## Classes &#39;spec_tbl_df&#39;, &#39;tbl_df&#39;, &#39;tbl&#39; and &#39;data.frame&#39;: 11956 obs. of  4 variables:
 ##  $ LAST_NAME  : chr  &quot;Aamodt&quot; &quot;Abbitt&quot; &quot;Abbott&quot; &quot;Abdellatif&quot; ...
 ##  $ FIRST_NAME : chr  &quot;Gail&quot; &quot;Ryan&quot; &quot;Christie&quot; &quot;Tariq&quot; ...
@@ -435,15 +436,15 @@ This is how I explain the ‘pipe’ to <a href="https://twitter.com/hashtag/rst
 <p>Here’s a simple example with a verb called <code>rename</code>. It takes the names of the variables from the first line, AND THEN renames them!</p>
 <p>This is something you often have to do because R will assume that the first row of the csv file contains the names of your variables. Using them, though, can be a pain – you have to remember whether they’re upper or lower case, and you have to put back-ticks (`) around any names with spaces or special characters.</p>
 <p>Here’s what using the pipe looks like to create a NEW data frame out of the old one with the names changed to lower case with underscores, a common pattern in many computer programs:</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" title="1">phx_salaries_renamed &lt;-<span class="st">                   </span><span class="co">#create a new data frame out of the next set of commands</span></a>
-<a class="sourceLine" id="cb15-2" title="2"><span class="st">   </span>phx_salaries <span class="op">%&gt;%</span><span class="st">                       </span><span class="co">#start with the original data frame name, AND THEN</span></a>
-<a class="sourceLine" id="cb15-3" title="3"><span class="st">   </span><span class="kw">rename</span> (  <span class="dt">last_name=</span>LAST_NAME,         <span class="co"># A list of new_name = old_name pairs, separated by commas</span></a>
-<a class="sourceLine" id="cb15-4" title="4">             <span class="dt">first_name=</span>FIRST_NAME,</a>
-<a class="sourceLine" id="cb15-5" title="5">             <span class="dt">job_title =</span> DESCR,</a>
-<a class="sourceLine" id="cb15-6" title="6">             <span class="dt">annual_pay =</span> <span class="st">`</span><span class="dt">ANNUAL RATE</span><span class="st">`</span>   <span class="co">#note the crazy back-ticks that you have to type for two-word names</span></a>
-<a class="sourceLine" id="cb15-7" title="7">           )                         </a>
-<a class="sourceLine" id="cb15-8" title="8"></a>
-<a class="sourceLine" id="cb15-9" title="9"><span class="kw">head</span> (phx_salaries_renamed)    <span class="co"># print out the first few rows.</span></a></code></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb17-1" title="1">phx_salaries_renamed &lt;-<span class="st">                   </span><span class="co">#create a new data frame out of the next set of commands</span></a>
+<a class="sourceLine" id="cb17-2" title="2"><span class="st">   </span>phx_salaries <span class="op">%&gt;%</span><span class="st">                       </span><span class="co">#start with the original data frame name, AND THEN</span></a>
+<a class="sourceLine" id="cb17-3" title="3"><span class="st">   </span><span class="kw">rename</span> (  <span class="dt">last_name=</span>LAST_NAME,         <span class="co"># A list of new_name = old_name pairs, separated by commas</span></a>
+<a class="sourceLine" id="cb17-4" title="4">             <span class="dt">first_name=</span>FIRST_NAME,</a>
+<a class="sourceLine" id="cb17-5" title="5">             <span class="dt">job_title =</span> DESCR,</a>
+<a class="sourceLine" id="cb17-6" title="6">             <span class="dt">annual_pay =</span> <span class="st">`</span><span class="dt">ANNUAL RATE</span><span class="st">`</span>   <span class="co">#note the crazy back-ticks that you have to type for two-word names</span></a>
+<a class="sourceLine" id="cb17-7" title="7">           )                         </a>
+<a class="sourceLine" id="cb17-8" title="8"></a>
+<a class="sourceLine" id="cb17-9" title="9"><span class="kw">head</span> (phx_salaries_renamed)    <span class="co"># print out the first few rows.</span></a></code></pre></div>
 <p>You can leave out any name you don’t want to save. (There are fancier, faster ways to do this, but don’t worry abou that just yet. This is the easiest to remember.) This code chunk results in something that looks like this:</p>
 <table>
 <thead>
