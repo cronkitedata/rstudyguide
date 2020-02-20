@@ -1,3 +1,226 @@
+---
+title: "R Study Guide for Cronkite School of Journalism"
+author: "Sarah Cohen, Knight Chair in Journalism"
+url: "https://cronkitedata.github.io/rstudyguide"
+github-repo: "cronkitedata/rstudyguide"
+favicon: "favicon.io" 
+description: "A companion book for the Cronkite School's data journalism class for graduate students. A work in progress."
+---
+---
+title: "R Study Guide for Cronkite School of Journalism"
+author: "Sarah Cohen, Knight Chair in Journalism"
+url: "https://cronkitedata.github.io/rstudyguide"
+github-repo: "cronkitedata/rstudyguide"
+favicon: "favicon.io" 
+description: "A companion book for the Cronkite School's data journalism class for graduate students. A work in progress."
+---
+
+# Preface {-}
+
+This online book is serving as a study guide for students in my data journalism classes at the Cronkite School of Journalism. Eventually, this will put together the resources for the whole class, but for now it just includes the section on learning R and R Markdown. 
+
+I'm grateful for all of the experts and teachers out there who have made their training materials open to the world, and helped build a wealth of materials for students of all types. I've particularly leaned on Matt Waite, of the University of Nebraska and Jesse Lecy of Arizona State University, who generously share their course materials.
+
+<!--chapter:end:index.Rmd-->
+
+
+# (PART) Introduction to R for Journalists {-}
+# An R and R Studio tour {#rstudio-tour}
+
+Placeholder
+
+
+## Key takeaways
+## Why program?
+#### Why R? {-}
+## Setting up R and R Studio 
+#### RStudio Cloud {-}
+#### Install yourself {-}
+## An R Studio tour
+### The Console 
+### Work in projects 
+## Unlocking packages
+#### Packages for this class {-}
+#### A quick note on the tidyverse {-}
+## Variables
+#### Using variables in new variables {-}
+#### Working with lists {-}
+## Resources and exercises
+#### Take the swirl() tutorial {-}
+### Googling for help
+#### Other resources {-}
+
+<!--chapter:end:011-r-install.Rmd-->
+
+
+# R Markdown 
+
+Placeholder
+
+
+## Key takeaways
+## Getting started with R Markdown
+## The anatomy of a document
+#### Front matter / YAML at the top {-}
+## Knitting your document
+## Code chunks
+#### R Markdown starts from scratch {-}
+## Resources and exercises
+### Resources {-}
+### Exercises {-}
+## Bonus: Styling your R Markdown documents
+
+<!--chapter:end:021-r-markdown.Rmd-->
+
+
+# Data frames and the tidyverse
+
+Placeholder
+
+
+## Key takeaways
+## Getting started
+## The data frame
+### Loading and looking at data
+### Examine your data
+## Introducing the pipe
+## Take a break
+## Other resources
+### On your own
+
+<!--chapter:end:022-data-frames.Rmd-->
+
+
+# (PART) The Verbs of the Tidyverse {-}
+# A quick tour of verbs
+
+Placeholder
+
+
+## Key takeaways 
+### Data for this walkthrough {-}
+### Follow along
+### The `%>%` operator: ... and then... {-}
+##  Looking at your data in pieces and in order
+### `select` to pick out columns
+### `arrange` to sort 
+### `filter` to pick out rows
+## `group_by` and `summarise` to count and sum
+## `mutate` to calculate something new
+## `join` to merge tables together by column; `union` to add rows
+
+<!--chapter:end:030-intro-verbs.Rmd-->
+
+
+# Verbs Part 1: Picking and choosing 
+
+Placeholder
+
+
+## Key takeaways 
+## Select - choosing columns
+### Optional: Other ways to select {-}
+## Filter - choosing rows
+### One filter
+### A compound filter
+### Even more compound filters
+#### OR conditions {-}
+#### %in% conditions {-}
+## Arrange - change the order
+## Traps
+#### Case-sensitivity {-}
+#### Equals versus double-equals {-}
+#### The "and then" operator (%>%) {-}
+#### The dreaded NA {-}
+## Resources
+### Exercises
+### Tutorials
+
+<!--chapter:end:031-select-filter.Rmd-->
+
+
+# Verbs 2: group_by and summarise
+
+Placeholder
+
+
+## Key takeaways
+## group_by / summarise^[The tidyverse uses the British spelling of a lot of words. You can use the American spelling, but you'll usually see it this way.] basics
+### Other summary functions
+### Grouping by more than one variable
+### Rolling up to the next level
+#### A note on count() and tally() {-}
+## Restructuring for a report with `pivot_wider()`
+### A note on restructuring your data frames
+## Resources & exercises
+### Exercises
+
+<!--chapter:end:033-groupby.Rmd-->
+
+
+# Verbs 3: mutate
+
+Placeholder
+
+
+## Key takeaways
+## Read in some data
+## Simple arithmetic
+## Creating categories 
+## Bonus: Fun with date and time
+
+<!--chapter:end:035-mutate.Rmd-->
+
+
+# (APPENDIX) Appendix {-}
+# A gentle intro to programming  
+
+Placeholder
+
+
+## Key takeaways
+## Building blocks
+### Variables and objects {-}
+### Operators & assignment {-}
+### Functions {-}
+### Loops {-}
+## Make an omelet with a function
+### Open a restaurant with loops {-}
+## Applications
+## More resources
+
+<!--chapter:end:A02-programming.Rmd-->
+
+<!-- Add link to the drag queen coding class. See if there are other good first-day programming aides I should add.-->
+# Great R Resources
+
+## Key takeaways
+
+* If this set of resources doesn't fit your learning style, there are lots of others that might
+* In our class, we are working almost entirely in the "tidyverse", and in R Markdown documents. Some of the resources you'll find elsewhere might not.
+
+## Coursework in R 
+
+Other professors and universities are also trying to teach R in journalism and other classes. Here are a few that have particularly rich materials for their students: 
+
+* Jesse Lecy's "Introduction to data science for the social sector,"  an ASU course that teaches R in the context of non-profit management. His site, <https://ds4ps.org/cpp-526-fall-2019/> has a [custom-made textbook](https://ds4ps.org/cpp-526-fall-2019/textbook/) that covers much of the same material as us. 
+
+* Matt Waite at the University of Nebraska has been teach R in the context of a sports journalism class. [His textbook](http://mattwaite.github.io/sports/index.html) also has great resources and approaches to learning. One minor difference that might trip you up: We're using R Markdown, and he's using R Notebooks. They're very similar, but the "knit" option isn't there when you use Notebooks -- only a "Preview". You'll know what that means when we get moving.
+
+## Instructional screencasts and videos
+
+* Andrew Ba Tran's [R for Journalists](http://learn.r-journalism.com/en/) course, originall created for a MOOC offered by the  Knight Center for the Americas. Previous Cronkite students say that it goes a little fast for someone with no experience in other lanugages, but it has most of what you'd need.
+
+* Ben Stenhaug, a Data Science for Social Good fellow at Stanford, has put together some screencasts and exercises called [teachR](https://teachingr.com/) on starting out in R and the tidyverse.
+
+* "Tidy Tuesday" screencasts from David Robinson, [an example]((https://www.youtube.com/channel/UCeiiqmVK07qhY-wvg3IZiZQ)) using fivethirtyeight.com data on education and salaries. These are very long -- up to an hour -- but they walk through what it's really like to take a dataset from scratch and try to find something interesting. I disagree with one thing he does though -- I believe you should read the documentation FIRST, not after you've done a lot of guessing about what columns mean.
+
+* Sharon Machliss' "[Do More with R](https://www.youtube.com/playlist?list=PL7D2RMSmRO9JOvPC1gbA8Mc3azvSfm8Vv)" YouTube series. These are fairly advanced single-topic, short videos.
+
+
+
+<!--chapter:end:A01-resources.Rmd-->
+
 # Murder Accountability Project exercises
 
 
@@ -483,3 +706,6 @@ murder_data %>%
 ```
   
   
+
+<!--chapter:end:A04-murders.Rmd-->
+
