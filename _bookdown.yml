@@ -10,6 +10,7 @@ rmd_files: ["index.Rmd",
             "030-intro-verbs.Rmd",
             "031-select-filter.Rmd",
             "033-groupby.Rmd",
+            "035-mutate.Rmd",
             "A02-programming.Rmd",
             "A01-resources.Rmd",
             "A04-murders.Rmd"

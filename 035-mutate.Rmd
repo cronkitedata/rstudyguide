@@ -1,5 +1,12 @@
 # Verbs 3: mutate
 
+<style>
+   table {
+      font-size:.9em;
+   }
+</style>
+
+
 ## Key takeaways
 
 NOTE: Most journalism tutorials do group_by/summarise BEFORE they introduce mutate. But most computer science tutorials reverse that order. The reason is that journalists often don't have datasets that have many numbers, so the simple arithmetic isn't as important.   
@@ -7,47 +14,35 @@ NOTE: Most journalism tutorials do group_by/summarise BEFORE they introduce muta
 * *mutate* just means "compute", or convert one or more variables into something new. 
 * mutate is the same thing as creating a new column in Excel with a formula
 * There are several common mutate tasks. The most important for us are:
-
   * Convert unstandardized data into standardized, such as yes-or-no variables or all lower case
   * Use arithmetic on numeric variables
   * Use conditional statements to put different values on variables, instead of filtering one at a time.
-
-
-
 * OPTIONAL:
-
   * Mutate can replace text or values
   * Change the data *type* from, say, text to date and time.
 
 ## Read in some data
 
-We've read the Serial Killer Detective from the New Yorker in class. The project makes the dataset public, and Andrew Ba Tran uses the entire country's data in his online course at [R for Journalists](https://learn.r-journalism.com/en/). I've taken that dataset, made it a little simpler and pulled out just the Arizona cases. 
+Start with the [Arizona immunization data](https://github.com/cronkitedata/rstudyguide/blob/master/data/az-immunizations-grade6.Rda?raw=true) that some other chapters have worked with, loading it and the tidyverse to follow along. 
 
-As always, load the tidyverse
+
+Here are the packages and data used for this chapter:
 
 ```{r message=FALSE}
 
 library(tidyverse)
+library(knitr)       # used for slightly better looking tables
+library(DT)          # even more options with tables
+library(lubridate)   # used for working with dates
+library(janitor)     # used to clean up dirty data and change column names.
+
+load("data/az-immunizations-grade6.Rda")  # you may need to change the path to wherever you saved the data
 
 ```
-
-
-And load a dataset saved in native R format from our course website: 
-
-```{r}
-
-
-load (url("https://cronkitedata.github.io/cronkite-docs/assets/data/r-data/murders.Rda"))
-#print out the structure of the dataset
-str(murders)
-
-
-```
-
 
 ## Simple arithmetic
 
-Use the usual arithmetic operators to calculate numbers: 
+Use the usual arithmetic operators to calculate numbers and create a new column: 
 
       + Addition
       - Subtraction
@@ -55,82 +50,150 @@ Use the usual arithmetic operators to calculate numbers:
       / Division
       
 
-Using Andrew's example, calcuate the difference in age between the victim and the offender, but only when both exist. (The dataset codes the age as 999 when it's not available.)
+This example creates a new data frame called `immune_pct` from a few columns of the original:
 
 ```{r}
 
-murders %>%
-  select ( id, state, agency, solved, year, victim_age, offender_age) %>%
-  filter ( victim_age < 999 & offender_age < 999) %>%
-  mutate (  age_diff_from_offender  = 
-                offender_age - victim_age) %>%
-  head()
+immune_pct <- 
+  grade6_counts %>%
+  select ( school_name, city, school_type, enrolled, num_immune_mmr) %>%
+  mutate (pct_immune = ( num_immune_mmr/enrolled) * 100) 
 
 ```
 
-## Create categories
+Here's what it looks like: 
 
-In this case, we might just want to note whether the offender was older or younger than the victim. This is a conditional statement. R has two ways to do conditionals: 
+```{r echo=FALSE}
 
-* if_else  : Use it when there are only two possible outcomes, yes or no
-* case_when : Use it when there are several different possible conditions or outcomes.
-      
-
-We'll stick with if_else for now, which has the syntax: 
-
-        if_else   (   condition , 
-                      value if true, 
-                      value if false
-                      )
-
-
-
-Here's what the new variable might look like: 
-
-
-```{r}
-murders %>%
-  select ( id, state, agency, solved, year, victim_age, offender_age) %>%
-  filter ( victim_age < 999 & offender_age < 999) %>%
-  mutate (  victim_younger_older = 
-                if_else (victim_age < offender_age, 
-                         "Younger", 
-                         "Older or the same")
-          ) %>%    
-  select (-year, -solved)   %>% # ex. take away vars with minus sign
-  head()
-
-
-```
-
-Note that because we only have two choices, we have to code people of the same age in one of the two groups. You'd use case_when if you wanted to create three groups. 
-
-Keep this in mind when we get to group_by. It's a way to create categories you can use in groups.
-
-## Standardize data
-
-There are several problems that often come with datasets in the wild: They have extra spaces floating around that are considered important characters, or they're in mixed case form, or they use different words for the same thing. When you find these, you'll want to use "string" operations to standardize them. One example is lower-casing all words so you don't need to pay attention to them. In this case, we're replacing the original variable with its lower-cased one. 
-
-(This generally isn't a good idea -- you'd usually create a new variable, because you may need to get back to the original some day. But if you're creating a new dataset, it's not as important.): 
-
-```{r}
-
-murders %>%
-  select ( agency) %>%
-  mutate (agency = tolower(agency))  %>%
-  head()
+immune_pct %>%
+  head() %>%
+  kable(digits=1 )
 
 ```
 
 
+## Creating categories 
 
-## Resources
+Sometimes, you want to create categories out of more detailed information. In this case, a threshold of 90 percent immunization is considered the limit under which there is a threat of a measles outbreak, also known as "herd immunity". To categorize each schools as above or under that level, we need to create a new variable that is based on the value of the percentage we just calcluated. That's done using an `if_else` statement, which is in the form: 
 
-* Andrew Ba Tran's "R for Journalists", bottom of chapter 3, "[Wrangling data](https://learn.r-journalism.com/en/wrangling/dplyr/dplyr/)"  
-* Mary Jo Webster's "[Intro to analysis with Tidyverse](https://mjwebster.github.io/DataJ/R/IntroAnalysisWithR.html)" is a walkthrough aimed at group by / summarise.
-* Go back to Pivot Tables in Excel - it's the same thing. 
-* Susan Baert's dplyr tutorial: [summarizing data](https://suzan.rbind.io/2018/04/dplyr-tutorial-4/)
-* Matt Waite's "[Aggregates](http://mattwaite.github.io/sports/aggregates.html)" chapter
+
+      if_else (  condition, 
+                 new value if it's true, 
+                 new value if it's not true)
+
+
+For example: 
+
+
+```{r}
+
+immune_pct <- 
+    immune_pct %>%
+    mutate (  threshold_met =  if_else   ( pct_immune >= 90, 
+                                        "Meets threshold", 
+                                         "Below threshold")
+            )
+
+```
+
+
+Now we can do some grouping by the new categories: 
+
+```{r  output="hide"}
+
+immune_pct %>%
+    group_by (school_type, threshold_met) %>%
+    summarise ( school_ct = n(), 
+                enrolled = sum(enrolled)) %>%
+    kable()
+
+```
+
+
+You can practice rolling up by looking at the percent by type.  
+
+```{r}
+
+immune_pct %>%
+    group_by (school_type, threshold_met) %>%
+    summarise ( schools = n(), 
+                students = sum(enrolled)) %>%
+    mutate (   pct_school_type = schools / sum(schools, na.rm=TRUE) * 100,
+               pct_enrolled = students / sum(students, na.rm=TRUE) * 100 
+             ) %>%
+    filter ( threshold_met == "Below threshold") %>%
+    kable(digits=1)
+
+
+
+```
+
+
+
+You can read this table to say, "Nearly one-fifth of charter school 6th-graders attended schools that did not meet the immunization standards to prevent measles outbreaks."  (The wording is tough here to avoid saying "schools" over and over! )
+
+This strategy can also be used to set unreal values to the special `NA` as in the MAP murder data that uses the value 999 instead of "unknown" for an age. This is common in survey data. 
+
+
+## Bonus: Fun with date and time
+
+Sometimes your data came to you as text, but you need to treat it as numbers; sometimes you want to turn something that looks like a date into an actual date, allowing for date math and date functions. This is called changing the `data type`. (This example uses the library `lubridate`, which may not be installed in your computer. If you're following along, you may need to install it in the console.)
+
+
+```{r message=FALSE}
+
+my_link <- "https://cronkitedata.github.io/cronkite-docs/assets/data/csv/opioidemscalls.csv"
+#use it in a read_csv command
+opioid_calls_orig <- read_csv(my_link)
+opioid_calls <- opioid_calls_orig %>% 
+                clean_names() %>%
+                select (objectid, incident_date_char = incident_date, narcan= narcan_naloxone_given, is_asu_student, is_homeless=is_homeles)
+  
+
+head(opioid_calls)
+```
+
+
+The date and time in this dataset is a character field, but we want to convert it to a date field and a separate time field. Here is an example of doing that, using the library `lubridate`
+
+
+At first, we might just want to get the date value out of the character string. It's in the form month/day/year hour:minute, so we can use the lubridate::mdy_hm function, which tries to guess how the character string is formatted: 
+
+
+```{r}
+
+opioid_calls %>%
+  mutate ( incident_date = mdy_hm(incident_date_char)) %>%
+  select (incident_date, incident_date_char:is_homeless) %>%
+  head()
+
+
+```
+
+Notice that the new variable is of the type <S3: POSIXct>, which refers to a date-time combined variable. 
+
+Let's say I want to distinguish weekends from weekdays in this dataset. First, we have to define weekend. Here's one definition, but you might want to use another: A weekend is anytime after 3pm on Friday through 6pm on Sunday. (The `hour` variable is in military time.)
+
+```{r}
+
+opioid_calls %>%
+  mutate (incident_date = mdy_hm(incident_date_char), 
+          day_of_week = wday(incident_date) ,
+          weekday = weekdays(incident_date),
+          hour = hour(incident_date), 
+          weekend = 
+              case_when ( day_of_week == 7                 ~ "Yes", 
+                          day_of_week == 6 & hour >= 15     ~ "Yes", 
+                          day_of_week == 1 & hour <= 18   ~ "Yes", 
+                          TRUE                             ~ "No"
+                          )
+          ) %>%
+  select (weekend, weekday, hour) %>%
+  head (60) %>%
+  datatable( )
+
+
+```
 
 
 
