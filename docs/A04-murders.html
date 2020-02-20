@@ -140,7 +140,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="./">Study Guide for Cronkite Students</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a><ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#using-the-examples-with-packages"><i class="fa fa-check"></i>Using the examples with packages</a></li>
+</ul></li>
 <li class="part"><span><b>I Introduction to R for Journalists</b></span></li>
 <li class="chapter" data-level="1" data-path="011-r-install.html"><a href="011-r-install.html"><i class="fa fa-check"></i><b>1</b> An R and R Studio tour</a><ul>
 <li class="chapter" data-level="1.1" data-path="011-r-install.html"><a href="011-r-install.html#key-takeaways"><i class="fa fa-check"></i><b>1.1</b> Key takeaways</a></li>
@@ -229,11 +231,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="035-mutate.html"><a href="035-mutate.html"><i class="fa fa-check"></i><b>7</b> Verbs 3: mutate</a><ul>
-<li class="chapter" data-level="7.1" data-path="035-mutate.html"><a href="035-mutate.html#key-takeaways-6"><i class="fa fa-check"></i><b>7.1</b> Key takeaways</a></li>
-<li class="chapter" data-level="7.2" data-path="035-mutate.html"><a href="035-mutate.html#read-in-some-data"><i class="fa fa-check"></i><b>7.2</b> Read in some data</a></li>
-<li class="chapter" data-level="7.3" data-path="035-mutate.html"><a href="035-mutate.html#simple-arithmetic"><i class="fa fa-check"></i><b>7.3</b> Simple arithmetic</a></li>
-<li class="chapter" data-level="7.4" data-path="035-mutate.html"><a href="035-mutate.html#creating-categories"><i class="fa fa-check"></i><b>7.4</b> Creating categories</a></li>
-<li class="chapter" data-level="7.5" data-path="035-mutate.html"><a href="035-mutate.html#bonus-fun-with-date-and-time"><i class="fa fa-check"></i><b>7.5</b> Bonus: Fun with date and time</a></li>
+<li class="chapter" data-level="7.1" data-path="035-mutate.html"><a href="035-mutate.html#key-takeaways-6"><i class="fa fa-check"></i><b>7.1</b> Key takeaways</a><ul>
+<li class="chapter" data-level="7.1.1" data-path="035-mutate.html"><a href="035-mutate.html#read-in-some-data"><i class="fa fa-check"></i><b>7.1.1</b> Read in some data</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="035-mutate.html"><a href="035-mutate.html#simple-arithmetic"><i class="fa fa-check"></i><b>7.2</b> Simple arithmetic</a></li>
+<li class="chapter" data-level="7.3" data-path="035-mutate.html"><a href="035-mutate.html#creating-categories"><i class="fa fa-check"></i><b>7.3</b> Creating categories</a></li>
+<li class="chapter" data-level="7.4" data-path="035-mutate.html"><a href="035-mutate.html#bonus-fun-with-date-and-time"><i class="fa fa-check"></i><b>7.4</b> Bonus: Fun with date and time</a></li>
 </ul></li>
 <li class="appendix"><span><b>Appendix</b></span></li>
 <li class="chapter" data-level="A" data-path="A02-programming.html"><a href="A02-programming.html"><i class="fa fa-check"></i><b>A</b> A gentle intro to programming</a><ul>
@@ -297,43 +300,43 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>This R dataset was created by subsetting only mountain states and Oregon and Washington from the national dataset, and converting the codes used in the original SPSS data into codes and their labels in separate variables. The data runs from 1976 through 2018. Here are the fields included:</p>
 <pre><code>## Observations: 56,075
 ## Variables: 37
-## $ rowid             &lt;int&gt; 27475, 27476, 27477, 27478, 27479, 27480, 27481, 27482, 27483, 27484, 27485, 27486, 27487, 27488, 27489, 27490, 27491, 27…
-## $ mapid             &lt;chr&gt; &quot;197612001AZ00100&quot;, &quot;197708001AZ00100&quot;, &quot;197801001AZ00100&quot;, &quot;198207001AZ00100&quot;, &quot;198506001AZ00100&quot;, &quot;198811001AZ00100&quot;, &quot;…
-## $ year              &lt;dbl&gt; 1976, 1977, 1978, 1982, 1985, 1988, 1989, 1990, 1990, 1991, 1992, 1995, 1995, 1996, 2003, 2009, 2009, 2010, 2011, 2017, 2…
-## $ month             &lt;dbl&gt; 12, 8, 1, 7, 6, 11, 10, 9, 12, 2, 12, 3, 9, 4, 2, 8, 9, 8, 9, 7, 7, 5, 3, 8, 7, 10, 6, 9, 7, 12, 8, 11, 11, 11, 1, 2, 3, …
-## $ fip               &lt;chr&gt; &quot;04001&quot;, &quot;04001&quot;, &quot;04001&quot;, &quot;04001&quot;, &quot;04001&quot;, &quot;04001&quot;, &quot;04001&quot;, &quot;04001&quot;, &quot;04001&quot;, &quot;04001&quot;, &quot;04001&quot;, &quot;04001&quot;, &quot;04001&quot;, &quot;040…
-## $ state_fip         &lt;chr&gt; &quot;04&quot;, &quot;04&quot;, &quot;04&quot;, &quot;04&quot;, &quot;04&quot;, &quot;04&quot;, &quot;04&quot;, &quot;04&quot;, &quot;04&quot;, &quot;04&quot;, &quot;04&quot;, &quot;04&quot;, &quot;04&quot;, &quot;04&quot;, &quot;04&quot;, &quot;04&quot;, &quot;04&quot;, &quot;04&quot;, &quot;04&quot;, &quot;04&quot;, &quot;…
-## $ cnty_name         &lt;chr&gt; &quot;Apache, AZ&quot;, &quot;Apache, AZ&quot;, &quot;Apache, AZ&quot;, &quot;Apache, AZ&quot;, &quot;Apache, AZ&quot;, &quot;Apache, AZ&quot;, &quot;Apache, AZ&quot;, &quot;Apache, AZ&quot;, &quot;Apache, …
-## $ msa_code          &lt;chr&gt; &quot;99904&quot;, &quot;99904&quot;, &quot;99904&quot;, &quot;99904&quot;, &quot;99904&quot;, &quot;99904&quot;, &quot;99904&quot;, &quot;99904&quot;, &quot;99904&quot;, &quot;99904&quot;, &quot;99904&quot;, &quot;99904&quot;, &quot;99904&quot;, &quot;999…
-## $ msa_name          &lt;chr&gt; &quot;Rural Arizona&quot;, &quot;Rural Arizona&quot;, &quot;Rural Arizona&quot;, &quot;Rural Arizona&quot;, &quot;Rural Arizona&quot;, &quot;Rural Arizona&quot;, &quot;Rural Arizona&quot;, &quot;R…
-## $ state_abbr        &lt;chr&gt; &quot;AZ&quot;, &quot;AZ&quot;, &quot;AZ&quot;, &quot;AZ&quot;, &quot;AZ&quot;, &quot;AZ&quot;, &quot;AZ&quot;, &quot;AZ&quot;, &quot;AZ&quot;, &quot;AZ&quot;, &quot;AZ&quot;, &quot;AZ&quot;, &quot;AZ&quot;, &quot;AZ&quot;, &quot;AZ&quot;, &quot;AZ&quot;, &quot;AZ&quot;, &quot;AZ&quot;, &quot;AZ&quot;, &quot;AZ&quot;, &quot;…
-## $ ori               &lt;chr&gt; &quot;AZ00100&quot;, &quot;AZ00100&quot;, &quot;AZ00100&quot;, &quot;AZ00100&quot;, &quot;AZ00100&quot;, &quot;AZ00100&quot;, &quot;AZ00100&quot;, &quot;AZ00100&quot;, &quot;AZ00100&quot;, &quot;AZ00100&quot;, &quot;AZ00100&quot;, …
-## $ agency            &lt;chr&gt; &quot;Apache County&quot;, &quot;Apache County&quot;, &quot;Apache County&quot;, &quot;Apache County&quot;, &quot;Apache County&quot;, &quot;Apache County&quot;, &quot;Apache County&quot;, &quot;A…
-## $ agency_type       &lt;chr&gt; &quot;Sheriff&quot;, &quot;Sheriff&quot;, &quot;Sheriff&quot;, &quot;Sheriff&quot;, &quot;Sheriff&quot;, &quot;Sheriff&quot;, &quot;Sheriff&quot;, &quot;Sheriff&quot;, &quot;Sheriff&quot;, &quot;Sheriff&quot;, &quot;Sheriff&quot;, …
-## $ solved            &lt;chr&gt; &quot;Yes&quot;, &quot;Yes&quot;, &quot;Yes&quot;, &quot;No&quot;, &quot;No&quot;, &quot;Yes&quot;, &quot;Yes&quot;, &quot;Yes&quot;, &quot;No&quot;, &quot;Yes&quot;, &quot;Yes&quot;, &quot;Yes&quot;, &quot;Yes&quot;, &quot;Yes&quot;, &quot;Yes&quot;, &quot;Yes&quot;, &quot;Yes&quot;, &quot;Yes&quot;…
-## $ homicide_type     &lt;chr&gt; &quot;Murder and non-negligent manslaughter&quot;, &quot;Murder and non-negligent manslaughter&quot;, &quot;Manslaughter by negligence&quot;, &quot;Murder a…
-## $ incident_num      &lt;dbl&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 4, 1…
-## $ vic_age           &lt;dbl&gt; 42, 28, 0, 23, 18, 23, 43, 33, 33, 0, 38, 0, 37, 25, 60, 17, 60, 24, 35, 80, 74, 13, 3, 57, 0, 15, 31, 47, 28, 34, 39, 44…
-## $ vic_sex           &lt;chr&gt; &quot;Male&quot;, &quot;Male&quot;, &quot;Female&quot;, &quot;Female&quot;, &quot;Male&quot;, &quot;Male&quot;, &quot;Male&quot;, &quot;Male&quot;, &quot;Male&quot;, &quot;Female&quot;, &quot;Male&quot;, &quot;Male&quot;, &quot;Male&quot;, &quot;Male&quot;, &quot;Ma…
-## $ vic_race_code     &lt;chr&gt; &quot;W&quot;, &quot;W&quot;, &quot;W&quot;, &quot;W&quot;, &quot;W&quot;, &quot;W&quot;, &quot;W&quot;, &quot;W&quot;, &quot;W&quot;, &quot;W&quot;, &quot;W&quot;, &quot;W&quot;, &quot;W&quot;, &quot;W&quot;, &quot;W&quot;, &quot;W&quot;, &quot;W&quot;, &quot;W&quot;, &quot;I&quot;, &quot;U&quot;, &quot;W&quot;, &quot;W&quot;, &quot;W&quot;, &quot;W&quot;, &quot;…
-## $ vic_race          &lt;chr&gt; &quot;White&quot;, &quot;White&quot;, &quot;White&quot;, &quot;White&quot;, &quot;White&quot;, &quot;White&quot;, &quot;White&quot;, &quot;White&quot;, &quot;White&quot;, &quot;White&quot;, &quot;White&quot;, &quot;White&quot;, &quot;White&quot;, &quot;Whi…
-## $ vic_ethnic_code   &lt;chr&gt; &quot;U&quot;, &quot;U&quot;, &quot;U&quot;, &quot;N&quot;, &quot;U&quot;, &quot;U&quot;, &quot;N&quot;, &quot;N&quot;, &quot;N&quot;, &quot;N&quot;, &quot;N&quot;, &quot;N&quot;, &quot;N&quot;, &quot;N&quot;, &quot;N&quot;, &quot;H&quot;, &quot;N&quot;, &quot;N&quot;, &quot;N&quot;, &quot;U&quot;, &quot;N&quot;, &quot;U&quot;, &quot;U&quot;, &quot;N&quot;, &quot;…
-## $ vic_ethnic        &lt;chr&gt; &quot;Unknown or not reported&quot;, &quot;Unknown or not reported&quot;, &quot;Unknown or not reported&quot;, &quot;Not of Hispanic origin&quot;, &quot;Unknown or no…
-## $ off_age           &lt;dbl&gt; 22, 44, 50, 999, 999, 41, 39, 48, 999, 29, 18, 14, 23, 63, 45, 21, 21, 23, 29, 51, 51, 12, 5, 67, 16, 19, 30, 57, 24, 49,…
-## $ off_sex           &lt;chr&gt; &quot;Male&quot;, &quot;Male&quot;, &quot;Male&quot;, &quot;Unknown&quot;, &quot;Unknown&quot;, &quot;Male&quot;, &quot;Male&quot;, &quot;Male&quot;, &quot;Unknown&quot;, &quot;Male&quot;, &quot;Female&quot;, &quot;Female&quot;, &quot;Male&quot;, &quot;Mal…
-## $ off_race_code     &lt;chr&gt; &quot;I&quot;, &quot;W&quot;, &quot;W&quot;, &quot;U&quot;, &quot;U&quot;, &quot;W&quot;, &quot;W&quot;, &quot;W&quot;, &quot;U&quot;, &quot;W&quot;, &quot;W&quot;, &quot;W&quot;, &quot;W&quot;, &quot;W&quot;, &quot;W&quot;, &quot;W&quot;, &quot;W&quot;, &quot;W&quot;, &quot;I&quot;, &quot;W&quot;, &quot;W&quot;, &quot;W&quot;, &quot;W&quot;, &quot;W&quot;, &quot;…
-## $ off_race          &lt;chr&gt; &quot;American Indian or Alaskan Native&quot;, &quot;White&quot;, &quot;White&quot;, &quot;Unknown&quot;, &quot;Unknown&quot;, &quot;White&quot;, &quot;White&quot;, &quot;White&quot;, &quot;Unknown&quot;, &quot;White…
-## $ off_ethnic_code   &lt;chr&gt; &quot;U&quot;, &quot;U&quot;, &quot;U&quot;, &quot;U&quot;, &quot;U&quot;, &quot;U&quot;, &quot;N&quot;, &quot;N&quot;, &quot;U&quot;, &quot;N&quot;, &quot;N&quot;, &quot;N&quot;, &quot;N&quot;, &quot;N&quot;, &quot;N&quot;, &quot;N&quot;, &quot;N&quot;, &quot;N&quot;, &quot;N&quot;, &quot;N&quot;, &quot;N&quot;, &quot;U&quot;, &quot;U&quot;, &quot;N&quot;, &quot;…
-## $ off_ethnic        &lt;chr&gt; &quot;Unknown or not reported&quot;, &quot;Unknown or not reported&quot;, &quot;Unknown or not reported&quot;, &quot;Unknown or not reported&quot;, &quot;Unknown or n…
-## $ situation_code    &lt;chr&gt; &quot;C&quot;, &quot;A&quot;, &quot;C&quot;, &quot;B&quot;, &quot;B&quot;, &quot;A&quot;, &quot;A&quot;, &quot;A&quot;, &quot;B&quot;, &quot;A&quot;, &quot;A&quot;, &quot;A&quot;, &quot;A&quot;, &quot;A&quot;, &quot;A&quot;, &quot;A&quot;, &quot;A&quot;, &quot;A&quot;, &quot;A&quot;, &quot;D&quot;, &quot;D&quot;, &quot;A&quot;, &quot;A&quot;, &quot;A&quot;, &quot;…
-## $ situation         &lt;chr&gt; &quot;Single victim/multiple offenders&quot;, &quot;Single victim/single offender&quot;, &quot;Single victim/multiple offenders&quot;, &quot;Single victim/u…
-## $ weapon_code       &lt;chr&gt; &quot;20&quot;, &quot;13&quot;, &quot;90&quot;, &quot;11&quot;, &quot;12&quot;, &quot;12&quot;, &quot;12&quot;, &quot;12&quot;, &quot;12&quot;, &quot;40&quot;, &quot;12&quot;, &quot;40&quot;, &quot;14&quot;, &quot;12&quot;, &quot;14&quot;, &quot;13&quot;, &quot;13&quot;, &quot;12&quot;, &quot;20&quot;, &quot;90&quot;, &quot;…
-## $ weapon            &lt;chr&gt; &quot;Knife or cutting instrument&quot;, &quot;Rifle&quot;, &quot;Other or type unknown&quot;, &quot;Firearm, type not stated&quot;, &quot;Handgun - pistol, revolver,…
-## $ relationship_code &lt;chr&gt; &quot;AQ&quot;, &quot;AQ&quot;, &quot;DA&quot;, &quot;UN&quot;, &quot;UN&quot;, &quot;AQ&quot;, &quot;AQ&quot;, &quot;AQ&quot;, &quot;ST&quot;, &quot;DA&quot;, &quot;AQ&quot;, &quot;SO&quot;, &quot;OK&quot;, &quot;AQ&quot;, &quot;AQ&quot;, &quot;FR&quot;, &quot;FR&quot;, &quot;FR&quot;, &quot;FA&quot;, &quot;UN&quot;, &quot;…
-## $ relationship      &lt;chr&gt; &quot;Acquaintance&quot;, &quot;Acquaintance&quot;, &quot;Daughter&quot;, &quot;Relationship not determined&quot;, &quot;Relationship not determined&quot;, &quot;Acquaintance&quot;,…
-## $ circumstance_code &lt;chr&gt; &quot;42&quot;, &quot;44&quot;, &quot;59&quot;, &quot;99&quot;, &quot;99&quot;, &quot;45&quot;, &quot;5&quot;, &quot;60&quot;, &quot;3&quot;, &quot;59&quot;, &quot;60&quot;, &quot;60&quot;, &quot;45&quot;, &quot;40&quot;, &quot;60&quot;, &quot;60&quot;, &quot;45&quot;, &quot;53&quot;, &quot;45&quot;, &quot;99&quot;, &quot;99…
-## $ circumstance      &lt;chr&gt; &quot;Brawl due to influence of alcohol&quot;, &quot;Argument over money or property&quot;, &quot;All other manslaughter by negligence&quot;, &quot;Circumst…
-## $ use_date          &lt;date&gt; 1980-03-01, 1980-03-01, 1980-03-01, 1982-10-06, 1985-08-21, 1989-03-15, 1990-02-06, 1991-02-15, 1991-04-04, 1991-07-17, …</code></pre>
+## $ rowid             &lt;int&gt; 27475, 27476, 27477, 27478, 27479, 27480, 27481, 27482, 27483, 27484, 27485, 27486, 27487…
+## $ mapid             &lt;chr&gt; &quot;197612001AZ00100&quot;, &quot;197708001AZ00100&quot;, &quot;197801001AZ00100&quot;, &quot;198207001AZ00100&quot;, &quot;19850600…
+## $ year              &lt;dbl&gt; 1976, 1977, 1978, 1982, 1985, 1988, 1989, 1990, 1990, 1991, 1992, 1995, 1995, 1996, 2003,…
+## $ month             &lt;dbl&gt; 12, 8, 1, 7, 6, 11, 10, 9, 12, 2, 12, 3, 9, 4, 2, 8, 9, 8, 9, 7, 7, 5, 3, 8, 7, 10, 6, 9,…
+## $ fip               &lt;chr&gt; &quot;04001&quot;, &quot;04001&quot;, &quot;04001&quot;, &quot;04001&quot;, &quot;04001&quot;, &quot;04001&quot;, &quot;04001&quot;, &quot;04001&quot;, &quot;04001&quot;, &quot;04001&quot;,…
+## $ state_fip         &lt;chr&gt; &quot;04&quot;, &quot;04&quot;, &quot;04&quot;, &quot;04&quot;, &quot;04&quot;, &quot;04&quot;, &quot;04&quot;, &quot;04&quot;, &quot;04&quot;, &quot;04&quot;, &quot;04&quot;, &quot;04&quot;, &quot;04&quot;, &quot;04&quot;, &quot;04&quot;,…
+## $ cnty_name         &lt;chr&gt; &quot;Apache, AZ&quot;, &quot;Apache, AZ&quot;, &quot;Apache, AZ&quot;, &quot;Apache, AZ&quot;, &quot;Apache, AZ&quot;, &quot;Apache, AZ&quot;, &quot;Apac…
+## $ msa_code          &lt;chr&gt; &quot;99904&quot;, &quot;99904&quot;, &quot;99904&quot;, &quot;99904&quot;, &quot;99904&quot;, &quot;99904&quot;, &quot;99904&quot;, &quot;99904&quot;, &quot;99904&quot;, &quot;99904&quot;,…
+## $ msa_name          &lt;chr&gt; &quot;Rural Arizona&quot;, &quot;Rural Arizona&quot;, &quot;Rural Arizona&quot;, &quot;Rural Arizona&quot;, &quot;Rural Arizona&quot;, &quot;Rur…
+## $ state_abbr        &lt;chr&gt; &quot;AZ&quot;, &quot;AZ&quot;, &quot;AZ&quot;, &quot;AZ&quot;, &quot;AZ&quot;, &quot;AZ&quot;, &quot;AZ&quot;, &quot;AZ&quot;, &quot;AZ&quot;, &quot;AZ&quot;, &quot;AZ&quot;, &quot;AZ&quot;, &quot;AZ&quot;, &quot;AZ&quot;, &quot;AZ&quot;,…
+## $ ori               &lt;chr&gt; &quot;AZ00100&quot;, &quot;AZ00100&quot;, &quot;AZ00100&quot;, &quot;AZ00100&quot;, &quot;AZ00100&quot;, &quot;AZ00100&quot;, &quot;AZ00100&quot;, &quot;AZ00100&quot;, &quot;…
+## $ agency            &lt;chr&gt; &quot;Apache County&quot;, &quot;Apache County&quot;, &quot;Apache County&quot;, &quot;Apache County&quot;, &quot;Apache County&quot;, &quot;Apa…
+## $ agency_type       &lt;chr&gt; &quot;Sheriff&quot;, &quot;Sheriff&quot;, &quot;Sheriff&quot;, &quot;Sheriff&quot;, &quot;Sheriff&quot;, &quot;Sheriff&quot;, &quot;Sheriff&quot;, &quot;Sheriff&quot;, &quot;…
+## $ solved            &lt;chr&gt; &quot;Yes&quot;, &quot;Yes&quot;, &quot;Yes&quot;, &quot;No&quot;, &quot;No&quot;, &quot;Yes&quot;, &quot;Yes&quot;, &quot;Yes&quot;, &quot;No&quot;, &quot;Yes&quot;, &quot;Yes&quot;, &quot;Yes&quot;, &quot;Yes&quot;, &quot;…
+## $ homicide_type     &lt;chr&gt; &quot;Murder and non-negligent manslaughter&quot;, &quot;Murder and non-negligent manslaughter&quot;, &quot;Mansla…
+## $ incident_num      &lt;dbl&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,…
+## $ vic_age           &lt;dbl&gt; 42, 28, 0, 23, 18, 23, 43, 33, 33, 0, 38, 0, 37, 25, 60, 17, 60, 24, 35, 80, 74, 13, 3, 5…
+## $ vic_sex           &lt;chr&gt; &quot;Male&quot;, &quot;Male&quot;, &quot;Female&quot;, &quot;Female&quot;, &quot;Male&quot;, &quot;Male&quot;, &quot;Male&quot;, &quot;Male&quot;, &quot;Male&quot;, &quot;Female&quot;, &quot;Ma…
+## $ vic_race_code     &lt;chr&gt; &quot;W&quot;, &quot;W&quot;, &quot;W&quot;, &quot;W&quot;, &quot;W&quot;, &quot;W&quot;, &quot;W&quot;, &quot;W&quot;, &quot;W&quot;, &quot;W&quot;, &quot;W&quot;, &quot;W&quot;, &quot;W&quot;, &quot;W&quot;, &quot;W&quot;, &quot;W&quot;, &quot;W&quot;, &quot;W&quot;,…
+## $ vic_race          &lt;chr&gt; &quot;White&quot;, &quot;White&quot;, &quot;White&quot;, &quot;White&quot;, &quot;White&quot;, &quot;White&quot;, &quot;White&quot;, &quot;White&quot;, &quot;White&quot;, &quot;White&quot;,…
+## $ vic_ethnic_code   &lt;chr&gt; &quot;U&quot;, &quot;U&quot;, &quot;U&quot;, &quot;N&quot;, &quot;U&quot;, &quot;U&quot;, &quot;N&quot;, &quot;N&quot;, &quot;N&quot;, &quot;N&quot;, &quot;N&quot;, &quot;N&quot;, &quot;N&quot;, &quot;N&quot;, &quot;N&quot;, &quot;H&quot;, &quot;N&quot;, &quot;N&quot;,…
+## $ vic_ethnic        &lt;chr&gt; &quot;Unknown or not reported&quot;, &quot;Unknown or not reported&quot;, &quot;Unknown or not reported&quot;, &quot;Not of …
+## $ off_age           &lt;dbl&gt; 22, 44, 50, 999, 999, 41, 39, 48, 999, 29, 18, 14, 23, 63, 45, 21, 21, 23, 29, 51, 51, 12…
+## $ off_sex           &lt;chr&gt; &quot;Male&quot;, &quot;Male&quot;, &quot;Male&quot;, &quot;Unknown&quot;, &quot;Unknown&quot;, &quot;Male&quot;, &quot;Male&quot;, &quot;Male&quot;, &quot;Unknown&quot;, &quot;Male&quot;, …
+## $ off_race_code     &lt;chr&gt; &quot;I&quot;, &quot;W&quot;, &quot;W&quot;, &quot;U&quot;, &quot;U&quot;, &quot;W&quot;, &quot;W&quot;, &quot;W&quot;, &quot;U&quot;, &quot;W&quot;, &quot;W&quot;, &quot;W&quot;, &quot;W&quot;, &quot;W&quot;, &quot;W&quot;, &quot;W&quot;, &quot;W&quot;, &quot;W&quot;,…
+## $ off_race          &lt;chr&gt; &quot;American Indian or Alaskan Native&quot;, &quot;White&quot;, &quot;White&quot;, &quot;Unknown&quot;, &quot;Unknown&quot;, &quot;White&quot;, &quot;Wh…
+## $ off_ethnic_code   &lt;chr&gt; &quot;U&quot;, &quot;U&quot;, &quot;U&quot;, &quot;U&quot;, &quot;U&quot;, &quot;U&quot;, &quot;N&quot;, &quot;N&quot;, &quot;U&quot;, &quot;N&quot;, &quot;N&quot;, &quot;N&quot;, &quot;N&quot;, &quot;N&quot;, &quot;N&quot;, &quot;N&quot;, &quot;N&quot;, &quot;N&quot;,…
+## $ off_ethnic        &lt;chr&gt; &quot;Unknown or not reported&quot;, &quot;Unknown or not reported&quot;, &quot;Unknown or not reported&quot;, &quot;Unknown…
+## $ situation_code    &lt;chr&gt; &quot;C&quot;, &quot;A&quot;, &quot;C&quot;, &quot;B&quot;, &quot;B&quot;, &quot;A&quot;, &quot;A&quot;, &quot;A&quot;, &quot;B&quot;, &quot;A&quot;, &quot;A&quot;, &quot;A&quot;, &quot;A&quot;, &quot;A&quot;, &quot;A&quot;, &quot;A&quot;, &quot;A&quot;, &quot;A&quot;,…
+## $ situation         &lt;chr&gt; &quot;Single victim/multiple offenders&quot;, &quot;Single victim/single offender&quot;, &quot;Single victim/multi…
+## $ weapon_code       &lt;chr&gt; &quot;20&quot;, &quot;13&quot;, &quot;90&quot;, &quot;11&quot;, &quot;12&quot;, &quot;12&quot;, &quot;12&quot;, &quot;12&quot;, &quot;12&quot;, &quot;40&quot;, &quot;12&quot;, &quot;40&quot;, &quot;14&quot;, &quot;12&quot;, &quot;14&quot;,…
+## $ weapon            &lt;chr&gt; &quot;Knife or cutting instrument&quot;, &quot;Rifle&quot;, &quot;Other or type unknown&quot;, &quot;Firearm, type not state…
+## $ relationship_code &lt;chr&gt; &quot;AQ&quot;, &quot;AQ&quot;, &quot;DA&quot;, &quot;UN&quot;, &quot;UN&quot;, &quot;AQ&quot;, &quot;AQ&quot;, &quot;AQ&quot;, &quot;ST&quot;, &quot;DA&quot;, &quot;AQ&quot;, &quot;SO&quot;, &quot;OK&quot;, &quot;AQ&quot;, &quot;AQ&quot;,…
+## $ relationship      &lt;chr&gt; &quot;Acquaintance&quot;, &quot;Acquaintance&quot;, &quot;Daughter&quot;, &quot;Relationship not determined&quot;, &quot;Relationship …
+## $ circumstance_code &lt;chr&gt; &quot;42&quot;, &quot;44&quot;, &quot;59&quot;, &quot;99&quot;, &quot;99&quot;, &quot;45&quot;, &quot;5&quot;, &quot;60&quot;, &quot;3&quot;, &quot;59&quot;, &quot;60&quot;, &quot;60&quot;, &quot;45&quot;, &quot;40&quot;, &quot;60&quot;, &quot;…
+## $ circumstance      &lt;chr&gt; &quot;Brawl due to influence of alcohol&quot;, &quot;Argument over money or property&quot;, &quot;All other mansla…
+## $ use_date          &lt;date&gt; 1980-03-01, 1980-03-01, 1980-03-01, 1982-10-06, 1985-08-21, 1989-03-15, 1990-02-06, 1991…</code></pre>
 <p>Any variable that begins with <code>off</code> refers to the offender; any variable that begins with <code>vic</code> refers to the victim. Most variables are pretty self-explanatory, but here are a few details:</p>
 <ul>
 <li><code>fip</code> and <code>state_fip</code> are standard codes used across many databases to identify geographic areas – in this case, counties and states.</li>
@@ -451,7 +454,7 @@ You can define “young” however you want, but in my example I’ll use victim
 <p>This is actually much more difficult than it sounds. Try to build it one piece at a time. Here is how I might build the conditions:
 Guns:</p>
 <pre><code>    ... weapon_code %in% c(&quot;11&quot;, &quot;12&quot;, &quot;13&quot;, &quot;14&quot;, &quot;15&quot;)</code></pre>
-<p>(This is a text variable even though it looks like numbers - that means you need the quotes. Don’t forget to use the “c” for “combine into a list” before the list of values)<a href="#fn4" class="footnote-ref" id="fnref4"><sup>4</sup></a></p>
+<p>(This is a text variable even though it looks like numbers - that means you need the quotes. Don’t forget to use the “c” for “combine into a list” before the list of values)<a href="#fn5" class="footnote-ref" id="fnref5"><sup>5</sup></a></p>
 <p>Since 2015:</p>
 <pre><code>    weapon_code %in% c(&quot;11&quot;, &quot;12&quot;, &quot;13&quot;, &quot;14&quot;, &quot;15&quot;) &amp;
     year &gt;= 2015</code></pre>
@@ -476,13 +479,8 @@ Guns:</p>
 <a class="sourceLine" id="cb77-8" title="8"><span class="st">  </span><span class="kw">arrange</span> (year, month) <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb77-9" title="9"><span class="st">  </span><span class="kw">tail</span> (<span class="dv">50</span>) <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb77-10" title="10"><span class="st">  </span><span class="kw">datatable</span>( <span class="dt">options =</span> <span class="kw">list</span>(<span class="dt">scrollX =</span> <span class="st">&#39;500px&#39;</span>))</a></code></pre></div>
-<<<<<<< HEAD
-<div id="htmlwidget-371b840016947113fded" style="width:100%;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-371b840016947113fded">{"x":{"filter":"none","data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31","32","33","34","35","36","37","38","39","40","41","42","43","44","45","46","47","48","49","50"],[2018,2018,2018,2018,2018,2018,2018,2018,2018,2018,2018,2018,2018,2018,2018,2018,2018,2018,2018,2018,2018,2018,2018,2018,2018,2018,2018,2018,2018,2018,2018,2018,2018,2018,2018,2018,2018,2018,2018,2018,2018,2018,2018,2018,2018,2018,2018,2018,2018,2018],[10,10,10,10,10,10,10,10,10,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12],["Clark, NV","Multnomah, OR","Multnomah, OR","Salt Lake, UT","Benton, WA","Pierce, WA","Pierce, WA","Spokane, WA","King, WA","Gila, AZ","Gila, AZ","Maricopa, AZ","Maricopa, AZ","Maricopa, AZ","Maricopa, AZ","Maricopa, AZ","Maricopa, AZ","Pima, AZ","Pima, AZ","Pima, AZ","El Paso, CO","El Paso, CO","Jefferson, CO","Bernalillo, NM","Bernalillo, NM","Clark, NV","Clark, NV","Clark, NV","Clark, NV","Clark, NV","Clark, NV","Clark, NV","Multnomah, OR","Washington, OR","Yakima, WA","Maricopa, AZ","Maricopa, AZ","Maricopa, AZ","Maricopa, AZ","Logan, CO","Denver, CO","Denver, CO","Denver, CO","Bernalillo, NM","Clark, NV","Clark, NV","Franklin, WA","Pierce, WA","Snohomish, WA","Yakima, WA"],["NV","OR","OR","UT","WA","WA","WA","WA","WA","AZ","AZ","AZ","AZ","AZ","AZ","AZ","AZ","AZ","AZ","AZ","CO","CO","CO","NM","NM","NV","NV","NV","NV","NV","NV","NV","OR","OR","WA","AZ","AZ","AZ","AZ","CO","CO","CO","CO","NM","NV","NV","WA","WA","WA","WA"],["Yes","No","No","No","Yes","No","Yes","Yes","Yes","Yes","Yes","Yes","No","Yes","Yes","Yes","No","Yes","Yes","No","Yes","Yes","Yes","Yes","Yes","No","Yes","No","No","Yes","Yes","Yes","No","Yes","Yes","No","Yes","Yes","No","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","No","Yes","Yes"],[26,21,27,18,28,28,18,15,26,22,22,24,24,24,19,28,18,28,16,25,26,23,28,18,18,20,22,24,29,19,16,17,26,19,16,22,23,18,22,15,28,23,20,15,26,18,29,17,23,22],["White","Black","Black","White","Black","Black","Black","Black","White","White","White","Black","Black","Black","White","Black","Black","Black","Black","White","Black","Black","White","White","White","Black","Black","White","White","Black","Black","Black","Black","White","White","White","Black","Black","Black","Black","Black","Black","Black","White","Black","Black","White","Black","Black","White"],["Hispanic origin","Unknown or not reported","Unknown or not reported","Hispanic origin","Not of Hispanic origin","Unknown or not reported","Not of Hispanic origin","Unknown or not reported","Hispanic origin","Hispanic origin","Hispanic origin","Not of Hispanic origin","Unknown or not reported","Unknown or not reported","Hispanic origin","Unknown or not reported","Unknown or not reported","Unknown or not reported","Not of Hispanic origin","Hispanic origin","Not of Hispanic origin","Not of Hispanic origin","Hispanic origin","Hispanic origin","Hispanic origin","Not of Hispanic origin","Not of Hispanic origin","Hispanic origin","Hispanic origin","Not of Hispanic origin","Not of Hispanic origin","Not of Hispanic origin","Unknown or not reported","Hispanic origin","Hispanic origin","Hispanic origin","Unknown or not reported","Unknown or not reported","Not of Hispanic origin","Not of Hispanic origin","Not of Hispanic origin","Not of Hispanic origin","Not of Hispanic origin","Hispanic origin","Not of Hispanic origin","Not of Hispanic origin","Hispanic origin","Not of Hispanic origin","Not of Hispanic origin","Hispanic origin"],["Handgun - pistol, revolver, etc","Firearm, type not stated","Handgun - pistol, revolver, etc","Handgun - pistol, revolver, etc","Handgun - pistol, revolver, etc","Firearm, type not stated","Handgun - pistol, revolver, etc","Handgun - pistol, revolver, etc","Handgun - pistol, revolver, etc","Handgun - pistol, revolver, etc","Handgun - pistol, revolver, etc","Handgun - pistol, revolver, etc","Handgun - pistol, revolver, etc","Firearm, type not stated","Handgun - pistol, revolver, etc","Handgun - pistol, revolver, etc","Firearm, type not stated","Handgun - pistol, revolver, etc","Handgun - pistol, revolver, etc","Handgun - pistol, revolver, etc","Handgun - pistol, revolver, etc","Handgun - pistol, revolver, etc","Handgun - pistol, revolver, etc","Firearm, type not stated","Handgun - pistol, revolver, etc","Firearm, type not stated","Handgun - pistol, revolver, etc","Firearm, type not stated","Handgun - pistol, revolver, etc","Handgun - pistol, revolver, etc","Handgun - pistol, revolver, etc","Handgun - pistol, revolver, etc","Firearm, type not stated","Handgun - pistol, revolver, etc","Firearm, type not stated","Firearm, type not stated","Firearm, type not stated","Handgun - pistol, revolver, etc","Handgun - pistol, revolver, etc","Handgun - pistol, revolver, etc","Handgun - pistol, revolver, etc","Handgun - pistol, revolver, etc","Handgun - pistol, revolver, etc","Handgun - pistol, revolver, etc","Handgun - pistol, revolver, etc","Handgun - pistol, revolver, etc","Firearm, type not stated","Firearm, type not stated","Handgun - pistol, revolver, etc","Firearm, type not stated"],["Stranger","Relationship not determined","Relationship not determined","Relationship not determined","Other - known to victim","Relationship not determined","Friend","Stranger","Relationship not determined","Stranger","Stranger","Stranger","Relationship not determined","Acquaintance","Stranger","Relationship not determined","Relationship not determined","Stranger","Acquaintance","Relationship not determined","Relationship not determined","Friend","Other - known to victim","Acquaintance","Stranger","Relationship not determined","Relationship not determined","Relationship not determined","Other - known to victim","Stranger","Stranger","Girlfriend","Relationship not determined","Friend","Relationship not determined","Relationship not determined","Relationship not determined","Stranger","Relationship not determined","Friend","Relationship not determined","Relationship not determined","Stranger","Acquaintance","Other - known to victim","Acquaintance","Acquaintance","Relationship not determined","Relationship not determined","Relationship not determined"],["Felon killed by police","Other","Other arguments","Other arguments","Circumstances undetermined","Other arguments","Circumstances undetermined","Other arguments","Other","Circumstances undetermined","Circumstances undetermined","Felon killed by police","Circumstances undetermined","Circumstances undetermined","Narcotic drug laws","Circumstances undetermined","Circumstances undetermined","Other arguments","Narcotic drug laws","Gangland killings","Other arguments","Other arguments","Gangland killings","Other","Felon killed by police","Other - not specified","Felon killed by private citizen","Other - not specified","Other arguments","Felon killed by private citizen","Gangland killings","Other arguments","Other arguments","Other negligent handling of gun","Circumstances undetermined","Circumstances undetermined","Circumstances undetermined","Circumstances undetermined","Circumstances undetermined","Circumstances undetermined","Other arguments","Other arguments","Circumstances undetermined","Narcotic drug laws","Other arguments","Gangland killings","Other","Circumstances undetermined","Other","Circumstances undetermined"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>year<\/th>\n      <th>month<\/th>\n      <th>cnty_name<\/th>\n      <th>state_abbr<\/th>\n      <th>solved<\/th>\n      <th>vic_age<\/th>\n      <th>vic_race<\/th>\n      <th>vic_ethnic<\/th>\n      <th>weapon<\/th>\n      <th>relationship<\/th>\n      <th>circumstance<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"scrollX":"500px","columnDefs":[{"className":"dt-right","targets":[1,2,6]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
-=======
-<div id="htmlwidget-fe497ea7d570d967209d" style="width:100%;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-fe497ea7d570d967209d">{"x":{"filter":"none","data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31","32","33","34","35","36","37","38","39","40","41","42","43","44","45","46","47","48","49","50"],[2018,2018,2018,2018,2018,2018,2018,2018,2018,2018,2018,2018,2018,2018,2018,2018,2018,2018,2018,2018,2018,2018,2018,2018,2018,2018,2018,2018,2018,2018,2018,2018,2018,2018,2018,2018,2018,2018,2018,2018,2018,2018,2018,2018,2018,2018,2018,2018,2018,2018],[10,10,10,10,10,10,10,10,10,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12],["Clark, NV","Multnomah, OR","Multnomah, OR","Salt Lake, UT","Benton, WA","Pierce, WA","Pierce, WA","Spokane, WA","King, WA","Gila, AZ","Gila, AZ","Maricopa, AZ","Maricopa, AZ","Maricopa, AZ","Maricopa, AZ","Maricopa, AZ","Maricopa, AZ","Pima, AZ","Pima, AZ","Pima, AZ","El Paso, CO","El Paso, CO","Jefferson, CO","Bernalillo, NM","Bernalillo, NM","Clark, NV","Clark, NV","Clark, NV","Clark, NV","Clark, NV","Clark, NV","Clark, NV","Multnomah, OR","Washington, OR","Yakima, WA","Maricopa, AZ","Maricopa, AZ","Maricopa, AZ","Maricopa, AZ","Logan, CO","Denver, CO","Denver, CO","Denver, CO","Bernalillo, NM","Clark, NV","Clark, NV","Franklin, WA","Pierce, WA","Snohomish, WA","Yakima, WA"],["NV","OR","OR","UT","WA","WA","WA","WA","WA","AZ","AZ","AZ","AZ","AZ","AZ","AZ","AZ","AZ","AZ","AZ","CO","CO","CO","NM","NM","NV","NV","NV","NV","NV","NV","NV","OR","OR","WA","AZ","AZ","AZ","AZ","CO","CO","CO","CO","NM","NV","NV","WA","WA","WA","WA"],["Yes","No","No","No","Yes","No","Yes","Yes","Yes","Yes","Yes","Yes","No","Yes","Yes","Yes","No","Yes","Yes","No","Yes","Yes","Yes","Yes","Yes","No","Yes","No","No","Yes","Yes","Yes","No","Yes","Yes","No","Yes","Yes","No","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","No","Yes","Yes"],[26,21,27,18,28,28,18,15,26,22,22,24,24,24,19,28,18,28,16,25,26,23,28,18,18,20,22,24,29,19,16,17,26,19,16,22,23,18,22,15,28,23,20,15,26,18,29,17,23,22],["White","Black","Black","White","Black","Black","Black","Black","White","White","White","Black","Black","Black","White","Black","Black","Black","Black","White","Black","Black","White","White","White","Black","Black","White","White","Black","Black","Black","Black","White","White","White","Black","Black","Black","Black","Black","Black","Black","White","Black","Black","White","Black","Black","White"],["Hispanic origin","Unknown or not reported","Unknown or not reported","Hispanic origin","Not of Hispanic origin","Unknown or not reported","Not of Hispanic origin","Unknown or not reported","Hispanic origin","Hispanic origin","Hispanic origin","Not of Hispanic origin","Unknown or not reported","Unknown or not reported","Hispanic origin","Unknown or not reported","Unknown or not reported","Unknown or not reported","Not of Hispanic origin","Hispanic origin","Not of Hispanic origin","Not of Hispanic origin","Hispanic origin","Hispanic origin","Hispanic origin","Not of Hispanic origin","Not of Hispanic origin","Hispanic origin","Hispanic origin","Not of Hispanic origin","Not of Hispanic origin","Not of Hispanic origin","Unknown or not reported","Hispanic origin","Hispanic origin","Hispanic origin","Unknown or not reported","Unknown or not reported","Not of Hispanic origin","Not of Hispanic origin","Not of Hispanic origin","Not of Hispanic origin","Not of Hispanic origin","Hispanic origin","Not of Hispanic origin","Not of Hispanic origin","Hispanic origin","Not of Hispanic origin","Not of Hispanic origin","Hispanic origin"],["Handgun - pistol, revolver, etc","Firearm, type not stated","Handgun - pistol, revolver, etc","Handgun - pistol, revolver, etc","Handgun - pistol, revolver, etc","Firearm, type not stated","Handgun - pistol, revolver, etc","Handgun - pistol, revolver, etc","Handgun - pistol, revolver, etc","Handgun - pistol, revolver, etc","Handgun - pistol, revolver, etc","Handgun - pistol, revolver, etc","Handgun - pistol, revolver, etc","Firearm, type not stated","Handgun - pistol, revolver, etc","Handgun - pistol, revolver, etc","Firearm, type not stated","Handgun - pistol, revolver, etc","Handgun - pistol, revolver, etc","Handgun - pistol, revolver, etc","Handgun - pistol, revolver, etc","Handgun - pistol, revolver, etc","Handgun - pistol, revolver, etc","Firearm, type not stated","Handgun - pistol, revolver, etc","Firearm, type not stated","Handgun - pistol, revolver, etc","Firearm, type not stated","Handgun - pistol, revolver, etc","Handgun - pistol, revolver, etc","Handgun - pistol, revolver, etc","Handgun - pistol, revolver, etc","Firearm, type not stated","Handgun - pistol, revolver, etc","Firearm, type not stated","Firearm, type not stated","Firearm, type not stated","Handgun - pistol, revolver, etc","Handgun - pistol, revolver, etc","Handgun - pistol, revolver, etc","Handgun - pistol, revolver, etc","Handgun - pistol, revolver, etc","Handgun - pistol, revolver, etc","Handgun - pistol, revolver, etc","Handgun - pistol, revolver, etc","Handgun - pistol, revolver, etc","Firearm, type not stated","Firearm, type not stated","Handgun - pistol, revolver, etc","Firearm, type not stated"],["Stranger","Relationship not determined","Relationship not determined","Relationship not determined","Other - known to victim","Relationship not determined","Friend","Stranger","Relationship not determined","Stranger","Stranger","Stranger","Relationship not determined","Acquaintance","Stranger","Relationship not determined","Relationship not determined","Stranger","Acquaintance","Relationship not determined","Relationship not determined","Friend","Other - known to victim","Acquaintance","Stranger","Relationship not determined","Relationship not determined","Relationship not determined","Other - known to victim","Stranger","Stranger","Girlfriend","Relationship not determined","Friend","Relationship not determined","Relationship not determined","Relationship not determined","Stranger","Relationship not determined","Friend","Relationship not determined","Relationship not determined","Stranger","Acquaintance","Other - known to victim","Acquaintance","Acquaintance","Relationship not determined","Relationship not determined","Relationship not determined"],["Felon killed by police","Other","Other arguments","Other arguments","Circumstances undetermined","Other arguments","Circumstances undetermined","Other arguments","Other","Circumstances undetermined","Circumstances undetermined","Felon killed by police","Circumstances undetermined","Circumstances undetermined","Narcotic drug laws","Circumstances undetermined","Circumstances undetermined","Other arguments","Narcotic drug laws","Gangland killings","Other arguments","Other arguments","Gangland killings","Other","Felon killed by police","Other - not specified","Felon killed by private citizen","Other - not specified","Other arguments","Felon killed by private citizen","Gangland killings","Other arguments","Other arguments","Other negligent handling of gun","Circumstances undetermined","Circumstances undetermined","Circumstances undetermined","Circumstances undetermined","Circumstances undetermined","Circumstances undetermined","Other arguments","Other arguments","Circumstances undetermined","Narcotic drug laws","Other arguments","Gangland killings","Other","Circumstances undetermined","Other","Circumstances undetermined"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>year<\/th>\n      <th>month<\/th>\n      <th>cnty_name<\/th>\n      <th>state_abbr<\/th>\n      <th>solved<\/th>\n      <th>vic_age<\/th>\n      <th>vic_race<\/th>\n      <th>vic_ethnic<\/th>\n      <th>weapon<\/th>\n      <th>relationship<\/th>\n      <th>circumstance<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"scrollX":"500px","columnDefs":[{"className":"dt-right","targets":[1,2,6]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
->>>>>>> fd6bece1b050ebecb7554e7277de5a95955c6313
+<div id="htmlwidget-a1dd57dd05e2065530c8" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-a1dd57dd05e2065530c8">{"x":{"filter":"none","data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31","32","33","34","35","36","37","38","39","40","41","42","43","44","45","46","47","48","49","50"],[2018,2018,2018,2018,2018,2018,2018,2018,2018,2018,2018,2018,2018,2018,2018,2018,2018,2018,2018,2018,2018,2018,2018,2018,2018,2018,2018,2018,2018,2018,2018,2018,2018,2018,2018,2018,2018,2018,2018,2018,2018,2018,2018,2018,2018,2018,2018,2018,2018,2018],[10,10,10,10,10,10,10,10,10,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12],["Clark, NV","Multnomah, OR","Multnomah, OR","Salt Lake, UT","Benton, WA","Pierce, WA","Pierce, WA","Spokane, WA","King, WA","Gila, AZ","Gila, AZ","Maricopa, AZ","Maricopa, AZ","Maricopa, AZ","Maricopa, AZ","Maricopa, AZ","Maricopa, AZ","Pima, AZ","Pima, AZ","Pima, AZ","El Paso, CO","El Paso, CO","Jefferson, CO","Bernalillo, NM","Bernalillo, NM","Clark, NV","Clark, NV","Clark, NV","Clark, NV","Clark, NV","Clark, NV","Clark, NV","Multnomah, OR","Washington, OR","Yakima, WA","Maricopa, AZ","Maricopa, AZ","Maricopa, AZ","Maricopa, AZ","Logan, CO","Denver, CO","Denver, CO","Denver, CO","Bernalillo, NM","Clark, NV","Clark, NV","Franklin, WA","Pierce, WA","Snohomish, WA","Yakima, WA"],["NV","OR","OR","UT","WA","WA","WA","WA","WA","AZ","AZ","AZ","AZ","AZ","AZ","AZ","AZ","AZ","AZ","AZ","CO","CO","CO","NM","NM","NV","NV","NV","NV","NV","NV","NV","OR","OR","WA","AZ","AZ","AZ","AZ","CO","CO","CO","CO","NM","NV","NV","WA","WA","WA","WA"],["Yes","No","No","No","Yes","No","Yes","Yes","Yes","Yes","Yes","Yes","No","Yes","Yes","Yes","No","Yes","Yes","No","Yes","Yes","Yes","Yes","Yes","No","Yes","No","No","Yes","Yes","Yes","No","Yes","Yes","No","Yes","Yes","No","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","No","Yes","Yes"],[26,21,27,18,28,28,18,15,26,22,22,24,24,24,19,28,18,28,16,25,26,23,28,18,18,20,22,24,29,19,16,17,26,19,16,22,23,18,22,15,28,23,20,15,26,18,29,17,23,22],["White","Black","Black","White","Black","Black","Black","Black","White","White","White","Black","Black","Black","White","Black","Black","Black","Black","White","Black","Black","White","White","White","Black","Black","White","White","Black","Black","Black","Black","White","White","White","Black","Black","Black","Black","Black","Black","Black","White","Black","Black","White","Black","Black","White"],["Hispanic origin","Unknown or not reported","Unknown or not reported","Hispanic origin","Not of Hispanic origin","Unknown or not reported","Not of Hispanic origin","Unknown or not reported","Hispanic origin","Hispanic origin","Hispanic origin","Not of Hispanic origin","Unknown or not reported","Unknown or not reported","Hispanic origin","Unknown or not reported","Unknown or not reported","Unknown or not reported","Not of Hispanic origin","Hispanic origin","Not of Hispanic origin","Not of Hispanic origin","Hispanic origin","Hispanic origin","Hispanic origin","Not of Hispanic origin","Not of Hispanic origin","Hispanic origin","Hispanic origin","Not of Hispanic origin","Not of Hispanic origin","Not of Hispanic origin","Unknown or not reported","Hispanic origin","Hispanic origin","Hispanic origin","Unknown or not reported","Unknown or not reported","Not of Hispanic origin","Not of Hispanic origin","Not of Hispanic origin","Not of Hispanic origin","Not of Hispanic origin","Hispanic origin","Not of Hispanic origin","Not of Hispanic origin","Hispanic origin","Not of Hispanic origin","Not of Hispanic origin","Hispanic origin"],["Handgun - pistol, revolver, etc","Firearm, type not stated","Handgun - pistol, revolver, etc","Handgun - pistol, revolver, etc","Handgun - pistol, revolver, etc","Firearm, type not stated","Handgun - pistol, revolver, etc","Handgun - pistol, revolver, etc","Handgun - pistol, revolver, etc","Handgun - pistol, revolver, etc","Handgun - pistol, revolver, etc","Handgun - pistol, revolver, etc","Handgun - pistol, revolver, etc","Firearm, type not stated","Handgun - pistol, revolver, etc","Handgun - pistol, revolver, etc","Firearm, type not stated","Handgun - pistol, revolver, etc","Handgun - pistol, revolver, etc","Handgun - pistol, revolver, etc","Handgun - pistol, revolver, etc","Handgun - pistol, revolver, etc","Handgun - pistol, revolver, etc","Firearm, type not stated","Handgun - pistol, revolver, etc","Firearm, type not stated","Handgun - pistol, revolver, etc","Firearm, type not stated","Handgun - pistol, revolver, etc","Handgun - pistol, revolver, etc","Handgun - pistol, revolver, etc","Handgun - pistol, revolver, etc","Firearm, type not stated","Handgun - pistol, revolver, etc","Firearm, type not stated","Firearm, type not stated","Firearm, type not stated","Handgun - pistol, revolver, etc","Handgun - pistol, revolver, etc","Handgun - pistol, revolver, etc","Handgun - pistol, revolver, etc","Handgun - pistol, revolver, etc","Handgun - pistol, revolver, etc","Handgun - pistol, revolver, etc","Handgun - pistol, revolver, etc","Handgun - pistol, revolver, etc","Firearm, type not stated","Firearm, type not stated","Handgun - pistol, revolver, etc","Firearm, type not stated"],["Stranger","Relationship not determined","Relationship not determined","Relationship not determined","Other - known to victim","Relationship not determined","Friend","Stranger","Relationship not determined","Stranger","Stranger","Stranger","Relationship not determined","Acquaintance","Stranger","Relationship not determined","Relationship not determined","Stranger","Acquaintance","Relationship not determined","Relationship not determined","Friend","Other - known to victim","Acquaintance","Stranger","Relationship not determined","Relationship not determined","Relationship not determined","Other - known to victim","Stranger","Stranger","Girlfriend","Relationship not determined","Friend","Relationship not determined","Relationship not determined","Relationship not determined","Stranger","Relationship not determined","Friend","Relationship not determined","Relationship not determined","Stranger","Acquaintance","Other - known to victim","Acquaintance","Acquaintance","Relationship not determined","Relationship not determined","Relationship not determined"],["Felon killed by police","Other","Other arguments","Other arguments","Circumstances undetermined","Other arguments","Circumstances undetermined","Other arguments","Other","Circumstances undetermined","Circumstances undetermined","Felon killed by police","Circumstances undetermined","Circumstances undetermined","Narcotic drug laws","Circumstances undetermined","Circumstances undetermined","Other arguments","Narcotic drug laws","Gangland killings","Other arguments","Other arguments","Gangland killings","Other","Felon killed by police","Other - not specified","Felon killed by private citizen","Other - not specified","Other arguments","Felon killed by private citizen","Gangland killings","Other arguments","Other arguments","Other negligent handling of gun","Circumstances undetermined","Circumstances undetermined","Circumstances undetermined","Circumstances undetermined","Circumstances undetermined","Circumstances undetermined","Other arguments","Other arguments","Circumstances undetermined","Narcotic drug laws","Other arguments","Gangland killings","Other","Circumstances undetermined","Other","Circumstances undetermined"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>year<\/th>\n      <th>month<\/th>\n      <th>cnty_name<\/th>\n      <th>state_abbr<\/th>\n      <th>solved<\/th>\n      <th>vic_age<\/th>\n      <th>vic_race<\/th>\n      <th>vic_ethnic<\/th>\n      <th>weapon<\/th>\n      <th>relationship<\/th>\n      <th>circumstance<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"scrollX":"500px","columnDefs":[{"className":"dt-right","targets":[1,2,6]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
 <p>If this complex filter seems too complex, you can always chain one filter after another to check your data as you go. For example, you could do this:</p>
 <pre><code>     murder_data %&gt;%
         filter ( weapon_code %in% c(&quot;11&quot;, &quot;12&quot;, &quot;13&quot;, &quot;14&quot;, &quot;15&quot;) ) %&gt;%
@@ -527,28 +525,17 @@ Guns:</p>
 <a class="sourceLine" id="cb80-11" title="11">                            <span class="dt">lengthMenu =</span> <span class="kw">c</span>(<span class="dv">5</span>, <span class="dv">10</span>, <span class="dv">50</span>)</a>
 <a class="sourceLine" id="cb80-12" title="12">                            )</a>
 <a class="sourceLine" id="cb80-13" title="13">             )</a></code></pre></div>
-<<<<<<< HEAD
-<p><div id="htmlwidget-568afd5dfdd8d2d1081d" style="width:100%;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-568afd5dfdd8d2d1081d">{"x":{"filter":"none","data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31","32","33","34","35","36","37","38","39","40","41","42","43"],[2018,2017,2016,2015,2014,2013,2012,2011,2010,2009,2008,2007,2006,2005,2004,2003,2002,2001,2000,1999,1998,1997,1996,1995,1994,1993,1992,1991,1990,1989,1988,1987,1986,1985,1984,1983,1982,1981,1980,1979,1978,1977,1976],[1613,1773,1448,1299,1227,1249,1223,1233,1241,1282,1351,1466,1467,1479,1464,1397,1373,1346,1149,1331,1417,1401,1475,1582,1541,1382,1383,1264,1153,1140,1300,1212,1350,1206,1117,1122,1135,1104,1295,1137,1056,949,943],[425,484,394,344,313,383,365,379,400,370,453,516,509,473,458,482,446,448,385,424,396,401,390,478,438,362,345,308,301,291,306,266,321,264,248,225,247,237,293,233,242,231,169],[248,252,208,189,165,186,172,167,145,165,160,161,176,177,216,190,181,154,134,201,195,175,182,219,187,221,232,213,166,166,206,211,247,204,192,214,193,230,198,171,194,176,183],[37,48,47,32,30,30,29,31,22,22,23,51,33,42,32,28,36,33,17,26,36,43,50,48,40,32,38,17,34,28,35,35,32,24,37,36,25,45,30,56,46,51,48],[40,43,37,38,30,16,23,19,23,28,28,15,21,23,29,22,13,22,12,11,11,16,null,19,null,null,20,18,1,22,19,null,2,30,32,23,1,23,29,33,36,30,27],[168,166,111,105,128,119,112,132,142,156,144,164,111,139,158,113,149,98,126,147,157,114,144,120,115,102,101,115,96,108,134,131,145,138,79,81,115,4,141,125,87,91,115],[239,311,228,203,185,168,136,155,175,183,183,208,242,225,187,202,191,197,135,174,184,196,227,174,176,137,136,139,105,98,104,82,110,101,97,118,130,159,154,125,93,83,78],[115,131,111,85,84,85,97,92,93,98,92,82,107,97,105,78,76,102,71,95,140,113,139,146,178,154,163,163,125,148,161,166,184,133,147,113,143,118,141,112,121,106,98],[69,82,76,61,72,51,57,55,58,41,47,65,52,60,58,61,57,82,54,58,66,75,67,78,70,69,54,55,53,46,48,56,55,53,49,56,55,54,53,54,49,36,41],[255,242,213,224,206,194,215,183,175,207,210,186,207,226,208,204,208,199,203,182,215,250,258,288,317,287,274,221,249,211,273,254,225,234,216,226,192,208,222,184,164,129,162],[17,14,23,18,14,17,17,20,8,12,11,18,9,17,13,17,16,11,12,13,17,18,18,12,20,18,20,15,23,22,14,11,29,25,20,30,34,26,34,44,24,16,22]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>year<\/th>\n      <th>total_cases<\/th>\n      <th>AZ<\/th>\n      <th>CO<\/th>\n      <th>ID<\/th>\n      <th>MT<\/th>\n      <th>NM<\/th>\n      <th>NV<\/th>\n      <th>OR<\/th>\n      <th>UT<\/th>\n      <th>WA<\/th>\n      <th>WY<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"scrollX":"400px","pageLength":"5","lengthMenu":[5,10,50],"columnDefs":[{"className":"dt-right","targets":[1,2,3,4,5,6,7,8,9,10,11,12]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+<p><div id="htmlwidget-7ed5784a37a7898e4a14" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-7ed5784a37a7898e4a14">{"x":{"filter":"none","data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31","32","33","34","35","36","37","38","39","40","41","42","43"],[2018,2017,2016,2015,2014,2013,2012,2011,2010,2009,2008,2007,2006,2005,2004,2003,2002,2001,2000,1999,1998,1997,1996,1995,1994,1993,1992,1991,1990,1989,1988,1987,1986,1985,1984,1983,1982,1981,1980,1979,1978,1977,1976],[1613,1773,1448,1299,1227,1249,1223,1233,1241,1282,1351,1466,1467,1479,1464,1397,1373,1346,1149,1331,1417,1401,1475,1582,1541,1382,1383,1264,1153,1140,1300,1212,1350,1206,1117,1122,1135,1104,1295,1137,1056,949,943],[425,484,394,344,313,383,365,379,400,370,453,516,509,473,458,482,446,448,385,424,396,401,390,478,438,362,345,308,301,291,306,266,321,264,248,225,247,237,293,233,242,231,169],[248,252,208,189,165,186,172,167,145,165,160,161,176,177,216,190,181,154,134,201,195,175,182,219,187,221,232,213,166,166,206,211,247,204,192,214,193,230,198,171,194,176,183],[37,48,47,32,30,30,29,31,22,22,23,51,33,42,32,28,36,33,17,26,36,43,50,48,40,32,38,17,34,28,35,35,32,24,37,36,25,45,30,56,46,51,48],[40,43,37,38,30,16,23,19,23,28,28,15,21,23,29,22,13,22,12,11,11,16,null,19,null,null,20,18,1,22,19,null,2,30,32,23,1,23,29,33,36,30,27],[168,166,111,105,128,119,112,132,142,156,144,164,111,139,158,113,149,98,126,147,157,114,144,120,115,102,101,115,96,108,134,131,145,138,79,81,115,4,141,125,87,91,115],[239,311,228,203,185,168,136,155,175,183,183,208,242,225,187,202,191,197,135,174,184,196,227,174,176,137,136,139,105,98,104,82,110,101,97,118,130,159,154,125,93,83,78],[115,131,111,85,84,85,97,92,93,98,92,82,107,97,105,78,76,102,71,95,140,113,139,146,178,154,163,163,125,148,161,166,184,133,147,113,143,118,141,112,121,106,98],[69,82,76,61,72,51,57,55,58,41,47,65,52,60,58,61,57,82,54,58,66,75,67,78,70,69,54,55,53,46,48,56,55,53,49,56,55,54,53,54,49,36,41],[255,242,213,224,206,194,215,183,175,207,210,186,207,226,208,204,208,199,203,182,215,250,258,288,317,287,274,221,249,211,273,254,225,234,216,226,192,208,222,184,164,129,162],[17,14,23,18,14,17,17,20,8,12,11,18,9,17,13,17,16,11,12,13,17,18,18,12,20,18,20,15,23,22,14,11,29,25,20,30,34,26,34,44,24,16,22]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>year<\/th>\n      <th>total_cases<\/th>\n      <th>AZ<\/th>\n      <th>CO<\/th>\n      <th>ID<\/th>\n      <th>MT<\/th>\n      <th>NM<\/th>\n      <th>NV<\/th>\n      <th>OR<\/th>\n      <th>UT<\/th>\n      <th>WA<\/th>\n      <th>WY<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"scrollX":"400px","pageLength":"5","lengthMenu":[5,10,50],"columnDefs":[{"className":"dt-right","targets":[1,2,3,4,5,6,7,8,9,10,11,12]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
 Does this mean that these states have suddenly become more dangerous? What about population growth?</p>
 <p><strong>Alternative method</strong></p>
 <p>The <code>janitor</code> package (which you may need to install) has a way to create cross-tabulations like this more simply. The function is <code>tabyl</code> (to distinguish from other table operations in R, which you probably want to avoid). Here’s an example:</p>
-=======
-<p><div id="htmlwidget-c20fa195eb202b711098" style="width:100%;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-c20fa195eb202b711098">{"x":{"filter":"none","data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31","32","33","34","35","36","37","38","39","40","41","42","43"],[2018,2017,2016,2015,2014,2013,2012,2011,2010,2009,2008,2007,2006,2005,2004,2003,2002,2001,2000,1999,1998,1997,1996,1995,1994,1993,1992,1991,1990,1989,1988,1987,1986,1985,1984,1983,1982,1981,1980,1979,1978,1977,1976],[1613,1773,1448,1299,1227,1249,1223,1233,1241,1282,1351,1466,1467,1479,1464,1397,1373,1346,1149,1331,1417,1401,1475,1582,1541,1382,1383,1264,1153,1140,1300,1212,1350,1206,1117,1122,1135,1104,1295,1137,1056,949,943],[425,484,394,344,313,383,365,379,400,370,453,516,509,473,458,482,446,448,385,424,396,401,390,478,438,362,345,308,301,291,306,266,321,264,248,225,247,237,293,233,242,231,169],[248,252,208,189,165,186,172,167,145,165,160,161,176,177,216,190,181,154,134,201,195,175,182,219,187,221,232,213,166,166,206,211,247,204,192,214,193,230,198,171,194,176,183],[37,48,47,32,30,30,29,31,22,22,23,51,33,42,32,28,36,33,17,26,36,43,50,48,40,32,38,17,34,28,35,35,32,24,37,36,25,45,30,56,46,51,48],[40,43,37,38,30,16,23,19,23,28,28,15,21,23,29,22,13,22,12,11,11,16,null,19,null,null,20,18,1,22,19,null,2,30,32,23,1,23,29,33,36,30,27],[168,166,111,105,128,119,112,132,142,156,144,164,111,139,158,113,149,98,126,147,157,114,144,120,115,102,101,115,96,108,134,131,145,138,79,81,115,4,141,125,87,91,115],[239,311,228,203,185,168,136,155,175,183,183,208,242,225,187,202,191,197,135,174,184,196,227,174,176,137,136,139,105,98,104,82,110,101,97,118,130,159,154,125,93,83,78],[115,131,111,85,84,85,97,92,93,98,92,82,107,97,105,78,76,102,71,95,140,113,139,146,178,154,163,163,125,148,161,166,184,133,147,113,143,118,141,112,121,106,98],[69,82,76,61,72,51,57,55,58,41,47,65,52,60,58,61,57,82,54,58,66,75,67,78,70,69,54,55,53,46,48,56,55,53,49,56,55,54,53,54,49,36,41],[255,242,213,224,206,194,215,183,175,207,210,186,207,226,208,204,208,199,203,182,215,250,258,288,317,287,274,221,249,211,273,254,225,234,216,226,192,208,222,184,164,129,162],[17,14,23,18,14,17,17,20,8,12,11,18,9,17,13,17,16,11,12,13,17,18,18,12,20,18,20,15,23,22,14,11,29,25,20,30,34,26,34,44,24,16,22]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>year<\/th>\n      <th>total_cases<\/th>\n      <th>AZ<\/th>\n      <th>CO<\/th>\n      <th>ID<\/th>\n      <th>MT<\/th>\n      <th>NM<\/th>\n      <th>NV<\/th>\n      <th>OR<\/th>\n      <th>UT<\/th>\n      <th>WA<\/th>\n      <th>WY<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"scrollX":"400px","pageLength":"5","lengthMenu":[5,10,50],"columnDefs":[{"className":"dt-right","targets":[1,2,3,4,5,6,7,8,9,10,11,12]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
-Does this mean that these states have suddenly become more dangerous? What about population growth?</p>
-<p>NOTE: Later on, we’ll get to other packages, which includes <code>janitor</code> – a useful way to clean data. That package has a much easier way to produce tables while formatting them well. If you’ve already installed and loaded the package, here’s another way to do the same thing:</p>
->>>>>>> fd6bece1b050ebecb7554e7277de5a95955c6313
 <div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb81-1" title="1">murder_data <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb81-2" title="2"><span class="st">  </span><span class="kw">tabyl</span> ( year , state_abbr) <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb81-3" title="3"><span class="st">  </span><span class="kw">arrange</span> ( <span class="kw">desc</span> (year) ) <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb81-4" title="4"><span class="st">  </span><span class="kw">head</span> () <span class="op">%&gt;%</span></a>
-<<<<<<< HEAD
 <a class="sourceLine" id="cb81-5" title="5"><span class="st">  </span><span class="co">#to make a nicer looking table, with the knitr() package</span></a>
 <a class="sourceLine" id="cb81-6" title="6"><span class="st">  </span><span class="kw">kable</span>()</a></code></pre></div>
-=======
-<a class="sourceLine" id="cb81-5" title="5"><span class="st">  </span><span class="kw">kable</span>()</a></code></pre></div>
->>>>>>> fd6bece1b050ebecb7554e7277de5a95955c6313
 <table>
 <thead>
 <tr class="header">
@@ -663,7 +650,6 @@ Does this mean that these states have suddenly become more dangerous? What about
 {"columns":[{"label":["relationship"],"name":[1],"type":["chr"],"align":["left"]},{"label":["num_of_cases"],"name":[2],"type":["int"],"align":["right"]},{"label":["total_cases"],"name":[3],"type":["int"],"align":["right"]},{"label":["pct_cases"],"name":[4],"type":["dbl"],"align":["right"]}],"data":[{"1":"Relationship not determined","2":"15774","3":"56075","4":"28.1"},{"1":"Acquaintance","2":"11935","3":"56075","4":"21.3"},{"1":"Stranger","2":"9988","3":"56075","4":"17.8"},{"1":"Wife","2":"2890","3":"56075","4":"5.2"},{"1":"Friend","2":"2368","3":"56075","4":"4.2"},{"1":"Other - known to victim","2":"2349","3":"56075","4":"4.2"},{"1":"Girlfriend","2":"1893","3":"56075","4":"3.4"},{"1":"Son","2":"1260","3":"56075","4":"2.2"},{"1":"Daughter","2":"1005","3":"56075","4":"1.8"},{"1":"Husband","2":"904","3":"56075","4":"1.6"},{"1":"Other family","2":"873","3":"56075","4":"1.6"},{"1":"Neighbor","2":"727","3":"56075","4":"1.3"},{"1":"Boyfriend","2":"669","3":"56075","4":"1.2"},{"1":"Mother","2":"559","3":"56075","4":"1.0"},{"1":"Brother","2":"534","3":"56075","4":"1.0"},{"1":"Father","2":"480","3":"56075","4":"0.9"},{"1":"In-law","2":"365","3":"56075","4":"0.7"},{"1":"Ex-wife","2":"287","3":"56075","4":"0.5"},{"1":"Common-law wife","2":"178","3":"56075","4":"0.3"},{"1":"Sister","2":"168","3":"56075","4":"0.3"},{"1":"Stepson","2":"163","3":"56075","4":"0.3"},{"1":"Stepfather","2":"159","3":"56075","4":"0.3"},{"1":"Homosexual relationship","2":"135","3":"56075","4":"0.2"},{"1":"Stepdaughter","2":"102","3":"56075","4":"0.2"},{"1":"Common-law husband","2":"84","3":"56075","4":"0.1"},{"1":"Ex-husband","2":"76","3":"56075","4":"0.1"},{"1":"Employer","2":"74","3":"56075","4":"0.1"},{"1":"Employee","2":"53","3":"56075","4":"0.1"},{"1":"Stepmother","2":"23","3":"56075","4":"0.0"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
-<<<<<<< HEAD
 <p><strong>Alternative method with <code>janitor::tabyl</code></strong></p>
 <div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb83-1" title="1">murder_data <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb83-2" title="2"><span class="st">  </span><span class="kw">tabyl</span> (relationship) <span class="op">%&gt;%</span></a>
@@ -676,13 +662,153 @@ Does this mean that these states have suddenly become more dangerous? What about
 {"columns":[{"label":["relationship"],"name":[1],"type":["chr"],"align":["left"]},{"label":["n"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["percent"],"name":[3],"type":["chr"],"align":["left"]}],"data":[{"1":"Relationship not determined","2":"15774","3":"28.1%"},{"1":"Acquaintance","2":"11935","3":"21.3%"},{"1":"Stranger","2":"9988","3":"17.8%"},{"1":"Wife","2":"2890","3":"5.2%"},{"1":"Friend","2":"2368","3":"4.2%"},{"1":"Other - known to victim","2":"2349","3":"4.2%"},{"1":"Girlfriend","2":"1893","3":"3.4%"},{"1":"Son","2":"1260","3":"2.2%"},{"1":"Daughter","2":"1005","3":"1.8%"},{"1":"Husband","2":"904","3":"1.6%"},{"1":"Other family","2":"873","3":"1.6%"},{"1":"Neighbor","2":"727","3":"1.3%"},{"1":"Boyfriend","2":"669","3":"1.2%"},{"1":"Mother","2":"559","3":"1.0%"},{"1":"Brother","2":"534","3":"1.0%"},{"1":"Father","2":"480","3":"0.9%"},{"1":"In-law","2":"365","3":"0.7%"},{"1":"Ex-wife","2":"287","3":"0.5%"},{"1":"Common-law wife","2":"178","3":"0.3%"},{"1":"Sister","2":"168","3":"0.3%"},{"1":"Stepson","2":"163","3":"0.3%"},{"1":"Stepfather","2":"159","3":"0.3%"},{"1":"Homosexual relationship","2":"135","3":"0.2%"},{"1":"Stepdaughter","2":"102","3":"0.2%"},{"1":"Common-law husband","2":"84","3":"0.1%"},{"1":"Ex-husband","2":"76","3":"0.1%"},{"1":"Employer","2":"74","3":"0.1%"},{"1":"Employee","2":"53","3":"0.1%"},{"1":"Stepmother","2":"23","3":"0.0%"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
+<p>Why is this answer not surprising? (Hint: Clark County, Nevada, has about half the population of Maricopa.) We’ll get to ways to normalize this in later chapters.</p>
+<p>To just get the police shootings, filter the above query for <code>circumstance_code == "81"</code> before the <code>group_by</code></p>
+<ol start="2" style="list-style-type: decimal">
+<li>Murders by state and year</li>
+</ol>
+<p>(I’m putting the most recent year at the top)</p>
+<div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb84-1" title="1">murder_data <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb84-2" title="2"><span class="st">  </span><span class="kw">group_by</span> (year, state_abbr) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb84-3" title="3"><span class="st">  </span><span class="kw">summarise</span> (<span class="dt">cases =</span> <span class="kw">n</span>() ) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb84-4" title="4"><span class="st">  </span><span class="co">#bonus: Calculate the total number of cases by year:</span></a>
+<a class="sourceLine" id="cb84-5" title="5"><span class="st">  </span><span class="kw">mutate</span> ( <span class="dt">total_cases =</span> <span class="kw">sum</span>(cases) )  <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb84-6" title="6"><span class="st">  </span><span class="kw">pivot_wider</span> (<span class="dt">names_from =</span> state_abbr, <span class="dt">values_from =</span> cases) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb84-7" title="7"><span class="st">  </span><span class="kw">arrange</span> ( <span class="kw">desc</span> (year)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb84-8" title="8"><span class="st">  </span><span class="co">#Extra! fancy table that requires the DT package.</span></a>
+<a class="sourceLine" id="cb84-9" title="9"><span class="st">  </span><span class="kw">datatable</span>( <span class="dt">options =</span> <span class="kw">list</span>(<span class="dt">scrollX=</span> <span class="st">&quot;400px&quot;</span>, </a>
+<a class="sourceLine" id="cb84-10" title="10">                            <span class="dt">pageLength =</span> <span class="st">&quot;5&quot;</span>, </a>
+<a class="sourceLine" id="cb84-11" title="11">                            <span class="dt">lengthMenu =</span> <span class="kw">c</span>(<span class="dv">5</span>, <span class="dv">10</span>, <span class="dv">50</span>)</a>
+<a class="sourceLine" id="cb84-12" title="12">                            )</a>
+<a class="sourceLine" id="cb84-13" title="13">             )</a></code></pre></div>
+<p><div id="htmlwidget-913b6c476cc2ea1f0a77" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-913b6c476cc2ea1f0a77">{"x":{"filter":"none","data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31","32","33","34","35","36","37","38","39","40","41","42","43"],[2018,2017,2016,2015,2014,2013,2012,2011,2010,2009,2008,2007,2006,2005,2004,2003,2002,2001,2000,1999,1998,1997,1996,1995,1994,1993,1992,1991,1990,1989,1988,1987,1986,1985,1984,1983,1982,1981,1980,1979,1978,1977,1976],[1613,1773,1448,1299,1227,1249,1223,1233,1241,1282,1351,1466,1467,1479,1464,1397,1373,1346,1149,1331,1417,1401,1475,1582,1541,1382,1383,1264,1153,1140,1300,1212,1350,1206,1117,1122,1135,1104,1295,1137,1056,949,943],[425,484,394,344,313,383,365,379,400,370,453,516,509,473,458,482,446,448,385,424,396,401,390,478,438,362,345,308,301,291,306,266,321,264,248,225,247,237,293,233,242,231,169],[248,252,208,189,165,186,172,167,145,165,160,161,176,177,216,190,181,154,134,201,195,175,182,219,187,221,232,213,166,166,206,211,247,204,192,214,193,230,198,171,194,176,183],[37,48,47,32,30,30,29,31,22,22,23,51,33,42,32,28,36,33,17,26,36,43,50,48,40,32,38,17,34,28,35,35,32,24,37,36,25,45,30,56,46,51,48],[40,43,37,38,30,16,23,19,23,28,28,15,21,23,29,22,13,22,12,11,11,16,null,19,null,null,20,18,1,22,19,null,2,30,32,23,1,23,29,33,36,30,27],[168,166,111,105,128,119,112,132,142,156,144,164,111,139,158,113,149,98,126,147,157,114,144,120,115,102,101,115,96,108,134,131,145,138,79,81,115,4,141,125,87,91,115],[239,311,228,203,185,168,136,155,175,183,183,208,242,225,187,202,191,197,135,174,184,196,227,174,176,137,136,139,105,98,104,82,110,101,97,118,130,159,154,125,93,83,78],[115,131,111,85,84,85,97,92,93,98,92,82,107,97,105,78,76,102,71,95,140,113,139,146,178,154,163,163,125,148,161,166,184,133,147,113,143,118,141,112,121,106,98],[69,82,76,61,72,51,57,55,58,41,47,65,52,60,58,61,57,82,54,58,66,75,67,78,70,69,54,55,53,46,48,56,55,53,49,56,55,54,53,54,49,36,41],[255,242,213,224,206,194,215,183,175,207,210,186,207,226,208,204,208,199,203,182,215,250,258,288,317,287,274,221,249,211,273,254,225,234,216,226,192,208,222,184,164,129,162],[17,14,23,18,14,17,17,20,8,12,11,18,9,17,13,17,16,11,12,13,17,18,18,12,20,18,20,15,23,22,14,11,29,25,20,30,34,26,34,44,24,16,22]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>year<\/th>\n      <th>total_cases<\/th>\n      <th>AZ<\/th>\n      <th>CO<\/th>\n      <th>ID<\/th>\n      <th>MT<\/th>\n      <th>NM<\/th>\n      <th>NV<\/th>\n      <th>OR<\/th>\n      <th>UT<\/th>\n      <th>WA<\/th>\n      <th>WY<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"scrollX":"400px","pageLength":"5","lengthMenu":[5,10,50],"columnDefs":[{"className":"dt-right","targets":[1,2,3,4,5,6,7,8,9,10,11,12]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+Does this mean that these states have suddenly become more dangerous? What about population growth?</p>
+<p>NOTE: Later on, we’ll get to other packages, which includes <code>janitor</code> – a useful way to clean data. That package has a much easier way to produce tables while formatting them well. If you’ve already installed and loaded the package, here’s another way to do the same thing:</p>
+<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb85-1" title="1">murder_data <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb85-2" title="2"><span class="st">  </span><span class="kw">tabyl</span> ( year , state_abbr) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb85-3" title="3"><span class="st">  </span><span class="kw">arrange</span> ( <span class="kw">desc</span> (year) ) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb85-4" title="4"><span class="st">  </span><span class="kw">head</span> () <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb85-5" title="5"><span class="st">  </span><span class="kw">kable</span>()</a></code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th align="right">year</th>
+<th align="right">AZ</th>
+<th align="right">CO</th>
+<th align="right">ID</th>
+<th align="right">MT</th>
+<th align="right">NM</th>
+<th align="right">NV</th>
+<th align="right">OR</th>
+<th align="right">UT</th>
+<th align="right">WA</th>
+<th align="right">WY</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">2018</td>
+<td align="right">425</td>
+<td align="right">248</td>
+<td align="right">37</td>
+<td align="right">40</td>
+<td align="right">168</td>
+<td align="right">239</td>
+<td align="right">115</td>
+<td align="right">69</td>
+<td align="right">255</td>
+<td align="right">17</td>
+</tr>
+<tr class="even">
+<td align="right">2017</td>
+<td align="right">484</td>
+<td align="right">252</td>
+<td align="right">48</td>
+<td align="right">43</td>
+<td align="right">166</td>
+<td align="right">311</td>
+<td align="right">131</td>
+<td align="right">82</td>
+<td align="right">242</td>
+<td align="right">14</td>
+</tr>
+<tr class="odd">
+<td align="right">2016</td>
+<td align="right">394</td>
+<td align="right">208</td>
+<td align="right">47</td>
+<td align="right">37</td>
+<td align="right">111</td>
+<td align="right">228</td>
+<td align="right">111</td>
+<td align="right">76</td>
+<td align="right">213</td>
+<td align="right">23</td>
+</tr>
+<tr class="even">
+<td align="right">2015</td>
+<td align="right">344</td>
+<td align="right">189</td>
+<td align="right">32</td>
+<td align="right">38</td>
+<td align="right">105</td>
+<td align="right">203</td>
+<td align="right">85</td>
+<td align="right">61</td>
+<td align="right">224</td>
+<td align="right">18</td>
+</tr>
+<tr class="odd">
+<td align="right">2014</td>
+<td align="right">313</td>
+<td align="right">165</td>
+<td align="right">30</td>
+<td align="right">30</td>
+<td align="right">128</td>
+<td align="right">185</td>
+<td align="right">84</td>
+<td align="right">72</td>
+<td align="right">206</td>
+<td align="right">14</td>
+</tr>
+<tr class="even">
+<td align="right">2013</td>
+<td align="right">383</td>
+<td align="right">186</td>
+<td align="right">30</td>
+<td align="right">16</td>
+<td align="right">119</td>
+<td align="right">168</td>
+<td align="right">85</td>
+<td align="right">51</td>
+<td align="right">194</td>
+<td align="right">17</td>
+</tr>
+</tbody>
+</table>
+<ol start="3" style="list-style-type: decimal">
+<li>Percent of murders by relationship:</li>
+</ol>
+<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb86-1" title="1">murder_data <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb86-2" title="2"><span class="st">  </span><span class="kw">group_by</span> (relationship) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb86-3" title="3"><span class="st">  </span><span class="kw">summarise</span> (<span class="dt">num_of_cases =</span> <span class="kw">n</span>() ) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb86-4" title="4"><span class="st">  </span><span class="kw">mutate</span> (<span class="dt">total_cases =</span> <span class="kw">sum</span>(num_of_cases) ,</a>
+<a class="sourceLine" id="cb86-5" title="5">          <span class="co"># This rounds to 1 digit.</span></a>
+<a class="sourceLine" id="cb86-6" title="6">          <span class="dt">pct_cases =</span> <span class="kw">round</span> (num_of_cases <span class="op">/</span><span class="st"> </span>total_cases <span class="op">*</span><span class="st"> </span><span class="dv">100</span> , <span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb86-7" title="7">          ) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb86-8" title="8"><span class="st">  </span><span class="co"># you could un-select the total cases since they&#39;ll always be the same , but for illustratio purposes I&#39;m keeping it.</span></a>
+<a class="sourceLine" id="cb86-9" title="9"><span class="st">  </span><span class="kw">arrange</span> ( <span class="kw">desc</span> (num_of_cases)) </a></code></pre></div>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["relationship"],"name":[1],"type":["chr"],"align":["left"]},{"label":["num_of_cases"],"name":[2],"type":["int"],"align":["right"]},{"label":["total_cases"],"name":[3],"type":["int"],"align":["right"]},{"label":["pct_cases"],"name":[4],"type":["dbl"],"align":["right"]}],"data":[{"1":"Relationship not determined","2":"15774","3":"56075","4":"28.1"},{"1":"Acquaintance","2":"11935","3":"56075","4":"21.3"},{"1":"Stranger","2":"9988","3":"56075","4":"17.8"},{"1":"Wife","2":"2890","3":"56075","4":"5.2"},{"1":"Friend","2":"2368","3":"56075","4":"4.2"},{"1":"Other - known to victim","2":"2349","3":"56075","4":"4.2"},{"1":"Girlfriend","2":"1893","3":"56075","4":"3.4"},{"1":"Son","2":"1260","3":"56075","4":"2.2"},{"1":"Daughter","2":"1005","3":"56075","4":"1.8"},{"1":"Husband","2":"904","3":"56075","4":"1.6"},{"1":"Other family","2":"873","3":"56075","4":"1.6"},{"1":"Neighbor","2":"727","3":"56075","4":"1.3"},{"1":"Boyfriend","2":"669","3":"56075","4":"1.2"},{"1":"Mother","2":"559","3":"56075","4":"1.0"},{"1":"Brother","2":"534","3":"56075","4":"1.0"},{"1":"Father","2":"480","3":"56075","4":"0.9"},{"1":"In-law","2":"365","3":"56075","4":"0.7"},{"1":"Ex-wife","2":"287","3":"56075","4":"0.5"},{"1":"Common-law wife","2":"178","3":"56075","4":"0.3"},{"1":"Sister","2":"168","3":"56075","4":"0.3"},{"1":"Stepson","2":"163","3":"56075","4":"0.3"},{"1":"Stepfather","2":"159","3":"56075","4":"0.3"},{"1":"Homosexual relationship","2":"135","3":"56075","4":"0.2"},{"1":"Stepdaughter","2":"102","3":"56075","4":"0.2"},{"1":"Common-law husband","2":"84","3":"56075","4":"0.1"},{"1":"Ex-husband","2":"76","3":"56075","4":"0.1"},{"1":"Employer","2":"74","3":"56075","4":"0.1"},{"1":"Employee","2":"53","3":"56075","4":"0.1"},{"1":"Stepmother","2":"23","3":"56075","4":"0.0"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
 </div>
-=======
 <p>Again, using the <code>tabyl</code> function from the <code>janitor</code> package:</p>
-<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb83-1" title="1">murder_data <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb83-2" title="2"><span class="st">  </span><span class="kw">tabyl</span> (relationship) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb83-3" title="3"><span class="st">  </span><span class="kw">adorn_pct_formatting</span> (<span class="dt">digits=</span><span class="dv">1</span>)  <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb83-4" title="4"><span class="st">  </span><span class="kw">kable</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb87-1" title="1">murder_data <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb87-2" title="2"><span class="st">  </span><span class="kw">tabyl</span> (relationship) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb87-3" title="3"><span class="st">  </span><span class="kw">adorn_pct_formatting</span> (<span class="dt">digits=</span><span class="dv">1</span>)  <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb87-4" title="4"><span class="st">  </span><span class="kw">kable</span>()</a></code></pre></div>
 <table>
 <thead>
 <tr class="header">
@@ -840,166 +966,69 @@ Does this mean that these states have suddenly become more dangerous? What about
 </tbody>
 </table>
 </div>
->>>>>>> fd6bece1b050ebecb7554e7277de5a95955c6313
 <div id="putting-it-all-together-1" class="section level4 unnumbered">
 <h4>Putting it all together</h4>
 <p>First, isolate the domestic violence cases. Let’s see what our choices are:</p>
-<div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb84-1" title="1">murder_data <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb84-2" title="2"><span class="st">  </span><span class="kw">group_by</span> (relationship_code, relationship) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb84-3" title="3"><span class="st">  </span><span class="kw">summarise</span> (<span class="kw">n</span>())</a></code></pre></div>
+<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb88-1" title="1">murder_data <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb88-2" title="2"><span class="st">  </span><span class="kw">group_by</span> (relationship_code, relationship) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb88-3" title="3"><span class="st">  </span><span class="kw">summarise</span> (<span class="kw">n</span>())</a></code></pre></div>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
 {"columns":[{"label":["relationship_code"],"name":[1],"type":["chr"],"align":["left"]},{"label":["relationship"],"name":[2],"type":["chr"],"align":["left"]},{"label":["n()"],"name":[3],"type":["int"],"align":["right"]}],"data":[{"1":"AQ","2":"Acquaintance","3":"11935"},{"1":"BF","2":"Boyfriend","3":"669"},{"1":"BR","2":"Brother","3":"534"},{"1":"CH","2":"Common-law husband","3":"84"},{"1":"CW","2":"Common-law wife","3":"178"},{"1":"DA","2":"Daughter","3":"1005"},{"1":"EE","2":"Employee","3":"53"},{"1":"ER","2":"Employer","3":"74"},{"1":"FA","2":"Father","3":"480"},{"1":"FR","2":"Friend","3":"2368"},{"1":"GF","2":"Girlfriend","3":"1893"},{"1":"HO","2":"Homosexual relationship","3":"135"},{"1":"HU","2":"Husband","3":"904"},{"1":"IL","2":"In-law","3":"365"},{"1":"MO","2":"Mother","3":"559"},{"1":"NE","2":"Neighbor","3":"727"},{"1":"OF","2":"Other family","3":"873"},{"1":"OK","2":"Other - known to victim","3":"2349"},{"1":"SD","2":"Stepdaughter","3":"102"},{"1":"SF","2":"Stepfather","3":"159"},{"1":"SI","2":"Sister","3":"168"},{"1":"SM","2":"Stepmother","3":"23"},{"1":"SO","2":"Son","3":"1260"},{"1":"SS","2":"Stepson","3":"163"},{"1":"ST","2":"Stranger","3":"9988"},{"1":"UN","2":"Relationship not determined","3":"15774"},{"1":"WI","2":"Wife","3":"2890"},{"1":"XH","2":"Ex-husband","3":"76"},{"1":"XW","2":"Ex-wife","3":"287"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
 <p>Here’s one way to get the answer (eliminating cases in which we don’t know the victim’s ethnicity)</p>
-<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb85-1" title="1">murder_data <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb85-2" title="2"><span class="st">  </span><span class="kw">filter</span> ( relationship_code <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;BF&quot;</span>, <span class="st">&quot;BR&quot;</span>, <span class="st">&quot;CH&quot;</span>, <span class="st">&quot;CW&quot;</span>, <span class="st">&quot;DA&quot;</span>, <span class="st">&quot;FA&quot;</span>, </a>
-<a class="sourceLine" id="cb85-3" title="3">                                    <span class="st">&quot;GF&quot;</span>, <span class="st">&quot;HO&quot;</span>, <span class="st">&quot;HU&quot;</span>, <span class="st">&quot;IL&quot;</span>, <span class="st">&quot;MO&quot;</span>, <span class="st">&quot;OF&quot;</span>, <span class="st">&quot;SD&quot;</span>, <span class="st">&quot;SF&quot;</span>, </a>
-<a class="sourceLine" id="cb85-4" title="4">                                    <span class="st">&quot;SI&quot;</span>, <span class="st">&quot;SM&quot;</span>, <span class="st">&quot;SO&quot;</span>, <span class="st">&quot;WI&quot;</span>, <span class="st">&quot;XH&quot;</span>, <span class="st">&quot;XW&quot;</span>)   <span class="op">&amp;</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb85-5" title="5"><span class="st">          </span>vic_ethnic_code <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;H&quot;</span>, <span class="st">&quot;N&quot;</span>)</a>
-<a class="sourceLine" id="cb85-6" title="6">        ) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb85-7" title="7"><span class="st">   </span><span class="kw">group_by</span> ( state_abbr, vic_ethnic ) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb85-8" title="8"><span class="st">   </span><span class="kw">summarise</span> (<span class="dt">cases =</span> <span class="kw">n</span>() ) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb85-9" title="9"><span class="st">   </span><span class="co">#calculate total by state and percent</span></a>
-<a class="sourceLine" id="cb85-10" title="10"><span class="st">   </span><span class="kw">mutate</span> ( <span class="dt">total_cases =</span> <span class="kw">sum</span>(cases), </a>
-<a class="sourceLine" id="cb85-11" title="11">            <span class="dt">pct_cases =</span> cases <span class="op">/</span><span class="st"> </span>total_cases <span class="op">*</span><span class="st"> </span><span class="dv">100</span> ) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb85-12" title="12"><span class="st">   </span><span class="co">#get rid of case counts</span></a>
-<a class="sourceLine" id="cb85-13" title="13"><span class="st">   </span><span class="kw">select</span> ( <span class="op">-</span>cases ) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb85-14" title="14"><span class="st">   </span><span class="co">#sort by state</span></a>
-<a class="sourceLine" id="cb85-15" title="15"><span class="st">   </span><span class="kw">arrange</span> ( state_abbr ) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb85-16" title="16"><span class="st">   </span><span class="co"># put ethnicity in columns</span></a>
-<a class="sourceLine" id="cb85-17" title="17"><span class="st">   </span><span class="kw">pivot_wider</span> ( <span class="dt">values_from =</span> pct_cases, <span class="dt">names_from =</span> vic_ethnic)  </a></code></pre></div>
-<<<<<<< HEAD
+<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb89-1" title="1">murder_data <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb89-2" title="2"><span class="st">  </span><span class="kw">filter</span> ( relationship_code <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;BF&quot;</span>, <span class="st">&quot;BR&quot;</span>, <span class="st">&quot;CH&quot;</span>, <span class="st">&quot;CW&quot;</span>, <span class="st">&quot;DA&quot;</span>, <span class="st">&quot;FA&quot;</span>, </a>
+<a class="sourceLine" id="cb89-3" title="3">                                    <span class="st">&quot;GF&quot;</span>, <span class="st">&quot;HO&quot;</span>, <span class="st">&quot;HU&quot;</span>, <span class="st">&quot;IL&quot;</span>, <span class="st">&quot;MO&quot;</span>, <span class="st">&quot;OF&quot;</span>, <span class="st">&quot;SD&quot;</span>, <span class="st">&quot;SF&quot;</span>, </a>
+<a class="sourceLine" id="cb89-4" title="4">                                    <span class="st">&quot;SI&quot;</span>, <span class="st">&quot;SM&quot;</span>, <span class="st">&quot;SO&quot;</span>, <span class="st">&quot;WI&quot;</span>, <span class="st">&quot;XH&quot;</span>, <span class="st">&quot;XW&quot;</span>)   <span class="op">&amp;</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb89-5" title="5"><span class="st">          </span>vic_ethnic_code <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;H&quot;</span>, <span class="st">&quot;N&quot;</span>)</a>
+<a class="sourceLine" id="cb89-6" title="6">        ) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb89-7" title="7"><span class="st">   </span><span class="kw">group_by</span> ( state_abbr, vic_ethnic ) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb89-8" title="8"><span class="st">   </span><span class="kw">summarise</span> (<span class="dt">cases =</span> <span class="kw">n</span>() ) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb89-9" title="9"><span class="st">   </span><span class="co">#calculate total by state and percent</span></a>
+<a class="sourceLine" id="cb89-10" title="10"><span class="st">   </span><span class="kw">mutate</span> ( <span class="dt">total_cases =</span> <span class="kw">sum</span>(cases), </a>
+<a class="sourceLine" id="cb89-11" title="11">            <span class="dt">pct_cases =</span> cases <span class="op">/</span><span class="st"> </span>total_cases <span class="op">*</span><span class="st"> </span><span class="dv">100</span> ) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb89-12" title="12"><span class="st">   </span><span class="co">#get rid of case counts</span></a>
+<a class="sourceLine" id="cb89-13" title="13"><span class="st">   </span><span class="kw">select</span> ( <span class="op">-</span>cases ) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb89-14" title="14"><span class="st">   </span><span class="co">#sort by state</span></a>
+<a class="sourceLine" id="cb89-15" title="15"><span class="st">   </span><span class="kw">arrange</span> ( state_abbr ) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb89-16" title="16"><span class="st">   </span><span class="co"># put ethnicity in columns</span></a>
+<a class="sourceLine" id="cb89-17" title="17"><span class="st">   </span><span class="kw">pivot_wider</span> ( <span class="dt">values_from =</span> pct_cases, <span class="dt">names_from =</span> vic_ethnic)  </a></code></pre></div>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
 {"columns":[{"label":["state_abbr"],"name":[1],"type":["chr"],"align":["left"]},{"label":["total_cases"],"name":[2],"type":["int"],"align":["right"]},{"label":["Hispanic origin"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["Not of Hispanic origin"],"name":[4],"type":["dbl"],"align":["right"]}],"data":[{"1":"AZ","2":"2289","3":"26.256007","4":"73.74399"},{"1":"CO","2":"367","3":"21.253406","4":"78.74659"},{"1":"ID","2":"92","3":"10.869565","4":"89.13043"},{"1":"MT","2":"32","3":"12.500000","4":"87.50000"},{"1":"NM","2":"258","3":"59.302326","4":"40.69767"},{"1":"NV","2":"259","3":"18.146718","4":"81.85328"},{"1":"OR","2":"883","3":"5.209513","4":"94.79049"},{"1":"UT","2":"92","3":"13.043478","4":"86.95652"},{"1":"WA","2":"578","3":"7.958478","4":"92.04152"},{"1":"WY","2":"65","3":"13.846154","4":"86.15385"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
 <p><strong>Alternative Using the <code>janitor::tabyl</code> function</strong></p>
-<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb86-1" title="1">murder_data <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb86-2" title="2"><span class="st">  </span><span class="kw">filter</span> ( relationship_code <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;BF&quot;</span>, <span class="st">&quot;BR&quot;</span>, <span class="st">&quot;CH&quot;</span>, <span class="st">&quot;CW&quot;</span>, <span class="st">&quot;DA&quot;</span>, <span class="st">&quot;FA&quot;</span>, </a>
-<a class="sourceLine" id="cb86-3" title="3">                                    <span class="st">&quot;GF&quot;</span>, <span class="st">&quot;HO&quot;</span>, <span class="st">&quot;HU&quot;</span>, <span class="st">&quot;IL&quot;</span>, <span class="st">&quot;MO&quot;</span>, <span class="st">&quot;OF&quot;</span>, <span class="st">&quot;SD&quot;</span>, <span class="st">&quot;SF&quot;</span>, </a>
-<a class="sourceLine" id="cb86-4" title="4">                                    <span class="st">&quot;SI&quot;</span>, <span class="st">&quot;SM&quot;</span>, <span class="st">&quot;SO&quot;</span>, <span class="st">&quot;WI&quot;</span>, <span class="st">&quot;XH&quot;</span>, <span class="st">&quot;XW&quot;</span>)   <span class="op">&amp;</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb86-5" title="5"><span class="st">          </span>vic_ethnic_code <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;H&quot;</span>, <span class="st">&quot;N&quot;</span>)</a>
-<a class="sourceLine" id="cb86-6" title="6">        ) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb86-7" title="7"><span class="st">  </span><span class="kw">tabyl</span> ( state_abbr, vic_ethnic) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb86-8" title="8"><span class="st">  </span><span class="co"># include column and row totals</span></a>
-<a class="sourceLine" id="cb86-9" title="9"><span class="st">  </span><span class="kw">adorn_totals</span> ( <span class="kw">c</span>(<span class="st">&quot;row&quot;</span>, <span class="st">&quot;col&quot;</span>)) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb86-10" title="10"><span class="st">  </span><span class="co">#calculate % of row total (within state)</span></a>
-<a class="sourceLine" id="cb86-11" title="11"><span class="st">  </span><span class="kw">adorn_percentages</span> ( <span class="st">&quot;row&quot;</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb86-12" title="12"><span class="st">  </span><span class="co"># remove decimal places</span></a>
-<a class="sourceLine" id="cb86-13" title="13"><span class="st">  </span><span class="kw">adorn_pct_formatting</span> (<span class="dt">digits=</span><span class="dv">1</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb86-14" title="14"><span class="st">  </span><span class="co"># include # of cases</span></a>
-<a class="sourceLine" id="cb86-15" title="15"><span class="st">  </span>adorn_ns <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb86-16" title="16"><span class="st">  </span><span class="co"># turn it into a regular data frame</span></a>
-<a class="sourceLine" id="cb86-17" title="17"><span class="st">  </span><span class="kw">as_tibble</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb90-1" title="1">murder_data <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb90-2" title="2"><span class="st">  </span><span class="kw">filter</span> ( relationship_code <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;BF&quot;</span>, <span class="st">&quot;BR&quot;</span>, <span class="st">&quot;CH&quot;</span>, <span class="st">&quot;CW&quot;</span>, <span class="st">&quot;DA&quot;</span>, <span class="st">&quot;FA&quot;</span>, </a>
+<a class="sourceLine" id="cb90-3" title="3">                                    <span class="st">&quot;GF&quot;</span>, <span class="st">&quot;HO&quot;</span>, <span class="st">&quot;HU&quot;</span>, <span class="st">&quot;IL&quot;</span>, <span class="st">&quot;MO&quot;</span>, <span class="st">&quot;OF&quot;</span>, <span class="st">&quot;SD&quot;</span>, <span class="st">&quot;SF&quot;</span>, </a>
+<a class="sourceLine" id="cb90-4" title="4">                                    <span class="st">&quot;SI&quot;</span>, <span class="st">&quot;SM&quot;</span>, <span class="st">&quot;SO&quot;</span>, <span class="st">&quot;WI&quot;</span>, <span class="st">&quot;XH&quot;</span>, <span class="st">&quot;XW&quot;</span>)   <span class="op">&amp;</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb90-5" title="5"><span class="st">          </span>vic_ethnic_code <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;H&quot;</span>, <span class="st">&quot;N&quot;</span>)</a>
+<a class="sourceLine" id="cb90-6" title="6">        ) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb90-7" title="7"><span class="st">  </span><span class="kw">tabyl</span> ( state_abbr, vic_ethnic) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb90-8" title="8"><span class="st">  </span><span class="co"># include column and row totals</span></a>
+<a class="sourceLine" id="cb90-9" title="9"><span class="st">  </span><span class="kw">adorn_totals</span> ( <span class="kw">c</span>(<span class="st">&quot;row&quot;</span>, <span class="st">&quot;col&quot;</span>)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb90-10" title="10"><span class="st">  </span><span class="co">#calculate % of row total (within state)</span></a>
+<a class="sourceLine" id="cb90-11" title="11"><span class="st">  </span><span class="kw">adorn_percentages</span> ( <span class="st">&quot;row&quot;</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb90-12" title="12"><span class="st">  </span><span class="co"># remove decimal places</span></a>
+<a class="sourceLine" id="cb90-13" title="13"><span class="st">  </span><span class="kw">adorn_pct_formatting</span> (<span class="dt">digits=</span><span class="dv">1</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb90-14" title="14"><span class="st">  </span><span class="co"># include # of cases</span></a>
+<a class="sourceLine" id="cb90-15" title="15"><span class="st">  </span>adorn_ns <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb90-16" title="16"><span class="st">  </span><span class="co"># turn it into a regular data frame</span></a>
+<a class="sourceLine" id="cb90-17" title="17"><span class="st">  </span><span class="kw">as_tibble</span>()</a></code></pre></div>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
 {"columns":[{"label":["state_abbr"],"name":[1],"type":["chr"],"align":["left"]},{"label":["Hispanic origin"],"name":[2],"type":["chr"],"align":["left"]},{"label":["Not of Hispanic origin"],"name":[3],"type":["chr"],"align":["left"]},{"label":["Total"],"name":[4],"type":["chr"],"align":["left"]}],"data":[{"1":"AZ","2":"26.3%  (601)","3":"73.7% (1688)","4":"100.0% (2289)"},{"1":"CO","2":"21.3%   (78)","3":"78.7%  (289)","4":"100.0%  (367)"},{"1":"ID","2":"10.9%   (10)","3":"89.1%   (82)","4":"100.0%   (92)"},{"1":"MT","2":"12.5%    (4)","3":"87.5%   (28)","4":"100.0%   (32)"},{"1":"NM","2":"59.3%  (153)","3":"40.7%  (105)","4":"100.0%  (258)"},{"1":"NV","2":"18.1%   (47)","3":"81.9%  (212)","4":"100.0%  (259)"},{"1":"OR","2":"5.2%   (46)","3":"94.8%  (837)","4":"100.0%  (883)"},{"1":"UT","2":"13.0%   (12)","3":"87.0%   (80)","4":"100.0%   (92)"},{"1":"WA","2":"8.0%   (46)","3":"92.0%  (532)","4":"100.0%  (578)"},{"1":"WY","2":"13.8%    (9)","3":"86.2%   (56)","4":"100.0%   (65)"},{"1":"Total","2":"20.5% (1006)","3":"79.5% (3909)","4":"100.0% (4915)"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
-=======
-<div data-pagedtable="false">
-<script data-pagedtable-source type="application/json">
-{"columns":[{"label":["state_abbr"],"name":[1],"type":["chr"],"align":["left"]},{"label":["total_cases"],"name":[2],"type":["int"],"align":["right"]},{"label":["Hispanic origin"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["Not of Hispanic origin"],"name":[4],"type":["dbl"],"align":["right"]}],"data":[{"1":"AZ","2":"2289","3":"26.256007","4":"73.74399"},{"1":"CO","2":"367","3":"21.253406","4":"78.74659"},{"1":"ID","2":"92","3":"10.869565","4":"89.13043"},{"1":"MT","2":"32","3":"12.500000","4":"87.50000"},{"1":"NM","2":"258","3":"59.302326","4":"40.69767"},{"1":"NV","2":"259","3":"18.146718","4":"81.85328"},{"1":"OR","2":"883","3":"5.209513","4":"94.79049"},{"1":"UT","2":"92","3":"13.043478","4":"86.95652"},{"1":"WA","2":"578","3":"7.958478","4":"92.04152"},{"1":"WY","2":"65","3":"13.846154","4":"86.15385"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
->>>>>>> fd6bece1b050ebecb7554e7277de5a95955c6313
   </script>
 </div>
-<p>Using the <code>tabyl</code> package it would be easier:</p>
-<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb86-1" title="1">murder_data <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb86-2" title="2"><span class="st">  </span><span class="kw">filter</span> ( relationship_code <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;BF&quot;</span>, <span class="st">&quot;BR&quot;</span>, <span class="st">&quot;CH&quot;</span>, <span class="st">&quot;CW&quot;</span>, <span class="st">&quot;DA&quot;</span>, <span class="st">&quot;FA&quot;</span>, </a>
-<a class="sourceLine" id="cb86-3" title="3">                                    <span class="st">&quot;GF&quot;</span>, <span class="st">&quot;HO&quot;</span>, <span class="st">&quot;HU&quot;</span>, <span class="st">&quot;IL&quot;</span>, <span class="st">&quot;MO&quot;</span>, <span class="st">&quot;OF&quot;</span>, <span class="st">&quot;SD&quot;</span>, <span class="st">&quot;SF&quot;</span>, </a>
-<a class="sourceLine" id="cb86-4" title="4">                                    <span class="st">&quot;SI&quot;</span>, <span class="st">&quot;SM&quot;</span>, <span class="st">&quot;SO&quot;</span>, <span class="st">&quot;WI&quot;</span>, <span class="st">&quot;XH&quot;</span>, <span class="st">&quot;XW&quot;</span>)   <span class="op">&amp;</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb86-5" title="5"><span class="st">          </span>vic_ethnic_code <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;H&quot;</span>, <span class="st">&quot;N&quot;</span>)</a>
-<a class="sourceLine" id="cb86-6" title="6">        ) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb86-7" title="7"><span class="st">  </span><span class="kw">tabyl</span> ( state_abbr, vic_ethnic) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb86-8" title="8"><span class="st">  </span><span class="kw">adorn_totals</span> ( <span class="kw">c</span>(<span class="st">&quot;row&quot;</span>, <span class="st">&quot;col&quot;</span>)) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb86-9" title="9"><span class="st">  </span><span class="kw">adorn_percentages</span> ( <span class="st">&quot;row&quot;</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb86-10" title="10"><span class="st">  </span><span class="kw">adorn_pct_formatting</span> (<span class="dt">digits=</span><span class="dv">1</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb86-11" title="11"><span class="st">  </span>adorn_ns <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb86-12" title="12"><span class="st">  </span><span class="kw">kable</span>()</a></code></pre></div>
-<table>
-<thead>
-<tr class="header">
-<th align="left">state_abbr</th>
-<th align="left">Hispanic origin</th>
-<th align="left">Not of Hispanic origin</th>
-<th align="left">Total</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left">AZ</td>
-<td align="left">26.3% (601)</td>
-<td align="left">73.7% (1688)</td>
-<td align="left">100.0% (2289)</td>
-</tr>
-<tr class="even">
-<td align="left">CO</td>
-<td align="left">21.3% (78)</td>
-<td align="left">78.7% (289)</td>
-<td align="left">100.0% (367)</td>
-</tr>
-<tr class="odd">
-<td align="left">ID</td>
-<td align="left">10.9% (10)</td>
-<td align="left">89.1% (82)</td>
-<td align="left">100.0% (92)</td>
-</tr>
-<tr class="even">
-<td align="left">MT</td>
-<td align="left">12.5% (4)</td>
-<td align="left">87.5% (28)</td>
-<td align="left">100.0% (32)</td>
-</tr>
-<tr class="odd">
-<td align="left">NM</td>
-<td align="left">59.3% (153)</td>
-<td align="left">40.7% (105)</td>
-<td align="left">100.0% (258)</td>
-</tr>
-<tr class="even">
-<td align="left">NV</td>
-<td align="left">18.1% (47)</td>
-<td align="left">81.9% (212)</td>
-<td align="left">100.0% (259)</td>
-</tr>
-<tr class="odd">
-<td align="left">OR</td>
-<td align="left">5.2% (46)</td>
-<td align="left">94.8% (837)</td>
-<td align="left">100.0% (883)</td>
-</tr>
-<tr class="even">
-<td align="left">UT</td>
-<td align="left">13.0% (12)</td>
-<td align="left">87.0% (80)</td>
-<td align="left">100.0% (92)</td>
-</tr>
-<tr class="odd">
-<td align="left">WA</td>
-<td align="left">8.0% (46)</td>
-<td align="left">92.0% (532)</td>
-<td align="left">100.0% (578)</td>
-</tr>
-<tr class="even">
-<td align="left">WY</td>
-<td align="left">13.8% (9)</td>
-<td align="left">86.2% (56)</td>
-<td align="left">100.0% (65)</td>
-</tr>
-<tr class="odd">
-<td align="left">Total</td>
-<td align="left">20.5% (1006)</td>
-<td align="left">79.5% (3909)</td>
-<td align="left">100.0% (4915)</td>
-</tr>
-</tbody>
-</table>
 
 </div>
 </div>
 </div>
 </div>
+
 
 
 
@@ -1011,8 +1040,8 @@ Does this mean that these states have suddenly become more dangerous? What about
 
 <div class="footnotes">
 <hr />
-<ol start="4">
-<li id="fn4"><p> If you wanted to go further with filtering, you might look at the <code>regular expressions</code> available for more sophisticated filtering using the <code>str_detect</code> function. In this case, <code>str_detect (weapon_code, "^1")</code> searches for anything in the field that begins with a “1”.<a href="A04-murders.html#fnref4" class="footnote-back">↩</a></p></li>
+<ol start="5">
+<li id="fn5"><p> If you wanted to go further with filtering, you might look at the <code>regular expressions</code> available for more sophisticated filtering using the <code>str_detect</code> function. In this case, <code>str_detect (weapon_code, "^1")</code> searches for anything in the field that begins with a “1”.<a href="A04-murders.html#fnref5" class="footnote-back">↩</a></p></li>
 </ol>
 </div>
             </section>

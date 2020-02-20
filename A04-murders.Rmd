@@ -237,7 +237,7 @@ If this complex filter seems too complex, you can always chain one filter after 
 
 
 1. County with the most killings
-<<<<<<< HEAD
+
 
 ```{r}
 
@@ -311,23 +311,15 @@ murder_data %>%
 ```
 
 **Alternative method with `janitor::tabyl`**
-=======
->>>>>>> fd6bece1b050ebecb7554e7277de5a95955c6313
 
 ```{r}
 
 murder_data %>%
-<<<<<<< HEAD
   tabyl (relationship) %>%
   adorn_pct_formatting (digits=1)   %>%
   #this last part turns it into a normal data frame
   arrange ( desc(n)) %>%
   as_tibble()
-
-=======
-  group_by (state_abbr, cnty_name) %>%
-  summarise ( cases = n() ) %>%
-  arrange (desc (cases))
 
 ```
 
@@ -400,10 +392,7 @@ murder_data %>%
   adorn_pct_formatting (digits=1)  %>%
   kable()
   
->>>>>>> fd6bece1b050ebecb7554e7277de5a95955c6313
 ```
-
-
 
 
 #### Putting it all together {-}
@@ -445,12 +434,8 @@ murder_data %>%
 
 ```
   
-<<<<<<< HEAD
 **Alternative  Using the `janitor::tabyl` function**
-=======
-  Using the `tabyl` package it would be easier: 
->>>>>>> fd6bece1b050ebecb7554e7277de5a95955c6313
-  
+
 ```{r}
 
 murder_data %>%
@@ -460,7 +445,6 @@ murder_data %>%
           vic_ethnic_code %in% c("H", "N")
         ) %>% 
   tabyl ( state_abbr, vic_ethnic) %>%
-<<<<<<< HEAD
   # include column and row totals
   adorn_totals ( c("row", "col")) %>%
   #calculate % of row total (within state)
@@ -471,15 +455,6 @@ murder_data %>%
   adorn_ns %>%
   # turn it into a regular data frame
   as_tibble()
-=======
-  adorn_totals ( c("row", "col")) %>%
-  adorn_percentages ( "row") %>%
-  adorn_pct_formatting (digits=1) %>% 
-  adorn_ns %>%
-  kable()
->>>>>>> fd6bece1b050ebecb7554e7277de5a95955c6313
-
 
 ```
-  
   

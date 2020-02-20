@@ -9,24 +9,20 @@
 
 ## Key takeaways
 
-NOTE: Most journalism tutorials do group_by/summarise BEFORE they introduce mutate. But most computer science tutorials reverse that order. The reason is that journalists often don't have datasets that have many numbers, so the simple arithmetic isn't as important.   
-
-* *mutate* just means "compute", or convert one or more variables into something new. 
-* mutate is the same thing as creating a new column in Excel with a formula
-* There are several common mutate tasks. The most important for us are:
+* `mutate` just means "compute", or convert one or more variables into something new. 
+* mutate is the equivalent of creating a new column in Excel using a formula
+* Some of the most important jobs of a `mutate` statement are:
   * Convert unstandardized data into standardized, such as yes-or-no variables or all lower case
   * Use arithmetic on numeric variables
   * Use conditional statements to put different values on variables, instead of filtering one at a time.
-* OPTIONAL:
-  * Mutate can replace text or values
   * Change the data *type* from, say, text to date and time.
 
-## Read in some data
+### Read in some data
 
 Start with the [Arizona immunization data](https://github.com/cronkitedata/rstudyguide/blob/master/data/az-immunizations-grade6.Rda?raw=true) that some other chapters have worked with, loading it and the tidyverse to follow along. 
 
 
-Here are the packages and data used for this chapter:
+Here are the packages and data used for this chapter. You might need to install some of them.
 
 ```{r message=FALSE}
 
@@ -130,14 +126,16 @@ immune_pct %>%
 
 
 
-You can read this table to say, "Nearly one-fifth of charter school 6th-graders attended schools that did not meet the immunization standards to prevent measles outbreaks."  (The wording is tough here to avoid saying "schools" over and over! )
+You can read this table to say, "More than one-sixth of 6th-grade charter school students could be at risk of contracting measles because their schools have immunization rates below levels experts say are needed to prevent outbreaks."  (The wording is tough here to avoid saying "schools" over and over! )
 
 This strategy can also be used to set unreal values to the special `NA` as in the MAP murder data that uses the value 999 instead of "unknown" for an age. This is common in survey data. 
 
 
 ## Bonus: Fun with date and time
 
-Sometimes your data came to you as text, but you need to treat it as numbers; sometimes you want to turn something that looks like a date into an actual date, allowing for date math and date functions. This is called changing the `data type`. (This example uses the library `lubridate`, which may not be installed in your computer. If you're following along, you may need to install it in the console.)
+Sometimes your data came to you as text, but you need to treat it as numbers. In journalism, we're often trying to work with dates that came to us in some non-standard form. This is called changing the `data type`. ^[This example uses the library `lubridate`, which may not be installed in your computer. If you're following along, you may need to install it in the console.]
+
+This example comes from the opioid emergency call data shown in earlier chapters. 
 
 
 ```{r message=FALSE}
@@ -154,10 +152,7 @@ head(opioid_calls)
 ```
 
 
-The date and time in this dataset is a character field, but we want to convert it to a date field and a separate time field. Here is an example of doing that, using the library `lubridate`
-
-
-At first, we might just want to get the date value out of the character string. It's in the form month/day/year hour:minute, so we can use the lubridate::mdy_hm function, which tries to guess how the character string is formatted: 
+The date and time in this dataset is a character field, but we want to convert it to a date field and a separate time field. At first, we might just want to get the date value out of the character string. It's in the form month/day/year hour:minute, so we can use the `lubridate::mdy_hm function` [When you see a function preceded by two colons as this one does, the author is showing you which package it comes from. In this case, the `lubridate` package, which you must install before you can use it, has a function `mdy_hm`.]. This function tries to guess how the character string is formatted: 
 
 
 ```{r}
@@ -172,7 +167,7 @@ opioid_calls %>%
 
 Notice that the new variable is of the type <S3: POSIXct>, which refers to a date-time combined variable. 
 
-Let's say I want to distinguish weekends from weekdays in this dataset. First, we have to define weekend. Here's one definition, but you might want to use another: A weekend is anytime after 3pm on Friday through 6pm on Sunday. (The `hour` variable is in military time.)
+Let's say I want to distinguish weekends from weekdays in this dataset. First, we have to define weekend. Here's one definition, but you might want to use another: A weekend is anytime after 3pm on Friday through 6pm on Sunday. (The `hour` variable is in military time.). Instead of using `if_else`, this example uses `case_when`, which lets you choose among a variety of options, not just two.
 
 ```{r}
 
@@ -189,8 +184,8 @@ opioid_calls %>%
                           )
           ) %>%
   select (weekend, weekday, hour) %>%
-  head (60) %>%
-  datatable( )
+  head (10) %>%
+  kable( )
 
 
 ```

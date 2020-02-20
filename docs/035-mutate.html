@@ -140,7 +140,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="./">Study Guide for Cronkite Students</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a><ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#using-the-examples-with-packages"><i class="fa fa-check"></i>Using the examples with packages</a></li>
+</ul></li>
 <li class="part"><span><b>I Introduction to R for Journalists</b></span></li>
 <li class="chapter" data-level="1" data-path="011-r-install.html"><a href="011-r-install.html"><i class="fa fa-check"></i><b>1</b> An R and R Studio tour</a><ul>
 <li class="chapter" data-level="1.1" data-path="011-r-install.html"><a href="011-r-install.html#key-takeaways"><i class="fa fa-check"></i><b>1.1</b> Key takeaways</a></li>
@@ -229,11 +231,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="035-mutate.html"><a href="035-mutate.html"><i class="fa fa-check"></i><b>7</b> Verbs 3: mutate</a><ul>
-<li class="chapter" data-level="7.1" data-path="035-mutate.html"><a href="035-mutate.html#key-takeaways-6"><i class="fa fa-check"></i><b>7.1</b> Key takeaways</a></li>
-<li class="chapter" data-level="7.2" data-path="035-mutate.html"><a href="035-mutate.html#read-in-some-data"><i class="fa fa-check"></i><b>7.2</b> Read in some data</a></li>
-<li class="chapter" data-level="7.3" data-path="035-mutate.html"><a href="035-mutate.html#simple-arithmetic"><i class="fa fa-check"></i><b>7.3</b> Simple arithmetic</a></li>
-<li class="chapter" data-level="7.4" data-path="035-mutate.html"><a href="035-mutate.html#creating-categories"><i class="fa fa-check"></i><b>7.4</b> Creating categories</a></li>
-<li class="chapter" data-level="7.5" data-path="035-mutate.html"><a href="035-mutate.html#bonus-fun-with-date-and-time"><i class="fa fa-check"></i><b>7.5</b> Bonus: Fun with date and time</a></li>
+<li class="chapter" data-level="7.1" data-path="035-mutate.html"><a href="035-mutate.html#key-takeaways-6"><i class="fa fa-check"></i><b>7.1</b> Key takeaways</a><ul>
+<li class="chapter" data-level="7.1.1" data-path="035-mutate.html"><a href="035-mutate.html#read-in-some-data"><i class="fa fa-check"></i><b>7.1.1</b> Read in some data</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="035-mutate.html"><a href="035-mutate.html#simple-arithmetic"><i class="fa fa-check"></i><b>7.2</b> Simple arithmetic</a></li>
+<li class="chapter" data-level="7.3" data-path="035-mutate.html"><a href="035-mutate.html#creating-categories"><i class="fa fa-check"></i><b>7.3</b> Creating categories</a></li>
+<li class="chapter" data-level="7.4" data-path="035-mutate.html"><a href="035-mutate.html#bonus-fun-with-date-and-time"><i class="fa fa-check"></i><b>7.4</b> Bonus: Fun with date and time</a></li>
 </ul></li>
 <li class="appendix"><span><b>Appendix</b></span></li>
 <li class="chapter" data-level="A" data-path="A02-programming.html"><a href="A02-programming.html"><i class="fa fa-check"></i><b>A</b> A gentle intro to programming</a><ul>
@@ -292,27 +295,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </style>
 <div id="key-takeaways-6" class="section level2">
 <h2><span class="header-section-number">7.1</span> Key takeaways</h2>
-<p>NOTE: Most journalism tutorials do group_by/summarise BEFORE they introduce mutate. But most computer science tutorials reverse that order. The reason is that journalists often don’t have datasets that have many numbers, so the simple arithmetic isn’t as important.</p>
 <ul>
-<li><em>mutate</em> just means “compute”, or convert one or more variables into something new.</li>
-<li>mutate is the same thing as creating a new column in Excel with a formula</li>
-<li>There are several common mutate tasks. The most important for us are:
+<li><code>mutate</code> just means “compute”, or convert one or more variables into something new.</li>
+<li>mutate is the equivalent of creating a new column in Excel using a formula</li>
+<li>Some of the most important jobs of a <code>mutate</code> statement are:
 <ul>
 <li>Convert unstandardized data into standardized, such as yes-or-no variables or all lower case</li>
 <li>Use arithmetic on numeric variables</li>
 <li>Use conditional statements to put different values on variables, instead of filtering one at a time.</li>
-</ul></li>
-<li>OPTIONAL:
-<ul>
-<li>Mutate can replace text or values</li>
 <li>Change the data <em>type</em> from, say, text to date and time.</li>
 </ul></li>
 </ul>
-</div>
-<div id="read-in-some-data" class="section level2">
-<h2><span class="header-section-number">7.2</span> Read in some data</h2>
+<div id="read-in-some-data" class="section level3">
+<h3><span class="header-section-number">7.1.1</span> Read in some data</h3>
 <p>Start with the <a href="https://github.com/cronkitedata/rstudyguide/blob/master/data/az-immunizations-grade6.Rda?raw=true">Arizona immunization data</a> that some other chapters have worked with, loading it and the tidyverse to follow along.</p>
-<p>Here are the packages and data used for this chapter:</p>
+<p>Here are the packages and data used for this chapter. You might need to install some of them.</p>
 <div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb47-1" title="1"><span class="kw">library</span>(tidyverse)</a>
 <a class="sourceLine" id="cb47-2" title="2"><span class="kw">library</span>(knitr)       <span class="co"># used for slightly better looking tables</span></a>
 <a class="sourceLine" id="cb47-3" title="3"><span class="kw">library</span>(DT)          <span class="co"># even more options with tables</span></a>
@@ -321,8 +318,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <a class="sourceLine" id="cb47-6" title="6"></a>
 <a class="sourceLine" id="cb47-7" title="7"><span class="kw">load</span>(<span class="st">&quot;data/az-immunizations-grade6.Rda&quot;</span>)  <span class="co"># you may need to change the path to wherever you saved the data</span></a></code></pre></div>
 </div>
+</div>
 <div id="simple-arithmetic" class="section level2">
-<h2><span class="header-section-number">7.3</span> Simple arithmetic</h2>
+<h2><span class="header-section-number">7.2</span> Simple arithmetic</h2>
 <p>Use the usual arithmetic operators to calculate numbers and create a new column:</p>
 <pre><code>  + Addition
   - Subtraction
@@ -399,7 +397,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </table>
 </div>
 <div id="creating-categories" class="section level2">
-<h2><span class="header-section-number">7.4</span> Creating categories</h2>
+<h2><span class="header-section-number">7.3</span> Creating categories</h2>
 <p>Sometimes, you want to create categories out of more detailed information. In this case, a threshold of 90 percent immunization is considered the limit under which there is a threat of a measles outbreak, also known as “herd immunity”. To categorize each schools as above or under that level, we need to create a new variable that is based on the value of the percentage we just calcluated. That’s done using an <code>if_else</code> statement, which is in the form:</p>
 <pre><code>  if_else (  condition, 
              new value if it&#39;s true, 
@@ -513,12 +511,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </tr>
 </tbody>
 </table>
-<p>You can read this table to say, “Nearly one-fifth of charter school 6th-graders attended schools that did not meet the immunization standards to prevent measles outbreaks.” (The wording is tough here to avoid saying “schools” over and over! )</p>
+<p>You can read this table to say, “More than one-sixth of 6th-grade charter school students could be at risk of contracting measles because their schools have immunization rates below levels experts say are needed to prevent outbreaks.” (The wording is tough here to avoid saying “schools” over and over! )</p>
 <p>This strategy can also be used to set unreal values to the special <code>NA</code> as in the MAP murder data that uses the value 999 instead of “unknown” for an age. This is common in survey data.</p>
 </div>
 <div id="bonus-fun-with-date-and-time" class="section level2">
-<h2><span class="header-section-number">7.5</span> Bonus: Fun with date and time</h2>
-<p>Sometimes your data came to you as text, but you need to treat it as numbers; sometimes you want to turn something that looks like a date into an actual date, allowing for date math and date functions. This is called changing the <code>data type</code>. (This example uses the library <code>lubridate</code>, which may not be installed in your computer. If you’re following along, you may need to install it in the console.)</p>
+<h2><span class="header-section-number">7.4</span> Bonus: Fun with date and time</h2>
+<p>Sometimes your data came to you as text, but you need to treat it as numbers. In journalism, we’re often trying to work with dates that came to us in some non-standard form. This is called changing the <code>data type</code>. <a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a></p>
+<p>This example comes from the opioid emergency call data shown in earlier chapters.</p>
 <div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb54-1" title="1">my_link &lt;-<span class="st"> &quot;https://cronkitedata.github.io/cronkite-docs/assets/data/csv/opioidemscalls.csv&quot;</span></a>
 <a class="sourceLine" id="cb54-2" title="2"><span class="co">#use it in a read_csv command</span></a>
 <a class="sourceLine" id="cb54-3" title="3">opioid_calls_orig &lt;-<span class="st"> </span><span class="kw">read_csv</span>(my_link)</a>
@@ -533,8 +532,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 {"columns":[{"label":["objectid"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["incident_date_char"],"name":[2],"type":["chr"],"align":["left"]},{"label":["narcan"],"name":[3],"type":["chr"],"align":["left"]},{"label":["is_asu_student"],"name":[4],"type":["chr"],"align":["left"]},{"label":["is_homeless"],"name":[5],"type":["chr"],"align":["left"]}],"data":[{"1":"2","2":"1/3/2017 11:42","3":"No","4":"No","5":"No"},{"1":"3","2":"1/9/2017 1:08","3":"Yes","4":"No","5":"No"},{"1":"4","2":"1/9/2017 1:55","3":"No","4":"No","5":"Yes"},{"1":"5","2":"1/9/2017 10:23","3":"No","4":"No","5":"Yes"},{"1":"6","2":"1/9/2017 17:59","3":"No","4":"No","5":"No"},{"1":"7","2":"1/11/2017 11:10","3":"Yes","4":"No","5":"No"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
-<p>The date and time in this dataset is a character field, but we want to convert it to a date field and a separate time field. Here is an example of doing that, using the library <code>lubridate</code></p>
-<p>At first, we might just want to get the date value out of the character string. It’s in the form month/day/year hour:minute, so we can use the lubridate::mdy_hm function, which tries to guess how the character string is formatted:</p>
+<p>The date and time in this dataset is a character field, but we want to convert it to a date field and a separate time field. At first, we might just want to get the date value out of the character string. It’s in the form month/day/year hour:minute, so we can use the <code>lubridate::mdy_hm function</code> [When you see a function preceded by two colons as this one does, the author is showing you which package it comes from. In this case, the <code>lubridate</code> package, which you must install before you can use it, has a function <code>mdy_hm</code>.]. This function tries to guess how the character string is formatted:</p>
 <div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb55-1" title="1">opioid_calls <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb55-2" title="2"><span class="st">  </span><span class="kw">mutate</span> ( <span class="dt">incident_date =</span> <span class="kw">mdy_hm</span>(incident_date_char)) <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb55-3" title="3"><span class="st">  </span><span class="kw">select</span> (incident_date, incident_date_char<span class="op">:</span>is_homeless) <span class="op">%&gt;%</span></a>
@@ -545,7 +543,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   </script>
 </div>
 <p>Notice that the new variable is of the type &lt;S3: POSIXct&gt;, which refers to a date-time combined variable.</p>
-<p>Let’s say I want to distinguish weekends from weekdays in this dataset. First, we have to define weekend. Here’s one definition, but you might want to use another: A weekend is anytime after 3pm on Friday through 6pm on Sunday. (The <code>hour</code> variable is in military time.)</p>
+<p>Let’s say I want to distinguish weekends from weekdays in this dataset. First, we have to define weekend. Here’s one definition, but you might want to use another: A weekend is anytime after 3pm on Friday through 6pm on Sunday. (The <code>hour</code> variable is in military time.). Instead of using <code>if_else</code>, this example uses <code>case_when</code>, which lets you choose among a variety of options, not just two.</p>
 <div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb56-1" title="1">opioid_calls <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb56-2" title="2"><span class="st">  </span><span class="kw">mutate</span> (<span class="dt">incident_date =</span> <span class="kw">mdy_hm</span>(incident_date_char), </a>
 <a class="sourceLine" id="cb56-3" title="3">          <span class="dt">day_of_week =</span> <span class="kw">wday</span>(incident_date) ,</a>
@@ -559,15 +557,69 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <a class="sourceLine" id="cb56-11" title="11">                          )</a>
 <a class="sourceLine" id="cb56-12" title="12">          ) <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb56-13" title="13"><span class="st">  </span><span class="kw">select</span> (weekend, weekday, hour) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb56-14" title="14"><span class="st">  </span><span class="kw">head</span> (<span class="dv">60</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb56-15" title="15"><span class="st">  </span><span class="kw">datatable</span>( )</a></code></pre></div>
-<<<<<<< HEAD
-<div id="htmlwidget-a3448875e36569096db7" style="width:100%;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-a3448875e36569096db7">{"x":{"filter":"none","data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31","32","33","34","35","36","37","38","39","40","41","42","43","44","45","46","47","48","49","50","51","52","53","54","55","56","57","58","59","60"],["No","No","No","No","No","No","No","No","Yes","Yes","Yes","No","No","No","No","Yes","Yes","Yes","No","No","No","No","No","No","Yes","Yes","Yes","No","No","No","No","No","No","No","Yes","Yes","Yes","No","No","No","No","No","No","No","No","No","No","Yes","Yes","Yes","Yes","Yes","Yes","No","No","No","No","No","No","No"],["Tuesday","Monday","Monday","Monday","Monday","Wednesday","Thursday","Thursday","Saturday","Saturday","Sunday","Monday","Wednesday","Wednesday","Wednesday","Sunday","Sunday","Sunday","Sunday","Monday","Thursday","Thursday","Friday","Friday","Saturday","Saturday","Sunday","Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Friday","Friday","Friday","Saturday","Wednesday","Thursday","Sunday","Monday","Tuesday","Wednesday","Wednesday","Wednesday","Thursday","Friday","Friday","Friday","Friday","Saturday","Sunday","Sunday","Tuesday","Thursday","Thursday","Thursday","Thursday","Friday","Friday"],[11,1,1,10,17,11,19,22,17,22,6,15,0,16,23,3,6,6,20,6,8,11,10,14,2,22,1,23,21,10,2,18,1,3,16,20,13,17,18,20,12,7,2,12,17,18,3,17,20,20,16,15,16,20,0,13,14,16,8,14]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>weekend<\/th>\n      <th>weekday<\/th>\n      <th>hour<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":3},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
-=======
-<div id="htmlwidget-1bb3235c1aa2e4facbcb" style="width:100%;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-1bb3235c1aa2e4facbcb">{"x":{"filter":"none","data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31","32","33","34","35","36","37","38","39","40","41","42","43","44","45","46","47","48","49","50","51","52","53","54","55","56","57","58","59","60"],["No","No","No","No","No","No","No","No","Yes","Yes","Yes","No","No","No","No","Yes","Yes","Yes","No","No","No","No","No","No","Yes","Yes","Yes","No","No","No","No","No","No","No","Yes","Yes","Yes","No","No","No","No","No","No","No","No","No","No","Yes","Yes","Yes","Yes","Yes","Yes","No","No","No","No","No","No","No"],["Tuesday","Monday","Monday","Monday","Monday","Wednesday","Thursday","Thursday","Saturday","Saturday","Sunday","Monday","Wednesday","Wednesday","Wednesday","Sunday","Sunday","Sunday","Sunday","Monday","Thursday","Thursday","Friday","Friday","Saturday","Saturday","Sunday","Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Friday","Friday","Friday","Saturday","Wednesday","Thursday","Sunday","Monday","Tuesday","Wednesday","Wednesday","Wednesday","Thursday","Friday","Friday","Friday","Friday","Saturday","Sunday","Sunday","Tuesday","Thursday","Thursday","Thursday","Thursday","Friday","Friday"],[11,1,1,10,17,11,19,22,17,22,6,15,0,16,23,3,6,6,20,6,8,11,10,14,2,22,1,23,21,10,2,18,1,3,16,20,13,17,18,20,12,7,2,12,17,18,3,17,20,20,16,15,16,20,0,13,14,16,8,14]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>weekend<\/th>\n      <th>weekday<\/th>\n      <th>hour<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":3},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
->>>>>>> fd6bece1b050ebecb7554e7277de5a95955c6313
+<a class="sourceLine" id="cb56-14" title="14"><span class="st">  </span><span class="kw">head</span> (<span class="dv">10</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb56-15" title="15"><span class="st">  </span><span class="kw">kable</span>( )</a></code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th align="left">weekend</th>
+<th align="left">weekday</th>
+<th align="right">hour</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">No</td>
+<td align="left">Tuesday</td>
+<td align="right">11</td>
+</tr>
+<tr class="even">
+<td align="left">No</td>
+<td align="left">Monday</td>
+<td align="right">1</td>
+</tr>
+<tr class="odd">
+<td align="left">No</td>
+<td align="left">Monday</td>
+<td align="right">1</td>
+</tr>
+<tr class="even">
+<td align="left">No</td>
+<td align="left">Monday</td>
+<td align="right">10</td>
+</tr>
+<tr class="odd">
+<td align="left">No</td>
+<td align="left">Monday</td>
+<td align="right">17</td>
+</tr>
+<tr class="even">
+<td align="left">No</td>
+<td align="left">Wednesday</td>
+<td align="right">11</td>
+</tr>
+<tr class="odd">
+<td align="left">No</td>
+<td align="left">Thursday</td>
+<td align="right">19</td>
+</tr>
+<tr class="even">
+<td align="left">No</td>
+<td align="left">Thursday</td>
+<td align="right">22</td>
+</tr>
+<tr class="odd">
+<td align="left">Yes</td>
+<td align="left">Saturday</td>
+<td align="right">17</td>
+</tr>
+<tr class="even">
+<td align="left">Yes</td>
+<td align="left">Saturday</td>
+<td align="right">22</td>
+</tr>
+</tbody>
+</table>
 
 <!-- Add link to the drag queen coding class. See if there are other good first-day programming aides I should add.-->
 </div>
@@ -575,6 +627,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 
 
+<div class="footnotes">
+<hr />
+<ol start="3">
+<li id="fn3"><p>This example uses the library <code>lubridate</code>, which may not be installed in your computer. If you’re following along, you may need to install it in the console.<a href="035-mutate.html#fnref3" class="footnote-back">↩</a></p></li>
+</ol>
+</div>
             </section>
 
           </div>
