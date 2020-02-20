@@ -140,7 +140,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="./">Study Guide for Cronkite Students</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a><ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#using-the-examples-with-packages"><i class="fa fa-check"></i>Using the examples with packages</a></li>
+</ul></li>
 <li class="part"><span><b>I Introduction to R for Journalists</b></span></li>
 <li class="chapter" data-level="1" data-path="011-r-install.html"><a href="011-r-install.html"><i class="fa fa-check"></i><b>1</b> An R and R Studio tour</a><ul>
 <li class="chapter" data-level="1.1" data-path="011-r-install.html"><a href="011-r-install.html#key-takeaways"><i class="fa fa-check"></i><b>1.1</b> Key takeaways</a></li>
@@ -229,11 +231,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="035-mutate.html"><a href="035-mutate.html"><i class="fa fa-check"></i><b>7</b> Verbs 3: mutate</a><ul>
-<li class="chapter" data-level="7.1" data-path="035-mutate.html"><a href="035-mutate.html#key-takeaways-6"><i class="fa fa-check"></i><b>7.1</b> Key takeaways</a></li>
-<li class="chapter" data-level="7.2" data-path="035-mutate.html"><a href="035-mutate.html#read-in-some-data"><i class="fa fa-check"></i><b>7.2</b> Read in some data</a></li>
-<li class="chapter" data-level="7.3" data-path="035-mutate.html"><a href="035-mutate.html#simple-arithmetic"><i class="fa fa-check"></i><b>7.3</b> Simple arithmetic</a></li>
-<li class="chapter" data-level="7.4" data-path="035-mutate.html"><a href="035-mutate.html#creating-categories"><i class="fa fa-check"></i><b>7.4</b> Creating categories</a></li>
-<li class="chapter" data-level="7.5" data-path="035-mutate.html"><a href="035-mutate.html#bonus-fun-with-date-and-time"><i class="fa fa-check"></i><b>7.5</b> Bonus: Fun with date and time</a></li>
+<li class="chapter" data-level="7.1" data-path="035-mutate.html"><a href="035-mutate.html#key-takeaways-6"><i class="fa fa-check"></i><b>7.1</b> Key takeaways</a><ul>
+<li class="chapter" data-level="7.1.1" data-path="035-mutate.html"><a href="035-mutate.html#read-in-some-data"><i class="fa fa-check"></i><b>7.1.1</b> Read in some data</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="035-mutate.html"><a href="035-mutate.html#simple-arithmetic"><i class="fa fa-check"></i><b>7.2</b> Simple arithmetic</a></li>
+<li class="chapter" data-level="7.3" data-path="035-mutate.html"><a href="035-mutate.html#creating-categories"><i class="fa fa-check"></i><b>7.3</b> Creating categories</a></li>
+<li class="chapter" data-level="7.4" data-path="035-mutate.html"><a href="035-mutate.html#bonus-fun-with-date-and-time"><i class="fa fa-check"></i><b>7.4</b> Bonus: Fun with date and time</a></li>
 </ul></li>
 <li class="appendix"><span><b>Appendix</b></span></li>
 <li class="chapter" data-level="A" data-path="A02-programming.html"><a href="A02-programming.html"><i class="fa fa-check"></i><b>A</b> A gentle intro to programming</a><ul>
@@ -307,7 +310,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>The most basic kind of object is a single variable that contains a single value of a specific type:</p>
 <pre><code>my_name &lt;- &quot;Sarah&quot;
 my_value &lt;- 1.0</code></pre>
-<p>These are called “literals”, which usually include text, numeric, logical (usually true/false but sometimes yes/no or 1/0) and date or date/time. (<a href="https://cronkitedata.github.io/cronkite-docs/excel/xlguides/xl-tidydata">Return to our tutorial on data types</a> if you need a refresher.) <a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a></p></li>
+<p>These are called “literals”, which usually include text, numeric, logical (usually true/false but sometimes yes/no or 1/0) and date or date/time. (<a href="https://cronkitedata.github.io/cronkite-docs/excel/xlguides/xl-tidydata">Return to our tutorial on data types</a> if you need a refresher.) <a href="#fn4" class="footnote-ref" id="fnref4"><sup>4</sup></a></p></li>
 <li><p><strong>Lists / arrays / vectors</strong></p>
 <p>Most languages have some concept of a list of items called an array, vector or dictionary. In R, you create a vector using the “c” operator, short for “combine”. Python uses a square bracket to indicate a list. Once you have your items in a list or a vector, you can apply the same function across all of them or work on them in order.</p>
 <p>my_list &lt;- c(1, 2, 3, 4, 5) creates a vector of the values 1 through 5 in R
@@ -440,8 +443,8 @@ for (c in customers) {
 </div>
 <div class="footnotes">
 <hr />
-<ol start="3">
-<li id="fn3"><p> There are two special types that we’ll deal with later, but can cause a lot of headaches: <code>NA</code> values and factors. You don’t have to deal with them yet.<a href="A02-programming.html#fnref3" class="footnote-back">↩</a></p></li>
+<ol start="4">
+<li id="fn4"><p> There are two special types that we’ll deal with later, but can cause a lot of headaches: <code>NA</code> values and factors. You don’t have to deal with them yet.<a href="A02-programming.html#fnref4" class="footnote-back">↩</a></p></li>
 </ol>
 </div>
             </section>
