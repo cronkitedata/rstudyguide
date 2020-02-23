@@ -50,7 +50,7 @@ There two kinds of joins you'll most frequently use are:
 
 ## Arizona immunization data
 
-I matched up the information from most of the public and charter schools in Arizona against Department of Education statistics to find their federal ID numbers. There are two tables that have to be matched against one another: The immunization statistics by school, and the National Center for Education Statistics characteristics. They are both saved in the R dataset called [immune_to_nces.Rda](https://cronkitedata.github.io/rstudyguide/data/immune_to_nces.Rda)
+I matched up the information from most of the public and charter schools in Arizona against Department of Education statistics to find their federal ID numbers. There are two tables that have to be matched against one another: The immunization statistics by school, and the National Center for Education Statistics characteristics. They are both saved in the R dataset called [immune_to_nces.Rda](https://github.com/cronkitedata/rstudyguide/blob/master/data/immune_to_nces.Rda?raw=true)
 
 ```{r include = FALSE}
 
