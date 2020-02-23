@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>A A gentle intro to programming | R Study Guide for Cronkite School of Journalism</title>
+  <title>7 Verbs 3: mutate | R Study Guide for Cronkite School of Journalism</title>
   <meta name="description" content="A companion book for the Cronkite School’s data journalism class for graduate students. A work in progress." />
   <meta name="generator" content="bookdown 0.14 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="A A gentle intro to programming | R Study Guide for Cronkite School of Journalism" />
+  <meta property="og:title" content="7 Verbs 3: mutate | R Study Guide for Cronkite School of Journalism" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="https://cronkitedata.github.io/rstudyguide" />
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="cronkitedata/rstudyguide" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="A A gentle intro to programming | R Study Guide for Cronkite School of Journalism" />
+  <meta name="twitter:title" content="7 Verbs 3: mutate | R Study Guide for Cronkite School of Journalism" />
   
   <meta name="twitter:description" content="A companion book for the Cronkite School’s data journalism class for graduate students. A work in progress." />
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   <link rel="shortcut icon" href="favicon.io" type="image/x-icon" />
-<link rel="prev" href="036-joins.html"/>
-<link rel="next" href="A01-resources.html"/>
+<link rel="prev" href="033-groupby.html"/>
+<link rel="next" href="A02-programming.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -49,14 +49,8 @@
 
 
 
-<script src="libs/htmlwidgets-1.5.1/htmlwidgets.js"></script>
-<link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
-<script src="libs/datatables-binding-0.9/datatables.js"></script>
-<link href="libs/dt-core-1.10.19/css/jquery.dataTables.min.css" rel="stylesheet" />
-<link href="libs/dt-core-1.10.19/css/jquery.dataTables.extra.css" rel="stylesheet" />
-<script src="libs/dt-core-1.10.19/js/jquery.dataTables.min.js"></script>
-<link href="libs/crosstalk-1.0.0/css/crosstalk.css" rel="stylesheet" />
-<script src="libs/crosstalk-1.0.0/js/crosstalk.min.js"></script>
+<link href="libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet" />
+<script src="libs/pagedtable-1.1/js/pagedtable.js"></script>
 
 
 <style type="text/css">
@@ -214,7 +208,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.6.2" data-path="031-select-filter.html"><a href="031-select-filter.html#tutorials"><i class="fa fa-check"></i><b>5.6.2</b> Tutorials</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="033-groupby.html"><a href="033-groupby.html"><i class="fa fa-check"></i><b>6</b> Verbs Part 2: group_by and summarise</a><ul>
+<li class="chapter" data-level="6" data-path="033-groupby.html"><a href="033-groupby.html"><i class="fa fa-check"></i><b>6</b> Verbs 2: group_by and summarise</a><ul>
 <li class="chapter" data-level="6.1" data-path="033-groupby.html"><a href="033-groupby.html#key-takeaways-5"><i class="fa fa-check"></i><b>6.1</b> Key takeaways</a></li>
 <li class="chapter" data-level="6.2" data-path="033-groupby.html"><a href="033-groupby.html#group_by-summarise-basics"><i class="fa fa-check"></i><b>6.2</b> group_by / summarise basics</a><ul>
 <li class="chapter" data-level="6.2.1" data-path="033-groupby.html"><a href="033-groupby.html#other-summary-functions"><i class="fa fa-check"></i><b>6.2.1</b> Other summary functions</a></li>
@@ -228,34 +222,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6.4.1" data-path="033-groupby.html"><a href="033-groupby.html#exercises-2"><i class="fa fa-check"></i><b>6.4.1</b> Exercises</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="035-mutate.html"><a href="035-mutate.html"><i class="fa fa-check"></i><b>7</b> Verbs Part 3: mutate</a><ul>
+<li class="chapter" data-level="7" data-path="035-mutate.html"><a href="035-mutate.html"><i class="fa fa-check"></i><b>7</b> Verbs 3: mutate</a><ul>
 <li class="chapter" data-level="7.1" data-path="035-mutate.html"><a href="035-mutate.html#key-takeaways-6"><i class="fa fa-check"></i><b>7.1</b> Key takeaways</a><ul>
 <li class="chapter" data-level="7.1.1" data-path="035-mutate.html"><a href="035-mutate.html#read-in-some-data"><i class="fa fa-check"></i><b>7.1.1</b> Read in some data</a></li>
 </ul></li>
 <li class="chapter" data-level="7.2" data-path="035-mutate.html"><a href="035-mutate.html#simple-arithmetic"><i class="fa fa-check"></i><b>7.2</b> Simple arithmetic</a></li>
-<li class="chapter" data-level="7.3" data-path="035-mutate.html"><a href="035-mutate.html#creating-categories-with-if_else"><i class="fa fa-check"></i><b>7.3</b> Creating categories with <code>if_else()</code></a></li>
-<li class="chapter" data-level="7.4" data-path="035-mutate.html"><a href="035-mutate.html#useful-functions"><i class="fa fa-check"></i><b>7.4</b> Useful functions</a></li>
-<li class="chapter" data-level="7.5" data-path="035-mutate.html"><a href="035-mutate.html#bonus-fun-with-date-and-time"><i class="fa fa-check"></i><b>7.5</b> Bonus: Fun with date and time</a></li>
-<li class="chapter" data-level="7.6" data-path="035-mutate.html"><a href="035-mutate.html#more-resources"><i class="fa fa-check"></i><b>7.6</b> More resources</a><ul>
-<li class="chapter" data-level="" data-path="035-mutate.html"><a href="035-mutate.html#tk-exercises"><i class="fa fa-check"></i>TK: Exercises</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="8" data-path="036-joins.html"><a href="036-joins.html"><i class="fa fa-check"></i><b>8</b> Verbs Part 4: Combining data</a><ul>
-<li class="chapter" data-level="8.1" data-path="036-joins.html"><a href="036-joins.html#key-takeaways-7"><i class="fa fa-check"></i><b>8.1</b> Key takeaways</a><ul>
-<li class="chapter" data-level="8.1.1" data-path="036-joins.html"><a href="036-joins.html#adding-rows-instead-of-columns"><i class="fa fa-check"></i><b>8.1.1</b> Adding rows instead of columns</a></li>
-</ul></li>
-<li class="chapter" data-level="8.2" data-path="036-joins.html"><a href="036-joins.html#concepts-of-joining"><i class="fa fa-check"></i><b>8.2</b> Concepts of joining</a></li>
-<li class="chapter" data-level="8.3" data-path="036-joins.html"><a href="036-joins.html#arizona-immunization-data"><i class="fa fa-check"></i><b>8.3</b> Arizona immunization data</a><ul>
-<li class="chapter" data-level="" data-path="036-joins.html"><a href="036-joins.html#setting-up-the-data"><i class="fa fa-check"></i>Setting up the data</a></li>
-<li class="chapter" data-level="" data-path="036-joins.html"><a href="036-joins.html#apply-the-join"><i class="fa fa-check"></i>Apply the join</a></li>
-</ul></li>
-<li class="chapter" data-level="8.4" data-path="036-joins.html"><a href="036-joins.html#resources-2"><i class="fa fa-check"></i><b>8.4</b> Resources</a><ul>
-<li class="chapter" data-level="8.4.1" data-path="036-joins.html"><a href="036-joins.html#practice"><i class="fa fa-check"></i><b>8.4.1</b> Practice</a></li>
-</ul></li>
+<li class="chapter" data-level="7.3" data-path="035-mutate.html"><a href="035-mutate.html#creating-categories"><i class="fa fa-check"></i><b>7.3</b> Creating categories</a></li>
+<li class="chapter" data-level="7.4" data-path="035-mutate.html"><a href="035-mutate.html#bonus-fun-with-date-and-time"><i class="fa fa-check"></i><b>7.4</b> Bonus: Fun with date and time</a></li>
 </ul></li>
 <li class="appendix"><span><b>Appendix</b></span></li>
 <li class="chapter" data-level="A" data-path="A02-programming.html"><a href="A02-programming.html"><i class="fa fa-check"></i><b>A</b> A gentle intro to programming</a><ul>
-<li class="chapter" data-level="A.1" data-path="A02-programming.html"><a href="A02-programming.html#key-takeaways-8"><i class="fa fa-check"></i><b>A.1</b> Key takeaways</a></li>
+<li class="chapter" data-level="A.1" data-path="A02-programming.html"><a href="A02-programming.html#key-takeaways-7"><i class="fa fa-check"></i><b>A.1</b> Key takeaways</a></li>
 <li class="chapter" data-level="A.2" data-path="A02-programming.html"><a href="A02-programming.html#building-blocks"><i class="fa fa-check"></i><b>A.2</b> Building blocks</a><ul>
 <li class="chapter" data-level="" data-path="A02-programming.html"><a href="A02-programming.html#variables-and-objects"><i class="fa fa-check"></i>Variables and objects</a></li>
 <li class="chapter" data-level="" data-path="A02-programming.html"><a href="A02-programming.html#operators-assignment"><i class="fa fa-check"></i>Operators &amp; assignment</a></li>
@@ -266,10 +243,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="A02-programming.html"><a href="A02-programming.html#open-a-restaurant-with-loops"><i class="fa fa-check"></i>Open a restaurant with loops</a></li>
 </ul></li>
 <li class="chapter" data-level="A.4" data-path="A02-programming.html"><a href="A02-programming.html#applications"><i class="fa fa-check"></i><b>A.4</b> Applications</a></li>
-<li class="chapter" data-level="A.5" data-path="A02-programming.html"><a href="A02-programming.html#more-resources-1"><i class="fa fa-check"></i><b>A.5</b> More resources</a></li>
+<li class="chapter" data-level="A.5" data-path="A02-programming.html"><a href="A02-programming.html#more-resources"><i class="fa fa-check"></i><b>A.5</b> More resources</a></li>
 </ul></li>
 <li class="chapter" data-level="B" data-path="A01-resources.html"><a href="A01-resources.html"><i class="fa fa-check"></i><b>B</b> Great R Resources</a><ul>
-<li class="chapter" data-level="B.1" data-path="A01-resources.html"><a href="A01-resources.html#key-takeaways-9"><i class="fa fa-check"></i><b>B.1</b> Key takeaways</a></li>
+<li class="chapter" data-level="B.1" data-path="A01-resources.html"><a href="A01-resources.html#key-takeaways-8"><i class="fa fa-check"></i><b>B.1</b> Key takeaways</a></li>
 <li class="chapter" data-level="B.2" data-path="A01-resources.html"><a href="A01-resources.html#coursework-in-r"><i class="fa fa-check"></i><b>B.2</b> Coursework in R</a></li>
 <li class="chapter" data-level="B.3" data-path="A01-resources.html"><a href="A01-resources.html#instructional-screencasts-and-videos"><i class="fa fa-check"></i><b>B.3</b> Instructional screencasts and videos</a></li>
 </ul></li>
@@ -301,165 +278,203 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="a-gentle-intro-to-programming" class="section level1">
-<h1><span class="header-section-number">A</span> A gentle intro to programming</h1>
-<div id="key-takeaways-8" class="section level2">
-<h2><span class="header-section-number">A.1</span> Key takeaways</h2>
+<div id="verbs-3-mutate" class="section level1">
+<h1><span class="header-section-number">7</span> Verbs 3: mutate</h1>
+<style>
+   table {
+      font-size:.9em;
+   }
+</style>
+<div id="key-takeaways-6" class="section level2">
+<h2><span class="header-section-number">7.1</span> Key takeaways</h2>
 <ul>
-<li>All programming languages (yes, including Excel) have certain things in common: <em>objects</em>, <em>operators</em>, <em>functions</em> and <em>loops</em>.</li>
-<li>An <em>algorithm</em> is a set of instructions, carried out in order.</li>
-<li>No one is born knowing how to code. It takes practice.</li>
-</ul>
-<div class="info">
-<p>The examples here are shown mainly using R syntax. Another language might look a little different.</p>
-</div>
-</div>
-<div id="building-blocks" class="section level2">
-<h2><span class="header-section-number">A.2</span> Building blocks</h2>
-<p>Once you learn to program in one language, learning others is much simpler. That’s because you have the basic concepts down: How to assign values to variables, how to loop through lists, or how to import data. This chapter walks through some of the more universal concepts in programming.</p>
-<div id="variables-and-objects" class="section level3 unnumbered">
-<h3>Variables and objects</h3>
-<p>Objects can be simple, like a variable called my_name that holds the value, “Sarah”. Or they can be quite complex, such as a multi-level data frame containing details from a Spotify playlist.</p>
-<ol>
-<li><p><strong>Literals</strong></p>
-<p>The most basic kind of object is a single variable that contains a single value of a specific type:</p>
-<pre><code>my_name &lt;- &quot;Sarah&quot;
-my_value &lt;- 1.0</code></pre>
-<p>These are called “literals”, which usually include text, numeric, logical (usually true/false but sometimes yes/no or 1/0) and date or date/time. (<a href="https://cronkitedata.github.io/cronkite-docs/excel/xlguides/xl-tidydata">Return to our tutorial on data types</a> if you need a refresher.) <a href="#fn4" class="footnote-ref" id="fnref4"><sup>4</sup></a></p></li>
-<li><p><strong>Lists / arrays / vectors</strong></p>
-<p>Most languages have some concept of a list of items called an array, vector or dictionary. In R, you create a vector using the “c” operator, short for “combine”. Python uses a square bracket to indicate a list. Once you have your items in a list or a vector, you can apply the same function across all of them or work on them in order.</p>
-<p>my_list &lt;- c(1, 2, 3, 4, 5) creates a vector of the values 1 through 5 in R
-my_list = [1, 2, 3, 4, 5] creates a list of values 1 through 5 in Python</p></li>
-<li><p><strong>Data frames or tables</strong></p>
-<p>Data frames or data tables are really a special version of a list, and are equivalent to a tidy Excel spreadsheet: rectangular data with field names and observations. You don’t need to know much about this yet, but just understand that it will become an important part of your vocabulary.</p></li>
-</ol>
-</div>
-<div id="operators-assignment" class="section level3 unnumbered">
-<h3>Operators &amp; assignment</h3>
-<p>Operators are simple aritmetic or similar operations, like adding, subtracting, dividing and multiplying.</p>
-<pre><code>   Arithmethic: add (+), subtract (-), multiply (*), or divide (/).
-
-   Text: Smush together phrases by concatenating (often + or &amp;)
-
-   Comparison: Greater than (&gt;) , less than (&lt;), equal to (often == to distinguish from =),
-                  not equal to (often !=).</code></pre>
-<p>“Assignment” means pushing a value into a var iable name using either “=” or “&lt;-”. It’s amazing how many different ways there are to think of this. Some might call “naming a value”, others might consider it “setting a variable”. (A <em>variable</em> is just a name you’ll use later on to refer to your value. It can <em>vary</em>, depending on what you do to it.)</p>
-<pre><code> my_name &lt;- &quot;Sarah&quot;
- my_value = 1.0</code></pre>
-</div>
-<div id="functions" class="section level3 unnumbered">
-<h3>Functions</h3>
-<p>A function is a set of instructions that is either built into the programming language, is added through a package or library, or is created by you. You can save them for later use or apply them on the fly. Usually, you write the name of the function, then put its <em>arguments</em> inside parentheses. You did this in Excel:</p>
-<pre><code>=SUM(A1:A15)
- </code></pre>
-<p>Generally, there are categories of functions that depend on what data type they act on. An example in R is the function <em>tolower()</em>, which converts anything inside the parentheses to lower case. There can be several different pieces of information in a function. There can also be optional arguments. A maddening example in R is:</p>
-<pre><code> sum ( variable_name )    </code></pre>
-<p>This adds the values of a variable. BUT it will come out to NA if you try to include a row that was NA to begin with. Instead, you have to provide an optional arbument to get rid of NA’s before starting:</p>
-<pre><code> sum (variable_name, na.rm=TRUE)</code></pre>
-</div>
-<div id="loops" class="section level3 unnumbered">
-<h3>Loops</h3>
-<p>A loop is a way to repeat your instructions over and over without having to re-write them every time. They usually work by stepping through some kind of a list, like a directory of files, or by using a counter, such as every year between 2005 and 2018.</p>
-<p>Excel and Google Sheets don’t really have loops, unless you learn the more complicated programming language behind them. This is why many people move to Python and R – to get the power of loops.</p>
-</div>
-</div>
-<div id="make-an-omelet-with-a-function" class="section level2">
-<h2><span class="header-section-number">A.3</span> Make an omelet with a function</h2>
-<p><img src="images/00-katie-smith-unsplash.jpg" style="width:50.0%" /></p>
-<div class="credit-line">
-<p>Ingredients by Katie Smith via Unsplash</p>
-</div>
-<p>Suppose you want to make an omelet. Before you even start, you need to know at least two things: which ingredients you have on hand, and what kind of omelet you want to make.</p>
-<p>A function that creates an omelet might look something like this. The first row creates a function called make_omelet, which requires the two pieces of information as <em>arguments</em>. Once you’ve made the function, you can refer to that set of instruction by its name by giving it the arguments it needs.</p>
-<pre><code>function make_omelet (ingredients_on_hand, what_kind) {
-
-     check for necessary ingredients (are all elements of what_kind in ingredients_on_hand?)
-         quit now if you don&#39;t have them all.
-         return the error message
-
-     prepare the ingredients for (which_kind)
-
-     whisk the eggs
-
-     melt some butter in a pan
-
-     pour in the eggs
-
-     add ingredients for what_kind except cheese (what_kind - &quot;cheese&quot;)
-
-     flip the omelet
-
-     if you have cheese in both what_kind and ingredients_on_hand ,
-         fold in cheese
-
-     remove from pan
-
-     return the omelet
-
-}</code></pre>
-<p>Now, when you want to make an omelet, you can just make your list of ingredients and the kind of omelet you want, and execute the function:</p>
-<p>Let’s start with setting up those items:</p>
-<pre><code>ingredients &lt;-
-        c(&quot;butter&quot;, &quot;eggs&quot;, &quot;cheese&quot;, &quot;spinach&quot;, &quot;tomatoes&quot;)
-
-kind &lt;-
-        c(&quot;spinach&quot;, &quot;cheese&quot;)
-
-make_omelet (ingredients, kind)
-
-(Note that what you give it doesn&#39;t have to have the same name that it had in your definition.)</code></pre>
-<div id="open-a-restaurant-with-loops" class="section level3 unnumbered">
-<h3>Open a restaurant with loops</h3>
-<p>Now, you’d have to repeat this over and over if you had a restaurant. It might look like this:</p>
-<pre><code>  make_omelet (ingredients,kind)
-  ** change the ingredients and the kind**
-  make_omelet (ingredients2, kind2)
-  ** change the ingredients ant the kind**
-  make_omelet (ingredients3, kind3)
-  ... and so on.</code></pre>
-<p>You’d have a program hundreds of lines long – one for each customer. Instead, you could <em>loop</em> through the customers and do the same thing:</p>
-<pre><code>customers &lt;- c(&quot;Bob&quot;, &quot;Jon&quot;, &quot;Christie&quot;, &quot;Lauren&quot;)
-
-for (c in customers) {
-  request what kind they want
-  make_omelet (kind, ingredients_on_hand)
-  give omelet to customer c
-  update your ingredients list if you ran out of something or went shopping
-}</code></pre>
-</div>
-</div>
-<div id="applications" class="section level2">
-<h2><span class="header-section-number">A.4</span> Applications</h2>
-<p>Many of the functions we use are already built into R and Python, or are in libraries that we borrow – someone else has already written them for you.</p>
-<p>Examples include:</p>
+<li><code>mutate</code> just means “compute”, or convert one or more variables into something new.</li>
+<li>mutate is the equivalent of creating a new column in Excel using a formula</li>
+<li>Some of the most important jobs of a <code>mutate</code> statement are:
 <ul>
-<li>reading a csv or Excel file</li>
-<li>calculating the average or sum</li>
-<li>counting</li>
-<li>finding phrases within text</li>
+<li>Convert unstandardized data into standardized, such as yes-or-no variables or all lower case</li>
+<li>Use arithmetic on numeric variables</li>
+<li>Use conditional statements to put different values on variables, instead of filtering one at a time.</li>
+<li>Change the data <em>type</em> from, say, text to date and time.</li>
+</ul></li>
 </ul>
-<p>The more common applications are things we haven’t done yet:</p>
-<ul>
-<li><p>Gather identical spreadsheets into one dataset, as in <a href="https://cronkitedata.github.io/rstats-training/refugees-loop.html">this example using refugee statistics</a>.</p></li>
-<li><p>Loop through a list of links, download a page, then scrape it to extract information. Here’s <a href="https://cronkitedata.github.io/rstats-training/rscraping/mugshot-scrape.html">an example from the Maricopa County sheriff’s department mugshots</a>. (It won’t work – the census changes each time, so the ID numbers are out of date.)</p></li>
-</ul>
+<div id="read-in-some-data" class="section level3">
+<h3><span class="header-section-number">7.1.1</span> Read in some data</h3>
+<p>Start with the <a href="https://github.com/cronkitedata/rstudyguide/blob/master/data/az-immunizations-grade6.Rda?raw=true">Arizona immunization data</a> that some other chapters have worked with, loading it and the tidyverse to follow along.</p>
+<p>Here are the packages and data used for this chapter. You might need to install some of them.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1"><span class="kw">library</span>(tidyverse)</a>
+<a class="sourceLine" id="cb1-2" title="2"><span class="kw">library</span>(knitr)       <span class="co"># used for slightly better looking tables</span></a>
+<a class="sourceLine" id="cb1-3" title="3"><span class="kw">library</span>(DT)          <span class="co"># even more options with tables</span></a>
+<a class="sourceLine" id="cb1-4" title="4"><span class="kw">library</span>(lubridate)   <span class="co"># used for working with dates</span></a>
+<a class="sourceLine" id="cb1-5" title="5"><span class="kw">library</span>(janitor)     <span class="co"># used to clean up dirty data and change column names.</span></a>
+<a class="sourceLine" id="cb1-6" title="6"></a>
+<a class="sourceLine" id="cb1-7" title="7"><span class="kw">load</span>(<span class="st">&quot;data/az-immunizations-grade6.Rda&quot;</span>)  <span class="co"># you may need to change the path to wherever you saved the data</span></a></code></pre></div>
 </div>
-<div id="more-resources-1" class="section level2">
-<h2><span class="header-section-number">A.5</span> More resources</h2>
-<ul>
-<li>The <a href="https://cronkitedata.github.io/cronkite-docs/excel/xlguides/xl-tidydata.html">Data types and tidy data</a> section of our Excel training.</li>
-<li>"<a href="https://youtu.be/7MUErafri48">Beyond Binary</a>, Lesson 1 from a Google engineer’s drag queen persona named Anna Lytical. This video gives you a good handle on what a computer program does.</li>
-</ul>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/7MUErafri48" style="align:center;" frameborder="0" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
-</iframe>
+</div>
+<div id="simple-arithmetic" class="section level2">
+<h2><span class="header-section-number">7.2</span> Simple arithmetic</h2>
+<p>Use the usual arithmetic operators to calculate numbers and create a new column:</p>
+<pre><code>  + Addition
+  - Subtraction
+  * Multiplication
+  / Division
+  </code></pre>
+<p>This example creates a new data frame called <code>immune_pct</code> from a few columns of the original:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" title="1">immune_pct &lt;-<span class="st"> </span></a>
+<a class="sourceLine" id="cb3-2" title="2"><span class="st">  </span>grade6_counts <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb3-3" title="3"><span class="st">  </span><span class="kw">select</span> ( school_name, city, school_type, enrolled, num_immune_mmr) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb3-4" title="4"><span class="st">  </span><span class="kw">mutate</span> (<span class="dt">pct_immune =</span> ( num_immune_mmr<span class="op">/</span>enrolled) <span class="op">*</span><span class="st"> </span><span class="dv">100</span>) </a></code></pre></div>
+<p>Here’s what it looks like:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">school_name</th>
+<th align="left">city</th>
+<th align="left">school_type</th>
+<th align="right">enrolled</th>
+<th align="right">num_immune_mmr</th>
+<th align="right">pct_immune</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">ABRAHAM LINCOLN TRADITIONAL SCHOOL</td>
+<td align="left">PHOENIX</td>
+<td align="left">PUBLIC</td>
+<td align="right">59</td>
+<td align="right">58</td>
+<td align="right">98.3</td>
+</tr>
+<tr class="even">
+<td align="left">ACACIA ELEMENTARY SCHOOL</td>
+<td align="left">PHOENIX</td>
+<td align="left">PUBLIC</td>
+<td align="right">134</td>
+<td align="right">134</td>
+<td align="right">100.0</td>
+</tr>
+<tr class="odd">
+<td align="left">ACADEMY DEL SOL - HOPE</td>
+<td align="left">TUCSON</td>
+<td align="left">CHARTER</td>
+<td align="right">53</td>
+<td align="right">52</td>
+<td align="right">98.1</td>
+</tr>
+<tr class="even">
+<td align="left">ACADEMY OF MATH AND SCIENCE</td>
+<td align="left">TUCSON</td>
+<td align="left">CHARTER</td>
+<td align="right">42</td>
+<td align="right">40</td>
+<td align="right">95.2</td>
+</tr>
+<tr class="odd">
+<td align="left">ACADEMY OF MATH AND SCIENCE CAMELBACK</td>
+<td align="left">PHOENIX</td>
+<td align="left">CHARTER</td>
+<td align="right">113</td>
+<td align="right">113</td>
+<td align="right">100.0</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="creating-categories" class="section level2">
+<h2><span class="header-section-number">7.3</span> Creating categories</h2>
+<p>Sometimes, you want to create categories out of more detailed information. In this case, a threshold of 90 percent immunization is considered the limit under which there is a threat of a measles outbreak, also known as “herd immunity”. To categorize each schools as above or under that level, we need to create a new variable that is based on the value of the percentage we just calcluated. That’s done using an <code>if_else</code> statement, which is in the form:</p>
+<pre><code>  if_else (  condition, 
+             new value if it&#39;s true, 
+             new value if it&#39;s not true)</code></pre>
+<p>For example:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" title="1">immune_pct &lt;-<span class="st"> </span></a>
+<a class="sourceLine" id="cb5-2" title="2"><span class="st">    </span>immune_pct <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb5-3" title="3"><span class="st">    </span><span class="kw">mutate</span> (  <span class="dt">threshold_met =</span>  <span class="kw">if_else</span>   ( pct_immune <span class="op">&gt;=</span><span class="st"> </span><span class="dv">90</span>, </a>
+<a class="sourceLine" id="cb5-4" title="4">                                        <span class="st">&quot;Meets threshold&quot;</span>, </a>
+<a class="sourceLine" id="cb5-5" title="5">                                         <span class="st">&quot;Below threshold&quot;</span>)</a>
+<a class="sourceLine" id="cb5-6" title="6">            )</a></code></pre></div>
+<p>Now we can do some grouping by the new categories:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" title="1">immune_pct <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb6-2" title="2"><span class="st">    </span><span class="kw">group_by</span> (school_type, threshold_met) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb6-3" title="3"><span class="st">    </span><span class="kw">summarise</span> ( <span class="dt">school_ct =</span> <span class="kw">n</span>(), </a>
+<a class="sourceLine" id="cb6-4" title="4">                <span class="dt">enrolled =</span> <span class="kw">sum</span>(enrolled)) </a></code></pre></div>
+<p>You can practice rolling up by looking at the percent by type.</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" title="1">immune_pct <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb7-2" title="2"><span class="st">    </span><span class="kw">group_by</span> (school_type, threshold_met) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb7-3" title="3"><span class="st">    </span><span class="kw">summarise</span> ( <span class="dt">schools =</span> <span class="kw">n</span>(), </a>
+<a class="sourceLine" id="cb7-4" title="4">                <span class="dt">students =</span> <span class="kw">sum</span>(enrolled)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb7-5" title="5"><span class="st">    </span><span class="kw">mutate</span> (   <span class="dt">pct_school_type =</span> schools <span class="op">/</span><span class="st"> </span><span class="kw">sum</span>(schools, <span class="dt">na.rm=</span><span class="ot">TRUE</span>) <span class="op">*</span><span class="st"> </span><span class="dv">100</span>,</a>
+<a class="sourceLine" id="cb7-6" title="6">               <span class="dt">pct_enrolled =</span> students <span class="op">/</span><span class="st"> </span><span class="kw">sum</span>(students, <span class="dt">na.rm=</span><span class="ot">TRUE</span>) <span class="op">*</span><span class="st"> </span><span class="dv">100</span> </a>
+<a class="sourceLine" id="cb7-7" title="7">             ) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb7-8" title="8"><span class="st">    </span><span class="kw">filter</span> ( threshold_met <span class="op">==</span><span class="st"> &quot;Below threshold&quot;</span>)  </a></code></pre></div>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["school_type"],"name":[1],"type":["chr"],"align":["left"]},{"label":["threshold_met"],"name":[2],"type":["chr"],"align":["left"]},{"label":["schools"],"name":[3],"type":["int"],"align":["right"]},{"label":["students"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["pct_school_type"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["pct_enrolled"],"name":[6],"type":["dbl"],"align":["right"]}],"data":[{"1":"CHARTER","2":"Below threshold","3":"40","4":"2344","5":"20.725389","6":"17.757576"},{"1":"PRIVATE","2":"Below threshold","3":"10","4":"324","5":"14.925373","6":"12.053571"},{"1":"PUBLIC","2":"Below threshold","3":"18","4":"1223","5":"2.777778","6":"1.794544"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+<p>You can read this table to say, “More than one-sixth of 6th-grade charter school students could be at risk of contracting measles because their schools have immunization rates below levels experts say are needed to prevent outbreaks.” (The wording is tough here to avoid saying “schools” over and over! )</p>
+<p>This strategy can also be used to set unreal values to the special <code>NA</code> as in the MAP murder data that uses the value 999 instead of “unknown” for an age. This is common in survey data.</p>
+</div>
+<div id="bonus-fun-with-date-and-time" class="section level2">
+<h2><span class="header-section-number">7.4</span> Bonus: Fun with date and time</h2>
+<p>Sometimes your data came to you as text, but you need to treat it as numbers. In journalism, we’re often trying to work with dates that came to us in some non-standard form. This is called changing the <code>data type</code>. <a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a></p>
+<p>This example comes from the opioid emergency call data shown in earlier chapters.</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" title="1">my_link &lt;-<span class="st"> &quot;https://cronkitedata.github.io/cronkite-docs/assets/data/csv/opioidemscalls.csv&quot;</span></a>
+<a class="sourceLine" id="cb8-2" title="2"><span class="co">#use it in a read_csv command</span></a>
+<a class="sourceLine" id="cb8-3" title="3">opioid_calls_orig &lt;-<span class="st"> </span><span class="kw">read_csv</span>(my_link)</a>
+<a class="sourceLine" id="cb8-4" title="4">opioid_calls &lt;-<span class="st"> </span>opioid_calls_orig <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb8-5" title="5"><span class="st">                </span><span class="kw">clean_names</span>() <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb8-6" title="6"><span class="st">                </span><span class="kw">select</span> (objectid, <span class="dt">incident_date_char =</span> incident_date, <span class="dt">narcan=</span> narcan_naloxone_given, is_asu_student, <span class="dt">is_homeless=</span>is_homeles)</a>
+<a class="sourceLine" id="cb8-7" title="7">  </a>
+<a class="sourceLine" id="cb8-8" title="8"></a>
+<a class="sourceLine" id="cb8-9" title="9"><span class="kw">head</span>(opioid_calls)</a></code></pre></div>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["objectid"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["incident_date_char"],"name":[2],"type":["chr"],"align":["left"]},{"label":["narcan"],"name":[3],"type":["chr"],"align":["left"]},{"label":["is_asu_student"],"name":[4],"type":["chr"],"align":["left"]},{"label":["is_homeless"],"name":[5],"type":["chr"],"align":["left"]}],"data":[{"1":"2","2":"1/3/2017 11:42","3":"No","4":"No","5":"No"},{"1":"3","2":"1/9/2017 1:08","3":"Yes","4":"No","5":"No"},{"1":"4","2":"1/9/2017 1:55","3":"No","4":"No","5":"Yes"},{"1":"5","2":"1/9/2017 10:23","3":"No","4":"No","5":"Yes"},{"1":"6","2":"1/9/2017 17:59","3":"No","4":"No","5":"No"},{"1":"7","2":"1/11/2017 11:10","3":"Yes","4":"No","5":"No"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+<p>The date and time in this dataset is a character field, but we want to convert it to a date field and a separate time field. At first, we might just want to get the date value out of the character string. It’s in the form month/day/year hour:minute, so we can use the <code>lubridate::mdy_hm function</code> [When you see a function preceded by two colons as this one does, the author is showing you which package it comes from. In this case, the <code>lubridate</code> package, which you must install before you can use it, has a function <code>mdy_hm</code>.]. This function tries to guess how the character string is formatted:</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" title="1">opioid_calls <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb9-2" title="2"><span class="st">  </span><span class="kw">mutate</span> ( <span class="dt">incident_date =</span> <span class="kw">mdy_hm</span>(incident_date_char)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb9-3" title="3"><span class="st">  </span><span class="kw">select</span> (incident_date, incident_date_char<span class="op">:</span>is_homeless) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb9-4" title="4"><span class="st">  </span><span class="kw">head</span>()</a></code></pre></div>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["incident_date"],"name":[1],"type":["S3: POSIXct"],"align":["right"]},{"label":["incident_date_char"],"name":[2],"type":["chr"],"align":["left"]},{"label":["narcan"],"name":[3],"type":["chr"],"align":["left"]},{"label":["is_asu_student"],"name":[4],"type":["chr"],"align":["left"]},{"label":["is_homeless"],"name":[5],"type":["chr"],"align":["left"]}],"data":[{"1":"2017-01-03 11:42:00","2":"1/3/2017 11:42","3":"No","4":"No","5":"No"},{"1":"2017-01-09 01:08:00","2":"1/9/2017 1:08","3":"Yes","4":"No","5":"No"},{"1":"2017-01-09 01:55:00","2":"1/9/2017 1:55","3":"No","4":"No","5":"Yes"},{"1":"2017-01-09 10:23:00","2":"1/9/2017 10:23","3":"No","4":"No","5":"Yes"},{"1":"2017-01-09 17:59:00","2":"1/9/2017 17:59","3":"No","4":"No","5":"No"},{"1":"2017-01-11 11:10:00","2":"1/11/2017 11:10","3":"Yes","4":"No","5":"No"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+<p>Notice that the new variable is of the type &lt;S3: POSIXct&gt;, which refers to a date-time combined variable.</p>
+<p>Let’s say I want to distinguish weekends from weekdays in this dataset. First, we have to define weekend. Here’s one definition, but you might want to use another: A weekend begins at 3pm on Friday and ends at 6pm on Sunday. (The <code>hour</code> variable is in military time.). Instead of using <code>if_else</code>, this example uses <code>case_when</code>, which lets you choose among a variety of options, not just two.</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" title="1">opioid_calls <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb10-2" title="2"><span class="st">  </span><span class="kw">mutate</span> (<span class="dt">incident_date =</span> <span class="kw">mdy_hm</span>(incident_date_char), </a>
+<a class="sourceLine" id="cb10-3" title="3">          <span class="dt">day_of_week =</span> <span class="kw">wday</span>(incident_date) ,</a>
+<a class="sourceLine" id="cb10-4" title="4">          <span class="dt">weekday =</span> <span class="kw">weekdays</span>(incident_date),</a>
+<a class="sourceLine" id="cb10-5" title="5">          <span class="dt">hour =</span> <span class="kw">hour</span>(incident_date), </a>
+<a class="sourceLine" id="cb10-6" title="6">          <span class="dt">weekend =</span> </a>
+<a class="sourceLine" id="cb10-7" title="7">              <span class="kw">case_when</span> ( day_of_week <span class="op">==</span><span class="st"> </span><span class="dv">7</span>                 <span class="op">~</span><span class="st"> &quot;Yes&quot;</span>, </a>
+<a class="sourceLine" id="cb10-8" title="8">                          day_of_week <span class="op">==</span><span class="st"> </span><span class="dv">6</span> <span class="op">&amp;</span><span class="st"> </span>hour <span class="op">&gt;=</span><span class="st"> </span><span class="dv">15</span>     <span class="op">~</span><span class="st"> &quot;Yes&quot;</span>, </a>
+<a class="sourceLine" id="cb10-9" title="9">                          day_of_week <span class="op">==</span><span class="st"> </span><span class="dv">1</span> <span class="op">&amp;</span><span class="st"> </span>hour <span class="op">&lt;=</span><span class="st"> </span><span class="dv">18</span>   <span class="op">~</span><span class="st"> &quot;Yes&quot;</span>, </a>
+<a class="sourceLine" id="cb10-10" title="10">                          <span class="ot">TRUE</span>                             <span class="op">~</span><span class="st"> &quot;No&quot;</span></a>
+<a class="sourceLine" id="cb10-11" title="11">                          )</a>
+<a class="sourceLine" id="cb10-12" title="12">          ) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb10-13" title="13"><span class="st">  </span><span class="co">#use count() instead of group_by / summarise. Same thing in this context.</span></a>
+<a class="sourceLine" id="cb10-14" title="14"><span class="st">  </span><span class="kw">count</span> (day_of_week, weekend, weekday) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb10-15" title="15"><span class="st">  </span><span class="kw">pivot_wider</span> (<span class="dt">values_from =</span> n, <span class="dt">names_from =</span> weekend, <span class="dt">values_fill=</span> <span class="kw">list</span>(<span class="dt">n=</span><span class="dv">0</span>))</a></code></pre></div>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["day_of_week"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["weekday"],"name":[2],"type":["chr"],"align":["left"]},{"label":["No"],"name":[3],"type":["int"],"align":["right"]},{"label":["Yes"],"name":[4],"type":["int"],"align":["right"]}],"data":[{"1":"1","2":"Sunday","3":"19","4":"80"},{"1":"2","2":"Monday","3":"78","4":"0"},{"1":"3","2":"Tuesday","3":"87","4":"0"},{"1":"4","2":"Wednesday","3":"87","4":"0"},{"1":"5","2":"Thursday","3":"102","4":"0"},{"1":"6","2":"Friday","3":"53","4":"41"},{"1":"7","2":"Saturday","3":"0","4":"103"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
 
-<!-- Add link to the drag queen coding class. See if there are other good first-day programming aides I should add.-->
 </div>
 </div>
+
+
+
 <div class="footnotes">
 <hr />
-<ol start="4">
-<li id="fn4"><p> There are two special types that we’ll deal with later, but can cause a lot of headaches: <code>NA</code> values and factors. You don’t have to deal with them yet.<a href="A02-programming.html#fnref4" class="footnote-back">↩</a></p></li>
+<ol start="2">
+<li id="fn2"><p>This example uses the library <code>lubridate</code>, which may not be installed in your computer. If you’re following along, you may need to install it in the console.<a href="035-mutate.html#fnref2" class="footnote-back">↩</a></p></li>
 </ol>
 </div>
             </section>
@@ -467,8 +482,8 @@ for (c in customers) {
           </div>
         </div>
       </div>
-<a href="036-joins.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="A01-resources.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="033-groupby.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="A02-programming.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

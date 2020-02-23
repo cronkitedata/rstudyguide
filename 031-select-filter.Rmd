@@ -1,9 +1,3 @@
-<style>
- table {
-   font-size: .9em;
- }
-</style>
-
 # Verbs Part 1: Picking and choosing 
 
 ## Key takeaways 

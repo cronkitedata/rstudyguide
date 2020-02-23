@@ -20,3 +20,7 @@ h4 {
   font-weight: bolder;
   font-variant: small-caps;
 }
+
+table {
+   font-size: .85em;
+}

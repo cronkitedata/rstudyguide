@@ -11,8 +11,10 @@ rmd_files: ["index.Rmd",
             "031-select-filter.Rmd",
             "033-groupby.Rmd",
             "035-mutate.Rmd",
+            "036-joins.Rmd",
             "A02-programming.Rmd",
             "A01-resources.Rmd",
             "A04-murders.Rmd"
             ] 
 output_dir: "docs"
+new_session: yes

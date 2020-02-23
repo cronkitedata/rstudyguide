@@ -1,8 +1,0 @@
-h4, .unnumbered {
-  font-size: 1em;
-  font-weight: bold;
-}
-
-.info {
-  background-color: LightCyan;
-}

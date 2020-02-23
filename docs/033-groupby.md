@@ -1,12 +1,6 @@
 # Verbs Part 2: group_by and summarise
 
-```{r include=FALSE, message=FALSE}
 
-library(tidyverse)
-load ("data/az-immunizations-grade6.Rda")
-
-
-```
 
 
 
@@ -44,8 +38,8 @@ Reporters use grouping to:
 
 To refresh your memory, this query counts the number of schools and adds up the number of students by type of school while giving them descriptive names: 
 
-```{r results="hide"}
 
+```r
 grade6_counts %>%
   group_by (school_type) %>%
   summarise ( schools = n() ,
@@ -69,12 +63,25 @@ min() , max()   | Just what it looks like
 
 An example of counting by school type, and whether a school nurse is on staff: 
 
-```{r}
+
+```r
 grade6_counts %>%
   group_by ( school_type, school_nurse) %>% 
   summarise ( num_schools = n() ) 
-
 ```
+
+<div class="kable-table">
+
+school_type   school_nurse    num_schools
+------------  -------------  ------------
+CHARTER       NO                      169
+CHARTER       YES                      24
+PRIVATE       NO                       32
+PRIVATE       YES                      35
+PUBLIC        NO                      240
+PUBLIC        YES                     408
+
+</div>
 
 It produces every combination of the school_type and school_nurse.
 
@@ -82,15 +89,25 @@ It produces every combination of the school_type and school_nurse.
 
 If you wanted to know what percent of schools are charter, you'd need the total number of schools as a variable in your data frame. You can roll up to the next level this way: 
 
-```{r}
+
+```r
 grade6_counts %>% 
   group_by( school_type ) %>% 
   summarise (schools = n() ) %>% 
   mutate  ( total = sum( schools),
             pct_total = schools/ total * 100 ) %>%
   arrange ( desc (schools))
-
 ```
+
+<div class="kable-table">
+
+school_type    schools   total   pct_total
+------------  --------  ------  ----------
+PUBLIC             648     908   71.365639
+CHARTER            193     908   21.255507
+PRIVATE             67     908    7.378855
+
+</div>
 
 #### A note on count() and tally() {-}
 
@@ -107,8 +124,8 @@ It's hard to read multi-level groupings, so the tidyverse offers a way to spread
 Here's a full example of creating "column" percentages and then showing them as a crosstab. See if you can piece together what's going on. If not, try moving pieces of the query outside the code chunk (and remove your ` %>%` operator) and run it piece by piece.  
 
 
-```{r}
 
+```r
 grade6_counts %>%
   group_by (school_type, school_nurse) %>%                           # See 1
   summarise ( schools = n() ) %>%
@@ -116,8 +133,16 @@ grade6_counts %>%
            pct_types = schools/types*100) %>%                        # See 3 
   select (school_type, school_nurse, pct_types) %>%
   pivot_wider ( names_from = school_type, values_from = pct_types)   #See 4
-
 ```
+
+<div class="kable-table">
+
+school_nurse     CHARTER    PRIVATE     PUBLIC
+-------------  ---------  ---------  ---------
+NO              87.56477   47.76119   37.03704
+YES             12.43523   52.23881   62.96296
+
+</div>
 
 Now you have a crosstab showing that public schools are five times as likely to have a school nurse as charter schools (63/12), and private schools are in between.  Remember the rule:
 

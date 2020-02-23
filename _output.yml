@@ -16,4 +16,4 @@ bookdown::gitbook:
       all: ['twitter', 'github']
   split_by: "rmd"
   css: mystyles.css
-  df_print: paged
+  df_print: kable

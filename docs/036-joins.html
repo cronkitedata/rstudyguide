@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>A A gentle intro to programming | R Study Guide for Cronkite School of Journalism</title>
+  <title>8 Verbs Part 4: Combining data | R Study Guide for Cronkite School of Journalism</title>
   <meta name="description" content="A companion book for the Cronkite School’s data journalism class for graduate students. A work in progress." />
   <meta name="generator" content="bookdown 0.14 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="A A gentle intro to programming | R Study Guide for Cronkite School of Journalism" />
+  <meta property="og:title" content="8 Verbs Part 4: Combining data | R Study Guide for Cronkite School of Journalism" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="https://cronkitedata.github.io/rstudyguide" />
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="cronkitedata/rstudyguide" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="A A gentle intro to programming | R Study Guide for Cronkite School of Journalism" />
+  <meta name="twitter:title" content="8 Verbs Part 4: Combining data | R Study Guide for Cronkite School of Journalism" />
   
   <meta name="twitter:description" content="A companion book for the Cronkite School’s data journalism class for graduate students. A work in progress." />
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   <link rel="shortcut icon" href="favicon.io" type="image/x-icon" />
-<link rel="prev" href="036-joins.html"/>
-<link rel="next" href="A01-resources.html"/>
+<link rel="prev" href="035-mutate.html"/>
+<link rel="next" href="A02-programming.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -301,174 +301,230 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="a-gentle-intro-to-programming" class="section level1">
-<h1><span class="header-section-number">A</span> A gentle intro to programming</h1>
-<div id="key-takeaways-8" class="section level2">
-<h2><span class="header-section-number">A.1</span> Key takeaways</h2>
+<div id="verbs-part-4-combining-data" class="section level1">
+<h1><span class="header-section-number">8</span> Verbs Part 4: Combining data</h1>
+<p>You’ll often find yourself with two separate dataframes, attempting to put them together somehow. To put them together by column, use a <code>join</code> function. To add rows based on common variable names, use <code>bind_rows()</code>. Most of this tutorial works vertically, by <code>joining</code> two dataframes together using common values in one or more columns.</p>
+<p>Reporters use joins to:</p>
 <ul>
-<li>All programming languages (yes, including Excel) have certain things in common: <em>objects</em>, <em>operators</em>, <em>functions</em> and <em>loops</em>.</li>
-<li>An <em>algorithm</em> is a set of instructions, carried out in order.</li>
-<li>No one is born knowing how to code. It takes practice.</li>
+<li>Add information from one table, such as Census data, to another, such as a list of counties.</li>
+<li>Use “lookup tables” from more traditional databases, which list codes that match to a dictionary of other values. For example, campaign finance data usually comes with a committee ID in one table of contributions. It matches to details on a candidate or political action committee using that code.</li>
+<li>Match one set of records against a completely different one to find potential stories. Some of the most famous data journalism investigations used this kind of join to find, for example, school bus drivers who have DUI’s or daycare centers run by people with serious criminal histories.</li>
 </ul>
-<div class="info">
-<p>The examples here are shown mainly using R syntax. Another language might look a little different.</p>
-</div>
-</div>
-<div id="building-blocks" class="section level2">
-<h2><span class="header-section-number">A.2</span> Building blocks</h2>
-<p>Once you learn to program in one language, learning others is much simpler. That’s because you have the basic concepts down: How to assign values to variables, how to loop through lists, or how to import data. This chapter walks through some of the more universal concepts in programming.</p>
-<div id="variables-and-objects" class="section level3 unnumbered">
-<h3>Variables and objects</h3>
-<p>Objects can be simple, like a variable called my_name that holds the value, “Sarah”. Or they can be quite complex, such as a multi-level data frame containing details from a Spotify playlist.</p>
-<ol>
-<li><p><strong>Literals</strong></p>
-<p>The most basic kind of object is a single variable that contains a single value of a specific type:</p>
-<pre><code>my_name &lt;- &quot;Sarah&quot;
-my_value &lt;- 1.0</code></pre>
-<p>These are called “literals”, which usually include text, numeric, logical (usually true/false but sometimes yes/no or 1/0) and date or date/time. (<a href="https://cronkitedata.github.io/cronkite-docs/excel/xlguides/xl-tidydata">Return to our tutorial on data types</a> if you need a refresher.) <a href="#fn4" class="footnote-ref" id="fnref4"><sup>4</sup></a></p></li>
-<li><p><strong>Lists / arrays / vectors</strong></p>
-<p>Most languages have some concept of a list of items called an array, vector or dictionary. In R, you create a vector using the “c” operator, short for “combine”. Python uses a square bracket to indicate a list. Once you have your items in a list or a vector, you can apply the same function across all of them or work on them in order.</p>
-<p>my_list &lt;- c(1, 2, 3, 4, 5) creates a vector of the values 1 through 5 in R
-my_list = [1, 2, 3, 4, 5] creates a list of values 1 through 5 in Python</p></li>
-<li><p><strong>Data frames or tables</strong></p>
-<p>Data frames or data tables are really a special version of a list, and are equivalent to a tidy Excel spreadsheet: rectangular data with field names and observations. You don’t need to know much about this yet, but just understand that it will become an important part of your vocabulary.</p></li>
-</ol>
-</div>
-<div id="operators-assignment" class="section level3 unnumbered">
-<h3>Operators &amp; assignment</h3>
-<p>Operators are simple aritmetic or similar operations, like adding, subtracting, dividing and multiplying.</p>
-<pre><code>   Arithmethic: add (+), subtract (-), multiply (*), or divide (/).
-
-   Text: Smush together phrases by concatenating (often + or &amp;)
-
-   Comparison: Greater than (&gt;) , less than (&lt;), equal to (often == to distinguish from =),
-                  not equal to (often !=).</code></pre>
-<p>“Assignment” means pushing a value into a var iable name using either “=” or “&lt;-”. It’s amazing how many different ways there are to think of this. Some might call “naming a value”, others might consider it “setting a variable”. (A <em>variable</em> is just a name you’ll use later on to refer to your value. It can <em>vary</em>, depending on what you do to it.)</p>
-<pre><code> my_name &lt;- &quot;Sarah&quot;
- my_value = 1.0</code></pre>
-</div>
-<div id="functions" class="section level3 unnumbered">
-<h3>Functions</h3>
-<p>A function is a set of instructions that is either built into the programming language, is added through a package or library, or is created by you. You can save them for later use or apply them on the fly. Usually, you write the name of the function, then put its <em>arguments</em> inside parentheses. You did this in Excel:</p>
-<pre><code>=SUM(A1:A15)
- </code></pre>
-<p>Generally, there are categories of functions that depend on what data type they act on. An example in R is the function <em>tolower()</em>, which converts anything inside the parentheses to lower case. There can be several different pieces of information in a function. There can also be optional arguments. A maddening example in R is:</p>
-<pre><code> sum ( variable_name )    </code></pre>
-<p>This adds the values of a variable. BUT it will come out to NA if you try to include a row that was NA to begin with. Instead, you have to provide an optional arbument to get rid of NA’s before starting:</p>
-<pre><code> sum (variable_name, na.rm=TRUE)</code></pre>
-</div>
-<div id="loops" class="section level3 unnumbered">
-<h3>Loops</h3>
-<p>A loop is a way to repeat your instructions over and over without having to re-write them every time. They usually work by stepping through some kind of a list, like a directory of files, or by using a counter, such as every year between 2005 and 2018.</p>
-<p>Excel and Google Sheets don’t really have loops, unless you learn the more complicated programming language behind them. This is why many people move to Python and R – to get the power of loops.</p>
-</div>
-</div>
-<div id="make-an-omelet-with-a-function" class="section level2">
-<h2><span class="header-section-number">A.3</span> Make an omelet with a function</h2>
-<p><img src="images/00-katie-smith-unsplash.jpg" style="width:50.0%" /></p>
-<div class="credit-line">
-<p>Ingredients by Katie Smith via Unsplash</p>
-</div>
-<p>Suppose you want to make an omelet. Before you even start, you need to know at least two things: which ingredients you have on hand, and what kind of omelet you want to make.</p>
-<p>A function that creates an omelet might look something like this. The first row creates a function called make_omelet, which requires the two pieces of information as <em>arguments</em>. Once you’ve made the function, you can refer to that set of instruction by its name by giving it the arguments it needs.</p>
-<pre><code>function make_omelet (ingredients_on_hand, what_kind) {
-
-     check for necessary ingredients (are all elements of what_kind in ingredients_on_hand?)
-         quit now if you don&#39;t have them all.
-         return the error message
-
-     prepare the ingredients for (which_kind)
-
-     whisk the eggs
-
-     melt some butter in a pan
-
-     pour in the eggs
-
-     add ingredients for what_kind except cheese (what_kind - &quot;cheese&quot;)
-
-     flip the omelet
-
-     if you have cheese in both what_kind and ingredients_on_hand ,
-         fold in cheese
-
-     remove from pan
-
-     return the omelet
-
-}</code></pre>
-<p>Now, when you want to make an omelet, you can just make your list of ingredients and the kind of omelet you want, and execute the function:</p>
-<p>Let’s start with setting up those items:</p>
-<pre><code>ingredients &lt;-
-        c(&quot;butter&quot;, &quot;eggs&quot;, &quot;cheese&quot;, &quot;spinach&quot;, &quot;tomatoes&quot;)
-
-kind &lt;-
-        c(&quot;spinach&quot;, &quot;cheese&quot;)
-
-make_omelet (ingredients, kind)
-
-(Note that what you give it doesn&#39;t have to have the same name that it had in your definition.)</code></pre>
-<div id="open-a-restaurant-with-loops" class="section level3 unnumbered">
-<h3>Open a restaurant with loops</h3>
-<p>Now, you’d have to repeat this over and over if you had a restaurant. It might look like this:</p>
-<pre><code>  make_omelet (ingredients,kind)
-  ** change the ingredients and the kind**
-  make_omelet (ingredients2, kind2)
-  ** change the ingredients ant the kind**
-  make_omelet (ingredients3, kind3)
-  ... and so on.</code></pre>
-<p>You’d have a program hundreds of lines long – one for each customer. Instead, you could <em>loop</em> through the customers and do the same thing:</p>
-<pre><code>customers &lt;- c(&quot;Bob&quot;, &quot;Jon&quot;, &quot;Christie&quot;, &quot;Lauren&quot;)
-
-for (c in customers) {
-  request what kind they want
-  make_omelet (kind, ingredients_on_hand)
-  give omelet to customer c
-  update your ingredients list if you ran out of something or went shopping
-}</code></pre>
-</div>
-</div>
-<div id="applications" class="section level2">
-<h2><span class="header-section-number">A.4</span> Applications</h2>
-<p>Many of the functions we use are already built into R and Python, or are in libraries that we borrow – someone else has already written them for you.</p>
-<p>Examples include:</p>
+<div id="key-takeaways-7" class="section level2">
+<h2><span class="header-section-number">8.1</span> Key takeaways</h2>
 <ul>
-<li>reading a csv or Excel file</li>
-<li>calculating the average or sum</li>
-<li>counting</li>
-<li>finding phrases within text</li>
+<li>Combining two tables requires exact matches on one or more variables. Close matches don’t count.</li>
+<li>Whenever you can get codes to go with your data, get them – you never know when you’ll run across another dataset with the same code.</li>
+<li>You can use information from one table to learn more about another, especially when you have geographic information by county, Census tract or zip code.
+For example, you might combine the number of murders in a county with its population to create a murder rate.</li>
+<li>Many public records databases come with “lookup tables”. Be sure to request them so you can match a code, such as “G” to its translation, such as “Great!”</li>
 </ul>
-<p>The more common applications are things we haven’t done yet:</p>
+<div id="adding-rows-instead-of-columns" class="section level3">
+<h3><span class="header-section-number">8.1.1</span> Adding rows instead of columns</h3>
+<p>Joining only adds columns (or variables) to your data. If you need to stack tables on top of each other, use the <code>bind_rows(data frame 1, data frame 2)</code> function.</p>
+</div>
+</div>
+<div id="concepts-of-joining" class="section level2">
+<h2><span class="header-section-number">8.2</span> Concepts of joining</h2>
+<p>In R, as in most other language, “joins” work by matching one table against another using a common variable.
+For example, the Federal Election Commission holds information about donors in one data frame, and information about candidates and other political action committees in another. They link together using the common identifier of a committee ID.</p>
+<div class="figure">
+<img src="images/36-contrib-names.png" alt="Campaign finance join" />
+<p class="caption">Campaign finance join</p>
+</div>
+<div class="figure">
+<img src="images/36-cand-names.png" alt="Campaign finance join" />
+<p class="caption">Campaign finance join</p>
+</div>
+<p>(They don’t need to have the same name, and they don’t need to be in the first column.)</p>
+<p>The key is that the donor data includes the <em>many</em> instances of any given candidate, but the committee table only lists each political group once. Even in this example, although Martha McSally and Kyrsten Sinema are listed twice, there are for two separate political entities.</p>
+<p>There two kinds of joins you’ll most frequently use are:</p>
 <ul>
-<li><p>Gather identical spreadsheets into one dataset, as in <a href="https://cronkitedata.github.io/rstats-training/refugees-loop.html">this example using refugee statistics</a>.</p></li>
-<li><p>Loop through a list of links, download a page, then scrape it to extract information. Here’s <a href="https://cronkitedata.github.io/rstats-training/rscraping/mugshot-scrape.html">an example from the Maricopa County sheriff’s department mugshots</a>. (It won’t work – the census changes each time, so the ID numbers are out of date.)</p></li>
+<li><code>inner_join</code>: Only matching rows are kept. Anything without a match is dropped.</li>
+<li><code>left_join</code> : Keep everything from the first table listed, drop anything that doesn’t match from the second one.</li>
 </ul>
 </div>
-<div id="more-resources-1" class="section level2">
-<h2><span class="header-section-number">A.5</span> More resources</h2>
+<div id="arizona-immunization-data" class="section level2">
+<h2><span class="header-section-number">8.3</span> Arizona immunization data</h2>
+<p>I matched up the information from most of the public and charter schools in Arizona against Department of Education statistics to find their federal ID numbers. There are two tables that have to be matched against one another: The immunization statistics by school, and the National Center for Education Statistics characteristics. They are both saved in the R dataset called <a href="https://cronkitedata.github.io/rstudyguide/data/immune_to_nces.Rda">immune_to_nces.Rda</a></p>
+<p>There are 2,414 schools in the NCES database, but only 841 schools in the immunizations because we’ve only kept schools that had students in Grade 6. There were about 10 schools that I couldn’t find in the NCES data, and their IDs are blank.</p>
+<p>Here are their variables:</p>
+<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb67-1" title="1"><span class="kw">glimpse</span>(grade6_to_nces)</a></code></pre></div>
+<pre><code>## Observations: 841
+## Variables: 17
+## $ rowid              &lt;dbl&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14…
+## $ nces_id            &lt;chr&gt; &quot;040906000652&quot;, &quot;040906000915&quot;, &quot;040079703230…
+## $ school_name        &lt;chr&gt; &quot;ABRAHAM LINCOLN TRADITIONAL SCHOOL&quot;, &quot;ACACIA…
+## $ address            &lt;chr&gt; &quot;10444 N 39TH AVE&quot;, &quot;3021 W EVANS DR&quot;, &quot;7102 …
+## $ city               &lt;chr&gt; &quot;PHOENIX&quot;, &quot;PHOENIX&quot;, &quot;TUCSON&quot;, &quot;TUCSON&quot;, &quot;PH…
+## $ county             &lt;chr&gt; &quot;MARICOPA&quot;, &quot;MARICOPA&quot;, &quot;PIMA&quot;, &quot;PIMA&quot;, &quot;MARI…
+## $ zip_code           &lt;chr&gt; &quot;85051&quot;, &quot;85053&quot;, &quot;85757&quot;, &quot;85705&quot;, &quot;85033&quot;, …
+## $ school_nurse       &lt;chr&gt; &quot;NO&quot;, &quot;YES&quot;, &quot;NO&quot;, &quot;NO&quot;, &quot;NO&quot;, &quot;NO&quot;, &quot;NO&quot;, &quot;N…
+## $ school_type        &lt;chr&gt; &quot;PUBLIC&quot;, &quot;PUBLIC&quot;, &quot;CHARTER&quot;, &quot;CHARTER&quot;, &quot;CH…
+## $ enrolled           &lt;dbl&gt; 59, 134, 53, 42, 113, 56, 75, 44, 45, 106, 53…
+## $ num_immune_mmr     &lt;dbl&gt; 58, 134, 52, 40, 113, 55, 73, 39, 44, 105, 46…
+## $ num_exempt_mmr     &lt;dbl&gt; 1, 0, 1, 2, 0, 1, 2, 0, 1, 1, 7, 3, 0, 0, 0, …
+## $ num_compliance_mmr &lt;dbl&gt; 59, 134, 53, 42, 113, 56, 75, 44, 45, 106, 53…
+## $ num_pbe            &lt;dbl&gt; 5, 2, 1, 0, 3, 6, 4, 0, 23, 4, 9, 3, 1, 1, 0,…
+## $ num_medical_exempt &lt;dbl&gt; 2, 0, 0, 7, 0, 6, 0, 0, 0, 0, 1, 0, 0, 1, 0, …
+## $ num_pbe_exempt_all &lt;dbl&gt; 5, 0, 1, 0, 0, 0, 1, 0, 2, 1, 10, 3, 0, 0, 0,…
+## $ match_type         &lt;chr&gt; &quot;Yes&quot;, &quot;Manual&quot;, &quot;Yes&quot;, &quot;Yes&quot;, &quot;Yes&quot;, &quot;Yes&quot;, …</code></pre>
+<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb69-1" title="1"><span class="kw">glimpse</span> (nces_master)</a></code></pre></div>
+<pre><code>## Observations: 2,414
+## Variables: 15
+## $ rowid              &lt;int&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14…
+## $ nces_school_id     &lt;chr&gt; &quot;040553000451&quot;, &quot;040463000999&quot;, &quot;040010601892…
+## $ nces_district_id   &lt;chr&gt; &quot;0405530&quot;, &quot;0404630&quot;, &quot;0400106&quot;, &quot;0400417&quot;, &quot;…
+## $ nces_district_name &lt;chr&gt; &quot;Nogales Unified District&quot;, &quot;Marana Unified D…
+## $ nces_school_name   &lt;chr&gt; &quot;A J MITCHELL ELEMENTARY SCHOOL&quot;, &quot;A. C. E.&quot;,…
+## $ nces_school_type   &lt;chr&gt; &quot;1-Regular school&quot;, &quot;1-Regular school&quot;, &quot;1-Re…
+## $ nces_urban         &lt;chr&gt; &quot;33-Town: Remote&quot;, &quot;41-Rural: Fringe&quot;, &quot;11-Ci…
+## $ nces_student_ct    &lt;dbl&gt; 406, 10, 313, 444, 517, 608, 868, 643, NA, 61…
+## $ nces_fte_teacher   &lt;dbl&gt; 20.50, 6.80, NA, NA, 25.60, 32.75, 45.87, 0.0…
+## $ nces_ratio         &lt;dbl&gt; 19.80, 1.47, NA, NA, 20.20, 18.56, 18.92, NA,…
+## $ nces_lowest        &lt;chr&gt; &quot;Kindergarten&quot;, &quot;7th Grade&quot;, &quot;9th Grade&quot;, &quot;9t…
+## $ nces_highest       &lt;chr&gt; &quot;5th Grade&quot;, &quot;12th Grade&quot;, &quot;12th Grade&quot;, &quot;12t…
+## $ nces_school_level  &lt;chr&gt; &quot;Elementary&quot;, &quot;High&quot;, &quot;High&quot;, &quot;High&quot;, &quot;Elemen…
+## $ nces_county_name   &lt;chr&gt; &quot;Santa Cruz County&quot;, &quot;Pima County&quot;, &quot;Maricopa…
+## $ nces_fips          &lt;chr&gt; &quot;04023&quot;, &quot;04019&quot;, &quot;04013&quot;, &quot;04013&quot;, &quot;04025&quot;, …</code></pre>
+<div id="setting-up-the-data" class="section level3 unnumbered">
+<h3>Setting up the data</h3>
+<p>In this case, we want to get information that the federal government had on the schools attached to the immunization data. In particular, we’d like to be able to generate statistics by district, by urbanization and type of school, and we’d like to keep the code for the county so we can link it up to other datasets.</p>
+<p>To make it simple, I’ll just create a small set of data for each table:</p>
+<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb71-1" title="1">immune &lt;-<span class="st"> </span></a>
+<a class="sourceLine" id="cb71-2" title="2"><span class="st">  </span>grade6_to_nces <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb71-3" title="3"><span class="st">  </span><span class="kw">select</span> (rowid, nces_id, school_name, city, county, zip_code, school_nurse, school_type,</a>
+<a class="sourceLine" id="cb71-4" title="4">          enrolled, num_immune_mmr) </a>
+<a class="sourceLine" id="cb71-5" title="5"></a>
+<a class="sourceLine" id="cb71-6" title="6"></a>
+<a class="sourceLine" id="cb71-7" title="7">school_list &lt;-<span class="st"> </span></a>
+<a class="sourceLine" id="cb71-8" title="8"><span class="st">  </span>nces_master <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb71-9" title="9"><span class="st">  </span><span class="kw">select</span> (nces_school_id, nces_district_id, nces_district_name, nces_school_type, </a>
+<a class="sourceLine" id="cb71-10" title="10">          nces_urban, nces_ratio, nces_school_level, nces_fips)</a></code></pre></div>
+</div>
+<div id="apply-the-join" class="section level3 unnumbered">
+<h3>Apply the join</h3>
+<p>ß
+Here are two ways to join:</p>
+<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb72-1" title="1">immune <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb72-2" title="2"><span class="st">  </span><span class="kw">inner_join</span> (school_list, <span class="dt">by=</span><span class="kw">c</span>(<span class="st">&quot;nces_id&quot;</span> =<span class="st"> &quot;nces_school_id&quot;</span>)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb72-3" title="3"><span class="st">  </span>glimpse</a></code></pre></div>
+<pre><code>## Observations: 834
+## Variables: 17
+## $ rowid              &lt;dbl&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14…
+## $ nces_id            &lt;chr&gt; &quot;040906000652&quot;, &quot;040906000915&quot;, &quot;040079703230…
+## $ school_name        &lt;chr&gt; &quot;ABRAHAM LINCOLN TRADITIONAL SCHOOL&quot;, &quot;ACACIA…
+## $ city               &lt;chr&gt; &quot;PHOENIX&quot;, &quot;PHOENIX&quot;, &quot;TUCSON&quot;, &quot;TUCSON&quot;, &quot;PH…
+## $ county             &lt;chr&gt; &quot;MARICOPA&quot;, &quot;MARICOPA&quot;, &quot;PIMA&quot;, &quot;PIMA&quot;, &quot;MARI…
+## $ zip_code           &lt;chr&gt; &quot;85051&quot;, &quot;85053&quot;, &quot;85757&quot;, &quot;85705&quot;, &quot;85033&quot;, …
+## $ school_nurse       &lt;chr&gt; &quot;NO&quot;, &quot;YES&quot;, &quot;NO&quot;, &quot;NO&quot;, &quot;NO&quot;, &quot;NO&quot;, &quot;NO&quot;, &quot;N…
+## $ school_type        &lt;chr&gt; &quot;PUBLIC&quot;, &quot;PUBLIC&quot;, &quot;CHARTER&quot;, &quot;CHARTER&quot;, &quot;CH…
+## $ enrolled           &lt;dbl&gt; 59, 134, 53, 42, 113, 56, 75, 44, 45, 106, 53…
+## $ num_immune_mmr     &lt;dbl&gt; 58, 134, 52, 40, 113, 55, 73, 39, 44, 105, 46…
+## $ nces_district_id   &lt;chr&gt; &quot;0409060&quot;, &quot;0409060&quot;, &quot;0400797&quot;, &quot;0400368&quot;, &quot;…
+## $ nces_district_name &lt;chr&gt; &quot;Washington Elementary School District&quot;, &quot;Was…
+## $ nces_school_type   &lt;chr&gt; &quot;1-Regular school&quot;, &quot;1-Regular school&quot;, &quot;1-Re…
+## $ nces_urban         &lt;chr&gt; &quot;11-City: Large&quot;, &quot;11-City: Large&quot;, &quot;21-Subur…
+## $ nces_ratio         &lt;dbl&gt; 18.56, 18.92, NA, NA, NA, NA, NA, NA, NA, 19.…
+## $ nces_school_level  &lt;chr&gt; &quot;Elementary&quot;, &quot;Elementary&quot;, &quot;Elementary&quot;, &quot;Ot…
+## $ nces_fips          &lt;chr&gt; &quot;04013&quot;, &quot;04013&quot;, &quot;04019&quot;, &quot;04019&quot;, &quot;04013&quot;, …</code></pre>
+<p>You can see that the information from the federal Education Department was added to the immunization data, but we lost seven records – the seven that I couldn’t find in the federal department.</p>
+<p>To preserve these records, you’ll usually “protect” one of the tables – the one you care about most – and keep everything, even if it doesn’t match. To do that, use a “left” or “right” join, depending on whether you mention the table first or second. In this case:</p>
+<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb74-1" title="1">immune <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb74-2" title="2"><span class="st">  </span><span class="kw">left_join</span> ( school_list, <span class="dt">by=</span><span class="kw">c</span>(<span class="st">&quot;nces_id&quot;</span>=<span class="st">&quot;nces_school_id&quot;</span>) ) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb74-3" title="3"><span class="st">  </span><span class="kw">glimpse</span>()</a></code></pre></div>
+<pre><code>## Observations: 841
+## Variables: 17
+## $ rowid              &lt;dbl&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14…
+## $ nces_id            &lt;chr&gt; &quot;040906000652&quot;, &quot;040906000915&quot;, &quot;040079703230…
+## $ school_name        &lt;chr&gt; &quot;ABRAHAM LINCOLN TRADITIONAL SCHOOL&quot;, &quot;ACACIA…
+## $ city               &lt;chr&gt; &quot;PHOENIX&quot;, &quot;PHOENIX&quot;, &quot;TUCSON&quot;, &quot;TUCSON&quot;, &quot;PH…
+## $ county             &lt;chr&gt; &quot;MARICOPA&quot;, &quot;MARICOPA&quot;, &quot;PIMA&quot;, &quot;PIMA&quot;, &quot;MARI…
+## $ zip_code           &lt;chr&gt; &quot;85051&quot;, &quot;85053&quot;, &quot;85757&quot;, &quot;85705&quot;, &quot;85033&quot;, …
+## $ school_nurse       &lt;chr&gt; &quot;NO&quot;, &quot;YES&quot;, &quot;NO&quot;, &quot;NO&quot;, &quot;NO&quot;, &quot;NO&quot;, &quot;NO&quot;, &quot;N…
+## $ school_type        &lt;chr&gt; &quot;PUBLIC&quot;, &quot;PUBLIC&quot;, &quot;CHARTER&quot;, &quot;CHARTER&quot;, &quot;CH…
+## $ enrolled           &lt;dbl&gt; 59, 134, 53, 42, 113, 56, 75, 44, 45, 106, 53…
+## $ num_immune_mmr     &lt;dbl&gt; 58, 134, 52, 40, 113, 55, 73, 39, 44, 105, 46…
+## $ nces_district_id   &lt;chr&gt; &quot;0409060&quot;, &quot;0409060&quot;, &quot;0400797&quot;, &quot;0400368&quot;, &quot;…
+## $ nces_district_name &lt;chr&gt; &quot;Washington Elementary School District&quot;, &quot;Was…
+## $ nces_school_type   &lt;chr&gt; &quot;1-Regular school&quot;, &quot;1-Regular school&quot;, &quot;1-Re…
+## $ nces_urban         &lt;chr&gt; &quot;11-City: Large&quot;, &quot;11-City: Large&quot;, &quot;21-Subur…
+## $ nces_ratio         &lt;dbl&gt; 18.56, 18.92, NA, NA, NA, NA, NA, NA, NA, 19.…
+## $ nces_school_level  &lt;chr&gt; &quot;Elementary&quot;, &quot;Elementary&quot;, &quot;Elementary&quot;, &quot;Ot…
+## $ nces_fips          &lt;chr&gt; &quot;04013&quot;, &quot;04013&quot;, &quot;04019&quot;, &quot;04019&quot;, &quot;04013&quot;, …</code></pre>
+<p>Here are the rows that were kept without a match :</p>
+<pre><code>## Observations: 7
+## Variables: 17
+## $ rowid              &lt;dbl&gt; 43, 209, 414, 452, 522, 785, 821
+## $ nces_id            &lt;chr&gt; NA, NA, NA, NA, &quot;590014800009&quot;, NA, NA
+## $ school_name        &lt;chr&gt; &quot;ARCADIA NEIGHBORHOOD LEARNING CENTER&quot;, &quot;DENN…
+## $ city               &lt;chr&gt; &quot;SCOTTSDALE&quot;, &quot;DENNEHOTSO&quot;, &quot;JOSEPH CITY&quot;, &quot;L…
+## $ county             &lt;chr&gt; &quot;MARICOPA&quot;, &quot;APACHE&quot;, &quot;NAVAJO&quot;, &quot;MOHAVE&quot;, &quot;AP…
+## $ zip_code           &lt;chr&gt; &quot;85251&quot;, &quot;86535&quot;, &quot;86032&quot;, &quot;86403&quot;, &quot;86538&quot;, …
+## $ school_nurse       &lt;chr&gt; &quot;YES&quot;, &quot;NO&quot;, &quot;NO&quot;, &quot;YES&quot;, &quot;NO&quot;, &quot;YES&quot;, &quot;YES&quot;
+## $ school_type        &lt;chr&gt; &quot;PUBLIC&quot;, &quot;PUBLIC&quot;, &quot;PUBLIC&quot;, &quot;PUBLIC&quot;, &quot;PUBL…
+## $ enrolled           &lt;dbl&gt; 52, 21, 33, 69, 38, 42, 86
+## $ num_immune_mmr     &lt;dbl&gt; 49, 21, 28, 67, 38, 42, 86
+## $ nces_district_id   &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA
+## $ nces_district_name &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA
+## $ nces_school_type   &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA
+## $ nces_urban         &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA
+## $ nces_ratio         &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA
+## $ nces_school_level  &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA
+## $ nces_fips          &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA</code></pre>
+<p>In real life, you’d have to decide how much you care about these missing codes – does it ruin your story, or can you just mention that you were unable to get information for a handful of schools, amounting to about 350 students?</p>
+</div>
+</div>
+<div id="resources-2" class="section level2">
+<h2><span class="header-section-number">8.4</span> Resources</h2>
 <ul>
-<li>The <a href="https://cronkitedata.github.io/cronkite-docs/excel/xlguides/xl-tidydata.html">Data types and tidy data</a> section of our Excel training.</li>
-<li>"<a href="https://youtu.be/7MUErafri48">Beyond Binary</a>, Lesson 1 from a Google engineer’s drag queen persona named Anna Lytical. This video gives you a good handle on what a computer program does.</li>
+<li>The “<a href="https://r4ds.had.co.nz/relational-data.html">Relational data</a>” chapter in the R for Data Science textbook has details on exactly how a complex data set might fit together.</li>
+<li><a href="https://stat545.com/join-cheatsheet.html#left_joinsuperheroes-publishers">An example using a famous superheroes dataset</a>, from Stat 545 at the University of British Columbia</li>
 </ul>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/7MUErafri48" style="align:center;" frameborder="0" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
-</iframe>
+<div id="practice" class="section level3">
+<h3><span class="header-section-number">8.4.1</span> Practice</h3>
+<div id="immunization-data" class="section level4 unnumbered">
+<h4>Immunization data</h4>
+<p>Create a new table from the immunizations and DOE data used in this example, then see if you can find any patterns in immunization rates by school district rather than by county. (Note that charter school companies are each their own district.) Do the same by looking at urban vs. rural schools.</p>
+</div>
+<div id="campaign-finance-data" class="section level4 unnumbered">
+<h4>Campaign finance data</h4>
+<p>There are two tables saved in the R data file, “<a href="https://cronkitedata.github.io/rstudyguide/data/azcampfin.Rda">azcampfin.Rda</a>”. One holds information on contributions available from the offiical FEC database as of Feb. 23, 2020 and the other holds information on the candidates and committees.</p>
+<p>The following codes are used in this dataset, which you may want to save into data frame. Here is some code you can use to create a lookup table for the transaction types. These codes can be joined with the column called <code>transaction_tp</code> in the contributions (or <code>arizona20</code>) data frame.</p>
+<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb77-1" title="1">transaction_types &lt;-<span class="st"> </span><span class="kw">tribble</span> (</a>
+<a class="sourceLine" id="cb77-2" title="2">  <span class="op">~</span>tcode, <span class="op">~</span>contrib_type,</a>
+<a class="sourceLine" id="cb77-3" title="3">  <span class="st">&quot;10&quot;</span>,   <span class="st">&quot;To a Super PAC&quot;</span>,</a>
+<a class="sourceLine" id="cb77-4" title="4">  <span class="st">&quot;11&quot;</span>,   <span class="st">&quot;Native American tribal&quot;</span>,</a>
+<a class="sourceLine" id="cb77-5" title="5">  <span class="st">&quot;15&quot;</span>,   <span class="st">&quot;Individual contrib&quot;</span>,</a>
+<a class="sourceLine" id="cb77-6" title="6">  <span class="st">&quot;15C&quot;</span>,  <span class="st">&quot;From a candidate&quot;</span>,</a>
+<a class="sourceLine" id="cb77-7" title="7">  <span class="st">&quot;15E&quot;</span>,  <span class="st">&quot;Earmarked (eg, ActBlue)&quot;</span>,</a>
+<a class="sourceLine" id="cb77-8" title="8">  <span class="st">&quot;20Y&quot;</span>,  <span class="st">&quot;Non-federal refund&quot;</span>,</a>
+<a class="sourceLine" id="cb77-9" title="9">  <span class="st">&quot;22Y&quot;</span>,  <span class="st">&quot;Refund to indiv.&quot;</span>,</a>
+<a class="sourceLine" id="cb77-10" title="10">  <span class="st">&quot;24I&quot;</span>,  <span class="st">&quot;Earmarked check passed on&quot;</span>,</a>
+<a class="sourceLine" id="cb77-11" title="11">  <span class="st">&quot;24T&quot;</span>,  <span class="st">&quot;Earmarked contrib passed on&quot;</span>,</a>
+<a class="sourceLine" id="cb77-12" title="12">  <span class="st">&quot;30&quot;</span>,   <span class="st">&quot;To a convention account&quot;</span>,</a>
+<a class="sourceLine" id="cb77-13" title="13">  <span class="st">&quot;31&quot;</span>,   <span class="st">&quot;To a headquarters account&quot;</span>,</a>
+<a class="sourceLine" id="cb77-14" title="14">  <span class="st">&quot;32&quot;</span>,   <span class="st">&quot;To a recount effort&quot;</span>,</a>
+<a class="sourceLine" id="cb77-15" title="15">  <span class="st">&quot;41Y&quot;</span>,   <span class="st">&quot;Refund from headquarters account&quot;</span></a>
+<a class="sourceLine" id="cb77-16" title="16">  )</a></code></pre></div>
+<p>(These are pretty complicated definitions in the federal campaign finance world. For now, don’t worry much about what they mean. Refunds are shown in the data as negative numbers, which is what you want.)</p>
+<p>Try to analyze some of this by putting together the datasets and finding interesting items or patterns.</p>
 
 <!-- Add link to the drag queen coding class. See if there are other good first-day programming aides I should add.-->
 </div>
 </div>
-<div class="footnotes">
-<hr />
-<ol start="4">
-<li id="fn4"><p> There are two special types that we’ll deal with later, but can cause a lot of headaches: <code>NA</code> values and factors. You don’t have to deal with them yet.<a href="A02-programming.html#fnref4" class="footnote-back">↩</a></p></li>
-</ol>
 </div>
+</div>
+
+
+
             </section>
 
           </div>
         </div>
       </div>
-<a href="036-joins.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="A01-resources.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="035-mutate.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="A02-programming.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
