@@ -5,16 +5,17 @@
 library(tidyverse)
 library(lubridate)
 library(DT)
+library(knitr)
 
 ```
 
 
-You'll often find yourself with two separate dataframes, attempting to put them together somehow. To put them together by column, use a `join` function. To add rows based on common variable names, use `bind_rows()`. Most of this tutorial works vertically, by `joining` two dataframes together using common values in one or more columns. 
+You'll often find yourself attempting to put together two or more data sets. To add combine columns -- getting more variables -- use one of the `join` functions. To add rows -- stacking datasets -- use `bind_rows()`. This tutorial only addresses combining columns.
 
 Reporters use joins to: 
 
-* Add information from one table, such as Census data, to another, such as a list of counties. 
-* Use "lookup tables" from more traditional databases, which list codes that match to a dictionary of other values. For example, campaign finance data usually comes with a committee ID in one table of contributions. It matches to details on a candidate or political action committee using that code. 
+* Add information from one table, such demogrphics, to another, such as a list of counties. 
+* Use "lookup tables" from more traditional databases, which list codes that match to a dictionary of other values. For example, campaign finance data usually comes with a committee ID in donation datasets. Those ID's match to details on a candidate or political action committee in another. 
 * Match one set of records against a completely different one to find potential stories. Some of the most famous data journalism investigations used this kind of join to find, for example, school bus drivers who have DUI's or daycare centers run by people with serious criminal histories. 
 
 ## Key takeaways
@@ -41,23 +42,30 @@ For example, the Federal Election Commission holds information about donors in o
 
 (They don't need to have the same name, and they don't need to be in the first column.)
 
-The key is that the donor data includes the *many* instances of any given candidate, but the committee table only lists each political group once.  Even in this example, although Martha McSally and Kyrsten Sinema are listed twice, there are for two separate political entities.
+The key is that the donor data includes the *many* donations to any given candidate, but the committee table only lists each political group once.  Even in this example, although Martha McSally and Kyrsten Sinema are listed twice, there are for two separate political entities. The reason to do this is that you never have to worry that any changes to the candidate information -- the treasurer, the address or the office sought -- carries over to the donation. It's only listed once, in the lookup table. Most large databases are constructed this way. For example:
+
+* Your school records are held using your student ID, which means that your address only needs to be changed once, not in every class or in every account you have with the school. 
+* An inspection record typically has three tables: An establishment (like a restaurant or a workplace), an inspection, and a violation. They're linked together using establishment ID's. 
+* A court database usually has many types of records: A case record, a list of charges, sentences and defendants. 
+
+Think back on the work we did to identify a `unit of analysis`. All of these databases have different tables, or data frames, for each unit of analysis. 
 
 There two kinds of joins you'll most frequently use are: 
 
-* `inner_join`: Only matching rows are kept. Anything without a match is dropped. 
-* `left_join` : Keep everything from the first table listed, drop anything that doesn't match from the second one.
+* `inner_join`: Only matching rows are kept. Anything without a match is dropped. These are usually used in databases built with joining in mind.
+* `left_join` : Keep everything from the first table listed, drop anything that doesn't match from the second one, which you'll use when you need to join tables that come from different agencies or systems, and you're not sure you'll have a good match.
 
 ## Arizona immunization data
 
-I matched up the information from most of the public and charter schools in Arizona against Department of Education statistics to find their federal ID numbers. There are two tables that have to be matched against one another: The immunization statistics by school, and the National Center for Education Statistics characteristics. They are both saved in the R dataset called [immune_to_nces.Rda](https://github.com/cronkitedata/rstudyguide/blob/master/data/immune_to_nces.Rda?raw=true)
+I matched up the information from most of the public and charter schools in Arizona against Department of Education statistics to find their federal ID numbers. There are two tables that have to be matched against one another: The immunization statistics by school, and the National Center for Education Statistics characteristics. They are both saved in the R dataset called [immune_to_nces.Rda](https://github.com/cronkitedata/rstudyguide/blob/master/data/immune_to_nces.Rda?raw=true), which you can add to your environment  using the `load()` command.
 
 ```{r include = FALSE}
 
 load ("data/immune_to_nces.Rda")
+
 ```
 
-There are 2,414 schools in the NCES database, but only 841 schools in the immunizations because we've only kept schools that had students in Grade 6. There were about 10 schools that I couldn't find in the NCES data, and their IDs are blank. 
+There are 2,414 schools in the NCES database, but only 841 schools in the immunizations because we've only kept schools that had students in Grade 6. There were seven schools that I couldn't find in the NCES data, and their IDs are blank. 
 
 Here are their variables: 
 
@@ -90,13 +98,11 @@ school_list <-
   select (nces_school_id, nces_district_id, nces_district_name, nces_school_type, 
           nces_urban, nces_ratio, nces_school_level, nces_fips)
 
-
-
 ```
 
 
 ### Apply the join {-}
-ß
+
 Here are two ways to join: 
 
 ```{r}
@@ -109,29 +115,51 @@ immune %>%
 
 You can see that the information from the federal Education Department was added to the immunization data, but we lost seven records -- the seven that I couldn't find in the federal department. 
 
-To preserve these records, you'll usually "protect" one of the tables -- the one you care about most -- and keep everything, even if it doesn't match. To do that, use a "left" or "right" join, depending on whether you mention the table first or second. In this case: 
+To preserve these records, you'll usually protect one of the tables -- the one you care about most -- and keep everything, even if it doesn't match. To do that, use a `left` or `right` join, depending on whether you mention the table first or second. In this case: 
 
 ```{r}
 
-immune %>%
-  left_join ( school_list, by=c("nces_id"="nces_school_id") ) %>%
-  glimpse()
+immune_joined <- 
+  immune %>%                                     # the table I want to protect
+  left_join ( school_list,                       # the table I want to apply to my original data frame
+              by=c("nces_id"="nces_school_id") ) # the variable that is the same in the two tables.
+
+glimpse(immune_joined)
 
 ```
 
-Here are the rows that were kept without a match :
+Here are the rows that were kept without a match:
 
 ```{r echo=FALSE}
 
-
-immune %>%
-  left_join ( school_list, by=c("nces_id"="nces_school_id") ) %>%
-  filter (is.na(nces_district_name )) %>%
-  glimpse()
+immune_joined %>%
+  filter (is.na(nces_district_name )) 
 
 ```
 
-In real life, you'd have to decide how much you care about these missing codes -- does it ruin your story, or can you just mention that you were unable to get information for a handful of schools, amounting to about 350 students? 
+In real life, you'd have to decide how much you care about these missing schools -- does it ruin your story, or can you just mention that you were unable to get information for a handful of schools, amounting to about 350 students? 
+
+#### Use the joined table {-}
+
+Now I might want to look at rates of immunization by school district: 
+
+```{r}
+immune_joined %>%
+  mutate (school_pct = num_immune_mmr / enrolled  * 100 ) %>%
+  group_by (nces_district_name, county) %>%
+  summarise ( num_schools = n() ,
+              total_enrolled = sum(enrolled),
+              total_immune = sum (num_immune_mmr),
+              median_immune = median (school_pct)
+              ) %>%
+  mutate ( pct_immune = total_immune/ total_enrolled * 100) %>%
+  select (nces_district_name, county, num_schools, pct_immune, total_enrolled,  median_immune) %>%
+  arrange ( desc(num_schools), pct_immune) %>%
+  kable (digits=1)
+
+
+```
+
 
 
 ## Resources
@@ -148,7 +176,7 @@ Create a new table from the immunizations and DOE data used in this example, the
 
 #### Campaign finance data {-}
 
-There are two tables saved in the R data file, "[azcampfin.Rda](https://cronkitedata.github.io/rstudyguide/data/azcampfin.Rda)". One holds information on contributions available from the offiical FEC database as of Feb. 23, 2020 and the other holds information on the candidates and committees. 
+There are two tables saved in the R data file, "[azcampfin.Rda](https://github.com/cronkitedata/rstudyguide/blob/master/data/azcampfin.Rda?raw=true)". One holds information on contributions available from the offiical FEC database as of Feb. 23, 2020 and the other holds information on the candidates and committees. 
 
 The following codes are used in this dataset, which you may want to save into data frame. Here is some code you can use to create a lookup table for the transaction types. These codes can be joined with the column called `transaction_tp` in the contributions (or `arizona20`) data frame. 
 

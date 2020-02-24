@@ -303,11 +303,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="verbs-part-4-combining-data" class="section level1">
 <h1><span class="header-section-number">8</span> Verbs Part 4: Combining data</h1>
-<p>You’ll often find yourself with two separate dataframes, attempting to put them together somehow. To put them together by column, use a <code>join</code> function. To add rows based on common variable names, use <code>bind_rows()</code>. Most of this tutorial works vertically, by <code>joining</code> two dataframes together using common values in one or more columns.</p>
+<p>You’ll often find yourself attempting to put together two or more data sets. To add combine columns – getting more variables – use one of the <code>join</code> functions. To add rows – stacking datasets – use <code>bind_rows()</code>. This tutorial only addresses combining columns.</p>
 <p>Reporters use joins to:</p>
 <ul>
-<li>Add information from one table, such as Census data, to another, such as a list of counties.</li>
-<li>Use “lookup tables” from more traditional databases, which list codes that match to a dictionary of other values. For example, campaign finance data usually comes with a committee ID in one table of contributions. It matches to details on a candidate or political action committee using that code.</li>
+<li>Add information from one table, such demogrphics, to another, such as a list of counties.</li>
+<li>Use “lookup tables” from more traditional databases, which list codes that match to a dictionary of other values. For example, campaign finance data usually comes with a committee ID in donation datasets. Those ID’s match to details on a candidate or political action committee in another.</li>
 <li>Match one set of records against a completely different one to find potential stories. Some of the most famous data journalism investigations used this kind of join to find, for example, school bus drivers who have DUI’s or daycare centers run by people with serious criminal histories.</li>
 </ul>
 <div id="key-takeaways-7" class="section level2">
@@ -337,17 +337,23 @@ For example, the Federal Election Commission holds information about donors in o
 <p class="caption">Campaign finance join</p>
 </div>
 <p>(They don’t need to have the same name, and they don’t need to be in the first column.)</p>
-<p>The key is that the donor data includes the <em>many</em> instances of any given candidate, but the committee table only lists each political group once. Even in this example, although Martha McSally and Kyrsten Sinema are listed twice, there are for two separate political entities.</p>
+<p>The key is that the donor data includes the <em>many</em> donations to any given candidate, but the committee table only lists each political group once. Even in this example, although Martha McSally and Kyrsten Sinema are listed twice, there are for two separate political entities. The reason to do this is that you never have to worry that any changes to the candidate information – the treasurer, the address or the office sought – carries over to the donation. It’s only listed once, in the lookup table. Most large databases are constructed this way. For example:</p>
+<ul>
+<li>Your school records are held using your student ID, which means that your address only needs to be changed once, not in every class or in every account you have with the school.</li>
+<li>An inspection record typically has three tables: An establishment (like a restaurant or a workplace), an inspection, and a violation. They’re linked together using establishment ID’s.</li>
+<li>A court database usually has many types of records: A case record, a list of charges, sentences and defendants.</li>
+</ul>
+<p>Think back on the work we did to identify a <code>unit of analysis</code>. All of these databases have different tables, or data frames, for each unit of analysis.</p>
 <p>There two kinds of joins you’ll most frequently use are:</p>
 <ul>
-<li><code>inner_join</code>: Only matching rows are kept. Anything without a match is dropped.</li>
-<li><code>left_join</code> : Keep everything from the first table listed, drop anything that doesn’t match from the second one.</li>
+<li><code>inner_join</code>: Only matching rows are kept. Anything without a match is dropped. These are usually used in databases built with joining in mind.</li>
+<li><code>left_join</code> : Keep everything from the first table listed, drop anything that doesn’t match from the second one, which you’ll use when you need to join tables that come from different agencies or systems, and you’re not sure you’ll have a good match.</li>
 </ul>
 </div>
 <div id="arizona-immunization-data" class="section level2">
 <h2><span class="header-section-number">8.3</span> Arizona immunization data</h2>
-<p>I matched up the information from most of the public and charter schools in Arizona against Department of Education statistics to find their federal ID numbers. There are two tables that have to be matched against one another: The immunization statistics by school, and the National Center for Education Statistics characteristics. They are both saved in the R dataset called <a href="https://cronkitedata.github.io/rstudyguide/data/immune_to_nces.Rda">immune_to_nces.Rda</a></p>
-<p>There are 2,414 schools in the NCES database, but only 841 schools in the immunizations because we’ve only kept schools that had students in Grade 6. There were about 10 schools that I couldn’t find in the NCES data, and their IDs are blank.</p>
+<p>I matched up the information from most of the public and charter schools in Arizona against Department of Education statistics to find their federal ID numbers. There are two tables that have to be matched against one another: The immunization statistics by school, and the National Center for Education Statistics characteristics. They are both saved in the R dataset called <a href="https://github.com/cronkitedata/rstudyguide/blob/master/data/immune_to_nces.Rda?raw=true">immune_to_nces.Rda</a>, which you can add to your environment using the <code>load()</code> command.</p>
+<p>There are 2,414 schools in the NCES database, but only 841 schools in the immunizations because we’ve only kept schools that had students in Grade 6. There were seven schools that I couldn’t find in the NCES data, and their IDs are blank.</p>
 <p>Here are their variables:</p>
 <div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb67-1" title="1"><span class="kw">glimpse</span>(grade6_to_nces)</a></code></pre></div>
 <pre><code>## Observations: 841
@@ -404,8 +410,7 @@ For example, the Federal Election Commission holds information about donors in o
 </div>
 <div id="apply-the-join" class="section level3 unnumbered">
 <h3>Apply the join</h3>
-<p>ß
-Here are two ways to join:</p>
+<p>Here are two ways to join:</p>
 <div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb72-1" title="1">immune <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb72-2" title="2"><span class="st">  </span><span class="kw">inner_join</span> (school_list, <span class="dt">by=</span><span class="kw">c</span>(<span class="st">&quot;nces_id&quot;</span> =<span class="st"> &quot;nces_school_id&quot;</span>)) <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb72-3" title="3"><span class="st">  </span>glimpse</a></code></pre></div>
@@ -429,10 +434,13 @@ Here are two ways to join:</p>
 ## $ nces_school_level  &lt;chr&gt; &quot;Elementary&quot;, &quot;Elementary&quot;, &quot;Elementary&quot;, &quot;Ot…
 ## $ nces_fips          &lt;chr&gt; &quot;04013&quot;, &quot;04013&quot;, &quot;04019&quot;, &quot;04019&quot;, &quot;04013&quot;, …</code></pre>
 <p>You can see that the information from the federal Education Department was added to the immunization data, but we lost seven records – the seven that I couldn’t find in the federal department.</p>
-<p>To preserve these records, you’ll usually “protect” one of the tables – the one you care about most – and keep everything, even if it doesn’t match. To do that, use a “left” or “right” join, depending on whether you mention the table first or second. In this case:</p>
-<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb74-1" title="1">immune <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb74-2" title="2"><span class="st">  </span><span class="kw">left_join</span> ( school_list, <span class="dt">by=</span><span class="kw">c</span>(<span class="st">&quot;nces_id&quot;</span>=<span class="st">&quot;nces_school_id&quot;</span>) ) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb74-3" title="3"><span class="st">  </span><span class="kw">glimpse</span>()</a></code></pre></div>
+<p>To preserve these records, you’ll usually protect one of the tables – the one you care about most – and keep everything, even if it doesn’t match. To do that, use a <code>left</code> or <code>right</code> join, depending on whether you mention the table first or second. In this case:</p>
+<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb74-1" title="1">immune_joined &lt;-<span class="st"> </span></a>
+<a class="sourceLine" id="cb74-2" title="2"><span class="st">  </span>immune <span class="op">%&gt;%</span><span class="st">                                     </span><span class="co"># the table I want to protect</span></a>
+<a class="sourceLine" id="cb74-3" title="3"><span class="st">  </span><span class="kw">left_join</span> ( school_list,                       <span class="co"># the table I want to apply to my original data frame</span></a>
+<a class="sourceLine" id="cb74-4" title="4">              <span class="dt">by=</span><span class="kw">c</span>(<span class="st">&quot;nces_id&quot;</span>=<span class="st">&quot;nces_school_id&quot;</span>) ) <span class="co"># the variable that is the same in the two tables.</span></a>
+<a class="sourceLine" id="cb74-5" title="5"></a>
+<a class="sourceLine" id="cb74-6" title="6"><span class="kw">glimpse</span>(immune_joined)</a></code></pre></div>
 <pre><code>## Observations: 841
 ## Variables: 17
 ## $ rowid              &lt;dbl&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14…
@@ -452,27 +460,2710 @@ Here are two ways to join:</p>
 ## $ nces_ratio         &lt;dbl&gt; 18.56, 18.92, NA, NA, NA, NA, NA, NA, NA, 19.…
 ## $ nces_school_level  &lt;chr&gt; &quot;Elementary&quot;, &quot;Elementary&quot;, &quot;Elementary&quot;, &quot;Ot…
 ## $ nces_fips          &lt;chr&gt; &quot;04013&quot;, &quot;04013&quot;, &quot;04019&quot;, &quot;04019&quot;, &quot;04013&quot;, …</code></pre>
-<p>Here are the rows that were kept without a match :</p>
-<pre><code>## Observations: 7
-## Variables: 17
-## $ rowid              &lt;dbl&gt; 43, 209, 414, 452, 522, 785, 821
-## $ nces_id            &lt;chr&gt; NA, NA, NA, NA, &quot;590014800009&quot;, NA, NA
-## $ school_name        &lt;chr&gt; &quot;ARCADIA NEIGHBORHOOD LEARNING CENTER&quot;, &quot;DENN…
-## $ city               &lt;chr&gt; &quot;SCOTTSDALE&quot;, &quot;DENNEHOTSO&quot;, &quot;JOSEPH CITY&quot;, &quot;L…
-## $ county             &lt;chr&gt; &quot;MARICOPA&quot;, &quot;APACHE&quot;, &quot;NAVAJO&quot;, &quot;MOHAVE&quot;, &quot;AP…
-## $ zip_code           &lt;chr&gt; &quot;85251&quot;, &quot;86535&quot;, &quot;86032&quot;, &quot;86403&quot;, &quot;86538&quot;, …
-## $ school_nurse       &lt;chr&gt; &quot;YES&quot;, &quot;NO&quot;, &quot;NO&quot;, &quot;YES&quot;, &quot;NO&quot;, &quot;YES&quot;, &quot;YES&quot;
-## $ school_type        &lt;chr&gt; &quot;PUBLIC&quot;, &quot;PUBLIC&quot;, &quot;PUBLIC&quot;, &quot;PUBLIC&quot;, &quot;PUBL…
-## $ enrolled           &lt;dbl&gt; 52, 21, 33, 69, 38, 42, 86
-## $ num_immune_mmr     &lt;dbl&gt; 49, 21, 28, 67, 38, 42, 86
-## $ nces_district_id   &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA
-## $ nces_district_name &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA
-## $ nces_school_type   &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA
-## $ nces_urban         &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA
-## $ nces_ratio         &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA
-## $ nces_school_level  &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA
-## $ nces_fips          &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA</code></pre>
-<p>In real life, you’d have to decide how much you care about these missing codes – does it ruin your story, or can you just mention that you were unable to get information for a handful of schools, amounting to about 350 students?</p>
+<p>Here are the rows that were kept without a match:</p>
+<div class="kable-table">
+<table>
+<thead>
+<tr class="header">
+<th align="right">rowid</th>
+<th align="left">nces_id</th>
+<th align="left">school_name</th>
+<th align="left">city</th>
+<th align="left">county</th>
+<th align="left">zip_code</th>
+<th align="left">school_nurse</th>
+<th align="left">school_type</th>
+<th align="right">enrolled</th>
+<th align="right">num_immune_mmr</th>
+<th align="left">nces_district_id</th>
+<th align="left">nces_district_name</th>
+<th align="left">nces_school_type</th>
+<th align="left">nces_urban</th>
+<th align="right">nces_ratio</th>
+<th align="left">nces_school_level</th>
+<th align="left">nces_fips</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">43</td>
+<td align="left">NA</td>
+<td align="left">ARCADIA NEIGHBORHOOD LEARNING CENTER</td>
+<td align="left">SCOTTSDALE</td>
+<td align="left">MARICOPA</td>
+<td align="left">85251</td>
+<td align="left">YES</td>
+<td align="left">PUBLIC</td>
+<td align="right">52</td>
+<td align="right">49</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="right">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="even">
+<td align="right">209</td>
+<td align="left">NA</td>
+<td align="left">DENNEHOTSO BOARDING SCHOOL</td>
+<td align="left">DENNEHOTSO</td>
+<td align="left">APACHE</td>
+<td align="left">86535</td>
+<td align="left">NO</td>
+<td align="left">PUBLIC</td>
+<td align="right">21</td>
+<td align="right">21</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="right">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="odd">
+<td align="right">414</td>
+<td align="left">NA</td>
+<td align="left">J.C.U.S.D. - JOSEPH CITY PRESCHOOL</td>
+<td align="left">JOSEPH CITY</td>
+<td align="left">NAVAJO</td>
+<td align="left">86032</td>
+<td align="left">NO</td>
+<td align="left">PUBLIC</td>
+<td align="right">33</td>
+<td align="right">28</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="right">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="even">
+<td align="right">452</td>
+<td align="left">NA</td>
+<td align="left">L.H.U.S.D. #1 - DEVELOPMENTAL PRESCHOOL</td>
+<td align="left">LAKE HAVASU CITY</td>
+<td align="left">MOHAVE</td>
+<td align="left">86403</td>
+<td align="left">YES</td>
+<td align="left">PUBLIC</td>
+<td align="right">69</td>
+<td align="right">67</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="right">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="odd">
+<td align="right">522</td>
+<td align="left">590014800009</td>
+<td align="left">MANY FARMS COMMUNITY SCHOOL, INC</td>
+<td align="left">MANY FARMS</td>
+<td align="left">APACHE</td>
+<td align="left">86538</td>
+<td align="left">NO</td>
+<td align="left">PUBLIC</td>
+<td align="right">38</td>
+<td align="right">38</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="right">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="even">
+<td align="right">785</td>
+<td align="left">NA</td>
+<td align="left">ST THERESA LITTLE FLOWER PRESCHOOL</td>
+<td align="left">PHOENIX</td>
+<td align="left">MARICOPA</td>
+<td align="left">85018</td>
+<td align="left">YES</td>
+<td align="left">PUBLIC</td>
+<td align="right">42</td>
+<td align="right">42</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="right">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="odd">
+<td align="right">821</td>
+<td align="left">NA</td>
+<td align="left">T.U.S.D.#1 - C. E. ROSE PRESCHOOL PROGRAM</td>
+<td align="left">TUCSON</td>
+<td align="left">PIMA</td>
+<td align="left">85714</td>
+<td align="left">YES</td>
+<td align="left">PUBLIC</td>
+<td align="right">86</td>
+<td align="right">86</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="right">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>In real life, you’d have to decide how much you care about these missing schools – does it ruin your story, or can you just mention that you were unable to get information for a handful of schools, amounting to about 350 students?</p>
+<div id="use-the-joined-table" class="section level4 unnumbered">
+<h4>Use the joined table</h4>
+<p>Now I might want to look at rates of immunization by school district:</p>
+<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb76-1" title="1">immune_joined <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb76-2" title="2"><span class="st">  </span><span class="kw">mutate</span> (<span class="dt">school_pct =</span> num_immune_mmr <span class="op">/</span><span class="st"> </span>enrolled  <span class="op">*</span><span class="st"> </span><span class="dv">100</span> ) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb76-3" title="3"><span class="st">  </span><span class="kw">group_by</span> (nces_district_name, county) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb76-4" title="4"><span class="st">  </span><span class="kw">summarise</span> ( <span class="dt">num_schools =</span> <span class="kw">n</span>() ,</a>
+<a class="sourceLine" id="cb76-5" title="5">              <span class="dt">total_enrolled =</span> <span class="kw">sum</span>(enrolled),</a>
+<a class="sourceLine" id="cb76-6" title="6">              <span class="dt">total_immune =</span> <span class="kw">sum</span> (num_immune_mmr),</a>
+<a class="sourceLine" id="cb76-7" title="7">              <span class="dt">median_immune =</span> <span class="kw">median</span> (school_pct)</a>
+<a class="sourceLine" id="cb76-8" title="8">              ) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb76-9" title="9"><span class="st">  </span><span class="kw">mutate</span> ( <span class="dt">pct_immune =</span> total_immune<span class="op">/</span><span class="st"> </span>total_enrolled <span class="op">*</span><span class="st"> </span><span class="dv">100</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb76-10" title="10"><span class="st">  </span><span class="kw">select</span> (nces_district_name, county, num_schools, pct_immune, total_enrolled,  median_immune) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb76-11" title="11"><span class="st">  </span><span class="kw">arrange</span> ( <span class="kw">desc</span>(num_schools), pct_immune) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb76-12" title="12"><span class="st">  </span><span class="kw">kable</span> (<span class="dt">digits=</span><span class="dv">1</span>)</a></code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th align="left">nces_district_name</th>
+<th align="left">county</th>
+<th align="right">num_schools</th>
+<th align="right">pct_immune</th>
+<th align="right">total_enrolled</th>
+<th align="right">median_immune</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Mesa Unified District</td>
+<td align="left">MARICOPA</td>
+<td align="right">56</td>
+<td align="right">97.5</td>
+<td align="right">4893</td>
+<td align="right">98.5</td>
+</tr>
+<tr class="even">
+<td align="left">Chandler Unified District #80</td>
+<td align="left">MARICOPA</td>
+<td align="right">32</td>
+<td align="right">96.5</td>
+<td align="right">3497</td>
+<td align="right">96.9</td>
+</tr>
+<tr class="odd">
+<td align="left">Peoria Unified School District</td>
+<td align="left">MARICOPA</td>
+<td align="right">29</td>
+<td align="right">97.7</td>
+<td align="right">2555</td>
+<td align="right">97.9</td>
+</tr>
+<tr class="even">
+<td align="left">Deer Valley Unified District</td>
+<td align="left">MARICOPA</td>
+<td align="right">28</td>
+<td align="right">95.5</td>
+<td align="right">2479</td>
+<td align="right">95.9</td>
+</tr>
+<tr class="odd">
+<td align="left">Gilbert Unified District</td>
+<td align="left">MARICOPA</td>
+<td align="right">26</td>
+<td align="right">96.8</td>
+<td align="right">2502</td>
+<td align="right">96.9</td>
+</tr>
+<tr class="even">
+<td align="left">Paradise Valley Unified District</td>
+<td align="left">MARICOPA</td>
+<td align="right">26</td>
+<td align="right">96.9</td>
+<td align="right">2239</td>
+<td align="right">97.9</td>
+</tr>
+<tr class="odd">
+<td align="left">Washington Elementary School District</td>
+<td align="left">MARICOPA</td>
+<td align="right">26</td>
+<td align="right">98.8</td>
+<td align="right">2635</td>
+<td align="right">98.9</td>
+</tr>
+<tr class="even">
+<td align="left">Tucson Unified District</td>
+<td align="left">PIMA</td>
+<td align="right">23</td>
+<td align="right">99.6</td>
+<td align="right">2921</td>
+<td align="right">100.0</td>
+</tr>
+<tr class="odd">
+<td align="left">Dysart Unified District</td>
+<td align="left">MARICOPA</td>
+<td align="right">18</td>
+<td align="right">97.4</td>
+<td align="right">1776</td>
+<td align="right">98.0</td>
+</tr>
+<tr class="even">
+<td align="left">Roosevelt Elementary District</td>
+<td align="left">MARICOPA</td>
+<td align="right">16</td>
+<td align="right">98.2</td>
+<td align="right">1056</td>
+<td align="right">98.6</td>
+</tr>
+<tr class="odd">
+<td align="left">Glendale Elementary District</td>
+<td align="left">MARICOPA</td>
+<td align="right">14</td>
+<td align="right">99.0</td>
+<td align="right">1469</td>
+<td align="right">100.0</td>
+</tr>
+<tr class="even">
+<td align="left">Marana Unified District</td>
+<td align="left">PIMA</td>
+<td align="right">12</td>
+<td align="right">97.4</td>
+<td align="right">910</td>
+<td align="right">97.8</td>
+</tr>
+<tr class="odd">
+<td align="left">Pendergast Elementary District</td>
+<td align="left">MARICOPA</td>
+<td align="right">12</td>
+<td align="right">98.4</td>
+<td align="right">1147</td>
+<td align="right">99.0</td>
+</tr>
+<tr class="even">
+<td align="left">Sunnyside Unified District</td>
+<td align="left">PIMA</td>
+<td align="right">12</td>
+<td align="right">99.7</td>
+<td align="right">1156</td>
+<td align="right">100.0</td>
+</tr>
+<tr class="odd">
+<td align="left">Phoenix Elementary District</td>
+<td align="left">MARICOPA</td>
+<td align="right">11</td>
+<td align="right">98.6</td>
+<td align="right">621</td>
+<td align="right">100.0</td>
+</tr>
+<tr class="even">
+<td align="left">Scottsdale Unified District</td>
+<td align="left">MARICOPA</td>
+<td align="right">9</td>
+<td align="right">96.5</td>
+<td align="right">1673</td>
+<td align="right">96.5</td>
+</tr>
+<tr class="odd">
+<td align="left">Higley Unified School District</td>
+<td align="left">MARICOPA</td>
+<td align="right">9</td>
+<td align="right">97.6</td>
+<td align="right">1048</td>
+<td align="right">97.3</td>
+</tr>
+<tr class="even">
+<td align="left">Alhambra Elementary District</td>
+<td align="left">MARICOPA</td>
+<td align="right">9</td>
+<td align="right">99.3</td>
+<td align="right">1493</td>
+<td align="right">99.6</td>
+</tr>
+<tr class="odd">
+<td align="left">Creighton Elementary District</td>
+<td align="left">MARICOPA</td>
+<td align="right">9</td>
+<td align="right">99.6</td>
+<td align="right">671</td>
+<td align="right">100.0</td>
+</tr>
+<tr class="even">
+<td align="left">Florence Unified School District</td>
+<td align="left">PINAL</td>
+<td align="right">8</td>
+<td align="right">97.0</td>
+<td align="right">664</td>
+<td align="right">97.9</td>
+</tr>
+<tr class="odd">
+<td align="left">Laveen Elementary District</td>
+<td align="left">MARICOPA</td>
+<td align="right">8</td>
+<td align="right">98.2</td>
+<td align="right">768</td>
+<td align="right">98.3</td>
+</tr>
+<tr class="even">
+<td align="left">Crane Elementary District</td>
+<td align="left">YUMA</td>
+<td align="right">8</td>
+<td align="right">99.7</td>
+<td align="right">727</td>
+<td align="right">100.0</td>
+</tr>
+<tr class="odd">
+<td align="left">Kyrene Elementary District</td>
+<td align="left">MARICOPA</td>
+<td align="right">7</td>
+<td align="right">96.7</td>
+<td align="right">2039</td>
+<td align="right">96.7</td>
+</tr>
+<tr class="even">
+<td align="left">Buckeye Elementary District</td>
+<td align="left">MARICOPA</td>
+<td align="right">7</td>
+<td align="right">97.4</td>
+<td align="right">587</td>
+<td align="right">98.1</td>
+</tr>
+<tr class="odd">
+<td align="left">Vail Unified School District</td>
+<td align="left">PIMA</td>
+<td align="right">7</td>
+<td align="right">97.7</td>
+<td align="right">1063</td>
+<td align="right">97.4</td>
+</tr>
+<tr class="even">
+<td align="left">Avondale Elementary District</td>
+<td align="left">MARICOPA</td>
+<td align="right">7</td>
+<td align="right">99.3</td>
+<td align="right">672</td>
+<td align="right">99.3</td>
+</tr>
+<tr class="odd">
+<td align="left">Cartwright Elementary District</td>
+<td align="left">MARICOPA</td>
+<td align="right">7</td>
+<td align="right">99.4</td>
+<td align="right">1806</td>
+<td align="right">99.5</td>
+</tr>
+<tr class="even">
+<td align="left">Liberty Elementary District</td>
+<td align="left">MARICOPA</td>
+<td align="right">6</td>
+<td align="right">95.7</td>
+<td align="right">374</td>
+<td align="right">97.7</td>
+</tr>
+<tr class="odd">
+<td align="left">Humboldt Unified District</td>
+<td align="left">YAVAPAI</td>
+<td align="right">6</td>
+<td align="right">96.7</td>
+<td align="right">457</td>
+<td align="right">96.3</td>
+</tr>
+<tr class="even">
+<td align="left">Flowing Wells Unified District</td>
+<td align="left">PIMA</td>
+<td align="right">6</td>
+<td align="right">97.8</td>
+<td align="right">414</td>
+<td align="right">98.1</td>
+</tr>
+<tr class="odd">
+<td align="left">Littleton Elementary District</td>
+<td align="left">MARICOPA</td>
+<td align="right">6</td>
+<td align="right">98.4</td>
+<td align="right">619</td>
+<td align="right">99.1</td>
+</tr>
+<tr class="even">
+<td align="left">Sierra Vista Unified District</td>
+<td align="left">COCHISE</td>
+<td align="right">6</td>
+<td align="right">98.8</td>
+<td align="right">402</td>
+<td align="right">98.8</td>
+</tr>
+<tr class="odd">
+<td align="left">Yuma Elementary District</td>
+<td align="left">YUMA</td>
+<td align="right">6</td>
+<td align="right">98.8</td>
+<td align="right">1003</td>
+<td align="right">99.1</td>
+</tr>
+<tr class="even">
+<td align="left">Gadsden Elementary District</td>
+<td align="left">YUMA</td>
+<td align="right">6</td>
+<td align="right">99.8</td>
+<td align="right">632</td>
+<td align="right">100.0</td>
+</tr>
+<tr class="odd">
+<td align="left">American Leadership Academy Inc.</td>
+<td align="left">MARICOPA</td>
+<td align="right">5</td>
+<td align="right">91.9</td>
+<td align="right">467</td>
+<td align="right">92.9</td>
+</tr>
+<tr class="even">
+<td align="left">Cave Creek Unified District</td>
+<td align="left">MARICOPA</td>
+<td align="right">5</td>
+<td align="right">93.2</td>
+<td align="right">468</td>
+<td align="right">94.5</td>
+</tr>
+<tr class="odd">
+<td align="left">J O Combs Unified School District</td>
+<td align="left">PINAL</td>
+<td align="right">5</td>
+<td align="right">94.7</td>
+<td align="right">379</td>
+<td align="right">93.6</td>
+</tr>
+<tr class="even">
+<td align="left">Litchfield Elementary District</td>
+<td align="left">MARICOPA</td>
+<td align="right">5</td>
+<td align="right">95.9</td>
+<td align="right">1369</td>
+<td align="right">96.3</td>
+</tr>
+<tr class="odd">
+<td align="left">Lake Havasu Unified District</td>
+<td align="left">MOHAVE</td>
+<td align="right">5</td>
+<td align="right">96.6</td>
+<td align="right">321</td>
+<td align="right">96.1</td>
+</tr>
+<tr class="even">
+<td align="left">Amphitheater Unified District</td>
+<td align="left">PIMA</td>
+<td align="right">5</td>
+<td align="right">98.0</td>
+<td align="right">915</td>
+<td align="right">97.5</td>
+</tr>
+<tr class="odd">
+<td align="left">Tempe School District</td>
+<td align="left">MARICOPA</td>
+<td align="right">5</td>
+<td align="right">98.8</td>
+<td align="right">840</td>
+<td align="right">97.4</td>
+</tr>
+<tr class="even">
+<td align="left">Tolleson Elementary District</td>
+<td align="left">MARICOPA</td>
+<td align="right">4</td>
+<td align="right">95.2</td>
+<td align="right">357</td>
+<td align="right">99.3</td>
+</tr>
+<tr class="odd">
+<td align="left">Madison Elementary District</td>
+<td align="left">MARICOPA</td>
+<td align="right">4</td>
+<td align="right">95.8</td>
+<td align="right">671</td>
+<td align="right">96.6</td>
+</tr>
+<tr class="even">
+<td align="left">Balsz Elementary District</td>
+<td align="left">MARICOPA</td>
+<td align="right">4</td>
+<td align="right">98.7</td>
+<td align="right">227</td>
+<td align="right">98.5</td>
+</tr>
+<tr class="odd">
+<td align="left">Chinle Unified District</td>
+<td align="left">APACHE</td>
+<td align="right">4</td>
+<td align="right">100.0</td>
+<td align="right">188</td>
+<td align="right">100.0</td>
+</tr>
+<tr class="even">
+<td align="left">Benjamin Franklin Charter School</td>
+<td align="left">MARICOPA</td>
+<td align="right">3</td>
+<td align="right">87.7</td>
+<td align="right">253</td>
+<td align="right">92.2</td>
+</tr>
+<tr class="odd">
+<td align="left">Cottonwood-Oak Creek Elementary District</td>
+<td align="left">YAVAPAI</td>
+<td align="right">3</td>
+<td align="right">92.7</td>
+<td align="right">233</td>
+<td align="right">96.2</td>
+</tr>
+<tr class="even">
+<td align="left">Queen Creek Unified District</td>
+<td align="left">MARICOPA</td>
+<td align="right">3</td>
+<td align="right">96.6</td>
+<td align="right">581</td>
+<td align="right">97.2</td>
+</tr>
+<tr class="odd">
+<td align="left">Apache Junction Unified District</td>
+<td align="left">PINAL</td>
+<td align="right">3</td>
+<td align="right">97.4</td>
+<td align="right">305</td>
+<td align="right">97.3</td>
+</tr>
+<tr class="even">
+<td align="left">Osborn Elementary District</td>
+<td align="left">MARICOPA</td>
+<td align="right">3</td>
+<td align="right">97.8</td>
+<td align="right">324</td>
+<td align="right">97.8</td>
+</tr>
+<tr class="odd">
+<td align="left">Safford Unified District</td>
+<td align="left">GRAHAM</td>
+<td align="right">3</td>
+<td align="right">98.3</td>
+<td align="right">232</td>
+<td align="right">98.7</td>
+</tr>
+<tr class="even">
+<td align="left">Casa Grande Elementary District</td>
+<td align="left">PINAL</td>
+<td align="right">3</td>
+<td align="right">99.0</td>
+<td align="right">821</td>
+<td align="right">99.0</td>
+</tr>
+<tr class="odd">
+<td align="left">Isaac Elementary District</td>
+<td align="left">MARICOPA</td>
+<td align="right">3</td>
+<td align="right">99.2</td>
+<td align="right">730</td>
+<td align="right">99.5</td>
+</tr>
+<tr class="even">
+<td align="left">Murphy Elementary District</td>
+<td align="left">MARICOPA</td>
+<td align="right">3</td>
+<td align="right">100.0</td>
+<td align="right">153</td>
+<td align="right">100.0</td>
+</tr>
+<tr class="odd">
+<td align="left">CITY Center for Collaborative Learning</td>
+<td align="left">PIMA</td>
+<td align="right">2</td>
+<td align="right">87.8</td>
+<td align="right">49</td>
+<td align="right">87.8</td>
+</tr>
+<tr class="even">
+<td align="left">American Leadership Academy Inc.</td>
+<td align="left">PINAL</td>
+<td align="right">2</td>
+<td align="right">91.0</td>
+<td align="right">178</td>
+<td align="right">94.3</td>
+</tr>
+<tr class="odd">
+<td align="left">Kingman Unified School District</td>
+<td align="left">MOHAVE</td>
+<td align="right">2</td>
+<td align="right">91.9</td>
+<td align="right">298</td>
+<td align="right">93.2</td>
+</tr>
+<tr class="even">
+<td align="left">Nadaburg Unified School District</td>
+<td align="left">MARICOPA</td>
+<td align="right">2</td>
+<td align="right">92.5</td>
+<td align="right">80</td>
+<td align="right">91.3</td>
+</tr>
+<tr class="odd">
+<td align="left">Snowflake Unified District</td>
+<td align="left">NAVAJO</td>
+<td align="right">2</td>
+<td align="right">94.1</td>
+<td align="right">186</td>
+<td align="right">93.8</td>
+</tr>
+<tr class="even">
+<td align="left">Center for Academic Success Inc.</td>
+<td align="left">COCHISE</td>
+<td align="right">2</td>
+<td align="right">94.7</td>
+<td align="right">95</td>
+<td align="right">94.7</td>
+</tr>
+<tr class="odd">
+<td align="left">Saddle Mountain Unified School District</td>
+<td align="left">MARICOPA</td>
+<td align="right">2</td>
+<td align="right">96.0</td>
+<td align="right">150</td>
+<td align="right">96.1</td>
+</tr>
+<tr class="even">
+<td align="left">Wickenburg Unified District</td>
+<td align="left">MARICOPA</td>
+<td align="right">2</td>
+<td align="right">96.3</td>
+<td align="right">109</td>
+<td align="right">95.1</td>
+</tr>
+<tr class="odd">
+<td align="left">Tanque Verde Unified District</td>
+<td align="left">PIMA</td>
+<td align="right">2</td>
+<td align="right">96.5</td>
+<td align="right">202</td>
+<td align="right">96.5</td>
+</tr>
+<tr class="even">
+<td align="left">NA</td>
+<td align="left">MARICOPA</td>
+<td align="right">2</td>
+<td align="right">96.8</td>
+<td align="right">94</td>
+<td align="right">97.1</td>
+</tr>
+<tr class="odd">
+<td align="left">Bullhead City School District</td>
+<td align="left">MOHAVE</td>
+<td align="right">2</td>
+<td align="right">97.7</td>
+<td align="right">303</td>
+<td align="right">97.8</td>
+</tr>
+<tr class="even">
+<td align="left">Fit Kids Inc. dba Champion Schools</td>
+<td align="left">MARICOPA</td>
+<td align="right">2</td>
+<td align="right">97.7</td>
+<td align="right">131</td>
+<td align="right">97.7</td>
+</tr>
+<tr class="odd">
+<td align="left">Leman Academy of Excellence Inc.</td>
+<td align="left">PIMA</td>
+<td align="right">2</td>
+<td align="right">97.8</td>
+<td align="right">181</td>
+<td align="right">98.1</td>
+</tr>
+<tr class="even">
+<td align="left">Catalina Foothills Unified District</td>
+<td align="left">PIMA</td>
+<td align="right">2</td>
+<td align="right">98.2</td>
+<td align="right">438</td>
+<td align="right">98.2</td>
+</tr>
+<tr class="odd">
+<td align="left">Parker Unified School District</td>
+<td align="left">LA PAZ</td>
+<td align="right">2</td>
+<td align="right">98.2</td>
+<td align="right">166</td>
+<td align="right">98.9</td>
+</tr>
+<tr class="even">
+<td align="left">Arizona Community Development Corporation</td>
+<td align="left">PIMA</td>
+<td align="right">2</td>
+<td align="right">98.4</td>
+<td align="right">127</td>
+<td align="right">98.8</td>
+</tr>
+<tr class="odd">
+<td align="left">Sahuarita Unified District</td>
+<td align="left">PIMA</td>
+<td align="right">2</td>
+<td align="right">98.6</td>
+<td align="right">490</td>
+<td align="right">98.5</td>
+</tr>
+<tr class="even">
+<td align="left">Douglas Unified District</td>
+<td align="left">COCHISE</td>
+<td align="right">2</td>
+<td align="right">99.0</td>
+<td align="right">286</td>
+<td align="right">98.8</td>
+</tr>
+<tr class="odd">
+<td align="left">Palominas Elementary District</td>
+<td align="left">COCHISE</td>
+<td align="right">2</td>
+<td align="right">99.2</td>
+<td align="right">120</td>
+<td align="right">99.1</td>
+</tr>
+<tr class="even">
+<td align="left">Nogales Unified District</td>
+<td align="left">SANTA CRUZ</td>
+<td align="right">2</td>
+<td align="right">99.5</td>
+<td align="right">444</td>
+<td align="right">99.5</td>
+</tr>
+<tr class="odd">
+<td align="left">Union Elementary District</td>
+<td align="left">MARICOPA</td>
+<td align="right">2</td>
+<td align="right">99.6</td>
+<td align="right">235</td>
+<td align="right">99.5</td>
+</tr>
+<tr class="even">
+<td align="left">Santa Cruz Valley Unified District</td>
+<td align="left">SANTA CRUZ</td>
+<td align="right">2</td>
+<td align="right">99.6</td>
+<td align="right">249</td>
+<td align="right">99.6</td>
+</tr>
+<tr class="odd">
+<td align="left">Coolidge Unified District</td>
+<td align="left">PINAL</td>
+<td align="right">2</td>
+<td align="right">100.0</td>
+<td align="right">203</td>
+<td align="right">100.0</td>
+</tr>
+<tr class="even">
+<td align="left">Harvest Power Community Development Group Inc.</td>
+<td align="left">YUMA</td>
+<td align="right">2</td>
+<td align="right">100.0</td>
+<td align="right">152</td>
+<td align="right">100.0</td>
+</tr>
+<tr class="odd">
+<td align="left">NA</td>
+<td align="left">APACHE</td>
+<td align="right">2</td>
+<td align="right">100.0</td>
+<td align="right">59</td>
+<td align="right">100.0</td>
+</tr>
+<tr class="even">
+<td align="left">Wellton Elementary District</td>
+<td align="left">YUMA</td>
+<td align="right">1</td>
+<td align="right">56.0</td>
+<td align="right">25</td>
+<td align="right">56.0</td>
+</tr>
+<tr class="odd">
+<td align="left">Mountain Oak Charter School Inc.</td>
+<td align="left">YAVAPAI</td>
+<td align="right">1</td>
+<td align="right">59.1</td>
+<td align="right">22</td>
+<td align="right">59.1</td>
+</tr>
+<tr class="even">
+<td align="left">Desert Star Community School Inc.</td>
+<td align="left">YAVAPAI</td>
+<td align="right">1</td>
+<td align="right">60.9</td>
+<td align="right">23</td>
+<td align="right">60.9</td>
+</tr>
+<tr class="odd">
+<td align="left">Valley of the Sun Waldorf Education Association dba Desert</td>
+<td align="left">MARICOPA</td>
+<td align="right">1</td>
+<td align="right">64.3</td>
+<td align="right">28</td>
+<td align="right">64.3</td>
+</tr>
+<tr class="even">
+<td align="left">Edkey Inc. - Pathfinder Academy</td>
+<td align="left">MARICOPA</td>
+<td align="right">1</td>
+<td align="right">66.7</td>
+<td align="right">45</td>
+<td align="right">66.7</td>
+</tr>
+<tr class="odd">
+<td align="left">Pine Forest Education Association Inc.</td>
+<td align="left">COCONINO</td>
+<td align="right">1</td>
+<td align="right">69.2</td>
+<td align="right">26</td>
+<td align="right">69.2</td>
+</tr>
+<tr class="even">
+<td align="left">Franklin Phonetic Primary School Inc. 1</td>
+<td align="left">YAVAPAI</td>
+<td align="right">1</td>
+<td align="right">75.5</td>
+<td align="right">49</td>
+<td align="right">75.5</td>
+</tr>
+<tr class="odd">
+<td align="left">Edkey Inc. - Sequoia Choice Schools</td>
+<td align="left">MARICOPA</td>
+<td align="right">1</td>
+<td align="right">76.9</td>
+<td align="right">26</td>
+<td align="right">76.9</td>
+</tr>
+<tr class="even">
+<td align="left">San Tan Montessori School Inc.</td>
+<td align="left">MARICOPA</td>
+<td align="right">1</td>
+<td align="right">78.7</td>
+<td align="right">94</td>
+<td align="right">78.7</td>
+</tr>
+<tr class="odd">
+<td align="left">Little Lamb Community School</td>
+<td align="left">MARICOPA</td>
+<td align="right">1</td>
+<td align="right">79.4</td>
+<td align="right">34</td>
+<td align="right">79.4</td>
+</tr>
+<tr class="even">
+<td align="left">Sedona-Oak Creek JUSD #9</td>
+<td align="left">YAVAPAI</td>
+<td align="right">1</td>
+<td align="right">79.4</td>
+<td align="right">34</td>
+<td align="right">79.4</td>
+</tr>
+<tr class="odd">
+<td align="left">Flagstaff Junior Academy</td>
+<td align="left">COCONINO</td>
+<td align="right">1</td>
+<td align="right">80.4</td>
+<td align="right">46</td>
+<td align="right">80.4</td>
+</tr>
+<tr class="even">
+<td align="left">Painted Desert Montessori LLC</td>
+<td align="left">MARICOPA</td>
+<td align="right">1</td>
+<td align="right">81.6</td>
+<td align="right">49</td>
+<td align="right">81.6</td>
+</tr>
+<tr class="odd">
+<td align="left">Legacy Traditional Charter School - Laveen Village</td>
+<td align="left">MARICOPA</td>
+<td align="right">1</td>
+<td align="right">82.0</td>
+<td align="right">128</td>
+<td align="right">82.0</td>
+</tr>
+<tr class="even">
+<td align="left">Stepping Stones Academy</td>
+<td align="left">MARICOPA</td>
+<td align="right">1</td>
+<td align="right">82.1</td>
+<td align="right">28</td>
+<td align="right">82.1</td>
+</tr>
+<tr class="odd">
+<td align="left">Satori Inc.</td>
+<td align="left">PIMA</td>
+<td align="right">1</td>
+<td align="right">82.8</td>
+<td align="right">29</td>
+<td align="right">82.8</td>
+</tr>
+<tr class="even">
+<td align="left">LEAD Charter Schools</td>
+<td align="left">MARICOPA</td>
+<td align="right">1</td>
+<td align="right">83.3</td>
+<td align="right">42</td>
+<td align="right">83.3</td>
+</tr>
+<tr class="odd">
+<td align="left">Miami Unified District</td>
+<td align="left">GILA</td>
+<td align="right">1</td>
+<td align="right">83.3</td>
+<td align="right">72</td>
+<td align="right">83.3</td>
+</tr>
+<tr class="even">
+<td align="left">Imagine Coolidge Elementary Inc.</td>
+<td align="left">PINAL</td>
+<td align="right">1</td>
+<td align="right">84.4</td>
+<td align="right">122</td>
+<td align="right">84.4</td>
+</tr>
+<tr class="odd">
+<td align="left">Joseph City Unified District</td>
+<td align="left">NAVAJO</td>
+<td align="right">1</td>
+<td align="right">84.8</td>
+<td align="right">33</td>
+<td align="right">84.8</td>
+</tr>
+<tr class="even">
+<td align="left">NA</td>
+<td align="left">NAVAJO</td>
+<td align="right">1</td>
+<td align="right">84.8</td>
+<td align="right">33</td>
+<td align="right">84.8</td>
+</tr>
+<tr class="odd">
+<td align="left">Benchmark School Inc.</td>
+<td align="left">MARICOPA</td>
+<td align="right">1</td>
+<td align="right">85.5</td>
+<td align="right">55</td>
+<td align="right">85.5</td>
+</tr>
+<tr class="even">
+<td align="left">Arizona Connections Academy Charter School Inc.</td>
+<td align="left">MARICOPA</td>
+<td align="right">1</td>
+<td align="right">85.6</td>
+<td align="right">201</td>
+<td align="right">85.6</td>
+</tr>
+<tr class="odd">
+<td align="left">BASIS School Inc. 12</td>
+<td align="left">YAVAPAI</td>
+<td align="right">1</td>
+<td align="right">85.7</td>
+<td align="right">91</td>
+<td align="right">85.7</td>
+</tr>
+<tr class="even">
+<td align="left">Foothills Academy</td>
+<td align="left">MARICOPA</td>
+<td align="right">1</td>
+<td align="right">85.7</td>
+<td align="right">21</td>
+<td align="right">85.7</td>
+</tr>
+<tr class="odd">
+<td align="left">Keystone Montessori Charter School Inc.</td>
+<td align="left">MARICOPA</td>
+<td align="right">1</td>
+<td align="right">86.4</td>
+<td align="right">22</td>
+<td align="right">86.4</td>
+</tr>
+<tr class="even">
+<td align="left">Arizona Montessori Charter School at Anthem</td>
+<td align="left">MARICOPA</td>
+<td align="right">1</td>
+<td align="right">86.5</td>
+<td align="right">37</td>
+<td align="right">86.5</td>
+</tr>
+<tr class="odd">
+<td align="left">LEAD Charter Schools dba Leading Edge Academy Queen Creek</td>
+<td align="left">PINAL</td>
+<td align="right">1</td>
+<td align="right">86.7</td>
+<td align="right">30</td>
+<td align="right">86.7</td>
+</tr>
+<tr class="even">
+<td align="left">Choice Academies Inc.</td>
+<td align="left">MARICOPA</td>
+<td align="right">1</td>
+<td align="right">86.8</td>
+<td align="right">53</td>
+<td align="right">86.8</td>
+</tr>
+<tr class="odd">
+<td align="left">Incito Schools</td>
+<td align="left">MARICOPA</td>
+<td align="right">1</td>
+<td align="right">87.5</td>
+<td align="right">32</td>
+<td align="right">87.5</td>
+</tr>
+<tr class="even">
+<td align="left">Kaizen Education Foundation dba Vista Grove Preparatory 1</td>
+<td align="left">MARICOPA</td>
+<td align="right">1</td>
+<td align="right">87.5</td>
+<td align="right">40</td>
+<td align="right">87.5</td>
+</tr>
+<tr class="odd">
+<td align="left">CAFA Inc. dba Learning Foundation and Performing Arts Alta</td>
+<td align="left">MARICOPA</td>
+<td align="right">1</td>
+<td align="right">88.0</td>
+<td align="right">25</td>
+<td align="right">88.0</td>
+</tr>
+<tr class="even">
+<td align="left">Tempe Preparatory Academy</td>
+<td align="left">MARICOPA</td>
+<td align="right">1</td>
+<td align="right">88.2</td>
+<td align="right">68</td>
+<td align="right">88.2</td>
+</tr>
+<tr class="odd">
+<td align="left">Legacy Traditional Charter School</td>
+<td align="left">PINAL</td>
+<td align="right">1</td>
+<td align="right">88.3</td>
+<td align="right">111</td>
+<td align="right">88.3</td>
+</tr>
+<tr class="even">
+<td align="left">Acclaim Charter School</td>
+<td align="left">MARICOPA</td>
+<td align="right">1</td>
+<td align="right">88.6</td>
+<td align="right">44</td>
+<td align="right">88.6</td>
+</tr>
+<tr class="odd">
+<td align="left">Freedom Academy Inc.</td>
+<td align="left">MARICOPA</td>
+<td align="right">1</td>
+<td align="right">88.6</td>
+<td align="right">44</td>
+<td align="right">88.6</td>
+</tr>
+<tr class="even">
+<td align="left">Boys &amp; Girls Clubs of the East Valley dba Mesa Arts Academy</td>
+<td align="left">MARICOPA</td>
+<td align="right">1</td>
+<td align="right">88.9</td>
+<td align="right">27</td>
+<td align="right">88.9</td>
+</tr>
+<tr class="odd">
+<td align="left">Villa Montessori Charter School</td>
+<td align="left">MARICOPA</td>
+<td align="right">1</td>
+<td align="right">89.1</td>
+<td align="right">55</td>
+<td align="right">89.1</td>
+</tr>
+<tr class="even">
+<td align="left">Show Low Unified District</td>
+<td align="left">NAVAJO</td>
+<td align="right">1</td>
+<td align="right">89.1</td>
+<td align="right">193</td>
+<td align="right">89.1</td>
+</tr>
+<tr class="odd">
+<td align="left">Legacy Traditional School - Chandler</td>
+<td align="left">MARICOPA</td>
+<td align="right">1</td>
+<td align="right">89.2</td>
+<td align="right">111</td>
+<td align="right">89.2</td>
+</tr>
+<tr class="even">
+<td align="left">CAFA Inc. dba Learning Foundation and Performing Arts Gilbe</td>
+<td align="left">MARICOPA</td>
+<td align="right">1</td>
+<td align="right">89.3</td>
+<td align="right">75</td>
+<td align="right">89.3</td>
+</tr>
+<tr class="odd">
+<td align="left">EAGLE South Mountain Charter Inc.</td>
+<td align="left">MARICOPA</td>
+<td align="right">1</td>
+<td align="right">89.9</td>
+<td align="right">79</td>
+<td align="right">89.9</td>
+</tr>
+<tr class="even">
+<td align="left">Ball Charter Schools (Dobson)</td>
+<td align="left">MARICOPA</td>
+<td align="right">1</td>
+<td align="right">90.0</td>
+<td align="right">40</td>
+<td align="right">90.0</td>
+</tr>
+<tr class="odd">
+<td align="left">Heber-Overgaard Unified District</td>
+<td align="left">NAVAJO</td>
+<td align="right">1</td>
+<td align="right">90.0</td>
+<td align="right">40</td>
+<td align="right">90.0</td>
+</tr>
+<tr class="even">
+<td align="left">The Charter Foundation Inc.</td>
+<td align="left">MARICOPA</td>
+<td align="right">1</td>
+<td align="right">90.0</td>
+<td align="right">30</td>
+<td align="right">90.0</td>
+</tr>
+<tr class="odd">
+<td align="left">Mayer Unified School District</td>
+<td align="left">YAVAPAI</td>
+<td align="right">1</td>
+<td align="right">90.2</td>
+<td align="right">41</td>
+<td align="right">90.2</td>
+</tr>
+<tr class="even">
+<td align="left">Arete Preparatory Academy</td>
+<td align="left">MARICOPA</td>
+<td align="right">1</td>
+<td align="right">90.9</td>
+<td align="right">99</td>
+<td align="right">90.9</td>
+</tr>
+<tr class="odd">
+<td align="left">Mingus Springs Charter School</td>
+<td align="left">YAVAPAI</td>
+<td align="right">1</td>
+<td align="right">90.9</td>
+<td align="right">22</td>
+<td align="right">90.9</td>
+</tr>
+<tr class="even">
+<td align="left">Picacho Elementary District</td>
+<td align="left">PINAL</td>
+<td align="right">1</td>
+<td align="right">90.9</td>
+<td align="right">22</td>
+<td align="right">90.9</td>
+</tr>
+<tr class="odd">
+<td align="left">Chino Valley Unified District</td>
+<td align="left">YAVAPAI</td>
+<td align="right">1</td>
+<td align="right">91.0</td>
+<td align="right">178</td>
+<td align="right">91.0</td>
+</tr>
+<tr class="even">
+<td align="left">Desert Heights Charter Schools</td>
+<td align="left">MARICOPA</td>
+<td align="right">1</td>
+<td align="right">91.2</td>
+<td align="right">57</td>
+<td align="right">91.2</td>
+</tr>
+<tr class="odd">
+<td align="left">Imagine Avondale Middle Inc.</td>
+<td align="left">MARICOPA</td>
+<td align="right">1</td>
+<td align="right">91.5</td>
+<td align="right">82</td>
+<td align="right">91.5</td>
+</tr>
+<tr class="even">
+<td align="left">BASIS School Inc. 9</td>
+<td align="left">MARICOPA</td>
+<td align="right">1</td>
+<td align="right">91.7</td>
+<td align="right">133</td>
+<td align="right">91.7</td>
+</tr>
+<tr class="odd">
+<td align="left">Phoenix Collegiate Academy Inc.</td>
+<td align="left">MARICOPA</td>
+<td align="right">1</td>
+<td align="right">91.8</td>
+<td align="right">49</td>
+<td align="right">91.8</td>
+</tr>
+<tr class="even">
+<td align="left">Great Expectations Academy</td>
+<td align="left">PIMA</td>
+<td align="right">1</td>
+<td align="right">91.9</td>
+<td align="right">37</td>
+<td align="right">91.9</td>
+</tr>
+<tr class="odd">
+<td align="left">Empower College Prep</td>
+<td align="left">MARICOPA</td>
+<td align="right">1</td>
+<td align="right">92.0</td>
+<td align="right">87</td>
+<td align="right">92.0</td>
+</tr>
+<tr class="even">
+<td align="left">Cholla Academy</td>
+<td align="left">MARICOPA</td>
+<td align="right">1</td>
+<td align="right">92.0</td>
+<td align="right">25</td>
+<td align="right">92.0</td>
+</tr>
+<tr class="odd">
+<td align="left">Legacy Traditional School - Glendale</td>
+<td align="left">MARICOPA</td>
+<td align="right">1</td>
+<td align="right">92.3</td>
+<td align="right">117</td>
+<td align="right">92.3</td>
+</tr>
+<tr class="even">
+<td align="left">Khalsa Family Services</td>
+<td align="left">PIMA</td>
+<td align="right">1</td>
+<td align="right">92.6</td>
+<td align="right">27</td>
+<td align="right">92.6</td>
+</tr>
+<tr class="odd">
+<td align="left">Thatcher Unified District</td>
+<td align="left">GRAHAM</td>
+<td align="right">1</td>
+<td align="right">92.6</td>
+<td align="right">149</td>
+<td align="right">92.6</td>
+</tr>
+<tr class="even">
+<td align="left">BASIS School Inc. 6</td>
+<td align="left">COCONINO</td>
+<td align="right">1</td>
+<td align="right">92.6</td>
+<td align="right">95</td>
+<td align="right">92.6</td>
+</tr>
+<tr class="odd">
+<td align="left">Kingman Academy Of Learning</td>
+<td align="left">MOHAVE</td>
+<td align="right">1</td>
+<td align="right">92.9</td>
+<td align="right">112</td>
+<td align="right">92.9</td>
+</tr>
+<tr class="even">
+<td align="left">Archway Classical Academy Cicero</td>
+<td align="left">MARICOPA</td>
+<td align="right">1</td>
+<td align="right">93.2</td>
+<td align="right">117</td>
+<td align="right">93.2</td>
+</tr>
+<tr class="odd">
+<td align="left">Cochise Community Development Corporation</td>
+<td align="left">COCHISE</td>
+<td align="right">1</td>
+<td align="right">93.3</td>
+<td align="right">30</td>
+<td align="right">93.3</td>
+</tr>
+<tr class="even">
+<td align="left">Happy Valley East</td>
+<td align="left">PINAL</td>
+<td align="right">1</td>
+<td align="right">93.3</td>
+<td align="right">45</td>
+<td align="right">93.3</td>
+</tr>
+<tr class="odd">
+<td align="left">Anthem Preparatory Academy</td>
+<td align="left">MARICOPA</td>
+<td align="right">1</td>
+<td align="right">93.4</td>
+<td align="right">76</td>
+<td align="right">93.4</td>
+</tr>
+<tr class="even">
+<td align="left">Ridgeline Academy Inc.</td>
+<td align="left">MARICOPA</td>
+<td align="right">1</td>
+<td align="right">93.5</td>
+<td align="right">46</td>
+<td align="right">93.5</td>
+</tr>
+<tr class="odd">
+<td align="left">Harvest Power Community Development Group Inc.</td>
+<td align="left">MARICOPA</td>
+<td align="right">1</td>
+<td align="right">93.5</td>
+<td align="right">31</td>
+<td align="right">93.5</td>
+</tr>
+<tr class="even">
+<td align="left">St Johns Unified District</td>
+<td align="left">APACHE</td>
+<td align="right">1</td>
+<td align="right">93.7</td>
+<td align="right">63</td>
+<td align="right">93.7</td>
+</tr>
+<tr class="odd">
+<td align="left">West Gilbert Charter Elementary School Inc.</td>
+<td align="left">MARICOPA</td>
+<td align="right">1</td>
+<td align="right">93.8</td>
+<td align="right">32</td>
+<td align="right">93.8</td>
+</tr>
+<tr class="even">
+<td align="left">Legacy Traditional School - North Chandler</td>
+<td align="left">MARICOPA</td>
+<td align="right">1</td>
+<td align="right">93.8</td>
+<td align="right">65</td>
+<td align="right">93.8</td>
+</tr>
+<tr class="odd">
+<td align="left">Archway Classical Academy Lincoln</td>
+<td align="left">MARICOPA</td>
+<td align="right">1</td>
+<td align="right">94.0</td>
+<td align="right">116</td>
+<td align="right">94.0</td>
+</tr>
+<tr class="even">
+<td align="left">Happy Valley School Inc.</td>
+<td align="left">MARICOPA</td>
+<td align="right">1</td>
+<td align="right">94.0</td>
+<td align="right">50</td>
+<td align="right">94.0</td>
+</tr>
+<tr class="odd">
+<td align="left">Reid Traditional Schools’ Painted Rock Academy Inc.</td>
+<td align="left">MARICOPA</td>
+<td align="right">1</td>
+<td align="right">94.1</td>
+<td align="right">51</td>
+<td align="right">94.1</td>
+</tr>
+<tr class="even">
+<td align="left">The Grande Innovation Academy</td>
+<td align="left">PINAL</td>
+<td align="right">1</td>
+<td align="right">94.2</td>
+<td align="right">52</td>
+<td align="right">94.2</td>
+</tr>
+<tr class="odd">
+<td align="left">Scottsdale Preparatory Academy</td>
+<td align="left">MARICOPA</td>
+<td align="right">1</td>
+<td align="right">94.2</td>
+<td align="right">139</td>
+<td align="right">94.2</td>
+</tr>
+<tr class="even">
+<td align="left">Naco Elementary District</td>
+<td align="left">COCHISE</td>
+<td align="right">1</td>
+<td align="right">94.3</td>
+<td align="right">35</td>
+<td align="right">94.3</td>
+</tr>
+<tr class="odd">
+<td align="left">BASIS School Inc. 4</td>
+<td align="left">MARICOPA</td>
+<td align="right">1</td>
+<td align="right">94.4</td>
+<td align="right">162</td>
+<td align="right">94.4</td>
+</tr>
+<tr class="even">
+<td align="left">Benson Unified School District</td>
+<td align="left">COCHISE</td>
+<td align="right">1</td>
+<td align="right">94.5</td>
+<td align="right">109</td>
+<td align="right">94.5</td>
+</tr>
+<tr class="odd">
+<td align="left">Self Development Charter School</td>
+<td align="left">MARICOPA</td>
+<td align="right">1</td>
+<td align="right">94.6</td>
+<td align="right">37</td>
+<td align="right">94.6</td>
+</tr>
+<tr class="even">
+<td align="left">Paragon Management Inc.</td>
+<td align="left">MARICOPA</td>
+<td align="right">1</td>
+<td align="right">94.8</td>
+<td align="right">213</td>
+<td align="right">94.8</td>
+</tr>
+<tr class="odd">
+<td align="left">Allen-Cochran Enterprises Inc.</td>
+<td align="left">MARICOPA</td>
+<td align="right">1</td>
+<td align="right">94.9</td>
+<td align="right">39</td>
+<td align="right">94.9</td>
+</tr>
+<tr class="even">
+<td align="left">Bisbee Unified District</td>
+<td align="left">COCHISE</td>
+<td align="right">1</td>
+<td align="right">95.0</td>
+<td align="right">40</td>
+<td align="right">95.0</td>
+</tr>
+<tr class="odd">
+<td align="left">Telesis Center for Learning Inc.</td>
+<td align="left">MOHAVE</td>
+<td align="right">1</td>
+<td align="right">95.0</td>
+<td align="right">60</td>
+<td align="right">95.0</td>
+</tr>
+<tr class="even">
+<td align="left">Academy of Mathematics and Science Inc. 1</td>
+<td align="left">PIMA</td>
+<td align="right">1</td>
+<td align="right">95.2</td>
+<td align="right">42</td>
+<td align="right">95.2</td>
+</tr>
+<tr class="odd">
+<td align="left">Kaizen Education Foundation dba Liberty Arts Academy</td>
+<td align="left">MARICOPA</td>
+<td align="right">1</td>
+<td align="right">95.2</td>
+<td align="right">21</td>
+<td align="right">95.2</td>
+</tr>
+<tr class="even">
+<td align="left">Horizon Community Learning Center Inc. 2</td>
+<td align="left">MARICOPA</td>
+<td align="right">1</td>
+<td align="right">95.3</td>
+<td align="right">127</td>
+<td align="right">95.3</td>
+</tr>
+<tr class="odd">
+<td align="left">Camp Verde Unified District</td>
+<td align="left">YAVAPAI</td>
+<td align="right">1</td>
+<td align="right">95.3</td>
+<td align="right">107</td>
+<td align="right">95.3</td>
+</tr>
+<tr class="even">
+<td align="left">Pima Prevention Partnership dba Pima Partnership Academy</td>
+<td align="left">PIMA</td>
+<td align="right">1</td>
+<td align="right">95.5</td>
+<td align="right">22</td>
+<td align="right">95.5</td>
+</tr>
+<tr class="odd">
+<td align="left">BASIS School Inc. 14</td>
+<td align="left">MARICOPA</td>
+<td align="right">1</td>
+<td align="right">95.6</td>
+<td align="right">90</td>
+<td align="right">95.6</td>
+</tr>
+<tr class="even">
+<td align="left">Legacy Traditional School - Gilbert</td>
+<td align="left">MARICOPA</td>
+<td align="right">1</td>
+<td align="right">95.6</td>
+<td align="right">114</td>
+<td align="right">95.6</td>
+</tr>
+<tr class="odd">
+<td align="left">American Heritage Academy</td>
+<td align="left">YAVAPAI</td>
+<td align="right">1</td>
+<td align="right">95.7</td>
+<td align="right">23</td>
+<td align="right">95.7</td>
+</tr>
+<tr class="even">
+<td align="left">Ethos Academy - A Challenge Foundation Academy</td>
+<td align="left">MARICOPA</td>
+<td align="right">1</td>
+<td align="right">95.7</td>
+<td align="right">23</td>
+<td align="right">95.7</td>
+</tr>
+<tr class="odd">
+<td align="left">Ball Charter Schools (Hearn)</td>
+<td align="left">MARICOPA</td>
+<td align="right">1</td>
+<td align="right">95.7</td>
+<td align="right">70</td>
+<td align="right">95.7</td>
+</tr>
+<tr class="even">
+<td align="left">Grand Canyon Unified District</td>
+<td align="left">COCONINO</td>
+<td align="right">1</td>
+<td align="right">95.8</td>
+<td align="right">24</td>
+<td align="right">95.8</td>
+</tr>
+<tr class="odd">
+<td align="left">Red Rock Elementary District</td>
+<td align="left">PINAL</td>
+<td align="right">1</td>
+<td align="right">95.8</td>
+<td align="right">48</td>
+<td align="right">95.8</td>
+</tr>
+<tr class="even">
+<td align="left">The Charter Foundation Inc.</td>
+<td align="left">PIMA</td>
+<td align="right">1</td>
+<td align="right">95.8</td>
+<td align="right">24</td>
+<td align="right">95.8</td>
+</tr>
+<tr class="odd">
+<td align="left">Prescott Unified District</td>
+<td align="left">YAVAPAI</td>
+<td align="right">1</td>
+<td align="right">95.8</td>
+<td align="right">289</td>
+<td align="right">95.8</td>
+</tr>
+<tr class="even">
+<td align="left">BASIS School Inc. 7</td>
+<td align="left">MARICOPA</td>
+<td align="right">1</td>
+<td align="right">95.9</td>
+<td align="right">122</td>
+<td align="right">95.9</td>
+</tr>
+<tr class="odd">
+<td align="left">Kaizen Education Foundation dba South Pointe Junior High Sch</td>
+<td align="left">MARICOPA</td>
+<td align="right">1</td>
+<td align="right">95.9</td>
+<td align="right">49</td>
+<td align="right">95.9</td>
+</tr>
+<tr class="even">
+<td align="left">Noah Webster Schools - Mesa</td>
+<td align="left">MARICOPA</td>
+<td align="right">1</td>
+<td align="right">96.0</td>
+<td align="right">124</td>
+<td align="right">96.0</td>
+</tr>
+<tr class="odd">
+<td align="left">Cicero Preparatory Academy</td>
+<td align="left">MARICOPA</td>
+<td align="right">1</td>
+<td align="right">96.0</td>
+<td align="right">101</td>
+<td align="right">96.0</td>
+</tr>
+<tr class="even">
+<td align="left">Glendale Preparatory Academy</td>
+<td align="left">MARICOPA</td>
+<td align="right">1</td>
+<td align="right">96.0</td>
+<td align="right">101</td>
+<td align="right">96.0</td>
+</tr>
+<tr class="odd">
+<td align="left">Edkey Inc. - Sequoia Charter School</td>
+<td align="left">MARICOPA</td>
+<td align="right">1</td>
+<td align="right">96.1</td>
+<td align="right">76</td>
+<td align="right">96.1</td>
+</tr>
+<tr class="even">
+<td align="left">Reid Traditional Schools’ Valley Academy Inc.</td>
+<td align="left">MARICOPA</td>
+<td align="right">1</td>
+<td align="right">96.1</td>
+<td align="right">76</td>
+<td align="right">96.1</td>
+</tr>
+<tr class="odd">
+<td align="left">Northland Preparatory Academy</td>
+<td align="left">COCONINO</td>
+<td align="right">1</td>
+<td align="right">96.1</td>
+<td align="right">102</td>
+<td align="right">96.1</td>
+</tr>
+<tr class="even">
+<td align="left">Leading Edge Academy Maricopa</td>
+<td align="left">PINAL</td>
+<td align="right">1</td>
+<td align="right">96.1</td>
+<td align="right">77</td>
+<td align="right">96.1</td>
+</tr>
+<tr class="odd">
+<td align="left">Imagine Middle at Surprise Inc.</td>
+<td align="left">MARICOPA</td>
+<td align="right">1</td>
+<td align="right">96.1</td>
+<td align="right">129</td>
+<td align="right">96.1</td>
+</tr>
+<tr class="even">
+<td align="left">Edkey Inc. - Sequoia Pathway Academy</td>
+<td align="left">PINAL</td>
+<td align="right">1</td>
+<td align="right">96.2</td>
+<td align="right">104</td>
+<td align="right">96.2</td>
+</tr>
+<tr class="odd">
+<td align="left">SySTEM Schools</td>
+<td align="left">MARICOPA</td>
+<td align="right">1</td>
+<td align="right">96.2</td>
+<td align="right">26</td>
+<td align="right">96.2</td>
+</tr>
+<tr class="even">
+<td align="left">Pima Unified District</td>
+<td align="left">GRAHAM</td>
+<td align="right">1</td>
+<td align="right">96.2</td>
+<td align="right">79</td>
+<td align="right">96.2</td>
+</tr>
+<tr class="odd">
+<td align="left">Chandler Preparatory Academy</td>
+<td align="left">MARICOPA</td>
+<td align="right">1</td>
+<td align="right">96.3</td>
+<td align="right">135</td>
+<td align="right">96.3</td>
+</tr>
+<tr class="even">
+<td align="left">Daisy Education Corporation dba. Sonoran Science Academy Peo</td>
+<td align="left">MARICOPA</td>
+<td align="right">1</td>
+<td align="right">96.3</td>
+<td align="right">27</td>
+<td align="right">96.3</td>
+</tr>
+<tr class="odd">
+<td align="left">Legacy Traditional School - Surprise</td>
+<td align="left">MARICOPA</td>
+<td align="right">1</td>
+<td align="right">96.3</td>
+<td align="right">219</td>
+<td align="right">96.3</td>
+</tr>
+<tr class="even">
+<td align="left">CAFA Inc. dba Learning Foundation Performing Arts School</td>
+<td align="left">MARICOPA</td>
+<td align="right">1</td>
+<td align="right">96.4</td>
+<td align="right">28</td>
+<td align="right">96.4</td>
+</tr>
+<tr class="odd">
+<td align="left">Edkey Inc. - Sequoia Village School</td>
+<td align="left">NAVAJO</td>
+<td align="right">1</td>
+<td align="right">96.4</td>
+<td align="right">28</td>
+<td align="right">96.4</td>
+</tr>
+<tr class="even">
+<td align="left">Fountain Hills Unified District</td>
+<td align="left">MARICOPA</td>
+<td align="right">1</td>
+<td align="right">96.4</td>
+<td align="right">112</td>
+<td align="right">96.4</td>
+</tr>
+<tr class="odd">
+<td align="left">Leman Academy of Excellence Inc.</td>
+<td align="left">COCHISE</td>
+<td align="right">1</td>
+<td align="right">96.4</td>
+<td align="right">28</td>
+<td align="right">96.4</td>
+</tr>
+<tr class="even">
+<td align="left">Candeo Schools Inc.</td>
+<td align="left">MARICOPA</td>
+<td align="right">1</td>
+<td align="right">96.5</td>
+<td align="right">57</td>
+<td align="right">96.5</td>
+</tr>
+<tr class="odd">
+<td align="left">Flagstaff Unified District</td>
+<td align="left">COCONINO</td>
+<td align="right">1</td>
+<td align="right">96.5</td>
+<td align="right">286</td>
+<td align="right">96.5</td>
+</tr>
+<tr class="even">
+<td align="left">Prescott Valley Charter School</td>
+<td align="left">YAVAPAI</td>
+<td align="right">1</td>
+<td align="right">96.6</td>
+<td align="right">29</td>
+<td align="right">96.6</td>
+</tr>
+<tr class="odd">
+<td align="left">Legacy Traditional Charter Schools - Casa Grande</td>
+<td align="left">PINAL</td>
+<td align="right">1</td>
+<td align="right">96.6</td>
+<td align="right">146</td>
+<td align="right">96.6</td>
+</tr>
+<tr class="even">
+<td align="left">South Valley Academy Inc.</td>
+<td align="left">MARICOPA</td>
+<td align="right">1</td>
+<td align="right">96.6</td>
+<td align="right">59</td>
+<td align="right">96.6</td>
+</tr>
+<tr class="odd">
+<td align="left">Legacy Traditional School - Northwest Tucson</td>
+<td align="left">PIMA</td>
+<td align="right">1</td>
+<td align="right">96.7</td>
+<td align="right">123</td>
+<td align="right">96.7</td>
+</tr>
+<tr class="even">
+<td align="left">Veritas Preparatory Academy</td>
+<td align="left">MARICOPA</td>
+<td align="right">1</td>
+<td align="right">96.7</td>
+<td align="right">123</td>
+<td align="right">96.7</td>
+</tr>
+<tr class="odd">
+<td align="left">Ajo Unified District</td>
+<td align="left">PIMA</td>
+<td align="right">1</td>
+<td align="right">96.8</td>
+<td align="right">31</td>
+<td align="right">96.8</td>
+</tr>
+<tr class="even">
+<td align="left">Bagdad Unified District</td>
+<td align="left">YAVAPAI</td>
+<td align="right">1</td>
+<td align="right">96.8</td>
+<td align="right">31</td>
+<td align="right">96.8</td>
+</tr>
+<tr class="odd">
+<td align="left">Pointe Educational Services</td>
+<td align="left">MARICOPA</td>
+<td align="right">1</td>
+<td align="right">96.8</td>
+<td align="right">31</td>
+<td align="right">96.8</td>
+</tr>
+<tr class="even">
+<td align="left">New World Educational Center</td>
+<td align="left">MARICOPA</td>
+<td align="right">1</td>
+<td align="right">96.9</td>
+<td align="right">32</td>
+<td align="right">96.9</td>
+</tr>
+<tr class="odd">
+<td align="left">Beaver Creek Elementary District</td>
+<td align="left">YAVAPAI</td>
+<td align="right">1</td>
+<td align="right">97.1</td>
+<td align="right">34</td>
+<td align="right">97.1</td>
+</tr>
+<tr class="even">
+<td align="left">NA</td>
+<td align="left">MOHAVE</td>
+<td align="right">1</td>
+<td align="right">97.1</td>
+<td align="right">69</td>
+<td align="right">97.1</td>
+</tr>
+<tr class="odd">
+<td align="left">Globe Unified District</td>
+<td align="left">GILA</td>
+<td align="right">1</td>
+<td align="right">97.1</td>
+<td align="right">105</td>
+<td align="right">97.1</td>
+</tr>
+<tr class="even">
+<td align="left">Heritage Elementary School</td>
+<td align="left">MARICOPA</td>
+<td align="right">1</td>
+<td align="right">97.2</td>
+<td align="right">108</td>
+<td align="right">97.2</td>
+</tr>
+<tr class="odd">
+<td align="left">Pan-American Elementary Charter</td>
+<td align="left">MARICOPA</td>
+<td align="right">1</td>
+<td align="right">97.2</td>
+<td align="right">72</td>
+<td align="right">97.2</td>
+</tr>
+<tr class="even">
+<td align="left">Imagine Superstition Middle Inc.</td>
+<td align="left">PINAL</td>
+<td align="right">1</td>
+<td align="right">97.3</td>
+<td align="right">37</td>
+<td align="right">97.3</td>
+</tr>
+<tr class="odd">
+<td align="left">Academy of Tucson Inc.</td>
+<td align="left">PIMA</td>
+<td align="right">1</td>
+<td align="right">97.3</td>
+<td align="right">75</td>
+<td align="right">97.3</td>
+</tr>
+<tr class="even">
+<td align="left">Daisy Education Corporation dba Sonoran Science Academy</td>
+<td align="left">PIMA</td>
+<td align="right">1</td>
+<td align="right">97.3</td>
+<td align="right">75</td>
+<td align="right">97.3</td>
+</tr>
+<tr class="odd">
+<td align="left">Legacy Traditional School - Avondale</td>
+<td align="left">MARICOPA</td>
+<td align="right">1</td>
+<td align="right">97.4</td>
+<td align="right">151</td>
+<td align="right">97.4</td>
+</tr>
+<tr class="even">
+<td align="left">Country Gardens Charter Schools</td>
+<td align="left">MARICOPA</td>
+<td align="right">1</td>
+<td align="right">97.4</td>
+<td align="right">38</td>
+<td align="right">97.4</td>
+</tr>
+<tr class="odd">
+<td align="left">Trivium Preparatory Academy</td>
+<td align="left">MARICOPA</td>
+<td align="right">1</td>
+<td align="right">97.4</td>
+<td align="right">152</td>
+<td align="right">97.4</td>
+</tr>
+<tr class="even">
+<td align="left">Round Valley Unified District</td>
+<td align="left">APACHE</td>
+<td align="right">1</td>
+<td align="right">97.4</td>
+<td align="right">116</td>
+<td align="right">97.4</td>
+</tr>
+<tr class="odd">
+<td align="left">Tombstone Unified District</td>
+<td align="left">COCHISE</td>
+<td align="right">1</td>
+<td align="right">97.5</td>
+<td align="right">40</td>
+<td align="right">97.5</td>
+</tr>
+<tr class="even">
+<td align="left">BASIS School Inc. 3</td>
+<td align="left">PIMA</td>
+<td align="right">1</td>
+<td align="right">97.6</td>
+<td align="right">124</td>
+<td align="right">97.6</td>
+</tr>
+<tr class="odd">
+<td align="left">BASIS School Inc. 5</td>
+<td align="left">MARICOPA</td>
+<td align="right">1</td>
+<td align="right">97.7</td>
+<td align="right">175</td>
+<td align="right">97.7</td>
+</tr>
+<tr class="even">
+<td align="left">Acorn Montessori Charter School</td>
+<td align="left">YAVAPAI</td>
+<td align="right">1</td>
+<td align="right">97.8</td>
+<td align="right">45</td>
+<td align="right">97.8</td>
+</tr>
+<tr class="odd">
+<td align="left">ASU Preparatory Academy 1</td>
+<td align="left">MARICOPA</td>
+<td align="right">1</td>
+<td align="right">97.8</td>
+<td align="right">91</td>
+<td align="right">97.8</td>
+</tr>
+<tr class="even">
+<td align="left">Twenty First Century Charter School Inc. Bennett Academy</td>
+<td align="left">MARICOPA</td>
+<td align="right">1</td>
+<td align="right">97.8</td>
+<td align="right">46</td>
+<td align="right">97.8</td>
+</tr>
+<tr class="odd">
+<td align="left">Young Scholars Academy Charter School Corp.</td>
+<td align="left">MOHAVE</td>
+<td align="right">1</td>
+<td align="right">97.9</td>
+<td align="right">47</td>
+<td align="right">97.9</td>
+</tr>
+<tr class="even">
+<td align="left">Success School</td>
+<td align="left">MARICOPA</td>
+<td align="right">1</td>
+<td align="right">97.9</td>
+<td align="right">95</td>
+<td align="right">97.9</td>
+</tr>
+<tr class="odd">
+<td align="left">Mammoth-San Manuel Unified District</td>
+<td align="left">PINAL</td>
+<td align="right">1</td>
+<td align="right">98.0</td>
+<td align="right">49</td>
+<td align="right">98.0</td>
+</tr>
+<tr class="even">
+<td align="left">Mohave Valley Elementary District</td>
+<td align="left">MOHAVE</td>
+<td align="right">1</td>
+<td align="right">98.0</td>
+<td align="right">102</td>
+<td align="right">98.0</td>
+</tr>
+<tr class="odd">
+<td align="left">Eduprize Schools LLC</td>
+<td align="left">PINAL</td>
+<td align="right">1</td>
+<td align="right">98.1</td>
+<td align="right">210</td>
+<td align="right">98.1</td>
+</tr>
+<tr class="even">
+<td align="left">Academy Del Sol Inc.</td>
+<td align="left">PIMA</td>
+<td align="right">1</td>
+<td align="right">98.1</td>
+<td align="right">53</td>
+<td align="right">98.1</td>
+</tr>
+<tr class="odd">
+<td align="left">Calibre Academy</td>
+<td align="left">MARICOPA</td>
+<td align="right">1</td>
+<td align="right">98.2</td>
+<td align="right">55</td>
+<td align="right">98.2</td>
+</tr>
+<tr class="even">
+<td align="left">Academy of Mathematics and Science South Inc.</td>
+<td align="left">MARICOPA</td>
+<td align="right">1</td>
+<td align="right">98.2</td>
+<td align="right">56</td>
+<td align="right">98.2</td>
+</tr>
+<tr class="odd">
+<td align="left">Blue Ridge Unified School District No. 32</td>
+<td align="left">NAVAJO</td>
+<td align="right">1</td>
+<td align="right">98.2</td>
+<td align="right">169</td>
+<td align="right">98.2</td>
+</tr>
+<tr class="even">
+<td align="left">BASIS School Inc. 13</td>
+<td align="left">MARICOPA</td>
+<td align="right">1</td>
+<td align="right">98.3</td>
+<td align="right">58</td>
+<td align="right">98.3</td>
+</tr>
+<tr class="odd">
+<td align="left">Camelback Education Inc</td>
+<td align="left">MARICOPA</td>
+<td align="right">1</td>
+<td align="right">98.3</td>
+<td align="right">59</td>
+<td align="right">98.3</td>
+</tr>
+<tr class="even">
+<td align="left">Legacy Traditional Charter School - Maricopa</td>
+<td align="left">PINAL</td>
+<td align="right">1</td>
+<td align="right">98.4</td>
+<td align="right">128</td>
+<td align="right">98.4</td>
+</tr>
+<tr class="odd">
+<td align="left">Continental Elementary District</td>
+<td align="left">PIMA</td>
+<td align="right">1</td>
+<td align="right">98.6</td>
+<td align="right">70</td>
+<td align="right">98.6</td>
+</tr>
+<tr class="even">
+<td align="left">Willcox Unified District</td>
+<td align="left">COCHISE</td>
+<td align="right">1</td>
+<td align="right">98.6</td>
+<td align="right">74</td>
+<td align="right">98.6</td>
+</tr>
+<tr class="odd">
+<td align="left">Maricopa Unified School District</td>
+<td align="left">PINAL</td>
+<td align="right">1</td>
+<td align="right">98.9</td>
+<td align="right">262</td>
+<td align="right">98.9</td>
+</tr>
+<tr class="even">
+<td align="left">Cortez Park Charter Middle School Inc.</td>
+<td align="left">MARICOPA</td>
+<td align="right">1</td>
+<td align="right">98.9</td>
+<td align="right">94</td>
+<td align="right">98.9</td>
+</tr>
+<tr class="odd">
+<td align="left">Eloy Elementary District</td>
+<td align="left">PINAL</td>
+<td align="right">1</td>
+<td align="right">98.9</td>
+<td align="right">95</td>
+<td align="right">98.9</td>
+</tr>
+<tr class="even">
+<td align="left">Fort Huachuca Accommodation District</td>
+<td align="left">COCHISE</td>
+<td align="right">1</td>
+<td align="right">99.0</td>
+<td align="right">99</td>
+<td align="right">99.0</td>
+</tr>
+<tr class="odd">
+<td align="left">Riverside Elementary District</td>
+<td align="left">MARICOPA</td>
+<td align="right">1</td>
+<td align="right">99.0</td>
+<td align="right">105</td>
+<td align="right">99.0</td>
+</tr>
+<tr class="even">
+<td align="left">Wilson Elementary District</td>
+<td align="left">MARICOPA</td>
+<td align="right">1</td>
+<td align="right">99.3</td>
+<td align="right">139</td>
+<td align="right">99.3</td>
+</tr>
+<tr class="odd">
+<td align="left">Imagine Desert West Middle Inc.</td>
+<td align="left">MARICOPA</td>
+<td align="right">1</td>
+<td align="right">99.3</td>
+<td align="right">141</td>
+<td align="right">99.3</td>
+</tr>
+<tr class="even">
+<td align="left">Payson Unified District</td>
+<td align="left">GILA</td>
+<td align="right">1</td>
+<td align="right">99.4</td>
+<td align="right">168</td>
+<td align="right">99.4</td>
+</tr>
+<tr class="odd">
+<td align="left">Somerton Elementary District</td>
+<td align="left">YUMA</td>
+<td align="right">1</td>
+<td align="right">99.4</td>
+<td align="right">338</td>
+<td align="right">99.4</td>
+</tr>
+<tr class="even">
+<td align="left">BASIS School Inc. 2</td>
+<td align="left">MARICOPA</td>
+<td align="right">1</td>
+<td align="right">99.5</td>
+<td align="right">186</td>
+<td align="right">99.5</td>
+</tr>
+<tr class="odd">
+<td align="left">Academy of Mathematics and Science Inc. 2</td>
+<td align="left">MARICOPA</td>
+<td align="right">1</td>
+<td align="right">100.0</td>
+<td align="right">113</td>
+<td align="right">100.0</td>
+</tr>
+<tr class="even">
+<td align="left">Altar Valley Elementary District</td>
+<td align="left">PIMA</td>
+<td align="right">1</td>
+<td align="right">100.0</td>
+<td align="right">84</td>
+<td align="right">100.0</td>
+</tr>
+<tr class="odd">
+<td align="left">American Basic Schools LLC</td>
+<td align="left">MARICOPA</td>
+<td align="right">1</td>
+<td align="right">100.0</td>
+<td align="right">81</td>
+<td align="right">100.0</td>
+</tr>
+<tr class="even">
+<td align="left">Aprender Tucson</td>
+<td align="left">PIMA</td>
+<td align="right">1</td>
+<td align="right">100.0</td>
+<td align="right">27</td>
+<td align="right">100.0</td>
+</tr>
+<tr class="odd">
+<td align="left">Arizona School For The Arts</td>
+<td align="left">MARICOPA</td>
+<td align="right">1</td>
+<td align="right">100.0</td>
+<td align="right">112</td>
+<td align="right">100.0</td>
+</tr>
+<tr class="even">
+<td align="left">Arizona State School for the Deaf and Blind</td>
+<td align="left">MARICOPA</td>
+<td align="right">1</td>
+<td align="right">100.0</td>
+<td align="right">23</td>
+<td align="right">100.0</td>
+</tr>
+<tr class="odd">
+<td align="left">Arlington Elementary District</td>
+<td align="left">MARICOPA</td>
+<td align="right">1</td>
+<td align="right">100.0</td>
+<td align="right">29</td>
+<td align="right">100.0</td>
+</tr>
+<tr class="even">
+<td align="left">Baboquivari Unified School District #40</td>
+<td align="left">PIMA</td>
+<td align="right">1</td>
+<td align="right">100.0</td>
+<td align="right">86</td>
+<td align="right">100.0</td>
+</tr>
+<tr class="odd">
+<td align="left">Ball Charter Schools (Val Vista)</td>
+<td align="left">MARICOPA</td>
+<td align="right">1</td>
+<td align="right">100.0</td>
+<td align="right">23</td>
+<td align="right">100.0</td>
+</tr>
+<tr class="even">
+<td align="left">BASIS School Inc. 10</td>
+<td align="left">MARICOPA</td>
+<td align="right">1</td>
+<td align="right">100.0</td>
+<td align="right">104</td>
+<td align="right">100.0</td>
+</tr>
+<tr class="odd">
+<td align="left">BASIS School Inc. 8</td>
+<td align="left">PIMA</td>
+<td align="right">1</td>
+<td align="right">100.0</td>
+<td align="right">154</td>
+<td align="right">100.0</td>
+</tr>
+<tr class="even">
+<td align="left">Bell Canyon Charter School Inc</td>
+<td align="left">MARICOPA</td>
+<td align="right">1</td>
+<td align="right">100.0</td>
+<td align="right">30</td>
+<td align="right">100.0</td>
+</tr>
+<tr class="odd">
+<td align="left">Career Success Schools</td>
+<td align="left">MARICOPA</td>
+<td align="right">1</td>
+<td align="right">100.0</td>
+<td align="right">23</td>
+<td align="right">100.0</td>
+</tr>
+<tr class="even">
+<td align="left">Carpe Diem Collegiate High School</td>
+<td align="left">YUMA</td>
+<td align="right">1</td>
+<td align="right">100.0</td>
+<td align="right">46</td>
+<td align="right">100.0</td>
+</tr>
+<tr class="odd">
+<td align="left">Challenge School Inc.</td>
+<td align="left">MARICOPA</td>
+<td align="right">1</td>
+<td align="right">100.0</td>
+<td align="right">42</td>
+<td align="right">100.0</td>
+</tr>
+<tr class="even">
+<td align="left">Crown Charter School Inc</td>
+<td align="left">MARICOPA</td>
+<td align="right">1</td>
+<td align="right">100.0</td>
+<td align="right">28</td>
+<td align="right">100.0</td>
+</tr>
+<tr class="odd">
+<td align="left">Daisy Education Corporation dba Paragon Science Academy</td>
+<td align="left">MARICOPA</td>
+<td align="right">1</td>
+<td align="right">100.0</td>
+<td align="right">46</td>
+<td align="right">100.0</td>
+</tr>
+<tr class="even">
+<td align="left">Daisy Education Corporation dba Sonoran Science Academy - Ph</td>
+<td align="left">MARICOPA</td>
+<td align="right">1</td>
+<td align="right">100.0</td>
+<td align="right">31</td>
+<td align="right">100.0</td>
+</tr>
+<tr class="odd">
+<td align="left">Daisy Education Corporation dba. Sonoran Science Academy Dav</td>
+<td align="left">PIMA</td>
+<td align="right">1</td>
+<td align="right">100.0</td>
+<td align="right">22</td>
+<td align="right">100.0</td>
+</tr>
+<tr class="even">
+<td align="left">Destiny School Inc.</td>
+<td align="left">GILA</td>
+<td align="right">1</td>
+<td align="right">100.0</td>
+<td align="right">29</td>
+<td align="right">100.0</td>
+</tr>
+<tr class="odd">
+<td align="left">EAGLE College Prep Maryvale LLC</td>
+<td align="left">MARICOPA</td>
+<td align="right">1</td>
+<td align="right">100.0</td>
+<td align="right">43</td>
+<td align="right">100.0</td>
+</tr>
+<tr class="even">
+<td align="left">Edkey Inc. - Sequoia Ranch School</td>
+<td align="left">MARICOPA</td>
+<td align="right">1</td>
+<td align="right">100.0</td>
+<td align="right">36</td>
+<td align="right">100.0</td>
+</tr>
+<tr class="odd">
+<td align="left">Excalibur Charter Schools Inc.</td>
+<td align="left">PINAL</td>
+<td align="right">1</td>
+<td align="right">100.0</td>
+<td align="right">36</td>
+<td align="right">100.0</td>
+</tr>
+<tr class="even">
+<td align="left">Fort Thomas Unified District</td>
+<td align="left">GRAHAM</td>
+<td align="right">1</td>
+<td align="right">100.0</td>
+<td align="right">40</td>
+<td align="right">100.0</td>
+</tr>
+<tr class="odd">
+<td align="left">Fowler Elementary District</td>
+<td align="left">MARICOPA</td>
+<td align="right">1</td>
+<td align="right">100.0</td>
+<td align="right">250</td>
+<td align="right">100.0</td>
+</tr>
+<tr class="even">
+<td align="left">Friendly House Inc.</td>
+<td align="left">MARICOPA</td>
+<td align="right">1</td>
+<td align="right">100.0</td>
+<td align="right">45</td>
+<td align="right">100.0</td>
+</tr>
+<tr class="odd">
+<td align="left">Ganado Unified School District</td>
+<td align="left">APACHE</td>
+<td align="right">1</td>
+<td align="right">100.0</td>
+<td align="right">108</td>
+<td align="right">100.0</td>
+</tr>
+<tr class="even">
+<td align="left">Gila Bend Unified District</td>
+<td align="left">MARICOPA</td>
+<td align="right">1</td>
+<td align="right">100.0</td>
+<td align="right">59</td>
+<td align="right">100.0</td>
+</tr>
+<tr class="odd">
+<td align="left">Holbrook Unified District</td>
+<td align="left">NAVAJO</td>
+<td align="right">1</td>
+<td align="right">100.0</td>
+<td align="right">112</td>
+<td align="right">100.0</td>
+</tr>
+<tr class="even">
+<td align="left">Kaizen Education Foundation dba Havasu Preparatory Academy</td>
+<td align="left">MOHAVE</td>
+<td align="right">1</td>
+<td align="right">100.0</td>
+<td align="right">33</td>
+<td align="right">100.0</td>
+</tr>
+<tr class="odd">
+<td align="left">Liberty Traditional Charter School</td>
+<td align="left">MARICOPA</td>
+<td align="right">1</td>
+<td align="right">100.0</td>
+<td align="right">52</td>
+<td align="right">100.0</td>
+</tr>
+<tr class="even">
+<td align="left">Maryvale Preparatory Academy</td>
+<td align="left">MARICOPA</td>
+<td align="right">1</td>
+<td align="right">100.0</td>
+<td align="right">52</td>
+<td align="right">100.0</td>
+</tr>
+<tr class="odd">
+<td align="left">Math and Science Success Academy Inc.</td>
+<td align="left">PIMA</td>
+<td align="right">1</td>
+<td align="right">100.0</td>
+<td align="right">62</td>
+<td align="right">100.0</td>
+</tr>
+<tr class="even">
+<td align="left">Mexicayotl Academy Inc.</td>
+<td align="left">SANTA CRUZ</td>
+<td align="right">1</td>
+<td align="right">100.0</td>
+<td align="right">21</td>
+<td align="right">100.0</td>
+</tr>
+<tr class="odd">
+<td align="left">Mohave Accelerated Learning Center</td>
+<td align="left">MOHAVE</td>
+<td align="right">1</td>
+<td align="right">100.0</td>
+<td align="right">85</td>
+<td align="right">100.0</td>
+</tr>
+<tr class="even">
+<td align="left">Montessori Day Public Schools Chartered Inc.</td>
+<td align="left">MARICOPA</td>
+<td align="right">1</td>
+<td align="right">100.0</td>
+<td align="right">24</td>
+<td align="right">100.0</td>
+</tr>
+<tr class="odd">
+<td align="left">Morenci Unified District</td>
+<td align="left">GREENLEE</td>
+<td align="right">1</td>
+<td align="right">100.0</td>
+<td align="right">98</td>
+<td align="right">100.0</td>
+</tr>
+<tr class="even">
+<td align="left">Morrison Education Group Inc.</td>
+<td align="left">MARICOPA</td>
+<td align="right">1</td>
+<td align="right">100.0</td>
+<td align="right">24</td>
+<td align="right">100.0</td>
+</tr>
+<tr class="odd">
+<td align="left">Noah Webster Schools-Pima</td>
+<td align="left">MARICOPA</td>
+<td align="right">1</td>
+<td align="right">100.0</td>
+<td align="right">32</td>
+<td align="right">100.0</td>
+</tr>
+<tr class="even">
+<td align="left">P.L.C. Charter Schools</td>
+<td align="left">MARICOPA</td>
+<td align="right">1</td>
+<td align="right">100.0</td>
+<td align="right">117</td>
+<td align="right">100.0</td>
+</tr>
+<tr class="odd">
+<td align="left">Paramount Education Studies Inc</td>
+<td align="left">MARICOPA</td>
+<td align="right">1</td>
+<td align="right">100.0</td>
+<td align="right">34</td>
+<td align="right">100.0</td>
+</tr>
+<tr class="even">
+<td align="left">Pinon Unified District</td>
+<td align="left">NAVAJO</td>
+<td align="right">1</td>
+<td align="right">100.0</td>
+<td align="right">103</td>
+<td align="right">100.0</td>
+</tr>
+<tr class="odd">
+<td align="left">Pioneer Preparatory School</td>
+<td align="left">MARICOPA</td>
+<td align="right">1</td>
+<td align="right">100.0</td>
+<td align="right">92</td>
+<td align="right">100.0</td>
+</tr>
+<tr class="even">
+<td align="left">Presidio School</td>
+<td align="left">PIMA</td>
+<td align="right">1</td>
+<td align="right">100.0</td>
+<td align="right">35</td>
+<td align="right">100.0</td>
+</tr>
+<tr class="odd">
+<td align="left">Ray Unified District</td>
+<td align="left">PINAL</td>
+<td align="right">1</td>
+<td align="right">100.0</td>
+<td align="right">29</td>
+<td align="right">100.0</td>
+</tr>
+<tr class="even">
+<td align="left">Red Mesa Unified District</td>
+<td align="left">APACHE</td>
+<td align="right">1</td>
+<td align="right">100.0</td>
+<td align="right">35</td>
+<td align="right">100.0</td>
+</tr>
+<tr class="odd">
+<td align="left">San Carlos Unified District</td>
+<td align="left">GILA</td>
+<td align="right">1</td>
+<td align="right">100.0</td>
+<td align="right">105</td>
+<td align="right">100.0</td>
+</tr>
+<tr class="even">
+<td align="left">Sanders Unified District</td>
+<td align="left">APACHE</td>
+<td align="right">1</td>
+<td align="right">100.0</td>
+<td align="right">58</td>
+<td align="right">100.0</td>
+</tr>
+<tr class="odd">
+<td align="left">Santa Cruz Elementary District</td>
+<td align="left">SANTA CRUZ</td>
+<td align="right">1</td>
+<td align="right">100.0</td>
+<td align="right">27</td>
+<td align="right">100.0</td>
+</tr>
+<tr class="even">
+<td align="left">Self Development Academy-Phoenix</td>
+<td align="left">MARICOPA</td>
+<td align="right">1</td>
+<td align="right">100.0</td>
+<td align="right">36</td>
+<td align="right">100.0</td>
+</tr>
+<tr class="odd">
+<td align="left">Skyline Gila River Schools LLC</td>
+<td align="left">PINAL</td>
+<td align="right">1</td>
+<td align="right">100.0</td>
+<td align="right">25</td>
+<td align="right">100.0</td>
+</tr>
+<tr class="even">
+<td align="left">Sonoran Science Academy - Broadway</td>
+<td align="left">PIMA</td>
+<td align="right">1</td>
+<td align="right">100.0</td>
+<td align="right">26</td>
+<td align="right">100.0</td>
+</tr>
+<tr class="odd">
+<td align="left">Southgate Academy Inc.</td>
+<td align="left">PIMA</td>
+<td align="right">1</td>
+<td align="right">100.0</td>
+<td align="right">61</td>
+<td align="right">100.0</td>
+</tr>
+<tr class="even">
+<td align="left">Stanfield Elementary District</td>
+<td align="left">PINAL</td>
+<td align="right">1</td>
+<td align="right">100.0</td>
+<td align="right">55</td>
+<td align="right">100.0</td>
+</tr>
+<tr class="odd">
+<td align="left">Superior Unified School District</td>
+<td align="left">PINAL</td>
+<td align="right">1</td>
+<td align="right">100.0</td>
+<td align="right">24</td>
+<td align="right">100.0</td>
+</tr>
+<tr class="even">
+<td align="left">The Charter Foundation Inc.</td>
+<td align="left">YUMA</td>
+<td align="right">1</td>
+<td align="right">100.0</td>
+<td align="right">37</td>
+<td align="right">100.0</td>
+</tr>
+<tr class="odd">
+<td align="left">The Paideia Academies Inc</td>
+<td align="left">MARICOPA</td>
+<td align="right">1</td>
+<td align="right">100.0</td>
+<td align="right">57</td>
+<td align="right">100.0</td>
+</tr>
+<tr class="even">
+<td align="left">Tuba City Unified School District #15</td>
+<td align="left">COCONINO</td>
+<td align="right">1</td>
+<td align="right">100.0</td>
+<td align="right">96</td>
+<td align="right">100.0</td>
+</tr>
+<tr class="odd">
+<td align="left">Tucson Country Day School Inc.</td>
+<td align="left">PIMA</td>
+<td align="right">1</td>
+<td align="right">100.0</td>
+<td align="right">80</td>
+<td align="right">100.0</td>
+</tr>
+<tr class="even">
+<td align="left">Tucson International Academy Inc.</td>
+<td align="left">PIMA</td>
+<td align="right">1</td>
+<td align="right">100.0</td>
+<td align="right">23</td>
+<td align="right">100.0</td>
+</tr>
+<tr class="odd">
+<td align="left">Williams Unified District</td>
+<td align="left">COCONINO</td>
+<td align="right">1</td>
+<td align="right">100.0</td>
+<td align="right">54</td>
+<td align="right">100.0</td>
+</tr>
+<tr class="even">
+<td align="left">Window Rock Unified District</td>
+<td align="left">APACHE</td>
+<td align="right">1</td>
+<td align="right">100.0</td>
+<td align="right">156</td>
+<td align="right">100.0</td>
+</tr>
+<tr class="odd">
+<td align="left">Winslow Unified District</td>
+<td align="left">NAVAJO</td>
+<td align="right">1</td>
+<td align="right">100.0</td>
+<td align="right">156</td>
+<td align="right">100.0</td>
+</tr>
+<tr class="even">
+<td align="left">NA</td>
+<td align="left">PIMA</td>
+<td align="right">1</td>
+<td align="right">100.0</td>
+<td align="right">86</td>
+<td align="right">100.0</td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 </div>
 <div id="resources-2" class="section level2">
@@ -489,7 +3180,7 @@ Here are two ways to join:</p>
 </div>
 <div id="campaign-finance-data" class="section level4 unnumbered">
 <h4>Campaign finance data</h4>
-<p>There are two tables saved in the R data file, “<a href="https://cronkitedata.github.io/rstudyguide/data/azcampfin.Rda">azcampfin.Rda</a>”. One holds information on contributions available from the offiical FEC database as of Feb. 23, 2020 and the other holds information on the candidates and committees.</p>
+<p>There are two tables saved in the R data file, “<a href="https://github.com/cronkitedata/rstudyguide/blob/master/data/azcampfin.Rda?raw=true">azcampfin.Rda</a>”. One holds information on contributions available from the offiical FEC database as of Feb. 23, 2020 and the other holds information on the candidates and committees.</p>
 <p>The following codes are used in this dataset, which you may want to save into data frame. Here is some code you can use to create a lookup table for the transaction types. These codes can be joined with the column called <code>transaction_tp</code> in the contributions (or <code>arizona20</code>) data frame.</p>
 <div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb77-1" title="1">transaction_types &lt;-<span class="st"> </span><span class="kw">tribble</span> (</a>
 <a class="sourceLine" id="cb77-2" title="2">  <span class="op">~</span>tcode, <span class="op">~</span>contrib_type,</a>
