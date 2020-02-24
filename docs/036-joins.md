@@ -221,342 +221,42 @@ In real life, you'd have to decide how much you care about these missing schools
 
 #### Use the joined table {-}
 
-Now I might want to look at rates of immunization by school district: 
+Now I might want to look at which school districts have low immunization rates: 
 
 
 ```r
 immune_joined %>%
+  # by school 
   mutate (school_pct = num_immune_mmr / enrolled  * 100 ) %>%
+  # by district
   group_by (nces_district_name, county) %>%
   summarise ( num_schools = n() ,
               total_enrolled = sum(enrolled),
               total_immune = sum (num_immune_mmr),
               median_immune = median (school_pct)
               ) %>%
+  # district total pct (immunized / total students)
   mutate ( pct_immune = total_immune/ total_enrolled * 100) %>%
   select (nces_district_name, county, num_schools, pct_immune, total_enrolled,  median_immune) %>%
-  arrange ( desc(num_schools), pct_immune) %>%
+  filter (median_immune <= 93) %>%
+  head (10) %>%
   kable (digits=1)
 ```
 
 
 
-nces_district_name                                             county        num_schools   pct_immune   total_enrolled   median_immune
--------------------------------------------------------------  -----------  ------------  -----------  ---------------  --------------
-Mesa Unified District                                          MARICOPA               56         97.5             4893            98.5
-Chandler Unified District #80                                  MARICOPA               32         96.5             3497            96.9
-Peoria Unified School District                                 MARICOPA               29         97.7             2555            97.9
-Deer Valley Unified District                                   MARICOPA               28         95.5             2479            95.9
-Gilbert Unified District                                       MARICOPA               26         96.8             2502            96.9
-Paradise Valley Unified District                               MARICOPA               26         96.9             2239            97.9
-Washington Elementary School District                          MARICOPA               26         98.8             2635            98.9
-Tucson Unified District                                        PIMA                   23         99.6             2921           100.0
-Dysart Unified District                                        MARICOPA               18         97.4             1776            98.0
-Roosevelt Elementary District                                  MARICOPA               16         98.2             1056            98.6
-Glendale Elementary District                                   MARICOPA               14         99.0             1469           100.0
-Marana Unified District                                        PIMA                   12         97.4              910            97.8
-Pendergast Elementary District                                 MARICOPA               12         98.4             1147            99.0
-Sunnyside Unified District                                     PIMA                   12         99.7             1156           100.0
-Phoenix Elementary District                                    MARICOPA               11         98.6              621           100.0
-Scottsdale Unified District                                    MARICOPA                9         96.5             1673            96.5
-Higley Unified School District                                 MARICOPA                9         97.6             1048            97.3
-Alhambra Elementary District                                   MARICOPA                9         99.3             1493            99.6
-Creighton Elementary District                                  MARICOPA                9         99.6              671           100.0
-Florence Unified School District                               PINAL                   8         97.0              664            97.9
-Laveen Elementary District                                     MARICOPA                8         98.2              768            98.3
-Crane Elementary District                                      YUMA                    8         99.7              727           100.0
-Kyrene Elementary District                                     MARICOPA                7         96.7             2039            96.7
-Buckeye Elementary District                                    MARICOPA                7         97.4              587            98.1
-Vail Unified School District                                   PIMA                    7         97.7             1063            97.4
-Avondale Elementary District                                   MARICOPA                7         99.3              672            99.3
-Cartwright Elementary District                                 MARICOPA                7         99.4             1806            99.5
-Liberty Elementary District                                    MARICOPA                6         95.7              374            97.7
-Humboldt Unified District                                      YAVAPAI                 6         96.7              457            96.3
-Flowing Wells Unified District                                 PIMA                    6         97.8              414            98.1
-Littleton Elementary District                                  MARICOPA                6         98.4              619            99.1
-Sierra Vista Unified District                                  COCHISE                 6         98.8              402            98.8
-Yuma Elementary District                                       YUMA                    6         98.8             1003            99.1
-Gadsden Elementary District                                    YUMA                    6         99.8              632           100.0
-American Leadership Academy  Inc.                              MARICOPA                5         91.9              467            92.9
-Cave Creek Unified District                                    MARICOPA                5         93.2              468            94.5
-J O Combs Unified School District                              PINAL                   5         94.7              379            93.6
-Litchfield Elementary District                                 MARICOPA                5         95.9             1369            96.3
-Lake Havasu Unified District                                   MOHAVE                  5         96.6              321            96.1
-Amphitheater Unified District                                  PIMA                    5         98.0              915            97.5
-Tempe School District                                          MARICOPA                5         98.8              840            97.4
-Tolleson Elementary District                                   MARICOPA                4         95.2              357            99.3
-Madison Elementary District                                    MARICOPA                4         95.8              671            96.6
-Balsz Elementary District                                      MARICOPA                4         98.7              227            98.5
-Chinle Unified District                                        APACHE                  4        100.0              188           100.0
-Benjamin Franklin Charter School                               MARICOPA                3         87.7              253            92.2
-Cottonwood-Oak Creek Elementary District                       YAVAPAI                 3         92.7              233            96.2
-Queen Creek Unified District                                   MARICOPA                3         96.6              581            97.2
-Apache Junction Unified District                               PINAL                   3         97.4              305            97.3
-Osborn Elementary District                                     MARICOPA                3         97.8              324            97.8
-Safford Unified District                                       GRAHAM                  3         98.3              232            98.7
-Casa Grande Elementary District                                PINAL                   3         99.0              821            99.0
-Isaac Elementary District                                      MARICOPA                3         99.2              730            99.5
-Murphy Elementary District                                     MARICOPA                3        100.0              153           100.0
-CITY Center for Collaborative Learning                         PIMA                    2         87.8               49            87.8
-American Leadership Academy  Inc.                              PINAL                   2         91.0              178            94.3
-Kingman Unified School District                                MOHAVE                  2         91.9              298            93.2
-Nadaburg Unified School District                               MARICOPA                2         92.5               80            91.3
-Snowflake Unified District                                     NAVAJO                  2         94.1              186            93.8
-Center for Academic Success  Inc.                              COCHISE                 2         94.7               95            94.7
-Saddle Mountain Unified School District                        MARICOPA                2         96.0              150            96.1
-Wickenburg Unified District                                    MARICOPA                2         96.3              109            95.1
-Tanque Verde Unified District                                  PIMA                    2         96.5              202            96.5
-NA                                                             MARICOPA                2         96.8               94            97.1
-Bullhead City School District                                  MOHAVE                  2         97.7              303            97.8
-Fit Kids  Inc. dba Champion Schools                            MARICOPA                2         97.7              131            97.7
-Leman Academy of Excellence  Inc.                              PIMA                    2         97.8              181            98.1
-Catalina Foothills Unified District                            PIMA                    2         98.2              438            98.2
-Parker Unified School District                                 LA PAZ                  2         98.2              166            98.9
-Arizona Community Development Corporation                      PIMA                    2         98.4              127            98.8
-Sahuarita Unified District                                     PIMA                    2         98.6              490            98.5
-Douglas Unified District                                       COCHISE                 2         99.0              286            98.8
-Palominas Elementary District                                  COCHISE                 2         99.2              120            99.1
-Nogales Unified District                                       SANTA CRUZ              2         99.5              444            99.5
-Union Elementary District                                      MARICOPA                2         99.6              235            99.5
-Santa Cruz Valley Unified District                             SANTA CRUZ              2         99.6              249            99.6
-Coolidge Unified District                                      PINAL                   2        100.0              203           100.0
-Harvest Power Community Development Group  Inc.                YUMA                    2        100.0              152           100.0
-NA                                                             APACHE                  2        100.0               59           100.0
-Wellton Elementary District                                    YUMA                    1         56.0               25            56.0
-Mountain Oak Charter School  Inc.                              YAVAPAI                 1         59.1               22            59.1
-Desert Star Community School  Inc.                             YAVAPAI                 1         60.9               23            60.9
-Valley of the Sun Waldorf Education Association  dba Desert    MARICOPA                1         64.3               28            64.3
-Edkey  Inc. - Pathfinder Academy                               MARICOPA                1         66.7               45            66.7
-Pine Forest Education Association  Inc.                        COCONINO                1         69.2               26            69.2
-Franklin Phonetic Primary School Inc. 1                        YAVAPAI                 1         75.5               49            75.5
-Edkey  Inc. - Sequoia Choice Schools                           MARICOPA                1         76.9               26            76.9
-San Tan Montessori School  Inc.                                MARICOPA                1         78.7               94            78.7
-Little Lamb Community School                                   MARICOPA                1         79.4               34            79.4
-Sedona-Oak Creek JUSD #9                                       YAVAPAI                 1         79.4               34            79.4
-Flagstaff Junior Academy                                       COCONINO                1         80.4               46            80.4
-Painted Desert Montessori  LLC                                 MARICOPA                1         81.6               49            81.6
-Legacy Traditional Charter School - Laveen Village             MARICOPA                1         82.0              128            82.0
-Stepping Stones Academy                                        MARICOPA                1         82.1               28            82.1
-Satori  Inc.                                                   PIMA                    1         82.8               29            82.8
-LEAD Charter Schools                                           MARICOPA                1         83.3               42            83.3
-Miami Unified District                                         GILA                    1         83.3               72            83.3
-Imagine Coolidge Elementary  Inc.                              PINAL                   1         84.4              122            84.4
-Joseph City Unified District                                   NAVAJO                  1         84.8               33            84.8
-NA                                                             NAVAJO                  1         84.8               33            84.8
-Benchmark School  Inc.                                         MARICOPA                1         85.5               55            85.5
-Arizona Connections Academy Charter School  Inc.               MARICOPA                1         85.6              201            85.6
-BASIS School Inc. 12                                           YAVAPAI                 1         85.7               91            85.7
-Foothills Academy                                              MARICOPA                1         85.7               21            85.7
-Keystone Montessori Charter School  Inc.                       MARICOPA                1         86.4               22            86.4
-Arizona Montessori Charter School at Anthem                    MARICOPA                1         86.5               37            86.5
-LEAD Charter Schools dba Leading Edge Academy Queen Creek      PINAL                   1         86.7               30            86.7
-Choice Academies  Inc.                                         MARICOPA                1         86.8               53            86.8
-Incito Schools                                                 MARICOPA                1         87.5               32            87.5
-Kaizen Education Foundation dba Vista Grove Preparatory  1     MARICOPA                1         87.5               40            87.5
-CAFA  Inc. dba Learning Foundation and Performing Arts Alta    MARICOPA                1         88.0               25            88.0
-Tempe Preparatory Academy                                      MARICOPA                1         88.2               68            88.2
-Legacy Traditional Charter School                              PINAL                   1         88.3              111            88.3
-Acclaim Charter School                                         MARICOPA                1         88.6               44            88.6
-Freedom Academy  Inc.                                          MARICOPA                1         88.6               44            88.6
-Boys & Girls Clubs of the East Valley dba Mesa Arts Academy    MARICOPA                1         88.9               27            88.9
-Villa Montessori Charter School                                MARICOPA                1         89.1               55            89.1
-Show Low Unified District                                      NAVAJO                  1         89.1              193            89.1
-Legacy Traditional School - Chandler                           MARICOPA                1         89.2              111            89.2
-CAFA  Inc. dba Learning Foundation and Performing Arts Gilbe   MARICOPA                1         89.3               75            89.3
-EAGLE South Mountain Charter  Inc.                             MARICOPA                1         89.9               79            89.9
-Ball Charter Schools (Dobson)                                  MARICOPA                1         90.0               40            90.0
-Heber-Overgaard Unified District                               NAVAJO                  1         90.0               40            90.0
-The Charter Foundation  Inc.                                   MARICOPA                1         90.0               30            90.0
-Mayer Unified School District                                  YAVAPAI                 1         90.2               41            90.2
-Arete Preparatory Academy                                      MARICOPA                1         90.9               99            90.9
-Mingus Springs Charter School                                  YAVAPAI                 1         90.9               22            90.9
-Picacho Elementary District                                    PINAL                   1         90.9               22            90.9
-Chino Valley Unified District                                  YAVAPAI                 1         91.0              178            91.0
-Desert Heights Charter Schools                                 MARICOPA                1         91.2               57            91.2
-Imagine Avondale Middle  Inc.                                  MARICOPA                1         91.5               82            91.5
-BASIS School Inc. 9                                            MARICOPA                1         91.7              133            91.7
-Phoenix Collegiate Academy  Inc.                               MARICOPA                1         91.8               49            91.8
-Great Expectations Academy                                     PIMA                    1         91.9               37            91.9
-Empower College Prep                                           MARICOPA                1         92.0               87            92.0
-Cholla Academy                                                 MARICOPA                1         92.0               25            92.0
-Legacy Traditional School - Glendale                           MARICOPA                1         92.3              117            92.3
-Khalsa Family Services                                         PIMA                    1         92.6               27            92.6
-Thatcher Unified District                                      GRAHAM                  1         92.6              149            92.6
-BASIS School Inc. 6                                            COCONINO                1         92.6               95            92.6
-Kingman Academy Of Learning                                    MOHAVE                  1         92.9              112            92.9
-Archway Classical Academy Cicero                               MARICOPA                1         93.2              117            93.2
-Cochise Community Development Corporation                      COCHISE                 1         93.3               30            93.3
-Happy Valley East                                              PINAL                   1         93.3               45            93.3
-Anthem Preparatory Academy                                     MARICOPA                1         93.4               76            93.4
-Ridgeline Academy  Inc.                                        MARICOPA                1         93.5               46            93.5
-Harvest Power Community Development Group  Inc.                MARICOPA                1         93.5               31            93.5
-St Johns Unified District                                      APACHE                  1         93.7               63            93.7
-West Gilbert Charter Elementary School  Inc.                   MARICOPA                1         93.8               32            93.8
-Legacy Traditional School - North Chandler                     MARICOPA                1         93.8               65            93.8
-Archway Classical Academy Lincoln                              MARICOPA                1         94.0              116            94.0
-Happy Valley School  Inc.                                      MARICOPA                1         94.0               50            94.0
-Reid Traditional Schools' Painted Rock Academy Inc.            MARICOPA                1         94.1               51            94.1
-The Grande Innovation Academy                                  PINAL                   1         94.2               52            94.2
-Scottsdale Preparatory Academy                                 MARICOPA                1         94.2              139            94.2
-Naco Elementary District                                       COCHISE                 1         94.3               35            94.3
-BASIS School Inc. 4                                            MARICOPA                1         94.4              162            94.4
-Benson Unified School District                                 COCHISE                 1         94.5              109            94.5
-Self Development Charter School                                MARICOPA                1         94.6               37            94.6
-Paragon Management  Inc.                                       MARICOPA                1         94.8              213            94.8
-Allen-Cochran Enterprises  Inc.                                MARICOPA                1         94.9               39            94.9
-Bisbee Unified District                                        COCHISE                 1         95.0               40            95.0
-Telesis Center for Learning  Inc.                              MOHAVE                  1         95.0               60            95.0
-Academy of Mathematics and Science Inc. 1                      PIMA                    1         95.2               42            95.2
-Kaizen Education Foundation dba Liberty Arts Academy           MARICOPA                1         95.2               21            95.2
-Horizon Community Learning Center Inc. 2                       MARICOPA                1         95.3              127            95.3
-Camp Verde Unified District                                    YAVAPAI                 1         95.3              107            95.3
-Pima Prevention Partnership dba Pima Partnership Academy       PIMA                    1         95.5               22            95.5
-BASIS School Inc. 14                                           MARICOPA                1         95.6               90            95.6
-Legacy Traditional School - Gilbert                            MARICOPA                1         95.6              114            95.6
-American Heritage Academy                                      YAVAPAI                 1         95.7               23            95.7
-Ethos Academy - A Challenge Foundation Academy                 MARICOPA                1         95.7               23            95.7
-Ball Charter Schools (Hearn)                                   MARICOPA                1         95.7               70            95.7
-Grand Canyon Unified District                                  COCONINO                1         95.8               24            95.8
-Red Rock Elementary District                                   PINAL                   1         95.8               48            95.8
-The Charter Foundation  Inc.                                   PIMA                    1         95.8               24            95.8
-Prescott Unified District                                      YAVAPAI                 1         95.8              289            95.8
-BASIS School Inc. 7                                            MARICOPA                1         95.9              122            95.9
-Kaizen Education Foundation dba South Pointe Junior High Sch   MARICOPA                1         95.9               49            95.9
-Noah Webster Schools - Mesa                                    MARICOPA                1         96.0              124            96.0
-Cicero Preparatory Academy                                     MARICOPA                1         96.0              101            96.0
-Glendale Preparatory Academy                                   MARICOPA                1         96.0              101            96.0
-Edkey  Inc. - Sequoia Charter School                           MARICOPA                1         96.1               76            96.1
-Reid Traditional Schools' Valley Academy  Inc.                 MARICOPA                1         96.1               76            96.1
-Northland Preparatory Academy                                  COCONINO                1         96.1              102            96.1
-Leading Edge Academy Maricopa                                  PINAL                   1         96.1               77            96.1
-Imagine Middle at Surprise  Inc.                               MARICOPA                1         96.1              129            96.1
-Edkey  Inc. - Sequoia Pathway Academy                          PINAL                   1         96.2              104            96.2
-SySTEM Schools                                                 MARICOPA                1         96.2               26            96.2
-Pima Unified District                                          GRAHAM                  1         96.2               79            96.2
-Chandler Preparatory Academy                                   MARICOPA                1         96.3              135            96.3
-Daisy Education Corporation dba. Sonoran Science Academy Peo   MARICOPA                1         96.3               27            96.3
-Legacy Traditional School - Surprise                           MARICOPA                1         96.3              219            96.3
-CAFA  Inc. dba Learning Foundation Performing Arts School      MARICOPA                1         96.4               28            96.4
-Edkey  Inc. - Sequoia Village School                           NAVAJO                  1         96.4               28            96.4
-Fountain Hills Unified District                                MARICOPA                1         96.4              112            96.4
-Leman Academy of Excellence  Inc.                              COCHISE                 1         96.4               28            96.4
-Candeo Schools  Inc.                                           MARICOPA                1         96.5               57            96.5
-Flagstaff Unified District                                     COCONINO                1         96.5              286            96.5
-Prescott Valley Charter School                                 YAVAPAI                 1         96.6               29            96.6
-Legacy Traditional Charter Schools - Casa Grande               PINAL                   1         96.6              146            96.6
-South Valley Academy  Inc.                                     MARICOPA                1         96.6               59            96.6
-Legacy Traditional School - Northwest Tucson                   PIMA                    1         96.7              123            96.7
-Veritas Preparatory Academy                                    MARICOPA                1         96.7              123            96.7
-Ajo Unified District                                           PIMA                    1         96.8               31            96.8
-Bagdad Unified District                                        YAVAPAI                 1         96.8               31            96.8
-Pointe Educational Services                                    MARICOPA                1         96.8               31            96.8
-New World Educational Center                                   MARICOPA                1         96.9               32            96.9
-Beaver Creek Elementary District                               YAVAPAI                 1         97.1               34            97.1
-NA                                                             MOHAVE                  1         97.1               69            97.1
-Globe Unified District                                         GILA                    1         97.1              105            97.1
-Heritage Elementary School                                     MARICOPA                1         97.2              108            97.2
-Pan-American Elementary Charter                                MARICOPA                1         97.2               72            97.2
-Imagine Superstition Middle  Inc.                              PINAL                   1         97.3               37            97.3
-Academy of Tucson  Inc.                                        PIMA                    1         97.3               75            97.3
-Daisy Education Corporation dba Sonoran Science Academy        PIMA                    1         97.3               75            97.3
-Legacy Traditional School - Avondale                           MARICOPA                1         97.4              151            97.4
-Country Gardens Charter Schools                                MARICOPA                1         97.4               38            97.4
-Trivium Preparatory Academy                                    MARICOPA                1         97.4              152            97.4
-Round Valley Unified District                                  APACHE                  1         97.4              116            97.4
-Tombstone Unified District                                     COCHISE                 1         97.5               40            97.5
-BASIS School Inc. 3                                            PIMA                    1         97.6              124            97.6
-BASIS School Inc. 5                                            MARICOPA                1         97.7              175            97.7
-Acorn Montessori Charter School                                YAVAPAI                 1         97.8               45            97.8
-ASU Preparatory Academy 1                                      MARICOPA                1         97.8               91            97.8
-Twenty First Century Charter School  Inc. Bennett Academy      MARICOPA                1         97.8               46            97.8
-Young Scholars Academy Charter School Corp.                    MOHAVE                  1         97.9               47            97.9
-Success School                                                 MARICOPA                1         97.9               95            97.9
-Mammoth-San Manuel Unified District                            PINAL                   1         98.0               49            98.0
-Mohave Valley Elementary District                              MOHAVE                  1         98.0              102            98.0
-Eduprize Schools  LLC                                          PINAL                   1         98.1              210            98.1
-Academy Del Sol  Inc.                                          PIMA                    1         98.1               53            98.1
-Calibre Academy                                                MARICOPA                1         98.2               55            98.2
-Academy of Mathematics and Science South  Inc.                 MARICOPA                1         98.2               56            98.2
-Blue Ridge Unified School District No. 32                      NAVAJO                  1         98.2              169            98.2
-BASIS School Inc. 13                                           MARICOPA                1         98.3               58            98.3
-Camelback Education  Inc                                       MARICOPA                1         98.3               59            98.3
-Legacy Traditional Charter School - Maricopa                   PINAL                   1         98.4              128            98.4
-Continental Elementary District                                PIMA                    1         98.6               70            98.6
-Willcox Unified District                                       COCHISE                 1         98.6               74            98.6
-Maricopa Unified School District                               PINAL                   1         98.9              262            98.9
-Cortez Park Charter Middle School  Inc.                        MARICOPA                1         98.9               94            98.9
-Eloy Elementary District                                       PINAL                   1         98.9               95            98.9
-Fort Huachuca Accommodation District                           COCHISE                 1         99.0               99            99.0
-Riverside Elementary District                                  MARICOPA                1         99.0              105            99.0
-Wilson Elementary District                                     MARICOPA                1         99.3              139            99.3
-Imagine Desert West Middle  Inc.                               MARICOPA                1         99.3              141            99.3
-Payson Unified District                                        GILA                    1         99.4              168            99.4
-Somerton Elementary District                                   YUMA                    1         99.4              338            99.4
-BASIS School Inc. 2                                            MARICOPA                1         99.5              186            99.5
-Academy of Mathematics and Science Inc. 2                      MARICOPA                1        100.0              113           100.0
-Altar Valley Elementary District                               PIMA                    1        100.0               84           100.0
-American Basic Schools LLC                                     MARICOPA                1        100.0               81           100.0
-Aprender Tucson                                                PIMA                    1        100.0               27           100.0
-Arizona School For The Arts                                    MARICOPA                1        100.0              112           100.0
-Arizona State School for the Deaf and Blind                    MARICOPA                1        100.0               23           100.0
-Arlington Elementary District                                  MARICOPA                1        100.0               29           100.0
-Baboquivari Unified School District #40                        PIMA                    1        100.0               86           100.0
-Ball Charter Schools (Val Vista)                               MARICOPA                1        100.0               23           100.0
-BASIS School Inc. 10                                           MARICOPA                1        100.0              104           100.0
-BASIS School Inc. 8                                            PIMA                    1        100.0              154           100.0
-Bell Canyon Charter School  Inc                                MARICOPA                1        100.0               30           100.0
-Career Success Schools                                         MARICOPA                1        100.0               23           100.0
-Carpe Diem Collegiate High School                              YUMA                    1        100.0               46           100.0
-Challenge School  Inc.                                         MARICOPA                1        100.0               42           100.0
-Crown Charter School  Inc                                      MARICOPA                1        100.0               28           100.0
-Daisy Education Corporation dba Paragon Science Academy        MARICOPA                1        100.0               46           100.0
-Daisy Education Corporation dba Sonoran Science Academy - Ph   MARICOPA                1        100.0               31           100.0
-Daisy Education Corporation dba. Sonoran Science Academy Dav   PIMA                    1        100.0               22           100.0
-Destiny School  Inc.                                           GILA                    1        100.0               29           100.0
-EAGLE College Prep Maryvale  LLC                               MARICOPA                1        100.0               43           100.0
-Edkey  Inc. - Sequoia Ranch School                             MARICOPA                1        100.0               36           100.0
-Excalibur Charter Schools  Inc.                                PINAL                   1        100.0               36           100.0
-Fort Thomas Unified District                                   GRAHAM                  1        100.0               40           100.0
-Fowler Elementary District                                     MARICOPA                1        100.0              250           100.0
-Friendly House  Inc.                                           MARICOPA                1        100.0               45           100.0
-Ganado Unified School District                                 APACHE                  1        100.0              108           100.0
-Gila Bend Unified District                                     MARICOPA                1        100.0               59           100.0
-Holbrook Unified District                                      NAVAJO                  1        100.0              112           100.0
-Kaizen Education Foundation dba Havasu Preparatory Academy     MOHAVE                  1        100.0               33           100.0
-Liberty Traditional Charter School                             MARICOPA                1        100.0               52           100.0
-Maryvale Preparatory Academy                                   MARICOPA                1        100.0               52           100.0
-Math and Science Success Academy  Inc.                         PIMA                    1        100.0               62           100.0
-Mexicayotl Academy  Inc.                                       SANTA CRUZ              1        100.0               21           100.0
-Mohave Accelerated Learning Center                             MOHAVE                  1        100.0               85           100.0
-Montessori Day Public Schools Chartered  Inc.                  MARICOPA                1        100.0               24           100.0
-Morenci Unified District                                       GREENLEE                1        100.0               98           100.0
-Morrison Education Group  Inc.                                 MARICOPA                1        100.0               24           100.0
-Noah Webster Schools-Pima                                      MARICOPA                1        100.0               32           100.0
-P.L.C. Charter Schools                                         MARICOPA                1        100.0              117           100.0
-Paramount Education Studies Inc                                MARICOPA                1        100.0               34           100.0
-Pinon Unified District                                         NAVAJO                  1        100.0              103           100.0
-Pioneer Preparatory School                                     MARICOPA                1        100.0               92           100.0
-Presidio School                                                PIMA                    1        100.0               35           100.0
-Ray Unified District                                           PINAL                   1        100.0               29           100.0
-Red Mesa Unified District                                      APACHE                  1        100.0               35           100.0
-San Carlos Unified District                                    GILA                    1        100.0              105           100.0
-Sanders Unified District                                       APACHE                  1        100.0               58           100.0
-Santa Cruz Elementary District                                 SANTA CRUZ              1        100.0               27           100.0
-Self Development Academy-Phoenix                               MARICOPA                1        100.0               36           100.0
-Skyline Gila River Schools  LLC                                PINAL                   1        100.0               25           100.0
-Sonoran Science Academy - Broadway                             PIMA                    1        100.0               26           100.0
-Southgate Academy  Inc.                                        PIMA                    1        100.0               61           100.0
-Stanfield Elementary District                                  PINAL                   1        100.0               55           100.0
-Superior Unified School District                               PINAL                   1        100.0               24           100.0
-The Charter Foundation  Inc.                                   YUMA                    1        100.0               37           100.0
-The Paideia Academies  Inc                                     MARICOPA                1        100.0               57           100.0
-Tuba City Unified School District #15                          COCONINO                1        100.0               96           100.0
-Tucson Country Day School  Inc.                                PIMA                    1        100.0               80           100.0
-Tucson International Academy  Inc.                             PIMA                    1        100.0               23           100.0
-Williams Unified District                                      COCONINO                1        100.0               54           100.0
-Window Rock Unified District                                   APACHE                  1        100.0              156           100.0
-Winslow Unified District                                       NAVAJO                  1        100.0              156           100.0
-NA                                                             PIMA                    1        100.0               86           100.0
+nces_district_name                                 county      num_schools   pct_immune   total_enrolled   median_immune
+-------------------------------------------------  ---------  ------------  -----------  ---------------  --------------
+Acclaim Charter School                             MARICOPA              1         88.6               44            88.6
+American Leadership Academy  Inc.                  MARICOPA              5         91.9              467            92.9
+Arete Preparatory Academy                          MARICOPA              1         90.9               99            90.9
+Arizona Connections Academy Charter School  Inc.   MARICOPA              1         85.6              201            85.6
+Arizona Montessori Charter School at Anthem        MARICOPA              1         86.5               37            86.5
+Ball Charter Schools (Dobson)                      MARICOPA              1         90.0               40            90.0
+BASIS School Inc. 12                               YAVAPAI               1         85.7               91            85.7
+BASIS School Inc. 6                                COCONINO              1         92.6               95            92.6
+BASIS School Inc. 9                                MARICOPA              1         91.7              133            91.7
+Benchmark School  Inc.                             MARICOPA              1         85.5               55            85.5
 
 
 

@@ -141,20 +141,24 @@ In real life, you'd have to decide how much you care about these missing schools
 
 #### Use the joined table {-}
 
-Now I might want to look at rates of immunization by school district: 
+Now I might want to look at which school districts have low immunization rates: 
 
 ```{r}
 immune_joined %>%
+  # by school 
   mutate (school_pct = num_immune_mmr / enrolled  * 100 ) %>%
+  # by district
   group_by (nces_district_name, county) %>%
   summarise ( num_schools = n() ,
               total_enrolled = sum(enrolled),
               total_immune = sum (num_immune_mmr),
               median_immune = median (school_pct)
               ) %>%
+  # district total pct (immunized / total students)
   mutate ( pct_immune = total_immune/ total_enrolled * 100) %>%
   select (nces_district_name, county, num_schools, pct_immune, total_enrolled,  median_immune) %>%
-  arrange ( desc(num_schools), pct_immune) %>%
+  filter (median_immune <= 93) %>%
+  head (10) %>%
   kable (digits=1)
 
 
