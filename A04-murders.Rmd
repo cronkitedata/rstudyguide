@@ -88,7 +88,7 @@ Finding out what codes are in the data could be done with a `group_by`/`summaris
 
 The verb `distinct` is used instead of `select` to just show a list of values that are never repeated. When you run that code, you can see why it's sometimes useful to keep codes as well as words in a dataset -- codes "11" through "15" refer to some kind of gun. 
 
-**Q: Find all gun-related murders of young black or Hispanic men since 2015.
+**Question**: Find all gun-related murders of young black or Hispanic men since 2015.
 You can define "young" however you want, but in my example I'll use victims between 15 and 29. 
 
 In this example, you'll have to combine OR conditions, with others. Remember you can use BETWEEN for ranges of values or %in% for a list of values. 
@@ -125,9 +125,10 @@ The group by exercises are just like a pivot table. In fact, to turn it on its h
 What percent of each state's domestic violence victims are of Hispanic origin? 
 
 
-####  Bonus: Mutate with group_by {-}
+### Mutate
 
-Chapter 7, Mutate, has an example of creating a new category out of an old one. Try to puzzle through how to find the county that has the highest rate of gun murders vs. other weapons. This involves three steps: creating a new category of Yes/No out of the weapon; grouping and counting; then rolling up to the next level. 
+In this case, there aren't very many numbers for us to work with, but there are still things to be done to make more meaningful groupings. Using a filter, you picked out certain weapons, but maybe you'd like to compare guns vs. all others. Or, for example, compare the percent of murders attributable to domestic violence in each state. These can be done using the `mutate` command.
+
 
 ## Answers to exercises
 
@@ -137,12 +138,10 @@ Chapter 7, Mutate, has an example of creating a new category out of an old one. 
 
 1. Create a new dataset with just arizona: 
 
-```{r}
+```{r  results="hide"}
 arizona_murders <- 
   murder_data %>%
   filter ( state_abbr == "AZ")
-
-
 ```
 
 
@@ -150,7 +149,7 @@ You should have 15,443 rows in this dataset.
 
 2. The final set of queries might look like this. (You might have noticed you that you had one victim age 999 when you sorted. That means "unknown" in this dataset, so you'll want to filter that out as well.)
 
-```{r}
+```{r results="hide"}
 
 arizona_murders  %>%
   select ( year, cnty_name, agency, solved, 
@@ -205,23 +204,6 @@ Black and Hispanic victims:
 
 That last one is the trickiest -- If you want to find both African-American AND Hispanic victims, you need to look for a race code of "B" OR an ethnicity code of "H". Those have to be in a parenthese in order not to be confused with the other conditions. (I'm going to select just some of the columns and order it by the year and month of the murder, showing only the most recent). (NOTE: Eliminate the last line of this code if you haven't installed and activated the "DT" package, which makes searchable, sortable tables.)  
 
-
-```{r}
-
-murder_data %>%
-  filter ( weapon_code %in% c("11", "12", "13", "14", "15") &
-           year >= 2015 & 
-           between (vic_age, 15, 29)  &
-           (vic_race_code  == "B" | vic_ethnic_code == "H")
-        ) %>%
-  select (year, month, cnty_name, state_abbr, solved, vic_age, vic_race, vic_ethnic,  weapon, relationship, circumstance ) %>%
-  arrange (year, month) %>%
-  tail (50) %>%
-  datatable( options = list(scrollX = '500px'))
-
-
-```
-
 If this complex filter seems too complex, you can always chain one filter after another to check your data as you go. For example, you could do this: 
 
          murder_data %>%
@@ -232,14 +214,12 @@ If this complex filter seems too complex, you can always chain one filter after 
             
 ### Group by 
 
-
 #### "The most" {-}
-
 
 1. County with the most killings
 
 
-```{r}
+```{r results="hide"}
 
 murder_data %>%
   group_by (state_abbr, cnty_name) %>%
@@ -254,10 +234,9 @@ To just get the police shootings, filter the above query for `circumstance_code 
 
 2. Murders by state and year
 
-(I'm putting the most recent year at the top)
+"Mutate" here takes the result of the summary, then creates a new category with the annual totals. It's a little confusing how it works, but don't worry about it too much. Just know it's possible.
 
-```{r}
-
+```{r results="hide"}
 
 murder_data %>% 
   group_by (year, state_abbr) %>%
@@ -265,15 +244,10 @@ murder_data %>%
   #bonus: Calculate the total number of cases by year:
   mutate ( total_cases = sum(cases) )  %>%
   pivot_wider (names_from = state_abbr, values_from = cases) %>%
-  arrange ( desc (year)) %>%
-  #Extra! fancy table that requires the DT package.
-  datatable( options = list(scrollX= "400px", 
-                            pageLength = "5", 
-                            lengthMenu = c(5, 10, 50)
-                            )
-             )
-  
+  arrange ( desc (year)) 
+
 ```
+
 Does this mean that these states have suddenly become more dangerous? What about population growth? 
 
 **Alternative method**
@@ -285,19 +259,15 @@ The `janitor` package (which you may need to install) has a way to create cross-
 murder_data %>%
   tabyl ( year , state_abbr) %>%
   arrange ( desc (year) ) %>%
-  head () %>%
-  #to make a nicer looking table, with the knitr() package
-  kable()
-
+  head () 
 
 ```
 
-
-
-
 3. Percent of murders by relationship:
 
-```{r}
+Once those totals are calculated, you can use them to compute a new variable, such as percent.
+
+```{r results="hide"}
 
 murder_data %>%
   group_by (relationship) %>%
@@ -312,7 +282,7 @@ murder_data %>%
 
 **Alternative method with `janitor::tabyl`**
 
-```{r}
+```{r results="hide"}
 
 murder_data %>%
   tabyl (relationship) %>%
@@ -322,78 +292,6 @@ murder_data %>%
   as_tibble()
 
 ```
-
-Why is this answer not surprising? (Hint: Clark County, Nevada, has about half the population of Maricopa.) We'll get to ways to normalize this in later chapters.
-
-To just get the police shootings, filter the above query for `circumstance_code == "81"` before the `group_by`
-
-2. Murders by state and year
-
-(I'm putting the most recent year at the top)
-
-```{r}
-
-
-murder_data %>% 
-  group_by (year, state_abbr) %>%
-  summarise (cases = n() ) %>%
-  #bonus: Calculate the total number of cases by year:
-  mutate ( total_cases = sum(cases) )  %>%
-  pivot_wider (names_from = state_abbr, values_from = cases) %>%
-  arrange ( desc (year)) %>%
-  #Extra! fancy table that requires the DT package.
-  datatable( options = list(scrollX= "400px", 
-                            pageLength = "5", 
-                            lengthMenu = c(5, 10, 50)
-                            )
-             )
-  
-```
-Does this mean that these states have suddenly become more dangerous? What about population growth? 
-
-NOTE: Later on, we'll get to other packages, which includes `janitor` --  a useful way to clean data. That package has a much easier way to produce tables while formatting them well. If you've already installed and loaded the package, here's another way to do the same thing: 
-
-
-```{r}
-
-murder_data %>%
-  tabyl ( year , state_abbr) %>%
-  arrange ( desc (year) ) %>%
-  head () %>%
-  kable()
-
-
-```
-
-
-
-
-3. Percent of murders by relationship:
-
-```{r}
-
-murder_data %>%
-  group_by (relationship) %>%
-  summarise (num_of_cases = n() ) %>%
-  mutate (total_cases = sum(num_of_cases) ,
-          # This rounds to 1 digit.
-          pct_cases = round (num_of_cases / total_cases * 100 , 1)
-          ) %>%
-  # you could un-select the total cases since they'll always be the same , but for illustratio purposes I'm keeping it.
-  arrange ( desc (num_of_cases)) 
-```
-
-Again, using the `tabyl` function from the `janitor` package:
-
-```{r df_print="paged"}
-
-murder_data %>%
-  tabyl (relationship) %>%
-  adorn_pct_formatting (digits=1)  %>%
-  kable()
-  
-```
-
 
 #### Putting it all together {-}
   
@@ -409,8 +307,7 @@ murder_data %>%
 
 Here's one way to get the answer (eliminating cases in which we don't know the victim's ethnicity)
 
-  
-```{r}
+```{r results="hide"}
 
 murder_data %>%
   filter ( relationship_code %in% c("BF", "BR", "CH", "CW", "DA", "FA", 
@@ -430,31 +327,5 @@ murder_data %>%
    # put ethnicity in columns
    pivot_wider ( values_from = pct_cases, names_from = vic_ethnic)  
   
-
-
-```
-  
-**Alternative  Using the `janitor::tabyl` function**
-
-```{r}
-
-murder_data %>%
-  filter ( relationship_code %in% c("BF", "BR", "CH", "CW", "DA", "FA", 
-                                    "GF", "HO", "HU", "IL", "MO", "OF", "SD", "SF", 
-                                    "SI", "SM", "SO", "WI", "XH", "XW")   & 
-          vic_ethnic_code %in% c("H", "N")
-        ) %>% 
-  tabyl ( state_abbr, vic_ethnic) %>%
-  # include column and row totals
-  adorn_totals ( c("row", "col")) %>%
-  #calculate % of row total (within state)
-  adorn_percentages ( "row") %>%
-  # remove decimal places
-  adorn_pct_formatting (digits=1) %>% 
-  # include # of cases
-  adorn_ns %>%
-  # turn it into a regular data frame
-  as_tibble()
-
 ```
   
