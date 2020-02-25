@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<html lang="" xml:lang="">
 <head>
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>7 Verbs Part 3: mutate | R Study Guide for Cronkite School of Journalism</title>
   <meta name="description" content="A companion book for the Cronkite School’s data journalism class for graduate students. A work in progress." />
-  <meta name="generator" content="bookdown 0.14 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.17 and GitBook 2.6.7" />
 
   <meta property="og:title" content="7 Verbs Part 3: mutate | R Study Guide for Cronkite School of Journalism" />
   <meta property="og:type" content="book" />
@@ -488,11 +488,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <a class="sourceLine" id="cb62-8" title="8"><span class="kw">glimpse</span>( opioid_calls)</a></code></pre></div>
 <pre><code>## Observations: 650
 ## Variables: 5
-## $ objectid           &lt;dbl&gt; 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 1…
-## $ incident_date_char &lt;chr&gt; &quot;1/3/2017 11:42&quot;, &quot;1/9/2017 1:08&quot;, &quot;1/9/2017 …
-## $ narcan             &lt;chr&gt; &quot;No&quot;, &quot;Yes&quot;, &quot;No&quot;, &quot;No&quot;, &quot;No&quot;, &quot;Yes&quot;, &quot;No&quot;, &quot;…
-## $ is_asu_student     &lt;chr&gt; &quot;No&quot;, &quot;No&quot;, &quot;No&quot;, &quot;No&quot;, &quot;No&quot;, &quot;No&quot;, &quot;No&quot;, &quot;No…
-## $ is_homeless        &lt;chr&gt; &quot;No&quot;, &quot;No&quot;, &quot;Yes&quot;, &quot;Yes&quot;, &quot;No&quot;, &quot;No&quot;, &quot;No&quot;, &quot;…</code></pre>
+## $ objectid           &lt;dbl&gt; 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16…
+## $ incident_date_char &lt;chr&gt; &quot;1/3/2017 11:42&quot;, &quot;1/9/2017 1:08&quot;, &quot;1/9/2017 1:55&quot;…
+## $ narcan             &lt;chr&gt; &quot;No&quot;, &quot;Yes&quot;, &quot;No&quot;, &quot;No&quot;, &quot;No&quot;, &quot;Yes&quot;, &quot;No&quot;, &quot;No&quot;, …
+## $ is_asu_student     &lt;chr&gt; &quot;No&quot;, &quot;No&quot;, &quot;No&quot;, &quot;No&quot;, &quot;No&quot;, &quot;No&quot;, &quot;No&quot;, &quot;No&quot;, &quot;N…
+## $ is_homeless        &lt;chr&gt; &quot;No&quot;, &quot;No&quot;, &quot;Yes&quot;, &quot;Yes&quot;, &quot;No&quot;, &quot;No&quot;, &quot;No&quot;, &quot;No&quot;, …</code></pre>
 <p>The date and time in this dataset is a character field, but we want to convert it to a date field and a separate time field. At first, we might just want to get the date value out of the character string. It’s in the form month/day/year hour:minute, so we can use the <code>lubridate::mdy_hm function</code> [When you see a function preceded by two colons as this one does, the author is showing you which package it comes from. In this case, the <code>lubridate</code> package, which you must install before you can use it, has a function <code>mdy_hm</code>.]. This function tries to guess how the character string is formatted:</p>
 <div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb64-1" title="1">opioid_calls <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb64-2" title="2"><span class="st">  </span><span class="kw">mutate</span> ( <span class="dt">incident_date =</span> <span class="kw">mdy_hm</span>(incident_date_char)) <span class="op">%&gt;%</span></a>
@@ -500,11 +500,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <a class="sourceLine" id="cb64-4" title="4"><span class="st">  </span><span class="kw">glimpse</span>()</a></code></pre></div>
 <pre><code>## Observations: 650
 ## Variables: 5
-## $ incident_date      &lt;dttm&gt; 2017-01-03 11:42:00, 2017-01-09 01:08:00, 20…
-## $ incident_date_char &lt;chr&gt; &quot;1/3/2017 11:42&quot;, &quot;1/9/2017 1:08&quot;, &quot;1/9/2017 …
-## $ narcan             &lt;chr&gt; &quot;No&quot;, &quot;Yes&quot;, &quot;No&quot;, &quot;No&quot;, &quot;No&quot;, &quot;Yes&quot;, &quot;No&quot;, &quot;…
-## $ is_asu_student     &lt;chr&gt; &quot;No&quot;, &quot;No&quot;, &quot;No&quot;, &quot;No&quot;, &quot;No&quot;, &quot;No&quot;, &quot;No&quot;, &quot;No…
-## $ is_homeless        &lt;chr&gt; &quot;No&quot;, &quot;No&quot;, &quot;Yes&quot;, &quot;Yes&quot;, &quot;No&quot;, &quot;No&quot;, &quot;No&quot;, &quot;…</code></pre>
+## $ incident_date      &lt;dttm&gt; 2017-01-03 11:42:00, 2017-01-09 01:08:00, 2017-01…
+## $ incident_date_char &lt;chr&gt; &quot;1/3/2017 11:42&quot;, &quot;1/9/2017 1:08&quot;, &quot;1/9/2017 1:55&quot;…
+## $ narcan             &lt;chr&gt; &quot;No&quot;, &quot;Yes&quot;, &quot;No&quot;, &quot;No&quot;, &quot;No&quot;, &quot;Yes&quot;, &quot;No&quot;, &quot;No&quot;, …
+## $ is_asu_student     &lt;chr&gt; &quot;No&quot;, &quot;No&quot;, &quot;No&quot;, &quot;No&quot;, &quot;No&quot;, &quot;No&quot;, &quot;No&quot;, &quot;No&quot;, &quot;N…
+## $ is_homeless        &lt;chr&gt; &quot;No&quot;, &quot;No&quot;, &quot;Yes&quot;, &quot;Yes&quot;, &quot;No&quot;, &quot;No&quot;, &quot;No&quot;, &quot;No&quot;, …</code></pre>
 <p>Notice that the new variable is of the type <dttm>, which refers to a date-time combined variable.</p>
 <p>Let’s say I want to distinguish weekends from weekdays in this dataset. First, we have to define weekend. Here’s one definition, but you might want to use another: A weekend begins at 3pm on Friday and ends at 6pm on Sunday. (The <code>hour</code> variable is in military time.). Instead of using <code>if_else</code>, this example uses <code>case_when</code>, which lets you choose among a variety of options, not just two.</p>
 <div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb66-1" title="1">opioid_calls <span class="op">%&gt;%</span></a>
@@ -622,7 +622,6 @@ gitbook.start({
 "github": true,
 "facebook": true,
 "twitter": true,
-"google": false,
 "linkedin": false,
 "weibo": false,
 "instapaper": false,
@@ -639,6 +638,10 @@ gitbook.start({
 "text": null
 },
 "history": {
+"link": null,
+"text": null
+},
+"view": {
 "link": null,
 "text": null
 },

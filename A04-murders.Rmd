@@ -136,7 +136,7 @@ In this case, there aren't very many numbers for us to work with, but there are 
 
 ### Join 
 
-This gives you an opportunity to see how to add data to a table from the Web. This is more of a walk through than a question: 
+This gives you an opportunity to see how to add data to a table from the Web. This [Excel file](https://github.com/cronkitedata/cronkite-docs/blob/master/docs/assets/data/xlexamples/countypops_withinfo.xlsx?raw=true)  includes lots of information from the Census as of 2017, which you can link to summary data from the murder data using the county fips codes. We can walk through in class how to link it up using a join. 
 
 
 

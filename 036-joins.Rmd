@@ -16,6 +16,7 @@ Reporters use joins to:
 
 * Add information from one table, such demogrphics, to another, such as a list of counties. 
 * Use "lookup tables" from more traditional databases, which list codes that match to a dictionary of other values. For example, campaign finance data usually comes with a committee ID in donation datasets. Those ID's match to details on a candidate or political action committee in another. 
+* Link a standardized list of names to link back to an unstandardized datasets.
 * Match one set of records against a completely different one to find potential stories. Some of the most famous data journalism investigations used this kind of join to find, for example, school bus drivers who have DUI's or daycare centers run by people with serious criminal histories. 
 
 ## Key takeaways
