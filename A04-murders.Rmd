@@ -127,7 +127,20 @@ What percent of each state's domestic violence victims are of Hispanic origin?
 
 ### Mutate
 
-In this case, there aren't very many numbers for us to work with, but there are still things to be done to make more meaningful groupings. Using a filter, you picked out certain weapons, but maybe you'd like to compare guns vs. all others. Or, for example, compare the percent of murders attributable to domestic violence in each state. These can be done using the `mutate` command.
+In this case, there aren't very many numbers for us to work with, but there are still things to be done to make more meaningful groupings. These are usually done using an `if_else` statement or something like it.
+
+1. Create a table that compares the number of gun murders with other weapons for each year.
+2. Try to compute the percent of murders by weapon annually.
+3. Are gun murders more likely to be solved than others? 
+
+
+### Join 
+
+This gives you an opportunity to see how to add data to a table from the Web. This is more of a walk through than a question: 
+
+
+
+
 
 
 ## Answers to exercises
