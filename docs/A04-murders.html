@@ -272,6 +272,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="C.2.2" data-path="A04-murders.html"><a href="A04-murders.html#group-by-and-summarise"><i class="fa fa-check"></i><b>C.2.2</b> Group by and summarise</a></li>
 <li class="chapter" data-level="C.2.3" data-path="A04-murders.html"><a href="A04-murders.html#mutate"><i class="fa fa-check"></i><b>C.2.3</b> Mutate</a></li>
 <li class="chapter" data-level="C.2.4" data-path="A04-murders.html"><a href="A04-murders.html#join"><i class="fa fa-check"></i><b>C.2.4</b> Join</a></li>
+<li class="chapter" data-level="C.2.5" data-path="A04-murders.html"><a href="A04-murders.html#wrap-up-exercise"><i class="fa fa-check"></i><b>C.2.5</b> Wrap-up exercise</a></li>
 </ul></li>
 <li class="chapter" data-level="C.3" data-path="A04-murders.html"><a href="A04-murders.html#answers-to-exercises"><i class="fa fa-check"></i><b>C.3</b> Answers to exercises</a><ul>
 <li class="chapter" data-level="C.3.1" data-path="A04-murders.html"><a href="A04-murders.html#select-and-filter"><i class="fa fa-check"></i><b>C.3.1</b> Select and filter</a></li>
@@ -429,7 +430,18 @@ You can define “young” however you want, but in my example I’ll use victim
 </div>
 <div id="join" class="section level3">
 <h3><span class="header-section-number">C.2.4</span> Join</h3>
-<p>This gives you an opportunity to see how to add data to a table from the Web. This <a href="https://github.com/cronkitedata/cronkite-docs/blob/master/docs/assets/data/xlexamples/countypops_withinfo.xlsx?raw=true">Excel file</a> includes lots of information from the Census as of 2017, which you can link to summary data from the murder data using the county fips codes. We can walk through in class how to link it up using a join.</p>
+<p>This gives you an opportunity to see how to add data to a table from the Web. This <a href="https://github.com/cronkitedata/cronkite-docs/blob/master/docs/assets/data/xlexamples/countypops_withinfo.xlsx?raw=true">Excel file</a> includes lots of information from the Census as of 2017, which you can link to summary data from the murder data using the county fips codes.</p>
+</div>
+<div id="wrap-up-exercise" class="section level3">
+<h3><span class="header-section-number">C.2.5</span> Wrap-up exercise</h3>
+<p>Try getting as far as you can to answer this question: Characterize the county with the highest murder rate, using the Census data linked above. This will require doing everything in steps:</p>
+<ol style="list-style-type: decimal">
+<li>Grouping to the county level, keeping the county FIPS code</li>
+<li>Importing the Excel file, making sure you keep the FIP code as the same type of data as the one in the murder dataset.</li>
+<li>Joining the grouped file to the Census data.</li>
+<li>Computing the murder rate</li>
+<li>Deciding which variables in the Census data to use or manipulate to find a characterization that you’re interested in.</li>
+</ol>
 </div>
 </div>
 <div id="answers-to-exercises" class="section level2">

@@ -162,10 +162,18 @@ In this case, there aren't very many numbers for us to work with, but there are 
 
 ### Join 
 
-This gives you an opportunity to see how to add data to a table from the Web. This [Excel file](https://github.com/cronkitedata/cronkite-docs/blob/master/docs/assets/data/xlexamples/countypops_withinfo.xlsx?raw=true)  includes lots of information from the Census as of 2017, which you can link to summary data from the murder data using the county fips codes. We can walk through in class how to link it up using a join. 
+This gives you an opportunity to see how to add data to a table from the Web. This [Excel file](https://github.com/cronkitedata/cronkite-docs/blob/master/docs/assets/data/xlexamples/countypops_withinfo.xlsx?raw=true)  includes lots of information from the Census as of 2017, which you can link to summary data from the murder data using the county fips codes. 
 
 
+### Wrap-up exercise
 
+Try getting as far as you can to answer this question: Characterize the county with the highest murder rate, using the Census data linked above. This will require doing everything in steps: 
+
+1. Grouping to the county level, keeping the county FIPS code
+2. Importing the Excel file, making sure you keep the FIP code as the same type of data as the one in the murder dataset.
+3. Joining the grouped file to the Census data.
+4. Computing the murder rate
+5. Deciding which variables in the Census data to use or manipulate to find a characterization that you're interested in. 
 
 
 
