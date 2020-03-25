@@ -1,10 +1,7 @@
 # (PART) The Verbs of the Tidyverse {-}
 
-<style>
-   table {
-      font-size:.9em;
-   }
-</style>
+This section outlines the key verbs that you'll use to interact with data frames in the Tidyverse. These functions allow you to pick out rows and columns, sort your data frame, summarise information, caclulate new variables and merge your data with other sources.  
+
 
 # A quick tour of verbs
 
