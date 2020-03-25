@@ -12,6 +12,7 @@ rmd_files: ["index.Rmd",
             "033-groupby.Rmd",
             "035-mutate.Rmd",
             "036-joins.Rmd",
+            "041-plotly.Rmd",
             "A02-programming.Rmd",
             "A01-resources.Rmd",
             "A04-murders.Rmd"
