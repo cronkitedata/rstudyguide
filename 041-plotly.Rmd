@@ -31,9 +31,9 @@ options(digits=2, scipen=99)
 
 ## The Grammar of Graphics
 
-The package we're going to use for our graphing is called `ggplot`, which was written by Hadley Wickham before he developed the tidyverse. It is based on one of the most celebrated academic books on visualization, called the "Grammar of Graphics" by Leland Wilkinson, written in 1999.  For our purposes, you just need to understand that any visualization is made up of several fundamental pieces. In `ggplot2`, they are:
+The package we're going to use for our graphing is called `ggplot2`, which is part of the tidyverse. Conceptually, it follows the principles in Leland Wilkinson's  "Grammar of Graphics", written in 1999 as a framework for thinking about visualizations.    For our purposes, you just need to understand that any visualization is made up of several fundamental pieces. In `ggplot2`, they are:
 
-* *aesthetics* (called "aes") : What *data* are you plotting? It can have more than two dimensions, such as x-axis, y-axis, a variable used for color and another used for size. These are things we can see on a graphic, including the values.
+* *aesthetics* (called "aes") : What *data* are you plotting? It can have more than two dimensions, such as x-axis, y-axis, a variable used for color and another used for size. These are things we can see on a graphic, including the values. 
 * *geometry*  refers to the shape each variable will take.
 * *scale* - any transformation we might make.
 * *facets* - creating small multiples by splitting up one graph into many similar graphs, based on a variable.
@@ -66,7 +66,7 @@ We're going to skip the labeling and annotation parts for now. That would come u
 
 * The data visualization entries from [R for Data Science](https://r4ds.had.co.nz/data-visualisation.html), by Hadley Wickham
 
-* Matt Waite's [Sports Data course](http://mattwaite.github.io/sports/index.html), with an emphasis on visualization using sports data.
+* [Data Visualization, A Practical Introduction](https://socviz.co/index.html), by Kiernan Healy
 
 
 ## Building you graph in pieces using gapminder

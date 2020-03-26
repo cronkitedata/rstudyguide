@@ -345,11 +345,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Test data they receive from government and others for errors, such as missing codes, impossible combinations, sudden and suspicious patterns or incorrect totals when checked against an independent source.</li>
 </ul>
 <p>To refresh your memory, this query counts the number of schools and adds up the number of students by type of school while giving them descriptive names:</p>
-<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb43-1" title="1">grade6_counts <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb43-2" title="2"><span class="st">  </span><span class="kw">group_by</span> (school_type) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb43-3" title="3"><span class="st">  </span><span class="kw">summarise</span> ( <span class="dt">schools =</span> <span class="kw">n</span>() ,</a>
-<a class="sourceLine" id="cb43-4" title="4">              <span class="dt">student =</span> <span class="kw">sum</span> (enrolled, <span class="dt">na.rm=</span><span class="ot">TRUE</span>)</a>
-<a class="sourceLine" id="cb43-5" title="5">      )</a></code></pre></div>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb47-1" title="1">grade6_counts <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb47-2" title="2"><span class="st">  </span><span class="kw">group_by</span> (school_type) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb47-3" title="3"><span class="st">  </span><span class="kw">summarise</span> ( <span class="dt">schools =</span> <span class="kw">n</span>() ,</a>
+<a class="sourceLine" id="cb47-4" title="4">              <span class="dt">student =</span> <span class="kw">sum</span> (enrolled, <span class="dt">na.rm=</span><span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb47-5" title="5">      )</a></code></pre></div>
 <p>Notice the <code>na.rm=TRUE</code> in the sum() function. You should almost always add this to any summary math function, like sum(), median(), mean(), etc. If you don’t, a single missing value (<code>NA</code>) will result in an answer of <code>NA</code>. That’s good practice and it makes sense: you should <em>want</em> to know if your data has missing or invalid information. But normally you have no choice but to ignore it.</p>
 <div id="other-summary-functions" class="section level3">
 <h3><span class="header-section-number">6.2.1</span> Other summary functions</h3>
@@ -380,9 +380,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="grouping-by-more-than-one-variable" class="section level3">
 <h3><span class="header-section-number">6.2.2</span> Grouping by more than one variable</h3>
 <p>An example of counting by school type, and whether a school nurse is on staff:</p>
-<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb44-1" title="1">grade6_counts <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb44-2" title="2"><span class="st">  </span><span class="kw">group_by</span> ( school_type, school_nurse) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb44-3" title="3"><span class="st">  </span><span class="kw">summarise</span> ( <span class="dt">num_schools =</span> <span class="kw">n</span>() ) </a></code></pre></div>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb48-1" title="1">grade6_counts <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb48-2" title="2"><span class="st">  </span><span class="kw">group_by</span> ( school_type, school_nurse) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb48-3" title="3"><span class="st">  </span><span class="kw">summarise</span> ( <span class="dt">num_schools =</span> <span class="kw">n</span>() ) </a></code></pre></div>
 <div class="kable-table">
 <table>
 <thead>
@@ -431,12 +431,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="rolling-up-to-the-next-level" class="section level3">
 <h3><span class="header-section-number">6.2.3</span> Rolling up to the next level</h3>
 <p>If you wanted to know what percent of schools are charter, you’d need the total number of schools as a variable in your data frame. You can roll up to the next level this way:</p>
-<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb45-1" title="1">grade6_counts <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb45-2" title="2"><span class="st">  </span><span class="kw">group_by</span>( school_type ) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb45-3" title="3"><span class="st">  </span><span class="kw">summarise</span> (<span class="dt">schools =</span> <span class="kw">n</span>() ) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb45-4" title="4"><span class="st">  </span><span class="kw">mutate</span>  ( <span class="dt">total =</span> <span class="kw">sum</span>( schools),</a>
-<a class="sourceLine" id="cb45-5" title="5">            <span class="dt">pct_total =</span> schools<span class="op">/</span><span class="st"> </span>total <span class="op">*</span><span class="st"> </span><span class="dv">100</span> ) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb45-6" title="6"><span class="st">  </span><span class="kw">arrange</span> ( <span class="kw">desc</span> (schools))</a></code></pre></div>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb49-1" title="1">grade6_counts <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb49-2" title="2"><span class="st">  </span><span class="kw">group_by</span>( school_type ) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb49-3" title="3"><span class="st">  </span><span class="kw">summarise</span> (<span class="dt">schools =</span> <span class="kw">n</span>() ) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb49-4" title="4"><span class="st">  </span><span class="kw">mutate</span>  ( <span class="dt">total =</span> <span class="kw">sum</span>( schools),</a>
+<a class="sourceLine" id="cb49-5" title="5">            <span class="dt">pct_total =</span> schools<span class="op">/</span><span class="st"> </span>total <span class="op">*</span><span class="st"> </span><span class="dv">100</span> ) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb49-6" title="6"><span class="st">  </span><span class="kw">arrange</span> ( <span class="kw">desc</span> (schools))</a></code></pre></div>
 <div class="kable-table">
 <table>
 <thead>
@@ -481,13 +481,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>It’s hard to read multi-level groupings, so the tidyverse offers a way to spread one variable across the top with the other down the side. This is just like dragging one column into the “Columns” area in a pivot table, and another into the “Rows”. Here is how you’d make a crosstab like those in Excel using this method:</p>
 <p><img src="images/33-pivot-wider.png" /></p>
 <p>Here’s a full example of creating “column” percentages and then showing them as a crosstab. See if you can piece together what’s going on. If not, try moving pieces of the query outside the code chunk (and remove your <code>%&gt;%</code> operator) and run it piece by piece.</p>
-<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb46-1" title="1">grade6_counts <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb46-2" title="2"><span class="st">  </span><span class="kw">group_by</span> (school_type, school_nurse) <span class="op">%&gt;%</span><span class="st">                           </span><span class="co"># See 1</span></a>
-<a class="sourceLine" id="cb46-3" title="3"><span class="st">  </span><span class="kw">summarise</span> ( <span class="dt">schools =</span> <span class="kw">n</span>() ) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb46-4" title="4"><span class="st">  </span><span class="kw">mutate</span> ( <span class="dt">types =</span> <span class="kw">sum</span>(schools),                                     <span class="co"># See 2</span></a>
-<a class="sourceLine" id="cb46-5" title="5">           <span class="dt">pct_types =</span> schools<span class="op">/</span>types<span class="op">*</span><span class="dv">100</span>) <span class="op">%&gt;%</span><span class="st">                        </span><span class="co"># See 3 </span></a>
-<a class="sourceLine" id="cb46-6" title="6"><span class="st">  </span><span class="kw">select</span> (school_type, school_nurse, pct_types) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb46-7" title="7"><span class="st">  </span><span class="kw">pivot_wider</span> ( <span class="dt">names_from =</span> school_type, <span class="dt">values_from =</span> pct_types)   <span class="co">#See 4</span></a></code></pre></div>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb50-1" title="1">grade6_counts <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb50-2" title="2"><span class="st">  </span><span class="kw">group_by</span> (school_type, school_nurse) <span class="op">%&gt;%</span><span class="st">                           </span><span class="co"># See 1</span></a>
+<a class="sourceLine" id="cb50-3" title="3"><span class="st">  </span><span class="kw">summarise</span> ( <span class="dt">schools =</span> <span class="kw">n</span>() ) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb50-4" title="4"><span class="st">  </span><span class="kw">mutate</span> ( <span class="dt">types =</span> <span class="kw">sum</span>(schools),                                     <span class="co"># See 2</span></a>
+<a class="sourceLine" id="cb50-5" title="5">           <span class="dt">pct_types =</span> schools<span class="op">/</span>types<span class="op">*</span><span class="dv">100</span>) <span class="op">%&gt;%</span><span class="st">                        </span><span class="co"># See 3 </span></a>
+<a class="sourceLine" id="cb50-6" title="6"><span class="st">  </span><span class="kw">select</span> (school_type, school_nurse, pct_types) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb50-7" title="7"><span class="st">  </span><span class="kw">pivot_wider</span> ( <span class="dt">names_from =</span> school_type, <span class="dt">values_from =</span> pct_types)   <span class="co">#See 4</span></a></code></pre></div>
 <div class="kable-table">
 <table>
 <thead>
