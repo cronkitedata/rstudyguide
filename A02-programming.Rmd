@@ -79,9 +79,13 @@ Objects can be simple, like a variable called my_name that holds the value, "Sar
 
 ### Loops {-}
 
+
    A loop is a way to repeat your instructions over and over without having to re-write them every time. They usually work by stepping through some kind of a list, like a directory of files, or by using a counter, such as every year between 2005 and 2018.
 
 Excel and Google Sheets don't really have loops, unless you learn the more complicated programming language behind them. This is why many people move to Python and R -- to get the power of loops.
+
+
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">For loops aren&#39;t always scary monsters. <br><br>Conceptual intro (no, this code won&#39;t run...) to for loops. Thanks <a href="https://twitter.com/ChelseaParlett?ref_src=twsrc%5Etfw">@ChelseaParlett</a> for brainstorming w/ me on this one! 👾👾👾 <a href="https://t.co/TySFHogG2d">pic.twitter.com/TySFHogG2d</a></p>&mdash; Allison Horst (@allison_horst) <a href="https://twitter.com/allison_horst/status/1290774616038809600?ref_src=twsrc%5Etfw">August 4, 2020</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 ## Make an omelet with a function
 

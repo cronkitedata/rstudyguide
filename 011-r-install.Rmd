@@ -33,29 +33,37 @@ R also has extensions, called packages, that cover most tasks you need as a repo
 
 Andrew Heiss, who teaches BYU's Data Science for Public management, has [a detailed walkthrough](https://statsf18.classes.andrewheiss.com/install/) on getting access to R and R Studio. This is the short version.
 
-#### RStudio Cloud {-}
-
-The very easiest approach to getting most everything you need is to sign up for a [free account on RStudio Cloud](https://rstudio.cloud). You'll use the program through your web browser instead of putting it on your computer. It's nearly identical to the program you'd run on your laptop. 
-
-It can be a little slow to start up, and it can crash every once in a while. Be patient, careful and **save often**.  
 
 #### Install yourself {-}
 
-If you want to install on your laptop, try these steps. You'll have to be an administrator allowed to install software on your computer, for it to work.
+You'll have to be an administrator allowed to install software on your computer to install R and R Studio yourself. 
+
+Here is an interactive tutorial that walks through the process of downloading and installing R and R Studio, and installs the tidyverse: <https://learnr-examples.shinyapps.io/ex-setup-r/#section-welcome>
 
 **MAC users only:** 
 
-To get R Studio to work properly, your computer should have command line tools installed. These aren't installed by default in Apple's operating system. This is a pain, but you only need to do it once. You'll get annoying errors in R Studio if you don't do this.
+To get R Studio to work properly, your computer should have `command line tools` installed. These aren't installed by default in Apple's operating system. This is a pain, but you only need to do it once. You'll get annoying errors in R Studio if you don't do this.
 
-Open up a terminal window, found in your Applications folder under Utilities. First, check to see if it's already installed by typing `xcode-select -p`. If it replies with a path to a folder, you can skip this part --  you already have it. 
+Open up a `Terminal` window, found in your Applications folder under Utilities. First, check to see if command line tools are already installed by typing `xcode-select -p`. If it replies with a path to a folder, you can skip this part --  you already have it. 
 
 If not, type `xcode-select --install`. You'll get an error message saying that it can't be done because you don't have command line tools, and would you  like to install them now? Say yes. Once it's done, just close out your terminal. You never wanted that thing you asked to install in the first place. 
 
 **Everyone**:
 
-* Download and install [R for your computer](https://rweb.crmda.ku.edu/cran/). Use the most recent binaries for your operating system.
+* Download and install [R for your computer](https://rweb.crmda.ku.edu/cran/). Use the most recent binaries for your operating system. This guide uses R version 4.01.
 
 * Install [R Studio Desktop](https://www.rstudio.com/products/rstudio/download/#download) for your computer ONLY AFTER YOU HAVE INSTALLED R. Use the free community version.
+
+
+#### An alternative: RStudio Cloud {-}
+
+One approach to getting most everything you need is to sign up for a [free account on RStudio Cloud](https://rstudio.cloud). You'll use the program through your web browser instead of putting it on your computer. It's nearly identical to the program you'd run on your laptop. 
+
+However, RStudio now charges a fee for all but the most rudimentary use of the service, and students in the past have had difficulty with it crashing and failing to save work properly. The limit for a free account is using it for 15 hours in a month, and it will not let you open or view a project if you go over that amount. 
+
+They've also had trouble with software updates. So be careful if you choose this option, and understand you might have to install the software at some point anyway on your computer. 
+
+**Save often!**
 
 ## An R Studio tour
 
@@ -111,7 +119,6 @@ Using the Console, install the packages we need for class:
 ```{r eval=FALSE}
 
 install.packages("tidyverse")  
-install.packages("rmarkdown")
 install.packages("swirl")
 
 ```
@@ -125,7 +132,7 @@ The tidyverse packages up a whole set of other packages that are designed to wor
 
 For many reporters (myself included), R was too difficult to learn before the tidyverse came around. We'll be working almost exclusively within the tidyverse in this course. 
 
-The tidyverse is the brainchild of [Hadley Wickham](http://hadley.nz/), a statistician from New Zealand, who famously identified the [tidy data principles](https://cronkitedata.github.io/cronkite-docs/excel/xlguides/xl-tidydata)  we've followed all semester. He's currently the chief data scientist for RStudio in Houston.
+The tidyverse is the brainchild of [Hadley Wickham](http://hadley.nz/), a statistician from New Zealand, who famously identified  [tidy data principles](https://cronkitedata.github.io/cronkite-docs/excel/xlguides/xl-tidydata)  we've implicitly followed all semester. He's currently the chief data scientist for RStudio in Houston.
 
 
 
@@ -189,6 +196,7 @@ Ben Stenhaug created a fast-paced video introducing the R Studio interface. Don'
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/lTTJPRwnONE" frameborder="0" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
+Alison Horst [created a series of gifs](https://www.pipinghotdata.com/posts/2020-09-07-introducing-the-rstudio-ide-and-r-markdown/) that illustrate some of the nuances of the RStudio interface -- look there for illustrations on customizing your windows and troubleshooting R Markdown documents. 
 
 
 

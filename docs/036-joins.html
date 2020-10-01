@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>8 Verbs Part 4: Combining data | R Study Guide for Cronkite School of Journalism</title>
   <meta name="description" content="A companion book for the Cronkite School’s data journalism class for graduate students. A work in progress." />
-  <meta name="generator" content="bookdown 0.18 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
 
   <meta property="og:title" content="8 Verbs Part 4: Combining data | R Study Guide for Cronkite School of Journalism" />
   <meta property="og:type" content="book" />
@@ -49,19 +49,20 @@
 
 
 
+<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
 <script src="libs/htmlwidgets-1.5.1/htmlwidgets.js"></script>
-<script src="libs/plotly-binding-4.9.2/plotly.js"></script>
+<script src="libs/plotly-binding-4.9.2.1/plotly.js"></script>
 <script src="libs/typedarray-0.1/typedarray.min.js"></script>
-<link href="libs/crosstalk-1.0.0/css/crosstalk.css" rel="stylesheet" />
-<script src="libs/crosstalk-1.0.0/js/crosstalk.min.js"></script>
+<link href="libs/crosstalk-1.1.0.1/css/crosstalk.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.1.0.1/js/crosstalk.min.js"></script>
 <link href="libs/plotly-htmlwidgets-css-1.52.2/plotly-htmlwidgets.css" rel="stylesheet" />
 <script src="libs/plotly-main-1.52.2/plotly-latest.min.js"></script>
 
 
 <style type="text/css">
-a.sourceLine { display: inline-block; line-height: 1.25; }
-a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; }
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode { white-space: pre; position: relative; }
 pre.sourceCode { margin: 0; }
@@ -70,14 +71,16 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 code.sourceCode { white-space: pre-wrap; }
-a.sourceLine { text-indent: -1em; padding-left: 1em; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
-pre.numberSource a.sourceLine
-  { position: relative; left: -4em; }
-pre.numberSource a.sourceLine::before
-  { content: attr(title);
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
     position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all; display: inline-block;
+    border: none; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
@@ -86,9 +89,9 @@ pre.numberSource a.sourceLine::before
   }
 pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
 div.sourceCode
-  {  }
+  {   }
 @media screen {
-a.sourceLine::before { text-decoration: underline; }
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -156,19 +159,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="021-r-markdown.html"><a href="021-r-markdown.html"><i class="fa fa-check"></i><b>2</b> R Markdown</a><ul>
-<li class="chapter" data-level="2.1" data-path="021-r-markdown.html"><a href="021-r-markdown.html#key-takeaways-1"><i class="fa fa-check"></i><b>2.1</b> Key takeaways</a></li>
+<li class="chapter" data-level="2.1" data-path="011-r-install.html"><a href="011-r-install.html#key-takeaways"><i class="fa fa-check"></i><b>2.1</b> Key takeaways</a></li>
 <li class="chapter" data-level="2.2" data-path="021-r-markdown.html"><a href="021-r-markdown.html#getting-started-with-r-markdown"><i class="fa fa-check"></i><b>2.2</b> Getting started with R Markdown</a></li>
 <li class="chapter" data-level="2.3" data-path="021-r-markdown.html"><a href="021-r-markdown.html#the-anatomy-of-a-document"><i class="fa fa-check"></i><b>2.3</b> The anatomy of a document</a></li>
 <li class="chapter" data-level="2.4" data-path="021-r-markdown.html"><a href="021-r-markdown.html#knitting-your-document"><i class="fa fa-check"></i><b>2.4</b> Knitting your document</a></li>
 <li class="chapter" data-level="2.5" data-path="021-r-markdown.html"><a href="021-r-markdown.html#code-chunks"><i class="fa fa-check"></i><b>2.5</b> Code chunks</a></li>
-<li class="chapter" data-level="2.6" data-path="021-r-markdown.html"><a href="021-r-markdown.html#resources-and-exercises-1"><i class="fa fa-check"></i><b>2.6</b> Resources and exercises</a><ul>
+<li class="chapter" data-level="2.6" data-path="011-r-install.html"><a href="011-r-install.html#resources-and-exercises"><i class="fa fa-check"></i><b>2.6</b> Resources and exercises</a><ul>
 <li class="chapter" data-level="" data-path="021-r-markdown.html"><a href="021-r-markdown.html#resources"><i class="fa fa-check"></i>Resources</a></li>
 <li class="chapter" data-level="" data-path="021-r-markdown.html"><a href="021-r-markdown.html#exercises"><i class="fa fa-check"></i>Exercises</a></li>
 </ul></li>
 <li class="chapter" data-level="2.7" data-path="021-r-markdown.html"><a href="021-r-markdown.html#bonus-styling-your-r-markdown-documents"><i class="fa fa-check"></i><b>2.7</b> Bonus: Styling your R Markdown documents</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="022-data-frames.html"><a href="022-data-frames.html"><i class="fa fa-check"></i><b>3</b> Data frames and the tidyverse</a><ul>
-<li class="chapter" data-level="3.1" data-path="022-data-frames.html"><a href="022-data-frames.html#key-takeaways-2"><i class="fa fa-check"></i><b>3.1</b> Key takeaways</a></li>
+<li class="chapter" data-level="3.1" data-path="011-r-install.html"><a href="011-r-install.html#key-takeaways"><i class="fa fa-check"></i><b>3.1</b> Key takeaways</a></li>
 <li class="chapter" data-level="3.2" data-path="022-data-frames.html"><a href="022-data-frames.html#getting-started"><i class="fa fa-check"></i><b>3.2</b> Getting started</a></li>
 <li class="chapter" data-level="3.3" data-path="022-data-frames.html"><a href="022-data-frames.html#the-data-frame"><i class="fa fa-check"></i><b>3.3</b> The data frame</a><ul>
 <li class="chapter" data-level="3.3.1" data-path="022-data-frames.html"><a href="022-data-frames.html#loading-and-looking-at-data"><i class="fa fa-check"></i><b>3.3.1</b> Loading and looking at data</a></li>
@@ -176,13 +179,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="3.4" data-path="022-data-frames.html"><a href="022-data-frames.html#introducing-the-pipe"><i class="fa fa-check"></i><b>3.4</b> Introducing the pipe</a></li>
 <li class="chapter" data-level="3.5" data-path="022-data-frames.html"><a href="022-data-frames.html#take-a-break"><i class="fa fa-check"></i><b>3.5</b> Take a break</a></li>
-<li class="chapter" data-level="3.6" data-path="022-data-frames.html"><a href="022-data-frames.html#other-resources-1"><i class="fa fa-check"></i><b>3.6</b> Other resources</a><ul>
+<li class="chapter" data-level="3.6" data-path="011-r-install.html"><a href="011-r-install.html#other-resources"><i class="fa fa-check"></i><b>3.6</b> Other resources</a><ul>
 <li class="chapter" data-level="3.6.1" data-path="022-data-frames.html"><a href="022-data-frames.html#on-your-own"><i class="fa fa-check"></i><b>3.6.1</b> On your own</a></li>
 </ul></li>
 </ul></li>
 <li class="part"><span><b>II The Verbs of the Tidyverse</b></span></li>
 <li class="chapter" data-level="4" data-path="030-intro-verbs.html"><a href="030-intro-verbs.html"><i class="fa fa-check"></i><b>4</b> A quick tour of verbs</a><ul>
-<li class="chapter" data-level="4.1" data-path="030-intro-verbs.html"><a href="030-intro-verbs.html#key-takeaways-3"><i class="fa fa-check"></i><b>4.1</b> Key takeaways</a><ul>
+<li class="chapter" data-level="4.1" data-path="011-r-install.html"><a href="011-r-install.html#key-takeaways"><i class="fa fa-check"></i><b>4.1</b> Key takeaways</a><ul>
 <li class="chapter" data-level="" data-path="030-intro-verbs.html"><a href="030-intro-verbs.html#data-for-this-walkthrough"><i class="fa fa-check"></i>Data for this walkthrough</a></li>
 <li class="chapter" data-level="4.1.1" data-path="030-intro-verbs.html"><a href="030-intro-verbs.html#follow-along"><i class="fa fa-check"></i><b>4.1.1</b> Follow along</a></li>
 <li><a href="030-intro-verbs.html#the-operator-and-then">The <code>%&gt;%</code> operator: … and then…</a></li>
@@ -197,7 +200,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.5" data-path="030-intro-verbs.html"><a href="030-intro-verbs.html#join-to-merge-tables-together-by-column-union-to-add-rows"><i class="fa fa-check"></i><b>4.5</b> <code>join</code> to merge tables together by column; <code>union</code> to add rows</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="031-select-filter.html"><a href="031-select-filter.html"><i class="fa fa-check"></i><b>5</b> Verbs Part 1: Picking and choosing</a><ul>
-<li class="chapter" data-level="5.1" data-path="031-select-filter.html"><a href="031-select-filter.html#key-takeaways-4"><i class="fa fa-check"></i><b>5.1</b> Key takeaways</a></li>
+<li class="chapter" data-level="5.1" data-path="011-r-install.html"><a href="011-r-install.html#key-takeaways"><i class="fa fa-check"></i><b>5.1</b> Key takeaways</a></li>
 <li class="chapter" data-level="5.2" data-path="031-select-filter.html"><a href="031-select-filter.html#select---choosing-columns"><i class="fa fa-check"></i><b>5.2</b> Select - choosing columns</a><ul>
 <li class="chapter" data-level="" data-path="031-select-filter.html"><a href="031-select-filter.html#optional-other-ways-to-select"><i class="fa fa-check"></i>Optional: Other ways to select</a></li>
 </ul></li>
@@ -208,13 +211,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="5.4" data-path="031-select-filter.html"><a href="031-select-filter.html#arrange---change-the-order"><i class="fa fa-check"></i><b>5.4</b> Arrange - change the order</a></li>
 <li class="chapter" data-level="5.5" data-path="031-select-filter.html"><a href="031-select-filter.html#traps"><i class="fa fa-check"></i><b>5.5</b> Traps</a></li>
-<li class="chapter" data-level="5.6" data-path="031-select-filter.html"><a href="031-select-filter.html#resources-1"><i class="fa fa-check"></i><b>5.6</b> Resources</a><ul>
-<li class="chapter" data-level="5.6.1" data-path="031-select-filter.html"><a href="031-select-filter.html#exercises-1"><i class="fa fa-check"></i><b>5.6.1</b> Exercises</a></li>
+<li class="chapter" data-level="5.6" data-path="021-r-markdown.html"><a href="021-r-markdown.html#resources"><i class="fa fa-check"></i><b>5.6</b> Resources</a><ul>
+<li class="chapter" data-level="5.6.1" data-path="021-r-markdown.html"><a href="021-r-markdown.html#exercises"><i class="fa fa-check"></i><b>5.6.1</b> Exercises</a></li>
 <li class="chapter" data-level="5.6.2" data-path="031-select-filter.html"><a href="031-select-filter.html#tutorials"><i class="fa fa-check"></i><b>5.6.2</b> Tutorials</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="033-groupby.html"><a href="033-groupby.html"><i class="fa fa-check"></i><b>6</b> Verbs Part 2: group_by and summarise</a><ul>
-<li class="chapter" data-level="6.1" data-path="033-groupby.html"><a href="033-groupby.html#key-takeaways-5"><i class="fa fa-check"></i><b>6.1</b> Key takeaways</a></li>
+<li class="chapter" data-level="6.1" data-path="011-r-install.html"><a href="011-r-install.html#key-takeaways"><i class="fa fa-check"></i><b>6.1</b> Key takeaways</a></li>
 <li class="chapter" data-level="6.2" data-path="033-groupby.html"><a href="033-groupby.html#group_by-summarise-basics"><i class="fa fa-check"></i><b>6.2</b> group_by / summarise basics</a><ul>
 <li class="chapter" data-level="6.2.1" data-path="033-groupby.html"><a href="033-groupby.html#other-summary-functions"><i class="fa fa-check"></i><b>6.2.1</b> Other summary functions</a></li>
 <li class="chapter" data-level="6.2.2" data-path="033-groupby.html"><a href="033-groupby.html#grouping-by-more-than-one-variable"><i class="fa fa-check"></i><b>6.2.2</b> Grouping by more than one variable</a></li>
@@ -224,11 +227,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6.3.1" data-path="033-groupby.html"><a href="033-groupby.html#a-note-on-restructuring-your-data-frames"><i class="fa fa-check"></i><b>6.3.1</b> A note on restructuring your data frames</a></li>
 </ul></li>
 <li class="chapter" data-level="6.4" data-path="033-groupby.html"><a href="033-groupby.html#resources-exercises"><i class="fa fa-check"></i><b>6.4</b> Resources &amp; exercises</a><ul>
-<li class="chapter" data-level="6.4.1" data-path="033-groupby.html"><a href="033-groupby.html#exercises-2"><i class="fa fa-check"></i><b>6.4.1</b> Exercises</a></li>
+<li class="chapter" data-level="6.4.1" data-path="021-r-markdown.html"><a href="021-r-markdown.html#exercises"><i class="fa fa-check"></i><b>6.4.1</b> Exercises</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="035-mutate.html"><a href="035-mutate.html"><i class="fa fa-check"></i><b>7</b> Verbs Part 3: mutate</a><ul>
-<li class="chapter" data-level="7.1" data-path="035-mutate.html"><a href="035-mutate.html#key-takeaways-6"><i class="fa fa-check"></i><b>7.1</b> Key takeaways</a><ul>
+<li class="chapter" data-level="7.1" data-path="011-r-install.html"><a href="011-r-install.html#key-takeaways"><i class="fa fa-check"></i><b>7.1</b> Key takeaways</a><ul>
 <li class="chapter" data-level="7.1.1" data-path="035-mutate.html"><a href="035-mutate.html#read-in-some-data"><i class="fa fa-check"></i><b>7.1.1</b> Read in some data</a></li>
 </ul></li>
 <li class="chapter" data-level="7.2" data-path="035-mutate.html"><a href="035-mutate.html#simple-arithmetic"><i class="fa fa-check"></i><b>7.2</b> Simple arithmetic</a></li>
@@ -240,7 +243,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="036-joins.html"><a href="036-joins.html"><i class="fa fa-check"></i><b>8</b> Verbs Part 4: Combining data</a><ul>
-<li class="chapter" data-level="8.1" data-path="036-joins.html"><a href="036-joins.html#key-takeaways-7"><i class="fa fa-check"></i><b>8.1</b> Key takeaways</a><ul>
+<li class="chapter" data-level="8.1" data-path="011-r-install.html"><a href="011-r-install.html#key-takeaways"><i class="fa fa-check"></i><b>8.1</b> Key takeaways</a><ul>
 <li class="chapter" data-level="8.1.1" data-path="036-joins.html"><a href="036-joins.html#adding-rows-instead-of-columns"><i class="fa fa-check"></i><b>8.1.1</b> Adding rows instead of columns</a></li>
 </ul></li>
 <li class="chapter" data-level="8.2" data-path="036-joins.html"><a href="036-joins.html#concepts-of-joining"><i class="fa fa-check"></i><b>8.2</b> Concepts of joining</a></li>
@@ -248,7 +251,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="036-joins.html"><a href="036-joins.html#setting-up-the-data"><i class="fa fa-check"></i>Setting up the data</a></li>
 <li class="chapter" data-level="" data-path="036-joins.html"><a href="036-joins.html#apply-the-join"><i class="fa fa-check"></i>Apply the join</a></li>
 </ul></li>
-<li class="chapter" data-level="8.4" data-path="036-joins.html"><a href="036-joins.html#resources-2"><i class="fa fa-check"></i><b>8.4</b> Resources</a><ul>
+<li class="chapter" data-level="8.4" data-path="021-r-markdown.html"><a href="021-r-markdown.html#resources"><i class="fa fa-check"></i><b>8.4</b> Resources</a><ul>
 <li class="chapter" data-level="8.4.1" data-path="036-joins.html"><a href="036-joins.html#practice"><i class="fa fa-check"></i><b>8.4.1</b> Practice</a></li>
 </ul></li>
 </ul></li>
@@ -267,7 +270,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="appendix"><span><b>Appendix</b></span></li>
 <li class="chapter" data-level="A" data-path="A02-programming.html"><a href="A02-programming.html"><i class="fa fa-check"></i><b>A</b> A gentle intro to programming</a><ul>
-<li class="chapter" data-level="A.1" data-path="A02-programming.html"><a href="A02-programming.html#key-takeaways-8"><i class="fa fa-check"></i><b>A.1</b> Key takeaways</a></li>
+<li class="chapter" data-level="A.1" data-path="011-r-install.html"><a href="011-r-install.html#key-takeaways"><i class="fa fa-check"></i><b>A.1</b> Key takeaways</a></li>
 <li class="chapter" data-level="A.2" data-path="A02-programming.html"><a href="A02-programming.html#building-blocks"><i class="fa fa-check"></i><b>A.2</b> Building blocks</a><ul>
 <li class="chapter" data-level="" data-path="A02-programming.html"><a href="A02-programming.html#variables-and-objects"><i class="fa fa-check"></i>Variables and objects</a></li>
 <li class="chapter" data-level="" data-path="A02-programming.html"><a href="A02-programming.html#operators-assignment"><i class="fa fa-check"></i>Operators &amp; assignment</a></li>
@@ -278,10 +281,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="A02-programming.html"><a href="A02-programming.html#open-a-restaurant-with-loops"><i class="fa fa-check"></i>Open a restaurant with loops</a></li>
 </ul></li>
 <li class="chapter" data-level="A.4" data-path="A02-programming.html"><a href="A02-programming.html#applications"><i class="fa fa-check"></i><b>A.4</b> Applications</a></li>
-<li class="chapter" data-level="A.5" data-path="A02-programming.html"><a href="A02-programming.html#more-resources-1"><i class="fa fa-check"></i><b>A.5</b> More resources</a></li>
+<li class="chapter" data-level="A.5" data-path="035-mutate.html"><a href="035-mutate.html#more-resources"><i class="fa fa-check"></i><b>A.5</b> More resources</a></li>
 </ul></li>
 <li class="chapter" data-level="B" data-path="A01-resources.html"><a href="A01-resources.html"><i class="fa fa-check"></i><b>B</b> Great R Resources</a><ul>
-<li class="chapter" data-level="B.1" data-path="A01-resources.html"><a href="A01-resources.html#key-takeaways-9"><i class="fa fa-check"></i><b>B.1</b> Key takeaways</a></li>
+<li class="chapter" data-level="B.1" data-path="011-r-install.html"><a href="011-r-install.html#key-takeaways"><i class="fa fa-check"></i><b>B.1</b> Key takeaways</a></li>
 <li class="chapter" data-level="B.2" data-path="A01-resources.html"><a href="A01-resources.html#coursework-in-r"><i class="fa fa-check"></i><b>B.2</b> Coursework in R</a></li>
 <li class="chapter" data-level="B.3" data-path="A01-resources.html"><a href="A01-resources.html#instructional-screencasts-and-videos"><i class="fa fa-check"></i><b>B.3</b> Instructional screencasts and videos</a></li>
 </ul></li>
@@ -326,7 +329,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Link a standardized list of names to link back to an unstandardized datasets.</li>
 <li>Match one set of records against a completely different one to find potential stories. Some of the most famous data journalism investigations used this kind of join to find, for example, school bus drivers who have DUI’s or daycare centers run by people with serious criminal histories.</li>
 </ul>
-<div id="key-takeaways-7" class="section level2">
+<div id="key-takeaways" class="section level2">
 <h2><span class="header-section-number">8.1</span> Key takeaways</h2>
 <ul>
 <li>Combining two tables requires exact matches on one or more variables. Close matches don’t count.</li>
@@ -345,11 +348,11 @@ For example, you might combine the number of murders in a county with its popula
 <p>In R, as in most other language, “joins” work by matching one table against another using a common variable.
 For example, the Federal Election Commission holds information about donors in one data frame, and information about candidates and other political action committees in another. They link together using the common identifier of a committee ID.</p>
 <div class="figure">
-<img src="images/36-contrib-names.png" alt="Campaign finance join" />
+<img src="images/36-contrib-names.png" alt="" />
 <p class="caption">Campaign finance join</p>
 </div>
 <div class="figure">
-<img src="images/36-cand-names.png" alt="Campaign finance join" />
+<img src="images/36-cand-names.png" alt="" />
 <p class="caption">Campaign finance join</p>
 </div>
 <p>(They don’t need to have the same name, and they don’t need to be in the first column.)</p>
@@ -371,114 +374,133 @@ For example, the Federal Election Commission holds information about donors in o
 <p>I matched up the information from most of the public and charter schools in Arizona against Department of Education statistics to find their federal ID numbers. There are two tables that have to be matched against one another: The immunization statistics by school, and the National Center for Education Statistics characteristics. They are both saved in the R dataset called <a href="https://github.com/cronkitedata/rstudyguide/blob/master/data/immune_to_nces.Rda?raw=true">immune_to_nces.Rda</a>, which you can add to your environment using the <code>load()</code> command.</p>
 <p>There are 2,414 schools in the NCES database, but only 841 schools in the immunizations because we’ve only kept schools that had students in Grade 6. There were seven schools that I couldn’t find in the NCES data, and their IDs are blank.</p>
 <p>Here are their variables:</p>
-<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb63-1" title="1"><span class="kw">glimpse</span>(grade6_to_nces)</a></code></pre></div>
-<pre><code>## Observations: 841
-## Variables: 17
-## $ rowid              &lt;dbl&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12…
-## $ nces_id            &lt;chr&gt; &quot;040906000652&quot;, &quot;040906000915&quot;, &quot;0400…
-## $ school_name        &lt;chr&gt; &quot;ABRAHAM LINCOLN TRADITIONAL SCHOOL&quot;,…
-## $ address            &lt;chr&gt; &quot;10444 N 39TH AVE&quot;, &quot;3021 W EVANS DR&quot;…
-## $ city               &lt;chr&gt; &quot;PHOENIX&quot;, &quot;PHOENIX&quot;, &quot;TUCSON&quot;, &quot;TUCS…
-## $ county             &lt;chr&gt; &quot;MARICOPA&quot;, &quot;MARICOPA&quot;, &quot;PIMA&quot;, &quot;PIMA…
-## $ zip_code           &lt;chr&gt; &quot;85051&quot;, &quot;85053&quot;, &quot;85757&quot;, &quot;85705&quot;, &quot;…
-## $ school_nurse       &lt;chr&gt; &quot;NO&quot;, &quot;YES&quot;, &quot;NO&quot;, &quot;NO&quot;, &quot;NO&quot;, &quot;NO&quot;, …
-## $ school_type        &lt;chr&gt; &quot;PUBLIC&quot;, &quot;PUBLIC&quot;, &quot;CHARTER&quot;, &quot;CHART…
-## $ enrolled           &lt;dbl&gt; 59, 134, 53, 42, 113, 56, 75, 44, 45,…
-## $ num_immune_mmr     &lt;dbl&gt; 58, 134, 52, 40, 113, 55, 73, 39, 44,…
-## $ num_exempt_mmr     &lt;dbl&gt; 1, 0, 1, 2, 0, 1, 2, 0, 1, 1, 7, 3, 0…
-## $ num_compliance_mmr &lt;dbl&gt; 59, 134, 53, 42, 113, 56, 75, 44, 45,…
-## $ num_pbe            &lt;dbl&gt; 5, 2, 1, 0, 3, 6, 4, 0, 23, 4, 9, 3, …
-## $ num_medical_exempt &lt;dbl&gt; 2, 0, 0, 7, 0, 6, 0, 0, 0, 0, 1, 0, 0…
-## $ num_pbe_exempt_all &lt;dbl&gt; 5, 0, 1, 0, 0, 0, 1, 0, 2, 1, 10, 3, …
-## $ match_type         &lt;chr&gt; &quot;Yes&quot;, &quot;Manual&quot;, &quot;Yes&quot;, &quot;Yes&quot;, &quot;Yes&quot;,…</code></pre>
-<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb65-1" title="1"><span class="kw">glimpse</span> (nces_master)</a></code></pre></div>
-<pre><code>## Observations: 2,414
-## Variables: 15
-## $ rowid              &lt;int&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12…
-## $ nces_school_id     &lt;chr&gt; &quot;040553000451&quot;, &quot;040463000999&quot;, &quot;0400…
-## $ nces_district_id   &lt;chr&gt; &quot;0405530&quot;, &quot;0404630&quot;, &quot;0400106&quot;, &quot;040…
-## $ nces_district_name &lt;chr&gt; &quot;Nogales Unified District&quot;, &quot;Marana U…
-## $ nces_school_name   &lt;chr&gt; &quot;A J MITCHELL ELEMENTARY SCHOOL&quot;, &quot;A.…
-## $ nces_school_type   &lt;chr&gt; &quot;1-Regular school&quot;, &quot;1-Regular school…
-## $ nces_urban         &lt;chr&gt; &quot;33-Town: Remote&quot;, &quot;41-Rural: Fringe&quot;…
-## $ nces_student_ct    &lt;dbl&gt; 406, 10, 313, 444, 517, 608, 868, 643…
-## $ nces_fte_teacher   &lt;dbl&gt; 20.50, 6.80, NA, NA, 25.60, 32.75, 45…
-## $ nces_ratio         &lt;dbl&gt; 19.80, 1.47, NA, NA, 20.20, 18.56, 18…
-## $ nces_lowest        &lt;chr&gt; &quot;Kindergarten&quot;, &quot;7th Grade&quot;, &quot;9th Gra…
-## $ nces_highest       &lt;chr&gt; &quot;5th Grade&quot;, &quot;12th Grade&quot;, &quot;12th Grad…
-## $ nces_school_level  &lt;chr&gt; &quot;Elementary&quot;, &quot;High&quot;, &quot;High&quot;, &quot;High&quot;,…
-## $ nces_county_name   &lt;chr&gt; &quot;Santa Cruz County&quot;, &quot;Pima County&quot;, &quot;…
-## $ nces_fips          &lt;chr&gt; &quot;04023&quot;, &quot;04019&quot;, &quot;04013&quot;, &quot;04013&quot;, &quot;…</code></pre>
+<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="036-joins.html#cb66-1"></a><span class="kw">glimpse</span>(grade6_to_nces)</span></code></pre></div>
+<pre><code>## Rows: 841
+## Columns: 17
+## $ rowid              &lt;dbl&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, …
+## $ nces_id            &lt;chr&gt; &quot;040906000652&quot;, &quot;040906000915&quot;, &quot;040079703230&quot;, &quot;04…
+## $ school_name        &lt;chr&gt; &quot;ABRAHAM LINCOLN TRADITIONAL SCHOOL&quot;, &quot;ACACIA ELEME…
+## $ address            &lt;chr&gt; &quot;10444 N 39TH AVE&quot;, &quot;3021 W EVANS DR&quot;, &quot;7102 W VALL…
+## $ city               &lt;chr&gt; &quot;PHOENIX&quot;, &quot;PHOENIX&quot;, &quot;TUCSON&quot;, &quot;TUCSON&quot;, &quot;PHOENIX&quot;…
+## $ county             &lt;chr&gt; &quot;MARICOPA&quot;, &quot;MARICOPA&quot;, &quot;PIMA&quot;, &quot;PIMA&quot;, &quot;MARICOPA&quot;,…
+## $ zip_code           &lt;chr&gt; &quot;85051&quot;, &quot;85053&quot;, &quot;85757&quot;, &quot;85705&quot;, &quot;85033&quot;, &quot;85017…
+## $ school_nurse       &lt;chr&gt; &quot;NO&quot;, &quot;YES&quot;, &quot;NO&quot;, &quot;NO&quot;, &quot;NO&quot;, &quot;NO&quot;, &quot;NO&quot;, &quot;NO&quot;, &quot;N…
+## $ school_type        &lt;chr&gt; &quot;PUBLIC&quot;, &quot;PUBLIC&quot;, &quot;CHARTER&quot;, &quot;CHARTER&quot;, &quot;CHARTER&quot;…
+## $ enrolled           &lt;dbl&gt; 59, 134, 53, 42, 113, 56, 75, 44, 45, 106, 53, 87, …
+## $ num_immune_mmr     &lt;dbl&gt; 58, 134, 52, 40, 113, 55, 73, 39, 44, 105, 46, 84, …
+## $ num_exempt_mmr     &lt;dbl&gt; 1, 0, 1, 2, 0, 1, 2, 0, 1, 1, 7, 3, 0, 0, 0, 2, 2, …
+## $ num_compliance_mmr &lt;dbl&gt; 59, 134, 53, 42, 113, 56, 75, 44, 45, 106, 53, 87, …
+## $ num_pbe            &lt;dbl&gt; 5, 2, 1, 0, 3, 6, 4, 0, 23, 4, 9, 3, 1, 1, 0, 4, 0,…
+## $ num_medical_exempt &lt;dbl&gt; 2, 0, 0, 7, 0, 6, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, …
+## $ num_pbe_exempt_all &lt;dbl&gt; 5, 0, 1, 0, 0, 0, 1, 0, 2, 1, 10, 3, 0, 0, 0, 2, 2,…
+## $ match_type         &lt;chr&gt; &quot;Yes&quot;, &quot;Manual&quot;, &quot;Yes&quot;, &quot;Yes&quot;, &quot;Yes&quot;, &quot;Yes&quot;, &quot;Yes&quot;,…</code></pre>
+<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="036-joins.html#cb68-1"></a><span class="kw">glimpse</span> (nces_master)</span></code></pre></div>
+<pre><code>## Rows: 2,414
+## Columns: 15
+## $ rowid              &lt;int&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, …
+## $ nces_school_id     &lt;chr&gt; &quot;040553000451&quot;, &quot;040463000999&quot;, &quot;040010601892&quot;, &quot;04…
+## $ nces_district_id   &lt;chr&gt; &quot;0405530&quot;, &quot;0404630&quot;, &quot;0400106&quot;, &quot;0400417&quot;, &quot;040673…
+## $ nces_district_name &lt;chr&gt; &quot;Nogales Unified District&quot;, &quot;Marana Unified Distric…
+## $ nces_school_name   &lt;chr&gt; &quot;A J MITCHELL ELEMENTARY SCHOOL&quot;, &quot;A. C. E.&quot;, &quot;AAEC…
+## $ nces_school_type   &lt;chr&gt; &quot;1-Regular school&quot;, &quot;1-Regular school&quot;, &quot;1-Regular …
+## $ nces_urban         &lt;chr&gt; &quot;33-Town: Remote&quot;, &quot;41-Rural: Fringe&quot;, &quot;11-City: La…
+## $ nces_student_ct    &lt;dbl&gt; 406, 10, 313, 444, 517, 608, 868, 643, NA, 61, 59, …
+## $ nces_fte_teacher   &lt;dbl&gt; 20.50, 6.80, NA, NA, 25.60, 32.75, 45.87, 0.00, NA,…
+## $ nces_ratio         &lt;dbl&gt; 19.80, 1.47, NA, NA, 20.20, 18.56, 18.92, NA, NA, N…
+## $ nces_lowest        &lt;chr&gt; &quot;Kindergarten&quot;, &quot;7th Grade&quot;, &quot;9th Grade&quot;, &quot;9th Grad…
+## $ nces_highest       &lt;chr&gt; &quot;5th Grade&quot;, &quot;12th Grade&quot;, &quot;12th Grade&quot;, &quot;12th Grad…
+## $ nces_school_level  &lt;chr&gt; &quot;Elementary&quot;, &quot;High&quot;, &quot;High&quot;, &quot;High&quot;, &quot;Elementary&quot;,…
+## $ nces_county_name   &lt;chr&gt; &quot;Santa Cruz County&quot;, &quot;Pima County&quot;, &quot;Maricopa Count…
+## $ nces_fips          &lt;chr&gt; &quot;04023&quot;, &quot;04019&quot;, &quot;04013&quot;, &quot;04013&quot;, &quot;04025&quot;, &quot;04013…</code></pre>
 <div id="setting-up-the-data" class="section level3 unnumbered">
 <h3>Setting up the data</h3>
 <p>In this case, we want to get information that the federal government had on the schools attached to the immunization data. In particular, we’d like to be able to generate statistics by district, by urbanization and type of school, and we’d like to keep the code for the county so we can link it up to other datasets.</p>
 <p>To make it simple, I’ll just create a small set of data for each table:</p>
-<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb67-1" title="1">immune &lt;-<span class="st"> </span></a>
-<a class="sourceLine" id="cb67-2" title="2"><span class="st">  </span>grade6_to_nces <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb67-3" title="3"><span class="st">  </span><span class="kw">select</span> (rowid, nces_id, school_name, city, county, zip_code, school_nurse, school_type,</a>
-<a class="sourceLine" id="cb67-4" title="4">          enrolled, num_immune_mmr) </a>
-<a class="sourceLine" id="cb67-5" title="5"></a>
-<a class="sourceLine" id="cb67-6" title="6"></a>
-<a class="sourceLine" id="cb67-7" title="7">school_list &lt;-<span class="st"> </span></a>
-<a class="sourceLine" id="cb67-8" title="8"><span class="st">  </span>nces_master <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb67-9" title="9"><span class="st">  </span><span class="kw">select</span> (nces_school_id, nces_district_id, nces_district_name, nces_school_type, </a>
-<a class="sourceLine" id="cb67-10" title="10">          nces_urban, nces_ratio, nces_school_level, nces_fips)</a></code></pre></div>
+<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="036-joins.html#cb70-1"></a>immune &lt;-<span class="st"> </span></span>
+<span id="cb70-2"><a href="036-joins.html#cb70-2"></a><span class="st">  </span>grade6_to_nces <span class="op">%&gt;%</span></span>
+<span id="cb70-3"><a href="036-joins.html#cb70-3"></a><span class="st">  </span><span class="kw">select</span> (rowid, nces_id, school_name, city, county, zip_code, school_nurse, school_type,</span>
+<span id="cb70-4"><a href="036-joins.html#cb70-4"></a>          enrolled, num_immune_mmr) </span>
+<span id="cb70-5"><a href="036-joins.html#cb70-5"></a></span>
+<span id="cb70-6"><a href="036-joins.html#cb70-6"></a></span>
+<span id="cb70-7"><a href="036-joins.html#cb70-7"></a>school_list &lt;-<span class="st"> </span></span>
+<span id="cb70-8"><a href="036-joins.html#cb70-8"></a><span class="st">  </span>nces_master <span class="op">%&gt;%</span></span>
+<span id="cb70-9"><a href="036-joins.html#cb70-9"></a><span class="st">  </span><span class="kw">select</span> (nces_school_id, nces_district_id, nces_district_name, nces_school_type, </span>
+<span id="cb70-10"><a href="036-joins.html#cb70-10"></a>          nces_urban, nces_ratio, nces_school_level, nces_fips)</span></code></pre></div>
 </div>
 <div id="apply-the-join" class="section level3 unnumbered">
 <h3>Apply the join</h3>
 <p>Here are two ways to join:</p>
-<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb68-1" title="1">immune <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb68-2" title="2"><span class="st">  </span><span class="kw">inner_join</span> (school_list, <span class="dt">by=</span><span class="kw">c</span>(<span class="st">&quot;nces_id&quot;</span> =<span class="st"> &quot;nces_school_id&quot;</span>)) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb68-3" title="3"><span class="st">  </span>glimpse</a></code></pre></div>
-<pre><code>## Observations: 834
-## Variables: 17
-## $ rowid              &lt;dbl&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12…
-## $ nces_id            &lt;chr&gt; &quot;040906000652&quot;, &quot;040906000915&quot;, &quot;0400…
-## $ school_name        &lt;chr&gt; &quot;ABRAHAM LINCOLN TRADITIONAL SCHOOL&quot;,…
-## $ city               &lt;chr&gt; &quot;PHOENIX&quot;, &quot;PHOENIX&quot;, &quot;TUCSON&quot;, &quot;TUCS…
-## $ county             &lt;chr&gt; &quot;MARICOPA&quot;, &quot;MARICOPA&quot;, &quot;PIMA&quot;, &quot;PIMA…
-## $ zip_code           &lt;chr&gt; &quot;85051&quot;, &quot;85053&quot;, &quot;85757&quot;, &quot;85705&quot;, &quot;…
-## $ school_nurse       &lt;chr&gt; &quot;NO&quot;, &quot;YES&quot;, &quot;NO&quot;, &quot;NO&quot;, &quot;NO&quot;, &quot;NO&quot;, …
-## $ school_type        &lt;chr&gt; &quot;PUBLIC&quot;, &quot;PUBLIC&quot;, &quot;CHARTER&quot;, &quot;CHART…
-## $ enrolled           &lt;dbl&gt; 59, 134, 53, 42, 113, 56, 75, 44, 45,…
-## $ num_immune_mmr     &lt;dbl&gt; 58, 134, 52, 40, 113, 55, 73, 39, 44,…
-## $ nces_district_id   &lt;chr&gt; &quot;0409060&quot;, &quot;0409060&quot;, &quot;0400797&quot;, &quot;040…
-## $ nces_district_name &lt;chr&gt; &quot;Washington Elementary School Distric…
-## $ nces_school_type   &lt;chr&gt; &quot;1-Regular school&quot;, &quot;1-Regular school…
-## $ nces_urban         &lt;chr&gt; &quot;11-City: Large&quot;, &quot;11-City: Large&quot;, &quot;…
-## $ nces_ratio         &lt;dbl&gt; 18.56, 18.92, NA, NA, NA, NA, NA, NA,…
-## $ nces_school_level  &lt;chr&gt; &quot;Elementary&quot;, &quot;Elementary&quot;, &quot;Elementa…
-## $ nces_fips          &lt;chr&gt; &quot;04013&quot;, &quot;04013&quot;, &quot;04019&quot;, &quot;04019&quot;, &quot;…</code></pre>
+<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb71-1"><a href="036-joins.html#cb71-1"></a>immune <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb71-2"><a href="036-joins.html#cb71-2"></a><span class="st">  </span><span class="kw">inner_join</span> (school_list, <span class="dt">by=</span><span class="kw">c</span>(<span class="st">&quot;nces_id&quot;</span> =<span class="st"> &quot;nces_school_id&quot;</span>)) <span class="op">%&gt;%</span></span>
+<span id="cb71-3"><a href="036-joins.html#cb71-3"></a><span class="st">  </span>glimpse</span></code></pre></div>
+<pre><code>## Rows: 834
+## Columns: 17
+## $ rowid              &lt;dbl&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, …
+## $ nces_id            &lt;chr&gt; &quot;040906000652&quot;, &quot;040906000915&quot;, &quot;040079703230&quot;, &quot;04…
+## $ school_name        &lt;chr&gt; &quot;ABRAHAM LINCOLN TRADITIONAL SCHOOL&quot;, &quot;ACACIA ELEME…
+## $ city               &lt;chr&gt; &quot;PHOENIX&quot;, &quot;PHOENIX&quot;, &quot;TUCSON&quot;, &quot;TUCSON&quot;, &quot;PHOENIX&quot;…
+## $ county             &lt;chr&gt; &quot;MARICOPA&quot;, &quot;MARICOPA&quot;, &quot;PIMA&quot;, &quot;PIMA&quot;, &quot;MARICOPA&quot;,…
+## $ zip_code           &lt;chr&gt; &quot;85051&quot;, &quot;85053&quot;, &quot;85757&quot;, &quot;85705&quot;, &quot;85033&quot;, &quot;85017…
+## $ school_nurse       &lt;chr&gt; &quot;NO&quot;, &quot;YES&quot;, &quot;NO&quot;, &quot;NO&quot;, &quot;NO&quot;, &quot;NO&quot;, &quot;NO&quot;, &quot;NO&quot;, &quot;N…
+## $ school_type        &lt;chr&gt; &quot;PUBLIC&quot;, &quot;PUBLIC&quot;, &quot;CHARTER&quot;, &quot;CHARTER&quot;, &quot;CHARTER&quot;…
+## $ enrolled           &lt;dbl&gt; 59, 134, 53, 42, 113, 56, 75, 44, 45, 106, 53, 87, …
+## $ num_immune_mmr     &lt;dbl&gt; 58, 134, 52, 40, 113, 55, 73, 39, 44, 105, 46, 84, …
+## $ nces_district_id   &lt;chr&gt; &quot;0409060&quot;, &quot;0409060&quot;, &quot;0400797&quot;, &quot;0400368&quot;, &quot;040094…
+## $ nces_district_name &lt;chr&gt; &quot;Washington Elementary School District&quot;, &quot;Washingto…
+## $ nces_school_type   &lt;chr&gt; &quot;1-Regular school&quot;, &quot;1-Regular school&quot;, &quot;1-Regular …
+## $ nces_urban         &lt;chr&gt; &quot;11-City: Large&quot;, &quot;11-City: Large&quot;, &quot;21-Suburb: Lar…
+## $ nces_ratio         &lt;dbl&gt; 18.56, 18.92, NA, NA, NA, NA, NA, NA, NA, 19.13, NA…
+## $ nces_school_level  &lt;chr&gt; &quot;Elementary&quot;, &quot;Elementary&quot;, &quot;Elementary&quot;, &quot;Other&quot;, …
+## $ nces_fips          &lt;chr&gt; &quot;04013&quot;, &quot;04013&quot;, &quot;04019&quot;, &quot;04019&quot;, &quot;04013&quot;, &quot;04013…</code></pre>
 <p>You can see that the information from the federal Education Department was added to the immunization data, but we lost seven records – the seven that I couldn’t find in the federal department.</p>
 <p>To preserve these records, you’ll usually protect one of the tables – the one you care about most – and keep everything, even if it doesn’t match. To do that, use a <code>left</code> or <code>right</code> join, depending on whether you mention the table first or second. In this case:</p>
-<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb70-1" title="1">immune_joined &lt;-<span class="st"> </span></a>
-<a class="sourceLine" id="cb70-2" title="2"><span class="st">  </span>immune <span class="op">%&gt;%</span><span class="st">                                     </span><span class="co"># the table I want to protect</span></a>
-<a class="sourceLine" id="cb70-3" title="3"><span class="st">  </span><span class="kw">left_join</span> ( school_list,                       <span class="co"># the table I want to apply to my original data frame</span></a>
-<a class="sourceLine" id="cb70-4" title="4">              <span class="dt">by=</span><span class="kw">c</span>(<span class="st">&quot;nces_id&quot;</span>=<span class="st">&quot;nces_school_id&quot;</span>) ) <span class="co"># the variable that is the same in the two tables.</span></a>
-<a class="sourceLine" id="cb70-5" title="5"></a>
-<a class="sourceLine" id="cb70-6" title="6"><span class="kw">glimpse</span>(immune_joined)</a></code></pre></div>
-<pre><code>## Observations: 841
-## Variables: 17
-## $ rowid              &lt;dbl&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12…
-## $ nces_id            &lt;chr&gt; &quot;040906000652&quot;, &quot;040906000915&quot;, &quot;0400…
-## $ school_name        &lt;chr&gt; &quot;ABRAHAM LINCOLN TRADITIONAL SCHOOL&quot;,…
-## $ city               &lt;chr&gt; &quot;PHOENIX&quot;, &quot;PHOENIX&quot;, &quot;TUCSON&quot;, &quot;TUCS…
-## $ county             &lt;chr&gt; &quot;MARICOPA&quot;, &quot;MARICOPA&quot;, &quot;PIMA&quot;, &quot;PIMA…
-## $ zip_code           &lt;chr&gt; &quot;85051&quot;, &quot;85053&quot;, &quot;85757&quot;, &quot;85705&quot;, &quot;…
-## $ school_nurse       &lt;chr&gt; &quot;NO&quot;, &quot;YES&quot;, &quot;NO&quot;, &quot;NO&quot;, &quot;NO&quot;, &quot;NO&quot;, …
-## $ school_type        &lt;chr&gt; &quot;PUBLIC&quot;, &quot;PUBLIC&quot;, &quot;CHARTER&quot;, &quot;CHART…
-## $ enrolled           &lt;dbl&gt; 59, 134, 53, 42, 113, 56, 75, 44, 45,…
-## $ num_immune_mmr     &lt;dbl&gt; 58, 134, 52, 40, 113, 55, 73, 39, 44,…
-## $ nces_district_id   &lt;chr&gt; &quot;0409060&quot;, &quot;0409060&quot;, &quot;0400797&quot;, &quot;040…
-## $ nces_district_name &lt;chr&gt; &quot;Washington Elementary School Distric…
-## $ nces_school_type   &lt;chr&gt; &quot;1-Regular school&quot;, &quot;1-Regular school…
-## $ nces_urban         &lt;chr&gt; &quot;11-City: Large&quot;, &quot;11-City: Large&quot;, &quot;…
-## $ nces_ratio         &lt;dbl&gt; 18.56, 18.92, NA, NA, NA, NA, NA, NA,…
-## $ nces_school_level  &lt;chr&gt; &quot;Elementary&quot;, &quot;Elementary&quot;, &quot;Elementa…
-## $ nces_fips          &lt;chr&gt; &quot;04013&quot;, &quot;04013&quot;, &quot;04019&quot;, &quot;04019&quot;, &quot;…</code></pre>
+<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="036-joins.html#cb73-1"></a>immune_joined &lt;-<span class="st"> </span></span>
+<span id="cb73-2"><a href="036-joins.html#cb73-2"></a><span class="st">  </span>immune <span class="op">%&gt;%</span><span class="st">                                     </span><span class="co"># the table I want to protect</span></span>
+<span id="cb73-3"><a href="036-joins.html#cb73-3"></a><span class="st">  </span><span class="kw">left_join</span> ( school_list,                       <span class="co"># the table I want to apply to my original data frame</span></span>
+<span id="cb73-4"><a href="036-joins.html#cb73-4"></a>              <span class="dt">by=</span><span class="kw">c</span>(<span class="st">&quot;nces_id&quot;</span>=<span class="st">&quot;nces_school_id&quot;</span>) ) <span class="co"># the variable that is the same in the two tables.</span></span>
+<span id="cb73-5"><a href="036-joins.html#cb73-5"></a></span>
+<span id="cb73-6"><a href="036-joins.html#cb73-6"></a><span class="kw">glimpse</span>(immune_joined)</span></code></pre></div>
+<pre><code>## Rows: 841
+## Columns: 17
+## $ rowid              &lt;dbl&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, …
+## $ nces_id            &lt;chr&gt; &quot;040906000652&quot;, &quot;040906000915&quot;, &quot;040079703230&quot;, &quot;04…
+## $ school_name        &lt;chr&gt; &quot;ABRAHAM LINCOLN TRADITIONAL SCHOOL&quot;, &quot;ACACIA ELEME…
+## $ city               &lt;chr&gt; &quot;PHOENIX&quot;, &quot;PHOENIX&quot;, &quot;TUCSON&quot;, &quot;TUCSON&quot;, &quot;PHOENIX&quot;…
+## $ county             &lt;chr&gt; &quot;MARICOPA&quot;, &quot;MARICOPA&quot;, &quot;PIMA&quot;, &quot;PIMA&quot;, &quot;MARICOPA&quot;,…
+## $ zip_code           &lt;chr&gt; &quot;85051&quot;, &quot;85053&quot;, &quot;85757&quot;, &quot;85705&quot;, &quot;85033&quot;, &quot;85017…
+## $ school_nurse       &lt;chr&gt; &quot;NO&quot;, &quot;YES&quot;, &quot;NO&quot;, &quot;NO&quot;, &quot;NO&quot;, &quot;NO&quot;, &quot;NO&quot;, &quot;NO&quot;, &quot;N…
+## $ school_type        &lt;chr&gt; &quot;PUBLIC&quot;, &quot;PUBLIC&quot;, &quot;CHARTER&quot;, &quot;CHARTER&quot;, &quot;CHARTER&quot;…
+## $ enrolled           &lt;dbl&gt; 59, 134, 53, 42, 113, 56, 75, 44, 45, 106, 53, 87, …
+## $ num_immune_mmr     &lt;dbl&gt; 58, 134, 52, 40, 113, 55, 73, 39, 44, 105, 46, 84, …
+## $ nces_district_id   &lt;chr&gt; &quot;0409060&quot;, &quot;0409060&quot;, &quot;0400797&quot;, &quot;0400368&quot;, &quot;040094…
+## $ nces_district_name &lt;chr&gt; &quot;Washington Elementary School District&quot;, &quot;Washingto…
+## $ nces_school_type   &lt;chr&gt; &quot;1-Regular school&quot;, &quot;1-Regular school&quot;, &quot;1-Regular …
+## $ nces_urban         &lt;chr&gt; &quot;11-City: Large&quot;, &quot;11-City: Large&quot;, &quot;21-Suburb: Lar…
+## $ nces_ratio         &lt;dbl&gt; 18.56, 18.92, NA, NA, NA, NA, NA, NA, NA, 19.13, NA…
+## $ nces_school_level  &lt;chr&gt; &quot;Elementary&quot;, &quot;Elementary&quot;, &quot;Elementary&quot;, &quot;Other&quot;, …
+## $ nces_fips          &lt;chr&gt; &quot;04013&quot;, &quot;04013&quot;, &quot;04019&quot;, &quot;04019&quot;, &quot;04013&quot;, &quot;04013…</code></pre>
 <p>Here are the rows that were kept without a match:</p>
 <div class="kable-table">
-<table>
+<table style="width:100%;">
+<colgroup>
+<col width="2%" />
+<col width="5%" />
+<col width="16%" />
+<col width="6%" />
+<col width="3%" />
+<col width="3%" />
+<col width="5%" />
+<col width="4%" />
+<col width="3%" />
+<col width="6%" />
+<col width="6%" />
+<col width="7%" />
+<col width="6%" />
+<col width="4%" />
+<col width="4%" />
+<col width="7%" />
+<col width="4%" />
+</colgroup>
 <thead>
 <tr class="header">
 <th align="right">rowid</th>
@@ -641,22 +663,23 @@ For example, the Federal Election Commission holds information about donors in o
 <div id="use-the-joined-table" class="section level4 unnumbered">
 <h4>Use the joined table</h4>
 <p>Now I might want to look at which school districts have low immunization rates:</p>
-<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb72-1" title="1">immune_joined <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb72-2" title="2"><span class="st">  </span><span class="co"># by school </span></a>
-<a class="sourceLine" id="cb72-3" title="3"><span class="st">  </span><span class="kw">mutate</span> (<span class="dt">school_pct =</span> num_immune_mmr <span class="op">/</span><span class="st"> </span>enrolled  <span class="op">*</span><span class="st"> </span><span class="dv">100</span> ) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb72-4" title="4"><span class="st">  </span><span class="co"># by district</span></a>
-<a class="sourceLine" id="cb72-5" title="5"><span class="st">  </span><span class="kw">group_by</span> (nces_district_name, county) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb72-6" title="6"><span class="st">  </span><span class="kw">summarise</span> ( <span class="dt">num_schools =</span> <span class="kw">n</span>() ,</a>
-<a class="sourceLine" id="cb72-7" title="7">              <span class="dt">total_enrolled =</span> <span class="kw">sum</span>(enrolled),</a>
-<a class="sourceLine" id="cb72-8" title="8">              <span class="dt">total_immune =</span> <span class="kw">sum</span> (num_immune_mmr),</a>
-<a class="sourceLine" id="cb72-9" title="9">              <span class="dt">median_immune =</span> <span class="kw">median</span> (school_pct)</a>
-<a class="sourceLine" id="cb72-10" title="10">              ) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb72-11" title="11"><span class="st">  </span><span class="co"># district total pct (immunized / total students)</span></a>
-<a class="sourceLine" id="cb72-12" title="12"><span class="st">  </span><span class="kw">mutate</span> ( <span class="dt">pct_immune =</span> total_immune<span class="op">/</span><span class="st"> </span>total_enrolled <span class="op">*</span><span class="st"> </span><span class="dv">100</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb72-13" title="13"><span class="st">  </span><span class="kw">select</span> (nces_district_name, county, num_schools, pct_immune, total_enrolled,  median_immune) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb72-14" title="14"><span class="st">  </span><span class="kw">filter</span> (median_immune <span class="op">&lt;=</span><span class="st"> </span><span class="dv">93</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb72-15" title="15"><span class="st">  </span><span class="kw">head</span> (<span class="dv">10</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb72-16" title="16"><span class="st">  </span><span class="kw">kable</span> (<span class="dt">digits=</span><span class="dv">1</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb75-1"><a href="036-joins.html#cb75-1"></a>immune_joined <span class="op">%&gt;%</span></span>
+<span id="cb75-2"><a href="036-joins.html#cb75-2"></a><span class="st">  </span><span class="co"># by school </span></span>
+<span id="cb75-3"><a href="036-joins.html#cb75-3"></a><span class="st">  </span><span class="kw">mutate</span> (<span class="dt">school_pct =</span> num_immune_mmr <span class="op">/</span><span class="st"> </span>enrolled  <span class="op">*</span><span class="st"> </span><span class="dv">100</span> ) <span class="op">%&gt;%</span></span>
+<span id="cb75-4"><a href="036-joins.html#cb75-4"></a><span class="st">  </span><span class="co"># by district</span></span>
+<span id="cb75-5"><a href="036-joins.html#cb75-5"></a><span class="st">  </span><span class="kw">group_by</span> (nces_district_name, county) <span class="op">%&gt;%</span></span>
+<span id="cb75-6"><a href="036-joins.html#cb75-6"></a><span class="st">  </span><span class="kw">summarise</span> ( <span class="dt">num_schools =</span> <span class="kw">n</span>() ,</span>
+<span id="cb75-7"><a href="036-joins.html#cb75-7"></a>              <span class="dt">total_enrolled =</span> <span class="kw">sum</span>(enrolled),</span>
+<span id="cb75-8"><a href="036-joins.html#cb75-8"></a>              <span class="dt">total_immune =</span> <span class="kw">sum</span> (num_immune_mmr),</span>
+<span id="cb75-9"><a href="036-joins.html#cb75-9"></a>              <span class="dt">median_immune =</span> <span class="kw">median</span> (school_pct)</span>
+<span id="cb75-10"><a href="036-joins.html#cb75-10"></a>              ) <span class="op">%&gt;%</span></span>
+<span id="cb75-11"><a href="036-joins.html#cb75-11"></a><span class="st">  </span><span class="co"># district total pct (immunized / total students)</span></span>
+<span id="cb75-12"><a href="036-joins.html#cb75-12"></a><span class="st">  </span><span class="kw">mutate</span> ( <span class="dt">pct_immune =</span> total_immune<span class="op">/</span><span class="st"> </span>total_enrolled <span class="op">*</span><span class="st"> </span><span class="dv">100</span>) <span class="op">%&gt;%</span></span>
+<span id="cb75-13"><a href="036-joins.html#cb75-13"></a><span class="st">  </span><span class="kw">select</span> (nces_district_name, county, num_schools, pct_immune, total_enrolled,  median_immune) <span class="op">%&gt;%</span></span>
+<span id="cb75-14"><a href="036-joins.html#cb75-14"></a><span class="st">  </span><span class="kw">filter</span> (median_immune <span class="op">&lt;=</span><span class="st"> </span><span class="dv">93</span>) <span class="op">%&gt;%</span></span>
+<span id="cb75-15"><a href="036-joins.html#cb75-15"></a><span class="st">  </span><span class="kw">head</span> (<span class="dv">10</span>) <span class="op">%&gt;%</span></span>
+<span id="cb75-16"><a href="036-joins.html#cb75-16"></a><span class="st">  </span><span class="kw">kable</span> (<span class="dt">digits=</span><span class="dv">1</span>)</span></code></pre></div>
+<pre><code>## `summarise()` regrouping output by &#39;nces_district_name&#39; (override with `.groups` argument)</code></pre>
 <table>
 <thead>
 <tr class="header">
@@ -754,7 +777,7 @@ For example, the Federal Election Commission holds information about donors in o
 </div>
 </div>
 </div>
-<div id="resources-2" class="section level2">
+<div id="resources" class="section level2">
 <h2><span class="header-section-number">8.4</span> Resources</h2>
 <ul>
 <li>The “<a href="https://r4ds.had.co.nz/relational-data.html">Relational data</a>” chapter in the R for Data Science textbook has details on exactly how a complex data set might fit together.</li>
@@ -770,22 +793,22 @@ For example, the Federal Election Commission holds information about donors in o
 <h4>Campaign finance data</h4>
 <p>There are two tables saved in the R data file, “<a href="https://github.com/cronkitedata/rstudyguide/blob/master/data/azcampfin.Rda?raw=true">azcampfin.Rda</a>”. One holds information on contributions available from the offiical FEC database as of Feb. 23, 2020 and the other holds information on the candidates and committees.</p>
 <p>The following codes are used in this dataset, which you may want to save into data frame. Here is some code you can use to create a lookup table for the transaction types. These codes can be joined with the column called <code>transaction_tp</code> in the contributions (or <code>arizona20</code>) data frame.</p>
-<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb73-1" title="1">transaction_types &lt;-<span class="st"> </span><span class="kw">tribble</span> (</a>
-<a class="sourceLine" id="cb73-2" title="2">  <span class="op">~</span>tcode, <span class="op">~</span>contrib_type,</a>
-<a class="sourceLine" id="cb73-3" title="3">  <span class="st">&quot;10&quot;</span>,   <span class="st">&quot;To a Super PAC&quot;</span>,</a>
-<a class="sourceLine" id="cb73-4" title="4">  <span class="st">&quot;11&quot;</span>,   <span class="st">&quot;Native American tribal&quot;</span>,</a>
-<a class="sourceLine" id="cb73-5" title="5">  <span class="st">&quot;15&quot;</span>,   <span class="st">&quot;Individual contrib&quot;</span>,</a>
-<a class="sourceLine" id="cb73-6" title="6">  <span class="st">&quot;15C&quot;</span>,  <span class="st">&quot;From a candidate&quot;</span>,</a>
-<a class="sourceLine" id="cb73-7" title="7">  <span class="st">&quot;15E&quot;</span>,  <span class="st">&quot;Earmarked (eg, ActBlue)&quot;</span>,</a>
-<a class="sourceLine" id="cb73-8" title="8">  <span class="st">&quot;20Y&quot;</span>,  <span class="st">&quot;Non-federal refund&quot;</span>,</a>
-<a class="sourceLine" id="cb73-9" title="9">  <span class="st">&quot;22Y&quot;</span>,  <span class="st">&quot;Refund to indiv.&quot;</span>,</a>
-<a class="sourceLine" id="cb73-10" title="10">  <span class="st">&quot;24I&quot;</span>,  <span class="st">&quot;Earmarked check passed on&quot;</span>,</a>
-<a class="sourceLine" id="cb73-11" title="11">  <span class="st">&quot;24T&quot;</span>,  <span class="st">&quot;Earmarked contrib passed on&quot;</span>,</a>
-<a class="sourceLine" id="cb73-12" title="12">  <span class="st">&quot;30&quot;</span>,   <span class="st">&quot;To a convention account&quot;</span>,</a>
-<a class="sourceLine" id="cb73-13" title="13">  <span class="st">&quot;31&quot;</span>,   <span class="st">&quot;To a headquarters account&quot;</span>,</a>
-<a class="sourceLine" id="cb73-14" title="14">  <span class="st">&quot;32&quot;</span>,   <span class="st">&quot;To a recount effort&quot;</span>,</a>
-<a class="sourceLine" id="cb73-15" title="15">  <span class="st">&quot;41Y&quot;</span>,   <span class="st">&quot;Refund from headquarters account&quot;</span></a>
-<a class="sourceLine" id="cb73-16" title="16">  )</a></code></pre></div>
+<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb77-1"><a href="036-joins.html#cb77-1"></a>transaction_types &lt;-<span class="st"> </span><span class="kw">tribble</span> (</span>
+<span id="cb77-2"><a href="036-joins.html#cb77-2"></a>  <span class="op">~</span>tcode, <span class="op">~</span>contrib_type,</span>
+<span id="cb77-3"><a href="036-joins.html#cb77-3"></a>  <span class="st">&quot;10&quot;</span>,   <span class="st">&quot;To a Super PAC&quot;</span>,</span>
+<span id="cb77-4"><a href="036-joins.html#cb77-4"></a>  <span class="st">&quot;11&quot;</span>,   <span class="st">&quot;Native American tribal&quot;</span>,</span>
+<span id="cb77-5"><a href="036-joins.html#cb77-5"></a>  <span class="st">&quot;15&quot;</span>,   <span class="st">&quot;Individual contrib&quot;</span>,</span>
+<span id="cb77-6"><a href="036-joins.html#cb77-6"></a>  <span class="st">&quot;15C&quot;</span>,  <span class="st">&quot;From a candidate&quot;</span>,</span>
+<span id="cb77-7"><a href="036-joins.html#cb77-7"></a>  <span class="st">&quot;15E&quot;</span>,  <span class="st">&quot;Earmarked (eg, ActBlue)&quot;</span>,</span>
+<span id="cb77-8"><a href="036-joins.html#cb77-8"></a>  <span class="st">&quot;20Y&quot;</span>,  <span class="st">&quot;Non-federal refund&quot;</span>,</span>
+<span id="cb77-9"><a href="036-joins.html#cb77-9"></a>  <span class="st">&quot;22Y&quot;</span>,  <span class="st">&quot;Refund to indiv.&quot;</span>,</span>
+<span id="cb77-10"><a href="036-joins.html#cb77-10"></a>  <span class="st">&quot;24I&quot;</span>,  <span class="st">&quot;Earmarked check passed on&quot;</span>,</span>
+<span id="cb77-11"><a href="036-joins.html#cb77-11"></a>  <span class="st">&quot;24T&quot;</span>,  <span class="st">&quot;Earmarked contrib passed on&quot;</span>,</span>
+<span id="cb77-12"><a href="036-joins.html#cb77-12"></a>  <span class="st">&quot;30&quot;</span>,   <span class="st">&quot;To a convention account&quot;</span>,</span>
+<span id="cb77-13"><a href="036-joins.html#cb77-13"></a>  <span class="st">&quot;31&quot;</span>,   <span class="st">&quot;To a headquarters account&quot;</span>,</span>
+<span id="cb77-14"><a href="036-joins.html#cb77-14"></a>  <span class="st">&quot;32&quot;</span>,   <span class="st">&quot;To a recount effort&quot;</span>,</span>
+<span id="cb77-15"><a href="036-joins.html#cb77-15"></a>  <span class="st">&quot;41Y&quot;</span>,   <span class="st">&quot;Refund from headquarters account&quot;</span></span>
+<span id="cb77-16"><a href="036-joins.html#cb77-16"></a>  )</span></code></pre></div>
 <p>(These are pretty complicated definitions in the federal campaign finance world. For now, don’t worry much about what they mean. Refunds are shown in the data as negative numbers, which is what you want.)</p>
 <p>Try to analyze some of this by putting together the datasets and finding interesting items or patterns.</p>
 

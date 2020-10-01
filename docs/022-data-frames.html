@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>3 Data frames and the tidyverse | R Study Guide for Cronkite School of Journalism</title>
   <meta name="description" content="A companion book for the Cronkite School’s data journalism class for graduate students. A work in progress." />
-  <meta name="generator" content="bookdown 0.18 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
 
   <meta property="og:title" content="3 Data frames and the tidyverse | R Study Guide for Cronkite School of Journalism" />
   <meta property="og:type" content="book" />
@@ -49,19 +49,20 @@
 
 
 
+<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
 <script src="libs/htmlwidgets-1.5.1/htmlwidgets.js"></script>
-<script src="libs/plotly-binding-4.9.2/plotly.js"></script>
+<script src="libs/plotly-binding-4.9.2.1/plotly.js"></script>
 <script src="libs/typedarray-0.1/typedarray.min.js"></script>
-<link href="libs/crosstalk-1.0.0/css/crosstalk.css" rel="stylesheet" />
-<script src="libs/crosstalk-1.0.0/js/crosstalk.min.js"></script>
+<link href="libs/crosstalk-1.1.0.1/css/crosstalk.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.1.0.1/js/crosstalk.min.js"></script>
 <link href="libs/plotly-htmlwidgets-css-1.52.2/plotly-htmlwidgets.css" rel="stylesheet" />
 <script src="libs/plotly-main-1.52.2/plotly-latest.min.js"></script>
 
 
 <style type="text/css">
-a.sourceLine { display: inline-block; line-height: 1.25; }
-a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; }
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode { white-space: pre; position: relative; }
 pre.sourceCode { margin: 0; }
@@ -70,14 +71,16 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 code.sourceCode { white-space: pre-wrap; }
-a.sourceLine { text-indent: -1em; padding-left: 1em; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
-pre.numberSource a.sourceLine
-  { position: relative; left: -4em; }
-pre.numberSource a.sourceLine::before
-  { content: attr(title);
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
     position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all; display: inline-block;
+    border: none; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
@@ -86,9 +89,9 @@ pre.numberSource a.sourceLine::before
   }
 pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
 div.sourceCode
-  {  }
+  {   }
 @media screen {
-a.sourceLine::before { text-decoration: underline; }
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -156,19 +159,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="021-r-markdown.html"><a href="021-r-markdown.html"><i class="fa fa-check"></i><b>2</b> R Markdown</a><ul>
-<li class="chapter" data-level="2.1" data-path="021-r-markdown.html"><a href="021-r-markdown.html#key-takeaways-1"><i class="fa fa-check"></i><b>2.1</b> Key takeaways</a></li>
+<li class="chapter" data-level="2.1" data-path="011-r-install.html"><a href="011-r-install.html#key-takeaways"><i class="fa fa-check"></i><b>2.1</b> Key takeaways</a></li>
 <li class="chapter" data-level="2.2" data-path="021-r-markdown.html"><a href="021-r-markdown.html#getting-started-with-r-markdown"><i class="fa fa-check"></i><b>2.2</b> Getting started with R Markdown</a></li>
 <li class="chapter" data-level="2.3" data-path="021-r-markdown.html"><a href="021-r-markdown.html#the-anatomy-of-a-document"><i class="fa fa-check"></i><b>2.3</b> The anatomy of a document</a></li>
 <li class="chapter" data-level="2.4" data-path="021-r-markdown.html"><a href="021-r-markdown.html#knitting-your-document"><i class="fa fa-check"></i><b>2.4</b> Knitting your document</a></li>
 <li class="chapter" data-level="2.5" data-path="021-r-markdown.html"><a href="021-r-markdown.html#code-chunks"><i class="fa fa-check"></i><b>2.5</b> Code chunks</a></li>
-<li class="chapter" data-level="2.6" data-path="021-r-markdown.html"><a href="021-r-markdown.html#resources-and-exercises-1"><i class="fa fa-check"></i><b>2.6</b> Resources and exercises</a><ul>
+<li class="chapter" data-level="2.6" data-path="011-r-install.html"><a href="011-r-install.html#resources-and-exercises"><i class="fa fa-check"></i><b>2.6</b> Resources and exercises</a><ul>
 <li class="chapter" data-level="" data-path="021-r-markdown.html"><a href="021-r-markdown.html#resources"><i class="fa fa-check"></i>Resources</a></li>
 <li class="chapter" data-level="" data-path="021-r-markdown.html"><a href="021-r-markdown.html#exercises"><i class="fa fa-check"></i>Exercises</a></li>
 </ul></li>
 <li class="chapter" data-level="2.7" data-path="021-r-markdown.html"><a href="021-r-markdown.html#bonus-styling-your-r-markdown-documents"><i class="fa fa-check"></i><b>2.7</b> Bonus: Styling your R Markdown documents</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="022-data-frames.html"><a href="022-data-frames.html"><i class="fa fa-check"></i><b>3</b> Data frames and the tidyverse</a><ul>
-<li class="chapter" data-level="3.1" data-path="022-data-frames.html"><a href="022-data-frames.html#key-takeaways-2"><i class="fa fa-check"></i><b>3.1</b> Key takeaways</a></li>
+<li class="chapter" data-level="3.1" data-path="011-r-install.html"><a href="011-r-install.html#key-takeaways"><i class="fa fa-check"></i><b>3.1</b> Key takeaways</a></li>
 <li class="chapter" data-level="3.2" data-path="022-data-frames.html"><a href="022-data-frames.html#getting-started"><i class="fa fa-check"></i><b>3.2</b> Getting started</a></li>
 <li class="chapter" data-level="3.3" data-path="022-data-frames.html"><a href="022-data-frames.html#the-data-frame"><i class="fa fa-check"></i><b>3.3</b> The data frame</a><ul>
 <li class="chapter" data-level="3.3.1" data-path="022-data-frames.html"><a href="022-data-frames.html#loading-and-looking-at-data"><i class="fa fa-check"></i><b>3.3.1</b> Loading and looking at data</a></li>
@@ -176,13 +179,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="3.4" data-path="022-data-frames.html"><a href="022-data-frames.html#introducing-the-pipe"><i class="fa fa-check"></i><b>3.4</b> Introducing the pipe</a></li>
 <li class="chapter" data-level="3.5" data-path="022-data-frames.html"><a href="022-data-frames.html#take-a-break"><i class="fa fa-check"></i><b>3.5</b> Take a break</a></li>
-<li class="chapter" data-level="3.6" data-path="022-data-frames.html"><a href="022-data-frames.html#other-resources-1"><i class="fa fa-check"></i><b>3.6</b> Other resources</a><ul>
+<li class="chapter" data-level="3.6" data-path="011-r-install.html"><a href="011-r-install.html#other-resources"><i class="fa fa-check"></i><b>3.6</b> Other resources</a><ul>
 <li class="chapter" data-level="3.6.1" data-path="022-data-frames.html"><a href="022-data-frames.html#on-your-own"><i class="fa fa-check"></i><b>3.6.1</b> On your own</a></li>
 </ul></li>
 </ul></li>
 <li class="part"><span><b>II The Verbs of the Tidyverse</b></span></li>
 <li class="chapter" data-level="4" data-path="030-intro-verbs.html"><a href="030-intro-verbs.html"><i class="fa fa-check"></i><b>4</b> A quick tour of verbs</a><ul>
-<li class="chapter" data-level="4.1" data-path="030-intro-verbs.html"><a href="030-intro-verbs.html#key-takeaways-3"><i class="fa fa-check"></i><b>4.1</b> Key takeaways</a><ul>
+<li class="chapter" data-level="4.1" data-path="011-r-install.html"><a href="011-r-install.html#key-takeaways"><i class="fa fa-check"></i><b>4.1</b> Key takeaways</a><ul>
 <li class="chapter" data-level="" data-path="030-intro-verbs.html"><a href="030-intro-verbs.html#data-for-this-walkthrough"><i class="fa fa-check"></i>Data for this walkthrough</a></li>
 <li class="chapter" data-level="4.1.1" data-path="030-intro-verbs.html"><a href="030-intro-verbs.html#follow-along"><i class="fa fa-check"></i><b>4.1.1</b> Follow along</a></li>
 <li><a href="030-intro-verbs.html#the-operator-and-then">The <code>%&gt;%</code> operator: … and then…</a></li>
@@ -197,7 +200,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.5" data-path="030-intro-verbs.html"><a href="030-intro-verbs.html#join-to-merge-tables-together-by-column-union-to-add-rows"><i class="fa fa-check"></i><b>4.5</b> <code>join</code> to merge tables together by column; <code>union</code> to add rows</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="031-select-filter.html"><a href="031-select-filter.html"><i class="fa fa-check"></i><b>5</b> Verbs Part 1: Picking and choosing</a><ul>
-<li class="chapter" data-level="5.1" data-path="031-select-filter.html"><a href="031-select-filter.html#key-takeaways-4"><i class="fa fa-check"></i><b>5.1</b> Key takeaways</a></li>
+<li class="chapter" data-level="5.1" data-path="011-r-install.html"><a href="011-r-install.html#key-takeaways"><i class="fa fa-check"></i><b>5.1</b> Key takeaways</a></li>
 <li class="chapter" data-level="5.2" data-path="031-select-filter.html"><a href="031-select-filter.html#select---choosing-columns"><i class="fa fa-check"></i><b>5.2</b> Select - choosing columns</a><ul>
 <li class="chapter" data-level="" data-path="031-select-filter.html"><a href="031-select-filter.html#optional-other-ways-to-select"><i class="fa fa-check"></i>Optional: Other ways to select</a></li>
 </ul></li>
@@ -208,13 +211,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="5.4" data-path="031-select-filter.html"><a href="031-select-filter.html#arrange---change-the-order"><i class="fa fa-check"></i><b>5.4</b> Arrange - change the order</a></li>
 <li class="chapter" data-level="5.5" data-path="031-select-filter.html"><a href="031-select-filter.html#traps"><i class="fa fa-check"></i><b>5.5</b> Traps</a></li>
-<li class="chapter" data-level="5.6" data-path="031-select-filter.html"><a href="031-select-filter.html#resources-1"><i class="fa fa-check"></i><b>5.6</b> Resources</a><ul>
-<li class="chapter" data-level="5.6.1" data-path="031-select-filter.html"><a href="031-select-filter.html#exercises-1"><i class="fa fa-check"></i><b>5.6.1</b> Exercises</a></li>
+<li class="chapter" data-level="5.6" data-path="021-r-markdown.html"><a href="021-r-markdown.html#resources"><i class="fa fa-check"></i><b>5.6</b> Resources</a><ul>
+<li class="chapter" data-level="5.6.1" data-path="021-r-markdown.html"><a href="021-r-markdown.html#exercises"><i class="fa fa-check"></i><b>5.6.1</b> Exercises</a></li>
 <li class="chapter" data-level="5.6.2" data-path="031-select-filter.html"><a href="031-select-filter.html#tutorials"><i class="fa fa-check"></i><b>5.6.2</b> Tutorials</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="033-groupby.html"><a href="033-groupby.html"><i class="fa fa-check"></i><b>6</b> Verbs Part 2: group_by and summarise</a><ul>
-<li class="chapter" data-level="6.1" data-path="033-groupby.html"><a href="033-groupby.html#key-takeaways-5"><i class="fa fa-check"></i><b>6.1</b> Key takeaways</a></li>
+<li class="chapter" data-level="6.1" data-path="011-r-install.html"><a href="011-r-install.html#key-takeaways"><i class="fa fa-check"></i><b>6.1</b> Key takeaways</a></li>
 <li class="chapter" data-level="6.2" data-path="033-groupby.html"><a href="033-groupby.html#group_by-summarise-basics"><i class="fa fa-check"></i><b>6.2</b> group_by / summarise basics</a><ul>
 <li class="chapter" data-level="6.2.1" data-path="033-groupby.html"><a href="033-groupby.html#other-summary-functions"><i class="fa fa-check"></i><b>6.2.1</b> Other summary functions</a></li>
 <li class="chapter" data-level="6.2.2" data-path="033-groupby.html"><a href="033-groupby.html#grouping-by-more-than-one-variable"><i class="fa fa-check"></i><b>6.2.2</b> Grouping by more than one variable</a></li>
@@ -224,11 +227,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6.3.1" data-path="033-groupby.html"><a href="033-groupby.html#a-note-on-restructuring-your-data-frames"><i class="fa fa-check"></i><b>6.3.1</b> A note on restructuring your data frames</a></li>
 </ul></li>
 <li class="chapter" data-level="6.4" data-path="033-groupby.html"><a href="033-groupby.html#resources-exercises"><i class="fa fa-check"></i><b>6.4</b> Resources &amp; exercises</a><ul>
-<li class="chapter" data-level="6.4.1" data-path="033-groupby.html"><a href="033-groupby.html#exercises-2"><i class="fa fa-check"></i><b>6.4.1</b> Exercises</a></li>
+<li class="chapter" data-level="6.4.1" data-path="021-r-markdown.html"><a href="021-r-markdown.html#exercises"><i class="fa fa-check"></i><b>6.4.1</b> Exercises</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="035-mutate.html"><a href="035-mutate.html"><i class="fa fa-check"></i><b>7</b> Verbs Part 3: mutate</a><ul>
-<li class="chapter" data-level="7.1" data-path="035-mutate.html"><a href="035-mutate.html#key-takeaways-6"><i class="fa fa-check"></i><b>7.1</b> Key takeaways</a><ul>
+<li class="chapter" data-level="7.1" data-path="011-r-install.html"><a href="011-r-install.html#key-takeaways"><i class="fa fa-check"></i><b>7.1</b> Key takeaways</a><ul>
 <li class="chapter" data-level="7.1.1" data-path="035-mutate.html"><a href="035-mutate.html#read-in-some-data"><i class="fa fa-check"></i><b>7.1.1</b> Read in some data</a></li>
 </ul></li>
 <li class="chapter" data-level="7.2" data-path="035-mutate.html"><a href="035-mutate.html#simple-arithmetic"><i class="fa fa-check"></i><b>7.2</b> Simple arithmetic</a></li>
@@ -240,7 +243,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="036-joins.html"><a href="036-joins.html"><i class="fa fa-check"></i><b>8</b> Verbs Part 4: Combining data</a><ul>
-<li class="chapter" data-level="8.1" data-path="036-joins.html"><a href="036-joins.html#key-takeaways-7"><i class="fa fa-check"></i><b>8.1</b> Key takeaways</a><ul>
+<li class="chapter" data-level="8.1" data-path="011-r-install.html"><a href="011-r-install.html#key-takeaways"><i class="fa fa-check"></i><b>8.1</b> Key takeaways</a><ul>
 <li class="chapter" data-level="8.1.1" data-path="036-joins.html"><a href="036-joins.html#adding-rows-instead-of-columns"><i class="fa fa-check"></i><b>8.1.1</b> Adding rows instead of columns</a></li>
 </ul></li>
 <li class="chapter" data-level="8.2" data-path="036-joins.html"><a href="036-joins.html#concepts-of-joining"><i class="fa fa-check"></i><b>8.2</b> Concepts of joining</a></li>
@@ -248,7 +251,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="036-joins.html"><a href="036-joins.html#setting-up-the-data"><i class="fa fa-check"></i>Setting up the data</a></li>
 <li class="chapter" data-level="" data-path="036-joins.html"><a href="036-joins.html#apply-the-join"><i class="fa fa-check"></i>Apply the join</a></li>
 </ul></li>
-<li class="chapter" data-level="8.4" data-path="036-joins.html"><a href="036-joins.html#resources-2"><i class="fa fa-check"></i><b>8.4</b> Resources</a><ul>
+<li class="chapter" data-level="8.4" data-path="021-r-markdown.html"><a href="021-r-markdown.html#resources"><i class="fa fa-check"></i><b>8.4</b> Resources</a><ul>
 <li class="chapter" data-level="8.4.1" data-path="036-joins.html"><a href="036-joins.html#practice"><i class="fa fa-check"></i><b>8.4.1</b> Practice</a></li>
 </ul></li>
 </ul></li>
@@ -267,7 +270,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="appendix"><span><b>Appendix</b></span></li>
 <li class="chapter" data-level="A" data-path="A02-programming.html"><a href="A02-programming.html"><i class="fa fa-check"></i><b>A</b> A gentle intro to programming</a><ul>
-<li class="chapter" data-level="A.1" data-path="A02-programming.html"><a href="A02-programming.html#key-takeaways-8"><i class="fa fa-check"></i><b>A.1</b> Key takeaways</a></li>
+<li class="chapter" data-level="A.1" data-path="011-r-install.html"><a href="011-r-install.html#key-takeaways"><i class="fa fa-check"></i><b>A.1</b> Key takeaways</a></li>
 <li class="chapter" data-level="A.2" data-path="A02-programming.html"><a href="A02-programming.html#building-blocks"><i class="fa fa-check"></i><b>A.2</b> Building blocks</a><ul>
 <li class="chapter" data-level="" data-path="A02-programming.html"><a href="A02-programming.html#variables-and-objects"><i class="fa fa-check"></i>Variables and objects</a></li>
 <li class="chapter" data-level="" data-path="A02-programming.html"><a href="A02-programming.html#operators-assignment"><i class="fa fa-check"></i>Operators &amp; assignment</a></li>
@@ -278,10 +281,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="A02-programming.html"><a href="A02-programming.html#open-a-restaurant-with-loops"><i class="fa fa-check"></i>Open a restaurant with loops</a></li>
 </ul></li>
 <li class="chapter" data-level="A.4" data-path="A02-programming.html"><a href="A02-programming.html#applications"><i class="fa fa-check"></i><b>A.4</b> Applications</a></li>
-<li class="chapter" data-level="A.5" data-path="A02-programming.html"><a href="A02-programming.html#more-resources-1"><i class="fa fa-check"></i><b>A.5</b> More resources</a></li>
+<li class="chapter" data-level="A.5" data-path="035-mutate.html"><a href="035-mutate.html#more-resources"><i class="fa fa-check"></i><b>A.5</b> More resources</a></li>
 </ul></li>
 <li class="chapter" data-level="B" data-path="A01-resources.html"><a href="A01-resources.html"><i class="fa fa-check"></i><b>B</b> Great R Resources</a><ul>
-<li class="chapter" data-level="B.1" data-path="A01-resources.html"><a href="A01-resources.html#key-takeaways-9"><i class="fa fa-check"></i><b>B.1</b> Key takeaways</a></li>
+<li class="chapter" data-level="B.1" data-path="011-r-install.html"><a href="011-r-install.html#key-takeaways"><i class="fa fa-check"></i><b>B.1</b> Key takeaways</a></li>
 <li class="chapter" data-level="B.2" data-path="A01-resources.html"><a href="A01-resources.html#coursework-in-r"><i class="fa fa-check"></i><b>B.2</b> Coursework in R</a></li>
 <li class="chapter" data-level="B.3" data-path="A01-resources.html"><a href="A01-resources.html#instructional-screencasts-and-videos"><i class="fa fa-check"></i><b>B.3</b> Instructional screencasts and videos</a></li>
 </ul></li>
@@ -318,7 +321,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="data-frames-and-the-tidyverse" class="section level1">
 <h1><span class="header-section-number">3</span> Data frames and the tidyverse</h1>
-<div id="key-takeaways-2" class="section level2">
+<div id="key-takeaways" class="section level2">
 <h2><span class="header-section-number">3.1</span> Key takeaways</h2>
 <ul>
 <li>Loading the tidyverse</li>
@@ -357,15 +360,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Asks the tidyverse to execute the function <em>read_csv</em> on the stored link address. The function can read files stored on the web or on your computer.</li>
 </ol>
 <p>This data is from the Phoenix open government site, and contains staff salaries as of 2018</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" title="1"><span class="co">#the location on the Web for the data set&#39;s csv download</span></a>
-<a class="sourceLine" id="cb10-2" title="2">my_link &lt;-<span class="st"> &quot;https://www.phoenixopendata.com/dataset/0c02bbfd-08d9-41e9-a00c-97848a9f7350/resource/3a5c2950-88e3-4cb4-b436-c78d2a266c75/download/open-data-staff-salaries-as-of-12-31-2018.csv&quot;</span></a>
-<a class="sourceLine" id="cb10-3" title="3"></a>
-<a class="sourceLine" id="cb10-4" title="4"></a>
-<a class="sourceLine" id="cb10-5" title="5"><span class="co">#use it in a read_csv command</span></a>
-<a class="sourceLine" id="cb10-6" title="6">phx_salaries &lt;-<span class="st"> </span><span class="kw">read_csv</span>( my_link  )</a></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="022-data-frames.html#cb10-1"></a><span class="co">#the location on the Web for the data set&#39;s csv download</span></span>
+<span id="cb10-2"><a href="022-data-frames.html#cb10-2"></a>my_link &lt;-<span class="st"> &quot;https://www.phoenixopendata.com/dataset/0c02bbfd-08d9-41e9-a00c-97848a9f7350/resource/3a5c2950-88e3-4cb4-b436-c78d2a266c75/download/open-data-staff-salaries-as-of-12-31-2018.csv&quot;</span></span>
+<span id="cb10-3"><a href="022-data-frames.html#cb10-3"></a></span>
+<span id="cb10-4"><a href="022-data-frames.html#cb10-4"></a></span>
+<span id="cb10-5"><a href="022-data-frames.html#cb10-5"></a><span class="co">#use it in a read_csv command</span></span>
+<span id="cb10-6"><a href="022-data-frames.html#cb10-6"></a>phx_salaries &lt;-<span class="st"> </span><span class="kw">read_csv</span>( my_link  )</span></code></pre></div>
 <p>When you run this code, you’ll rececive a scary looking message. Don’t worry - it’s just giving you some information about what it found in the online file:</p>
 <div class="figure">
-<img src="images/21-rdataframe-parse-message.png" alt="Parsing message from import" />
+<img src="images/21-rdataframe-parse-message.png" alt="" />
 <p class="caption">Parsing message from import</p>
 </div>
 <p>Notice that the column names are set automatically using the first name of the file. One of the first things you’ll often want to do with a csv file is change the names using a standard style. I usually prefer lower case names with underscores between words. If I always use those, I won’t have to remember which.</p>
@@ -380,7 +383,7 @@ read_delimited()</code></pre>
 <p>You should now see the name of the data frame in your Global Environment. Click on it to View it, or issue the <code>View(phx_salaries)</code> command.</p>
 <p><img src="images/23-view-salaries.jpg" /></p>
 <p>You can look at your data by clicking on its name in the “Global Environment” window, or by using some standard functions in R to explore them. Use the head() function to look at the top and the tail() function to look at the bottom:</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" title="1"><span class="kw">head</span>(phx_salaries)</a></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="022-data-frames.html#cb12-1"></a><span class="kw">head</span>(phx_salaries)</span></code></pre></div>
 <table>
 <thead>
 <tr class="header">
@@ -395,23 +398,23 @@ read_delimited()</code></pre>
 <td align="left">Aamodt</td>
 <td align="left">Gail</td>
 <td align="left">Police Officer</td>
-<td align="right">72425.60</td>
+<td align="right">72426</td>
 </tr>
 <tr class="even">
 <td align="left">Abbitt</td>
 <td align="left">Ryan</td>
 <td align="left">Firefighter 56hr</td>
-<td align="right">67974.82</td>
+<td align="right">67975</td>
 </tr>
 <tr class="odd">
 <td align="left">Abbott</td>
 <td align="left">Christie</td>
 <td align="left">Forensic Scientist IV</td>
-<td align="right">99195.20</td>
+<td align="right">99195</td>
 </tr>
 </tbody>
 </table>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" title="1"><span class="kw">tail</span>(phx_salaries)</a></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="022-data-frames.html#cb13-1"></a><span class="kw">tail</span>(phx_salaries)</span></code></pre></div>
 <table>
 <thead>
 <tr class="header">
@@ -426,29 +429,29 @@ read_delimited()</code></pre>
 <td align="left">de la Fuente</td>
 <td align="left">Mariana</td>
 <td align="left">Curriculum/Trng Coord*Supv Dev</td>
-<td align="right">77334.4</td>
+<td align="right">77334</td>
 </tr>
 <tr class="even">
 <td align="left">de los Rios Jr</td>
 <td align="left">Ruben</td>
 <td align="left">Police Officer</td>
-<td align="right">54475.2</td>
+<td align="right">54475</td>
 </tr>
 <tr class="odd">
 <td align="left">von Kampen</td>
 <td align="left">Michele</td>
 <td align="left">Caseworker II</td>
-<td align="right">57283.2</td>
+<td align="right">57283</td>
 </tr>
 </tbody>
 </table>
 <p>.. and use the “structure” command to see the variable names and types.</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" title="1"><span class="kw">str</span>(phx_salaries)</a></code></pre></div>
-<pre><code>## Classes &#39;spec_tbl_df&#39;, &#39;tbl_df&#39;, &#39;tbl&#39; and &#39;data.frame&#39;: 11956 obs. of  4 variables:
-##  $ LAST_NAME  : chr  &quot;Aamodt&quot; &quot;Abbitt&quot; &quot;Abbott&quot; &quot;Abdellatif&quot; ...
-##  $ FIRST_NAME : chr  &quot;Gail&quot; &quot;Ryan&quot; &quot;Christie&quot; &quot;Tariq&quot; ...
-##  $ DESCR      : chr  &quot;Police Officer&quot; &quot;Firefighter 56hr&quot; &quot;Forensic Scientist IV&quot; &quot;Environmental Quality Spec&quot; ...
-##  $ ANNUAL RATE: num  72426 67975 99195 73653 35714 ...
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="022-data-frames.html#cb14-1"></a><span class="kw">str</span>(phx_salaries)</span></code></pre></div>
+<pre><code>## tibble [11,956 × 4] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
+##  $ LAST_NAME  : chr [1:11956] &quot;Aamodt&quot; &quot;Abbitt&quot; &quot;Abbott&quot; &quot;Abdellatif&quot; ...
+##  $ FIRST_NAME : chr [1:11956] &quot;Gail&quot; &quot;Ryan&quot; &quot;Christie&quot; &quot;Tariq&quot; ...
+##  $ DESCR      : chr [1:11956] &quot;Police Officer&quot; &quot;Firefighter 56hr&quot; &quot;Forensic Scientist IV&quot; &quot;Environmental Quality Spec&quot; ...
+##  $ ANNUAL RATE: num [1:11956] 72426 67975 99195 73653 35714 ...
 ##  - attr(*, &quot;spec&quot;)=
 ##   .. cols(
 ##   ..   LAST_NAME = col_character(),
@@ -476,15 +479,15 @@ This is how I explain the ‘pipe’ to <a href="https://twitter.com/hashtag/rst
 <p>Here’s a simple example with a verb called <code>rename</code>. It takes the names of the variables from the first line, AND THEN renames them!</p>
 <p>This is something you often have to do because R will assume that the first row of the csv file contains the names of your variables. Using them, though, can be a pain – you have to remember whether they’re upper or lower case, and you have to put back-ticks (`) around any names with spaces or special characters.</p>
 <p>Here’s what using the pipe looks like to create a NEW data frame out of the old one with the names changed to lower case with underscores, a common pattern in many computer programs:</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb17-1" title="1">phx_salaries_renamed &lt;-<span class="st">                   </span><span class="co">#create a new data frame out of the next set of commands</span></a>
-<a class="sourceLine" id="cb17-2" title="2"><span class="st">   </span>phx_salaries <span class="op">%&gt;%</span><span class="st">                       </span><span class="co">#start with the original data frame name, AND THEN</span></a>
-<a class="sourceLine" id="cb17-3" title="3"><span class="st">   </span><span class="kw">rename</span> (  <span class="dt">last_name=</span>LAST_NAME,         <span class="co"># A list of new_name = old_name pairs, separated by commas</span></a>
-<a class="sourceLine" id="cb17-4" title="4">             <span class="dt">first_name=</span>FIRST_NAME,</a>
-<a class="sourceLine" id="cb17-5" title="5">             <span class="dt">job_title =</span> DESCR,</a>
-<a class="sourceLine" id="cb17-6" title="6">             <span class="dt">annual_pay =</span> <span class="st">`</span><span class="dt">ANNUAL RATE</span><span class="st">`</span>   <span class="co">#note the crazy back-ticks that you have to type for two-word names</span></a>
-<a class="sourceLine" id="cb17-7" title="7">           )                         </a>
-<a class="sourceLine" id="cb17-8" title="8"></a>
-<a class="sourceLine" id="cb17-9" title="9"><span class="kw">head</span> (phx_salaries_renamed)    <span class="co"># print out the first few rows.</span></a></code></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="022-data-frames.html#cb17-1"></a>phx_salaries_renamed &lt;-<span class="st">                   </span><span class="co">#create a new data frame out of the next set of commands</span></span>
+<span id="cb17-2"><a href="022-data-frames.html#cb17-2"></a><span class="st">   </span>phx_salaries <span class="op">%&gt;%</span><span class="st">                       </span><span class="co">#start with the original data frame name, AND THEN</span></span>
+<span id="cb17-3"><a href="022-data-frames.html#cb17-3"></a><span class="st">   </span><span class="kw">rename</span> (  <span class="dt">last_name=</span>LAST_NAME,         <span class="co"># A list of new_name = old_name pairs, separated by commas</span></span>
+<span id="cb17-4"><a href="022-data-frames.html#cb17-4"></a>             <span class="dt">first_name=</span>FIRST_NAME,</span>
+<span id="cb17-5"><a href="022-data-frames.html#cb17-5"></a>             <span class="dt">job_title =</span> DESCR,</span>
+<span id="cb17-6"><a href="022-data-frames.html#cb17-6"></a>             <span class="dt">annual_pay =</span> <span class="st">`</span><span class="dt">ANNUAL RATE</span><span class="st">`</span>   <span class="co">#note the crazy back-ticks that you have to type for two-word names</span></span>
+<span id="cb17-7"><a href="022-data-frames.html#cb17-7"></a>           )                         </span>
+<span id="cb17-8"><a href="022-data-frames.html#cb17-8"></a></span>
+<span id="cb17-9"><a href="022-data-frames.html#cb17-9"></a><span class="kw">head</span> (phx_salaries_renamed)    <span class="co"># print out the first few rows.</span></span></code></pre></div>
 <p>You can leave out any name you don’t want to save. (There are fancier, faster ways to do this, but don’t worry abou that just yet. This is the easiest to remember.) This code chunk results in something that looks like this:</p>
 <table>
 <thead>
@@ -500,19 +503,19 @@ This is how I explain the ‘pipe’ to <a href="https://twitter.com/hashtag/rst
 <td align="left">Aamodt</td>
 <td align="left">Gail</td>
 <td align="left">Police Officer</td>
-<td align="right">72425.60</td>
+<td align="right">72426</td>
 </tr>
 <tr class="even">
 <td align="left">Abbitt</td>
 <td align="left">Ryan</td>
 <td align="left">Firefighter 56hr</td>
-<td align="right">67974.82</td>
+<td align="right">67975</td>
 </tr>
 <tr class="odd">
 <td align="left">Abbott</td>
 <td align="left">Christie</td>
 <td align="left">Forensic Scientist IV</td>
-<td align="right">99195.20</td>
+<td align="right">99195</td>
 </tr>
 </tbody>
 </table>
@@ -532,7 +535,7 @@ This is how I explain the ‘pipe’ to <a href="https://twitter.com/hashtag/rst
 <p>Max van den Oetelaar via Unsplash</p>
 </div>
 </div>
-<div id="other-resources-1" class="section level2">
+<div id="other-resources" class="section level2">
 <h2><span class="header-section-number">3.6</span> Other resources</h2>
 <p>Take a look at Jesse Lecy’s lesson on “<a href="http://ds4ps.org/dp4ss-textbook/ch-032-learning_r.html">Learning How to Learn</a>” from his data science class at ASU. It will make you feel better, I swear.</p>
 <p>Hadley Wickham’s “R for Data Science” <a href="https://r4ds.had.co.nz/data-import.html">chapter on importing data</a> goes into a lot of the options and variants of the read_csv command. RStudio has one of its many <a href="https://resources.rstudio.com/rstudio-cheatsheets/data-import-cheat-sheet">cheat sheets on the read_csv function</a> and its cousins.</p>
@@ -561,7 +564,7 @@ This is how I explain the ‘pipe’ to <a href="https://twitter.com/hashtag/rst
 <div class="footnotes">
 <hr />
 <ol start="1">
-<li id="fn1"><p>You don’t have to install readxl – it’s part of the tidyverse but it’s not automatically activated.<a href="022-data-frames.html#fnref1" class="footnote-back">↩</a></p></li>
+<li id="fn1"><p>You don’t have to install readxl – it’s part of the tidyverse but it’s not automatically activated.<a href="022-data-frames.html#fnref1" class="footnote-back">↩︎</a></p></li>
 </ol>
 </div>
             </section>
