@@ -161,9 +161,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2" data-path="021-r-markdown.html"><a href="021-r-markdown.html"><i class="fa fa-check"></i><b>2</b> R Markdown</a><ul>
 <li class="chapter" data-level="2.1" data-path="011-r-install.html"><a href="011-r-install.html#key-takeaways"><i class="fa fa-check"></i><b>2.1</b> Key takeaways</a></li>
 <li class="chapter" data-level="2.2" data-path="021-r-markdown.html"><a href="021-r-markdown.html#getting-started-with-r-markdown"><i class="fa fa-check"></i><b>2.2</b> Getting started with R Markdown</a></li>
-<li class="chapter" data-level="2.3" data-path="021-r-markdown.html"><a href="021-r-markdown.html#the-anatomy-of-a-document"><i class="fa fa-check"></i><b>2.3</b> The anatomy of a document</a></li>
+<li class="chapter" data-level="2.3" data-path="021-r-markdown.html"><a href="021-r-markdown.html#the-anatomy-of-a-document"><i class="fa fa-check"></i><b>2.3</b> The anatomy of a document</a><ul>
+<li class="chapter" data-level="2.3.1" data-path="021-r-markdown.html"><a href="021-r-markdown.html#writing-in-markdown"><i class="fa fa-check"></i><b>2.3.1</b> Writing in markdown</a></li>
+<li class="chapter" data-level="" data-path="021-r-markdown.html"><a href="021-r-markdown.html#front-matter-yaml-at-the-top"><i class="fa fa-check"></i>Front matter / YAML at the top</a></li>
+</ul></li>
 <li class="chapter" data-level="2.4" data-path="021-r-markdown.html"><a href="021-r-markdown.html#knitting-your-document"><i class="fa fa-check"></i><b>2.4</b> Knitting your document</a></li>
-<li class="chapter" data-level="2.5" data-path="021-r-markdown.html"><a href="021-r-markdown.html#code-chunks"><i class="fa fa-check"></i><b>2.5</b> Code chunks</a></li>
+<li class="chapter" data-level="2.5" data-path="021-r-markdown.html"><a href="021-r-markdown.html#including-r-code-and-its-results"><i class="fa fa-check"></i><b>2.5</b> Including R code and its results</a></li>
+<li class="chapter" data-level="" data-path="021-r-markdown.html"><a href="021-r-markdown.html#r-markdown-starts-from-scratch"><i class="fa fa-check"></i>R Markdown starts from scratch</a></li>
 <li class="chapter" data-level="2.6" data-path="011-r-install.html"><a href="011-r-install.html#resources-and-exercises"><i class="fa fa-check"></i><b>2.6</b> Resources and exercises</a><ul>
 <li class="chapter" data-level="" data-path="021-r-markdown.html"><a href="021-r-markdown.html#resources"><i class="fa fa-check"></i>Resources</a></li>
 <li class="chapter" data-level="" data-path="021-r-markdown.html"><a href="021-r-markdown.html#exercises"><i class="fa fa-check"></i>Exercises</a></li>
@@ -339,13 +343,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3><span class="header-section-number">7.1.1</span> Read in some data</h3>
 <p>Start with the <a href="https://github.com/cronkitedata/rstudyguide/blob/master/data/az-immunizations-grade6.Rda?raw=true">Arizona immunization data</a> that some other chapters have worked with, loading it and the tidyverse to follow along.</p>
 <p>Here are the packages and data used for this chapter. You might need to install some of them.</p>
-<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="035-mutate.html#cb52-1"></a><span class="kw">library</span>(tidyverse)</span>
-<span id="cb52-2"><a href="035-mutate.html#cb52-2"></a><span class="kw">library</span>(knitr)       <span class="co"># used for slightly better looking tables</span></span>
-<span id="cb52-3"><a href="035-mutate.html#cb52-3"></a><span class="kw">library</span>(DT)          <span class="co"># even more options with tables</span></span>
-<span id="cb52-4"><a href="035-mutate.html#cb52-4"></a><span class="kw">library</span>(lubridate)   <span class="co"># used for working with dates</span></span>
-<span id="cb52-5"><a href="035-mutate.html#cb52-5"></a><span class="kw">library</span>(janitor)     <span class="co"># used to clean up dirty data and change column names.</span></span>
-<span id="cb52-6"><a href="035-mutate.html#cb52-6"></a></span>
-<span id="cb52-7"><a href="035-mutate.html#cb52-7"></a><span class="kw">load</span>(<span class="st">&quot;data/az-immunizations-grade6.Rda&quot;</span>)  <span class="co"># you may need to change the path to wherever you saved the data</span></span></code></pre></div>
+<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="035-mutate.html#cb56-1"></a><span class="kw">library</span>(tidyverse)</span>
+<span id="cb56-2"><a href="035-mutate.html#cb56-2"></a><span class="kw">library</span>(knitr)       <span class="co"># used for slightly better looking tables</span></span>
+<span id="cb56-3"><a href="035-mutate.html#cb56-3"></a><span class="kw">library</span>(DT)          <span class="co"># even more options with tables</span></span>
+<span id="cb56-4"><a href="035-mutate.html#cb56-4"></a><span class="kw">library</span>(lubridate)   <span class="co"># used for working with dates</span></span>
+<span id="cb56-5"><a href="035-mutate.html#cb56-5"></a><span class="kw">library</span>(janitor)     <span class="co"># used to clean up dirty data and change column names.</span></span>
+<span id="cb56-6"><a href="035-mutate.html#cb56-6"></a></span>
+<span id="cb56-7"><a href="035-mutate.html#cb56-7"></a><span class="kw">load</span>(<span class="st">&quot;data/az-immunizations-grade6.Rda&quot;</span>)  <span class="co"># you may need to change the path to wherever you saved the data</span></span></code></pre></div>
 </div>
 </div>
 <div id="simple-arithmetic" class="section level2">
@@ -357,10 +361,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   / Division
   </code></pre>
 <p>This example creates a new data frame called <code>immune_pct</code> from a few columns of the original:</p>
-<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="035-mutate.html#cb54-1"></a>immune_pct &lt;-<span class="st"> </span></span>
-<span id="cb54-2"><a href="035-mutate.html#cb54-2"></a><span class="st">  </span>grade6_counts <span class="op">%&gt;%</span></span>
-<span id="cb54-3"><a href="035-mutate.html#cb54-3"></a><span class="st">  </span><span class="kw">select</span> ( school_name, city, school_type, enrolled, num_immune_mmr) <span class="op">%&gt;%</span></span>
-<span id="cb54-4"><a href="035-mutate.html#cb54-4"></a><span class="st">  </span><span class="kw">mutate</span> (<span class="dt">pct_immune =</span> ( num_immune_mmr<span class="op">/</span>enrolled) <span class="op">*</span><span class="st"> </span><span class="dv">100</span>) </span></code></pre></div>
+<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="035-mutate.html#cb58-1"></a>immune_pct &lt;-<span class="st"> </span></span>
+<span id="cb58-2"><a href="035-mutate.html#cb58-2"></a><span class="st">  </span>grade6_counts <span class="op">%&gt;%</span></span>
+<span id="cb58-3"><a href="035-mutate.html#cb58-3"></a><span class="st">  </span><span class="kw">select</span> ( school_name, city, school_type, enrolled, num_immune_mmr) <span class="op">%&gt;%</span></span>
+<span id="cb58-4"><a href="035-mutate.html#cb58-4"></a><span class="st">  </span><span class="kw">mutate</span> (<span class="dt">pct_immune =</span> ( num_immune_mmr<span class="op">/</span>enrolled) <span class="op">*</span><span class="st"> </span><span class="dv">100</span>) </span></code></pre></div>
 <p>Here’s what it looks like:</p>
 <table>
 <thead>
@@ -424,27 +428,27 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
              new value if it&#39;s true, 
              new value if it&#39;s not true)</code></pre>
 <p>For example:</p>
-<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="035-mutate.html#cb56-1"></a>immune_pct &lt;-<span class="st"> </span></span>
-<span id="cb56-2"><a href="035-mutate.html#cb56-2"></a><span class="st">    </span>immune_pct <span class="op">%&gt;%</span></span>
-<span id="cb56-3"><a href="035-mutate.html#cb56-3"></a><span class="st">    </span><span class="kw">mutate</span> (  <span class="dt">threshold_met =</span>  <span class="kw">if_else</span>   ( pct_immune <span class="op">&gt;=</span><span class="st"> </span><span class="dv">90</span>, </span>
-<span id="cb56-4"><a href="035-mutate.html#cb56-4"></a>                                        <span class="st">&quot;Meets threshold&quot;</span>, </span>
-<span id="cb56-5"><a href="035-mutate.html#cb56-5"></a>                                         <span class="st">&quot;Below threshold&quot;</span>)</span>
-<span id="cb56-6"><a href="035-mutate.html#cb56-6"></a>            )</span></code></pre></div>
+<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="035-mutate.html#cb60-1"></a>immune_pct &lt;-<span class="st"> </span></span>
+<span id="cb60-2"><a href="035-mutate.html#cb60-2"></a><span class="st">    </span>immune_pct <span class="op">%&gt;%</span></span>
+<span id="cb60-3"><a href="035-mutate.html#cb60-3"></a><span class="st">    </span><span class="kw">mutate</span> (  <span class="dt">threshold_met =</span>  <span class="kw">if_else</span>   ( pct_immune <span class="op">&gt;=</span><span class="st"> </span><span class="dv">90</span>, </span>
+<span id="cb60-4"><a href="035-mutate.html#cb60-4"></a>                                        <span class="st">&quot;Meets threshold&quot;</span>, </span>
+<span id="cb60-5"><a href="035-mutate.html#cb60-5"></a>                                         <span class="st">&quot;Below threshold&quot;</span>)</span>
+<span id="cb60-6"><a href="035-mutate.html#cb60-6"></a>            )</span></code></pre></div>
 <p>Now we can do some grouping by the new categories:</p>
-<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="035-mutate.html#cb57-1"></a>immune_pct <span class="op">%&gt;%</span></span>
-<span id="cb57-2"><a href="035-mutate.html#cb57-2"></a><span class="st">    </span><span class="kw">group_by</span> (school_type, threshold_met) <span class="op">%&gt;%</span></span>
-<span id="cb57-3"><a href="035-mutate.html#cb57-3"></a><span class="st">    </span><span class="kw">summarise</span> ( <span class="dt">school_ct =</span> <span class="kw">n</span>(), </span>
-<span id="cb57-4"><a href="035-mutate.html#cb57-4"></a>                <span class="dt">enrolled =</span> <span class="kw">sum</span>(enrolled)) </span></code></pre></div>
+<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="035-mutate.html#cb61-1"></a>immune_pct <span class="op">%&gt;%</span></span>
+<span id="cb61-2"><a href="035-mutate.html#cb61-2"></a><span class="st">    </span><span class="kw">group_by</span> (school_type, threshold_met) <span class="op">%&gt;%</span></span>
+<span id="cb61-3"><a href="035-mutate.html#cb61-3"></a><span class="st">    </span><span class="kw">summarise</span> ( <span class="dt">school_ct =</span> <span class="kw">n</span>(), </span>
+<span id="cb61-4"><a href="035-mutate.html#cb61-4"></a>                <span class="dt">enrolled =</span> <span class="kw">sum</span>(enrolled)) </span></code></pre></div>
 <pre><code>## `summarise()` regrouping output by &#39;school_type&#39; (override with `.groups` argument)</code></pre>
 <p>You can practice rolling up by looking at the percent by type.</p>
-<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="035-mutate.html#cb59-1"></a>immune_pct <span class="op">%&gt;%</span></span>
-<span id="cb59-2"><a href="035-mutate.html#cb59-2"></a><span class="st">    </span><span class="kw">group_by</span> (school_type, threshold_met) <span class="op">%&gt;%</span></span>
-<span id="cb59-3"><a href="035-mutate.html#cb59-3"></a><span class="st">    </span><span class="kw">summarise</span> ( <span class="dt">schools =</span> <span class="kw">n</span>(), </span>
-<span id="cb59-4"><a href="035-mutate.html#cb59-4"></a>                <span class="dt">students =</span> <span class="kw">sum</span>(enrolled)) <span class="op">%&gt;%</span></span>
-<span id="cb59-5"><a href="035-mutate.html#cb59-5"></a><span class="st">    </span><span class="kw">mutate</span> (   <span class="dt">pct_school_type =</span> schools <span class="op">/</span><span class="st"> </span><span class="kw">sum</span>(schools, <span class="dt">na.rm=</span><span class="ot">TRUE</span>) <span class="op">*</span><span class="st"> </span><span class="dv">100</span>,</span>
-<span id="cb59-6"><a href="035-mutate.html#cb59-6"></a>               <span class="dt">pct_enrolled =</span> students <span class="op">/</span><span class="st"> </span><span class="kw">sum</span>(students, <span class="dt">na.rm=</span><span class="ot">TRUE</span>) <span class="op">*</span><span class="st"> </span><span class="dv">100</span> </span>
-<span id="cb59-7"><a href="035-mutate.html#cb59-7"></a>             ) <span class="op">%&gt;%</span></span>
-<span id="cb59-8"><a href="035-mutate.html#cb59-8"></a><span class="st">    </span><span class="kw">filter</span> ( threshold_met <span class="op">==</span><span class="st"> &quot;Below threshold&quot;</span>)  </span></code></pre></div>
+<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="035-mutate.html#cb63-1"></a>immune_pct <span class="op">%&gt;%</span></span>
+<span id="cb63-2"><a href="035-mutate.html#cb63-2"></a><span class="st">    </span><span class="kw">group_by</span> (school_type, threshold_met) <span class="op">%&gt;%</span></span>
+<span id="cb63-3"><a href="035-mutate.html#cb63-3"></a><span class="st">    </span><span class="kw">summarise</span> ( <span class="dt">schools =</span> <span class="kw">n</span>(), </span>
+<span id="cb63-4"><a href="035-mutate.html#cb63-4"></a>                <span class="dt">students =</span> <span class="kw">sum</span>(enrolled)) <span class="op">%&gt;%</span></span>
+<span id="cb63-5"><a href="035-mutate.html#cb63-5"></a><span class="st">    </span><span class="kw">mutate</span> (   <span class="dt">pct_school_type =</span> schools <span class="op">/</span><span class="st"> </span><span class="kw">sum</span>(schools, <span class="dt">na.rm=</span><span class="ot">TRUE</span>) <span class="op">*</span><span class="st"> </span><span class="dv">100</span>,</span>
+<span id="cb63-6"><a href="035-mutate.html#cb63-6"></a>               <span class="dt">pct_enrolled =</span> students <span class="op">/</span><span class="st"> </span><span class="kw">sum</span>(students, <span class="dt">na.rm=</span><span class="ot">TRUE</span>) <span class="op">*</span><span class="st"> </span><span class="dv">100</span> </span>
+<span id="cb63-7"><a href="035-mutate.html#cb63-7"></a>             ) <span class="op">%&gt;%</span></span>
+<span id="cb63-8"><a href="035-mutate.html#cb63-8"></a><span class="st">    </span><span class="kw">filter</span> ( threshold_met <span class="op">==</span><span class="st"> &quot;Below threshold&quot;</span>)  </span></code></pre></div>
 <pre><code>## `summarise()` regrouping output by &#39;school_type&#39; (override with `.groups` argument)</code></pre>
 <div class="kable-table">
 <table>
@@ -504,14 +508,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">7.5</span> Bonus: Fun with date and time</h2>
 <p>Sometimes your data came to you as text, but you need to treat it as numbers. In journalism, we’re often trying to work with dates that came to us in some non-standard form. This is called changing the <code>data type</code>. <a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a></p>
 <p>This example comes from the opioid emergency call data shown in earlier chapters.</p>
-<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="035-mutate.html#cb61-1"></a>my_link &lt;-<span class="st"> &quot;https://cronkitedata.github.io/cronkite-docs/assets/data/csv/opioidemscalls.csv&quot;</span></span>
-<span id="cb61-2"><a href="035-mutate.html#cb61-2"></a><span class="co">#use it in a read_csv command</span></span>
-<span id="cb61-3"><a href="035-mutate.html#cb61-3"></a>opioid_calls_orig &lt;-<span class="st"> </span><span class="kw">read_csv</span>(my_link)</span>
-<span id="cb61-4"><a href="035-mutate.html#cb61-4"></a>opioid_calls &lt;-<span class="st"> </span>opioid_calls_orig <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb61-5"><a href="035-mutate.html#cb61-5"></a><span class="st">                </span><span class="kw">clean_names</span>() <span class="op">%&gt;%</span></span>
-<span id="cb61-6"><a href="035-mutate.html#cb61-6"></a><span class="st">                </span><span class="kw">select</span> (objectid, <span class="dt">incident_date_char =</span> incident_date, <span class="dt">narcan=</span> narcan_naloxone_given, is_asu_student, <span class="dt">is_homeless=</span>is_homeles)</span>
-<span id="cb61-7"><a href="035-mutate.html#cb61-7"></a></span>
-<span id="cb61-8"><a href="035-mutate.html#cb61-8"></a><span class="kw">glimpse</span>( opioid_calls)</span></code></pre></div>
+<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="035-mutate.html#cb65-1"></a>my_link &lt;-<span class="st"> &quot;https://cronkitedata.github.io/cronkite-docs/assets/data/csv/opioidemscalls.csv&quot;</span></span>
+<span id="cb65-2"><a href="035-mutate.html#cb65-2"></a><span class="co">#use it in a read_csv command</span></span>
+<span id="cb65-3"><a href="035-mutate.html#cb65-3"></a>opioid_calls_orig &lt;-<span class="st"> </span><span class="kw">read_csv</span>(my_link)</span>
+<span id="cb65-4"><a href="035-mutate.html#cb65-4"></a>opioid_calls &lt;-<span class="st"> </span>opioid_calls_orig <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb65-5"><a href="035-mutate.html#cb65-5"></a><span class="st">                </span><span class="kw">clean_names</span>() <span class="op">%&gt;%</span></span>
+<span id="cb65-6"><a href="035-mutate.html#cb65-6"></a><span class="st">                </span><span class="kw">select</span> (objectid, <span class="dt">incident_date_char =</span> incident_date, <span class="dt">narcan=</span> narcan_naloxone_given, is_asu_student, <span class="dt">is_homeless=</span>is_homeles)</span>
+<span id="cb65-7"><a href="035-mutate.html#cb65-7"></a></span>
+<span id="cb65-8"><a href="035-mutate.html#cb65-8"></a><span class="kw">glimpse</span>( opioid_calls)</span></code></pre></div>
 <pre><code>## Rows: 650
 ## Columns: 5
 ## $ objectid           &lt;dbl&gt; 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16,…
@@ -520,10 +524,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## $ is_asu_student     &lt;chr&gt; &quot;No&quot;, &quot;No&quot;, &quot;No&quot;, &quot;No&quot;, &quot;No&quot;, &quot;No&quot;, &quot;No&quot;, &quot;No&quot;, &quot;No…
 ## $ is_homeless        &lt;chr&gt; &quot;No&quot;, &quot;No&quot;, &quot;Yes&quot;, &quot;Yes&quot;, &quot;No&quot;, &quot;No&quot;, &quot;No&quot;, &quot;No&quot;, &quot;…</code></pre>
 <p>The date and time in this dataset is a character field, but we want to convert it to a date field and a separate time field. At first, we might just want to get the date value out of the character string. It’s in the form month/day/year hour:minute, so we can use the <code>lubridate::mdy_hm function</code> [When you see a function preceded by two colons as this one does, the author is showing you which package it comes from. In this case, the <code>lubridate</code> package, which you must install before you can use it, has a function <code>mdy_hm</code>.]. This function tries to guess how the character string is formatted:</p>
-<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="035-mutate.html#cb63-1"></a>opioid_calls <span class="op">%&gt;%</span></span>
-<span id="cb63-2"><a href="035-mutate.html#cb63-2"></a><span class="st">  </span><span class="kw">mutate</span> ( <span class="dt">incident_date =</span> <span class="kw">mdy_hm</span>(incident_date_char)) <span class="op">%&gt;%</span></span>
-<span id="cb63-3"><a href="035-mutate.html#cb63-3"></a><span class="st">  </span><span class="kw">select</span> (incident_date, incident_date_char<span class="op">:</span>is_homeless) <span class="op">%&gt;%</span></span>
-<span id="cb63-4"><a href="035-mutate.html#cb63-4"></a><span class="st">  </span><span class="kw">glimpse</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="035-mutate.html#cb67-1"></a>opioid_calls <span class="op">%&gt;%</span></span>
+<span id="cb67-2"><a href="035-mutate.html#cb67-2"></a><span class="st">  </span><span class="kw">mutate</span> ( <span class="dt">incident_date =</span> <span class="kw">mdy_hm</span>(incident_date_char)) <span class="op">%&gt;%</span></span>
+<span id="cb67-3"><a href="035-mutate.html#cb67-3"></a><span class="st">  </span><span class="kw">select</span> (incident_date, incident_date_char<span class="op">:</span>is_homeless) <span class="op">%&gt;%</span></span>
+<span id="cb67-4"><a href="035-mutate.html#cb67-4"></a><span class="st">  </span><span class="kw">glimpse</span>()</span></code></pre></div>
 <pre><code>## Rows: 650
 ## Columns: 5
 ## $ incident_date      &lt;dttm&gt; 2017-01-03 11:42:00, 2017-01-09 01:08:00, 2017-01-…
@@ -533,21 +537,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## $ is_homeless        &lt;chr&gt; &quot;No&quot;, &quot;No&quot;, &quot;Yes&quot;, &quot;Yes&quot;, &quot;No&quot;, &quot;No&quot;, &quot;No&quot;, &quot;No&quot;, &quot;…</code></pre>
 <p>Notice that the new variable is of the type <dttm>, which refers to a date-time combined variable.</p>
 <p>Let’s say I want to distinguish weekends from weekdays in this dataset. First, we have to define weekend. Here’s one definition, but you might want to use another: A weekend begins at 3pm on Friday and ends at 6pm on Sunday. (The <code>hour</code> variable is in military time.). Instead of using <code>if_else</code>, this example uses <code>case_when</code>, which lets you choose among a variety of options, not just two.</p>
-<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="035-mutate.html#cb65-1"></a>opioid_calls <span class="op">%&gt;%</span></span>
-<span id="cb65-2"><a href="035-mutate.html#cb65-2"></a><span class="st">  </span><span class="kw">mutate</span> (<span class="dt">incident_date =</span> <span class="kw">mdy_hm</span>(incident_date_char), </span>
-<span id="cb65-3"><a href="035-mutate.html#cb65-3"></a>          <span class="dt">day_of_week =</span> <span class="kw">wday</span>(incident_date) ,</span>
-<span id="cb65-4"><a href="035-mutate.html#cb65-4"></a>          <span class="dt">weekday =</span> <span class="kw">weekdays</span>(incident_date),</span>
-<span id="cb65-5"><a href="035-mutate.html#cb65-5"></a>          <span class="dt">hour =</span> <span class="kw">hour</span>(incident_date), </span>
-<span id="cb65-6"><a href="035-mutate.html#cb65-6"></a>          <span class="dt">weekend =</span> </span>
-<span id="cb65-7"><a href="035-mutate.html#cb65-7"></a>              <span class="kw">case_when</span> ( day_of_week <span class="op">==</span><span class="st"> </span><span class="dv">7</span>                 <span class="op">~</span><span class="st"> &quot;Yes&quot;</span>, </span>
-<span id="cb65-8"><a href="035-mutate.html#cb65-8"></a>                          day_of_week <span class="op">==</span><span class="st"> </span><span class="dv">6</span> <span class="op">&amp;</span><span class="st"> </span>hour <span class="op">&gt;=</span><span class="st"> </span><span class="dv">15</span>     <span class="op">~</span><span class="st"> &quot;Yes&quot;</span>, </span>
-<span id="cb65-9"><a href="035-mutate.html#cb65-9"></a>                          day_of_week <span class="op">==</span><span class="st"> </span><span class="dv">1</span> <span class="op">&amp;</span><span class="st"> </span>hour <span class="op">&lt;=</span><span class="st"> </span><span class="dv">18</span>   <span class="op">~</span><span class="st"> &quot;Yes&quot;</span>, </span>
-<span id="cb65-10"><a href="035-mutate.html#cb65-10"></a>                          <span class="ot">TRUE</span>                             <span class="op">~</span><span class="st"> &quot;No&quot;</span></span>
-<span id="cb65-11"><a href="035-mutate.html#cb65-11"></a>                          )</span>
-<span id="cb65-12"><a href="035-mutate.html#cb65-12"></a>          ) <span class="op">%&gt;%</span></span>
-<span id="cb65-13"><a href="035-mutate.html#cb65-13"></a><span class="st">  </span><span class="co">#use count() instead of group_by / summarise. Same thing in this context.</span></span>
-<span id="cb65-14"><a href="035-mutate.html#cb65-14"></a><span class="st">  </span><span class="kw">count</span> (day_of_week, weekend, weekday) <span class="op">%&gt;%</span></span>
-<span id="cb65-15"><a href="035-mutate.html#cb65-15"></a><span class="st">  </span><span class="kw">pivot_wider</span> (<span class="dt">values_from =</span> n, <span class="dt">names_from =</span> weekend, <span class="dt">values_fill=</span> <span class="kw">list</span>(<span class="dt">n=</span><span class="dv">0</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="035-mutate.html#cb69-1"></a>opioid_calls <span class="op">%&gt;%</span></span>
+<span id="cb69-2"><a href="035-mutate.html#cb69-2"></a><span class="st">  </span><span class="kw">mutate</span> (<span class="dt">incident_date =</span> <span class="kw">mdy_hm</span>(incident_date_char), </span>
+<span id="cb69-3"><a href="035-mutate.html#cb69-3"></a>          <span class="dt">day_of_week =</span> <span class="kw">wday</span>(incident_date) ,</span>
+<span id="cb69-4"><a href="035-mutate.html#cb69-4"></a>          <span class="dt">weekday =</span> <span class="kw">weekdays</span>(incident_date),</span>
+<span id="cb69-5"><a href="035-mutate.html#cb69-5"></a>          <span class="dt">hour =</span> <span class="kw">hour</span>(incident_date), </span>
+<span id="cb69-6"><a href="035-mutate.html#cb69-6"></a>          <span class="dt">weekend =</span> </span>
+<span id="cb69-7"><a href="035-mutate.html#cb69-7"></a>              <span class="kw">case_when</span> ( day_of_week <span class="op">==</span><span class="st"> </span><span class="dv">7</span>                 <span class="op">~</span><span class="st"> &quot;Yes&quot;</span>, </span>
+<span id="cb69-8"><a href="035-mutate.html#cb69-8"></a>                          day_of_week <span class="op">==</span><span class="st"> </span><span class="dv">6</span> <span class="op">&amp;</span><span class="st"> </span>hour <span class="op">&gt;=</span><span class="st"> </span><span class="dv">15</span>     <span class="op">~</span><span class="st"> &quot;Yes&quot;</span>, </span>
+<span id="cb69-9"><a href="035-mutate.html#cb69-9"></a>                          day_of_week <span class="op">==</span><span class="st"> </span><span class="dv">1</span> <span class="op">&amp;</span><span class="st"> </span>hour <span class="op">&lt;=</span><span class="st"> </span><span class="dv">18</span>   <span class="op">~</span><span class="st"> &quot;Yes&quot;</span>, </span>
+<span id="cb69-10"><a href="035-mutate.html#cb69-10"></a>                          <span class="ot">TRUE</span>                             <span class="op">~</span><span class="st"> &quot;No&quot;</span></span>
+<span id="cb69-11"><a href="035-mutate.html#cb69-11"></a>                          )</span>
+<span id="cb69-12"><a href="035-mutate.html#cb69-12"></a>          ) <span class="op">%&gt;%</span></span>
+<span id="cb69-13"><a href="035-mutate.html#cb69-13"></a><span class="st">  </span><span class="co">#use count() instead of group_by / summarise. Same thing in this context.</span></span>
+<span id="cb69-14"><a href="035-mutate.html#cb69-14"></a><span class="st">  </span><span class="kw">count</span> (day_of_week, weekend, weekday) <span class="op">%&gt;%</span></span>
+<span id="cb69-15"><a href="035-mutate.html#cb69-15"></a><span class="st">  </span><span class="kw">pivot_wider</span> (<span class="dt">values_from =</span> n, <span class="dt">names_from =</span> weekend, <span class="dt">values_fill=</span> <span class="kw">list</span>(<span class="dt">n=</span><span class="dv">0</span>))</span></code></pre></div>
 <div class="kable-table">
 <table>
 <thead>

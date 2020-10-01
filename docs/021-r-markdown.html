@@ -50,13 +50,6 @@
 
 
 <script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
-<script src="libs/htmlwidgets-1.5.1/htmlwidgets.js"></script>
-<script src="libs/plotly-binding-4.9.2.1/plotly.js"></script>
-<script src="libs/typedarray-0.1/typedarray.min.js"></script>
-<link href="libs/crosstalk-1.1.0.1/css/crosstalk.css" rel="stylesheet" />
-<script src="libs/crosstalk-1.1.0.1/js/crosstalk.min.js"></script>
-<link href="libs/plotly-htmlwidgets-css-1.52.2/plotly-htmlwidgets.css" rel="stylesheet" />
-<script src="libs/plotly-main-1.52.2/plotly-latest.min.js"></script>
 
 
 <style type="text/css">
@@ -161,14 +154,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2" data-path="021-r-markdown.html"><a href="021-r-markdown.html"><i class="fa fa-check"></i><b>2</b> R Markdown</a><ul>
 <li class="chapter" data-level="2.1" data-path="011-r-install.html"><a href="011-r-install.html#key-takeaways"><i class="fa fa-check"></i><b>2.1</b> Key takeaways</a></li>
 <li class="chapter" data-level="2.2" data-path="021-r-markdown.html"><a href="021-r-markdown.html#getting-started-with-r-markdown"><i class="fa fa-check"></i><b>2.2</b> Getting started with R Markdown</a></li>
-<li class="chapter" data-level="2.3" data-path="021-r-markdown.html"><a href="021-r-markdown.html#the-anatomy-of-a-document"><i class="fa fa-check"></i><b>2.3</b> The anatomy of a document</a></li>
+<li class="chapter" data-level="2.3" data-path="021-r-markdown.html"><a href="021-r-markdown.html#the-anatomy-of-a-document"><i class="fa fa-check"></i><b>2.3</b> The anatomy of a document</a><ul>
+<li class="chapter" data-level="2.3.1" data-path="021-r-markdown.html"><a href="021-r-markdown.html#writing-in-markdown"><i class="fa fa-check"></i><b>2.3.1</b> Writing in markdown</a></li>
+<li class="chapter" data-level="" data-path="021-r-markdown.html"><a href="021-r-markdown.html#front-matter-yaml-at-the-top"><i class="fa fa-check"></i>Front matter / YAML at the top</a></li>
+</ul></li>
 <li class="chapter" data-level="2.4" data-path="021-r-markdown.html"><a href="021-r-markdown.html#knitting-your-document"><i class="fa fa-check"></i><b>2.4</b> Knitting your document</a></li>
-<li class="chapter" data-level="2.5" data-path="021-r-markdown.html"><a href="021-r-markdown.html#code-chunks"><i class="fa fa-check"></i><b>2.5</b> Code chunks</a></li>
-<li class="chapter" data-level="2.6" data-path="011-r-install.html"><a href="011-r-install.html#resources-and-exercises"><i class="fa fa-check"></i><b>2.6</b> Resources and exercises</a><ul>
+<li class="chapter" data-level="2.5" data-path="021-r-markdown.html"><a href="021-r-markdown.html#including-r-code-and-its-results"><i class="fa fa-check"></i><b>2.5</b> Including R code and its results</a></li>
+<li class="chapter" data-level="2.6" data-path="021-r-markdown.html"><a href="021-r-markdown.html#r-markdown-starts-from-scratch"><i class="fa fa-check"></i><b>2.6</b> R Markdown starts from scratch</a></li>
+<li class="chapter" data-level="2.7" data-path="011-r-install.html"><a href="011-r-install.html#resources-and-exercises"><i class="fa fa-check"></i><b>2.7</b> Resources and exercises</a><ul>
 <li class="chapter" data-level="" data-path="021-r-markdown.html"><a href="021-r-markdown.html#resources"><i class="fa fa-check"></i>Resources</a></li>
 <li class="chapter" data-level="" data-path="021-r-markdown.html"><a href="021-r-markdown.html#exercises"><i class="fa fa-check"></i>Exercises</a></li>
 </ul></li>
-<li class="chapter" data-level="2.7" data-path="021-r-markdown.html"><a href="021-r-markdown.html#bonus-styling-your-r-markdown-documents"><i class="fa fa-check"></i><b>2.7</b> Bonus: Styling your R Markdown documents</a></li>
+<li class="chapter" data-level="2.8" data-path="021-r-markdown.html"><a href="021-r-markdown.html#bonus-styling-your-r-markdown-documents"><i class="fa fa-check"></i><b>2.8</b> Bonus: Styling your R Markdown documents</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="022-data-frames.html"><a href="022-data-frames.html"><i class="fa fa-check"></i><b>3</b> Data frames and the tidyverse</a><ul>
 <li class="chapter" data-level="3.1" data-path="011-r-install.html"><a href="011-r-install.html#key-takeaways"><i class="fa fa-check"></i><b>3.1</b> Key takeaways</a></li>
@@ -337,23 +334,25 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="getting-started-with-r-markdown" class="section level2">
 <h2><span class="header-section-number">2.2</span> Getting started with R Markdown</h2>
-<p>Markdown was invented as an easy way for early contributors to Wikipedia to author documents that would translate to the web. It uses simple formatting rules that don’t require any background in programming, HTML or CSS formatting code. This book is written using Markdown. Variants of markdown are used to create many web sites, including those hosted on Github.</p>
-<p>R Markdown is an enhanced version of markdown. In it, you write your document around chunks of R code, which integrates your analysis with your writing. (R Markdown is also designed to output your work in other formats, like an actual printed book or slides.) Some news organizations do much of their internal work using R Markdown documents and code.</p>
+<p>Creating documents with R Markdown lets you ditch those tiresome data diaries and combine your documentation, code and results all in one, reproducible page. It’s a variant of the markdown language that was was invented as an easy way for early contributors to Wikipedia to author documents that would translate to the web.</p>
+<p>In an R Markdown document, write your document around chunks of R code, which integrates your analysis with your writing. (R Markdown is also designed to output your work in other formats, like an actual printed book or slides.) Some news organizations do much of their internal work using R Markdown documents and code.</p>
 <p>You must install the rmarkdown package before you can use this feature. Install it in the Console. You only have to do this once on each computer, or in each project on rstudio.cloud:</p>
 <pre><code>  install.packages(&quot;rmarkdown&quot;)</code></pre>
 <p>Unlike other packages, it’s automatically loaded when you start up R Studio.</p>
 </div>
 <div id="the-anatomy-of-a-document" class="section level2">
 <h2><span class="header-section-number">2.3</span> The anatomy of a document</h2>
-<p>Markdown uses simple punctuation to create outline levels, lists, links and other elements of a page.</p>
+<p>To format a document, markdown uses simple punctuation to create outline levels, lists, links and other elements of a page.</p>
 <p>There are four parts to an R Markdown document:</p>
 <ol style="list-style-type: decimal">
 <li>The “front matter”, or YAML.</li>
-<li>Plain text with formatting indicators.</li>
+<li>Document features, like text, images, or other elements that you would normally put in an HTML page, but formatted using the easier markdown method.</li>
 <li>Code chunks – your R computer code.</li>
 <li>The results of code chunks - what you get back when you execute the code.</li>
 </ol>
-<p>The plain text follows a few basic rules. <a href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet">This markdown cheatsheet from Adam Pritchard</a> goes through them, but the most common are:</p>
+<div id="writing-in-markdown" class="section level3">
+<h3><span class="header-section-number">2.3.1</span> Writing in markdown</h3>
+<p>The document part follows a few basic rules. <a href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet">This markdown cheatsheet from Adam Pritchard</a> goes through them, but the most common are:</p>
 <table>
 <thead>
 <tr class="header">
@@ -366,7 +365,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <tr class="odd">
 <td><code>#</code></td>
 <td>First level outline</td>
-<td>usually reserved for the title</td>
+<td>Be sure to follow these marks with a space</td>
 </tr>
 <tr class="even">
 <td><code>##</code></td>
@@ -410,9 +409,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </tr>
 </tbody>
 </table>
-<div id="front-matter-yaml-at-the-top" class="section level4 unnumbered">
-<h4>Front matter / YAML at the top</h4>
-<p>The way the R knows to do these things is by reading the very top of the file and looking at the section between the three dashes, which gives values to specific items R Markdown is expecting in a format called YAML. It’s very picky about this, so if you get an error, look there for a problem.</p>
+</div>
+<div id="front-matter-yaml-at-the-top" class="section level3 unnumbered">
+<h3>Front matter / YAML at the top</h3>
+<p>The way the R knows how to process the page is by reading the very top of the file and looking at the section between three dashes. This is called YAML, or front matter, and it’s extremely picky.</p>
 <p>The good news is that the YAML is created for you when you create a new R Markdown document. When you get more comfortable, you may want to tweak the look and feel of your document by adding parts to this section.</p>
 <pre><code>---
 title: &quot;Title for your page&quot;
@@ -436,18 +436,32 @@ output: html_document
 <p>I usually change one default option: I have a large screen so I like to see my document in RStudio rather than as a separate document so I don’t have to flip back and forth between windows. To do that, change the options by clicking on the little gear near the knit button:</p>
 <p><img src="images/21-knitter.png" /></p>
 </div>
-<div id="code-chunks" class="section level2">
-<h2><span class="header-section-number">2.5</span> Code chunks</h2>
+<div id="including-r-code-and-its-results" class="section level2">
+<h2><span class="header-section-number">2.5</span> Including R code and its results</h2>
 <p>So far, this is just a simple document. It doesn’t contain any R code. To add code, you insert a “code chunk”. You can add it by clicking the +Insert button at the top of the document, or by pressing <em>Option/Alt-Cmd-i</em> Add your code in the gray area between the triple-backtic symbols. Run the code chunk by pressing the arrow button within it, or by pressing Cmd/Ctl-Shft-Enter (either Cmd or Ctl)</p>
 <p><img src="images/22-code-chunk.gif" /></p>
+<p>Here’s how it works. Notice that when I just typed <code>my_name</code>, the value of that variable is printed just below the chunk:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="021-r-markdown.html#cb3-1"></a><span class="co">#this is a comment - it won&#39;t be run</span></span>
+<span id="cb3-2"><a href="021-r-markdown.html#cb3-2"></a></span>
+<span id="cb3-3"><a href="021-r-markdown.html#cb3-3"></a>my_variable &lt;-<span class="st"> </span><span class="dv">13</span></span>
+<span id="cb3-4"><a href="021-r-markdown.html#cb3-4"></a>my_name &lt;-<span class="st"> &quot;Sarah&quot;</span></span>
+<span id="cb3-5"><a href="021-r-markdown.html#cb3-5"></a></span>
+<span id="cb3-6"><a href="021-r-markdown.html#cb3-6"></a>my_name</span></code></pre></div>
+<pre><code>## [1] &quot;Sarah&quot;</code></pre>
 <p>This might not seem like much, but think about how it helps you do your analysis. You can write all of your notes right where you do the work. You don’t have to copy and paste information from one place to another, or share out-of-date spreadsheets with your teammates.</p>
-<div id="r-markdown-starts-from-scratch" class="section level4 unnumbered">
-<h4>R Markdown starts from scratch</h4>
-<p>Every time you close down your computer or restart R, you have to run every code chunk to get back to where you left off. This includes loading any libraries and data. This is actually good – it ensures that your project is reproducable. But it can be confusing at first. I just knit my program as soon as I start up R each time, which takes me to where I left off.</p>
+</div>
+<div id="r-markdown-starts-from-scratch" class="section level2">
+<h2><span class="header-section-number">2.6</span> R Markdown starts from scratch</h2>
+<p>Every time you close down your computer or restart R, you have to run every code chunk to get back to where you left off. This includes loading any libraries and data. This is actually good – it ensures that your project is reproducible.</p>
+<p>For long programs or working on complicated datasets, you might split your analysis into several of these programs, saving interim versions of the data as you go along.</p>
+<p>Make sure, though, that you run every part of your document every time you re-open it. The easiest way to do that is to get into the habit of running all chunks as soon as you start your work session using the menu or using Alt-Cmd-R, or through the Run menu:</p>
+<div class="figure">
+<img src="images/21-run-all.png" alt="" />
+<p class="caption">runall</p>
 </div>
 </div>
 <div id="resources-and-exercises" class="section level2">
-<h2><span class="header-section-number">2.6</span> Resources and exercises</h2>
+<h2><span class="header-section-number">2.7</span> Resources and exercises</h2>
 <div id="resources" class="section level3 unnumbered">
 <h3>Resources</h3>
 <ul>
@@ -472,7 +486,7 @@ output: html_document
 </div>
 </div>
 <div id="bonus-styling-your-r-markdown-documents" class="section level2">
-<h2><span class="header-section-number">2.7</span> Bonus: Styling your R Markdown documents</h2>
+<h2><span class="header-section-number">2.8</span> Bonus: Styling your R Markdown documents</h2>
 <p>Once you’re familiar with R Markdown and comfortable with it, you’ll probably want to make your documents look a little more 21st century than the default. Here are a few things you can do to make it look better:</p>
 <p>You can change most style options of a document through the YAML front matter that we’ve largely left alone so far. When you create a new document, that front matter is created for you between three dashes at the top. It might usually look like this:</p>
 <pre><code>  ---

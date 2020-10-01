@@ -161,9 +161,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2" data-path="021-r-markdown.html"><a href="021-r-markdown.html"><i class="fa fa-check"></i><b>2</b> R Markdown</a><ul>
 <li class="chapter" data-level="2.1" data-path="011-r-install.html"><a href="011-r-install.html#key-takeaways"><i class="fa fa-check"></i><b>2.1</b> Key takeaways</a></li>
 <li class="chapter" data-level="2.2" data-path="021-r-markdown.html"><a href="021-r-markdown.html#getting-started-with-r-markdown"><i class="fa fa-check"></i><b>2.2</b> Getting started with R Markdown</a></li>
-<li class="chapter" data-level="2.3" data-path="021-r-markdown.html"><a href="021-r-markdown.html#the-anatomy-of-a-document"><i class="fa fa-check"></i><b>2.3</b> The anatomy of a document</a></li>
+<li class="chapter" data-level="2.3" data-path="021-r-markdown.html"><a href="021-r-markdown.html#the-anatomy-of-a-document"><i class="fa fa-check"></i><b>2.3</b> The anatomy of a document</a><ul>
+<li class="chapter" data-level="2.3.1" data-path="021-r-markdown.html"><a href="021-r-markdown.html#writing-in-markdown"><i class="fa fa-check"></i><b>2.3.1</b> Writing in markdown</a></li>
+<li class="chapter" data-level="" data-path="021-r-markdown.html"><a href="021-r-markdown.html#front-matter-yaml-at-the-top"><i class="fa fa-check"></i>Front matter / YAML at the top</a></li>
+</ul></li>
 <li class="chapter" data-level="2.4" data-path="021-r-markdown.html"><a href="021-r-markdown.html#knitting-your-document"><i class="fa fa-check"></i><b>2.4</b> Knitting your document</a></li>
-<li class="chapter" data-level="2.5" data-path="021-r-markdown.html"><a href="021-r-markdown.html#code-chunks"><i class="fa fa-check"></i><b>2.5</b> Code chunks</a></li>
+<li class="chapter" data-level="2.5" data-path="021-r-markdown.html"><a href="021-r-markdown.html#including-r-code-and-its-results"><i class="fa fa-check"></i><b>2.5</b> Including R code and its results</a></li>
+<li class="chapter" data-level="" data-path="021-r-markdown.html"><a href="021-r-markdown.html#r-markdown-starts-from-scratch"><i class="fa fa-check"></i>R Markdown starts from scratch</a></li>
 <li class="chapter" data-level="2.6" data-path="011-r-install.html"><a href="011-r-install.html#resources-and-exercises"><i class="fa fa-check"></i><b>2.6</b> Resources and exercises</a><ul>
 <li class="chapter" data-level="" data-path="021-r-markdown.html"><a href="021-r-markdown.html#resources"><i class="fa fa-check"></i>Resources</a></li>
 <li class="chapter" data-level="" data-path="021-r-markdown.html"><a href="021-r-markdown.html#exercises"><i class="fa fa-check"></i>Exercises</a></li>
@@ -476,21 +480,21 @@ You can define “young” however you want, but in my example I’ll use victim
 <ol style="list-style-type: decimal">
 <li>Create a new dataset with just arizona:</li>
 </ol>
-<div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb112-1"><a href="A04-murders.html#cb112-1"></a>arizona_murders &lt;-<span class="st"> </span></span>
-<span id="cb112-2"><a href="A04-murders.html#cb112-2"></a><span class="st">  </span>murder_data <span class="op">%&gt;%</span></span>
-<span id="cb112-3"><a href="A04-murders.html#cb112-3"></a><span class="st">  </span><span class="kw">filter</span> ( state_abbr <span class="op">==</span><span class="st"> &quot;AZ&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb116"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb116-1"><a href="A04-murders.html#cb116-1"></a>arizona_murders &lt;-<span class="st"> </span></span>
+<span id="cb116-2"><a href="A04-murders.html#cb116-2"></a><span class="st">  </span>murder_data <span class="op">%&gt;%</span></span>
+<span id="cb116-3"><a href="A04-murders.html#cb116-3"></a><span class="st">  </span><span class="kw">filter</span> ( state_abbr <span class="op">==</span><span class="st"> &quot;AZ&quot;</span>)</span></code></pre></div>
 <p>You should have 15,443 rows in this dataset.</p>
 <ol start="2" style="list-style-type: decimal">
 <li>The final set of queries might look like this. (You might have noticed you that you had one victim age 999 when you sorted. That means “unknown” in this dataset, so you’ll want to filter that out as well.)</li>
 </ol>
-<div class="sourceCode" id="cb113"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb113-1"><a href="A04-murders.html#cb113-1"></a>arizona_murders  <span class="op">%&gt;%</span></span>
-<span id="cb113-2"><a href="A04-murders.html#cb113-2"></a><span class="st">  </span><span class="kw">select</span> ( year, cnty_name, agency, solved, </span>
-<span id="cb113-3"><a href="A04-murders.html#cb113-3"></a>           <span class="kw">starts_with</span>(<span class="st">&quot;vic&quot;</span>), <span class="kw">starts_with</span>(<span class="st">&quot;off&quot;</span>), </span>
-<span id="cb113-4"><a href="A04-murders.html#cb113-4"></a>           <span class="kw">contains</span> (<span class="st">&quot;relationship&quot;</span>)) <span class="op">%&gt;%</span></span>
-<span id="cb113-5"><a href="A04-murders.html#cb113-5"></a><span class="st">  </span><span class="kw">filter</span> (relationship <span class="op">==</span><span class="st"> &quot;Wife&quot;</span>  <span class="op">&amp;</span><span class="st"> </span></span>
-<span id="cb113-6"><a href="A04-murders.html#cb113-6"></a><span class="st">          </span>vic_age <span class="op">&gt;=</span><span class="st"> </span><span class="dv">60</span> <span class="op">&amp;</span><span class="st"> </span></span>
-<span id="cb113-7"><a href="A04-murders.html#cb113-7"></a><span class="st">          </span>vic_age <span class="op">&lt;</span><span class="st"> </span><span class="dv">999</span> )  <span class="op">%&gt;%</span></span>
-<span id="cb113-8"><a href="A04-murders.html#cb113-8"></a><span class="st">  </span><span class="kw">arrange</span> ( <span class="kw">desc</span>(vic_age)) </span></code></pre></div>
+<div class="sourceCode" id="cb117"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb117-1"><a href="A04-murders.html#cb117-1"></a>arizona_murders  <span class="op">%&gt;%</span></span>
+<span id="cb117-2"><a href="A04-murders.html#cb117-2"></a><span class="st">  </span><span class="kw">select</span> ( year, cnty_name, agency, solved, </span>
+<span id="cb117-3"><a href="A04-murders.html#cb117-3"></a>           <span class="kw">starts_with</span>(<span class="st">&quot;vic&quot;</span>), <span class="kw">starts_with</span>(<span class="st">&quot;off&quot;</span>), </span>
+<span id="cb117-4"><a href="A04-murders.html#cb117-4"></a>           <span class="kw">contains</span> (<span class="st">&quot;relationship&quot;</span>)) <span class="op">%&gt;%</span></span>
+<span id="cb117-5"><a href="A04-murders.html#cb117-5"></a><span class="st">  </span><span class="kw">filter</span> (relationship <span class="op">==</span><span class="st"> &quot;Wife&quot;</span>  <span class="op">&amp;</span><span class="st"> </span></span>
+<span id="cb117-6"><a href="A04-murders.html#cb117-6"></a><span class="st">          </span>vic_age <span class="op">&gt;=</span><span class="st"> </span><span class="dv">60</span> <span class="op">&amp;</span><span class="st"> </span></span>
+<span id="cb117-7"><a href="A04-murders.html#cb117-7"></a><span class="st">          </span>vic_age <span class="op">&lt;</span><span class="st"> </span><span class="dv">999</span> )  <span class="op">%&gt;%</span></span>
+<span id="cb117-8"><a href="A04-murders.html#cb117-8"></a><span class="st">  </span><span class="kw">arrange</span> ( <span class="kw">desc</span>(vic_age)) </span></code></pre></div>
 <p>You could also use</p>
 <pre><code>  relationship == &quot;Wife&quot;  &amp; 
       between (vic_age, 60, 998)  
@@ -533,10 +537,10 @@ Guns:</p>
 <ol style="list-style-type: decimal">
 <li>County with the most killings</li>
 </ol>
-<div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb120-1"><a href="A04-murders.html#cb120-1"></a>murder_data <span class="op">%&gt;%</span></span>
-<span id="cb120-2"><a href="A04-murders.html#cb120-2"></a><span class="st">  </span><span class="kw">group_by</span> (state_abbr, cnty_name) <span class="op">%&gt;%</span></span>
-<span id="cb120-3"><a href="A04-murders.html#cb120-3"></a><span class="st">  </span><span class="kw">summarise</span> ( <span class="dt">cases =</span> <span class="kw">n</span>() ) <span class="op">%&gt;%</span></span>
-<span id="cb120-4"><a href="A04-murders.html#cb120-4"></a><span class="st">  </span><span class="kw">arrange</span> (<span class="kw">desc</span> (cases))</span></code></pre></div>
+<div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb124-1"><a href="A04-murders.html#cb124-1"></a>murder_data <span class="op">%&gt;%</span></span>
+<span id="cb124-2"><a href="A04-murders.html#cb124-2"></a><span class="st">  </span><span class="kw">group_by</span> (state_abbr, cnty_name) <span class="op">%&gt;%</span></span>
+<span id="cb124-3"><a href="A04-murders.html#cb124-3"></a><span class="st">  </span><span class="kw">summarise</span> ( <span class="dt">cases =</span> <span class="kw">n</span>() ) <span class="op">%&gt;%</span></span>
+<span id="cb124-4"><a href="A04-murders.html#cb124-4"></a><span class="st">  </span><span class="kw">arrange</span> (<span class="kw">desc</span> (cases))</span></code></pre></div>
 <pre><code>## `summarise()` regrouping output by &#39;state_abbr&#39; (override with `.groups` argument)</code></pre>
 <p>Why is this answer not surprising? (Hint: Clark County, Nevada, has about half the population of Maricopa.) We’ll get to ways to normalize this in later chapters.</p>
 <p>To just get the police shootings, filter the above query for <code>circumstance_code == "81"</code> before the <code>group_by</code></p>
@@ -544,21 +548,21 @@ Guns:</p>
 <li>Murders by state and year</li>
 </ol>
 <p>“Mutate” here takes the result of the summary, then creates a new category with the annual totals. It’s a little confusing how it works, but don’t worry about it too much. Just know it’s possible.</p>
-<div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb122-1"><a href="A04-murders.html#cb122-1"></a>murder_data <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb122-2"><a href="A04-murders.html#cb122-2"></a><span class="st">  </span><span class="kw">group_by</span> (year, state_abbr) <span class="op">%&gt;%</span></span>
-<span id="cb122-3"><a href="A04-murders.html#cb122-3"></a><span class="st">  </span><span class="kw">summarise</span> (<span class="dt">cases =</span> <span class="kw">n</span>() ) <span class="op">%&gt;%</span></span>
-<span id="cb122-4"><a href="A04-murders.html#cb122-4"></a><span class="st">  </span><span class="co">#bonus: Calculate the total number of cases by year:</span></span>
-<span id="cb122-5"><a href="A04-murders.html#cb122-5"></a><span class="st">  </span><span class="kw">mutate</span> ( <span class="dt">total_cases =</span> <span class="kw">sum</span>(cases) )  <span class="op">%&gt;%</span></span>
-<span id="cb122-6"><a href="A04-murders.html#cb122-6"></a><span class="st">  </span><span class="kw">pivot_wider</span> (<span class="dt">names_from =</span> state_abbr, <span class="dt">values_from =</span> cases) <span class="op">%&gt;%</span></span>
-<span id="cb122-7"><a href="A04-murders.html#cb122-7"></a><span class="st">  </span><span class="kw">arrange</span> ( <span class="kw">desc</span> (year)) </span></code></pre></div>
+<div class="sourceCode" id="cb126"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb126-1"><a href="A04-murders.html#cb126-1"></a>murder_data <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb126-2"><a href="A04-murders.html#cb126-2"></a><span class="st">  </span><span class="kw">group_by</span> (year, state_abbr) <span class="op">%&gt;%</span></span>
+<span id="cb126-3"><a href="A04-murders.html#cb126-3"></a><span class="st">  </span><span class="kw">summarise</span> (<span class="dt">cases =</span> <span class="kw">n</span>() ) <span class="op">%&gt;%</span></span>
+<span id="cb126-4"><a href="A04-murders.html#cb126-4"></a><span class="st">  </span><span class="co">#bonus: Calculate the total number of cases by year:</span></span>
+<span id="cb126-5"><a href="A04-murders.html#cb126-5"></a><span class="st">  </span><span class="kw">mutate</span> ( <span class="dt">total_cases =</span> <span class="kw">sum</span>(cases) )  <span class="op">%&gt;%</span></span>
+<span id="cb126-6"><a href="A04-murders.html#cb126-6"></a><span class="st">  </span><span class="kw">pivot_wider</span> (<span class="dt">names_from =</span> state_abbr, <span class="dt">values_from =</span> cases) <span class="op">%&gt;%</span></span>
+<span id="cb126-7"><a href="A04-murders.html#cb126-7"></a><span class="st">  </span><span class="kw">arrange</span> ( <span class="kw">desc</span> (year)) </span></code></pre></div>
 <pre><code>## `summarise()` regrouping output by &#39;year&#39; (override with `.groups` argument)</code></pre>
 <p>Does this mean that these states have suddenly become more dangerous? What about population growth?</p>
 <p><strong>Alternative method</strong></p>
 <p>The <code>janitor</code> package (which you may need to install) has a way to create cross-tabulations like this more simply. The function is <code>tabyl</code> (to distinguish from other table operations in R, which you probably want to avoid). Here’s an example:</p>
-<div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb124-1"><a href="A04-murders.html#cb124-1"></a>murder_data <span class="op">%&gt;%</span></span>
-<span id="cb124-2"><a href="A04-murders.html#cb124-2"></a><span class="st">  </span><span class="kw">tabyl</span> ( year , state_abbr) <span class="op">%&gt;%</span></span>
-<span id="cb124-3"><a href="A04-murders.html#cb124-3"></a><span class="st">  </span><span class="kw">arrange</span> ( <span class="kw">desc</span> (year) ) <span class="op">%&gt;%</span></span>
-<span id="cb124-4"><a href="A04-murders.html#cb124-4"></a><span class="st">  </span><span class="kw">head</span> () </span></code></pre></div>
+<div class="sourceCode" id="cb128"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb128-1"><a href="A04-murders.html#cb128-1"></a>murder_data <span class="op">%&gt;%</span></span>
+<span id="cb128-2"><a href="A04-murders.html#cb128-2"></a><span class="st">  </span><span class="kw">tabyl</span> ( year , state_abbr) <span class="op">%&gt;%</span></span>
+<span id="cb128-3"><a href="A04-murders.html#cb128-3"></a><span class="st">  </span><span class="kw">arrange</span> ( <span class="kw">desc</span> (year) ) <span class="op">%&gt;%</span></span>
+<span id="cb128-4"><a href="A04-murders.html#cb128-4"></a><span class="st">  </span><span class="kw">head</span> () </span></code></pre></div>
 <div class="kable-table">
 <table>
 <thead>
@@ -662,30 +666,30 @@ Guns:</p>
 <li>Percent of murders by relationship:</li>
 </ol>
 <p>Once those totals are calculated, you can use them to compute a new variable, such as percent.</p>
-<div class="sourceCode" id="cb125"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb125-1"><a href="A04-murders.html#cb125-1"></a>murder_data <span class="op">%&gt;%</span></span>
-<span id="cb125-2"><a href="A04-murders.html#cb125-2"></a><span class="st">  </span><span class="kw">group_by</span> (relationship) <span class="op">%&gt;%</span></span>
-<span id="cb125-3"><a href="A04-murders.html#cb125-3"></a><span class="st">  </span><span class="kw">summarise</span> (<span class="dt">num_of_cases =</span> <span class="kw">n</span>() ) <span class="op">%&gt;%</span></span>
-<span id="cb125-4"><a href="A04-murders.html#cb125-4"></a><span class="st">  </span><span class="kw">mutate</span> (<span class="dt">total_cases =</span> <span class="kw">sum</span>(num_of_cases) ,</span>
-<span id="cb125-5"><a href="A04-murders.html#cb125-5"></a>          <span class="co"># This rounds to 1 digit.</span></span>
-<span id="cb125-6"><a href="A04-murders.html#cb125-6"></a>          <span class="dt">pct_cases =</span> <span class="kw">round</span> (num_of_cases <span class="op">/</span><span class="st"> </span>total_cases <span class="op">*</span><span class="st"> </span><span class="dv">100</span> , <span class="dv">1</span>)</span>
-<span id="cb125-7"><a href="A04-murders.html#cb125-7"></a>          ) <span class="op">%&gt;%</span></span>
-<span id="cb125-8"><a href="A04-murders.html#cb125-8"></a><span class="st">  </span><span class="co"># you could un-select the total cases since they&#39;ll always be the same , but for illustratio purposes I&#39;m keeping it.</span></span>
-<span id="cb125-9"><a href="A04-murders.html#cb125-9"></a><span class="st">  </span><span class="kw">arrange</span> ( <span class="kw">desc</span> (num_of_cases)) </span></code></pre></div>
+<div class="sourceCode" id="cb129"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb129-1"><a href="A04-murders.html#cb129-1"></a>murder_data <span class="op">%&gt;%</span></span>
+<span id="cb129-2"><a href="A04-murders.html#cb129-2"></a><span class="st">  </span><span class="kw">group_by</span> (relationship) <span class="op">%&gt;%</span></span>
+<span id="cb129-3"><a href="A04-murders.html#cb129-3"></a><span class="st">  </span><span class="kw">summarise</span> (<span class="dt">num_of_cases =</span> <span class="kw">n</span>() ) <span class="op">%&gt;%</span></span>
+<span id="cb129-4"><a href="A04-murders.html#cb129-4"></a><span class="st">  </span><span class="kw">mutate</span> (<span class="dt">total_cases =</span> <span class="kw">sum</span>(num_of_cases) ,</span>
+<span id="cb129-5"><a href="A04-murders.html#cb129-5"></a>          <span class="co"># This rounds to 1 digit.</span></span>
+<span id="cb129-6"><a href="A04-murders.html#cb129-6"></a>          <span class="dt">pct_cases =</span> <span class="kw">round</span> (num_of_cases <span class="op">/</span><span class="st"> </span>total_cases <span class="op">*</span><span class="st"> </span><span class="dv">100</span> , <span class="dv">1</span>)</span>
+<span id="cb129-7"><a href="A04-murders.html#cb129-7"></a>          ) <span class="op">%&gt;%</span></span>
+<span id="cb129-8"><a href="A04-murders.html#cb129-8"></a><span class="st">  </span><span class="co"># you could un-select the total cases since they&#39;ll always be the same , but for illustratio purposes I&#39;m keeping it.</span></span>
+<span id="cb129-9"><a href="A04-murders.html#cb129-9"></a><span class="st">  </span><span class="kw">arrange</span> ( <span class="kw">desc</span> (num_of_cases)) </span></code></pre></div>
 <pre><code>## `summarise()` ungrouping output (override with `.groups` argument)</code></pre>
 <p><strong>Alternative method with <code>janitor::tabyl</code></strong></p>
-<div class="sourceCode" id="cb127"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb127-1"><a href="A04-murders.html#cb127-1"></a>murder_data <span class="op">%&gt;%</span></span>
-<span id="cb127-2"><a href="A04-murders.html#cb127-2"></a><span class="st">  </span><span class="kw">tabyl</span> (relationship) <span class="op">%&gt;%</span></span>
-<span id="cb127-3"><a href="A04-murders.html#cb127-3"></a><span class="st">  </span><span class="kw">adorn_pct_formatting</span> (<span class="dt">digits=</span><span class="dv">1</span>)   <span class="op">%&gt;%</span></span>
-<span id="cb127-4"><a href="A04-murders.html#cb127-4"></a><span class="st">  </span><span class="co">#this last part turns it into a normal data frame</span></span>
-<span id="cb127-5"><a href="A04-murders.html#cb127-5"></a><span class="st">  </span><span class="kw">arrange</span> ( <span class="kw">desc</span>(n)) <span class="op">%&gt;%</span></span>
-<span id="cb127-6"><a href="A04-murders.html#cb127-6"></a><span class="st">  </span><span class="kw">as_tibble</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb131"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb131-1"><a href="A04-murders.html#cb131-1"></a>murder_data <span class="op">%&gt;%</span></span>
+<span id="cb131-2"><a href="A04-murders.html#cb131-2"></a><span class="st">  </span><span class="kw">tabyl</span> (relationship) <span class="op">%&gt;%</span></span>
+<span id="cb131-3"><a href="A04-murders.html#cb131-3"></a><span class="st">  </span><span class="kw">adorn_pct_formatting</span> (<span class="dt">digits=</span><span class="dv">1</span>)   <span class="op">%&gt;%</span></span>
+<span id="cb131-4"><a href="A04-murders.html#cb131-4"></a><span class="st">  </span><span class="co">#this last part turns it into a normal data frame</span></span>
+<span id="cb131-5"><a href="A04-murders.html#cb131-5"></a><span class="st">  </span><span class="kw">arrange</span> ( <span class="kw">desc</span>(n)) <span class="op">%&gt;%</span></span>
+<span id="cb131-6"><a href="A04-murders.html#cb131-6"></a><span class="st">  </span><span class="kw">as_tibble</span>()</span></code></pre></div>
 </div>
 <div id="putting-it-all-together-1" class="section level4 unnumbered">
 <h4>Putting it all together</h4>
 <p>First, isolate the domestic violence cases. Let’s see what our choices are:</p>
-<div class="sourceCode" id="cb128"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb128-1"><a href="A04-murders.html#cb128-1"></a>murder_data <span class="op">%&gt;%</span></span>
-<span id="cb128-2"><a href="A04-murders.html#cb128-2"></a><span class="st">  </span><span class="kw">group_by</span> (relationship_code, relationship) <span class="op">%&gt;%</span></span>
-<span id="cb128-3"><a href="A04-murders.html#cb128-3"></a><span class="st">  </span><span class="kw">summarise</span> (<span class="kw">n</span>())</span></code></pre></div>
+<div class="sourceCode" id="cb132"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb132-1"><a href="A04-murders.html#cb132-1"></a>murder_data <span class="op">%&gt;%</span></span>
+<span id="cb132-2"><a href="A04-murders.html#cb132-2"></a><span class="st">  </span><span class="kw">group_by</span> (relationship_code, relationship) <span class="op">%&gt;%</span></span>
+<span id="cb132-3"><a href="A04-murders.html#cb132-3"></a><span class="st">  </span><span class="kw">summarise</span> (<span class="kw">n</span>())</span></code></pre></div>
 <pre><code>## `summarise()` regrouping output by &#39;relationship_code&#39; (override with `.groups` argument)</code></pre>
 <div class="kable-table">
 <table>
@@ -846,23 +850,23 @@ Guns:</p>
 </table>
 </div>
 <p>Here’s one way to get the answer (eliminating cases in which we don’t know the victim’s ethnicity)</p>
-<div class="sourceCode" id="cb130"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb130-1"><a href="A04-murders.html#cb130-1"></a>murder_data <span class="op">%&gt;%</span></span>
-<span id="cb130-2"><a href="A04-murders.html#cb130-2"></a><span class="st">  </span><span class="kw">filter</span> ( relationship_code <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;BF&quot;</span>, <span class="st">&quot;BR&quot;</span>, <span class="st">&quot;CH&quot;</span>, <span class="st">&quot;CW&quot;</span>, <span class="st">&quot;DA&quot;</span>, <span class="st">&quot;FA&quot;</span>, </span>
-<span id="cb130-3"><a href="A04-murders.html#cb130-3"></a>                                    <span class="st">&quot;GF&quot;</span>, <span class="st">&quot;HO&quot;</span>, <span class="st">&quot;HU&quot;</span>, <span class="st">&quot;IL&quot;</span>, <span class="st">&quot;MO&quot;</span>, <span class="st">&quot;OF&quot;</span>, <span class="st">&quot;SD&quot;</span>, <span class="st">&quot;SF&quot;</span>, </span>
-<span id="cb130-4"><a href="A04-murders.html#cb130-4"></a>                                    <span class="st">&quot;SI&quot;</span>, <span class="st">&quot;SM&quot;</span>, <span class="st">&quot;SO&quot;</span>, <span class="st">&quot;WI&quot;</span>, <span class="st">&quot;XH&quot;</span>, <span class="st">&quot;XW&quot;</span>)   <span class="op">&amp;</span><span class="st"> </span></span>
-<span id="cb130-5"><a href="A04-murders.html#cb130-5"></a><span class="st">          </span>vic_ethnic_code <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;H&quot;</span>, <span class="st">&quot;N&quot;</span>)</span>
-<span id="cb130-6"><a href="A04-murders.html#cb130-6"></a>        ) <span class="op">%&gt;%</span></span>
-<span id="cb130-7"><a href="A04-murders.html#cb130-7"></a><span class="st">   </span><span class="kw">group_by</span> ( state_abbr, vic_ethnic ) <span class="op">%&gt;%</span></span>
-<span id="cb130-8"><a href="A04-murders.html#cb130-8"></a><span class="st">   </span><span class="kw">summarise</span> (<span class="dt">cases =</span> <span class="kw">n</span>() ) <span class="op">%&gt;%</span></span>
-<span id="cb130-9"><a href="A04-murders.html#cb130-9"></a><span class="st">   </span><span class="co">#calculate total by state and percent</span></span>
-<span id="cb130-10"><a href="A04-murders.html#cb130-10"></a><span class="st">   </span><span class="kw">mutate</span> ( <span class="dt">total_cases =</span> <span class="kw">sum</span>(cases), </span>
-<span id="cb130-11"><a href="A04-murders.html#cb130-11"></a>            <span class="dt">pct_cases =</span> cases <span class="op">/</span><span class="st"> </span>total_cases <span class="op">*</span><span class="st"> </span><span class="dv">100</span> ) <span class="op">%&gt;%</span></span>
-<span id="cb130-12"><a href="A04-murders.html#cb130-12"></a><span class="st">   </span><span class="co">#get rid of case counts</span></span>
-<span id="cb130-13"><a href="A04-murders.html#cb130-13"></a><span class="st">   </span><span class="kw">select</span> ( <span class="op">-</span>cases ) <span class="op">%&gt;%</span></span>
-<span id="cb130-14"><a href="A04-murders.html#cb130-14"></a><span class="st">   </span><span class="co">#sort by state</span></span>
-<span id="cb130-15"><a href="A04-murders.html#cb130-15"></a><span class="st">   </span><span class="kw">arrange</span> ( state_abbr ) <span class="op">%&gt;%</span></span>
-<span id="cb130-16"><a href="A04-murders.html#cb130-16"></a><span class="st">   </span><span class="co"># put ethnicity in columns</span></span>
-<span id="cb130-17"><a href="A04-murders.html#cb130-17"></a><span class="st">   </span><span class="kw">pivot_wider</span> ( <span class="dt">values_from =</span> pct_cases, <span class="dt">names_from =</span> vic_ethnic)  </span></code></pre></div>
+<div class="sourceCode" id="cb134"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb134-1"><a href="A04-murders.html#cb134-1"></a>murder_data <span class="op">%&gt;%</span></span>
+<span id="cb134-2"><a href="A04-murders.html#cb134-2"></a><span class="st">  </span><span class="kw">filter</span> ( relationship_code <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;BF&quot;</span>, <span class="st">&quot;BR&quot;</span>, <span class="st">&quot;CH&quot;</span>, <span class="st">&quot;CW&quot;</span>, <span class="st">&quot;DA&quot;</span>, <span class="st">&quot;FA&quot;</span>, </span>
+<span id="cb134-3"><a href="A04-murders.html#cb134-3"></a>                                    <span class="st">&quot;GF&quot;</span>, <span class="st">&quot;HO&quot;</span>, <span class="st">&quot;HU&quot;</span>, <span class="st">&quot;IL&quot;</span>, <span class="st">&quot;MO&quot;</span>, <span class="st">&quot;OF&quot;</span>, <span class="st">&quot;SD&quot;</span>, <span class="st">&quot;SF&quot;</span>, </span>
+<span id="cb134-4"><a href="A04-murders.html#cb134-4"></a>                                    <span class="st">&quot;SI&quot;</span>, <span class="st">&quot;SM&quot;</span>, <span class="st">&quot;SO&quot;</span>, <span class="st">&quot;WI&quot;</span>, <span class="st">&quot;XH&quot;</span>, <span class="st">&quot;XW&quot;</span>)   <span class="op">&amp;</span><span class="st"> </span></span>
+<span id="cb134-5"><a href="A04-murders.html#cb134-5"></a><span class="st">          </span>vic_ethnic_code <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;H&quot;</span>, <span class="st">&quot;N&quot;</span>)</span>
+<span id="cb134-6"><a href="A04-murders.html#cb134-6"></a>        ) <span class="op">%&gt;%</span></span>
+<span id="cb134-7"><a href="A04-murders.html#cb134-7"></a><span class="st">   </span><span class="kw">group_by</span> ( state_abbr, vic_ethnic ) <span class="op">%&gt;%</span></span>
+<span id="cb134-8"><a href="A04-murders.html#cb134-8"></a><span class="st">   </span><span class="kw">summarise</span> (<span class="dt">cases =</span> <span class="kw">n</span>() ) <span class="op">%&gt;%</span></span>
+<span id="cb134-9"><a href="A04-murders.html#cb134-9"></a><span class="st">   </span><span class="co">#calculate total by state and percent</span></span>
+<span id="cb134-10"><a href="A04-murders.html#cb134-10"></a><span class="st">   </span><span class="kw">mutate</span> ( <span class="dt">total_cases =</span> <span class="kw">sum</span>(cases), </span>
+<span id="cb134-11"><a href="A04-murders.html#cb134-11"></a>            <span class="dt">pct_cases =</span> cases <span class="op">/</span><span class="st"> </span>total_cases <span class="op">*</span><span class="st"> </span><span class="dv">100</span> ) <span class="op">%&gt;%</span></span>
+<span id="cb134-12"><a href="A04-murders.html#cb134-12"></a><span class="st">   </span><span class="co">#get rid of case counts</span></span>
+<span id="cb134-13"><a href="A04-murders.html#cb134-13"></a><span class="st">   </span><span class="kw">select</span> ( <span class="op">-</span>cases ) <span class="op">%&gt;%</span></span>
+<span id="cb134-14"><a href="A04-murders.html#cb134-14"></a><span class="st">   </span><span class="co">#sort by state</span></span>
+<span id="cb134-15"><a href="A04-murders.html#cb134-15"></a><span class="st">   </span><span class="kw">arrange</span> ( state_abbr ) <span class="op">%&gt;%</span></span>
+<span id="cb134-16"><a href="A04-murders.html#cb134-16"></a><span class="st">   </span><span class="co"># put ethnicity in columns</span></span>
+<span id="cb134-17"><a href="A04-murders.html#cb134-17"></a><span class="st">   </span><span class="kw">pivot_wider</span> ( <span class="dt">values_from =</span> pct_cases, <span class="dt">names_from =</span> vic_ethnic)  </span></code></pre></div>
 <pre><code>## `summarise()` regrouping output by &#39;state_abbr&#39; (override with `.groups` argument)</code></pre>
 
 </div>

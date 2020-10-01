@@ -161,9 +161,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2" data-path="021-r-markdown.html"><a href="021-r-markdown.html"><i class="fa fa-check"></i><b>2</b> R Markdown</a><ul>
 <li class="chapter" data-level="2.1" data-path="011-r-install.html"><a href="011-r-install.html#key-takeaways"><i class="fa fa-check"></i><b>2.1</b> Key takeaways</a></li>
 <li class="chapter" data-level="2.2" data-path="021-r-markdown.html"><a href="021-r-markdown.html#getting-started-with-r-markdown"><i class="fa fa-check"></i><b>2.2</b> Getting started with R Markdown</a></li>
-<li class="chapter" data-level="2.3" data-path="021-r-markdown.html"><a href="021-r-markdown.html#the-anatomy-of-a-document"><i class="fa fa-check"></i><b>2.3</b> The anatomy of a document</a></li>
+<li class="chapter" data-level="2.3" data-path="021-r-markdown.html"><a href="021-r-markdown.html#the-anatomy-of-a-document"><i class="fa fa-check"></i><b>2.3</b> The anatomy of a document</a><ul>
+<li class="chapter" data-level="2.3.1" data-path="021-r-markdown.html"><a href="021-r-markdown.html#writing-in-markdown"><i class="fa fa-check"></i><b>2.3.1</b> Writing in markdown</a></li>
+<li class="chapter" data-level="" data-path="021-r-markdown.html"><a href="021-r-markdown.html#front-matter-yaml-at-the-top"><i class="fa fa-check"></i>Front matter / YAML at the top</a></li>
+</ul></li>
 <li class="chapter" data-level="2.4" data-path="021-r-markdown.html"><a href="021-r-markdown.html#knitting-your-document"><i class="fa fa-check"></i><b>2.4</b> Knitting your document</a></li>
-<li class="chapter" data-level="2.5" data-path="021-r-markdown.html"><a href="021-r-markdown.html#code-chunks"><i class="fa fa-check"></i><b>2.5</b> Code chunks</a></li>
+<li class="chapter" data-level="2.5" data-path="021-r-markdown.html"><a href="021-r-markdown.html#including-r-code-and-its-results"><i class="fa fa-check"></i><b>2.5</b> Including R code and its results</a></li>
+<li class="chapter" data-level="" data-path="021-r-markdown.html"><a href="021-r-markdown.html#r-markdown-starts-from-scratch"><i class="fa fa-check"></i>R Markdown starts from scratch</a></li>
 <li class="chapter" data-level="2.6" data-path="011-r-install.html"><a href="011-r-install.html#resources-and-exercises"><i class="fa fa-check"></i><b>2.6</b> Resources and exercises</a><ul>
 <li class="chapter" data-level="" data-path="021-r-markdown.html"><a href="021-r-markdown.html#resources"><i class="fa fa-check"></i>Resources</a></li>
 <li class="chapter" data-level="" data-path="021-r-markdown.html"><a href="021-r-markdown.html#exercises"><i class="fa fa-check"></i>Exercises</a></li>
@@ -335,12 +339,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p style="background-color:#e6f0ff;text-align:center;font-weight:bold;">
 Don’t forget to load the tidyverse!
 </p>
-<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="031-select-filter.html#cb26-1"></a><span class="kw">library</span>(tidyverse)</span></code></pre></div>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="031-select-filter.html#cb30-1"></a><span class="kw">library</span>(tidyverse)</span></code></pre></div>
 <p>This tutorial uses data that was downloaded in 2019 from the Tempe, Ariz., Open data site. It’s since been removed. It contains a list of opioid-related EMS calls for the city. There was virtually no documentation on the site to explain the variables. (Tempe officials have said that they are planning to republish it with less detail.)</p>
-<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="031-select-filter.html#cb27-1"></a>my_link &lt;-<span class="st"> &quot;https://cronkitedata.github.io/cronkite-docs/assets/data/csv/opioidemscalls.csv&quot;</span></span>
-<span id="cb27-2"><a href="031-select-filter.html#cb27-2"></a></span>
-<span id="cb27-3"><a href="031-select-filter.html#cb27-3"></a><span class="co">#use it in a read_csv command</span></span>
-<span id="cb27-4"><a href="031-select-filter.html#cb27-4"></a>opioid_calls_orig &lt;-<span class="st"> </span><span class="kw">read_csv</span>(my_link)</span></code></pre></div>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="031-select-filter.html#cb31-1"></a>my_link &lt;-<span class="st"> &quot;https://cronkitedata.github.io/cronkite-docs/assets/data/csv/opioidemscalls.csv&quot;</span></span>
+<span id="cb31-2"><a href="031-select-filter.html#cb31-2"></a></span>
+<span id="cb31-3"><a href="031-select-filter.html#cb31-3"></a><span class="co">#use it in a read_csv command</span></span>
+<span id="cb31-4"><a href="031-select-filter.html#cb31-4"></a>opioid_calls_orig &lt;-<span class="st"> </span><span class="kw">read_csv</span>(my_link)</span></code></pre></div>
 <p>Once read in, the dataset has 650 rows and 21 columns:</p>
 <p><img src="images/24-opioid-orig.jpg" /></p>
 </div>
@@ -352,22 +356,22 @@ Don’t forget to load the tidyverse!
 Note that R is <b>case-sensitive</b>, meaning that the variable named <i>Age</i> is not the same thing as the variable named <i>age</i>. This is one reason rename columns using a common pattern – you don’t have to think about it again. It’s also useful to remove spaces and special characters from your column names, which are difficult to reference with them.
 </p>
 <p>This code chunk selects only some of the variables from our original data frame and saves them in a new data frame:</p>
-<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="031-select-filter.html#cb28-1"></a>opioid_calls &lt;-<span class="st">                                    </span><span class="co">#create a new data frame, &quot;opioid_calls&quot;</span></span>
-<span id="cb28-2"><a href="031-select-filter.html#cb28-2"></a><span class="st">  </span></span>
-<span id="cb28-3"><a href="031-select-filter.html#cb28-3"></a><span class="st">    </span>opioid_calls_orig   <span class="op">%&gt;%</span><span class="st">                       </span><span class="co">#start with the old data frame  and then..</span></span>
-<span id="cb28-4"><a href="031-select-filter.html#cb28-4"></a><span class="st">  </span></span>
-<span id="cb28-5"><a href="031-select-filter.html#cb28-5"></a><span class="st">    </span><span class="kw">select</span> (<span class="dt">id =</span> OBJECTID,                        <span class="co">#pick out only some columns, and change their names at the same time</span></span>
-<span id="cb28-6"><a href="031-select-filter.html#cb28-6"></a>            <span class="dt">incident_date =</span>  IncidentDate,</span>
-<span id="cb28-7"><a href="031-select-filter.html#cb28-7"></a>            <span class="dt">dow =</span> Day_of_Week_Sort, </span>
-<span id="cb28-8"><a href="031-select-filter.html#cb28-8"></a>            <span class="dt">narcan =</span> <span class="st">`</span><span class="dt">Narcan/Naloxone Given</span><span class="st">`</span>,       <span class="co">#you have to use back-ticks for special characters</span></span>
-<span id="cb28-9"><a href="031-select-filter.html#cb28-9"></a>            <span class="dt">impression =</span> Primary_Impression, </span>
-<span id="cb28-10"><a href="031-select-filter.html#cb28-10"></a>            <span class="dt">age  =</span> Age,</span>
-<span id="cb28-11"><a href="031-select-filter.html#cb28-11"></a>            <span class="dt">gender =</span> Patient_Gender,</span>
-<span id="cb28-12"><a href="031-select-filter.html#cb28-12"></a>             <span class="dt">asu_yn =</span> Is_ASU_student,</span>
-<span id="cb28-13"><a href="031-select-filter.html#cb28-13"></a>             <span class="dt">vet_yn =</span> Is_Veteran,</span>
-<span id="cb28-14"><a href="031-select-filter.html#cb28-14"></a>             <span class="dt">homeless_yn =</span> Is_Homeles,</span>
-<span id="cb28-15"><a href="031-select-filter.html#cb28-15"></a>             <span class="dt">special_population =</span> Spec_Pop  </span>
-<span id="cb28-16"><a href="031-select-filter.html#cb28-16"></a>            )</span></code></pre></div>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="031-select-filter.html#cb32-1"></a>opioid_calls &lt;-<span class="st">                                    </span><span class="co">#create a new data frame, &quot;opioid_calls&quot;</span></span>
+<span id="cb32-2"><a href="031-select-filter.html#cb32-2"></a><span class="st">  </span></span>
+<span id="cb32-3"><a href="031-select-filter.html#cb32-3"></a><span class="st">    </span>opioid_calls_orig   <span class="op">%&gt;%</span><span class="st">                       </span><span class="co">#start with the old data frame  and then..</span></span>
+<span id="cb32-4"><a href="031-select-filter.html#cb32-4"></a><span class="st">  </span></span>
+<span id="cb32-5"><a href="031-select-filter.html#cb32-5"></a><span class="st">    </span><span class="kw">select</span> (<span class="dt">id =</span> OBJECTID,                        <span class="co">#pick out only some columns, and change their names at the same time</span></span>
+<span id="cb32-6"><a href="031-select-filter.html#cb32-6"></a>            <span class="dt">incident_date =</span>  IncidentDate,</span>
+<span id="cb32-7"><a href="031-select-filter.html#cb32-7"></a>            <span class="dt">dow =</span> Day_of_Week_Sort, </span>
+<span id="cb32-8"><a href="031-select-filter.html#cb32-8"></a>            <span class="dt">narcan =</span> <span class="st">`</span><span class="dt">Narcan/Naloxone Given</span><span class="st">`</span>,       <span class="co">#you have to use back-ticks for special characters</span></span>
+<span id="cb32-9"><a href="031-select-filter.html#cb32-9"></a>            <span class="dt">impression =</span> Primary_Impression, </span>
+<span id="cb32-10"><a href="031-select-filter.html#cb32-10"></a>            <span class="dt">age  =</span> Age,</span>
+<span id="cb32-11"><a href="031-select-filter.html#cb32-11"></a>            <span class="dt">gender =</span> Patient_Gender,</span>
+<span id="cb32-12"><a href="031-select-filter.html#cb32-12"></a>             <span class="dt">asu_yn =</span> Is_ASU_student,</span>
+<span id="cb32-13"><a href="031-select-filter.html#cb32-13"></a>             <span class="dt">vet_yn =</span> Is_Veteran,</span>
+<span id="cb32-14"><a href="031-select-filter.html#cb32-14"></a>             <span class="dt">homeless_yn =</span> Is_Homeles,</span>
+<span id="cb32-15"><a href="031-select-filter.html#cb32-15"></a>             <span class="dt">special_population =</span> Spec_Pop  </span>
+<span id="cb32-16"><a href="031-select-filter.html#cb32-16"></a>            )</span></code></pre></div>
 <p>Here’s what it the first few rows of our selected columns looks like. (It might be chopped of on the right in your browser.)</p>
 <table style="width:100%;">
 <colgroup>
@@ -443,12 +447,12 @@ Note that R is <b>case-sensitive</b>, meaning that the variable named <i>Age</i>
 <div id="optional-other-ways-to-select" class="section level3 unnumbered">
 <h3>Optional: Other ways to select</h3>
 <p>R has a lot of shortcuts so you don’t have to type as much as in some other languages. You can identify columns by their position in the file, by the kind of data they hold (numbers, characters, etc.), or by the words their names contain. Here’s an example:</p>
-<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="031-select-filter.html#cb29-1"></a>opioid_calls <span class="op">%&gt;%</span></span>
-<span id="cb29-2"><a href="031-select-filter.html#cb29-2"></a><span class="st">  </span><span class="kw">select</span> ( id, </span>
-<span id="cb29-3"><a href="031-select-filter.html#cb29-3"></a>           <span class="dt">weekday =</span> dow,</span>
-<span id="cb29-4"><a href="031-select-filter.html#cb29-4"></a>           narcan <span class="op">:</span><span class="st">  </span>gender,  <span class="co">#vars narcan through gender in the list </span></span>
-<span id="cb29-5"><a href="031-select-filter.html#cb29-5"></a>           <span class="kw">contains</span> (<span class="st">&quot;yn&quot;</span>)    <span class="co"># has &quot;yn&quot; in the name</span></span>
-<span id="cb29-6"><a href="031-select-filter.html#cb29-6"></a>           ) </span></code></pre></div>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="031-select-filter.html#cb33-1"></a>opioid_calls <span class="op">%&gt;%</span></span>
+<span id="cb33-2"><a href="031-select-filter.html#cb33-2"></a><span class="st">  </span><span class="kw">select</span> ( id, </span>
+<span id="cb33-3"><a href="031-select-filter.html#cb33-3"></a>           <span class="dt">weekday =</span> dow,</span>
+<span id="cb33-4"><a href="031-select-filter.html#cb33-4"></a>           narcan <span class="op">:</span><span class="st">  </span>gender,  <span class="co">#vars narcan through gender in the list </span></span>
+<span id="cb33-5"><a href="031-select-filter.html#cb33-5"></a>           <span class="kw">contains</span> (<span class="st">&quot;yn&quot;</span>)    <span class="co"># has &quot;yn&quot; in the name</span></span>
+<span id="cb33-6"><a href="031-select-filter.html#cb33-6"></a>           ) </span></code></pre></div>
 </div>
 </div>
 <div id="filter---choosing-rows" class="section level2">
@@ -470,9 +474,9 @@ Note that R is <b>case-sensitive</b>, meaning that the variable named <i>Age</i>
 <p>If you don’t create a new data frame using the <code>&lt;-</code> assignment, it will just print out on the screen. Use the “glimpse” verb to take a peek at it vertically in a way the fits on the screen.</p>
 <p><img src="images/24-filter-literal.jpg" /></p>
 <p>Put the name of the column on the left side of the comparison, connect it with two equal signs, and put the value you want to look for (in quotes if it’s text) on the right. The two equal signs means that it must be EXACTLY the same – not sort of the same – including upper and lower case.</p>
-<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="031-select-filter.html#cb32-1"></a>opioid_calls <span class="op">%&gt;%</span></span>
-<span id="cb32-2"><a href="031-select-filter.html#cb32-2"></a><span class="st">  </span><span class="kw">filter</span> (  narcan <span class="op">==</span><span class="st"> &quot;Yes&quot;</span> ) <span class="op">%&gt;%</span></span>
-<span id="cb32-3"><a href="031-select-filter.html#cb32-3"></a><span class="st">  </span>glimpse  </span></code></pre></div>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="031-select-filter.html#cb36-1"></a>opioid_calls <span class="op">%&gt;%</span></span>
+<span id="cb36-2"><a href="031-select-filter.html#cb36-2"></a><span class="st">  </span><span class="kw">filter</span> (  narcan <span class="op">==</span><span class="st"> &quot;Yes&quot;</span> ) <span class="op">%&gt;%</span></span>
+<span id="cb36-3"><a href="031-select-filter.html#cb36-3"></a><span class="st">  </span>glimpse  </span></code></pre></div>
 <pre><code>## Rows: 370
 ## Columns: 11
 ## $ id                 &lt;dbl&gt; 3, 7, 11, 12, 13, 18, 20, 21, 25, 29, 30, 34, 35, 3…
@@ -492,35 +496,35 @@ Note that R is <b>case-sensitive</b>, meaning that the variable named <i>Age</i>
 <div id="a-compound-filter" class="section level3">
 <h3><span class="header-section-number">5.3.2</span> A compound filter</h3>
 <p>Filter for more than one condition that must be true using the “and” operator: &amp;.</p>
-<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="031-select-filter.html#cb34-1"></a>opioid_calls <span class="op">%&gt;%</span></span>
-<span id="cb34-2"><a href="031-select-filter.html#cb34-2"></a><span class="st">    </span><span class="kw">filter</span> (narcan <span class="op">==</span><span class="st"> &quot;Yes&quot;</span> <span class="op">&amp;</span><span class="st"> </span>asu_yn <span class="op">==</span><span class="st"> &quot;Yes&quot;</span>) </span></code></pre></div>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="031-select-filter.html#cb38-1"></a>opioid_calls <span class="op">%&gt;%</span></span>
+<span id="cb38-2"><a href="031-select-filter.html#cb38-2"></a><span class="st">    </span><span class="kw">filter</span> (narcan <span class="op">==</span><span class="st"> &quot;Yes&quot;</span> <span class="op">&amp;</span><span class="st"> </span>asu_yn <span class="op">==</span><span class="st"> &quot;Yes&quot;</span>) </span></code></pre></div>
 </div>
 <div id="even-more-compound-filters" class="section level3">
 <h3><span class="header-section-number">5.3.3</span> Even more compound filters</h3>
 <div id="or-conditions" class="section level4 unnumbered">
 <h4>OR conditions</h4>
 <p>Say we want either asu OR veterans who got Narcan. Here’s a query that combines the <strong>and</strong> (&amp;) condition with an <strong>or</strong> (|) condition:</p>
-<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="031-select-filter.html#cb35-1"></a>opioid_calls <span class="op">%&gt;%</span></span>
-<span id="cb35-2"><a href="031-select-filter.html#cb35-2"></a><span class="st">  </span><span class="kw">filter</span> (    narcan <span class="op">==</span><span class="st"> &quot;Yes&quot;</span> <span class="op">&amp;</span></span>
-<span id="cb35-3"><a href="031-select-filter.html#cb35-3"></a><span class="st">                 </span>(asu_yn <span class="op">==</span><span class="st"> &quot;Yes&quot;</span> <span class="op">|</span><span class="st"> </span>vet_yn <span class="op">==</span><span class="st"> &quot;Yes&quot;</span>  ) </span>
-<span id="cb35-4"><a href="031-select-filter.html#cb35-4"></a>  )  </span></code></pre></div>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="031-select-filter.html#cb39-1"></a>opioid_calls <span class="op">%&gt;%</span></span>
+<span id="cb39-2"><a href="031-select-filter.html#cb39-2"></a><span class="st">  </span><span class="kw">filter</span> (    narcan <span class="op">==</span><span class="st"> &quot;Yes&quot;</span> <span class="op">&amp;</span></span>
+<span id="cb39-3"><a href="031-select-filter.html#cb39-3"></a><span class="st">                 </span>(asu_yn <span class="op">==</span><span class="st"> &quot;Yes&quot;</span> <span class="op">|</span><span class="st"> </span>vet_yn <span class="op">==</span><span class="st"> &quot;Yes&quot;</span>  ) </span>
+<span id="cb39-4"><a href="031-select-filter.html#cb39-4"></a>  )  </span></code></pre></div>
 </div>
 <div id="in-conditions" class="section level4 unnumbered">
 <h4>%in% conditions</h4>
 <p>Use the operator %in% when you want to pick among several possible answers. Say I want to look at anyone aged 20 to 29. Instead of “or”, I can use %in% because it’s only one column:</p>
-<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="031-select-filter.html#cb36-1"></a>opioid_calls <span class="op">%&gt;%</span></span>
-<span id="cb36-2"><a href="031-select-filter.html#cb36-2"></a><span class="st">  </span><span class="kw">filter</span> (age <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;20 to 24&quot;</span>, <span class="st">&quot;25 to 29&quot;</span>)) </span></code></pre></div>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="031-select-filter.html#cb40-1"></a>opioid_calls <span class="op">%&gt;%</span></span>
+<span id="cb40-2"><a href="031-select-filter.html#cb40-2"></a><span class="st">  </span><span class="kw">filter</span> (age <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;20 to 24&quot;</span>, <span class="st">&quot;25 to 29&quot;</span>)) </span></code></pre></div>
 </div>
 </div>
 </div>
 <div id="arrange---change-the-order" class="section level2">
 <h2><span class="header-section-number">5.4</span> Arrange - change the order</h2>
 <p>“Arrange” is the equivalent of “Sort” in a spreadsheet - it’s more precise in its meaning, and instructs R to re-arrange the rows of a data frame using the order identified in one or more columns. Try to piece together what this does:</p>
-<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="031-select-filter.html#cb37-1"></a>opioid_calls <span class="op">%&gt;%</span></span>
-<span id="cb37-2"><a href="031-select-filter.html#cb37-2"></a><span class="st">  </span><span class="kw">select</span> (dow, narcan, age, gender, asu_yn) <span class="op">%&gt;%</span></span>
-<span id="cb37-3"><a href="031-select-filter.html#cb37-3"></a><span class="st">  </span><span class="kw">filter</span> (dow <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;(6) Saturday&quot;</span>, <span class="st">&quot;(7) Sunday&quot;</span>)  <span class="op">&amp;</span></span>
-<span id="cb37-4"><a href="031-select-filter.html#cb37-4"></a><span class="st">            </span>narcan <span class="op">==</span><span class="st"> &quot;Yes&quot;</span>) <span class="op">%&gt;%</span></span>
-<span id="cb37-5"><a href="031-select-filter.html#cb37-5"></a><span class="st">  </span><span class="kw">arrange</span> ( age )</span></code></pre></div>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="031-select-filter.html#cb41-1"></a>opioid_calls <span class="op">%&gt;%</span></span>
+<span id="cb41-2"><a href="031-select-filter.html#cb41-2"></a><span class="st">  </span><span class="kw">select</span> (dow, narcan, age, gender, asu_yn) <span class="op">%&gt;%</span></span>
+<span id="cb41-3"><a href="031-select-filter.html#cb41-3"></a><span class="st">  </span><span class="kw">filter</span> (dow <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;(6) Saturday&quot;</span>, <span class="st">&quot;(7) Sunday&quot;</span>)  <span class="op">&amp;</span></span>
+<span id="cb41-4"><a href="031-select-filter.html#cb41-4"></a><span class="st">            </span>narcan <span class="op">==</span><span class="st"> &quot;Yes&quot;</span>) <span class="op">%&gt;%</span></span>
+<span id="cb41-5"><a href="031-select-filter.html#cb41-5"></a><span class="st">  </span><span class="kw">arrange</span> ( age )</span></code></pre></div>
 <div class="kable-table">
 <table>
 <thead>
@@ -1355,8 +1359,8 @@ Note that R is <b>case-sensitive</b>, meaning that the variable named <i>Age</i>
 <div id="case-sensitivity" class="section level4 unnumbered">
 <h4>Case-sensitivity</h4>
 <p>R is always case-sensitive, which means that it makes a difference whether an object, a column name or the value of a variable (like Male) is upper-case, lower-case or some proper case. For example:</p>
-<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="031-select-filter.html#cb38-1"></a>opioid_calls <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb38-2"><a href="031-select-filter.html#cb38-2"></a><span class="st">  </span><span class="kw">filter</span> (narcan <span class="op">==</span><span class="st"> &quot;yes&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="031-select-filter.html#cb42-1"></a>opioid_calls <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb42-2"><a href="031-select-filter.html#cb42-2"></a><span class="st">  </span><span class="kw">filter</span> (narcan <span class="op">==</span><span class="st"> &quot;yes&quot;</span>)</span></code></pre></div>
 <div class="kable-table">
 <table>
 <colgroup>
@@ -1396,7 +1400,7 @@ Note that R is <b>case-sensitive</b>, meaning that the variable named <i>Age</i>
 <div id="equals-versus-double-equals" class="section level4 unnumbered">
 <h4>Equals versus double-equals</h4>
 <p>You’ll get this weird error if you try to use an equals sign as a comparison operator:</p>
-<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="031-select-filter.html#cb39-1"></a><span class="kw">filter</span>(opioid_calls, <span class="dt">narcan =</span> <span class="st">&quot;Yes&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="031-select-filter.html#cb43-1"></a><span class="kw">filter</span>(opioid_calls, <span class="dt">narcan =</span> <span class="st">&quot;Yes&quot;</span>)</span></code></pre></div>
 <pre><code>## Error: Problem with `filter()` input `..1`.
 ## x Input `..1` is named.
 ## ℹ This usually means that you&#39;ve used `=` instead of `==`.

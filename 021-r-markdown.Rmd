@@ -1,3 +1,4 @@
+
 # R Markdown 
 
 <style>
@@ -15,9 +16,9 @@
 
 ## Getting started with R Markdown
 
-Markdown was invented as an easy way for early contributors to Wikipedia to author documents that would translate to the web. It uses simple formatting rules that don't require any background in programming, HTML or CSS formatting code. This book is written using Markdown. Variants of markdown are used to create many web sites, including those hosted on Github.  
+Creating documents with R Markdown lets you ditch those tiresome data diaries and combine your documentation, code and results all in one, reproducible page. It's a variant of the markdown language that was was invented as an easy way for early contributors to Wikipedia to author documents that would translate to the web. 
 
-R Markdown is an enhanced version of markdown. In it, you write your document around chunks of R code, which integrates your analysis with your writing. (R Markdown is also designed to output your work in other formats, like an actual printed book or slides.) Some news organizations do much of their internal work using R Markdown documents and code. 
+In an R Markdown document, write your document around chunks of R code, which integrates your analysis with your writing. (R Markdown is also designed to output your work in other formats, like an actual printed book or slides.) Some news organizations do much of their internal work using R Markdown documents and code. 
 
 You must install the rmarkdown package before you can use this feature. Install it in the Console. You only have to do this once on each computer, or in each project on rstudio.cloud: 
 
@@ -27,21 +28,23 @@ Unlike other packages, it's automatically loaded when you start up R Studio.
 
 ## The anatomy of a document
 
-Markdown uses simple punctuation to create outline levels, lists, links and other elements of a page. 
+To format a document, markdown uses simple punctuation to create outline levels, lists, links and other elements of a page. 
 
 There are four parts to an R Markdown document: 
 
 1. The "front matter", or YAML. 
-2. Plain text with formatting indicators. 
+2. Document features, like text, images, or other elements that you would normally put in an HTML page, but formatted using the easier markdown method. 
 3. Code chunks -- your R computer code.
 4. The results of code chunks - what you get back when you execute the code.
 
-The plain text follows a few basic rules. [This markdown cheatsheet from Adam Pritchard](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet) goes through them, but the most common are:  
+### Writing in markdown
+
+The document part follows a few basic rules. [This markdown cheatsheet from Adam Pritchard](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet) goes through them, but the most common are:  
 
 Symbol | Format | Comments
 ---- | ---- | ---
-`#` | First level outline | usually reserved for the title
-`##` | Second level outline | ... and so on
+`# ` | First level outline |  Be sure to follow these marks with a space
+`## ` | Second level outline | ... and so on
 `*`  | A bulleted list item | Separate from the text by one empty line
 `1`  | A numbered list |
 `[]()` | A link | `[my link words](http....)`
@@ -51,9 +54,9 @@ Symbol | Format | Comments
 `*`  | Italic text | `*This would be italic*`
 
 
-#### Front matter / YAML at the top {-}
+### Front matter / YAML at the top {-}
 
-The way the R knows to do these things is by reading the very top of the file and looking at the section between the three dashes, which gives values to specific items R Markdown is expecting in a format called YAML. It's very picky about this, so if you get an error, look there for a problem. 
+The way the R knows how to process the page is by reading the very top of the file and looking at the section between three dashes. This is called YAML, or front matter, and it's extremely picky.
 
 The good news is that the YAML is created for you when you create a new R Markdown document. When  you get more comfortable, you may want to tweak the look and feel of your document by adding parts to this section. 
 
@@ -83,19 +86,38 @@ I usually change one default option: I have a large screen so I like to see my d
 ![](images/21-knitter.png)
 
 
-## Code chunks
+## Including R code and its results
 
 So far, this is just a simple document. It doesn't contain any R code.  To add code, you insert a "code chunk".  You can add it by clicking the +Insert button at the top of the document, or by pressing *Option/Alt-Cmd-i*  Add your code in the gray area between the triple-backtic symbols.  Run the code chunk by pressing the arrow button within it, or by pressing Cmd/Ctl-Shft-Enter  (either Cmd or Ctl)
 
 
 ![](images/22-code-chunk.gif)
 
+Here's how it works. Notice  that when I just typed `my_name`, the value of that variable is printed just below the chunk: 
+
+```{r}
+
+#this is a comment - it won't be run
+
+my_variable <- 13
+my_name <- "Sarah"
+
+my_name
+
+```
+
 
 This might not seem like much, but think about how it helps you do your analysis. You can write all of your notes right where you do the work. You don't have to copy and paste information from one place to another, or share out-of-date spreadsheets with your teammates.
 
-#### R Markdown starts from scratch {-}
+## R Markdown starts from scratch 
 
-Every time you close down your computer or restart R, you have to run every code chunk to get back to where you left off. This includes loading any libraries and data. This is actually good -- it ensures that your project is reproducable. But it can be confusing at first. I just knit my program as soon as I start up R each time, which takes me to where I left off. 
+Every time you close down your computer or restart R, you have to run every code chunk to get back to where you left off. This includes loading any libraries and data. This is actually good -- it ensures that your project is reproducible. 
+
+For long programs or working on complicated datasets, you might split your analysis into several of these programs, saving interim versions of the data as you go along. 
+
+Make sure, though, that you run every part of your document every time you re-open it.  The easiest way to do that is to get into the habit of running all chunks as soon as you start your work session using the menu or using Alt-Cmd-R, or through the Run menu:
+
+![runall](images/21-run-all.png)
 
 ## Resources and exercises
 
