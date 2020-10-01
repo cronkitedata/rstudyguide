@@ -167,12 +167,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="2.4" data-path="021-r-markdown.html"><a href="021-r-markdown.html#knitting-your-document"><i class="fa fa-check"></i><b>2.4</b> Knitting your document</a></li>
 <li class="chapter" data-level="2.5" data-path="021-r-markdown.html"><a href="021-r-markdown.html#including-r-code-and-its-results"><i class="fa fa-check"></i><b>2.5</b> Including R code and its results</a></li>
-<li class="chapter" data-level="" data-path="021-r-markdown.html"><a href="021-r-markdown.html#r-markdown-starts-from-scratch"><i class="fa fa-check"></i>R Markdown starts from scratch</a></li>
-<li class="chapter" data-level="2.6" data-path="011-r-install.html"><a href="011-r-install.html#resources-and-exercises"><i class="fa fa-check"></i><b>2.6</b> Resources and exercises</a><ul>
+<li class="chapter" data-level="2.6" data-path="021-r-markdown.html"><a href="021-r-markdown.html#r-markdown-starts-from-scratch"><i class="fa fa-check"></i><b>2.6</b> R Markdown starts from scratch</a></li>
+<li class="chapter" data-level="2.7" data-path="011-r-install.html"><a href="011-r-install.html#resources-and-exercises"><i class="fa fa-check"></i><b>2.7</b> Resources and exercises</a><ul>
 <li class="chapter" data-level="" data-path="021-r-markdown.html"><a href="021-r-markdown.html#resources"><i class="fa fa-check"></i>Resources</a></li>
 <li class="chapter" data-level="" data-path="021-r-markdown.html"><a href="021-r-markdown.html#exercises"><i class="fa fa-check"></i>Exercises</a></li>
 </ul></li>
-<li class="chapter" data-level="2.7" data-path="021-r-markdown.html"><a href="021-r-markdown.html#bonus-styling-your-r-markdown-documents"><i class="fa fa-check"></i><b>2.7</b> Bonus: Styling your R Markdown documents</a></li>
+<li class="chapter" data-level="2.8" data-path="021-r-markdown.html"><a href="021-r-markdown.html#bonus-styling-your-r-markdown-documents"><i class="fa fa-check"></i><b>2.8</b> Bonus: Styling your R Markdown documents</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="022-data-frames.html"><a href="022-data-frames.html"><i class="fa fa-check"></i><b>3</b> Data frames and the tidyverse</a><ul>
 <li class="chapter" data-level="3.1" data-path="011-r-install.html"><a href="011-r-install.html#key-takeaways"><i class="fa fa-check"></i><b>3.1</b> Key takeaways</a></li>
@@ -378,7 +378,7 @@ For example, the Federal Election Commission holds information about donors in o
 <p>I matched up the information from most of the public and charter schools in Arizona against Department of Education statistics to find their federal ID numbers. There are two tables that have to be matched against one another: The immunization statistics by school, and the National Center for Education Statistics characteristics. They are both saved in the R dataset called <a href="https://github.com/cronkitedata/rstudyguide/blob/master/data/immune_to_nces.Rda?raw=true">immune_to_nces.Rda</a>, which you can add to your environment using the <code>load()</code> command.</p>
 <p>There are 2,414 schools in the NCES database, but only 841 schools in the immunizations because we’ve only kept schools that had students in Grade 6. There were seven schools that I couldn’t find in the NCES data, and their IDs are blank.</p>
 <p>Here are their variables:</p>
-<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="036-joins.html#cb70-1"></a><span class="kw">glimpse</span>(grade6_to_nces)</span></code></pre></div>
+<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="036-joins.html#cb72-1"></a><span class="kw">glimpse</span>(grade6_to_nces)</span></code></pre></div>
 <pre><code>## Rows: 841
 ## Columns: 17
 ## $ rowid              &lt;dbl&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, …
@@ -398,7 +398,7 @@ For example, the Federal Election Commission holds information about donors in o
 ## $ num_medical_exempt &lt;dbl&gt; 2, 0, 0, 7, 0, 6, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, …
 ## $ num_pbe_exempt_all &lt;dbl&gt; 5, 0, 1, 0, 0, 0, 1, 0, 2, 1, 10, 3, 0, 0, 0, 2, 2,…
 ## $ match_type         &lt;chr&gt; &quot;Yes&quot;, &quot;Manual&quot;, &quot;Yes&quot;, &quot;Yes&quot;, &quot;Yes&quot;, &quot;Yes&quot;, &quot;Yes&quot;,…</code></pre>
-<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="036-joins.html#cb72-1"></a><span class="kw">glimpse</span> (nces_master)</span></code></pre></div>
+<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb74-1"><a href="036-joins.html#cb74-1"></a><span class="kw">glimpse</span> (nces_master)</span></code></pre></div>
 <pre><code>## Rows: 2,414
 ## Columns: 15
 ## $ rowid              &lt;int&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, …
@@ -420,23 +420,23 @@ For example, the Federal Election Commission holds information about donors in o
 <h3>Setting up the data</h3>
 <p>In this case, we want to get information that the federal government had on the schools attached to the immunization data. In particular, we’d like to be able to generate statistics by district, by urbanization and type of school, and we’d like to keep the code for the county so we can link it up to other datasets.</p>
 <p>To make it simple, I’ll just create a small set of data for each table:</p>
-<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb74-1"><a href="036-joins.html#cb74-1"></a>immune &lt;-<span class="st"> </span></span>
-<span id="cb74-2"><a href="036-joins.html#cb74-2"></a><span class="st">  </span>grade6_to_nces <span class="op">%&gt;%</span></span>
-<span id="cb74-3"><a href="036-joins.html#cb74-3"></a><span class="st">  </span><span class="kw">select</span> (rowid, nces_id, school_name, city, county, zip_code, school_nurse, school_type,</span>
-<span id="cb74-4"><a href="036-joins.html#cb74-4"></a>          enrolled, num_immune_mmr) </span>
-<span id="cb74-5"><a href="036-joins.html#cb74-5"></a></span>
-<span id="cb74-6"><a href="036-joins.html#cb74-6"></a></span>
-<span id="cb74-7"><a href="036-joins.html#cb74-7"></a>school_list &lt;-<span class="st"> </span></span>
-<span id="cb74-8"><a href="036-joins.html#cb74-8"></a><span class="st">  </span>nces_master <span class="op">%&gt;%</span></span>
-<span id="cb74-9"><a href="036-joins.html#cb74-9"></a><span class="st">  </span><span class="kw">select</span> (nces_school_id, nces_district_id, nces_district_name, nces_school_type, </span>
-<span id="cb74-10"><a href="036-joins.html#cb74-10"></a>          nces_urban, nces_ratio, nces_school_level, nces_fips)</span></code></pre></div>
+<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb76-1"><a href="036-joins.html#cb76-1"></a>immune &lt;-<span class="st"> </span></span>
+<span id="cb76-2"><a href="036-joins.html#cb76-2"></a><span class="st">  </span>grade6_to_nces <span class="op">%&gt;%</span></span>
+<span id="cb76-3"><a href="036-joins.html#cb76-3"></a><span class="st">  </span><span class="kw">select</span> (rowid, nces_id, school_name, city, county, zip_code, school_nurse, school_type,</span>
+<span id="cb76-4"><a href="036-joins.html#cb76-4"></a>          enrolled, num_immune_mmr) </span>
+<span id="cb76-5"><a href="036-joins.html#cb76-5"></a></span>
+<span id="cb76-6"><a href="036-joins.html#cb76-6"></a></span>
+<span id="cb76-7"><a href="036-joins.html#cb76-7"></a>school_list &lt;-<span class="st"> </span></span>
+<span id="cb76-8"><a href="036-joins.html#cb76-8"></a><span class="st">  </span>nces_master <span class="op">%&gt;%</span></span>
+<span id="cb76-9"><a href="036-joins.html#cb76-9"></a><span class="st">  </span><span class="kw">select</span> (nces_school_id, nces_district_id, nces_district_name, nces_school_type, </span>
+<span id="cb76-10"><a href="036-joins.html#cb76-10"></a>          nces_urban, nces_ratio, nces_school_level, nces_fips)</span></code></pre></div>
 </div>
 <div id="apply-the-join" class="section level3 unnumbered">
 <h3>Apply the join</h3>
 <p>Here are two ways to join:</p>
-<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb75-1"><a href="036-joins.html#cb75-1"></a>immune <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb75-2"><a href="036-joins.html#cb75-2"></a><span class="st">  </span><span class="kw">inner_join</span> (school_list, <span class="dt">by=</span><span class="kw">c</span>(<span class="st">&quot;nces_id&quot;</span> =<span class="st"> &quot;nces_school_id&quot;</span>)) <span class="op">%&gt;%</span></span>
-<span id="cb75-3"><a href="036-joins.html#cb75-3"></a><span class="st">  </span>glimpse</span></code></pre></div>
+<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb77-1"><a href="036-joins.html#cb77-1"></a>immune <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb77-2"><a href="036-joins.html#cb77-2"></a><span class="st">  </span><span class="kw">inner_join</span> (school_list, <span class="dt">by=</span><span class="kw">c</span>(<span class="st">&quot;nces_id&quot;</span> =<span class="st"> &quot;nces_school_id&quot;</span>)) <span class="op">%&gt;%</span></span>
+<span id="cb77-3"><a href="036-joins.html#cb77-3"></a><span class="st">  </span>glimpse</span></code></pre></div>
 <pre><code>## Rows: 834
 ## Columns: 17
 ## $ rowid              &lt;dbl&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, …
@@ -458,12 +458,12 @@ For example, the Federal Election Commission holds information about donors in o
 ## $ nces_fips          &lt;chr&gt; &quot;04013&quot;, &quot;04013&quot;, &quot;04019&quot;, &quot;04019&quot;, &quot;04013&quot;, &quot;04013…</code></pre>
 <p>You can see that the information from the federal Education Department was added to the immunization data, but we lost seven records – the seven that I couldn’t find in the federal department.</p>
 <p>To preserve these records, you’ll usually protect one of the tables – the one you care about most – and keep everything, even if it doesn’t match. To do that, use a <code>left</code> or <code>right</code> join, depending on whether you mention the table first or second. In this case:</p>
-<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb77-1"><a href="036-joins.html#cb77-1"></a>immune_joined &lt;-<span class="st"> </span></span>
-<span id="cb77-2"><a href="036-joins.html#cb77-2"></a><span class="st">  </span>immune <span class="op">%&gt;%</span><span class="st">                                     </span><span class="co"># the table I want to protect</span></span>
-<span id="cb77-3"><a href="036-joins.html#cb77-3"></a><span class="st">  </span><span class="kw">left_join</span> ( school_list,                       <span class="co"># the table I want to apply to my original data frame</span></span>
-<span id="cb77-4"><a href="036-joins.html#cb77-4"></a>              <span class="dt">by=</span><span class="kw">c</span>(<span class="st">&quot;nces_id&quot;</span>=<span class="st">&quot;nces_school_id&quot;</span>) ) <span class="co"># the variable that is the same in the two tables.</span></span>
-<span id="cb77-5"><a href="036-joins.html#cb77-5"></a></span>
-<span id="cb77-6"><a href="036-joins.html#cb77-6"></a><span class="kw">glimpse</span>(immune_joined)</span></code></pre></div>
+<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb79-1"><a href="036-joins.html#cb79-1"></a>immune_joined &lt;-<span class="st"> </span></span>
+<span id="cb79-2"><a href="036-joins.html#cb79-2"></a><span class="st">  </span>immune <span class="op">%&gt;%</span><span class="st">                                     </span><span class="co"># the table I want to protect</span></span>
+<span id="cb79-3"><a href="036-joins.html#cb79-3"></a><span class="st">  </span><span class="kw">left_join</span> ( school_list,                       <span class="co"># the table I want to apply to my original data frame</span></span>
+<span id="cb79-4"><a href="036-joins.html#cb79-4"></a>              <span class="dt">by=</span><span class="kw">c</span>(<span class="st">&quot;nces_id&quot;</span>=<span class="st">&quot;nces_school_id&quot;</span>) ) <span class="co"># the variable that is the same in the two tables.</span></span>
+<span id="cb79-5"><a href="036-joins.html#cb79-5"></a></span>
+<span id="cb79-6"><a href="036-joins.html#cb79-6"></a><span class="kw">glimpse</span>(immune_joined)</span></code></pre></div>
 <pre><code>## Rows: 841
 ## Columns: 17
 ## $ rowid              &lt;dbl&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, …
@@ -667,22 +667,22 @@ For example, the Federal Election Commission holds information about donors in o
 <div id="use-the-joined-table" class="section level4 unnumbered">
 <h4>Use the joined table</h4>
 <p>Now I might want to look at which school districts have low immunization rates:</p>
-<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb79-1"><a href="036-joins.html#cb79-1"></a>immune_joined <span class="op">%&gt;%</span></span>
-<span id="cb79-2"><a href="036-joins.html#cb79-2"></a><span class="st">  </span><span class="co"># by school </span></span>
-<span id="cb79-3"><a href="036-joins.html#cb79-3"></a><span class="st">  </span><span class="kw">mutate</span> (<span class="dt">school_pct =</span> num_immune_mmr <span class="op">/</span><span class="st"> </span>enrolled  <span class="op">*</span><span class="st"> </span><span class="dv">100</span> ) <span class="op">%&gt;%</span></span>
-<span id="cb79-4"><a href="036-joins.html#cb79-4"></a><span class="st">  </span><span class="co"># by district</span></span>
-<span id="cb79-5"><a href="036-joins.html#cb79-5"></a><span class="st">  </span><span class="kw">group_by</span> (nces_district_name, county) <span class="op">%&gt;%</span></span>
-<span id="cb79-6"><a href="036-joins.html#cb79-6"></a><span class="st">  </span><span class="kw">summarise</span> ( <span class="dt">num_schools =</span> <span class="kw">n</span>() ,</span>
-<span id="cb79-7"><a href="036-joins.html#cb79-7"></a>              <span class="dt">total_enrolled =</span> <span class="kw">sum</span>(enrolled),</span>
-<span id="cb79-8"><a href="036-joins.html#cb79-8"></a>              <span class="dt">total_immune =</span> <span class="kw">sum</span> (num_immune_mmr),</span>
-<span id="cb79-9"><a href="036-joins.html#cb79-9"></a>              <span class="dt">median_immune =</span> <span class="kw">median</span> (school_pct)</span>
-<span id="cb79-10"><a href="036-joins.html#cb79-10"></a>              ) <span class="op">%&gt;%</span></span>
-<span id="cb79-11"><a href="036-joins.html#cb79-11"></a><span class="st">  </span><span class="co"># district total pct (immunized / total students)</span></span>
-<span id="cb79-12"><a href="036-joins.html#cb79-12"></a><span class="st">  </span><span class="kw">mutate</span> ( <span class="dt">pct_immune =</span> total_immune<span class="op">/</span><span class="st"> </span>total_enrolled <span class="op">*</span><span class="st"> </span><span class="dv">100</span>) <span class="op">%&gt;%</span></span>
-<span id="cb79-13"><a href="036-joins.html#cb79-13"></a><span class="st">  </span><span class="kw">select</span> (nces_district_name, county, num_schools, pct_immune, total_enrolled,  median_immune) <span class="op">%&gt;%</span></span>
-<span id="cb79-14"><a href="036-joins.html#cb79-14"></a><span class="st">  </span><span class="kw">filter</span> (median_immune <span class="op">&lt;=</span><span class="st"> </span><span class="dv">93</span>) <span class="op">%&gt;%</span></span>
-<span id="cb79-15"><a href="036-joins.html#cb79-15"></a><span class="st">  </span><span class="kw">head</span> (<span class="dv">10</span>) <span class="op">%&gt;%</span></span>
-<span id="cb79-16"><a href="036-joins.html#cb79-16"></a><span class="st">  </span><span class="kw">kable</span> (<span class="dt">digits=</span><span class="dv">1</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb81-1"><a href="036-joins.html#cb81-1"></a>immune_joined <span class="op">%&gt;%</span></span>
+<span id="cb81-2"><a href="036-joins.html#cb81-2"></a><span class="st">  </span><span class="co"># by school </span></span>
+<span id="cb81-3"><a href="036-joins.html#cb81-3"></a><span class="st">  </span><span class="kw">mutate</span> (<span class="dt">school_pct =</span> num_immune_mmr <span class="op">/</span><span class="st"> </span>enrolled  <span class="op">*</span><span class="st"> </span><span class="dv">100</span> ) <span class="op">%&gt;%</span></span>
+<span id="cb81-4"><a href="036-joins.html#cb81-4"></a><span class="st">  </span><span class="co"># by district</span></span>
+<span id="cb81-5"><a href="036-joins.html#cb81-5"></a><span class="st">  </span><span class="kw">group_by</span> (nces_district_name, county) <span class="op">%&gt;%</span></span>
+<span id="cb81-6"><a href="036-joins.html#cb81-6"></a><span class="st">  </span><span class="kw">summarise</span> ( <span class="dt">num_schools =</span> <span class="kw">n</span>() ,</span>
+<span id="cb81-7"><a href="036-joins.html#cb81-7"></a>              <span class="dt">total_enrolled =</span> <span class="kw">sum</span>(enrolled),</span>
+<span id="cb81-8"><a href="036-joins.html#cb81-8"></a>              <span class="dt">total_immune =</span> <span class="kw">sum</span> (num_immune_mmr),</span>
+<span id="cb81-9"><a href="036-joins.html#cb81-9"></a>              <span class="dt">median_immune =</span> <span class="kw">median</span> (school_pct)</span>
+<span id="cb81-10"><a href="036-joins.html#cb81-10"></a>              ) <span class="op">%&gt;%</span></span>
+<span id="cb81-11"><a href="036-joins.html#cb81-11"></a><span class="st">  </span><span class="co"># district total pct (immunized / total students)</span></span>
+<span id="cb81-12"><a href="036-joins.html#cb81-12"></a><span class="st">  </span><span class="kw">mutate</span> ( <span class="dt">pct_immune =</span> total_immune<span class="op">/</span><span class="st"> </span>total_enrolled <span class="op">*</span><span class="st"> </span><span class="dv">100</span>) <span class="op">%&gt;%</span></span>
+<span id="cb81-13"><a href="036-joins.html#cb81-13"></a><span class="st">  </span><span class="kw">select</span> (nces_district_name, county, num_schools, pct_immune, total_enrolled,  median_immune) <span class="op">%&gt;%</span></span>
+<span id="cb81-14"><a href="036-joins.html#cb81-14"></a><span class="st">  </span><span class="kw">filter</span> (median_immune <span class="op">&lt;=</span><span class="st"> </span><span class="dv">93</span>) <span class="op">%&gt;%</span></span>
+<span id="cb81-15"><a href="036-joins.html#cb81-15"></a><span class="st">  </span><span class="kw">head</span> (<span class="dv">10</span>) <span class="op">%&gt;%</span></span>
+<span id="cb81-16"><a href="036-joins.html#cb81-16"></a><span class="st">  </span><span class="kw">kable</span> (<span class="dt">digits=</span><span class="dv">1</span>)</span></code></pre></div>
 <pre><code>## `summarise()` regrouping output by &#39;nces_district_name&#39; (override with `.groups` argument)</code></pre>
 <table>
 <thead>
@@ -797,22 +797,22 @@ For example, the Federal Election Commission holds information about donors in o
 <h4>Campaign finance data</h4>
 <p>There are two tables saved in the R data file, “<a href="https://github.com/cronkitedata/rstudyguide/blob/master/data/azcampfin.Rda?raw=true">azcampfin.Rda</a>”. One holds information on contributions available from the offiical FEC database as of Feb. 23, 2020 and the other holds information on the candidates and committees.</p>
 <p>The following codes are used in this dataset, which you may want to save into data frame. Here is some code you can use to create a lookup table for the transaction types. These codes can be joined with the column called <code>transaction_tp</code> in the contributions (or <code>arizona20</code>) data frame.</p>
-<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb81-1"><a href="036-joins.html#cb81-1"></a>transaction_types &lt;-<span class="st"> </span><span class="kw">tribble</span> (</span>
-<span id="cb81-2"><a href="036-joins.html#cb81-2"></a>  <span class="op">~</span>tcode, <span class="op">~</span>contrib_type,</span>
-<span id="cb81-3"><a href="036-joins.html#cb81-3"></a>  <span class="st">&quot;10&quot;</span>,   <span class="st">&quot;To a Super PAC&quot;</span>,</span>
-<span id="cb81-4"><a href="036-joins.html#cb81-4"></a>  <span class="st">&quot;11&quot;</span>,   <span class="st">&quot;Native American tribal&quot;</span>,</span>
-<span id="cb81-5"><a href="036-joins.html#cb81-5"></a>  <span class="st">&quot;15&quot;</span>,   <span class="st">&quot;Individual contrib&quot;</span>,</span>
-<span id="cb81-6"><a href="036-joins.html#cb81-6"></a>  <span class="st">&quot;15C&quot;</span>,  <span class="st">&quot;From a candidate&quot;</span>,</span>
-<span id="cb81-7"><a href="036-joins.html#cb81-7"></a>  <span class="st">&quot;15E&quot;</span>,  <span class="st">&quot;Earmarked (eg, ActBlue)&quot;</span>,</span>
-<span id="cb81-8"><a href="036-joins.html#cb81-8"></a>  <span class="st">&quot;20Y&quot;</span>,  <span class="st">&quot;Non-federal refund&quot;</span>,</span>
-<span id="cb81-9"><a href="036-joins.html#cb81-9"></a>  <span class="st">&quot;22Y&quot;</span>,  <span class="st">&quot;Refund to indiv.&quot;</span>,</span>
-<span id="cb81-10"><a href="036-joins.html#cb81-10"></a>  <span class="st">&quot;24I&quot;</span>,  <span class="st">&quot;Earmarked check passed on&quot;</span>,</span>
-<span id="cb81-11"><a href="036-joins.html#cb81-11"></a>  <span class="st">&quot;24T&quot;</span>,  <span class="st">&quot;Earmarked contrib passed on&quot;</span>,</span>
-<span id="cb81-12"><a href="036-joins.html#cb81-12"></a>  <span class="st">&quot;30&quot;</span>,   <span class="st">&quot;To a convention account&quot;</span>,</span>
-<span id="cb81-13"><a href="036-joins.html#cb81-13"></a>  <span class="st">&quot;31&quot;</span>,   <span class="st">&quot;To a headquarters account&quot;</span>,</span>
-<span id="cb81-14"><a href="036-joins.html#cb81-14"></a>  <span class="st">&quot;32&quot;</span>,   <span class="st">&quot;To a recount effort&quot;</span>,</span>
-<span id="cb81-15"><a href="036-joins.html#cb81-15"></a>  <span class="st">&quot;41Y&quot;</span>,   <span class="st">&quot;Refund from headquarters account&quot;</span></span>
-<span id="cb81-16"><a href="036-joins.html#cb81-16"></a>  )</span></code></pre></div>
+<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb83-1"><a href="036-joins.html#cb83-1"></a>transaction_types &lt;-<span class="st"> </span><span class="kw">tribble</span> (</span>
+<span id="cb83-2"><a href="036-joins.html#cb83-2"></a>  <span class="op">~</span>tcode, <span class="op">~</span>contrib_type,</span>
+<span id="cb83-3"><a href="036-joins.html#cb83-3"></a>  <span class="st">&quot;10&quot;</span>,   <span class="st">&quot;To a Super PAC&quot;</span>,</span>
+<span id="cb83-4"><a href="036-joins.html#cb83-4"></a>  <span class="st">&quot;11&quot;</span>,   <span class="st">&quot;Native American tribal&quot;</span>,</span>
+<span id="cb83-5"><a href="036-joins.html#cb83-5"></a>  <span class="st">&quot;15&quot;</span>,   <span class="st">&quot;Individual contrib&quot;</span>,</span>
+<span id="cb83-6"><a href="036-joins.html#cb83-6"></a>  <span class="st">&quot;15C&quot;</span>,  <span class="st">&quot;From a candidate&quot;</span>,</span>
+<span id="cb83-7"><a href="036-joins.html#cb83-7"></a>  <span class="st">&quot;15E&quot;</span>,  <span class="st">&quot;Earmarked (eg, ActBlue)&quot;</span>,</span>
+<span id="cb83-8"><a href="036-joins.html#cb83-8"></a>  <span class="st">&quot;20Y&quot;</span>,  <span class="st">&quot;Non-federal refund&quot;</span>,</span>
+<span id="cb83-9"><a href="036-joins.html#cb83-9"></a>  <span class="st">&quot;22Y&quot;</span>,  <span class="st">&quot;Refund to indiv.&quot;</span>,</span>
+<span id="cb83-10"><a href="036-joins.html#cb83-10"></a>  <span class="st">&quot;24I&quot;</span>,  <span class="st">&quot;Earmarked check passed on&quot;</span>,</span>
+<span id="cb83-11"><a href="036-joins.html#cb83-11"></a>  <span class="st">&quot;24T&quot;</span>,  <span class="st">&quot;Earmarked contrib passed on&quot;</span>,</span>
+<span id="cb83-12"><a href="036-joins.html#cb83-12"></a>  <span class="st">&quot;30&quot;</span>,   <span class="st">&quot;To a convention account&quot;</span>,</span>
+<span id="cb83-13"><a href="036-joins.html#cb83-13"></a>  <span class="st">&quot;31&quot;</span>,   <span class="st">&quot;To a headquarters account&quot;</span>,</span>
+<span id="cb83-14"><a href="036-joins.html#cb83-14"></a>  <span class="st">&quot;32&quot;</span>,   <span class="st">&quot;To a recount effort&quot;</span>,</span>
+<span id="cb83-15"><a href="036-joins.html#cb83-15"></a>  <span class="st">&quot;41Y&quot;</span>,   <span class="st">&quot;Refund from headquarters account&quot;</span></span>
+<span id="cb83-16"><a href="036-joins.html#cb83-16"></a>  )</span></code></pre></div>
 <p>(These are pretty complicated definitions in the federal campaign finance world. For now, don’t worry much about what they mean. Refunds are shown in the data as negative numbers, which is what you want.)</p>
 <p>Try to analyze some of this by putting together the datasets and finding interesting items or patterns.</p>
 

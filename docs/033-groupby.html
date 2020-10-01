@@ -167,12 +167,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="2.4" data-path="021-r-markdown.html"><a href="021-r-markdown.html#knitting-your-document"><i class="fa fa-check"></i><b>2.4</b> Knitting your document</a></li>
 <li class="chapter" data-level="2.5" data-path="021-r-markdown.html"><a href="021-r-markdown.html#including-r-code-and-its-results"><i class="fa fa-check"></i><b>2.5</b> Including R code and its results</a></li>
-<li class="chapter" data-level="" data-path="021-r-markdown.html"><a href="021-r-markdown.html#r-markdown-starts-from-scratch"><i class="fa fa-check"></i>R Markdown starts from scratch</a></li>
-<li class="chapter" data-level="2.6" data-path="011-r-install.html"><a href="011-r-install.html#resources-and-exercises"><i class="fa fa-check"></i><b>2.6</b> Resources and exercises</a><ul>
+<li class="chapter" data-level="2.6" data-path="021-r-markdown.html"><a href="021-r-markdown.html#r-markdown-starts-from-scratch"><i class="fa fa-check"></i><b>2.6</b> R Markdown starts from scratch</a></li>
+<li class="chapter" data-level="2.7" data-path="011-r-install.html"><a href="011-r-install.html#resources-and-exercises"><i class="fa fa-check"></i><b>2.7</b> Resources and exercises</a><ul>
 <li class="chapter" data-level="" data-path="021-r-markdown.html"><a href="021-r-markdown.html#resources"><i class="fa fa-check"></i>Resources</a></li>
 <li class="chapter" data-level="" data-path="021-r-markdown.html"><a href="021-r-markdown.html#exercises"><i class="fa fa-check"></i>Exercises</a></li>
 </ul></li>
-<li class="chapter" data-level="2.7" data-path="021-r-markdown.html"><a href="021-r-markdown.html#bonus-styling-your-r-markdown-documents"><i class="fa fa-check"></i><b>2.7</b> Bonus: Styling your R Markdown documents</a></li>
+<li class="chapter" data-level="2.8" data-path="021-r-markdown.html"><a href="021-r-markdown.html#bonus-styling-your-r-markdown-documents"><i class="fa fa-check"></i><b>2.8</b> Bonus: Styling your R Markdown documents</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="022-data-frames.html"><a href="022-data-frames.html"><i class="fa fa-check"></i><b>3</b> Data frames and the tidyverse</a><ul>
 <li class="chapter" data-level="3.1" data-path="011-r-install.html"><a href="011-r-install.html#key-takeaways"><i class="fa fa-check"></i><b>3.1</b> Key takeaways</a></li>
@@ -352,11 +352,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Test data they receive from government and others for errors, such as missing codes, impossible combinations, sudden and suspicious patterns or incorrect totals when checked against an independent source.</li>
 </ul>
 <p>To refresh your memory, this query counts the number of schools and adds up the number of students by type of school while giving them descriptive names:</p>
-<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="033-groupby.html#cb48-1"></a>grade6_counts <span class="op">%&gt;%</span></span>
-<span id="cb48-2"><a href="033-groupby.html#cb48-2"></a><span class="st">  </span><span class="kw">group_by</span> (school_type) <span class="op">%&gt;%</span></span>
-<span id="cb48-3"><a href="033-groupby.html#cb48-3"></a><span class="st">  </span><span class="kw">summarise</span> ( <span class="dt">schools =</span> <span class="kw">n</span>() ,</span>
-<span id="cb48-4"><a href="033-groupby.html#cb48-4"></a>              <span class="dt">student =</span> <span class="kw">sum</span> (enrolled, <span class="dt">na.rm=</span><span class="ot">TRUE</span>)</span>
-<span id="cb48-5"><a href="033-groupby.html#cb48-5"></a>      )</span></code></pre></div>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="033-groupby.html#cb50-1"></a>grade6_counts <span class="op">%&gt;%</span></span>
+<span id="cb50-2"><a href="033-groupby.html#cb50-2"></a><span class="st">  </span><span class="kw">group_by</span> (school_type) <span class="op">%&gt;%</span></span>
+<span id="cb50-3"><a href="033-groupby.html#cb50-3"></a><span class="st">  </span><span class="kw">summarise</span> ( <span class="dt">schools =</span> <span class="kw">n</span>() ,</span>
+<span id="cb50-4"><a href="033-groupby.html#cb50-4"></a>              <span class="dt">student =</span> <span class="kw">sum</span> (enrolled, <span class="dt">na.rm=</span><span class="ot">TRUE</span>)</span>
+<span id="cb50-5"><a href="033-groupby.html#cb50-5"></a>      )</span></code></pre></div>
 <pre><code>## `summarise()` ungrouping output (override with `.groups` argument)</code></pre>
 <p>Notice the <code>na.rm=TRUE</code> in the sum() function. You should almost always add this to any summary math function, like sum(), median(), mean(), etc. If you don’t, a single missing value (<code>NA</code>) will result in an answer of <code>NA</code>. That’s good practice and it makes sense: you should <em>want</em> to know if your data has missing or invalid information. But normally you have no choice but to ignore it.</p>
 <div id="other-summary-functions" class="section level3">
@@ -388,9 +388,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="grouping-by-more-than-one-variable" class="section level3">
 <h3><span class="header-section-number">6.2.2</span> Grouping by more than one variable</h3>
 <p>An example of counting by school type, and whether a school nurse is on staff:</p>
-<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="033-groupby.html#cb50-1"></a>grade6_counts <span class="op">%&gt;%</span></span>
-<span id="cb50-2"><a href="033-groupby.html#cb50-2"></a><span class="st">  </span><span class="kw">group_by</span> ( school_type, school_nurse) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb50-3"><a href="033-groupby.html#cb50-3"></a><span class="st">  </span><span class="kw">summarise</span> ( <span class="dt">num_schools =</span> <span class="kw">n</span>() ) </span></code></pre></div>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="033-groupby.html#cb52-1"></a>grade6_counts <span class="op">%&gt;%</span></span>
+<span id="cb52-2"><a href="033-groupby.html#cb52-2"></a><span class="st">  </span><span class="kw">group_by</span> ( school_type, school_nurse) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb52-3"><a href="033-groupby.html#cb52-3"></a><span class="st">  </span><span class="kw">summarise</span> ( <span class="dt">num_schools =</span> <span class="kw">n</span>() ) </span></code></pre></div>
 <pre><code>## `summarise()` regrouping output by &#39;school_type&#39; (override with `.groups` argument)</code></pre>
 <div class="kable-table">
 <table>
@@ -440,12 +440,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="rolling-up-to-the-next-level" class="section level3">
 <h3><span class="header-section-number">6.2.3</span> Rolling up to the next level</h3>
 <p>If you wanted to know what percent of schools are charter, you’d need the total number of schools as a variable in your data frame. You can roll up to the next level this way:</p>
-<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="033-groupby.html#cb52-1"></a>grade6_counts <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb52-2"><a href="033-groupby.html#cb52-2"></a><span class="st">  </span><span class="kw">group_by</span>( school_type ) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb52-3"><a href="033-groupby.html#cb52-3"></a><span class="st">  </span><span class="kw">summarise</span> (<span class="dt">schools =</span> <span class="kw">n</span>() ) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb52-4"><a href="033-groupby.html#cb52-4"></a><span class="st">  </span><span class="kw">mutate</span>  ( <span class="dt">total =</span> <span class="kw">sum</span>( schools),</span>
-<span id="cb52-5"><a href="033-groupby.html#cb52-5"></a>            <span class="dt">pct_total =</span> schools<span class="op">/</span><span class="st"> </span>total <span class="op">*</span><span class="st"> </span><span class="dv">100</span> ) <span class="op">%&gt;%</span></span>
-<span id="cb52-6"><a href="033-groupby.html#cb52-6"></a><span class="st">  </span><span class="kw">arrange</span> ( <span class="kw">desc</span> (schools))</span></code></pre></div>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="033-groupby.html#cb54-1"></a>grade6_counts <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb54-2"><a href="033-groupby.html#cb54-2"></a><span class="st">  </span><span class="kw">group_by</span>( school_type ) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb54-3"><a href="033-groupby.html#cb54-3"></a><span class="st">  </span><span class="kw">summarise</span> (<span class="dt">schools =</span> <span class="kw">n</span>() ) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb54-4"><a href="033-groupby.html#cb54-4"></a><span class="st">  </span><span class="kw">mutate</span>  ( <span class="dt">total =</span> <span class="kw">sum</span>( schools),</span>
+<span id="cb54-5"><a href="033-groupby.html#cb54-5"></a>            <span class="dt">pct_total =</span> schools<span class="op">/</span><span class="st"> </span>total <span class="op">*</span><span class="st"> </span><span class="dv">100</span> ) <span class="op">%&gt;%</span></span>
+<span id="cb54-6"><a href="033-groupby.html#cb54-6"></a><span class="st">  </span><span class="kw">arrange</span> ( <span class="kw">desc</span> (schools))</span></code></pre></div>
 <pre><code>## `summarise()` ungrouping output (override with `.groups` argument)</code></pre>
 <div class="kable-table">
 <table>
@@ -491,13 +491,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>It’s hard to read multi-level groupings, so the tidyverse offers a way to spread one variable across the top with the other down the side. This is just like dragging one column into the “Columns” area in a pivot table, and another into the “Rows”. Here is how you’d make a crosstab like those in Excel using this method:</p>
 <p><img src="images/33-pivot-wider.png" /></p>
 <p>Here’s a full example of creating “column” percentages and then showing them as a crosstab. See if you can piece together what’s going on. If not, try moving pieces of the query outside the code chunk (and remove your <code>%&gt;%</code> operator) and run it piece by piece.</p>
-<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="033-groupby.html#cb54-1"></a>grade6_counts <span class="op">%&gt;%</span></span>
-<span id="cb54-2"><a href="033-groupby.html#cb54-2"></a><span class="st">  </span><span class="kw">group_by</span> (school_type, school_nurse) <span class="op">%&gt;%</span><span class="st">                           </span><span class="co"># See 1</span></span>
-<span id="cb54-3"><a href="033-groupby.html#cb54-3"></a><span class="st">  </span><span class="kw">summarise</span> ( <span class="dt">schools =</span> <span class="kw">n</span>() ) <span class="op">%&gt;%</span></span>
-<span id="cb54-4"><a href="033-groupby.html#cb54-4"></a><span class="st">  </span><span class="kw">mutate</span> ( <span class="dt">types =</span> <span class="kw">sum</span>(schools),                                     <span class="co"># See 2</span></span>
-<span id="cb54-5"><a href="033-groupby.html#cb54-5"></a>           <span class="dt">pct_types =</span> schools<span class="op">/</span>types<span class="op">*</span><span class="dv">100</span>) <span class="op">%&gt;%</span><span class="st">                        </span><span class="co"># See 3 </span></span>
-<span id="cb54-6"><a href="033-groupby.html#cb54-6"></a><span class="st">  </span><span class="kw">select</span> (school_type, school_nurse, pct_types) <span class="op">%&gt;%</span></span>
-<span id="cb54-7"><a href="033-groupby.html#cb54-7"></a><span class="st">  </span><span class="kw">pivot_wider</span> ( <span class="dt">names_from =</span> school_type, <span class="dt">values_from =</span> pct_types)   <span class="co">#See 4</span></span></code></pre></div>
+<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="033-groupby.html#cb56-1"></a>grade6_counts <span class="op">%&gt;%</span></span>
+<span id="cb56-2"><a href="033-groupby.html#cb56-2"></a><span class="st">  </span><span class="kw">group_by</span> (school_type, school_nurse) <span class="op">%&gt;%</span><span class="st">                           </span><span class="co"># See 1</span></span>
+<span id="cb56-3"><a href="033-groupby.html#cb56-3"></a><span class="st">  </span><span class="kw">summarise</span> ( <span class="dt">schools =</span> <span class="kw">n</span>() ) <span class="op">%&gt;%</span></span>
+<span id="cb56-4"><a href="033-groupby.html#cb56-4"></a><span class="st">  </span><span class="kw">mutate</span> ( <span class="dt">types =</span> <span class="kw">sum</span>(schools),                                     <span class="co"># See 2</span></span>
+<span id="cb56-5"><a href="033-groupby.html#cb56-5"></a>           <span class="dt">pct_types =</span> schools<span class="op">/</span>types<span class="op">*</span><span class="dv">100</span>) <span class="op">%&gt;%</span><span class="st">                        </span><span class="co"># See 3 </span></span>
+<span id="cb56-6"><a href="033-groupby.html#cb56-6"></a><span class="st">  </span><span class="kw">select</span> (school_type, school_nurse, pct_types) <span class="op">%&gt;%</span></span>
+<span id="cb56-7"><a href="033-groupby.html#cb56-7"></a><span class="st">  </span><span class="kw">pivot_wider</span> ( <span class="dt">names_from =</span> school_type, <span class="dt">values_from =</span> pct_types)   <span class="co">#See 4</span></span></code></pre></div>
 <pre><code>## `summarise()` regrouping output by &#39;school_type&#39; (override with `.groups` argument)</code></pre>
 <div class="kable-table">
 <table>

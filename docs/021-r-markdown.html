@@ -50,6 +50,13 @@
 
 
 <script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+<script src="libs/htmlwidgets-1.5.1/htmlwidgets.js"></script>
+<script src="libs/plotly-binding-4.9.2.1/plotly.js"></script>
+<script src="libs/typedarray-0.1/typedarray.min.js"></script>
+<link href="libs/crosstalk-1.1.0.1/css/crosstalk.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.1.0.1/js/crosstalk.min.js"></script>
+<link href="libs/plotly-htmlwidgets-css-1.52.2/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="libs/plotly-main-1.52.2/plotly-latest.min.js"></script>
 
 
 <style type="text/css">
@@ -441,12 +448,12 @@ output: html_document
 <p>So far, this is just a simple document. It doesn’t contain any R code. To add code, you insert a “code chunk”. You can add it by clicking the +Insert button at the top of the document, or by pressing <em>Option/Alt-Cmd-i</em> Add your code in the gray area between the triple-backtic symbols. Run the code chunk by pressing the arrow button within it, or by pressing Cmd/Ctl-Shft-Enter (either Cmd or Ctl)</p>
 <p><img src="images/22-code-chunk.gif" /></p>
 <p>Here’s how it works. Notice that when I just typed <code>my_name</code>, the value of that variable is printed just below the chunk:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="021-r-markdown.html#cb3-1"></a><span class="co">#this is a comment - it won&#39;t be run</span></span>
-<span id="cb3-2"><a href="021-r-markdown.html#cb3-2"></a></span>
-<span id="cb3-3"><a href="021-r-markdown.html#cb3-3"></a>my_variable &lt;-<span class="st"> </span><span class="dv">13</span></span>
-<span id="cb3-4"><a href="021-r-markdown.html#cb3-4"></a>my_name &lt;-<span class="st"> &quot;Sarah&quot;</span></span>
-<span id="cb3-5"><a href="021-r-markdown.html#cb3-5"></a></span>
-<span id="cb3-6"><a href="021-r-markdown.html#cb3-6"></a>my_name</span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="021-r-markdown.html#cb8-1"></a><span class="co">#this is a comment - it won&#39;t be run</span></span>
+<span id="cb8-2"><a href="021-r-markdown.html#cb8-2"></a></span>
+<span id="cb8-3"><a href="021-r-markdown.html#cb8-3"></a>my_variable &lt;-<span class="st"> </span><span class="dv">13</span></span>
+<span id="cb8-4"><a href="021-r-markdown.html#cb8-4"></a>my_name &lt;-<span class="st"> &quot;Sarah&quot;</span></span>
+<span id="cb8-5"><a href="021-r-markdown.html#cb8-5"></a></span>
+<span id="cb8-6"><a href="021-r-markdown.html#cb8-6"></a>my_name</span></code></pre></div>
 <pre><code>## [1] &quot;Sarah&quot;</code></pre>
 <p>This might not seem like much, but think about how it helps you do your analysis. You can write all of your notes right where you do the work. You don’t have to copy and paste information from one place to another, or share out-of-date spreadsheets with your teammates.</p>
 </div>
