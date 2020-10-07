@@ -119,7 +119,7 @@ Make sure, though, that you run every part of your document every time you re-op
 
 ![runall](images/21-run-all.png)
 
-## Resources and exercises
+## RMarkdown resources and exercises
 
 ### Resources {-}
 

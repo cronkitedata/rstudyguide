@@ -173,7 +173,7 @@ is one you'll be doing a lot.
 Max van den Oetelaar via Unsplash
 :::
 
-## Other resources
+## Data frames resources
 
 Take a look at Jesse Lecy's lesson on "[Learning How to Learn](http://ds4ps.org/dp4ss-textbook/ch-032-learning_r.html)" from his data science class at ASU. It will make you feel better, I swear. 
 
