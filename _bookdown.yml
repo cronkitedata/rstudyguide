@@ -18,3 +18,4 @@ rmd_files: ["index.Rmd",
             "A04-murders.Rmd"
             ] 
 output_dir: "docs"
+new_session: yes
