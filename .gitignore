@@ -28,3 +28,4 @@ rsconnect/
 scratch.R
 #cache
 _bookdown_files
+docs/.DS_Store
