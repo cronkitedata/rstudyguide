@@ -16,7 +16,16 @@ Other professors and universities are also trying to teach R in journalism and o
 
 * Christian McDonald at the University of Texas has also [created a textbook for his data reporting class](https://utdata.github.io/rwd-r-reporting-with-data/), which walks through the same data set all the way through. 
 
+* Peter Aldhous's "[R for Data Journalism](https://paldhous.github.io/wcsj/2017/)". Peter uses an R script instead of a markdown document. To do that, you create a new R document instead of a markdown, and run code by pressing CTL-Enter next to the lines that you want to run. It won't be formatted, but it takes away one of the first sets of confusion . 
+
+
+
 ## Instructional screencasts and videos
+
+* Mary Jo Webster's [R for journalism videos](https://sites.google.com/view/mj-basic-data-academy/r-basics/r-how-to-videos?authuser=0)
+
+
+* Datacamp has a free introduction to its R class that includes a lot of what we're doing, called "[Transforming data with dplyr](https://www.datacamp.com/courses/data-manipulation-with-dplyr-in-r)"
 
 * Andrew Ba Tran's [R for Journalists](http://learn.r-journalism.com/en/) course, originall created for a MOOC offered by the  Knight Center for the Americas. Previous Cronkite students say that it goes a little fast for someone with no experience in other lanugages, but it has most of what you'd need.
 

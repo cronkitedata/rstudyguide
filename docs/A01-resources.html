@@ -33,7 +33,7 @@
 <link rel="prev" href="A02-programming.html"/>
 <link rel="next" href="A04-murders.html"/>
 <script src="libs/header-attrs-2.7/header-attrs.js"></script>
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<script src="libs/jquery-3.5.1/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -50,19 +50,20 @@
 
 
 
-<script src="libs/htmlwidgets-1.5.2/htmlwidgets.js"></script>
-<script src="libs/plotly-binding-4.9.2.1/plotly.js"></script>
+<script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script>
+<script src="libs/plotly-binding-4.9.3/plotly.js"></script>
 <script src="libs/typedarray-0.1/typedarray.min.js"></script>
-<link href="libs/crosstalk-1.1.0.1/css/crosstalk.css" rel="stylesheet" />
-<script src="libs/crosstalk-1.1.0.1/js/crosstalk.min.js"></script>
-<link href="libs/plotly-htmlwidgets-css-1.52.2/plotly-htmlwidgets.css" rel="stylesheet" />
-<script src="libs/plotly-main-1.52.2/plotly-latest.min.js"></script>
+<link href="libs/crosstalk-1.1.1/css/crosstalk.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.1.1/js/crosstalk.min.js"></script>
+<link href="libs/plotly-htmlwidgets-css-1.57.1/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="libs/plotly-main-1.57.1/plotly-latest.min.js"></script>
 
 
 <style type="text/css">
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
@@ -220,16 +221,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.1" data-path="031-select-filter.html"><a href="031-select-filter.html#key-takeaways-4"><i class="fa fa-check"></i><b>5.1</b> Key takeaways</a></li>
 <li class="chapter" data-level="5.2" data-path="031-select-filter.html"><a href="031-select-filter.html#select---choosing-columns"><i class="fa fa-check"></i><b>5.2</b> Select - choosing columns</a>
 <ul>
-<li class="chapter" data-level="" data-path="031-select-filter.html"><a href="031-select-filter.html#optional-other-ways-to-select"><i class="fa fa-check"></i>Optional: Other ways to select</a></li>
+<li class="chapter" data-level="" data-path="031-select-filter.html"><a href="031-select-filter.html#selecting-with-shortcuts"><i class="fa fa-check"></i>Selecting with shortcuts</a></li>
 </ul></li>
 <li class="chapter" data-level="5.3" data-path="031-select-filter.html"><a href="031-select-filter.html#filter---choosing-rows"><i class="fa fa-check"></i><b>5.3</b> Filter - choosing rows</a>
 <ul>
 <li class="chapter" data-level="5.3.1" data-path="031-select-filter.html"><a href="031-select-filter.html#one-filter"><i class="fa fa-check"></i><b>5.3.1</b> One filter</a></li>
 <li class="chapter" data-level="5.3.2" data-path="031-select-filter.html"><a href="031-select-filter.html#a-compound-filter"><i class="fa fa-check"></i><b>5.3.2</b> A compound filter</a></li>
-<li class="chapter" data-level="5.3.3" data-path="031-select-filter.html"><a href="031-select-filter.html#even-more-compound-filters"><i class="fa fa-check"></i><b>5.3.3</b> Even more compound filters</a></li>
 </ul></li>
 <li class="chapter" data-level="5.4" data-path="031-select-filter.html"><a href="031-select-filter.html#arrange---change-the-order"><i class="fa fa-check"></i><b>5.4</b> Arrange - change the order</a></li>
-<li class="chapter" data-level="5.5" data-path="031-select-filter.html"><a href="031-select-filter.html#traps"><i class="fa fa-check"></i><b>5.5</b> Traps</a></li>
+<li class="chapter" data-level="5.5" data-path="031-select-filter.html"><a href="031-select-filter.html#troubleshooting"><i class="fa fa-check"></i><b>5.5</b> Troubleshooting</a>
+<ul>
+<li class="chapter" data-level="5.5.1" data-path="031-select-filter.html"><a href="031-select-filter.html#variable-not-found"><i class="fa fa-check"></i><b>5.5.1</b> Variable not found</a></li>
+</ul></li>
 <li class="chapter" data-level="5.6" data-path="031-select-filter.html"><a href="031-select-filter.html#sort-filter-resources"><i class="fa fa-check"></i><b>5.6</b> Sort / filter resources</a>
 <ul>
 <li class="chapter" data-level="5.6.1" data-path="031-select-filter.html"><a href="031-select-filter.html#exercises-1"><i class="fa fa-check"></i><b>5.6.1</b> Exercises</a></li>
@@ -376,11 +379,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><p>Jesse Lecy’s “Introduction to data science for the social sector,” an ASU course that teaches R in the context of non-profit management. His site, <a href="https://ds4ps.org/cpp-526-fall-2019/" class="uri">https://ds4ps.org/cpp-526-fall-2019/</a> has a <a href="https://ds4ps.org/cpp-526-fall-2019/textbook/">custom-made textbook</a> that covers much of the same material as us.</p></li>
 <li><p>Matt Waite at the University of Nebraska has been teach R in the context of a sports journalism class and a data journalism. <a href="http://mattwaite.github.io">His textbooks</a> are all freely available on Github. One minor difference that might trip you up: We’re using R Markdown, and he’s using R Notebooks. They’re very similar, but the “knit” option isn’t there when you use Notebooks – only a “Preview”. You’ll know what that means when we get moving.</p></li>
 <li><p>Christian McDonald at the University of Texas has also <a href="https://utdata.github.io/rwd-r-reporting-with-data/">created a textbook for his data reporting class</a>, which walks through the same data set all the way through.</p></li>
+<li><p>Peter Aldhous’s “<a href="https://paldhous.github.io/wcsj/2017/">R for Data Journalism</a>”. Peter uses an R script instead of a markdown document. To do that, you create a new R document instead of a markdown, and run code by pressing CTL-Enter next to the lines that you want to run. It won’t be formatted, but it takes away one of the first sets of confusion .</p></li>
 </ul>
 </div>
 <div id="instructional-screencasts-and-videos" class="section level2" number="11.3">
 <h2><span class="header-section-number">B.3</span> Instructional screencasts and videos</h2>
 <ul>
+<li><p>Mary Jo Webster’s <a href="https://sites.google.com/view/mj-basic-data-academy/r-basics/r-how-to-videos?authuser=0">R for journalism videos</a></p></li>
+<li><p>Datacamp has a free introduction to its R class that includes a lot of what we’re doing, called “<a href="https://www.datacamp.com/courses/data-manipulation-with-dplyr-in-r">Transforming data with dplyr</a>”</p></li>
 <li><p>Andrew Ba Tran’s <a href="http://learn.r-journalism.com/en/">R for Journalists</a> course, originall created for a MOOC offered by the Knight Center for the Americas. Previous Cronkite students say that it goes a little fast for someone with no experience in other lanugages, but it has most of what you’d need.</p></li>
 <li><p>Ben Stenhaug, a Data Science for Social Good fellow at Stanford, has put together some screencasts and exercises called <a href="https://teachingr.com/">teachR</a> on starting out in R and the tidyverse.</p></li>
 <li><p>“Tidy Tuesday” screencasts from David Robinson, <a href="(https://www.youtube.com/channel/UCeiiqmVK07qhY-wvg3IZiZQ)">an example</a> using fivethirtyeight.com data on education and salaries. These are very long – up to an hour – but they walk through what it’s really like to take a dataset from scratch and try to find something interesting. I disagree with one thing he does though – I believe you should read the documentation FIRST, not after you’ve done a lot of guessing about what columns mean.</p></li>

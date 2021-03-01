@@ -45,9 +45,13 @@ select---choosing-columns
 filter---choosing-rows
 one-filter
 a-compound-filter
-even-more-compound-filters
 arrange---change-the-order
-traps
+troubleshooting
+importing-or-loading-data
+variable-not-found
+r-is-case-sensitive
+spelling
+spelling-1
 sort-filter-resources
 exercises-1
 tutorials

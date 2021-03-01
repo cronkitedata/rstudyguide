@@ -75,7 +75,7 @@ Here's what it the first few rows of our selected columns looks like. (It might 
 |  3|1/9/2017 1:08  |(1) Monday  |Yes    |ALOC (R41.82)                         |40 to 44 |Male   |No     |No     |No          |No                 |
 |  4|1/9/2017 1:55  |(1) Monday  |No     |No Apparent Illness or Injury (Z71.1) |20 to 24 |Male   |No     |No     |Yes         |Homeless           |
 
-### Optional: Other ways to select {-}
+### Selecting with shortcuts {-}
 
 R has a lot of shortcuts so you don't have to type as much as in some other languages. You can identify columns by their position in the file, by the kind of data they hold (numbers, characters, etc.), or by the words their names contain. Here's an example:
 
@@ -86,9 +86,18 @@ opioid_calls %>%
            weekday = dow,
            narcan :  gender,  #vars narcan through gender in the list 
            contains ("yn")    # has "yn" in the name
+           where (is.numeric)
            ) 
 ```
 
+In this example, we've selected the columns : 
+
+      id
+      narcan THROUGH gender in the order they appear in the data frame
+      any variable that contains "yn" in its name
+      any numerica column
+
+This is super powerful when you get a dataset with tons of columns and you don't want to have to type out their names. It's also super powerful when you want to do the same thing to a bunch of similar columns. (We'll get to that later.)
 
 ## Filter - choosing rows
 
@@ -117,9 +126,7 @@ If you don't create a new data frame using the `<-` assignment, it will just pri
 
 ![](images/24-filter-literal.jpg)
 
-Put the name of the column on the left side of the comparison, connect it with two equal signs, and put the value you want to look for (in quotes if it's text) on the right. The two equal signs means that it must be EXACTLY the same -- not sort of the same -- including upper and lower case.
-
-
+Put the **name of the column** on the left side of the comparison, connect it with **two equal signs**, and put the value you want to look for **in quotes** on the right. The two equal signs means that it must be EXACTLY the same -- not sort of the same -- including upper and lower case.
 
 
 
@@ -132,20 +139,18 @@ opioid_calls %>%
 ```
 ## Rows: 370
 ## Columns: 11
-## $ id                 <dbl> 3, 7, 11, 12, 13, 18, 20, 21, 25, 29, 30, 34, 35, …
-## $ incident_date      <chr> "1/9/2017 1:08", "1/11/2017 11:10", "1/14/2017 22:…
-## $ dow                <chr> "(1) Monday", "(3) Wednesday", "(6) Saturday", "(7…
-## $ narcan             <chr> "Yes", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes", "…
-## $ impression         <chr> "ALOC (R41.82)", "ALOC (R41.82)", "ALOC (R41.82)",…
-## $ age                <chr> "40 to 44", "80 to 84", "35 to 39", "40 to 44", "3…
-## $ gender             <chr> "Male", "Male", "Female", "Male", "Male", "Male", …
-## $ asu_yn             <chr> "No", "No", "No", "No", "No", "Unknown", "No", "No…
-## $ vet_yn             <chr> "No", "No", "No", "No", "No", "Unknown", "No", "No…
-## $ homeless_yn        <chr> "No", "No", "No", "No", "No", "Unknown", "No", "No…
-## $ special_population <chr> "No", "No", "No", "No", "No", "Unknown", "No", "No…
+## $ id                 <dbl> 3, 7, 11, 12, 13, 18, 20, 21, 25, 29, 30, 34, 35, 3…
+## $ incident_date      <chr> "1/9/2017 1:08", "1/11/2017 11:10", "1/14/2017 22:5…
+## $ dow                <chr> "(1) Monday", "(3) Wednesday", "(6) Saturday", "(7)…
+## $ narcan             <chr> "Yes", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes", "Y…
+## $ impression         <chr> "ALOC (R41.82)", "ALOC (R41.82)", "ALOC (R41.82)", …
+## $ age                <chr> "40 to 44", "80 to 84", "35 to 39", "40 to 44", "30…
+## $ gender             <chr> "Male", "Male", "Female", "Male", "Male", "Male", "…
+## $ asu_yn             <chr> "No", "No", "No", "No", "No", "Unknown", "No", "No"…
+## $ vet_yn             <chr> "No", "No", "No", "No", "No", "Unknown", "No", "No"…
+## $ homeless_yn        <chr> "No", "No", "No", "No", "No", "Unknown", "No", "No"…
+## $ special_population <chr> "No", "No", "No", "No", "No", "Unknown", "No", "No"…
 ```
-
-Here are the pieces of that function: 
 
 
 
@@ -153,8 +158,18 @@ In this case, you know that there were 370 rows that met your condition. It *loo
 
 ### A compound filter
 
-Filter for more than one condition that must be true using the "and" operator: &.  
+In Excel, you were limited in the way you could filter -- each time you picked a value from a column it was additive. That is, if you chose filters from two columns, BOTH had to be true in order to see the result. 
 
+When you get to programming languages, you can make much more sophisticated selections using `boolean logic`, the same thing you use in filtering Google results or other types of searches. The key elements are : 
+
+        `&` meaning AND, which  makes your net smaller so fewer fish can get in. 
+        `|` meaning OR , which makes your net wider so more fish can get in.  
+
+This can get confusing, since it's the opposite of the way we speak. When you say, "I want to see apples and oranges", you translate that into a condition that says, "Give me any row that has either apples OR oranges in the column."
+
+(You can also reverse it by using `!` , which means - throw out all the fish I just caught, and keep the trash that got caught in the process.)
+
+You should group your conditions together using parentheses. Here are a few examples: 
 
 
 ```r
@@ -162,11 +177,10 @@ opioid_calls %>%
     filter (narcan == "Yes" & asu_yn == "Yes") 
 ```
 
-### Even more compound filters
+... every row including a `"Yes"` under narcan as well as a "Yes" under `asu_yn` . 
 
-#### OR conditions {-}
+Adding an OR requires putting it in parentheses so that it's clear what we want. In this case, **either** asu or vets will be returned, but they have to have "narcan" . 
 
-Say we want either asu OR veterans who got Narcan. Here's a query that combines the **and** (&) condition with an **or** (|) condition: 
 
 
 ```r
@@ -178,13 +192,21 @@ opioid_calls %>%
 
 #### %in% conditions {-}
 
-Use the operator %in% when you want to pick among several possible answers. Say I want to look at anyone aged 20 to 29. Instead of "or", I can use %in% because it's only one column:
+Sometimes you have a lot of things from the same column that you want to pick out -- the equivalent of picking out things from the list in Excel filters. In that case, use a list that you create and the condition %in%. 
 
 
 ```r
 opioid_calls %>%
   filter (age %in% c("20 to 24", "25 to 29")) 
 ```
+
+Some people find this confusing, so we can unpack that.  
+
+* Look at the `age` column
+* Create a list with two items, using the `c` for "combine" operator, with two conditions included. 
+* Use the %in% operator instead of == 
+
+This only works if the values are in the same column. 
 
 ## Arrange - change the order
 
@@ -326,9 +348,19 @@ opioid_calls %>%
 (Reminder: the c() operator makes a list -- it combines the two quoted values into a vector.)
 
 
-## Traps
+## Troubleshooting
 
-#### Case-sensitivity {-}
+
+##### Importing or loading data
+
+* Have  you run the chunk at the top (the one with `library(tidyverse)`) ? If not, almost nothing that we do will work! I forget this. every. single. time.
+* Is it in the folder you have specified? 
+* Is the name of the file in quotes? It should be. 
+* Have you assigned it to a new variable using the `<-` operator?
+
+### Variable not found
+
+#### R is case-sensitive
 
 R is always case-sensitive, which means that it makes a difference whether an object, a column name or the value of a variable (like Male) is upper-case, lower-case or some proper case. For example:
 
@@ -363,9 +395,10 @@ filter(opioid_calls, narcan = "Yes")
 ## ℹ This usually means that you've used `=` instead of `==`.
 ## ℹ Did you mean `narcan == "Yes"`?
 ```
-Note that R is guessing that you meant "==" instead. It won't always be so kind.
 
-#### The "and then" operator (%>%) {-}
+If you read it carefully, a the end there's hint that  R is guessing that you meant "==" instead. It won't always be so kind.
+
+#### Forgetting  "and then" operator (%>%) {-}
 
 You also get a weird error if you forget to string together commands with  the %>% connector. 
 
@@ -383,19 +416,30 @@ It doesn't make much sense, except it's telling you that it is no longer finding
 
 This is really common and a pain. R thought you had TWO things you wanted to do -- one is just the filter, the other  is an error. The fix is to put the %>% after the filter.
 
+#### Spelling
+
+Everything has to be spelled the way R expects it to be, not the way it should be. If a variable name is misspelled, it has to be misspelled every time you use it until you change the name. 
+
+
+#### Spelling
+
+Just again. Spelling. 
+
+
 #### The dreaded NA {-}
 
 Missing information is recorded in R as `NA`. The problem is, this isn't a value at all -- it will never match anything, will never be bigger or smaller than anything, and will be ignored if you sort on it. We'll come back to this, but just remember that it's a problem.
-
 
 
 ## Sort / filter resources
 
 ### Exercises
 
-You have read "The Serial Killer Detective", from the New Yorker, profiling Hargrove's attempt to get better murder data than the government has available. I have taken the data from that project and converted it into an R data object that includes only murders in the West. 
+In "[The Serial Killer Detector](https://www.newyorker.com/magazine/2017/11/27/the-serial-killer-detector)", Tom  Hargrove spent years creating more complete murder data than the government has available. I have taken the data from that project and converted it into an R data object that includes only murders in the West. The appendix to this book has exercises using that data using skills that were outlined in each chapter. 
 
 ### Tutorials
+
+Most tutorials on this topic go through all of the basic verbs, including some you haven't seen yet (such as group_by, summarise and mutate). They all go together, but we'll be doing them a little at a time. Don't worry if these resources touch on things you don't know yet. 
 
 * "[Teaching R](https://teachingr.com/)" videos. They're a little more detailed than we need, but it's a useful review of most of what we've done. 
 * Andrew Ba Tran's "[Lesson 3: Wrangling data](https://learn.r-journalism.com/en/wrangling/)" from the R for Journalists (learn-r) website. You can watch the videos and take the quizzes without following along on your computer. 

@@ -33,7 +33,7 @@
 <link rel="prev" href="021-r-markdown.html"/>
 <link rel="next" href="030-intro-verbs.html"/>
 <script src="libs/header-attrs-2.7/header-attrs.js"></script>
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<script src="libs/jquery-3.5.1/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -50,19 +50,20 @@
 
 
 
-<script src="libs/htmlwidgets-1.5.2/htmlwidgets.js"></script>
-<script src="libs/plotly-binding-4.9.2.1/plotly.js"></script>
+<script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script>
+<script src="libs/plotly-binding-4.9.3/plotly.js"></script>
 <script src="libs/typedarray-0.1/typedarray.min.js"></script>
-<link href="libs/crosstalk-1.1.0.1/css/crosstalk.css" rel="stylesheet" />
-<script src="libs/crosstalk-1.1.0.1/js/crosstalk.min.js"></script>
-<link href="libs/plotly-htmlwidgets-css-1.52.2/plotly-htmlwidgets.css" rel="stylesheet" />
-<script src="libs/plotly-main-1.52.2/plotly-latest.min.js"></script>
+<link href="libs/crosstalk-1.1.1/css/crosstalk.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.1.1/js/crosstalk.min.js"></script>
+<link href="libs/plotly-htmlwidgets-css-1.57.1/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="libs/plotly-main-1.57.1/plotly-latest.min.js"></script>
 
 
 <style type="text/css">
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
@@ -220,16 +221,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.1" data-path="031-select-filter.html"><a href="031-select-filter.html#key-takeaways-4"><i class="fa fa-check"></i><b>5.1</b> Key takeaways</a></li>
 <li class="chapter" data-level="5.2" data-path="031-select-filter.html"><a href="031-select-filter.html#select---choosing-columns"><i class="fa fa-check"></i><b>5.2</b> Select - choosing columns</a>
 <ul>
-<li class="chapter" data-level="" data-path="031-select-filter.html"><a href="031-select-filter.html#optional-other-ways-to-select"><i class="fa fa-check"></i>Optional: Other ways to select</a></li>
+<li class="chapter" data-level="" data-path="031-select-filter.html"><a href="031-select-filter.html#selecting-with-shortcuts"><i class="fa fa-check"></i>Selecting with shortcuts</a></li>
 </ul></li>
 <li class="chapter" data-level="5.3" data-path="031-select-filter.html"><a href="031-select-filter.html#filter---choosing-rows"><i class="fa fa-check"></i><b>5.3</b> Filter - choosing rows</a>
 <ul>
 <li class="chapter" data-level="5.3.1" data-path="031-select-filter.html"><a href="031-select-filter.html#one-filter"><i class="fa fa-check"></i><b>5.3.1</b> One filter</a></li>
 <li class="chapter" data-level="5.3.2" data-path="031-select-filter.html"><a href="031-select-filter.html#a-compound-filter"><i class="fa fa-check"></i><b>5.3.2</b> A compound filter</a></li>
-<li class="chapter" data-level="5.3.3" data-path="031-select-filter.html"><a href="031-select-filter.html#even-more-compound-filters"><i class="fa fa-check"></i><b>5.3.3</b> Even more compound filters</a></li>
 </ul></li>
 <li class="chapter" data-level="5.4" data-path="031-select-filter.html"><a href="031-select-filter.html#arrange---change-the-order"><i class="fa fa-check"></i><b>5.4</b> Arrange - change the order</a></li>
-<li class="chapter" data-level="5.5" data-path="031-select-filter.html"><a href="031-select-filter.html#traps"><i class="fa fa-check"></i><b>5.5</b> Traps</a></li>
+<li class="chapter" data-level="5.5" data-path="031-select-filter.html"><a href="031-select-filter.html#troubleshooting"><i class="fa fa-check"></i><b>5.5</b> Troubleshooting</a>
+<ul>
+<li class="chapter" data-level="5.5.1" data-path="031-select-filter.html"><a href="031-select-filter.html#variable-not-found"><i class="fa fa-check"></i><b>5.5.1</b> Variable not found</a></li>
+</ul></li>
 <li class="chapter" data-level="5.6" data-path="031-select-filter.html"><a href="031-select-filter.html#sort-filter-resources"><i class="fa fa-check"></i><b>5.6</b> Sort / filter resources</a>
 <ul>
 <li class="chapter" data-level="5.6.1" data-path="031-select-filter.html"><a href="031-select-filter.html#exercises-1"><i class="fa fa-check"></i><b>5.6.1</b> Exercises</a></li>
@@ -488,7 +491,7 @@ read_delimited()</code></pre>
 </table>
 <p>.. and use the “structure” command to see the variable names and types.</p>
 <div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="022-data-frames.html#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(phx_salaries)</span></code></pre></div>
-<pre><code>## tibble [11,956 × 4] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
+<pre><code>## spec_tbl_df [11,956 × 4] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
 ##  $ LAST_NAME  : chr [1:11956] &quot;Aamodt&quot; &quot;Abbitt&quot; &quot;Abbott&quot; &quot;Abdellatif&quot; ...
 ##  $ FIRST_NAME : chr [1:11956] &quot;Gail&quot; &quot;Ryan&quot; &quot;Christie&quot; &quot;Tariq&quot; ...
 ##  $ DESCR      : chr [1:11956] &quot;Police Officer&quot; &quot;Firefighter 56hr&quot; &quot;Forensic Scientist IV&quot; &quot;Environmental Quality Spec&quot; ...
