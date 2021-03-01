@@ -273,7 +273,7 @@ murder_data %>%
 ```
 
 ```
-## `summarise()` regrouping output by 'state_abbr' (override with `.groups` argument)
+## `summarise()` has grouped output by 'state_abbr'. You can override using the `.groups` argument.
 ```
 
 Why is this answer not surprising? (Hint: Clark County, Nevada, has about half the population of Maricopa.) We'll get to ways to normalize this in later chapters.
@@ -296,7 +296,7 @@ murder_data %>%
 ```
 
 ```
-## `summarise()` regrouping output by 'year' (override with `.groups` argument)
+## `summarise()` has grouped output by 'year'. You can override using the `.groups` argument.
 ```
 
 Does this mean that these states have suddenly become more dangerous? What about population growth? 
@@ -343,10 +343,6 @@ murder_data %>%
   arrange ( desc (num_of_cases)) 
 ```
 
-```
-## `summarise()` ungrouping output (override with `.groups` argument)
-```
-
 **Alternative method with `janitor::tabyl`**
 
 
@@ -371,7 +367,7 @@ murder_data %>%
 ```
 
 ```
-## `summarise()` regrouping output by 'relationship_code' (override with `.groups` argument)
+## `summarise()` has grouped output by 'relationship_code'. You can override using the `.groups` argument.
 ```
 
 <div class="kable-table">
@@ -434,6 +430,6 @@ murder_data %>%
 ```
 
 ```
-## `summarise()` regrouping output by 'state_abbr' (override with `.groups` argument)
+## `summarise()` has grouped output by 'state_abbr'. You can override using the `.groups` argument.
 ```
   

@@ -47,10 +47,6 @@ grade6_counts %>%
       )
 ```
 
-```
-## `summarise()` ungrouping output (override with `.groups` argument)
-```
-
 Notice the `na.rm=TRUE` in the sum() function. You should almost always add this to any summary math function, like sum(), median(), mean(), etc. If you don't, a single missing value (`NA`) will result in an answer of `NA`. That's good practice and it makes sense: you should *want* to know if your data has missing or invalid information. But normally you have no choice but to ignore it.
 
 ### Other summary functions
@@ -75,7 +71,7 @@ grade6_counts %>%
 ```
 
 ```
-## `summarise()` regrouping output by 'school_type' (override with `.groups` argument)
+## `summarise()` has grouped output by 'school_type'. You can override using the `.groups` argument.
 ```
 
 <div class="kable-table">
@@ -105,10 +101,6 @@ grade6_counts %>%
   mutate  ( total = sum( schools),
             pct_total = schools/ total * 100 ) %>%
   arrange ( desc (schools))
-```
-
-```
-## `summarise()` ungrouping output (override with `.groups` argument)
 ```
 
 <div class="kable-table">
@@ -148,7 +140,7 @@ grade6_counts %>%
 ```
 
 ```
-## `summarise()` regrouping output by 'school_type' (override with `.groups` argument)
+## `summarise()` has grouped output by 'school_type'. You can override using the `.groups` argument.
 ```
 
 <div class="kable-table">

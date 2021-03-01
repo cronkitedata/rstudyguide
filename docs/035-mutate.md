@@ -97,7 +97,7 @@ immune_pct %>%
 ```
 
 ```
-## `summarise()` regrouping output by 'school_type' (override with `.groups` argument)
+## `summarise()` has grouped output by 'school_type'. You can override using the `.groups` argument.
 ```
 
 
@@ -116,7 +116,7 @@ immune_pct %>%
 ```
 
 ```
-## `summarise()` regrouping output by 'school_type' (override with `.groups` argument)
+## `summarise()` has grouped output by 'school_type'. You can override using the `.groups` argument.
 ```
 
 <div class="kable-table">

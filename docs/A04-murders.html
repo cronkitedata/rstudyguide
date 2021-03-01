@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>C Murder Accountability Project exercises | R Study Guide for Cronkite School of Journalism</title>
   <meta name="description" content="A companion book for the Cronkite School’s data journalism class for graduate students. A work in progress." />
-  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
   <meta property="og:title" content="C Murder Accountability Project exercises | R Study Guide for Cronkite School of Journalism" />
   <meta property="og:type" content="book" />
@@ -32,6 +32,7 @@
   <link rel="shortcut icon" href="favicon.io" type="image/x-icon" />
 <link rel="prev" href="A01-resources.html"/>
 
+<script src="libs/header-attrs-2.7/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -49,7 +50,6 @@
 
 
 
-<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
 <script src="libs/htmlwidgets-1.5.2/htmlwidgets.js"></script>
 <script src="libs/plotly-binding-4.9.2.1/plotly.js"></script>
 <script src="libs/typedarray-0.1/typedarray.min.js"></script>
@@ -60,18 +60,17 @@
 
 
 <style type="text/css">
-code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
-code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
 }
 @media print {
-code.sourceCode { white-space: pre-wrap; }
-code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -91,7 +90,7 @@ pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-le
 div.sourceCode
   {   }
 @media screen {
-code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -140,61 +139,74 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="./">Study Guide for Cronkite Students</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a><ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a>
+<ul>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#using-the-examples-with-packages"><i class="fa fa-check"></i>Using the examples with packages</a></li>
 </ul></li>
 <li class="part"><span><b>I Introduction to R for Journalists</b></span></li>
-<li class="chapter" data-level="1" data-path="011-r-install.html"><a href="011-r-install.html"><i class="fa fa-check"></i><b>1</b> An R and R Studio tour</a><ul>
+<li class="chapter" data-level="1" data-path="011-r-install.html"><a href="011-r-install.html"><i class="fa fa-check"></i><b>1</b> An R and R Studio tour</a>
+<ul>
 <li class="chapter" data-level="1.1" data-path="011-r-install.html"><a href="011-r-install.html#key-takeaways"><i class="fa fa-check"></i><b>1.1</b> Key takeaways</a></li>
 <li class="chapter" data-level="1.2" data-path="011-r-install.html"><a href="011-r-install.html#why-program"><i class="fa fa-check"></i><b>1.2</b> Why program?</a></li>
 <li class="chapter" data-level="1.3" data-path="011-r-install.html"><a href="011-r-install.html#setting-up-r-and-r-studio"><i class="fa fa-check"></i><b>1.3</b> Setting up R and R Studio</a></li>
-<li class="chapter" data-level="1.4" data-path="011-r-install.html"><a href="011-r-install.html#an-r-studio-tour"><i class="fa fa-check"></i><b>1.4</b> An R Studio tour</a><ul>
+<li class="chapter" data-level="1.4" data-path="011-r-install.html"><a href="011-r-install.html#an-r-studio-tour"><i class="fa fa-check"></i><b>1.4</b> An R Studio tour</a>
+<ul>
 <li class="chapter" data-level="1.4.1" data-path="011-r-install.html"><a href="011-r-install.html#the-console"><i class="fa fa-check"></i><b>1.4.1</b> The Console</a></li>
 <li class="chapter" data-level="1.4.2" data-path="011-r-install.html"><a href="011-r-install.html#work-in-projects"><i class="fa fa-check"></i><b>1.4.2</b> Work in projects</a></li>
 </ul></li>
 <li class="chapter" data-level="1.5" data-path="011-r-install.html"><a href="011-r-install.html#unlocking-packages"><i class="fa fa-check"></i><b>1.5</b> Unlocking packages</a></li>
 <li class="chapter" data-level="1.6" data-path="011-r-install.html"><a href="011-r-install.html#variables"><i class="fa fa-check"></i><b>1.6</b> Variables</a></li>
-<li class="chapter" data-level="1.7" data-path="011-r-install.html"><a href="011-r-install.html#resources-and-exercises"><i class="fa fa-check"></i><b>1.7</b> Resources and exercises</a><ul>
+<li class="chapter" data-level="1.7" data-path="011-r-install.html"><a href="011-r-install.html#resources-and-exercises"><i class="fa fa-check"></i><b>1.7</b> Resources and exercises</a>
+<ul>
 <li class="chapter" data-level="1.7.1" data-path="011-r-install.html"><a href="011-r-install.html#googling-for-help"><i class="fa fa-check"></i><b>1.7.1</b> Googling for help</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="021-r-markdown.html"><a href="021-r-markdown.html"><i class="fa fa-check"></i><b>2</b> R Markdown</a><ul>
-<li class="chapter" data-level="2.1" data-path="011-r-install.html"><a href="011-r-install.html#key-takeaways"><i class="fa fa-check"></i><b>2.1</b> Key takeaways</a></li>
+<li class="chapter" data-level="2" data-path="021-r-markdown.html"><a href="021-r-markdown.html"><i class="fa fa-check"></i><b>2</b> R Markdown</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="021-r-markdown.html"><a href="021-r-markdown.html#key-takeaways-1"><i class="fa fa-check"></i><b>2.1</b> Key takeaways</a></li>
 <li class="chapter" data-level="2.2" data-path="021-r-markdown.html"><a href="021-r-markdown.html#getting-started-with-r-markdown"><i class="fa fa-check"></i><b>2.2</b> Getting started with R Markdown</a></li>
-<li class="chapter" data-level="2.3" data-path="021-r-markdown.html"><a href="021-r-markdown.html#the-anatomy-of-a-document"><i class="fa fa-check"></i><b>2.3</b> The anatomy of a document</a><ul>
+<li class="chapter" data-level="2.3" data-path="021-r-markdown.html"><a href="021-r-markdown.html#the-anatomy-of-a-document"><i class="fa fa-check"></i><b>2.3</b> The anatomy of a document</a>
+<ul>
 <li class="chapter" data-level="2.3.1" data-path="021-r-markdown.html"><a href="021-r-markdown.html#writing-in-markdown"><i class="fa fa-check"></i><b>2.3.1</b> Writing in markdown</a></li>
 <li class="chapter" data-level="" data-path="021-r-markdown.html"><a href="021-r-markdown.html#front-matter-yaml-at-the-top"><i class="fa fa-check"></i>Front matter / YAML at the top</a></li>
 </ul></li>
 <li class="chapter" data-level="2.4" data-path="021-r-markdown.html"><a href="021-r-markdown.html#knitting-your-document"><i class="fa fa-check"></i><b>2.4</b> Knitting your document</a></li>
 <li class="chapter" data-level="2.5" data-path="021-r-markdown.html"><a href="021-r-markdown.html#including-r-code-and-its-results"><i class="fa fa-check"></i><b>2.5</b> Including R code and its results</a></li>
 <li class="chapter" data-level="2.6" data-path="021-r-markdown.html"><a href="021-r-markdown.html#r-markdown-starts-from-scratch"><i class="fa fa-check"></i><b>2.6</b> R Markdown starts from scratch</a></li>
-<li class="chapter" data-level="2.7" data-path="021-r-markdown.html"><a href="021-r-markdown.html#rmarkdown-resources-and-exercises"><i class="fa fa-check"></i><b>2.7</b> RMarkdown resources and exercises</a><ul>
+<li class="chapter" data-level="2.7" data-path="021-r-markdown.html"><a href="021-r-markdown.html#rmarkdown-resources-and-exercises"><i class="fa fa-check"></i><b>2.7</b> RMarkdown resources and exercises</a>
+<ul>
 <li class="chapter" data-level="" data-path="021-r-markdown.html"><a href="021-r-markdown.html#resources"><i class="fa fa-check"></i>Resources</a></li>
 <li class="chapter" data-level="" data-path="021-r-markdown.html"><a href="021-r-markdown.html#exercises"><i class="fa fa-check"></i>Exercises</a></li>
 </ul></li>
 <li class="chapter" data-level="2.8" data-path="021-r-markdown.html"><a href="021-r-markdown.html#bonus-styling-your-r-markdown-documents"><i class="fa fa-check"></i><b>2.8</b> Bonus: Styling your R Markdown documents</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="022-data-frames.html"><a href="022-data-frames.html"><i class="fa fa-check"></i><b>3</b> Data frames and the tidyverse</a><ul>
-<li class="chapter" data-level="3.1" data-path="011-r-install.html"><a href="011-r-install.html#key-takeaways"><i class="fa fa-check"></i><b>3.1</b> Key takeaways</a></li>
+<li class="chapter" data-level="3" data-path="022-data-frames.html"><a href="022-data-frames.html"><i class="fa fa-check"></i><b>3</b> Data frames and the tidyverse</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="022-data-frames.html"><a href="022-data-frames.html#key-takeaways-2"><i class="fa fa-check"></i><b>3.1</b> Key takeaways</a></li>
 <li class="chapter" data-level="3.2" data-path="022-data-frames.html"><a href="022-data-frames.html#getting-started"><i class="fa fa-check"></i><b>3.2</b> Getting started</a></li>
-<li class="chapter" data-level="3.3" data-path="022-data-frames.html"><a href="022-data-frames.html#the-data-frame"><i class="fa fa-check"></i><b>3.3</b> The data frame</a><ul>
+<li class="chapter" data-level="3.3" data-path="022-data-frames.html"><a href="022-data-frames.html#the-data-frame"><i class="fa fa-check"></i><b>3.3</b> The data frame</a>
+<ul>
 <li class="chapter" data-level="3.3.1" data-path="022-data-frames.html"><a href="022-data-frames.html#loading-and-looking-at-data"><i class="fa fa-check"></i><b>3.3.1</b> Loading and looking at data</a></li>
 <li class="chapter" data-level="3.3.2" data-path="022-data-frames.html"><a href="022-data-frames.html#examine-your-data"><i class="fa fa-check"></i><b>3.3.2</b> Examine your data</a></li>
 </ul></li>
 <li class="chapter" data-level="3.4" data-path="022-data-frames.html"><a href="022-data-frames.html#introducing-the-pipe"><i class="fa fa-check"></i><b>3.4</b> Introducing the pipe</a></li>
 <li class="chapter" data-level="3.5" data-path="022-data-frames.html"><a href="022-data-frames.html#take-a-break"><i class="fa fa-check"></i><b>3.5</b> Take a break</a></li>
-<li class="chapter" data-level="3.6" data-path="022-data-frames.html"><a href="022-data-frames.html#data-frames-resources"><i class="fa fa-check"></i><b>3.6</b> Data frames resources</a><ul>
+<li class="chapter" data-level="3.6" data-path="022-data-frames.html"><a href="022-data-frames.html#data-frames-resources"><i class="fa fa-check"></i><b>3.6</b> Data frames resources</a>
+<ul>
 <li class="chapter" data-level="3.6.1" data-path="022-data-frames.html"><a href="022-data-frames.html#on-your-own"><i class="fa fa-check"></i><b>3.6.1</b> On your own</a></li>
 </ul></li>
 </ul></li>
 <li class="part"><span><b>II The Verbs of the Tidyverse</b></span></li>
-<li class="chapter" data-level="4" data-path="030-intro-verbs.html"><a href="030-intro-verbs.html"><i class="fa fa-check"></i><b>4</b> A quick tour of verbs</a><ul>
-<li class="chapter" data-level="4.1" data-path="011-r-install.html"><a href="011-r-install.html#key-takeaways"><i class="fa fa-check"></i><b>4.1</b> Key takeaways</a><ul>
+<li class="chapter" data-level="4" data-path="030-intro-verbs.html"><a href="030-intro-verbs.html"><i class="fa fa-check"></i><b>4</b> A quick tour of verbs</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="030-intro-verbs.html"><a href="030-intro-verbs.html#key-takeaways-3"><i class="fa fa-check"></i><b>4.1</b> Key takeaways</a>
+<ul>
 <li class="chapter" data-level="" data-path="030-intro-verbs.html"><a href="030-intro-verbs.html#data-for-this-walkthrough"><i class="fa fa-check"></i>Data for this walkthrough</a></li>
 <li class="chapter" data-level="4.1.1" data-path="030-intro-verbs.html"><a href="030-intro-verbs.html#follow-along"><i class="fa fa-check"></i><b>4.1.1</b> Follow along</a></li>
 <li><a href="030-intro-verbs.html#the-operator-and-then">The <code>%&gt;%</code> operator: … and then…</a></li>
 </ul></li>
-<li class="chapter" data-level="4.2" data-path="030-intro-verbs.html"><a href="030-intro-verbs.html#looking-at-your-data-in-pieces-and-in-order"><i class="fa fa-check"></i><b>4.2</b> Looking at your data in pieces and in order</a><ul>
+<li class="chapter" data-level="4.2" data-path="030-intro-verbs.html"><a href="030-intro-verbs.html#looking-at-your-data-in-pieces-and-in-order"><i class="fa fa-check"></i><b>4.2</b> Looking at your data in pieces and in order</a>
+<ul>
 <li class="chapter" data-level="4.2.1" data-path="030-intro-verbs.html"><a href="030-intro-verbs.html#select-to-pick-out-columns"><i class="fa fa-check"></i><b>4.2.1</b> <code>select</code> to pick out columns</a></li>
 <li class="chapter" data-level="4.2.2" data-path="030-intro-verbs.html"><a href="030-intro-verbs.html#arrange-to-sort"><i class="fa fa-check"></i><b>4.2.2</b> <code>arrange</code> to sort</a></li>
 <li class="chapter" data-level="4.2.3" data-path="030-intro-verbs.html"><a href="030-intro-verbs.html#filter-to-pick-out-rows"><i class="fa fa-check"></i><b>4.2.3</b> <code>filter</code> to pick out rows</a></li>
@@ -203,68 +215,86 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.4" data-path="030-intro-verbs.html"><a href="030-intro-verbs.html#mutate-to-calculate-something-new"><i class="fa fa-check"></i><b>4.4</b> <code>mutate</code> to calculate something new</a></li>
 <li class="chapter" data-level="4.5" data-path="030-intro-verbs.html"><a href="030-intro-verbs.html#join-to-merge-tables-together-by-column-union-to-add-rows"><i class="fa fa-check"></i><b>4.5</b> <code>join</code> to merge tables together by column; <code>union</code> to add rows</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="031-select-filter.html"><a href="031-select-filter.html"><i class="fa fa-check"></i><b>5</b> Verbs Part 1: Picking and choosing</a><ul>
-<li class="chapter" data-level="5.1" data-path="011-r-install.html"><a href="011-r-install.html#key-takeaways"><i class="fa fa-check"></i><b>5.1</b> Key takeaways</a></li>
-<li class="chapter" data-level="5.2" data-path="031-select-filter.html"><a href="031-select-filter.html#select---choosing-columns"><i class="fa fa-check"></i><b>5.2</b> Select - choosing columns</a><ul>
+<li class="chapter" data-level="5" data-path="031-select-filter.html"><a href="031-select-filter.html"><i class="fa fa-check"></i><b>5</b> Verbs Part 1: Picking and choosing</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="031-select-filter.html"><a href="031-select-filter.html#key-takeaways-4"><i class="fa fa-check"></i><b>5.1</b> Key takeaways</a></li>
+<li class="chapter" data-level="5.2" data-path="031-select-filter.html"><a href="031-select-filter.html#select---choosing-columns"><i class="fa fa-check"></i><b>5.2</b> Select - choosing columns</a>
+<ul>
 <li class="chapter" data-level="" data-path="031-select-filter.html"><a href="031-select-filter.html#optional-other-ways-to-select"><i class="fa fa-check"></i>Optional: Other ways to select</a></li>
 </ul></li>
-<li class="chapter" data-level="5.3" data-path="031-select-filter.html"><a href="031-select-filter.html#filter---choosing-rows"><i class="fa fa-check"></i><b>5.3</b> Filter - choosing rows</a><ul>
+<li class="chapter" data-level="5.3" data-path="031-select-filter.html"><a href="031-select-filter.html#filter---choosing-rows"><i class="fa fa-check"></i><b>5.3</b> Filter - choosing rows</a>
+<ul>
 <li class="chapter" data-level="5.3.1" data-path="031-select-filter.html"><a href="031-select-filter.html#one-filter"><i class="fa fa-check"></i><b>5.3.1</b> One filter</a></li>
 <li class="chapter" data-level="5.3.2" data-path="031-select-filter.html"><a href="031-select-filter.html#a-compound-filter"><i class="fa fa-check"></i><b>5.3.2</b> A compound filter</a></li>
 <li class="chapter" data-level="5.3.3" data-path="031-select-filter.html"><a href="031-select-filter.html#even-more-compound-filters"><i class="fa fa-check"></i><b>5.3.3</b> Even more compound filters</a></li>
 </ul></li>
 <li class="chapter" data-level="5.4" data-path="031-select-filter.html"><a href="031-select-filter.html#arrange---change-the-order"><i class="fa fa-check"></i><b>5.4</b> Arrange - change the order</a></li>
 <li class="chapter" data-level="5.5" data-path="031-select-filter.html"><a href="031-select-filter.html#traps"><i class="fa fa-check"></i><b>5.5</b> Traps</a></li>
-<li class="chapter" data-level="5.6" data-path="031-select-filter.html"><a href="031-select-filter.html#sort-filter-resources"><i class="fa fa-check"></i><b>5.6</b> Sort / filter resources</a><ul>
-<li class="chapter" data-level="5.6.1" data-path="021-r-markdown.html"><a href="021-r-markdown.html#exercises"><i class="fa fa-check"></i><b>5.6.1</b> Exercises</a></li>
+<li class="chapter" data-level="5.6" data-path="031-select-filter.html"><a href="031-select-filter.html#sort-filter-resources"><i class="fa fa-check"></i><b>5.6</b> Sort / filter resources</a>
+<ul>
+<li class="chapter" data-level="5.6.1" data-path="031-select-filter.html"><a href="031-select-filter.html#exercises-1"><i class="fa fa-check"></i><b>5.6.1</b> Exercises</a></li>
 <li class="chapter" data-level="5.6.2" data-path="031-select-filter.html"><a href="031-select-filter.html#tutorials"><i class="fa fa-check"></i><b>5.6.2</b> Tutorials</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="033-groupby.html"><a href="033-groupby.html"><i class="fa fa-check"></i><b>6</b> Verbs Part 2: group_by and summarise</a><ul>
-<li class="chapter" data-level="6.1" data-path="011-r-install.html"><a href="011-r-install.html#key-takeaways"><i class="fa fa-check"></i><b>6.1</b> Key takeaways</a></li>
-<li class="chapter" data-level="6.2" data-path="033-groupby.html"><a href="033-groupby.html#group_by-summarise-basics"><i class="fa fa-check"></i><b>6.2</b> group_by / summarise basics</a><ul>
+<li class="chapter" data-level="6" data-path="033-groupby.html"><a href="033-groupby.html"><i class="fa fa-check"></i><b>6</b> Verbs Part 2: group_by and summarise</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="033-groupby.html"><a href="033-groupby.html#key-takeaways-5"><i class="fa fa-check"></i><b>6.1</b> Key takeaways</a></li>
+<li class="chapter" data-level="6.2" data-path="033-groupby.html"><a href="033-groupby.html#group_by-summarise-basics"><i class="fa fa-check"></i><b>6.2</b> group_by / summarise basics</a>
+<ul>
 <li class="chapter" data-level="6.2.1" data-path="033-groupby.html"><a href="033-groupby.html#other-summary-functions"><i class="fa fa-check"></i><b>6.2.1</b> Other summary functions</a></li>
 <li class="chapter" data-level="6.2.2" data-path="033-groupby.html"><a href="033-groupby.html#grouping-by-more-than-one-variable"><i class="fa fa-check"></i><b>6.2.2</b> Grouping by more than one variable</a></li>
 <li class="chapter" data-level="6.2.3" data-path="033-groupby.html"><a href="033-groupby.html#rolling-up-to-the-next-level"><i class="fa fa-check"></i><b>6.2.3</b> Rolling up to the next level</a></li>
 </ul></li>
-<li class="chapter" data-level="6.3" data-path="033-groupby.html"><a href="033-groupby.html#restructuring-for-a-report-with-pivot_wider"><i class="fa fa-check"></i><b>6.3</b> Restructuring for a report with <code>pivot_wider()</code></a><ul>
+<li class="chapter" data-level="6.3" data-path="033-groupby.html"><a href="033-groupby.html#restructuring-for-a-report-with-pivot_wider"><i class="fa fa-check"></i><b>6.3</b> Restructuring for a report with <code>pivot_wider()</code></a>
+<ul>
 <li class="chapter" data-level="6.3.1" data-path="033-groupby.html"><a href="033-groupby.html#a-note-on-restructuring-your-data-frames"><i class="fa fa-check"></i><b>6.3.1</b> A note on restructuring your data frames</a></li>
 </ul></li>
-<li class="chapter" data-level="6.4" data-path="033-groupby.html"><a href="033-groupby.html#resources-exercises"><i class="fa fa-check"></i><b>6.4</b> Resources &amp; exercises</a><ul>
-<li class="chapter" data-level="6.4.1" data-path="021-r-markdown.html"><a href="021-r-markdown.html#exercises"><i class="fa fa-check"></i><b>6.4.1</b> Exercises</a></li>
+<li class="chapter" data-level="6.4" data-path="033-groupby.html"><a href="033-groupby.html#resources-exercises"><i class="fa fa-check"></i><b>6.4</b> Resources &amp; exercises</a>
+<ul>
+<li class="chapter" data-level="6.4.1" data-path="033-groupby.html"><a href="033-groupby.html#exercises-2"><i class="fa fa-check"></i><b>6.4.1</b> Exercises</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="035-mutate.html"><a href="035-mutate.html"><i class="fa fa-check"></i><b>7</b> Verbs Part 3: mutate</a><ul>
-<li class="chapter" data-level="7.1" data-path="011-r-install.html"><a href="011-r-install.html#key-takeaways"><i class="fa fa-check"></i><b>7.1</b> Key takeaways</a><ul>
+<li class="chapter" data-level="7" data-path="035-mutate.html"><a href="035-mutate.html"><i class="fa fa-check"></i><b>7</b> Verbs Part 3: mutate</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="035-mutate.html"><a href="035-mutate.html#key-takeaways-6"><i class="fa fa-check"></i><b>7.1</b> Key takeaways</a>
+<ul>
 <li class="chapter" data-level="7.1.1" data-path="035-mutate.html"><a href="035-mutate.html#read-in-some-data"><i class="fa fa-check"></i><b>7.1.1</b> Read in some data</a></li>
 </ul></li>
 <li class="chapter" data-level="7.2" data-path="035-mutate.html"><a href="035-mutate.html#simple-arithmetic"><i class="fa fa-check"></i><b>7.2</b> Simple arithmetic</a></li>
 <li class="chapter" data-level="7.3" data-path="035-mutate.html"><a href="035-mutate.html#creating-categories-with-if_else"><i class="fa fa-check"></i><b>7.3</b> Creating categories with <code>if_else()</code></a></li>
 <li class="chapter" data-level="7.4" data-path="035-mutate.html"><a href="035-mutate.html#useful-functions"><i class="fa fa-check"></i><b>7.4</b> Useful functions</a></li>
 <li class="chapter" data-level="7.5" data-path="035-mutate.html"><a href="035-mutate.html#bonus-fun-with-date-and-time"><i class="fa fa-check"></i><b>7.5</b> Bonus: Fun with date and time</a></li>
-<li class="chapter" data-level="7.6" data-path="035-mutate.html"><a href="035-mutate.html#more-resources"><i class="fa fa-check"></i><b>7.6</b> More resources</a><ul>
+<li class="chapter" data-level="7.6" data-path="035-mutate.html"><a href="035-mutate.html#more-resources"><i class="fa fa-check"></i><b>7.6</b> More resources</a>
+<ul>
 <li class="chapter" data-level="" data-path="035-mutate.html"><a href="035-mutate.html#tk-exercises"><i class="fa fa-check"></i>TK: Exercises</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="036-joins.html"><a href="036-joins.html"><i class="fa fa-check"></i><b>8</b> Verbs Part 4: Combining data</a><ul>
-<li class="chapter" data-level="8.1" data-path="011-r-install.html"><a href="011-r-install.html#key-takeaways"><i class="fa fa-check"></i><b>8.1</b> Key takeaways</a><ul>
+<li class="chapter" data-level="8" data-path="036-joins.html"><a href="036-joins.html"><i class="fa fa-check"></i><b>8</b> Verbs Part 4: Combining data</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="036-joins.html"><a href="036-joins.html#key-takeaways-7"><i class="fa fa-check"></i><b>8.1</b> Key takeaways</a>
+<ul>
 <li class="chapter" data-level="8.1.1" data-path="036-joins.html"><a href="036-joins.html#adding-rows-instead-of-columns"><i class="fa fa-check"></i><b>8.1.1</b> Adding rows instead of columns</a></li>
 </ul></li>
 <li class="chapter" data-level="8.2" data-path="036-joins.html"><a href="036-joins.html#concepts-of-joining"><i class="fa fa-check"></i><b>8.2</b> Concepts of joining</a></li>
-<li class="chapter" data-level="8.3" data-path="036-joins.html"><a href="036-joins.html#arizona-immunization-data"><i class="fa fa-check"></i><b>8.3</b> Arizona immunization data</a><ul>
+<li class="chapter" data-level="8.3" data-path="036-joins.html"><a href="036-joins.html#arizona-immunization-data"><i class="fa fa-check"></i><b>8.3</b> Arizona immunization data</a>
+<ul>
 <li class="chapter" data-level="" data-path="036-joins.html"><a href="036-joins.html#setting-up-the-data"><i class="fa fa-check"></i>Setting up the data</a></li>
 <li class="chapter" data-level="" data-path="036-joins.html"><a href="036-joins.html#apply-the-join"><i class="fa fa-check"></i>Apply the join</a></li>
 </ul></li>
-<li class="chapter" data-level="8.4" data-path="021-r-markdown.html"><a href="021-r-markdown.html#resources"><i class="fa fa-check"></i><b>8.4</b> Resources</a><ul>
+<li class="chapter" data-level="8.4" data-path="036-joins.html"><a href="036-joins.html#resources-1"><i class="fa fa-check"></i><b>8.4</b> Resources</a>
+<ul>
 <li class="chapter" data-level="8.4.1" data-path="036-joins.html"><a href="036-joins.html#practice"><i class="fa fa-check"></i><b>8.4.1</b> Practice</a></li>
 </ul></li>
 </ul></li>
 <li class="part"><span><b>III Graphics, data cleaning, scraping and more</b></span></li>
-<li class="chapter" data-level="9" data-path="041-plotly.html"><a href="041-plotly.html"><i class="fa fa-check"></i><b>9</b> Intro to visualization in R</a><ul>
-<li class="chapter" data-level="9.1" data-path="041-plotly.html"><a href="041-plotly.html#the-grammar-of-graphics"><i class="fa fa-check"></i><b>9.1</b> The Grammar of Graphics</a><ul>
+<li class="chapter" data-level="9" data-path="041-plotly.html"><a href="041-plotly.html"><i class="fa fa-check"></i><b>9</b> Intro to visualization in R</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="041-plotly.html"><a href="041-plotly.html#the-grammar-of-graphics"><i class="fa fa-check"></i><b>9.1</b> The Grammar of Graphics</a>
+<ul>
 <li class="chapter" data-level="9.1.1" data-path="041-plotly.html"><a href="041-plotly.html#good-resources"><i class="fa fa-check"></i><b>9.1.1</b> Good resources</a></li>
 </ul></li>
-<li class="chapter" data-level="9.2" data-path="041-plotly.html"><a href="041-plotly.html#building-you-graph-in-pieces-using-gapminder"><i class="fa fa-check"></i><b>9.2</b> Building you graph in pieces using gapminder</a><ul>
+<li class="chapter" data-level="9.2" data-path="041-plotly.html"><a href="041-plotly.html#building-you-graph-in-pieces-using-gapminder"><i class="fa fa-check"></i><b>9.2</b> Building you graph in pieces using gapminder</a>
+<ul>
 <li class="chapter" data-level="9.2.1" data-path="041-plotly.html"><a href="041-plotly.html#subset-to-just-the-latest-years"><i class="fa fa-check"></i><b>9.2.1</b> Subset to just the latest years</a></li>
 <li class="chapter" data-level="9.2.2" data-path="041-plotly.html"><a href="041-plotly.html#the-histogram"><i class="fa fa-check"></i><b>9.2.2</b> The histogram</a></li>
 <li class="chapter" data-level="9.2.3" data-path="041-plotly.html"><a href="041-plotly.html#try-a-scatter-or-dot-plot"><i class="fa fa-check"></i><b>9.2.3</b> Try a scatter, or dot plot</a></li>
@@ -273,35 +303,42 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="9.3" data-path="041-plotly.html"><a href="041-plotly.html#adding-animation"><i class="fa fa-check"></i><b>9.3</b> Adding animation</a></li>
 </ul></li>
 <li class="appendix"><span><b>Appendix</b></span></li>
-<li class="chapter" data-level="A" data-path="A02-programming.html"><a href="A02-programming.html"><i class="fa fa-check"></i><b>A</b> A gentle intro to programming</a><ul>
-<li class="chapter" data-level="A.1" data-path="011-r-install.html"><a href="011-r-install.html#key-takeaways"><i class="fa fa-check"></i><b>A.1</b> Key takeaways</a></li>
-<li class="chapter" data-level="A.2" data-path="A02-programming.html"><a href="A02-programming.html#building-blocks"><i class="fa fa-check"></i><b>A.2</b> Building blocks</a><ul>
+<li class="chapter" data-level="A" data-path="A02-programming.html"><a href="A02-programming.html"><i class="fa fa-check"></i><b>A</b> A gentle intro to programming</a>
+<ul>
+<li class="chapter" data-level="A.1" data-path="A02-programming.html"><a href="A02-programming.html#key-takeaways-8"><i class="fa fa-check"></i><b>A.1</b> Key takeaways</a></li>
+<li class="chapter" data-level="A.2" data-path="A02-programming.html"><a href="A02-programming.html#building-blocks"><i class="fa fa-check"></i><b>A.2</b> Building blocks</a>
+<ul>
 <li class="chapter" data-level="" data-path="A02-programming.html"><a href="A02-programming.html#variables-and-objects"><i class="fa fa-check"></i>Variables and objects</a></li>
 <li class="chapter" data-level="" data-path="A02-programming.html"><a href="A02-programming.html#operators-assignment"><i class="fa fa-check"></i>Operators &amp; assignment</a></li>
 <li class="chapter" data-level="" data-path="A02-programming.html"><a href="A02-programming.html#functions"><i class="fa fa-check"></i>Functions</a></li>
 <li class="chapter" data-level="" data-path="A02-programming.html"><a href="A02-programming.html#loops"><i class="fa fa-check"></i>Loops</a></li>
 </ul></li>
-<li class="chapter" data-level="A.3" data-path="A02-programming.html"><a href="A02-programming.html#make-an-omelet-with-a-function"><i class="fa fa-check"></i><b>A.3</b> Make an omelet with a function</a><ul>
+<li class="chapter" data-level="A.3" data-path="A02-programming.html"><a href="A02-programming.html#make-an-omelet-with-a-function"><i class="fa fa-check"></i><b>A.3</b> Make an omelet with a function</a>
+<ul>
 <li class="chapter" data-level="" data-path="A02-programming.html"><a href="A02-programming.html#open-a-restaurant-with-loops"><i class="fa fa-check"></i>Open a restaurant with loops</a></li>
 </ul></li>
 <li class="chapter" data-level="A.4" data-path="A02-programming.html"><a href="A02-programming.html#applications"><i class="fa fa-check"></i><b>A.4</b> Applications</a></li>
-<li class="chapter" data-level="A.5" data-path="035-mutate.html"><a href="035-mutate.html#more-resources"><i class="fa fa-check"></i><b>A.5</b> More resources</a></li>
+<li class="chapter" data-level="A.5" data-path="A02-programming.html"><a href="A02-programming.html#more-resources-1"><i class="fa fa-check"></i><b>A.5</b> More resources</a></li>
 </ul></li>
-<li class="chapter" data-level="B" data-path="A01-resources.html"><a href="A01-resources.html"><i class="fa fa-check"></i><b>B</b> Great R Resources</a><ul>
-<li class="chapter" data-level="B.1" data-path="011-r-install.html"><a href="011-r-install.html#key-takeaways"><i class="fa fa-check"></i><b>B.1</b> Key takeaways</a></li>
+<li class="chapter" data-level="B" data-path="A01-resources.html"><a href="A01-resources.html"><i class="fa fa-check"></i><b>B</b> Great R Resources</a>
+<ul>
+<li class="chapter" data-level="B.1" data-path="A01-resources.html"><a href="A01-resources.html#key-takeaways-9"><i class="fa fa-check"></i><b>B.1</b> Key takeaways</a></li>
 <li class="chapter" data-level="B.2" data-path="A01-resources.html"><a href="A01-resources.html#coursework-in-r"><i class="fa fa-check"></i><b>B.2</b> Coursework in R</a></li>
 <li class="chapter" data-level="B.3" data-path="A01-resources.html"><a href="A01-resources.html#instructional-screencasts-and-videos"><i class="fa fa-check"></i><b>B.3</b> Instructional screencasts and videos</a></li>
 </ul></li>
-<li class="chapter" data-level="C" data-path="A04-murders.html"><a href="A04-murders.html"><i class="fa fa-check"></i><b>C</b> Murder Accountability Project exercises</a><ul>
+<li class="chapter" data-level="C" data-path="A04-murders.html"><a href="A04-murders.html"><i class="fa fa-check"></i><b>C</b> Murder Accountability Project exercises</a>
+<ul>
 <li class="chapter" data-level="C.1" data-path="A04-murders.html"><a href="A04-murders.html#the-data"><i class="fa fa-check"></i><b>C.1</b> The data</a></li>
-<li class="chapter" data-level="C.2" data-path="A04-murders.html"><a href="A04-murders.html#exercises-by-chapter"><i class="fa fa-check"></i><b>C.2</b> Exercises by chapter</a><ul>
+<li class="chapter" data-level="C.2" data-path="A04-murders.html"><a href="A04-murders.html#exercises-by-chapter"><i class="fa fa-check"></i><b>C.2</b> Exercises by chapter</a>
+<ul>
 <li class="chapter" data-level="C.2.1" data-path="A04-murders.html"><a href="A04-murders.html#select-and-filter-exercises"><i class="fa fa-check"></i><b>C.2.1</b> Select and filter exercises</a></li>
 <li class="chapter" data-level="C.2.2" data-path="A04-murders.html"><a href="A04-murders.html#group-by-and-summarise"><i class="fa fa-check"></i><b>C.2.2</b> Group by and summarise</a></li>
 <li class="chapter" data-level="C.2.3" data-path="A04-murders.html"><a href="A04-murders.html#mutate"><i class="fa fa-check"></i><b>C.2.3</b> Mutate</a></li>
 <li class="chapter" data-level="C.2.4" data-path="A04-murders.html"><a href="A04-murders.html#join"><i class="fa fa-check"></i><b>C.2.4</b> Join</a></li>
 </ul></li>
 <li class="chapter" data-level="C.3" data-path="A04-murders.html"><a href="A04-murders.html#wrap-up-exercise"><i class="fa fa-check"></i><b>C.3</b> Wrap-up exercise</a></li>
-<li class="chapter" data-level="C.4" data-path="A04-murders.html"><a href="A04-murders.html#answers-to-exercises"><i class="fa fa-check"></i><b>C.4</b> Answers to exercises</a><ul>
+<li class="chapter" data-level="C.4" data-path="A04-murders.html"><a href="A04-murders.html#answers-to-exercises"><i class="fa fa-check"></i><b>C.4</b> Answers to exercises</a>
+<ul>
 <li class="chapter" data-level="C.4.1" data-path="A04-murders.html"><a href="A04-murders.html#select-and-filter"><i class="fa fa-check"></i><b>C.4.1</b> Select and filter</a></li>
 <li class="chapter" data-level="C.4.2" data-path="A04-murders.html"><a href="A04-murders.html#group-by"><i class="fa fa-check"></i><b>C.4.2</b> Group by</a></li>
 </ul></li>
@@ -323,7 +360,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="murder-accountability-project-exercises" class="section level1">
+<div id="murder-accountability-project-exercises" class="section level1" number="12">
 <h1><span class="header-section-number">C</span> Murder Accountability Project exercises</h1>
 <style>
    table {
@@ -332,7 +369,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </style>
 <p>The Murder Accountability Project was profiled in the <a href="https://www.newyorker.com/magazine/2017/11/27/the-serial-killer-detector">New Yorker in November, 2017</a>. Andrew B Tran brilliantly decided to use its data as a vehicle for learning R in his <a href="https://learn.r-journalism.com/en/">R for Journalists’ online class</a>. This set of tutorials adapts his exercises for people using this textbook. You should consider taking his entire free full course if you want to get more detail.</p>
 <p><a href="https://github.com/cronkitedata/rstudyguide/blob/master/data/murder_data.Rda">Download the data</a> into a new or existing R project, then load it using the <code>load(file="murder_data.Rda")</code> command in a code chunk.</p>
-<div id="the-data" class="section level2">
+<div id="the-data" class="section level2" number="12.1">
 <h2><span class="header-section-number">C.1</span> The data</h2>
 <p>This R dataset was created by subsetting only mountain states and Oregon and Washington from the national dataset, and converting the codes used in the original SPSS data into codes and their labels in separate variables. The data runs from 1976 through 2018. Here are the fields included:</p>
 <pre><code>## Rows: 56,075
@@ -383,9 +420,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 <p>More details are available in <a href="https://www.dropbox.com/s/lo6tgo8nnbpqeru/MAPdefinitionsSHR.pdf?dl=1">this detailed record layout and data dictionary</a>.</p>
 </div>
-<div id="exercises-by-chapter" class="section level2">
+<div id="exercises-by-chapter" class="section level2" number="12.2">
 <h2><span class="header-section-number">C.2</span> Exercises by chapter</h2>
-<div id="select-and-filter-exercises" class="section level3">
+<div id="select-and-filter-exercises" class="section level3" number="12.2.1">
 <h3><span class="header-section-number">C.2.1</span> Select and filter exercises</h3>
 <p>Here are some suggested exercises to practice what you learned in Chapter 5, Select and Filter:</p>
 <div id="older-wives-as-victims-in-arizona" class="section level4 unnumbered">
@@ -430,7 +467,7 @@ You can define “young” however you want, but in my example I’ll use victim
 <p>(For more details on regular expressions, try the <a href="https://cronkitedata.github.io/cronkite-docs/special/regex-beginning.html">Regex101 tutorial</a> on our class website. Using regular expressions is often a way to make queries shorter and less fussy, but they are not as clear to a reader – they often take some puzzling through.)</p>
 </div>
 </div>
-<div id="group-by-and-summarise" class="section level3">
+<div id="group-by-and-summarise" class="section level3" number="12.2.2">
 <h3><span class="header-section-number">C.2.2</span> Group by and summarise</h3>
 <p>The group by exercises are just like a pivot table. In fact, to turn it on its head, you use the command “pivot_wider”</p>
 <div id="the-most" class="section level4 unnumbered">
@@ -446,7 +483,7 @@ You can define “young” however you want, but in my example I’ll use victim
 <p>What percent of each state’s domestic violence victims are of Hispanic origin?</p>
 </div>
 </div>
-<div id="mutate" class="section level3">
+<div id="mutate" class="section level3" number="12.2.3">
 <h3><span class="header-section-number">C.2.3</span> Mutate</h3>
 <p>In this case, there aren’t very many numbers for us to work with, but there are still things to be done to make more meaningful groupings. These are usually done using an <code>if_else</code> statement or something like it.</p>
 <ol style="list-style-type: decimal">
@@ -455,12 +492,12 @@ You can define “young” however you want, but in my example I’ll use victim
 <li>Are gun murders more likely to be solved than others?</li>
 </ol>
 </div>
-<div id="join" class="section level3">
+<div id="join" class="section level3" number="12.2.4">
 <h3><span class="header-section-number">C.2.4</span> Join</h3>
 <p>This gives you an opportunity to see how to add data to a table from the Web. This <a href="https://github.com/cronkitedata/cronkite-docs/blob/master/docs/assets/data/xlexamples/countypops_withinfo.xlsx?raw=true">Excel file</a> includes lots of information from the Census as of 2017, which you can link to summary data from the murder data using the county fips codes.</p>
 </div>
 </div>
-<div id="wrap-up-exercise" class="section level2">
+<div id="wrap-up-exercise" class="section level2" number="12.3">
 <h2><span class="header-section-number">C.3</span> Wrap-up exercise</h2>
 <p>Try getting as far as you can to answer this question: Characterize the county with the highest murder rate, using the Census data linked above. This will require doing everything in steps:</p>
 <ol style="list-style-type: decimal">
@@ -471,30 +508,30 @@ You can define “young” however you want, but in my example I’ll use victim
 <li>Deciding which variables in the Census data to use or manipulate to find a characterization that you’re interested in.</li>
 </ol>
 </div>
-<div id="answers-to-exercises" class="section level2">
+<div id="answers-to-exercises" class="section level2" number="12.4">
 <h2><span class="header-section-number">C.4</span> Answers to exercises</h2>
-<div id="select-and-filter" class="section level3">
+<div id="select-and-filter" class="section level3" number="12.4.1">
 <h3><span class="header-section-number">C.4.1</span> Select and filter</h3>
 <div id="arizona-wives" class="section level4 unnumbered">
 <h4>Arizona wives</h4>
 <ol style="list-style-type: decimal">
 <li>Create a new dataset with just arizona:</li>
 </ol>
-<div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb124-1"><a href="A04-murders.html#cb124-1"></a>arizona_murders &lt;-<span class="st"> </span></span>
-<span id="cb124-2"><a href="A04-murders.html#cb124-2"></a><span class="st">  </span>murder_data <span class="op">%&gt;%</span></span>
-<span id="cb124-3"><a href="A04-murders.html#cb124-3"></a><span class="st">  </span><span class="kw">filter</span> ( state_abbr <span class="op">==</span><span class="st"> &quot;AZ&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb120-1"><a href="A04-murders.html#cb120-1" aria-hidden="true" tabindex="-1"></a>arizona_murders <span class="ot">&lt;-</span> </span>
+<span id="cb120-2"><a href="A04-murders.html#cb120-2" aria-hidden="true" tabindex="-1"></a>  murder_data <span class="sc">%&gt;%</span></span>
+<span id="cb120-3"><a href="A04-murders.html#cb120-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span> ( state_abbr <span class="sc">==</span> <span class="st">&quot;AZ&quot;</span>)</span></code></pre></div>
 <p>You should have 15,443 rows in this dataset.</p>
 <ol start="2" style="list-style-type: decimal">
 <li>The final set of queries might look like this. (You might have noticed you that you had one victim age 999 when you sorted. That means “unknown” in this dataset, so you’ll want to filter that out as well.)</li>
 </ol>
-<div class="sourceCode" id="cb125"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb125-1"><a href="A04-murders.html#cb125-1"></a>arizona_murders  <span class="op">%&gt;%</span></span>
-<span id="cb125-2"><a href="A04-murders.html#cb125-2"></a><span class="st">  </span><span class="kw">select</span> ( year, cnty_name, agency, solved, </span>
-<span id="cb125-3"><a href="A04-murders.html#cb125-3"></a>           <span class="kw">starts_with</span>(<span class="st">&quot;vic&quot;</span>), <span class="kw">starts_with</span>(<span class="st">&quot;off&quot;</span>), </span>
-<span id="cb125-4"><a href="A04-murders.html#cb125-4"></a>           <span class="kw">contains</span> (<span class="st">&quot;relationship&quot;</span>)) <span class="op">%&gt;%</span></span>
-<span id="cb125-5"><a href="A04-murders.html#cb125-5"></a><span class="st">  </span><span class="kw">filter</span> (relationship <span class="op">==</span><span class="st"> &quot;Wife&quot;</span>  <span class="op">&amp;</span><span class="st"> </span></span>
-<span id="cb125-6"><a href="A04-murders.html#cb125-6"></a><span class="st">          </span>vic_age <span class="op">&gt;=</span><span class="st"> </span><span class="dv">60</span> <span class="op">&amp;</span><span class="st"> </span></span>
-<span id="cb125-7"><a href="A04-murders.html#cb125-7"></a><span class="st">          </span>vic_age <span class="op">&lt;</span><span class="st"> </span><span class="dv">999</span> )  <span class="op">%&gt;%</span></span>
-<span id="cb125-8"><a href="A04-murders.html#cb125-8"></a><span class="st">  </span><span class="kw">arrange</span> ( <span class="kw">desc</span>(vic_age)) </span></code></pre></div>
+<div class="sourceCode" id="cb121"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb121-1"><a href="A04-murders.html#cb121-1" aria-hidden="true" tabindex="-1"></a>arizona_murders  <span class="sc">%&gt;%</span></span>
+<span id="cb121-2"><a href="A04-murders.html#cb121-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span> ( year, cnty_name, agency, solved, </span>
+<span id="cb121-3"><a href="A04-murders.html#cb121-3" aria-hidden="true" tabindex="-1"></a>           <span class="fu">starts_with</span>(<span class="st">&quot;vic&quot;</span>), <span class="fu">starts_with</span>(<span class="st">&quot;off&quot;</span>), </span>
+<span id="cb121-4"><a href="A04-murders.html#cb121-4" aria-hidden="true" tabindex="-1"></a>           <span class="fu">contains</span> (<span class="st">&quot;relationship&quot;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb121-5"><a href="A04-murders.html#cb121-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span> (relationship <span class="sc">==</span> <span class="st">&quot;Wife&quot;</span>  <span class="sc">&amp;</span> </span>
+<span id="cb121-6"><a href="A04-murders.html#cb121-6" aria-hidden="true" tabindex="-1"></a>          vic_age <span class="sc">&gt;=</span> <span class="dv">60</span> <span class="sc">&amp;</span> </span>
+<span id="cb121-7"><a href="A04-murders.html#cb121-7" aria-hidden="true" tabindex="-1"></a>          vic_age <span class="sc">&lt;</span> <span class="dv">999</span> )  <span class="sc">%&gt;%</span></span>
+<span id="cb121-8"><a href="A04-murders.html#cb121-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span> ( <span class="fu">desc</span>(vic_age)) </span></code></pre></div>
 <p>You could also use</p>
 <pre><code>  relationship == &quot;Wife&quot;  &amp; 
       between (vic_age, 60, 998)  
@@ -530,39 +567,39 @@ Guns:</p>
         </code></pre>
 </div>
 </div>
-<div id="group-by" class="section level3">
+<div id="group-by" class="section level3" number="12.4.2">
 <h3><span class="header-section-number">C.4.2</span> Group by</h3>
 <div id="the-most-1" class="section level4 unnumbered">
 <h4>“The most”</h4>
 <ol style="list-style-type: decimal">
 <li>County with the most killings</li>
 </ol>
-<div class="sourceCode" id="cb132"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb132-1"><a href="A04-murders.html#cb132-1"></a>murder_data <span class="op">%&gt;%</span></span>
-<span id="cb132-2"><a href="A04-murders.html#cb132-2"></a><span class="st">  </span><span class="kw">group_by</span> (state_abbr, cnty_name) <span class="op">%&gt;%</span></span>
-<span id="cb132-3"><a href="A04-murders.html#cb132-3"></a><span class="st">  </span><span class="kw">summarise</span> ( <span class="dt">cases =</span> <span class="kw">n</span>() ) <span class="op">%&gt;%</span></span>
-<span id="cb132-4"><a href="A04-murders.html#cb132-4"></a><span class="st">  </span><span class="kw">arrange</span> (<span class="kw">desc</span> (cases))</span></code></pre></div>
-<pre><code>## `summarise()` regrouping output by &#39;state_abbr&#39; (override with `.groups` argument)</code></pre>
+<div class="sourceCode" id="cb128"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb128-1"><a href="A04-murders.html#cb128-1" aria-hidden="true" tabindex="-1"></a>murder_data <span class="sc">%&gt;%</span></span>
+<span id="cb128-2"><a href="A04-murders.html#cb128-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span> (state_abbr, cnty_name) <span class="sc">%&gt;%</span></span>
+<span id="cb128-3"><a href="A04-murders.html#cb128-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span> ( <span class="at">cases =</span> <span class="fu">n</span>() ) <span class="sc">%&gt;%</span></span>
+<span id="cb128-4"><a href="A04-murders.html#cb128-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span> (<span class="fu">desc</span> (cases))</span></code></pre></div>
+<pre><code>## `summarise()` has grouped output by &#39;state_abbr&#39;. You can override using the `.groups` argument.</code></pre>
 <p>Why is this answer not surprising? (Hint: Clark County, Nevada, has about half the population of Maricopa.) We’ll get to ways to normalize this in later chapters.</p>
 <p>To just get the police shootings, filter the above query for <code>circumstance_code == "81"</code> before the <code>group_by</code></p>
 <ol start="2" style="list-style-type: decimal">
 <li>Murders by state and year</li>
 </ol>
 <p>“Mutate” here takes the result of the summary, then creates a new category with the annual totals. It’s a little confusing how it works, but don’t worry about it too much. Just know it’s possible.</p>
-<div class="sourceCode" id="cb134"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb134-1"><a href="A04-murders.html#cb134-1"></a>murder_data <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb134-2"><a href="A04-murders.html#cb134-2"></a><span class="st">  </span><span class="kw">group_by</span> (year, state_abbr) <span class="op">%&gt;%</span></span>
-<span id="cb134-3"><a href="A04-murders.html#cb134-3"></a><span class="st">  </span><span class="kw">summarise</span> (<span class="dt">cases =</span> <span class="kw">n</span>() ) <span class="op">%&gt;%</span></span>
-<span id="cb134-4"><a href="A04-murders.html#cb134-4"></a><span class="st">  </span><span class="co">#bonus: Calculate the total number of cases by year:</span></span>
-<span id="cb134-5"><a href="A04-murders.html#cb134-5"></a><span class="st">  </span><span class="kw">mutate</span> ( <span class="dt">total_cases =</span> <span class="kw">sum</span>(cases) )  <span class="op">%&gt;%</span></span>
-<span id="cb134-6"><a href="A04-murders.html#cb134-6"></a><span class="st">  </span><span class="kw">pivot_wider</span> (<span class="dt">names_from =</span> state_abbr, <span class="dt">values_from =</span> cases) <span class="op">%&gt;%</span></span>
-<span id="cb134-7"><a href="A04-murders.html#cb134-7"></a><span class="st">  </span><span class="kw">arrange</span> ( <span class="kw">desc</span> (year)) </span></code></pre></div>
-<pre><code>## `summarise()` regrouping output by &#39;year&#39; (override with `.groups` argument)</code></pre>
+<div class="sourceCode" id="cb130"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb130-1"><a href="A04-murders.html#cb130-1" aria-hidden="true" tabindex="-1"></a>murder_data <span class="sc">%&gt;%</span> </span>
+<span id="cb130-2"><a href="A04-murders.html#cb130-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span> (year, state_abbr) <span class="sc">%&gt;%</span></span>
+<span id="cb130-3"><a href="A04-murders.html#cb130-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span> (<span class="at">cases =</span> <span class="fu">n</span>() ) <span class="sc">%&gt;%</span></span>
+<span id="cb130-4"><a href="A04-murders.html#cb130-4" aria-hidden="true" tabindex="-1"></a>  <span class="co">#bonus: Calculate the total number of cases by year:</span></span>
+<span id="cb130-5"><a href="A04-murders.html#cb130-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span> ( <span class="at">total_cases =</span> <span class="fu">sum</span>(cases) )  <span class="sc">%&gt;%</span></span>
+<span id="cb130-6"><a href="A04-murders.html#cb130-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span> (<span class="at">names_from =</span> state_abbr, <span class="at">values_from =</span> cases) <span class="sc">%&gt;%</span></span>
+<span id="cb130-7"><a href="A04-murders.html#cb130-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span> ( <span class="fu">desc</span> (year)) </span></code></pre></div>
+<pre><code>## `summarise()` has grouped output by &#39;year&#39;. You can override using the `.groups` argument.</code></pre>
 <p>Does this mean that these states have suddenly become more dangerous? What about population growth?</p>
 <p><strong>Alternative method</strong></p>
 <p>The <code>janitor</code> package (which you may need to install) has a way to create cross-tabulations like this more simply. The function is <code>tabyl</code> (to distinguish from other table operations in R, which you probably want to avoid). Here’s an example:</p>
-<div class="sourceCode" id="cb136"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb136-1"><a href="A04-murders.html#cb136-1"></a>murder_data <span class="op">%&gt;%</span></span>
-<span id="cb136-2"><a href="A04-murders.html#cb136-2"></a><span class="st">  </span><span class="kw">tabyl</span> ( year , state_abbr) <span class="op">%&gt;%</span></span>
-<span id="cb136-3"><a href="A04-murders.html#cb136-3"></a><span class="st">  </span><span class="kw">arrange</span> ( <span class="kw">desc</span> (year) ) <span class="op">%&gt;%</span></span>
-<span id="cb136-4"><a href="A04-murders.html#cb136-4"></a><span class="st">  </span><span class="kw">head</span> () </span></code></pre></div>
+<div class="sourceCode" id="cb132"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb132-1"><a href="A04-murders.html#cb132-1" aria-hidden="true" tabindex="-1"></a>murder_data <span class="sc">%&gt;%</span></span>
+<span id="cb132-2"><a href="A04-murders.html#cb132-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tabyl</span> ( year , state_abbr) <span class="sc">%&gt;%</span></span>
+<span id="cb132-3"><a href="A04-murders.html#cb132-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span> ( <span class="fu">desc</span> (year) ) <span class="sc">%&gt;%</span></span>
+<span id="cb132-4"><a href="A04-murders.html#cb132-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span> () </span></code></pre></div>
 <div class="kable-table">
 <table>
 <thead>
@@ -666,31 +703,30 @@ Guns:</p>
 <li>Percent of murders by relationship:</li>
 </ol>
 <p>Once those totals are calculated, you can use them to compute a new variable, such as percent.</p>
-<div class="sourceCode" id="cb137"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb137-1"><a href="A04-murders.html#cb137-1"></a>murder_data <span class="op">%&gt;%</span></span>
-<span id="cb137-2"><a href="A04-murders.html#cb137-2"></a><span class="st">  </span><span class="kw">group_by</span> (relationship) <span class="op">%&gt;%</span></span>
-<span id="cb137-3"><a href="A04-murders.html#cb137-3"></a><span class="st">  </span><span class="kw">summarise</span> (<span class="dt">num_of_cases =</span> <span class="kw">n</span>() ) <span class="op">%&gt;%</span></span>
-<span id="cb137-4"><a href="A04-murders.html#cb137-4"></a><span class="st">  </span><span class="kw">mutate</span> (<span class="dt">total_cases =</span> <span class="kw">sum</span>(num_of_cases) ,</span>
-<span id="cb137-5"><a href="A04-murders.html#cb137-5"></a>          <span class="co"># This rounds to 1 digit.</span></span>
-<span id="cb137-6"><a href="A04-murders.html#cb137-6"></a>          <span class="dt">pct_cases =</span> <span class="kw">round</span> (num_of_cases <span class="op">/</span><span class="st"> </span>total_cases <span class="op">*</span><span class="st"> </span><span class="dv">100</span> , <span class="dv">1</span>)</span>
-<span id="cb137-7"><a href="A04-murders.html#cb137-7"></a>          ) <span class="op">%&gt;%</span></span>
-<span id="cb137-8"><a href="A04-murders.html#cb137-8"></a><span class="st">  </span><span class="co"># you could un-select the total cases since they&#39;ll always be the same , but for illustratio purposes I&#39;m keeping it.</span></span>
-<span id="cb137-9"><a href="A04-murders.html#cb137-9"></a><span class="st">  </span><span class="kw">arrange</span> ( <span class="kw">desc</span> (num_of_cases)) </span></code></pre></div>
-<pre><code>## `summarise()` ungrouping output (override with `.groups` argument)</code></pre>
+<div class="sourceCode" id="cb133"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb133-1"><a href="A04-murders.html#cb133-1" aria-hidden="true" tabindex="-1"></a>murder_data <span class="sc">%&gt;%</span></span>
+<span id="cb133-2"><a href="A04-murders.html#cb133-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span> (relationship) <span class="sc">%&gt;%</span></span>
+<span id="cb133-3"><a href="A04-murders.html#cb133-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span> (<span class="at">num_of_cases =</span> <span class="fu">n</span>() ) <span class="sc">%&gt;%</span></span>
+<span id="cb133-4"><a href="A04-murders.html#cb133-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span> (<span class="at">total_cases =</span> <span class="fu">sum</span>(num_of_cases) ,</span>
+<span id="cb133-5"><a href="A04-murders.html#cb133-5" aria-hidden="true" tabindex="-1"></a>          <span class="co"># This rounds to 1 digit.</span></span>
+<span id="cb133-6"><a href="A04-murders.html#cb133-6" aria-hidden="true" tabindex="-1"></a>          <span class="at">pct_cases =</span> <span class="fu">round</span> (num_of_cases <span class="sc">/</span> total_cases <span class="sc">*</span> <span class="dv">100</span> , <span class="dv">1</span>)</span>
+<span id="cb133-7"><a href="A04-murders.html#cb133-7" aria-hidden="true" tabindex="-1"></a>          ) <span class="sc">%&gt;%</span></span>
+<span id="cb133-8"><a href="A04-murders.html#cb133-8" aria-hidden="true" tabindex="-1"></a>  <span class="co"># you could un-select the total cases since they&#39;ll always be the same , but for illustratio purposes I&#39;m keeping it.</span></span>
+<span id="cb133-9"><a href="A04-murders.html#cb133-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span> ( <span class="fu">desc</span> (num_of_cases)) </span></code></pre></div>
 <p><strong>Alternative method with <code>janitor::tabyl</code></strong></p>
-<div class="sourceCode" id="cb139"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb139-1"><a href="A04-murders.html#cb139-1"></a>murder_data <span class="op">%&gt;%</span></span>
-<span id="cb139-2"><a href="A04-murders.html#cb139-2"></a><span class="st">  </span><span class="kw">tabyl</span> (relationship) <span class="op">%&gt;%</span></span>
-<span id="cb139-3"><a href="A04-murders.html#cb139-3"></a><span class="st">  </span><span class="kw">adorn_pct_formatting</span> (<span class="dt">digits=</span><span class="dv">1</span>)   <span class="op">%&gt;%</span></span>
-<span id="cb139-4"><a href="A04-murders.html#cb139-4"></a><span class="st">  </span><span class="co">#this last part turns it into a normal data frame</span></span>
-<span id="cb139-5"><a href="A04-murders.html#cb139-5"></a><span class="st">  </span><span class="kw">arrange</span> ( <span class="kw">desc</span>(n)) <span class="op">%&gt;%</span></span>
-<span id="cb139-6"><a href="A04-murders.html#cb139-6"></a><span class="st">  </span><span class="kw">as_tibble</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb134"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb134-1"><a href="A04-murders.html#cb134-1" aria-hidden="true" tabindex="-1"></a>murder_data <span class="sc">%&gt;%</span></span>
+<span id="cb134-2"><a href="A04-murders.html#cb134-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tabyl</span> (relationship) <span class="sc">%&gt;%</span></span>
+<span id="cb134-3"><a href="A04-murders.html#cb134-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">adorn_pct_formatting</span> (<span class="at">digits=</span><span class="dv">1</span>)   <span class="sc">%&gt;%</span></span>
+<span id="cb134-4"><a href="A04-murders.html#cb134-4" aria-hidden="true" tabindex="-1"></a>  <span class="co">#this last part turns it into a normal data frame</span></span>
+<span id="cb134-5"><a href="A04-murders.html#cb134-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span> ( <span class="fu">desc</span>(n)) <span class="sc">%&gt;%</span></span>
+<span id="cb134-6"><a href="A04-murders.html#cb134-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as_tibble</span>()</span></code></pre></div>
 </div>
 <div id="putting-it-all-together-1" class="section level4 unnumbered">
 <h4>Putting it all together</h4>
 <p>First, isolate the domestic violence cases. Let’s see what our choices are:</p>
-<div class="sourceCode" id="cb140"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb140-1"><a href="A04-murders.html#cb140-1"></a>murder_data <span class="op">%&gt;%</span></span>
-<span id="cb140-2"><a href="A04-murders.html#cb140-2"></a><span class="st">  </span><span class="kw">group_by</span> (relationship_code, relationship) <span class="op">%&gt;%</span></span>
-<span id="cb140-3"><a href="A04-murders.html#cb140-3"></a><span class="st">  </span><span class="kw">summarise</span> (<span class="kw">n</span>())</span></code></pre></div>
-<pre><code>## `summarise()` regrouping output by &#39;relationship_code&#39; (override with `.groups` argument)</code></pre>
+<div class="sourceCode" id="cb135"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb135-1"><a href="A04-murders.html#cb135-1" aria-hidden="true" tabindex="-1"></a>murder_data <span class="sc">%&gt;%</span></span>
+<span id="cb135-2"><a href="A04-murders.html#cb135-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span> (relationship_code, relationship) <span class="sc">%&gt;%</span></span>
+<span id="cb135-3"><a href="A04-murders.html#cb135-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span> (<span class="fu">n</span>())</span></code></pre></div>
+<pre><code>## `summarise()` has grouped output by &#39;relationship_code&#39;. You can override using the `.groups` argument.</code></pre>
 <div class="kable-table">
 <table>
 <thead>
@@ -850,24 +886,24 @@ Guns:</p>
 </table>
 </div>
 <p>Here’s one way to get the answer (eliminating cases in which we don’t know the victim’s ethnicity)</p>
-<div class="sourceCode" id="cb142"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb142-1"><a href="A04-murders.html#cb142-1"></a>murder_data <span class="op">%&gt;%</span></span>
-<span id="cb142-2"><a href="A04-murders.html#cb142-2"></a><span class="st">  </span><span class="kw">filter</span> ( relationship_code <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;BF&quot;</span>, <span class="st">&quot;BR&quot;</span>, <span class="st">&quot;CH&quot;</span>, <span class="st">&quot;CW&quot;</span>, <span class="st">&quot;DA&quot;</span>, <span class="st">&quot;FA&quot;</span>, </span>
-<span id="cb142-3"><a href="A04-murders.html#cb142-3"></a>                                    <span class="st">&quot;GF&quot;</span>, <span class="st">&quot;HO&quot;</span>, <span class="st">&quot;HU&quot;</span>, <span class="st">&quot;IL&quot;</span>, <span class="st">&quot;MO&quot;</span>, <span class="st">&quot;OF&quot;</span>, <span class="st">&quot;SD&quot;</span>, <span class="st">&quot;SF&quot;</span>, </span>
-<span id="cb142-4"><a href="A04-murders.html#cb142-4"></a>                                    <span class="st">&quot;SI&quot;</span>, <span class="st">&quot;SM&quot;</span>, <span class="st">&quot;SO&quot;</span>, <span class="st">&quot;WI&quot;</span>, <span class="st">&quot;XH&quot;</span>, <span class="st">&quot;XW&quot;</span>)   <span class="op">&amp;</span><span class="st"> </span></span>
-<span id="cb142-5"><a href="A04-murders.html#cb142-5"></a><span class="st">          </span>vic_ethnic_code <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;H&quot;</span>, <span class="st">&quot;N&quot;</span>)</span>
-<span id="cb142-6"><a href="A04-murders.html#cb142-6"></a>        ) <span class="op">%&gt;%</span></span>
-<span id="cb142-7"><a href="A04-murders.html#cb142-7"></a><span class="st">   </span><span class="kw">group_by</span> ( state_abbr, vic_ethnic ) <span class="op">%&gt;%</span></span>
-<span id="cb142-8"><a href="A04-murders.html#cb142-8"></a><span class="st">   </span><span class="kw">summarise</span> (<span class="dt">cases =</span> <span class="kw">n</span>() ) <span class="op">%&gt;%</span></span>
-<span id="cb142-9"><a href="A04-murders.html#cb142-9"></a><span class="st">   </span><span class="co">#calculate total by state and percent</span></span>
-<span id="cb142-10"><a href="A04-murders.html#cb142-10"></a><span class="st">   </span><span class="kw">mutate</span> ( <span class="dt">total_cases =</span> <span class="kw">sum</span>(cases), </span>
-<span id="cb142-11"><a href="A04-murders.html#cb142-11"></a>            <span class="dt">pct_cases =</span> cases <span class="op">/</span><span class="st"> </span>total_cases <span class="op">*</span><span class="st"> </span><span class="dv">100</span> ) <span class="op">%&gt;%</span></span>
-<span id="cb142-12"><a href="A04-murders.html#cb142-12"></a><span class="st">   </span><span class="co">#get rid of case counts</span></span>
-<span id="cb142-13"><a href="A04-murders.html#cb142-13"></a><span class="st">   </span><span class="kw">select</span> ( <span class="op">-</span>cases ) <span class="op">%&gt;%</span></span>
-<span id="cb142-14"><a href="A04-murders.html#cb142-14"></a><span class="st">   </span><span class="co">#sort by state</span></span>
-<span id="cb142-15"><a href="A04-murders.html#cb142-15"></a><span class="st">   </span><span class="kw">arrange</span> ( state_abbr ) <span class="op">%&gt;%</span></span>
-<span id="cb142-16"><a href="A04-murders.html#cb142-16"></a><span class="st">   </span><span class="co"># put ethnicity in columns</span></span>
-<span id="cb142-17"><a href="A04-murders.html#cb142-17"></a><span class="st">   </span><span class="kw">pivot_wider</span> ( <span class="dt">values_from =</span> pct_cases, <span class="dt">names_from =</span> vic_ethnic)  </span></code></pre></div>
-<pre><code>## `summarise()` regrouping output by &#39;state_abbr&#39; (override with `.groups` argument)</code></pre>
+<div class="sourceCode" id="cb137"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb137-1"><a href="A04-murders.html#cb137-1" aria-hidden="true" tabindex="-1"></a>murder_data <span class="sc">%&gt;%</span></span>
+<span id="cb137-2"><a href="A04-murders.html#cb137-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span> ( relationship_code <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;BF&quot;</span>, <span class="st">&quot;BR&quot;</span>, <span class="st">&quot;CH&quot;</span>, <span class="st">&quot;CW&quot;</span>, <span class="st">&quot;DA&quot;</span>, <span class="st">&quot;FA&quot;</span>, </span>
+<span id="cb137-3"><a href="A04-murders.html#cb137-3" aria-hidden="true" tabindex="-1"></a>                                    <span class="st">&quot;GF&quot;</span>, <span class="st">&quot;HO&quot;</span>, <span class="st">&quot;HU&quot;</span>, <span class="st">&quot;IL&quot;</span>, <span class="st">&quot;MO&quot;</span>, <span class="st">&quot;OF&quot;</span>, <span class="st">&quot;SD&quot;</span>, <span class="st">&quot;SF&quot;</span>, </span>
+<span id="cb137-4"><a href="A04-murders.html#cb137-4" aria-hidden="true" tabindex="-1"></a>                                    <span class="st">&quot;SI&quot;</span>, <span class="st">&quot;SM&quot;</span>, <span class="st">&quot;SO&quot;</span>, <span class="st">&quot;WI&quot;</span>, <span class="st">&quot;XH&quot;</span>, <span class="st">&quot;XW&quot;</span>)   <span class="sc">&amp;</span> </span>
+<span id="cb137-5"><a href="A04-murders.html#cb137-5" aria-hidden="true" tabindex="-1"></a>          vic_ethnic_code <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;H&quot;</span>, <span class="st">&quot;N&quot;</span>)</span>
+<span id="cb137-6"><a href="A04-murders.html#cb137-6" aria-hidden="true" tabindex="-1"></a>        ) <span class="sc">%&gt;%</span></span>
+<span id="cb137-7"><a href="A04-murders.html#cb137-7" aria-hidden="true" tabindex="-1"></a>   <span class="fu">group_by</span> ( state_abbr, vic_ethnic ) <span class="sc">%&gt;%</span></span>
+<span id="cb137-8"><a href="A04-murders.html#cb137-8" aria-hidden="true" tabindex="-1"></a>   <span class="fu">summarise</span> (<span class="at">cases =</span> <span class="fu">n</span>() ) <span class="sc">%&gt;%</span></span>
+<span id="cb137-9"><a href="A04-murders.html#cb137-9" aria-hidden="true" tabindex="-1"></a>   <span class="co">#calculate total by state and percent</span></span>
+<span id="cb137-10"><a href="A04-murders.html#cb137-10" aria-hidden="true" tabindex="-1"></a>   <span class="fu">mutate</span> ( <span class="at">total_cases =</span> <span class="fu">sum</span>(cases), </span>
+<span id="cb137-11"><a href="A04-murders.html#cb137-11" aria-hidden="true" tabindex="-1"></a>            <span class="at">pct_cases =</span> cases <span class="sc">/</span> total_cases <span class="sc">*</span> <span class="dv">100</span> ) <span class="sc">%&gt;%</span></span>
+<span id="cb137-12"><a href="A04-murders.html#cb137-12" aria-hidden="true" tabindex="-1"></a>   <span class="co">#get rid of case counts</span></span>
+<span id="cb137-13"><a href="A04-murders.html#cb137-13" aria-hidden="true" tabindex="-1"></a>   <span class="fu">select</span> ( <span class="sc">-</span>cases ) <span class="sc">%&gt;%</span></span>
+<span id="cb137-14"><a href="A04-murders.html#cb137-14" aria-hidden="true" tabindex="-1"></a>   <span class="co">#sort by state</span></span>
+<span id="cb137-15"><a href="A04-murders.html#cb137-15" aria-hidden="true" tabindex="-1"></a>   <span class="fu">arrange</span> ( state_abbr ) <span class="sc">%&gt;%</span></span>
+<span id="cb137-16"><a href="A04-murders.html#cb137-16" aria-hidden="true" tabindex="-1"></a>   <span class="co"># put ethnicity in columns</span></span>
+<span id="cb137-17"><a href="A04-murders.html#cb137-17" aria-hidden="true" tabindex="-1"></a>   <span class="fu">pivot_wider</span> ( <span class="at">values_from =</span> pct_cases, <span class="at">names_from =</span> vic_ethnic)  </span></code></pre></div>
+<pre><code>## `summarise()` has grouped output by &#39;state_abbr&#39;. You can override using the `.groups` argument.</code></pre>
 
 </div>
 </div>

@@ -245,7 +245,7 @@ immune_joined %>%
 ```
 
 ```
-## `summarise()` regrouping output by 'nces_district_name' (override with `.groups` argument)
+## `summarise()` has grouped output by 'nces_district_name'. You can override using the `.groups` argument.
 ```
 
 

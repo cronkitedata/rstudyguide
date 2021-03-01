@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>7 Verbs Part 3: mutate | R Study Guide for Cronkite School of Journalism</title>
   <meta name="description" content="A companion book for the Cronkite School’s data journalism class for graduate students. A work in progress." />
-  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
   <meta property="og:title" content="7 Verbs Part 3: mutate | R Study Guide for Cronkite School of Journalism" />
   <meta property="og:type" content="book" />
@@ -32,6 +32,7 @@
   <link rel="shortcut icon" href="favicon.io" type="image/x-icon" />
 <link rel="prev" href="033-groupby.html"/>
 <link rel="next" href="036-joins.html"/>
+<script src="libs/header-attrs-2.7/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -49,7 +50,6 @@
 
 
 
-<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
 <script src="libs/htmlwidgets-1.5.2/htmlwidgets.js"></script>
 <script src="libs/plotly-binding-4.9.2.1/plotly.js"></script>
 <script src="libs/typedarray-0.1/typedarray.min.js"></script>
@@ -60,18 +60,17 @@
 
 
 <style type="text/css">
-code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
-code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
 }
 @media print {
-code.sourceCode { white-space: pre-wrap; }
-code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -91,7 +90,7 @@ pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-le
 div.sourceCode
   {   }
 @media screen {
-code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -140,61 +139,74 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="./">Study Guide for Cronkite Students</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a><ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a>
+<ul>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#using-the-examples-with-packages"><i class="fa fa-check"></i>Using the examples with packages</a></li>
 </ul></li>
 <li class="part"><span><b>I Introduction to R for Journalists</b></span></li>
-<li class="chapter" data-level="1" data-path="011-r-install.html"><a href="011-r-install.html"><i class="fa fa-check"></i><b>1</b> An R and R Studio tour</a><ul>
+<li class="chapter" data-level="1" data-path="011-r-install.html"><a href="011-r-install.html"><i class="fa fa-check"></i><b>1</b> An R and R Studio tour</a>
+<ul>
 <li class="chapter" data-level="1.1" data-path="011-r-install.html"><a href="011-r-install.html#key-takeaways"><i class="fa fa-check"></i><b>1.1</b> Key takeaways</a></li>
 <li class="chapter" data-level="1.2" data-path="011-r-install.html"><a href="011-r-install.html#why-program"><i class="fa fa-check"></i><b>1.2</b> Why program?</a></li>
 <li class="chapter" data-level="1.3" data-path="011-r-install.html"><a href="011-r-install.html#setting-up-r-and-r-studio"><i class="fa fa-check"></i><b>1.3</b> Setting up R and R Studio</a></li>
-<li class="chapter" data-level="1.4" data-path="011-r-install.html"><a href="011-r-install.html#an-r-studio-tour"><i class="fa fa-check"></i><b>1.4</b> An R Studio tour</a><ul>
+<li class="chapter" data-level="1.4" data-path="011-r-install.html"><a href="011-r-install.html#an-r-studio-tour"><i class="fa fa-check"></i><b>1.4</b> An R Studio tour</a>
+<ul>
 <li class="chapter" data-level="1.4.1" data-path="011-r-install.html"><a href="011-r-install.html#the-console"><i class="fa fa-check"></i><b>1.4.1</b> The Console</a></li>
 <li class="chapter" data-level="1.4.2" data-path="011-r-install.html"><a href="011-r-install.html#work-in-projects"><i class="fa fa-check"></i><b>1.4.2</b> Work in projects</a></li>
 </ul></li>
 <li class="chapter" data-level="1.5" data-path="011-r-install.html"><a href="011-r-install.html#unlocking-packages"><i class="fa fa-check"></i><b>1.5</b> Unlocking packages</a></li>
 <li class="chapter" data-level="1.6" data-path="011-r-install.html"><a href="011-r-install.html#variables"><i class="fa fa-check"></i><b>1.6</b> Variables</a></li>
-<li class="chapter" data-level="1.7" data-path="011-r-install.html"><a href="011-r-install.html#resources-and-exercises"><i class="fa fa-check"></i><b>1.7</b> Resources and exercises</a><ul>
+<li class="chapter" data-level="1.7" data-path="011-r-install.html"><a href="011-r-install.html#resources-and-exercises"><i class="fa fa-check"></i><b>1.7</b> Resources and exercises</a>
+<ul>
 <li class="chapter" data-level="1.7.1" data-path="011-r-install.html"><a href="011-r-install.html#googling-for-help"><i class="fa fa-check"></i><b>1.7.1</b> Googling for help</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="021-r-markdown.html"><a href="021-r-markdown.html"><i class="fa fa-check"></i><b>2</b> R Markdown</a><ul>
-<li class="chapter" data-level="2.1" data-path="011-r-install.html"><a href="011-r-install.html#key-takeaways"><i class="fa fa-check"></i><b>2.1</b> Key takeaways</a></li>
+<li class="chapter" data-level="2" data-path="021-r-markdown.html"><a href="021-r-markdown.html"><i class="fa fa-check"></i><b>2</b> R Markdown</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="021-r-markdown.html"><a href="021-r-markdown.html#key-takeaways-1"><i class="fa fa-check"></i><b>2.1</b> Key takeaways</a></li>
 <li class="chapter" data-level="2.2" data-path="021-r-markdown.html"><a href="021-r-markdown.html#getting-started-with-r-markdown"><i class="fa fa-check"></i><b>2.2</b> Getting started with R Markdown</a></li>
-<li class="chapter" data-level="2.3" data-path="021-r-markdown.html"><a href="021-r-markdown.html#the-anatomy-of-a-document"><i class="fa fa-check"></i><b>2.3</b> The anatomy of a document</a><ul>
+<li class="chapter" data-level="2.3" data-path="021-r-markdown.html"><a href="021-r-markdown.html#the-anatomy-of-a-document"><i class="fa fa-check"></i><b>2.3</b> The anatomy of a document</a>
+<ul>
 <li class="chapter" data-level="2.3.1" data-path="021-r-markdown.html"><a href="021-r-markdown.html#writing-in-markdown"><i class="fa fa-check"></i><b>2.3.1</b> Writing in markdown</a></li>
 <li class="chapter" data-level="" data-path="021-r-markdown.html"><a href="021-r-markdown.html#front-matter-yaml-at-the-top"><i class="fa fa-check"></i>Front matter / YAML at the top</a></li>
 </ul></li>
 <li class="chapter" data-level="2.4" data-path="021-r-markdown.html"><a href="021-r-markdown.html#knitting-your-document"><i class="fa fa-check"></i><b>2.4</b> Knitting your document</a></li>
 <li class="chapter" data-level="2.5" data-path="021-r-markdown.html"><a href="021-r-markdown.html#including-r-code-and-its-results"><i class="fa fa-check"></i><b>2.5</b> Including R code and its results</a></li>
 <li class="chapter" data-level="2.6" data-path="021-r-markdown.html"><a href="021-r-markdown.html#r-markdown-starts-from-scratch"><i class="fa fa-check"></i><b>2.6</b> R Markdown starts from scratch</a></li>
-<li class="chapter" data-level="2.7" data-path="021-r-markdown.html"><a href="021-r-markdown.html#rmarkdown-resources-and-exercises"><i class="fa fa-check"></i><b>2.7</b> RMarkdown resources and exercises</a><ul>
+<li class="chapter" data-level="2.7" data-path="021-r-markdown.html"><a href="021-r-markdown.html#rmarkdown-resources-and-exercises"><i class="fa fa-check"></i><b>2.7</b> RMarkdown resources and exercises</a>
+<ul>
 <li class="chapter" data-level="" data-path="021-r-markdown.html"><a href="021-r-markdown.html#resources"><i class="fa fa-check"></i>Resources</a></li>
 <li class="chapter" data-level="" data-path="021-r-markdown.html"><a href="021-r-markdown.html#exercises"><i class="fa fa-check"></i>Exercises</a></li>
 </ul></li>
 <li class="chapter" data-level="2.8" data-path="021-r-markdown.html"><a href="021-r-markdown.html#bonus-styling-your-r-markdown-documents"><i class="fa fa-check"></i><b>2.8</b> Bonus: Styling your R Markdown documents</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="022-data-frames.html"><a href="022-data-frames.html"><i class="fa fa-check"></i><b>3</b> Data frames and the tidyverse</a><ul>
-<li class="chapter" data-level="3.1" data-path="011-r-install.html"><a href="011-r-install.html#key-takeaways"><i class="fa fa-check"></i><b>3.1</b> Key takeaways</a></li>
+<li class="chapter" data-level="3" data-path="022-data-frames.html"><a href="022-data-frames.html"><i class="fa fa-check"></i><b>3</b> Data frames and the tidyverse</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="022-data-frames.html"><a href="022-data-frames.html#key-takeaways-2"><i class="fa fa-check"></i><b>3.1</b> Key takeaways</a></li>
 <li class="chapter" data-level="3.2" data-path="022-data-frames.html"><a href="022-data-frames.html#getting-started"><i class="fa fa-check"></i><b>3.2</b> Getting started</a></li>
-<li class="chapter" data-level="3.3" data-path="022-data-frames.html"><a href="022-data-frames.html#the-data-frame"><i class="fa fa-check"></i><b>3.3</b> The data frame</a><ul>
+<li class="chapter" data-level="3.3" data-path="022-data-frames.html"><a href="022-data-frames.html#the-data-frame"><i class="fa fa-check"></i><b>3.3</b> The data frame</a>
+<ul>
 <li class="chapter" data-level="3.3.1" data-path="022-data-frames.html"><a href="022-data-frames.html#loading-and-looking-at-data"><i class="fa fa-check"></i><b>3.3.1</b> Loading and looking at data</a></li>
 <li class="chapter" data-level="3.3.2" data-path="022-data-frames.html"><a href="022-data-frames.html#examine-your-data"><i class="fa fa-check"></i><b>3.3.2</b> Examine your data</a></li>
 </ul></li>
 <li class="chapter" data-level="3.4" data-path="022-data-frames.html"><a href="022-data-frames.html#introducing-the-pipe"><i class="fa fa-check"></i><b>3.4</b> Introducing the pipe</a></li>
 <li class="chapter" data-level="3.5" data-path="022-data-frames.html"><a href="022-data-frames.html#take-a-break"><i class="fa fa-check"></i><b>3.5</b> Take a break</a></li>
-<li class="chapter" data-level="3.6" data-path="022-data-frames.html"><a href="022-data-frames.html#data-frames-resources"><i class="fa fa-check"></i><b>3.6</b> Data frames resources</a><ul>
+<li class="chapter" data-level="3.6" data-path="022-data-frames.html"><a href="022-data-frames.html#data-frames-resources"><i class="fa fa-check"></i><b>3.6</b> Data frames resources</a>
+<ul>
 <li class="chapter" data-level="3.6.1" data-path="022-data-frames.html"><a href="022-data-frames.html#on-your-own"><i class="fa fa-check"></i><b>3.6.1</b> On your own</a></li>
 </ul></li>
 </ul></li>
 <li class="part"><span><b>II The Verbs of the Tidyverse</b></span></li>
-<li class="chapter" data-level="4" data-path="030-intro-verbs.html"><a href="030-intro-verbs.html"><i class="fa fa-check"></i><b>4</b> A quick tour of verbs</a><ul>
-<li class="chapter" data-level="4.1" data-path="011-r-install.html"><a href="011-r-install.html#key-takeaways"><i class="fa fa-check"></i><b>4.1</b> Key takeaways</a><ul>
+<li class="chapter" data-level="4" data-path="030-intro-verbs.html"><a href="030-intro-verbs.html"><i class="fa fa-check"></i><b>4</b> A quick tour of verbs</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="030-intro-verbs.html"><a href="030-intro-verbs.html#key-takeaways-3"><i class="fa fa-check"></i><b>4.1</b> Key takeaways</a>
+<ul>
 <li class="chapter" data-level="" data-path="030-intro-verbs.html"><a href="030-intro-verbs.html#data-for-this-walkthrough"><i class="fa fa-check"></i>Data for this walkthrough</a></li>
 <li class="chapter" data-level="4.1.1" data-path="030-intro-verbs.html"><a href="030-intro-verbs.html#follow-along"><i class="fa fa-check"></i><b>4.1.1</b> Follow along</a></li>
 <li><a href="030-intro-verbs.html#the-operator-and-then">The <code>%&gt;%</code> operator: … and then…</a></li>
 </ul></li>
-<li class="chapter" data-level="4.2" data-path="030-intro-verbs.html"><a href="030-intro-verbs.html#looking-at-your-data-in-pieces-and-in-order"><i class="fa fa-check"></i><b>4.2</b> Looking at your data in pieces and in order</a><ul>
+<li class="chapter" data-level="4.2" data-path="030-intro-verbs.html"><a href="030-intro-verbs.html#looking-at-your-data-in-pieces-and-in-order"><i class="fa fa-check"></i><b>4.2</b> Looking at your data in pieces and in order</a>
+<ul>
 <li class="chapter" data-level="4.2.1" data-path="030-intro-verbs.html"><a href="030-intro-verbs.html#select-to-pick-out-columns"><i class="fa fa-check"></i><b>4.2.1</b> <code>select</code> to pick out columns</a></li>
 <li class="chapter" data-level="4.2.2" data-path="030-intro-verbs.html"><a href="030-intro-verbs.html#arrange-to-sort"><i class="fa fa-check"></i><b>4.2.2</b> <code>arrange</code> to sort</a></li>
 <li class="chapter" data-level="4.2.3" data-path="030-intro-verbs.html"><a href="030-intro-verbs.html#filter-to-pick-out-rows"><i class="fa fa-check"></i><b>4.2.3</b> <code>filter</code> to pick out rows</a></li>
@@ -203,68 +215,86 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.4" data-path="030-intro-verbs.html"><a href="030-intro-verbs.html#mutate-to-calculate-something-new"><i class="fa fa-check"></i><b>4.4</b> <code>mutate</code> to calculate something new</a></li>
 <li class="chapter" data-level="4.5" data-path="030-intro-verbs.html"><a href="030-intro-verbs.html#join-to-merge-tables-together-by-column-union-to-add-rows"><i class="fa fa-check"></i><b>4.5</b> <code>join</code> to merge tables together by column; <code>union</code> to add rows</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="031-select-filter.html"><a href="031-select-filter.html"><i class="fa fa-check"></i><b>5</b> Verbs Part 1: Picking and choosing</a><ul>
-<li class="chapter" data-level="5.1" data-path="011-r-install.html"><a href="011-r-install.html#key-takeaways"><i class="fa fa-check"></i><b>5.1</b> Key takeaways</a></li>
-<li class="chapter" data-level="5.2" data-path="031-select-filter.html"><a href="031-select-filter.html#select---choosing-columns"><i class="fa fa-check"></i><b>5.2</b> Select - choosing columns</a><ul>
+<li class="chapter" data-level="5" data-path="031-select-filter.html"><a href="031-select-filter.html"><i class="fa fa-check"></i><b>5</b> Verbs Part 1: Picking and choosing</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="031-select-filter.html"><a href="031-select-filter.html#key-takeaways-4"><i class="fa fa-check"></i><b>5.1</b> Key takeaways</a></li>
+<li class="chapter" data-level="5.2" data-path="031-select-filter.html"><a href="031-select-filter.html#select---choosing-columns"><i class="fa fa-check"></i><b>5.2</b> Select - choosing columns</a>
+<ul>
 <li class="chapter" data-level="" data-path="031-select-filter.html"><a href="031-select-filter.html#optional-other-ways-to-select"><i class="fa fa-check"></i>Optional: Other ways to select</a></li>
 </ul></li>
-<li class="chapter" data-level="5.3" data-path="031-select-filter.html"><a href="031-select-filter.html#filter---choosing-rows"><i class="fa fa-check"></i><b>5.3</b> Filter - choosing rows</a><ul>
+<li class="chapter" data-level="5.3" data-path="031-select-filter.html"><a href="031-select-filter.html#filter---choosing-rows"><i class="fa fa-check"></i><b>5.3</b> Filter - choosing rows</a>
+<ul>
 <li class="chapter" data-level="5.3.1" data-path="031-select-filter.html"><a href="031-select-filter.html#one-filter"><i class="fa fa-check"></i><b>5.3.1</b> One filter</a></li>
 <li class="chapter" data-level="5.3.2" data-path="031-select-filter.html"><a href="031-select-filter.html#a-compound-filter"><i class="fa fa-check"></i><b>5.3.2</b> A compound filter</a></li>
 <li class="chapter" data-level="5.3.3" data-path="031-select-filter.html"><a href="031-select-filter.html#even-more-compound-filters"><i class="fa fa-check"></i><b>5.3.3</b> Even more compound filters</a></li>
 </ul></li>
 <li class="chapter" data-level="5.4" data-path="031-select-filter.html"><a href="031-select-filter.html#arrange---change-the-order"><i class="fa fa-check"></i><b>5.4</b> Arrange - change the order</a></li>
 <li class="chapter" data-level="5.5" data-path="031-select-filter.html"><a href="031-select-filter.html#traps"><i class="fa fa-check"></i><b>5.5</b> Traps</a></li>
-<li class="chapter" data-level="5.6" data-path="031-select-filter.html"><a href="031-select-filter.html#sort-filter-resources"><i class="fa fa-check"></i><b>5.6</b> Sort / filter resources</a><ul>
-<li class="chapter" data-level="5.6.1" data-path="021-r-markdown.html"><a href="021-r-markdown.html#exercises"><i class="fa fa-check"></i><b>5.6.1</b> Exercises</a></li>
+<li class="chapter" data-level="5.6" data-path="031-select-filter.html"><a href="031-select-filter.html#sort-filter-resources"><i class="fa fa-check"></i><b>5.6</b> Sort / filter resources</a>
+<ul>
+<li class="chapter" data-level="5.6.1" data-path="031-select-filter.html"><a href="031-select-filter.html#exercises-1"><i class="fa fa-check"></i><b>5.6.1</b> Exercises</a></li>
 <li class="chapter" data-level="5.6.2" data-path="031-select-filter.html"><a href="031-select-filter.html#tutorials"><i class="fa fa-check"></i><b>5.6.2</b> Tutorials</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="033-groupby.html"><a href="033-groupby.html"><i class="fa fa-check"></i><b>6</b> Verbs Part 2: group_by and summarise</a><ul>
-<li class="chapter" data-level="6.1" data-path="011-r-install.html"><a href="011-r-install.html#key-takeaways"><i class="fa fa-check"></i><b>6.1</b> Key takeaways</a></li>
-<li class="chapter" data-level="6.2" data-path="033-groupby.html"><a href="033-groupby.html#group_by-summarise-basics"><i class="fa fa-check"></i><b>6.2</b> group_by / summarise basics</a><ul>
+<li class="chapter" data-level="6" data-path="033-groupby.html"><a href="033-groupby.html"><i class="fa fa-check"></i><b>6</b> Verbs Part 2: group_by and summarise</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="033-groupby.html"><a href="033-groupby.html#key-takeaways-5"><i class="fa fa-check"></i><b>6.1</b> Key takeaways</a></li>
+<li class="chapter" data-level="6.2" data-path="033-groupby.html"><a href="033-groupby.html#group_by-summarise-basics"><i class="fa fa-check"></i><b>6.2</b> group_by / summarise basics</a>
+<ul>
 <li class="chapter" data-level="6.2.1" data-path="033-groupby.html"><a href="033-groupby.html#other-summary-functions"><i class="fa fa-check"></i><b>6.2.1</b> Other summary functions</a></li>
 <li class="chapter" data-level="6.2.2" data-path="033-groupby.html"><a href="033-groupby.html#grouping-by-more-than-one-variable"><i class="fa fa-check"></i><b>6.2.2</b> Grouping by more than one variable</a></li>
 <li class="chapter" data-level="6.2.3" data-path="033-groupby.html"><a href="033-groupby.html#rolling-up-to-the-next-level"><i class="fa fa-check"></i><b>6.2.3</b> Rolling up to the next level</a></li>
 </ul></li>
-<li class="chapter" data-level="6.3" data-path="033-groupby.html"><a href="033-groupby.html#restructuring-for-a-report-with-pivot_wider"><i class="fa fa-check"></i><b>6.3</b> Restructuring for a report with <code>pivot_wider()</code></a><ul>
+<li class="chapter" data-level="6.3" data-path="033-groupby.html"><a href="033-groupby.html#restructuring-for-a-report-with-pivot_wider"><i class="fa fa-check"></i><b>6.3</b> Restructuring for a report with <code>pivot_wider()</code></a>
+<ul>
 <li class="chapter" data-level="6.3.1" data-path="033-groupby.html"><a href="033-groupby.html#a-note-on-restructuring-your-data-frames"><i class="fa fa-check"></i><b>6.3.1</b> A note on restructuring your data frames</a></li>
 </ul></li>
-<li class="chapter" data-level="6.4" data-path="033-groupby.html"><a href="033-groupby.html#resources-exercises"><i class="fa fa-check"></i><b>6.4</b> Resources &amp; exercises</a><ul>
-<li class="chapter" data-level="6.4.1" data-path="021-r-markdown.html"><a href="021-r-markdown.html#exercises"><i class="fa fa-check"></i><b>6.4.1</b> Exercises</a></li>
+<li class="chapter" data-level="6.4" data-path="033-groupby.html"><a href="033-groupby.html#resources-exercises"><i class="fa fa-check"></i><b>6.4</b> Resources &amp; exercises</a>
+<ul>
+<li class="chapter" data-level="6.4.1" data-path="033-groupby.html"><a href="033-groupby.html#exercises-2"><i class="fa fa-check"></i><b>6.4.1</b> Exercises</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="035-mutate.html"><a href="035-mutate.html"><i class="fa fa-check"></i><b>7</b> Verbs Part 3: mutate</a><ul>
-<li class="chapter" data-level="7.1" data-path="011-r-install.html"><a href="011-r-install.html#key-takeaways"><i class="fa fa-check"></i><b>7.1</b> Key takeaways</a><ul>
+<li class="chapter" data-level="7" data-path="035-mutate.html"><a href="035-mutate.html"><i class="fa fa-check"></i><b>7</b> Verbs Part 3: mutate</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="035-mutate.html"><a href="035-mutate.html#key-takeaways-6"><i class="fa fa-check"></i><b>7.1</b> Key takeaways</a>
+<ul>
 <li class="chapter" data-level="7.1.1" data-path="035-mutate.html"><a href="035-mutate.html#read-in-some-data"><i class="fa fa-check"></i><b>7.1.1</b> Read in some data</a></li>
 </ul></li>
 <li class="chapter" data-level="7.2" data-path="035-mutate.html"><a href="035-mutate.html#simple-arithmetic"><i class="fa fa-check"></i><b>7.2</b> Simple arithmetic</a></li>
 <li class="chapter" data-level="7.3" data-path="035-mutate.html"><a href="035-mutate.html#creating-categories-with-if_else"><i class="fa fa-check"></i><b>7.3</b> Creating categories with <code>if_else()</code></a></li>
 <li class="chapter" data-level="7.4" data-path="035-mutate.html"><a href="035-mutate.html#useful-functions"><i class="fa fa-check"></i><b>7.4</b> Useful functions</a></li>
 <li class="chapter" data-level="7.5" data-path="035-mutate.html"><a href="035-mutate.html#bonus-fun-with-date-and-time"><i class="fa fa-check"></i><b>7.5</b> Bonus: Fun with date and time</a></li>
-<li class="chapter" data-level="7.6" data-path="035-mutate.html"><a href="035-mutate.html#more-resources"><i class="fa fa-check"></i><b>7.6</b> More resources</a><ul>
+<li class="chapter" data-level="7.6" data-path="035-mutate.html"><a href="035-mutate.html#more-resources"><i class="fa fa-check"></i><b>7.6</b> More resources</a>
+<ul>
 <li class="chapter" data-level="" data-path="035-mutate.html"><a href="035-mutate.html#tk-exercises"><i class="fa fa-check"></i>TK: Exercises</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="036-joins.html"><a href="036-joins.html"><i class="fa fa-check"></i><b>8</b> Verbs Part 4: Combining data</a><ul>
-<li class="chapter" data-level="8.1" data-path="011-r-install.html"><a href="011-r-install.html#key-takeaways"><i class="fa fa-check"></i><b>8.1</b> Key takeaways</a><ul>
+<li class="chapter" data-level="8" data-path="036-joins.html"><a href="036-joins.html"><i class="fa fa-check"></i><b>8</b> Verbs Part 4: Combining data</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="036-joins.html"><a href="036-joins.html#key-takeaways-7"><i class="fa fa-check"></i><b>8.1</b> Key takeaways</a>
+<ul>
 <li class="chapter" data-level="8.1.1" data-path="036-joins.html"><a href="036-joins.html#adding-rows-instead-of-columns"><i class="fa fa-check"></i><b>8.1.1</b> Adding rows instead of columns</a></li>
 </ul></li>
 <li class="chapter" data-level="8.2" data-path="036-joins.html"><a href="036-joins.html#concepts-of-joining"><i class="fa fa-check"></i><b>8.2</b> Concepts of joining</a></li>
-<li class="chapter" data-level="8.3" data-path="036-joins.html"><a href="036-joins.html#arizona-immunization-data"><i class="fa fa-check"></i><b>8.3</b> Arizona immunization data</a><ul>
+<li class="chapter" data-level="8.3" data-path="036-joins.html"><a href="036-joins.html#arizona-immunization-data"><i class="fa fa-check"></i><b>8.3</b> Arizona immunization data</a>
+<ul>
 <li class="chapter" data-level="" data-path="036-joins.html"><a href="036-joins.html#setting-up-the-data"><i class="fa fa-check"></i>Setting up the data</a></li>
 <li class="chapter" data-level="" data-path="036-joins.html"><a href="036-joins.html#apply-the-join"><i class="fa fa-check"></i>Apply the join</a></li>
 </ul></li>
-<li class="chapter" data-level="8.4" data-path="021-r-markdown.html"><a href="021-r-markdown.html#resources"><i class="fa fa-check"></i><b>8.4</b> Resources</a><ul>
+<li class="chapter" data-level="8.4" data-path="036-joins.html"><a href="036-joins.html#resources-1"><i class="fa fa-check"></i><b>8.4</b> Resources</a>
+<ul>
 <li class="chapter" data-level="8.4.1" data-path="036-joins.html"><a href="036-joins.html#practice"><i class="fa fa-check"></i><b>8.4.1</b> Practice</a></li>
 </ul></li>
 </ul></li>
 <li class="part"><span><b>III Graphics, data cleaning, scraping and more</b></span></li>
-<li class="chapter" data-level="9" data-path="041-plotly.html"><a href="041-plotly.html"><i class="fa fa-check"></i><b>9</b> Intro to visualization in R</a><ul>
-<li class="chapter" data-level="9.1" data-path="041-plotly.html"><a href="041-plotly.html#the-grammar-of-graphics"><i class="fa fa-check"></i><b>9.1</b> The Grammar of Graphics</a><ul>
+<li class="chapter" data-level="9" data-path="041-plotly.html"><a href="041-plotly.html"><i class="fa fa-check"></i><b>9</b> Intro to visualization in R</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="041-plotly.html"><a href="041-plotly.html#the-grammar-of-graphics"><i class="fa fa-check"></i><b>9.1</b> The Grammar of Graphics</a>
+<ul>
 <li class="chapter" data-level="9.1.1" data-path="041-plotly.html"><a href="041-plotly.html#good-resources"><i class="fa fa-check"></i><b>9.1.1</b> Good resources</a></li>
 </ul></li>
-<li class="chapter" data-level="9.2" data-path="041-plotly.html"><a href="041-plotly.html#building-you-graph-in-pieces-using-gapminder"><i class="fa fa-check"></i><b>9.2</b> Building you graph in pieces using gapminder</a><ul>
+<li class="chapter" data-level="9.2" data-path="041-plotly.html"><a href="041-plotly.html#building-you-graph-in-pieces-using-gapminder"><i class="fa fa-check"></i><b>9.2</b> Building you graph in pieces using gapminder</a>
+<ul>
 <li class="chapter" data-level="9.2.1" data-path="041-plotly.html"><a href="041-plotly.html#subset-to-just-the-latest-years"><i class="fa fa-check"></i><b>9.2.1</b> Subset to just the latest years</a></li>
 <li class="chapter" data-level="9.2.2" data-path="041-plotly.html"><a href="041-plotly.html#the-histogram"><i class="fa fa-check"></i><b>9.2.2</b> The histogram</a></li>
 <li class="chapter" data-level="9.2.3" data-path="041-plotly.html"><a href="041-plotly.html#try-a-scatter-or-dot-plot"><i class="fa fa-check"></i><b>9.2.3</b> Try a scatter, or dot plot</a></li>
@@ -273,35 +303,42 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="9.3" data-path="041-plotly.html"><a href="041-plotly.html#adding-animation"><i class="fa fa-check"></i><b>9.3</b> Adding animation</a></li>
 </ul></li>
 <li class="appendix"><span><b>Appendix</b></span></li>
-<li class="chapter" data-level="A" data-path="A02-programming.html"><a href="A02-programming.html"><i class="fa fa-check"></i><b>A</b> A gentle intro to programming</a><ul>
-<li class="chapter" data-level="A.1" data-path="011-r-install.html"><a href="011-r-install.html#key-takeaways"><i class="fa fa-check"></i><b>A.1</b> Key takeaways</a></li>
-<li class="chapter" data-level="A.2" data-path="A02-programming.html"><a href="A02-programming.html#building-blocks"><i class="fa fa-check"></i><b>A.2</b> Building blocks</a><ul>
+<li class="chapter" data-level="A" data-path="A02-programming.html"><a href="A02-programming.html"><i class="fa fa-check"></i><b>A</b> A gentle intro to programming</a>
+<ul>
+<li class="chapter" data-level="A.1" data-path="A02-programming.html"><a href="A02-programming.html#key-takeaways-8"><i class="fa fa-check"></i><b>A.1</b> Key takeaways</a></li>
+<li class="chapter" data-level="A.2" data-path="A02-programming.html"><a href="A02-programming.html#building-blocks"><i class="fa fa-check"></i><b>A.2</b> Building blocks</a>
+<ul>
 <li class="chapter" data-level="" data-path="A02-programming.html"><a href="A02-programming.html#variables-and-objects"><i class="fa fa-check"></i>Variables and objects</a></li>
 <li class="chapter" data-level="" data-path="A02-programming.html"><a href="A02-programming.html#operators-assignment"><i class="fa fa-check"></i>Operators &amp; assignment</a></li>
 <li class="chapter" data-level="" data-path="A02-programming.html"><a href="A02-programming.html#functions"><i class="fa fa-check"></i>Functions</a></li>
 <li class="chapter" data-level="" data-path="A02-programming.html"><a href="A02-programming.html#loops"><i class="fa fa-check"></i>Loops</a></li>
 </ul></li>
-<li class="chapter" data-level="A.3" data-path="A02-programming.html"><a href="A02-programming.html#make-an-omelet-with-a-function"><i class="fa fa-check"></i><b>A.3</b> Make an omelet with a function</a><ul>
+<li class="chapter" data-level="A.3" data-path="A02-programming.html"><a href="A02-programming.html#make-an-omelet-with-a-function"><i class="fa fa-check"></i><b>A.3</b> Make an omelet with a function</a>
+<ul>
 <li class="chapter" data-level="" data-path="A02-programming.html"><a href="A02-programming.html#open-a-restaurant-with-loops"><i class="fa fa-check"></i>Open a restaurant with loops</a></li>
 </ul></li>
 <li class="chapter" data-level="A.4" data-path="A02-programming.html"><a href="A02-programming.html#applications"><i class="fa fa-check"></i><b>A.4</b> Applications</a></li>
-<li class="chapter" data-level="A.5" data-path="035-mutate.html"><a href="035-mutate.html#more-resources"><i class="fa fa-check"></i><b>A.5</b> More resources</a></li>
+<li class="chapter" data-level="A.5" data-path="A02-programming.html"><a href="A02-programming.html#more-resources-1"><i class="fa fa-check"></i><b>A.5</b> More resources</a></li>
 </ul></li>
-<li class="chapter" data-level="B" data-path="A01-resources.html"><a href="A01-resources.html"><i class="fa fa-check"></i><b>B</b> Great R Resources</a><ul>
-<li class="chapter" data-level="B.1" data-path="011-r-install.html"><a href="011-r-install.html#key-takeaways"><i class="fa fa-check"></i><b>B.1</b> Key takeaways</a></li>
+<li class="chapter" data-level="B" data-path="A01-resources.html"><a href="A01-resources.html"><i class="fa fa-check"></i><b>B</b> Great R Resources</a>
+<ul>
+<li class="chapter" data-level="B.1" data-path="A01-resources.html"><a href="A01-resources.html#key-takeaways-9"><i class="fa fa-check"></i><b>B.1</b> Key takeaways</a></li>
 <li class="chapter" data-level="B.2" data-path="A01-resources.html"><a href="A01-resources.html#coursework-in-r"><i class="fa fa-check"></i><b>B.2</b> Coursework in R</a></li>
 <li class="chapter" data-level="B.3" data-path="A01-resources.html"><a href="A01-resources.html#instructional-screencasts-and-videos"><i class="fa fa-check"></i><b>B.3</b> Instructional screencasts and videos</a></li>
 </ul></li>
-<li class="chapter" data-level="C" data-path="A04-murders.html"><a href="A04-murders.html"><i class="fa fa-check"></i><b>C</b> Murder Accountability Project exercises</a><ul>
+<li class="chapter" data-level="C" data-path="A04-murders.html"><a href="A04-murders.html"><i class="fa fa-check"></i><b>C</b> Murder Accountability Project exercises</a>
+<ul>
 <li class="chapter" data-level="C.1" data-path="A04-murders.html"><a href="A04-murders.html#the-data"><i class="fa fa-check"></i><b>C.1</b> The data</a></li>
-<li class="chapter" data-level="C.2" data-path="A04-murders.html"><a href="A04-murders.html#exercises-by-chapter"><i class="fa fa-check"></i><b>C.2</b> Exercises by chapter</a><ul>
+<li class="chapter" data-level="C.2" data-path="A04-murders.html"><a href="A04-murders.html#exercises-by-chapter"><i class="fa fa-check"></i><b>C.2</b> Exercises by chapter</a>
+<ul>
 <li class="chapter" data-level="C.2.1" data-path="A04-murders.html"><a href="A04-murders.html#select-and-filter-exercises"><i class="fa fa-check"></i><b>C.2.1</b> Select and filter exercises</a></li>
 <li class="chapter" data-level="C.2.2" data-path="A04-murders.html"><a href="A04-murders.html#group-by-and-summarise"><i class="fa fa-check"></i><b>C.2.2</b> Group by and summarise</a></li>
 <li class="chapter" data-level="C.2.3" data-path="A04-murders.html"><a href="A04-murders.html#mutate"><i class="fa fa-check"></i><b>C.2.3</b> Mutate</a></li>
 <li class="chapter" data-level="C.2.4" data-path="A04-murders.html"><a href="A04-murders.html#join"><i class="fa fa-check"></i><b>C.2.4</b> Join</a></li>
 </ul></li>
 <li class="chapter" data-level="C.3" data-path="A04-murders.html"><a href="A04-murders.html#wrap-up-exercise"><i class="fa fa-check"></i><b>C.3</b> Wrap-up exercise</a></li>
-<li class="chapter" data-level="C.4" data-path="A04-murders.html"><a href="A04-murders.html#answers-to-exercises"><i class="fa fa-check"></i><b>C.4</b> Answers to exercises</a><ul>
+<li class="chapter" data-level="C.4" data-path="A04-murders.html"><a href="A04-murders.html#answers-to-exercises"><i class="fa fa-check"></i><b>C.4</b> Answers to exercises</a>
+<ul>
 <li class="chapter" data-level="C.4.1" data-path="A04-murders.html"><a href="A04-murders.html#select-and-filter"><i class="fa fa-check"></i><b>C.4.1</b> Select and filter</a></li>
 <li class="chapter" data-level="C.4.2" data-path="A04-murders.html"><a href="A04-murders.html#group-by"><i class="fa fa-check"></i><b>C.4.2</b> Group by</a></li>
 </ul></li>
@@ -323,9 +360,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="verbs-part-3-mutate" class="section level1">
+<div id="verbs-part-3-mutate" class="section level1" number="7">
 <h1><span class="header-section-number">7</span> Verbs Part 3: mutate</h1>
-<div id="key-takeaways" class="section level2">
+<div id="key-takeaways-6" class="section level2" number="7.1">
 <h2><span class="header-section-number">7.1</span> Key takeaways</h2>
 <ul>
 <li><code>mutate</code> just means “compute”, or convert one or more variables into something new.</li>
@@ -339,20 +376,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Use functions to combine or pull apart and edit your data.</li>
 </ul></li>
 </ul>
-<div id="read-in-some-data" class="section level3">
+<div id="read-in-some-data" class="section level3" number="7.1.1">
 <h3><span class="header-section-number">7.1.1</span> Read in some data</h3>
 <p>Start with the <a href="https://github.com/cronkitedata/rstudyguide/blob/master/data/az-immunizations-grade6.Rda?raw=true">Arizona immunization data</a> that some other chapters have worked with, loading it and the tidyverse to follow along.</p>
 <p>Here are the packages and data used for this chapter. You might need to install some of them.</p>
-<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="035-mutate.html#cb62-1"></a><span class="kw">library</span>(tidyverse)</span>
-<span id="cb62-2"><a href="035-mutate.html#cb62-2"></a><span class="kw">library</span>(knitr)       <span class="co"># used for slightly better looking tables</span></span>
-<span id="cb62-3"><a href="035-mutate.html#cb62-3"></a><span class="kw">library</span>(DT)          <span class="co"># even more options with tables</span></span>
-<span id="cb62-4"><a href="035-mutate.html#cb62-4"></a><span class="kw">library</span>(lubridate)   <span class="co"># used for working with dates</span></span>
-<span id="cb62-5"><a href="035-mutate.html#cb62-5"></a><span class="kw">library</span>(janitor)     <span class="co"># used to clean up dirty data and change column names.</span></span>
-<span id="cb62-6"><a href="035-mutate.html#cb62-6"></a></span>
-<span id="cb62-7"><a href="035-mutate.html#cb62-7"></a><span class="kw">load</span>(<span class="st">&quot;data/az-immunizations-grade6.Rda&quot;</span>)  <span class="co"># you may need to change the path to wherever you saved the data</span></span></code></pre></div>
+<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="035-mutate.html#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb59-2"><a href="035-mutate.html#cb59-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(knitr)       <span class="co"># used for slightly better looking tables</span></span>
+<span id="cb59-3"><a href="035-mutate.html#cb59-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(DT)          <span class="co"># even more options with tables</span></span>
+<span id="cb59-4"><a href="035-mutate.html#cb59-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lubridate)   <span class="co"># used for working with dates</span></span>
+<span id="cb59-5"><a href="035-mutate.html#cb59-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(janitor)     <span class="co"># used to clean up dirty data and change column names.</span></span>
+<span id="cb59-6"><a href="035-mutate.html#cb59-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb59-7"><a href="035-mutate.html#cb59-7" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">&quot;data/az-immunizations-grade6.Rda&quot;</span>)  <span class="co"># you may need to change the path to wherever you saved the data</span></span></code></pre></div>
 </div>
 </div>
-<div id="simple-arithmetic" class="section level2">
+<div id="simple-arithmetic" class="section level2" number="7.2">
 <h2><span class="header-section-number">7.2</span> Simple arithmetic</h2>
 <p>Use the usual arithmetic operators to calculate numbers and create a new column:</p>
 <pre><code>  + Addition
@@ -361,10 +398,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   / Division
   </code></pre>
 <p>This example creates a new data frame called <code>immune_pct</code> from a few columns of the original:</p>
-<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="035-mutate.html#cb64-1"></a>immune_pct &lt;-<span class="st"> </span></span>
-<span id="cb64-2"><a href="035-mutate.html#cb64-2"></a><span class="st">  </span>grade6_counts <span class="op">%&gt;%</span></span>
-<span id="cb64-3"><a href="035-mutate.html#cb64-3"></a><span class="st">  </span><span class="kw">select</span> ( school_name, city, school_type, enrolled, num_immune_mmr) <span class="op">%&gt;%</span></span>
-<span id="cb64-4"><a href="035-mutate.html#cb64-4"></a><span class="st">  </span><span class="kw">mutate</span> (<span class="dt">pct_immune =</span> ( num_immune_mmr<span class="op">/</span>enrolled) <span class="op">*</span><span class="st"> </span><span class="dv">100</span>) </span></code></pre></div>
+<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="035-mutate.html#cb61-1" aria-hidden="true" tabindex="-1"></a>immune_pct <span class="ot">&lt;-</span> </span>
+<span id="cb61-2"><a href="035-mutate.html#cb61-2" aria-hidden="true" tabindex="-1"></a>  grade6_counts <span class="sc">%&gt;%</span></span>
+<span id="cb61-3"><a href="035-mutate.html#cb61-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span> ( school_name, city, school_type, enrolled, num_immune_mmr) <span class="sc">%&gt;%</span></span>
+<span id="cb61-4"><a href="035-mutate.html#cb61-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span> (<span class="at">pct_immune =</span> ( num_immune_mmr<span class="sc">/</span>enrolled) <span class="sc">*</span> <span class="dv">100</span>) </span></code></pre></div>
 <p>Here’s what it looks like:</p>
 <table>
 <thead>
@@ -421,35 +458,35 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </tbody>
 </table>
 </div>
-<div id="creating-categories-with-if_else" class="section level2">
+<div id="creating-categories-with-if_else" class="section level2" number="7.3">
 <h2><span class="header-section-number">7.3</span> Creating categories with <code>if_else()</code></h2>
 <p>Sometimes, you want to create categories out of more detailed information. In this case, a threshold of 90 percent immunization is considered the limit under which there is a threat of a measles outbreak, also known as “herd immunity”. To categorize each schools as above or under that level, we need to create a new variable that is based on the value of the percentage we just calcluated. That’s done using an <code>if_else</code> statement, which is in the form:</p>
 <pre><code>  if_else (  condition, 
              new value if it&#39;s true, 
              new value if it&#39;s not true)</code></pre>
 <p>For example:</p>
-<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="035-mutate.html#cb66-1"></a>immune_pct &lt;-<span class="st"> </span></span>
-<span id="cb66-2"><a href="035-mutate.html#cb66-2"></a><span class="st">    </span>immune_pct <span class="op">%&gt;%</span></span>
-<span id="cb66-3"><a href="035-mutate.html#cb66-3"></a><span class="st">    </span><span class="kw">mutate</span> (  <span class="dt">threshold_met =</span>  <span class="kw">if_else</span>   ( pct_immune <span class="op">&gt;=</span><span class="st"> </span><span class="dv">90</span>, </span>
-<span id="cb66-4"><a href="035-mutate.html#cb66-4"></a>                                        <span class="st">&quot;Meets threshold&quot;</span>, </span>
-<span id="cb66-5"><a href="035-mutate.html#cb66-5"></a>                                         <span class="st">&quot;Below threshold&quot;</span>)</span>
-<span id="cb66-6"><a href="035-mutate.html#cb66-6"></a>            )</span></code></pre></div>
+<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="035-mutate.html#cb63-1" aria-hidden="true" tabindex="-1"></a>immune_pct <span class="ot">&lt;-</span> </span>
+<span id="cb63-2"><a href="035-mutate.html#cb63-2" aria-hidden="true" tabindex="-1"></a>    immune_pct <span class="sc">%&gt;%</span></span>
+<span id="cb63-3"><a href="035-mutate.html#cb63-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span> (  <span class="at">threshold_met =</span>  <span class="fu">if_else</span>   ( pct_immune <span class="sc">&gt;=</span> <span class="dv">90</span>, </span>
+<span id="cb63-4"><a href="035-mutate.html#cb63-4" aria-hidden="true" tabindex="-1"></a>                                        <span class="st">&quot;Meets threshold&quot;</span>, </span>
+<span id="cb63-5"><a href="035-mutate.html#cb63-5" aria-hidden="true" tabindex="-1"></a>                                         <span class="st">&quot;Below threshold&quot;</span>)</span>
+<span id="cb63-6"><a href="035-mutate.html#cb63-6" aria-hidden="true" tabindex="-1"></a>            )</span></code></pre></div>
 <p>Now we can do some grouping by the new categories:</p>
-<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="035-mutate.html#cb67-1"></a>immune_pct <span class="op">%&gt;%</span></span>
-<span id="cb67-2"><a href="035-mutate.html#cb67-2"></a><span class="st">    </span><span class="kw">group_by</span> (school_type, threshold_met) <span class="op">%&gt;%</span></span>
-<span id="cb67-3"><a href="035-mutate.html#cb67-3"></a><span class="st">    </span><span class="kw">summarise</span> ( <span class="dt">school_ct =</span> <span class="kw">n</span>(), </span>
-<span id="cb67-4"><a href="035-mutate.html#cb67-4"></a>                <span class="dt">enrolled =</span> <span class="kw">sum</span>(enrolled)) </span></code></pre></div>
-<pre><code>## `summarise()` regrouping output by &#39;school_type&#39; (override with `.groups` argument)</code></pre>
+<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="035-mutate.html#cb64-1" aria-hidden="true" tabindex="-1"></a>immune_pct <span class="sc">%&gt;%</span></span>
+<span id="cb64-2"><a href="035-mutate.html#cb64-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span> (school_type, threshold_met) <span class="sc">%&gt;%</span></span>
+<span id="cb64-3"><a href="035-mutate.html#cb64-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarise</span> ( <span class="at">school_ct =</span> <span class="fu">n</span>(), </span>
+<span id="cb64-4"><a href="035-mutate.html#cb64-4" aria-hidden="true" tabindex="-1"></a>                <span class="at">enrolled =</span> <span class="fu">sum</span>(enrolled)) </span></code></pre></div>
+<pre><code>## `summarise()` has grouped output by &#39;school_type&#39;. You can override using the `.groups` argument.</code></pre>
 <p>You can practice rolling up by looking at the percent by type.</p>
-<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="035-mutate.html#cb69-1"></a>immune_pct <span class="op">%&gt;%</span></span>
-<span id="cb69-2"><a href="035-mutate.html#cb69-2"></a><span class="st">    </span><span class="kw">group_by</span> (school_type, threshold_met) <span class="op">%&gt;%</span></span>
-<span id="cb69-3"><a href="035-mutate.html#cb69-3"></a><span class="st">    </span><span class="kw">summarise</span> ( <span class="dt">schools =</span> <span class="kw">n</span>(), </span>
-<span id="cb69-4"><a href="035-mutate.html#cb69-4"></a>                <span class="dt">students =</span> <span class="kw">sum</span>(enrolled)) <span class="op">%&gt;%</span></span>
-<span id="cb69-5"><a href="035-mutate.html#cb69-5"></a><span class="st">    </span><span class="kw">mutate</span> (   <span class="dt">pct_school_type =</span> schools <span class="op">/</span><span class="st"> </span><span class="kw">sum</span>(schools, <span class="dt">na.rm=</span><span class="ot">TRUE</span>) <span class="op">*</span><span class="st"> </span><span class="dv">100</span>,</span>
-<span id="cb69-6"><a href="035-mutate.html#cb69-6"></a>               <span class="dt">pct_enrolled =</span> students <span class="op">/</span><span class="st"> </span><span class="kw">sum</span>(students, <span class="dt">na.rm=</span><span class="ot">TRUE</span>) <span class="op">*</span><span class="st"> </span><span class="dv">100</span> </span>
-<span id="cb69-7"><a href="035-mutate.html#cb69-7"></a>             ) <span class="op">%&gt;%</span></span>
-<span id="cb69-8"><a href="035-mutate.html#cb69-8"></a><span class="st">    </span><span class="kw">filter</span> ( threshold_met <span class="op">==</span><span class="st"> &quot;Below threshold&quot;</span>)  </span></code></pre></div>
-<pre><code>## `summarise()` regrouping output by &#39;school_type&#39; (override with `.groups` argument)</code></pre>
+<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="035-mutate.html#cb66-1" aria-hidden="true" tabindex="-1"></a>immune_pct <span class="sc">%&gt;%</span></span>
+<span id="cb66-2"><a href="035-mutate.html#cb66-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span> (school_type, threshold_met) <span class="sc">%&gt;%</span></span>
+<span id="cb66-3"><a href="035-mutate.html#cb66-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarise</span> ( <span class="at">schools =</span> <span class="fu">n</span>(), </span>
+<span id="cb66-4"><a href="035-mutate.html#cb66-4" aria-hidden="true" tabindex="-1"></a>                <span class="at">students =</span> <span class="fu">sum</span>(enrolled)) <span class="sc">%&gt;%</span></span>
+<span id="cb66-5"><a href="035-mutate.html#cb66-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span> (   <span class="at">pct_school_type =</span> schools <span class="sc">/</span> <span class="fu">sum</span>(schools, <span class="at">na.rm=</span><span class="cn">TRUE</span>) <span class="sc">*</span> <span class="dv">100</span>,</span>
+<span id="cb66-6"><a href="035-mutate.html#cb66-6" aria-hidden="true" tabindex="-1"></a>               <span class="at">pct_enrolled =</span> students <span class="sc">/</span> <span class="fu">sum</span>(students, <span class="at">na.rm=</span><span class="cn">TRUE</span>) <span class="sc">*</span> <span class="dv">100</span> </span>
+<span id="cb66-7"><a href="035-mutate.html#cb66-7" aria-hidden="true" tabindex="-1"></a>             ) <span class="sc">%&gt;%</span></span>
+<span id="cb66-8"><a href="035-mutate.html#cb66-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span> ( threshold_met <span class="sc">==</span> <span class="st">&quot;Below threshold&quot;</span>)  </span></code></pre></div>
+<pre><code>## `summarise()` has grouped output by &#39;school_type&#39;. You can override using the `.groups` argument.</code></pre>
 <div class="kable-table">
 <table>
 <thead>
@@ -493,7 +530,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>You can read this table to say, “More than one-sixth of 6th-grade charter school students could be at risk of contracting measles because their schools have immunization rates below levels experts say are needed to prevent outbreaks.” (The wording is tough here to avoid saying “schools” over and over! )</p>
 <p>This strategy can also be used to set unreal values to the special <code>NA</code> as in the MAP murder data that uses the value 999 instead of “unknown” for an age. This is common in survey data.</p>
 </div>
-<div id="useful-functions" class="section level2">
+<div id="useful-functions" class="section level2" number="7.4">
 <h2><span class="header-section-number">7.4</span> Useful functions</h2>
 <p>Here are some functions you may find yourself using pretty regularly. I’m not going to go into the details, but think about looking some up if you think you need them. In each case, these are just the <code>verbs</code>. You’d put your noun – an existing variable from your data frame – within the parentheses.</p>
 <ul>
@@ -504,18 +541,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Conversion functions: as.character(), as.integer(), as.numeric() and as.double()</li>
 </ul>
 </div>
-<div id="bonus-fun-with-date-and-time" class="section level2">
+<div id="bonus-fun-with-date-and-time" class="section level2" number="7.5">
 <h2><span class="header-section-number">7.5</span> Bonus: Fun with date and time</h2>
 <p>Sometimes your data came to you as text, but you need to treat it as numbers. In journalism, we’re often trying to work with dates that came to us in some non-standard form. This is called changing the <code>data type</code>. <a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a></p>
 <p>This example comes from the opioid emergency call data shown in earlier chapters.</p>
-<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb71-1"><a href="035-mutate.html#cb71-1"></a>my_link &lt;-<span class="st"> &quot;https://cronkitedata.github.io/cronkite-docs/assets/data/csv/opioidemscalls.csv&quot;</span></span>
-<span id="cb71-2"><a href="035-mutate.html#cb71-2"></a><span class="co">#use it in a read_csv command</span></span>
-<span id="cb71-3"><a href="035-mutate.html#cb71-3"></a>opioid_calls_orig &lt;-<span class="st"> </span><span class="kw">read_csv</span>(my_link)</span>
-<span id="cb71-4"><a href="035-mutate.html#cb71-4"></a>opioid_calls &lt;-<span class="st"> </span>opioid_calls_orig <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb71-5"><a href="035-mutate.html#cb71-5"></a><span class="st">                </span><span class="kw">clean_names</span>() <span class="op">%&gt;%</span></span>
-<span id="cb71-6"><a href="035-mutate.html#cb71-6"></a><span class="st">                </span><span class="kw">select</span> (objectid, <span class="dt">incident_date_char =</span> incident_date, <span class="dt">narcan=</span> narcan_naloxone_given, is_asu_student, <span class="dt">is_homeless=</span>is_homeles)</span>
-<span id="cb71-7"><a href="035-mutate.html#cb71-7"></a></span>
-<span id="cb71-8"><a href="035-mutate.html#cb71-8"></a><span class="kw">glimpse</span>( opioid_calls)</span></code></pre></div>
+<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="035-mutate.html#cb68-1" aria-hidden="true" tabindex="-1"></a>my_link <span class="ot">&lt;-</span> <span class="st">&quot;https://cronkitedata.github.io/cronkite-docs/assets/data/csv/opioidemscalls.csv&quot;</span></span>
+<span id="cb68-2"><a href="035-mutate.html#cb68-2" aria-hidden="true" tabindex="-1"></a><span class="co">#use it in a read_csv command</span></span>
+<span id="cb68-3"><a href="035-mutate.html#cb68-3" aria-hidden="true" tabindex="-1"></a>opioid_calls_orig <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(my_link)</span>
+<span id="cb68-4"><a href="035-mutate.html#cb68-4" aria-hidden="true" tabindex="-1"></a>opioid_calls <span class="ot">&lt;-</span> opioid_calls_orig <span class="sc">%&gt;%</span> </span>
+<span id="cb68-5"><a href="035-mutate.html#cb68-5" aria-hidden="true" tabindex="-1"></a>                <span class="fu">clean_names</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb68-6"><a href="035-mutate.html#cb68-6" aria-hidden="true" tabindex="-1"></a>                <span class="fu">select</span> (objectid, <span class="at">incident_date_char =</span> incident_date, <span class="at">narcan=</span> narcan_naloxone_given, is_asu_student, <span class="at">is_homeless=</span>is_homeles)</span>
+<span id="cb68-7"><a href="035-mutate.html#cb68-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb68-8"><a href="035-mutate.html#cb68-8" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>( opioid_calls)</span></code></pre></div>
 <pre><code>## Rows: 650
 ## Columns: 5
 ## $ objectid           &lt;dbl&gt; 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16…
@@ -524,10 +561,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## $ is_asu_student     &lt;chr&gt; &quot;No&quot;, &quot;No&quot;, &quot;No&quot;, &quot;No&quot;, &quot;No&quot;, &quot;No&quot;, &quot;No&quot;, &quot;No&quot;, &quot;N…
 ## $ is_homeless        &lt;chr&gt; &quot;No&quot;, &quot;No&quot;, &quot;Yes&quot;, &quot;Yes&quot;, &quot;No&quot;, &quot;No&quot;, &quot;No&quot;, &quot;No&quot;, …</code></pre>
 <p>The date and time in this dataset is a character field, but we want to convert it to a date field and a separate time field. At first, we might just want to get the date value out of the character string. It’s in the form month/day/year hour:minute, so we can use the <code>lubridate::mdy_hm function</code> [When you see a function preceded by two colons as this one does, the author is showing you which package it comes from. In this case, the <code>lubridate</code> package, which you must install before you can use it, has a function <code>mdy_hm</code>.]. This function tries to guess how the character string is formatted:</p>
-<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="035-mutate.html#cb73-1"></a>opioid_calls <span class="op">%&gt;%</span></span>
-<span id="cb73-2"><a href="035-mutate.html#cb73-2"></a><span class="st">  </span><span class="kw">mutate</span> ( <span class="dt">incident_date =</span> <span class="kw">mdy_hm</span>(incident_date_char)) <span class="op">%&gt;%</span></span>
-<span id="cb73-3"><a href="035-mutate.html#cb73-3"></a><span class="st">  </span><span class="kw">select</span> (incident_date, incident_date_char<span class="op">:</span>is_homeless) <span class="op">%&gt;%</span></span>
-<span id="cb73-4"><a href="035-mutate.html#cb73-4"></a><span class="st">  </span><span class="kw">glimpse</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="035-mutate.html#cb70-1" aria-hidden="true" tabindex="-1"></a>opioid_calls <span class="sc">%&gt;%</span></span>
+<span id="cb70-2"><a href="035-mutate.html#cb70-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span> ( <span class="at">incident_date =</span> <span class="fu">mdy_hm</span>(incident_date_char)) <span class="sc">%&gt;%</span></span>
+<span id="cb70-3"><a href="035-mutate.html#cb70-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span> (incident_date, incident_date_char<span class="sc">:</span>is_homeless) <span class="sc">%&gt;%</span></span>
+<span id="cb70-4"><a href="035-mutate.html#cb70-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">glimpse</span>()</span></code></pre></div>
 <pre><code>## Rows: 650
 ## Columns: 5
 ## $ incident_date      &lt;dttm&gt; 2017-01-03 11:42:00, 2017-01-09 01:08:00, 2017-01…
@@ -537,21 +574,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## $ is_homeless        &lt;chr&gt; &quot;No&quot;, &quot;No&quot;, &quot;Yes&quot;, &quot;Yes&quot;, &quot;No&quot;, &quot;No&quot;, &quot;No&quot;, &quot;No&quot;, …</code></pre>
 <p>Notice that the new variable is of the type <dttm>, which refers to a date-time combined variable.</p>
 <p>Let’s say I want to distinguish weekends from weekdays in this dataset. First, we have to define weekend. Here’s one definition, but you might want to use another: A weekend begins at 3pm on Friday and ends at 6pm on Sunday. (The <code>hour</code> variable is in military time.). Instead of using <code>if_else</code>, this example uses <code>case_when</code>, which lets you choose among a variety of options, not just two.</p>
-<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb75-1"><a href="035-mutate.html#cb75-1"></a>opioid_calls <span class="op">%&gt;%</span></span>
-<span id="cb75-2"><a href="035-mutate.html#cb75-2"></a><span class="st">  </span><span class="kw">mutate</span> (<span class="dt">incident_date =</span> <span class="kw">mdy_hm</span>(incident_date_char), </span>
-<span id="cb75-3"><a href="035-mutate.html#cb75-3"></a>          <span class="dt">day_of_week =</span> <span class="kw">wday</span>(incident_date) ,</span>
-<span id="cb75-4"><a href="035-mutate.html#cb75-4"></a>          <span class="dt">weekday =</span> <span class="kw">weekdays</span>(incident_date),</span>
-<span id="cb75-5"><a href="035-mutate.html#cb75-5"></a>          <span class="dt">hour =</span> <span class="kw">hour</span>(incident_date), </span>
-<span id="cb75-6"><a href="035-mutate.html#cb75-6"></a>          <span class="dt">weekend =</span> </span>
-<span id="cb75-7"><a href="035-mutate.html#cb75-7"></a>              <span class="kw">case_when</span> ( day_of_week <span class="op">==</span><span class="st"> </span><span class="dv">7</span>                 <span class="op">~</span><span class="st"> &quot;Yes&quot;</span>, </span>
-<span id="cb75-8"><a href="035-mutate.html#cb75-8"></a>                          day_of_week <span class="op">==</span><span class="st"> </span><span class="dv">6</span> <span class="op">&amp;</span><span class="st"> </span>hour <span class="op">&gt;=</span><span class="st"> </span><span class="dv">15</span>     <span class="op">~</span><span class="st"> &quot;Yes&quot;</span>, </span>
-<span id="cb75-9"><a href="035-mutate.html#cb75-9"></a>                          day_of_week <span class="op">==</span><span class="st"> </span><span class="dv">1</span> <span class="op">&amp;</span><span class="st"> </span>hour <span class="op">&lt;=</span><span class="st"> </span><span class="dv">18</span>   <span class="op">~</span><span class="st"> &quot;Yes&quot;</span>, </span>
-<span id="cb75-10"><a href="035-mutate.html#cb75-10"></a>                          <span class="ot">TRUE</span>                             <span class="op">~</span><span class="st"> &quot;No&quot;</span></span>
-<span id="cb75-11"><a href="035-mutate.html#cb75-11"></a>                          )</span>
-<span id="cb75-12"><a href="035-mutate.html#cb75-12"></a>          ) <span class="op">%&gt;%</span></span>
-<span id="cb75-13"><a href="035-mutate.html#cb75-13"></a><span class="st">  </span><span class="co">#use count() instead of group_by / summarise. Same thing in this context.</span></span>
-<span id="cb75-14"><a href="035-mutate.html#cb75-14"></a><span class="st">  </span><span class="kw">count</span> (day_of_week, weekend, weekday) <span class="op">%&gt;%</span></span>
-<span id="cb75-15"><a href="035-mutate.html#cb75-15"></a><span class="st">  </span><span class="kw">pivot_wider</span> (<span class="dt">values_from =</span> n, <span class="dt">names_from =</span> weekend, <span class="dt">values_fill=</span> <span class="kw">list</span>(<span class="dt">n=</span><span class="dv">0</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="035-mutate.html#cb72-1" aria-hidden="true" tabindex="-1"></a>opioid_calls <span class="sc">%&gt;%</span></span>
+<span id="cb72-2"><a href="035-mutate.html#cb72-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span> (<span class="at">incident_date =</span> <span class="fu">mdy_hm</span>(incident_date_char), </span>
+<span id="cb72-3"><a href="035-mutate.html#cb72-3" aria-hidden="true" tabindex="-1"></a>          <span class="at">day_of_week =</span> <span class="fu">wday</span>(incident_date) ,</span>
+<span id="cb72-4"><a href="035-mutate.html#cb72-4" aria-hidden="true" tabindex="-1"></a>          <span class="at">weekday =</span> <span class="fu">weekdays</span>(incident_date),</span>
+<span id="cb72-5"><a href="035-mutate.html#cb72-5" aria-hidden="true" tabindex="-1"></a>          <span class="at">hour =</span> <span class="fu">hour</span>(incident_date), </span>
+<span id="cb72-6"><a href="035-mutate.html#cb72-6" aria-hidden="true" tabindex="-1"></a>          <span class="at">weekend =</span> </span>
+<span id="cb72-7"><a href="035-mutate.html#cb72-7" aria-hidden="true" tabindex="-1"></a>              <span class="fu">case_when</span> ( day_of_week <span class="sc">==</span> <span class="dv">7</span>                 <span class="sc">~</span> <span class="st">&quot;Yes&quot;</span>, </span>
+<span id="cb72-8"><a href="035-mutate.html#cb72-8" aria-hidden="true" tabindex="-1"></a>                          day_of_week <span class="sc">==</span> <span class="dv">6</span> <span class="sc">&amp;</span> hour <span class="sc">&gt;=</span> <span class="dv">15</span>     <span class="sc">~</span> <span class="st">&quot;Yes&quot;</span>, </span>
+<span id="cb72-9"><a href="035-mutate.html#cb72-9" aria-hidden="true" tabindex="-1"></a>                          day_of_week <span class="sc">==</span> <span class="dv">1</span> <span class="sc">&amp;</span> hour <span class="sc">&lt;=</span> <span class="dv">18</span>   <span class="sc">~</span> <span class="st">&quot;Yes&quot;</span>, </span>
+<span id="cb72-10"><a href="035-mutate.html#cb72-10" aria-hidden="true" tabindex="-1"></a>                          <span class="cn">TRUE</span>                             <span class="sc">~</span> <span class="st">&quot;No&quot;</span></span>
+<span id="cb72-11"><a href="035-mutate.html#cb72-11" aria-hidden="true" tabindex="-1"></a>                          )</span>
+<span id="cb72-12"><a href="035-mutate.html#cb72-12" aria-hidden="true" tabindex="-1"></a>          ) <span class="sc">%&gt;%</span></span>
+<span id="cb72-13"><a href="035-mutate.html#cb72-13" aria-hidden="true" tabindex="-1"></a>  <span class="co">#use count() instead of group_by / summarise. Same thing in this context.</span></span>
+<span id="cb72-14"><a href="035-mutate.html#cb72-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span> (day_of_week, weekend, weekday) <span class="sc">%&gt;%</span></span>
+<span id="cb72-15"><a href="035-mutate.html#cb72-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span> (<span class="at">values_from =</span> n, <span class="at">names_from =</span> weekend, <span class="at">values_fill=</span> <span class="fu">list</span>(<span class="at">n=</span><span class="dv">0</span>))</span></code></pre></div>
 <div class="kable-table">
 <table>
 <thead>
@@ -609,7 +646,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </table>
 </div>
 </div>
-<div id="more-resources" class="section level2">
+<div id="more-resources" class="section level2" number="7.6">
 <h2><span class="header-section-number">7.6</span> More resources</h2>
 <p>As always, other professors have done similar exercises:</p>
 <ul>
