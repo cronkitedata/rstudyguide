@@ -11,7 +11,7 @@
 
 <meta name="author" content="Sarah Cohen" />
 
-<meta name="date" content="2021-03-02" />
+<meta name="date" content="2021-03-09" />
 
 <title>PPP loans in Arizona</title>
 
@@ -50,6 +50,103 @@
     </style>
 
 
+<style type="text/css">
+  code {
+    white-space: pre;
+  }
+  .sourceCode {
+    overflow: visible;
+  }
+</style>
+<style type="text/css" data-origin="pandoc">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    background-color: #ffffff;
+    color: #a0a0a0;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #a0a0a0;  padding-left: 4px; }
+div.sourceCode
+  { color: #1f1c1b; background-color: #ffffff; }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span { color: #1f1c1b; } /* Normal */
+code span.al { color: #bf0303; background-color: #f7e6e6; font-weight: bold; } /* Alert */
+code span.an { color: #ca60ca; } /* Annotation */
+code span.at { color: #0057ae; } /* Attribute */
+code span.bn { color: #b08000; } /* BaseN */
+code span.bu { color: #644a9b; font-weight: bold; } /* BuiltIn */
+code span.cf { color: #1f1c1b; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #924c9d; } /* Char */
+code span.cn { color: #aa5500; } /* Constant */
+code span.co { color: #898887; } /* Comment */
+code span.cv { color: #0095ff; } /* CommentVar */
+code span.do { color: #607880; } /* Documentation */
+code span.dt { color: #0057ae; } /* DataType */
+code span.dv { color: #b08000; } /* DecVal */
+code span.er { color: #bf0303; text-decoration: underline; } /* Error */
+code span.ex { color: #0095ff; font-weight: bold; } /* Extension */
+code span.fl { color: #b08000; } /* Float */
+code span.fu { color: #644a9b; } /* Function */
+code span.im { color: #ff5500; } /* Import */
+code span.in { color: #b08000; } /* Information */
+code span.kw { color: #1f1c1b; font-weight: bold; } /* Keyword */
+code span.op { color: #1f1c1b; } /* Operator */
+code span.ot { color: #006e28; } /* Other */
+code span.pp { color: #006e28; } /* Preprocessor */
+code span.re { color: #0057ae; background-color: #e0e9f8; } /* RegionMarker */
+code span.sc { color: #3daee9; } /* SpecialChar */
+code span.ss { color: #ff5500; } /* SpecialString */
+code span.st { color: #bf0303; } /* String */
+code span.va { color: #0057ae; } /* Variable */
+code span.vs { color: #bf0303; } /* VerbatimString */
+code span.wa { color: #bf0303; } /* Warning */
+
+</style>
+<script>
+// apply pandoc div.sourceCode style to pre.sourceCode instead
+(function() {
+  var sheets = document.styleSheets;
+  for (var i = 0; i < sheets.length; i++) {
+    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
+    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
+    for (var j = 0; j < rules.length; j++) {
+      var rule = rules[j];
+      // check if there is a div.sourceCode rule
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") continue;
+      var style = rule.style.cssText;
+      // check if color or background-color is set
+      if (rule.style.color === '' && rule.style.backgroundColor === '') continue;
+      // replace div.sourceCode by a pre.sourceCode rule
+      sheets[i].deleteRule(j);
+      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
+    }
+  }
+})();
+</script>
 
 
 <style type="text/css">
@@ -250,33 +347,32 @@ div.tocify {
 
 <h1 class="title toc-ignore">PPP loans in Arizona</h1>
 <h4 class="author">Sarah Cohen</h4>
-<h4 class="date">2021-03-02</h4>
+<h4 class="date">2021-03-09</h4>
 
 </div>
 
 
-<p>This document outlines the information in the Paycheck Protection Program dataset that you will use in your practice memo. There are other background documents and example stories in the Canvas module for March 1 that you can also review.</p>
-<div id="read-the-data" class="section level2">
-<h2>Read the data</h2>
-<p>The data is saved as a native R data file, sort of like an Excel file but for R. You can read it by referencing the URL where I’ve stored it, so you don’t have to download it into you computer or project.</p>
-<p>Instead of <code>read_csv</code> or <code>read_Excel</code> , you get the data into your project by using the <code>load</code> command, which then uses the <code>url</code> command to indicate that it is coming from a web site instead of your computer. Copy this line into a code chunk in your markdown and run it:</p>
-<pre><code>  load (url ( &quot;https://github.com/cronkitedata/rstudyguide/blob/master/data/az_ppp.Rda?raw=true&quot;) )
+<p>This markdown gives you instructions for importing and understanding the PPP data for your mini-memo. There are other background documents and example stories in the Canvas module that you can also review.</p>
+<div id="download-the-data" class="section level2">
+<h2>Download the data</h2>
+<p>To load the data into your Global Environment add this line to a code chunk:</p>
+<pre><code>    data_url &lt;- &quot;https://github.com/cronkitedata/rstudyguide/blob/master/data/az_ppp_zipcodes.Rda?raw=true&quot;
+
+    load (url ( data_url) )
     </code></pre>
-<p>That will create a data frame called <code>az_ppp</code> in your RStudio session.</p>
+<p>This will create two data frames in your working environment: <code>az_ppp_zip</code>, which is the list of loans, and <code>az_by_zipcode</code>, which has information on the zip codes.</p>
 </div>
-<div id="source" class="section level2">
-<h2>Source</h2>
-<p>The original data was <a href="https://sba.app.box.com/s/5myd1nxutoq8wxecx2562baruz774si6">published by the SBA</a> on Feb. 1, 2021. I downloaded and unzipped the PPP portion, and read it into R using a loop that stacked each data file on top of one another.</p>
+<div id="sources" class="section level2">
+<h2>Sources</h2>
+<div id="ppp-loans" class="section level3">
+<h3>PPP loans</h3>
+<p>The original data was published by the SBA here <a href="https://sba.app.box.com/s/5myd1nxutoq8wxecx2562baruz774si6" class="uri">https://sba.app.box.com/s/5myd1nxutoq8wxecx2562baruz774si6</a> on March 1, 2021. I downloaded and unzipped the PPP portion, and read it into R using a different program.</p>
 <p>The SBA has never released a record layout or data dictionary for this data that I can find. I worked on a project over the Christmas break using an earlier version of the data, so I <em>think</em> I understand much of what it contains.</p>
 <p>I selected about half of the variables that are included in the original data, and simplified a few as shown below. I also converted all character fields to upper case to ease filtering, and converted the Zip Codes to 5-digits .</p>
 <p>This dataset includes all loans that were made to companies in Arizona. A handful (6) of these are going toward projects in other states.</p>
 <p>Here are the columns I kept, and what I understand them to mean. Any changes other than those above are indicated in the record layout.</p>
-<p>It might be helpful to look at the <a href="https://www.sba.gov/sites/default/files/2020-04/PPP-Borrower-Application-Form-Fillable.pdf">loan application form</a> .</p>
-<p>There’s one important thing I don’t know the answer to: There are no rows with a loan statust that suggests that it was forgiven, though we know from <a href="https://www.sba.gov/funding-programs/loans/coronavirus-relief-options/paycheck-protection-program/ppp-data#section-header-8">SBA reports</a> that more than 1.7 million loans representing $160 billion have already been forgiven. There is a “loan status” field in the data, but that doesn’t have anything related to forgiveness, and the “PAID IN FULL” indicator doesn’t add up to nearly enough money. I’m trying to find out what the answer is there, but I wanted to warn you not to use that column until we get some clarity on it.</p>
-</div>
-<div id="your-record-layout" class="section level2">
-<h2>Your record layout</h2>
-<div style="width:90%">
+<p>The <a href="https://www.sba.gov/sites/default/files/2020-04/PPP-Borrower-Application-Form-Fillable.pdf">loan application form</a> . There’s one important thing I don’t know the answer to: There are no rows with a loan statust that suggests that it was forgiven, though we know from reports that more than $100 billion have already been forgiven. There is a “loan status” field in the data, but that doesn’t have anything related to forgiveness, and the “PAID IN FULL” indicator doesn’t add up to nearly enough money. I’m trying to find out what the answer is there, but I wanted to warn you not to use that column until we get some clarity on it.</p>
+<div style="width:70%">
 <table>
 <colgroup>
 <col width="54%" />
@@ -329,125 +425,366 @@ div.tocify {
 <tr class="even">
 <td>zip</td>
 <td>c</td>
-<td>5-digit Zip code of the borrower</td>
+<td>5-digit Zip code of the borrower, as reported on the loan</td>
 </tr>
 <tr class="odd">
-<td>loan_status</td>
+<td><strong>census_zipcode</strong></td>
 <td>c</td>
-<td>Blank if it said “EXEMPTION 4”</td>
+<td>5-digit “zip code tabulatioon area” used by the Census bureau*</td>
 </tr>
 <tr class="even">
+<td>loan_status</td>
+<td>c</td>
+<td>Blank if redacted because of EXEMPTION 4 - VERY unclear what this means!</td>
+</tr>
+<tr class="odd">
 <td>term</td>
 <td>n</td>
 <td>Months to pay back</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>initial_amt</td>
 <td>n</td>
-<td>Initial amount approved by SBA</td>
+<td>Initial amount approved by SBA, as reported by the bank.</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>payroll_amt</td>
 <td>n</td>
 <td>Amount used for payroll</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>nonpayroll_amt</td>
 <td>n</td>
-<td>Total amount used for other costs</td>
+<td>Total amount used for other costs such as utilities, rent, or interest on loans</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>franchise</td>
 <td>c</td>
 <td>Name of a franchisee</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>business_type</td>
 <td>c</td>
-<td>Type of business, such as LLC or corporation (not standardized)</td>
+<td>How the business is organized, such as “SOLE PROPRIETOR” or “CORPORATION”</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>lender</td>
 <td>c</td>
 <td>Name of originating lender (not servicing lender)</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>lender_state</td>
 <td>c</td>
 <td></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>rural_urban</td>
 <td>c</td>
 <td></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>business_age</td>
 <td>c</td>
-<td>How long the business had been open before the loan</td>
+<td>How long the business had been open before the loan -</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>project_city</td>
 <td>c</td>
 <td>City where the money will be used</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>project_county</td>
 <td>c</td>
 <td>County where the money will be used</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>project_state</td>
 <td>c</td>
 <td>State where the county will be used</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>jobs_reported</td>
 <td>n</td>
 <td>Number of jobs “saved” by the loan</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>naics_code</td>
 <td>c</td>
 <td>Standard industry code used in the federal government</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>naics_sector</td>
 <td>c</td>
 <td>Sector of that standard industry code, where it was a valid one</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>naics_descript</td>
 <td>c</td>
 <td>2017 description of the industry, blank if a previous year’s version used</td>
 </tr>
-<tr class="odd">
-<td>race_ethnicity</td>
+<tr class="even">
+<td>race</td>
 <td>c</td>
-<td>Race and ethnicity of the business owner, but usually not filled out</td>
+<td>Race of business owner, “UNANSWERED” is 85% of loans. Hispanic is not a race.</td>
+</tr>
+<tr class="odd">
+<td>ethnicity</td>
+<td>c</td>
+<td>“HISPANIC OR LATINO”, “NOT HISPANIC OR LATINO”, “UNKNOWN/NOTSTATED” (85% of loans)</td>
 </tr>
 <tr class="even">
 <td>gender</td>
 <td>c</td>
-<td>Same with gender</td>
+<td>Same with gender - Usually not filled out</td>
 </tr>
 <tr class="odd">
 <td>veteran</td>
 <td>c</td>
-<td>Same with veteran</td>
+<td>Same with veteran - Usually not filled out</td>
 </tr>
 <tr class="even">
 <td>non_profit</td>
 <td>c</td>
-<td>Only filled out if the borrower is a non-profit organization</td>
+<td>“Y” if the borrower is a non-profit organization</td>
 </tr>
 </tbody>
 </table>
 </div>
-<p>During class, we’ll practice filtering, sorting and selecting columns on this data file. After that, we’ll work on counting , summing and extracting other useful statistics from it. Finally, we’ll merge it with a dataset that contains demographics of the zip codes and the number of USPS business addresses to use as a denominator.</p>
+<ul>
+<li>The <code>census_zipcode</code> is the one that you will use to match against the demographic information.</li>
+</ul>
+<p>To get demographic information, we had to use “zip code tabulation areas”, which is what the Census uses. The reason is that Zip Codes are actually postal codes, and refelct post office routes rather than areas. They can also contain post office boxes and special zip codes for large institutions like ASU. I created a new column in this dataset to reflect that Census zip code, which can be used to match against the rest of our demographic information.</p>
+<p>Creating it was a two-step process. First, I matched all “ZCTA” data from the Census itself against the original list and kept whatever matched. If they didn’t, I applied the census ZCTA found in the “<a href="https://udsmapper.org/zip-code-to-zcta-crosswalk/">UDS Mapper</a>” crosswalk, which is a health care coordination consortium created to help administer Obamacare.</p>
+<p>One element that isn’t clear is whether the loan was forgiven or not (yet). The borrower has up to two years to request forgiveness, and they can’t even ask until they’ve used all the money.</p>
+</div>
+<div id="zip-code-data" class="section level3">
+<h3>Zip code data</h3>
+<p>The zip code data you are getting is a compilation of sources that I created for some work I did for Reveal over the holiday break. (It was preliminary work to get started reporting, and won’t be used in the final story – they were in the process of geocoding every loan so that they had Census Tract information rather than zip codes, which are much better for demographic purposes.)</p>
+<div id="usps-businesses" class="section level4">
+<h4>USPS businesses</h4>
+<p>There is no good measure of the number of businesses that exist in any small geographic area like zip code or Census Tract. The reason is that most government surveys only include private, for-profit entities with at least 5 employees. About 80 percent of all businesses have NO employees, and a very large proportion of the rest have fewer than 5. The problem is, this loan program was targeted specifically at these small entities!</p>
+<p>This means it’s very difficult to estimate the percent of all businesses in a zip code that got loans! The best proxy I could find is from the U.S. Postal Service, which produces <a href="https://www.huduser.gov/portal/datasets/usps.html">a file every quarter that has the number of businesses and residential addresses</a> that can get mail. It excludes PO boxes, and would count as “residential” a business run out of a home, so it’s not exact. But it’s the best we can find.</p>
+</div>
+<div id="demographic-information" class="section level4">
+<h4>Demographic information</h4>
+<p>I obtained the Census data using <a href="https://socialexplorer.com">Social Explorer</a> , which you can access through the ASU library. It makes it relatively easy to obtain cuts of Census products tailored to your needs. I used the 2014-2018 American Community Survey to obtain basic demographic information by Zip Code Tabulation area.</p>
+</div>
+<div id="geographic-information" class="section level4">
+<h4>Geographic information</h4>
+<p>Zip codes don’t have basic geographic elements connected to them! I used the Census TIGER mapping files to attach the county, latitude, longitude, etc. to the zctas using their center points.</p>
+</div>
+</div>
+<div id="demographic-data-record-layout" class="section level3">
+<h3>Demographic data record layout</h3>
+<table>
+<colgroup>
+<col width="15%" />
+<col width="4%" />
+<col width="80%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>column name</th>
+<th>type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>zcta</td>
+<td>c</td>
+<td>The census zip code (matches to census_zip in the ppp data)</td>
+</tr>
+<tr class="even">
+<td>zipcode_city</td>
+<td>c</td>
+<td>The name of the post office, from UDS mapper</td>
+</tr>
+<tr class="odd">
+<td>st_county_fip</td>
+<td>c</td>
+<td>A standard code indicating the county that the zip code is in</td>
+</tr>
+<tr class="even">
+<td>county_name</td>
+<td>c</td>
+<td>The name of that county</td>
+</tr>
+<tr class="odd">
+<td>metro_name</td>
+<td>c</td>
+<td>Metro area name if there is one for that zip code</td>
+</tr>
+<tr class="even">
+<td>usps_businesses</td>
+<td>n</td>
+<td># of business addresses estimated by the US Postal Service</td>
+</tr>
+<tr class="odd">
+<td>tot_pop</td>
+<td>n</td>
+<td>Total population (Some are zero)</td>
+</tr>
+<tr class="even">
+<td>households</td>
+<td>n</td>
+<td># of households</td>
+</tr>
+<tr class="odd">
+<td>pct_white_nh</td>
+<td>n</td>
+<td>Proportion of White, non-Hispanic population (percent in decimals)</td>
+</tr>
+<tr class="even">
+<td>pct_black_nh</td>
+<td>n</td>
+<td>Proporation of Black, non-Hispanic</td>
+</tr>
+<tr class="odd">
+<td>pct_aian_nh</td>
+<td>n</td>
+<td>Proportion of American Indian or Alaska Native non-Hispanic</td>
+</tr>
+<tr class="even">
+<td>pct_asian_nh</td>
+<td>n</td>
+<td>Proportion of Asian non-Hispanic</td>
+</tr>
+<tr class="odd">
+<td>pct_hispanic</td>
+<td>n</td>
+<td>Proportion of Hispanic or Latino population</td>
+</tr>
+<tr class="even">
+<td>zcta_ethnic</td>
+<td>n</td>
+<td>Ethnicity categorization using Urban Institute’s methodology</td>
+</tr>
+<tr class="odd">
+<td>white_nh_group</td>
+<td>n</td>
+<td>Categorization of the prop.of White non-Hispanic population, using Urban Institute</td>
+</tr>
+<tr class="even">
+<td>median_inc_2018</td>
+<td>m</td>
+<td>Median income in 2018 dollars</td>
+</tr>
+<tr class="odd">
+<td>income_lt25</td>
+<td>n</td>
+<td>Number of households with less than $25,000 annual income</td>
+</tr>
+<tr class="even">
+<td>income_150kup</td>
+<td>n</td>
+<td>Number of households with $150,000 annual income or more</td>
+</tr>
+<tr class="odd">
+<td>aggregate_income</td>
+<td>n</td>
+<td>Total household income (can be divided by households for average income)</td>
+</tr>
+<tr class="even">
+<td>pct_college_grad</td>
+<td>n</td>
+<td>Proportion of adults with college degree</td>
+</tr>
+<tr class="odd">
+<td>pct_kids_droppedout</td>
+<td>n</td>
+<td>Proportion of youth 18 and under who dropped out of school</td>
+</tr>
+<tr class="even">
+<td>unempl_rate</td>
+<td>n</td>
+<td>Average unemployment rate 2014-2018</td>
+</tr>
+<tr class="odd">
+<td>latitude</td>
+<td>n</td>
+<td>The latitude of the center point of the zip code</td>
+</tr>
+<tr class="even">
+<td>longitude</td>
+<td>n</td>
+<td>The longitude of the center point of the zip code</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="how-to-use-the-demographic-data" class="section level2">
+<h2>How to use the demographic data</h2>
+<p>You can use the demographic information in two ways:</p>
+<ul>
+<li><p>To attach information about the area to each individual loan, allowing you to look up businesses that were located in zip codes with specific characteristics.</p></li>
+<li><p>To use with summarised information from the loans to find out, for example, which lenders provided loans in minority areas.</p></li>
+</ul>
+<p>Here are two examples:</p>
+<div id="match-then-filter" class="section level3">
+<h3>Match then filter</h3>
+<p>Here, we’ll pull out information on the ethnicity of the zip code, and attach it to the individual loan information. Then we can look up businesses that were in certain areas.</p>
+<p>First, create a data frame with the information that you want to keep from the demographic file:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>az_keep_zip <span class="ot">&lt;-</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  az_by_zipcode <span class="sc">%&gt;%</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span> ( zcta, zipcode_city, county_name, usps_businesses<span class="sc">:</span> households, zcta_ethnic, white_nh_group, pct_hispanic, pct_white_nh, pct_aian_nh, pct_black_nh, </span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>           median_inc_2018)</span></code></pre></div>
+<p>Now join it to the loan data and pick out loans that match a few criteria and select some columns you might want to examine:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>az_ppp_zip <span class="sc">%&gt;%</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span> ( az_keep_zip, <span class="at">by=</span><span class="fu">c</span>(<span class="st">&quot;census_zip&quot;</span><span class="ot">=</span><span class="st">&quot;zcta&quot;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span> ( county_name <span class="sc">==</span> <span class="st">&quot;Yuma County&quot;</span>, </span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>           <span class="fu">str_detect</span> (zcta_ethnic, <span class="st">&quot;Hispanic&quot;</span>),</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>           white_nh_group <span class="sc">==</span> <span class="st">&quot;0 to 10%&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span> ( borrower, city, census_zip, initial_amt, ethnicity,</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>          median_inc_2018, zcta_ethnic, pct_hispanic, address</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>          ) <span class="sc">%&gt;%</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span> ( census_zip, borrower)</span></code></pre></div>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["borrower"],"name":[1],"type":["chr"],"align":["left"]},{"label":["city"],"name":[2],"type":["chr"],"align":["left"]},{"label":["census_zip"],"name":[3],"type":["chr"],"align":["left"]},{"label":["initial_amt"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["ethnicity"],"name":[5],"type":["chr"],"align":["left"]},{"label":["median_inc_2018"],"name":[6],"type":["dbl"],"align":["right"]},{"label":["zcta_ethnic"],"name":[7],"type":["chr"],"align":["left"]},{"label":["pct_hispanic"],"name":[8],"type":["dbl"],"align":["right"]},{"label":["address"],"name":[9],"type":["chr"],"align":["left"]}],"data":[{"1":"A C Q FRAMING CONSTRUCTION LLC","2":"SAN LUIS","3":"85336","4":"36200.00","5":"NOT HISPANIC OR LATINO","6":"32351","7":"04 - Hispanic","8":"1.000","9":"1731 E MONREAL LN"},{"1":"ANDREA CABRALES","2":"SAN LUIS","3":"85336","4":"1611.46","5":"UNKNOWN/NOTSTATED","6":"32351","7":"04 - Hispanic","8":"1.000","9":"151 E JUAREZ ST"},{"1":"BENJAMIN GUTIERREZ CORONA","2":"SAN LUIS","3":"85336","4":"1270.82","5":"UNKNOWN/NOTSTATED","6":"32351","7":"04 - Hispanic","8":"1.000","9":"1238 N CABELLO AVE"},{"1":"BIENESTAR CHILD DEVELOPMENT CENTER, DBA BIENESTAR DEL CIELO","2":"SAN LUIS","3":"85336","4":"22035.00","5":"UNKNOWN/NOTSTATED","6":"32351","7":"04 - Hispanic","8":"1.000","9":"1504 LIBERTY ST"},{"1":"BIG C AUTO SALES, LLC","2":"GADSDEN","3":"85336","4":"6020.42","5":"UNKNOWN/NOTSTATED","6":"32351","7":"04 - Hispanic","8":"1.000","9":"18814 HWY 95"},{"1":"COMITE DE BIEN ESTAR INC.","2":"SAN LUIS","3":"85336","4":"425314.37","5":"UNKNOWN/NOTSTATED","6":"32351","7":"04 - Hispanic","8":"1.000","9":"963 E B ST"},{"1":"EDGARDO DE LA TORRE","2":"SAN LUIS","3":"85336","4":"16160.96","5":"UNKNOWN/NOTSTATED","6":"32351","7":"04 - Hispanic","8":"1.000","9":"661 N MAIN ST"},{"1":"EDUARDO'S INCOME TAX&ACCOUNTING LLC","2":"SAN LUIS","3":"85336","4":"11657.00","5":"UNKNOWN/NOTSTATED","6":"32351","7":"04 - Hispanic","8":"1.000","9":"689 N MAIN ST STE 1"},{"1":"EL SONORENSE FOOD TRUCK LLC","2":"SAN LUIS","3":"85336","4":"25000.00","5":"UNKNOWN/NOTSTATED","6":"32351","7":"04 - Hispanic","8":"1.000","9":"705 N MAIN ST N/A"},{"1":"EUPHORIA PERFUMES LLC","2":"SAN LUIS","3":"85336","4":"41300.00","5":"UNKNOWN/NOTSTATED","6":"32351","7":"04 - Hispanic","8":"1.000","9":"511 N MAIN STREET"},{"1":"FRANCISCO RASCON","2":"SAN LUIS","3":"85336","4":"13627.00","5":"UNKNOWN/NOTSTATED","6":"32351","7":"04 - Hispanic","8":"1.000","9":"1634 E MONREAL LN"},{"1":"FRENCH PARFUM INC","2":"SAN LUIS","3":"85336","4":"36500.00","5":"UNKNOWN/NOTSTATED","6":"32351","7":"04 - Hispanic","8":"1.000","9":"511 N MAIN STREET"},{"1":"G8 TRUCKING LLC","2":"SAN LUIS","3":"85336","4":"6482.00","5":"UNKNOWN/NOTSTATED","6":"32351","7":"04 - Hispanic","8":"1.000","9":"242 N JENKINS AVE"},{"1":"JOSE DIAZ","2":"SAN LUIS","3":"85336","4":"135050.00","5":"UNKNOWN/NOTSTATED","6":"32351","7":"04 - Hispanic","8":"1.000","9":"232 E RAMONA ST"},{"1":"JUAN GUILLERMO ESPARZA","2":"SAN LUIS","3":"85336","4":"50733.00","5":"HISPANIC OR LATINO","6":"32351","7":"04 - Hispanic","8":"1.000","9":"541 MAIN ST N"},{"1":"L.A. INSURANCE AGENCY AZ21, LLC","2":"SAN LUIS","3":"85336","4":"10380.00","5":"UNKNOWN/NOTSTATED","6":"32351","7":"04 - Hispanic","8":"1.000","9":"705 N MAIN ST"},{"1":"MARISCOS EL NAVEGANTE LLC","2":"SAN LUIS","3":"85336","4":"105000.00","5":"HISPANIC OR LATINO","6":"32351","7":"04 - Hispanic","8":"1.000","9":"1064 E BABBIT LN"},{"1":"MIC HOMES INC","2":"SAN LUIS","3":"85336","4":"122500.00","5":"UNKNOWN/NOTSTATED","6":"32351","7":"04 - Hispanic","8":"1.000","9":"1950 E JUAN SANCHEZ BLVD STE E"},{"1":"N &AMP; V GARCIA LLC","2":"GADSDEN","3":"85336","4":"4700.00","5":"UNKNOWN/NOTSTATED","6":"32351","7":"04 - Hispanic","8":"1.000","9":"18850 COLORADO ST"},{"1":"NOVABUILT HOMES LLC","2":"GADSDEN","3":"85336","4":"30600.00","5":"UNKNOWN/NOTSTATED","6":"32351","7":"04 - Hispanic","8":"1.000","9":"20 STUTZ BEARCAT DR STE 8"},{"1":"ORTIZ BROS INC","2":"GADSDEN","3":"85336","4":"92867.00","5":"UNKNOWN/NOTSTATED","6":"32351","7":"04 - Hispanic","8":"1.000","9":"18716 GADSDEN ST BOX 200158"},{"1":"ORTIZ HARVESTING INC.","2":"GADSDEN","3":"85336","4":"1443160.00","5":"HISPANIC OR LATINO","6":"32351","7":"04 - Hispanic","8":"1.000","9":"18716 S GADSDEN ST"},{"1":"QUINONEZ TIRES LLC","2":"SAN LUIS","3":"85336","4":"1372.00","5":"UNKNOWN/NOTSTATED","6":"32351","7":"04 - Hispanic","8":"1.000","9":"1315 N MAIN ST"},{"1":"RACING AUTO SALES","2":"GADSDEN","3":"85336","4":"4800.00","5":"HISPANIC OR LATINO","6":"32351","7":"04 - Hispanic","8":"1.000","9":"PO BOX 253"},{"1":"RIEDEL CONSTRUCTION INC","2":"SAN LUIS","3":"85336","4":"82300.00","5":"HISPANIC OR LATINO","6":"32351","7":"04 - Hispanic","8":"1.000","9":"1950 E CESAR CHAVEZ BLVD STE G"},{"1":"RIEDEL HOLDINGS, L.L.C.","2":"SAN LUIS","3":"85336","4":"52800.00","5":"HISPANIC OR LATINO","6":"32351","7":"04 - Hispanic","8":"1.000","9":"1950 CESAR CHAVEZ BLVD STE G"},{"1":"ROBERTO CARLOS VAZQUEZ CASTANEDA","2":"SAN LUIS","3":"85336","4":"7518.00","5":"UNKNOWN/NOTSTATED","6":"32351","7":"04 - Hispanic","8":"1.000","9":"3819 E SAN PEDRO ST N/A"},{"1":"SUPERIOR YUMA CONTRACTORS INC","2":"SAN LUIS","3":"85336","4":"6396.00","5":"UNKNOWN/NOTSTATED","6":"32351","7":"04 - Hispanic","8":"1.000","9":"1238 N CABELLO AVE"},{"1":"TATA'S AUTO GROUP","2":"GADSDEN","3":"85336","4":"6100.00","5":"UNKNOWN/NOTSTATED","6":"32351","7":"04 - Hispanic","8":"1.000","9":"PO BOX 200171"},{"1":"YOUTH CALLED TO GREATNESS LLC","2":"SAN LUIS","3":"85336","4":"57750.00","5":"UNKNOWN/NOTSTATED","6":"32351","7":"04 - Hispanic","8":"1.000","9":"1183 E LIBERTY ST"},{"1":"5 MINUTE WALK IN CLINIC LLC","2":"SAN LUIS","3":"85349","4":"34400.00","5":"UNKNOWN/NOTSTATED","6":"34166","7":"04 - Hispanic","8":"0.995","9":"PO BOX 7290"},{"1":"A.C.Q FRAMING CONSTRUCTION, LLC","2":"SAN LUIS","3":"85349","4":"28200.00","5":"NOT HISPANIC OR LATINO","6":"34166","7":"04 - Hispanic","8":"0.995","9":"1731 MOREAL LANE"},{"1":"ADULT AND PEDIATRIC REHABILITATION LLC","2":"SAN LUIS","3":"85349","4":"227900.00","5":"UNKNOWN/NOTSTATED","6":"34166","7":"04 - Hispanic","8":"0.995","9":"1233 N. MAIN ST, STE 10"},{"1":"ALBOR TRUCKING LLC","2":"SAN LUIS","3":"85349","4":"6283.33","5":"UNKNOWN/NOTSTATED","6":"34166","7":"04 - Hispanic","8":"0.995","9":"1555 MONREAL LANE"},{"1":"ANA'S INCOME TAX SERVICE LLC","2":"SAN LUIS","3":"85349","4":"3500.00","5":"UNKNOWN/NOTSTATED","6":"34166","7":"04 - Hispanic","8":"0.995","9":"661 N. MAIN STREET, STE 2"},{"1":"ANDREA CABRALES","2":"SAN LUIS","3":"85349","4":"1189.26","5":"UNKNOWN/NOTSTATED","6":"34166","7":"04 - Hispanic","8":"0.995","9":"151 E JUAREZ ST"},{"1":"ARMIJO INSURANCE SAN LUIS, LLC","2":"SAN LUIS","3":"85349","4":"26000.00","5":"UNKNOWN/NOTSTATED","6":"34166","7":"04 - Hispanic","8":"0.995","9":"720 N MAIN STREET STE B"},{"1":"AURORAS ACCOUNTING SOLUTIONS LLC","2":"SAN LUIS","3":"85349","4":"3900.00","5":"UNKNOWN/NOTSTATED","6":"34166","7":"04 - Hispanic","8":"0.995","9":"1195 AMERICA STREET"},{"1":"BEST TRANSPORTATION LLC","2":"SAN LUIS","3":"85349","4":"2950.00","5":"UNKNOWN/NOTSTATED","6":"34166","7":"04 - Hispanic","8":"0.995","9":"590 6TH AVENUE"},{"1":"BORDER GYM FITNESS L.L.C.","2":"SAN LUIS","3":"85349","4":"9225.00","5":"UNKNOWN/NOTSTATED","6":"34166","7":"04 - Hispanic","8":"0.995","9":"1938 E JUAN SANCHEZ BLVD"},{"1":"BUENA VISTA MAIL CENTER","2":"SAN LUIS","3":"85349","4":"1200.00","5":"UNKNOWN/NOTSTATED","6":"34166","7":"04 - Hispanic","8":"0.995","9":"689 N MAIN STREET"},{"1":"CASA DE LA TOSTADA","2":"SAN LUIS","3":"85349","4":"2300.00","5":"UNKNOWN/NOTSTATED","6":"34166","7":"04 - Hispanic","8":"0.995","9":"879 E. B STREET"},{"1":"COLORADO RIVER USA, LLC","2":"SAN LUIS","3":"85349","4":"12745.00","5":"UNKNOWN/NOTSTATED","6":"34166","7":"04 - Hispanic","8":"0.995","9":"P.O. BOX 189"},{"1":"COMITE DE BIEN ESTAR, INC.","2":"SAN LUIS","3":"85349","4":"425314.37","5":"UNKNOWN/NOTSTATED","6":"34166","7":"04 - Hispanic","8":"0.995","9":"963 EAST B STREET"},{"1":"DEL COLORADO PALLETS, L.L.C.","2":"SAN LUIS","3":"85349","4":"38700.00","5":"UNKNOWN/NOTSTATED","6":"34166","7":"04 - Hispanic","8":"0.995","9":"1081 C STREET"},{"1":"DESERT ACCOUNTING AND INCOME TAX CORP","2":"SAN LUIS","3":"85349","4":"15000.00","5":"UNKNOWN/NOTSTATED","6":"34166","7":"04 - Hispanic","8":"0.995","9":"526 N WILLIAM BROOKS AVE"},{"1":"EDGAR PAYAN MD PLLC","2":"SAN LUIS","3":"85349","4":"61875.00","5":"UNKNOWN/NOTSTATED","6":"34166","7":"04 - Hispanic","8":"0.995","9":"2650 E DAVID RIEDAL BLVD 12354 2650 E DAVID RIEDEL BLVD 12354"},{"1":"EDGARDO DE LA TORRE","2":"SAN LUIS","3":"85349","4":"11543.55","5":"UNKNOWN/NOTSTATED","6":"34166","7":"04 - Hispanic","8":"0.995","9":"661 N MAIN ST"},{"1":"EDUARDOS INCOME TAX AND ACCOUNTING LLC","2":"SAN LUIS","3":"85349","4":"12650.00","5":"UNKNOWN/NOTSTATED","6":"34166","7":"04 - Hispanic","8":"0.995","9":"689 N MAIN ST SUITE 01"},{"1":"ERC TRADE LP","2":"SAN LUIS","3":"85349","4":"183740.00","5":"UNKNOWN/NOTSTATED","6":"34166","7":"04 - Hispanic","8":"0.995","9":"1950 E CESAR CHAVEZ BLVD"},{"1":"ERC TRADE LP","2":"SAN LUIS","3":"85349","4":"134062.00","5":"UNKNOWN/NOTSTATED","6":"34166","7":"04 - Hispanic","8":"0.995","9":"1950 EAST CESAR CHAVEZ BOULEVARD"},{"1":"EUPHORIA PERFUMES, LLC","2":"SAN LUIS","3":"85349","4":"43700.00","5":"UNKNOWN/NOTSTATED","6":"34166","7":"04 - Hispanic","8":"0.995","9":"511 N MAIN ST"},{"1":"F & A CONSTRUCTION LLC","2":"SAN LUIS","3":"85349","4":"42900.00","5":"UNKNOWN/NOTSTATED","6":"34166","7":"04 - Hispanic","8":"0.995","9":"1439 UDALL LANE"},{"1":"FACTOR SALES INC","2":"SAN LUIS","3":"85349","4":"2739813.00","5":"UNKNOWN/NOTSTATED","6":"34166","7":"04 - Hispanic","8":"0.995","9":"676 N. ARCHIBALD ST."},{"1":"FELIX FENCING LLC","2":"SAN LUIS","3":"85349","4":"37600.00","5":"UNKNOWN/NOTSTATED","6":"34166","7":"04 - Hispanic","8":"0.995","9":"1532 W CONSTITUTION ST"},{"1":"FRANK'S SERVICE AND TRUCKING, LLC","2":"SAN LUIS","3":"85349","4":"24400.00","5":"UNKNOWN/NOTSTATED","6":"34166","7":"04 - Hispanic","8":"0.995","9":"435 N CESAR CHAVEZ"},{"1":"FRENCH PARFUM INC","2":"SAN LUIS","3":"85349","4":"29700.00","5":"UNKNOWN/NOTSTATED","6":"34166","7":"04 - Hispanic","8":"0.995","9":"511 N MAIN STREET"},{"1":"G. GENERAL CONSTRUCTION, LLC","2":"SAN LUIS","3":"85349","4":"56500.00","5":"UNKNOWN/NOTSTATED","6":"34166","7":"04 - Hispanic","8":"0.995","9":"387 GARCIA LANE"},{"1":"G8 TRUCKING LLC","2":"SAN LUIS","3":"85349","4":"6483.00","5":"UNKNOWN/NOTSTATED","6":"34166","7":"04 - Hispanic","8":"0.995","9":"242 N JENKINS AVE"},{"1":"GLIMMER ELECTRIC LLC","2":"SAN LUIS","3":"85349","4":"33264.00","5":"UNKNOWN/NOTSTATED","6":"34166","7":"04 - Hispanic","8":"0.995","9":"1780 E KENNEDY LN"},{"1":"GONZALES & LEON LLC","2":"SAN LUIS","3":"85349","4":"186800.00","5":"UNKNOWN/NOTSTATED","6":"34166","7":"04 - Hispanic","8":"0.995","9":"566 N MAIN STREET"},{"1":"GUSTAVO MACGREW","2":"SAN LUIS","3":"85349","4":"23500.00","5":"UNKNOWN/NOTSTATED","6":"34166","7":"04 - Hispanic","8":"0.995","9":"851 N MAIN ST 13"},{"1":"HAK CONSTRUCTION, LLC","2":"SAN LUIS","3":"85349","4":"80547.00","5":"UNKNOWN/NOTSTATED","6":"34166","7":"04 - Hispanic","8":"0.995","9":"415 N HENRY CHAVEZ COURT C"},{"1":"IVETTE CANO","2":"SAN LUIS","3":"85349","4":"2151.43","5":"UNKNOWN/NOTSTATED","6":"34166","7":"04 - Hispanic","8":"0.995","9":"1922 JUAN SANCHEZ BLV 4"},{"1":"JESUS MARTINEZ","2":"SAN LUIS","3":"85349","4":"6800.00","5":"UNKNOWN/NOTSTATED","6":"34166","7":"04 - Hispanic","8":"0.995","9":"1066 E. D STREET"},{"1":"JH PAINTING SERVICE LLC","2":"SAN LUIS","3":"85349","4":"10000.00","5":"UNKNOWN/NOTSTATED","6":"34166","7":"04 - Hispanic","8":"0.995","9":"270 LOS VALLES"},{"1":"JONES FREIGHT SERVICES, LLC","2":"SAN LUIS","3":"85349","4":"35600.00","5":"UNKNOWN/NOTSTATED","6":"34166","7":"04 - Hispanic","8":"0.995","9":"4768 E VAUGHAN ST"},{"1":"JOSE DIAZ DBA DIAZ PALM CO OF AZ","2":"SAN LUIS","3":"85349","4":"131279.00","5":"UNKNOWN/NOTSTATED","6":"34166","7":"04 - Hispanic","8":"0.995","9":"232 RAMONA STREET"},{"1":"JUGOS Y LICUADOS MILU","2":"SAN LUIS","3":"85349","4":"6076.00","5":"UNKNOWN/NOTSTATED","6":"34166","7":"04 - Hispanic","8":"0.995","9":"1922 E JUAN SANCHEZ BLVD SUITE 5"},{"1":"LA BODEGA, LLC","2":"SAN LUIS","3":"85349","4":"49805.00","5":"UNKNOWN/NOTSTATED","6":"34166","7":"04 - Hispanic","8":"0.995","9":"P.O BOX 1623"},{"1":"LA MEXICANA WHOLESALE, INC.","2":"SAN LUIS","3":"85349","4":"10000.00","5":"UNKNOWN/NOTSTATED","6":"34166","7":"04 - Hispanic","8":"0.995","9":"532 ARCHIBALD ST"},{"1":"LOS ALAMOS BUILDERS LLC","2":"SAN LUIS","3":"85349","4":"45700.00","5":"UNKNOWN/NOTSTATED","6":"34166","7":"04 - Hispanic","8":"0.995","9":"1329 N MAIN ST"},{"1":"M AND  Y ELECTRICAL LLC","2":"SAN LUIS","3":"85349","4":"7300.00","5":"NOT HISPANIC OR LATINO","6":"34166","7":"04 - Hispanic","8":"0.995","9":"1951 STEPHENS STREET"},{"1":"MARIA G VALENZUELA","2":"SAN LUIS","3":"85349","4":"7355.00","5":"UNKNOWN/NOTSTATED","6":"34166","7":"04 - Hispanic","8":"0.995","9":"UNIT 8612 1944 E SAN FRANCISCO ST SAN LU"},{"1":"MARTINEZ TRANSPORT LLC","2":"SAN LUIS","3":"85349","4":"26400.00","5":"UNKNOWN/NOTSTATED","6":"34166","7":"04 - Hispanic","8":"0.995","9":"3313 E. RAUL GRIJALVA CT."},{"1":"MENO GENERAL CONTRACTOR LLC","2":"SAN LUIS","3":"85349","4":"15208.45","5":"UNKNOWN/NOTSTATED","6":"34166","7":"04 - Hispanic","8":"0.995","9":"1765 BABBITT LANE"},{"1":"MIC HOMES INC","2":"SAN LUIS","3":"85349","4":"150000.00","5":"UNKNOWN/NOTSTATED","6":"34166","7":"04 - Hispanic","8":"0.995","9":"1950 EAST CESAR CHAVEZ BOULEVARD SUITE E"},{"1":"MOCARV TRUCKING LLC","2":"SAN LUIS","3":"85349","4":"8600.00","5":"UNKNOWN/NOTSTATED","6":"34166","7":"04 - Hispanic","8":"0.995","9":"PO BOX 2244,"},{"1":"MOTORES PULIDO","2":"SAN LUIS","3":"85349","4":"7100.00","5":"UNKNOWN/NOTSTATED","6":"34166","7":"04 - Hispanic","8":"0.995","9":"883 MAIN STREET"},{"1":"NM AND ASSOCIATES LLC","2":"SAN LUIS","3":"85349","4":"12200.00","5":"UNKNOWN/NOTSTATED","6":"34166","7":"04 - Hispanic","8":"0.995","9":"1686 N. 9TH AVENUE"},{"1":"PATIO SUSHI AND MORE TWO INC","2":"SAN LUIS","3":"85349","4":"26500.00","5":"UNKNOWN/NOTSTATED","6":"34166","7":"04 - Hispanic","8":"0.995","9":"616 4TH AVE"},{"1":"PATRICIA RODRIGUEZ FNP-C & ASSOCIATES PLLC","2":"SAN LUIZ","3":"85349","4":"38200.00","5":"UNKNOWN/NOTSTATED","6":"34166","7":"04 - Hispanic","8":"0.995","9":"1950 E CESAR CHAVEZ  BLVD STE F"},{"1":"PATRICIA RODRIGUEZ FNP-C & ASSOCIATES, PLLC","2":"SAN LUIS","3":"85349","4":"37700.00","5":"UNKNOWN/NOTSTATED","6":"34166","7":"04 - Hispanic","8":"0.995","9":"1922 JUAN SANCHEZ BLVD, STE 1"},{"1":"PENA ENERGY SERVICES","2":"SAN LUIS","3":"85349","4":"12875.00","5":"UNKNOWN/NOTSTATED","6":"34166","7":"04 - Hispanic","8":"0.995","9":"1751 UDALL LN UNIT 3504"},{"1":"RASCON TILE, LLC","2":"SAN LUIS","3":"85349","4":"19489.17","5":"UNKNOWN/NOTSTATED","6":"34166","7":"04 - Hispanic","8":"0.995","9":"1660 E. WASHINGTON ST"},{"1":"RCVC TRUCKING","2":"SAN LUIS","3":"85349","4":"7517.00","5":"UNKNOWN/NOTSTATED","6":"34166","7":"04 - Hispanic","8":"0.995","9":"3819 E SAN PEDRO ST BOX 5191"},{"1":"RENE LARA POOL SERVICE, LLC","2":"SAN LUIS","3":"85349","4":"5662.00","5":"UNKNOWN/NOTSTATED","6":"34166","7":"04 - Hispanic","8":"0.995","9":"455 N ISMAEL SOLORIO CT"},{"1":"RENTERIA PEST LLC","2":"SAN LUIS","3":"85349","4":"4436.00","5":"UNKNOWN/NOTSTATED","6":"34166","7":"04 - Hispanic","8":"0.995","9":"2441 E EDAIS ST"},{"1":"RICHARD L. JONES CUSTOMHOUSE BROKER, INC.","2":"SAN LUIS","3":"85349","4":"157900.00","5":"UNKNOWN/NOTSTATED","6":"34166","7":"04 - Hispanic","8":"0.995","9":"4832 E VAUGHAN STREET"},{"1":"RIO COLORADO DEVELOPMENT LLC","2":"SAN LUIS","3":"85349","4":"41548.00","5":"UNKNOWN/NOTSTATED","6":"34166","7":"04 - Hispanic","8":"0.995","9":"390 N CESAR CHAVEZ STREET"},{"1":"ROGELIO ORTIZ","2":"SAN LUIS","3":"85349","4":"20122.00","5":"UNKNOWN/NOTSTATED","6":"34166","7":"04 - Hispanic","8":"0.995","9":"830 GARCIA LN"},{"1":"ROLLS AND BOWLS LLC","2":"SAN LUIS","3":"85349","4":"24800.00","5":"UNKNOWN/NOTSTATED","6":"34166","7":"04 - Hispanic","8":"0.995","9":"1627 JUAN SANCHEZ BLVD"},{"1":"RUNNERSCONNECT","2":"SAN LUIS","3":"85349","4":"56206.00","5":"UNKNOWN/NOTSTATED","6":"34166","7":"04 - Hispanic","8":"0.995","9":"874 S MAIN STREET 364"},{"1":"SAN JOSE INTEGRATED CLINIC LLC","2":"SAN LUIS","3":"85349","4":"20512.00","5":"UNKNOWN/NOTSTATED","6":"34166","7":"04 - Hispanic","8":"0.995","9":"2000 E. CESAR CHAVEZ BLVD"},{"1":"SAN LUIS INTERNATIONAL COLD STORAGE LLC","2":"SAN LUIS","3":"85349","4":"14296.00","5":"UNKNOWN/NOTSTATED","6":"34166","7":"04 - Hispanic","8":"0.995","9":"390 N CESAR CHAVEZ STREET"},{"1":"SAN LUIS INTERNATIONAL FREIGHT SERVICES, L.L.C.","2":"SAN LUIS","3":"85349","4":"72600.00","5":"UNKNOWN/NOTSTATED","6":"34166","7":"04 - Hispanic","8":"0.995","9":"4768 E VAUGHAN ST"},{"1":"SHALOM CONSTRUCTION, LLC","2":"SAN LUIS","3":"85349","4":"92900.00","5":"UNKNOWN/NOTSTATED","6":"34166","7":"04 - Hispanic","8":"0.995","9":"1782 D STREET"},{"1":"SPINDLE COOLING AND WAREHOUSING, L.L.C.","2":"SAN LUIS","3":"85349","4":"223300.00","5":"HISPANIC OR LATINO","6":"34166","7":"04 - Hispanic","8":"0.995","9":"412 HENRY CHAVEZ CT"},{"1":"SPLASH 2 POOLS & SPAS, LLC","2":"SAN LUIS","3":"85349","4":"14802.00","5":"UNKNOWN/NOTSTATED","6":"34166","7":"04 - Hispanic","8":"0.995","9":"387 N GARCIA LN"},{"1":"SUPREME PLUMBING SOLUTIONS","2":"SAN LUIS","3":"85349","4":"54938.00","5":"UNKNOWN/NOTSTATED","6":"34166","7":"04 - Hispanic","8":"0.995","9":"1647 E C STREET"},{"1":"TACOS EL CHIPILON LLC","2":"SAN LUIS","3":"85349","4":"6404.00","5":"UNKNOWN/NOTSTATED","6":"34166","7":"04 - Hispanic","8":"0.995","9":"705 N SECOND AVE"},{"1":"TINOCO EXPRESS LLC","2":"SAN LUIS","3":"85349","4":"22500.00","5":"UNKNOWN/NOTSTATED","6":"34166","7":"04 - Hispanic","8":"0.995","9":"1010 N 6TH DR SAN LUIS AZ 85349"},{"1":"TINOCO TRANSPORT LLC","2":"SAN LUIS","3":"85349","4":"9182.30","5":"UNKNOWN/NOTSTATED","6":"34166","7":"04 - Hispanic","8":"0.995","9":"1622 8TH AVENUE"},{"1":"YOUTH CALLED TO GREATNESS LLC","2":"SAN LUIS","3":"85349","4":"57750.00","5":"UNKNOWN/NOTSTATED","6":"34166","7":"04 - Hispanic","8":"0.995","9":"1183 LIBERTY STREET"},{"1":"4-J FARMS. LLC","2":"SOMERTON","3":"85350","4":"17400.00","5":"UNKNOWN/NOTSTATED","6":"38384","7":"04 - Hispanic","8":"0.870","9":"9528 W. COUNTY 18TH STREET"},{"1":"85350 BAR & GRILL LLC","2":"SOMERTON","3":"85350","4":"59220.00","5":"NOT HISPANIC OR LATINO","6":"38384","7":"04 - Hispanic","8":"0.870","9":"346 W. MAIN ST."},{"1":"85350 BAR & GRILL LLC","2":"YUMA","3":"85350","4":"42300.00","5":"NOT HISPANIC OR LATINO","6":"38384","7":"04 - Hispanic","8":"0.870","9":"346 W.  MAIN ST"},{"1":"A&K ENERGY SERVICES LLC","2":"SOMERTON","3":"85350","4":"8700.00","5":"UNKNOWN/NOTSTATED","6":"38384","7":"04 - Hispanic","8":"0.870","9":"PO BOX 2315"},{"1":"AFFORDABLE CAR & TRUCK SALES LLC","2":"SOMERTON","3":"85350","4":"16200.00","5":"HISPANIC OR LATINO","6":"38384","7":"04 - Hispanic","8":"0.870","9":"1368 E MAIN ST"},{"1":"AFFORDABLE CAR & TRUCK SALES, LLC","2":"SOMERTON","3":"85350","4":"16200.00","5":"NOT HISPANIC OR LATINO","6":"38384","7":"04 - Hispanic","8":"0.870","9":"1368 E MAIN ST"},{"1":"AG TECH, L.L.C.","2":"SOMERTON","3":"85350","4":"275000.00","5":"UNKNOWN/NOTSTATED","6":"38384","7":"04 - Hispanic","8":"0.870","9":"3895 W CO 19TH ST"},{"1":"AGDATA GLOBAL LLC","2":"SOMERTON","3":"85350","4":"621362.00","5":"UNKNOWN/NOTSTATED","6":"38384","7":"04 - Hispanic","8":"0.870","9":"17815 S HWY 95"},{"1":"ALTA SIERRA LANDSCAPING LLC","2":"SOMERTON","3":"85350","4":"21250.00","5":"UNKNOWN/NOTSTATED","6":"38384","7":"04 - Hispanic","8":"0.870","9":"17168 CO 17 1/4"},{"1":"BLANCO INDUSTRIES, INC.","2":"SOMERTON","3":"85350","4":"43717.85","5":"UNKNOWN/NOTSTATED","6":"38384","7":"04 - Hispanic","8":"0.870","9":"2101 STANDIFORD AVE. STE C"},{"1":"BRENDA GONZALEZ","2":"SOMERTON","3":"85350","4":"20022.50","5":"UNKNOWN/NOTSTATED","6":"38384","7":"04 - Hispanic","8":"0.870","9":"1571 N AVENIDA SERENIDAD"},{"1":"BROTHERS HARVESTING","2":"SOMERTON","3":"85350","4":"1444943.00","5":"UNKNOWN/NOTSTATED","6":"38384","7":"04 - Hispanic","8":"0.870","9":"740 WEST BRENDA STREET"},{"1":"CAMPESINOS SIN FRONTERAS","2":"SOMERTON","3":"85350","4":"209100.00","5":"UNKNOWN/NOTSTATED","6":"38384","7":"04 - Hispanic","8":"0.870","9":"663 E. MAIN ST"},{"1":"CAMPESINOS SIN FRONTERAS","2":"SOMERTON","3":"85350","4":"173600.00","5":"HISPANIC OR LATINO","6":"38384","7":"04 - Hispanic","8":"0.870","9":"663 E MAIN ST., STE A"},{"1":"CASAS DE REYES BUILDERS LLC","2":"SOMERTON","3":"85350","4":"74947.00","5":"UNKNOWN/NOTSTATED","6":"38384","7":"04 - Hispanic","8":"0.870","9":"432 JACOBS ST"},{"1":"CASAS DE REYES BUILDERS LLC","2":"SOMERTON","3":"85350","4":"66465.00","5":"UNKNOWN/NOTSTATED","6":"38384","7":"04 - Hispanic","8":"0.870","9":"432 JACOBS ST"},{"1":"COCOPAH KORNER STORE","2":"SOMERTON","3":"85350","4":"32600.00","5":"UNKNOWN/NOTSTATED","6":"38384","7":"04 - Hispanic","8":"0.870","9":"15126 S. AVENUE B"},{"1":"COCOPAH RIO COLORADO GOLF COURSE","2":"SOMERTON","3":"85350","4":"29900.00","5":"UNKNOWN/NOTSTATED","6":"38384","7":"04 - Hispanic","8":"0.870","9":"220 N. MARSHALL LOOP RD"},{"1":"COCOPAH TRIBAL COUNCIL","2":"SOMERTON","3":"85350","4":"1099400.00","5":"UNKNOWN/NOTSTATED","6":"38384","7":"04 - Hispanic","8":"0.870","9":"14515 VETERANS DRIVE"},{"1":"CUSTOM FARM WORKS LLC","2":"SOMERTON","3":"85350","4":"9300.00","5":"UNKNOWN/NOTSTATED","6":"38384","7":"04 - Hispanic","8":"0.870","9":"19850 SOUTH AVENUE G"},{"1":"D.C. PLASTERING LLC","2":"SOMERTON","3":"85350","4":"27200.00","5":"UNKNOWN/NOTSTATED","6":"38384","7":"04 - Hispanic","8":"0.870","9":"3603 W. COUNTY 16 1/2 ST"},{"1":"D'PAIR DEVELOPMENT LLC","2":"SOMERTON","3":"85350","4":"47641.00","5":"UNKNOWN/NOTSTATED","6":"38384","7":"04 - Hispanic","8":"0.870","9":"699 S. COLUMBIA AVENUE"},{"1":"D'PAIR DEVELOPMENT, LLC","2":"SOMERTON","3":"85350","4":"40900.00","5":"UNKNOWN/NOTSTATED","6":"38384","7":"04 - Hispanic","8":"0.870","9":"699 S COLUMBIA AVE"},{"1":"DESERT VALLEY CABINETS LLC","2":"SOMERTON","3":"85350","4":"124827.00","5":"UNKNOWN/NOTSTATED","6":"38384","7":"04 - Hispanic","8":"0.870","9":"2713 W COUNTY 15TH ST"},{"1":"DESERT VALLEY COMPANIES LLC","2":"SOMERTON","3":"85350","4":"108100.00","5":"UNKNOWN/NOTSTATED","6":"38384","7":"04 - Hispanic","8":"0.870","9":"138 N AVENUE B"},{"1":"DHG L.L.C.","2":"SOMERTON","3":"85350","4":"43035.00","5":"UNKNOWN/NOTSTATED","6":"38384","7":"04 - Hispanic","8":"0.870","9":"235 W MAIN ST"},{"1":"DON DILDINE","2":"SOMERTON","3":"85350","4":"67500.00","5":"UNKNOWN/NOTSTATED","6":"38384","7":"04 - Hispanic","8":"0.870","9":"4665 W SHARON LN"},{"1":"EL ENCANTO MEXICAN CAFE","2":"CAVE CREEK","3":"85350","4":"419860.00","5":"UNKNOWN/NOTSTATED","6":"38384","7":"04 - Hispanic","8":"0.870","9":"6248 E CAVE CREEK ROAD"},{"1":"ERNESTO ALONSOOZUNA","2":"SOMERTON","3":"85350","4":"186500.00","5":"UNKNOWN/NOTSTATED","6":"38384","7":"04 - Hispanic","8":"0.870","9":"17339 S AVENUE B 1/2"},{"1":"FARMERS MECHANICAL SERVICES, LLC","2":"SOMERTON","3":"85350","4":"14176.66","5":"HISPANIC OR LATINO","6":"38384","7":"04 - Hispanic","8":"0.870","9":"2250 W. COUNTY 16TH ST"},{"1":"FERNANDO BACANERI","2":"SOMERTON","3":"85350","4":"20402.50","5":"UNKNOWN/NOTSTATED","6":"38384","7":"04 - Hispanic","8":"0.870","9":"15858 RINCON DE ESPANA"},{"1":"FERNANDO BACANERI","2":"SOMERTON","3":"85350","4":"20402.00","5":"UNKNOWN/NOTSTATED","6":"38384","7":"04 - Hispanic","8":"0.870","9":"15858 RINCON DE ESPANA"},{"1":"G.C. CARPENTRY LLC","2":"SOMERTON","3":"85350","4":"28000.00","5":"UNKNOWN/NOTSTATED","6":"38384","7":"04 - Hispanic","8":"0.870","9":"690 N BINGHAM AVE APT D"},{"1":"GRIFFIN EQUIPMENT COMPANY LLC","2":"SOMERTON","3":"85350","4":"225100.00","5":"UNKNOWN/NOTSTATED","6":"38384","7":"04 - Hispanic","8":"0.870","9":"9490 W COUNTY 19TH ST"},{"1":"GRIFFIN EQUIPMENT COMPANY, LLC","2":"SOMERTON","3":"85350","4":"225600.00","5":"UNKNOWN/NOTSTATED","6":"38384","7":"04 - Hispanic","8":"0.870","9":"9490 W COUNTY 19TH ST"},{"1":"GRIFFIN FAMILY FARMS LLC","2":"SOMERTON","3":"85350","4":"333000.00","5":"UNKNOWN/NOTSTATED","6":"38384","7":"04 - Hispanic","8":"0.870","9":"9490 W COUNTY 19TH ST"},{"1":"GRIFFIN FAMILY FARMS, LLC","2":"SOMERTON","3":"85350","4":"325900.00","5":"UNKNOWN/NOTSTATED","6":"38384","7":"04 - Hispanic","8":"0.870","9":"9490 W CO. 19TH ST"},{"1":"GRIFFIN RANCHES INC.","2":"SOMERTON","3":"85350","4":"116800.00","5":"UNKNOWN/NOTSTATED","6":"38384","7":"04 - Hispanic","8":"0.870","9":"9490 W COUNTY 19TH ST"},{"1":"GRIFFIN RANCHES, INC.","2":"SOMERTON","3":"85350","4":"120100.00","5":"UNKNOWN/NOTSTATED","6":"38384","7":"04 - Hispanic","8":"0.870","9":"9490 W CO. 19TH ST"},{"1":"IGLESIA MONTE SINAI DE LAS ASAMBLEAS DE DIOS","2":"SOMERTON","3":"85350","4":"17400.00","5":"UNKNOWN/NOTSTATED","6":"38384","7":"04 - Hispanic","8":"0.870","9":"17662 S. AVENUE B"},{"1":"IMMACULATE HEART OF MARY ROMAN CATHOLIC PARISH","2":"SOMERTON","3":"85350","4":"25800.00","5":"UNKNOWN/NOTSTATED","6":"38384","7":"04 - Hispanic","8":"0.870","9":"310 SPRING ST"},{"1":"IMPERIAL DATE GARDENS, INC.","2":"SOMERTON","3":"85350","4":"632800.00","5":"UNKNOWN/NOTSTATED","6":"38384","7":"04 - Hispanic","8":"0.870","9":"19438 S. AVE A"},{"1":"J & K OJEDA, LLC","2":"SOMERTON","3":"85350","4":"14183.06","5":"UNKNOWN/NOTSTATED","6":"38384","7":"04 - Hispanic","8":"0.870","9":"503 12TH ST"},{"1":"JERRY'S AUTO SALE INC.","2":"SOMERTON","3":"85350","4":"25941.00","5":"UNKNOWN/NOTSTATED","6":"38384","7":"04 - Hispanic","8":"0.870","9":"3309 E COUNTY 15TH ST"},{"1":"JORGE CHAVEZ","2":"SOMERTON","3":"85350","4":"2921.26","5":"UNKNOWN/NOTSTATED","6":"38384","7":"04 - Hispanic","8":"0.870","9":"4260 W COUNTY 15TH ST"},{"1":"LONE ROCK CONSTRUCTION OF ARIZONA, LLC","2":"SOMERTON","3":"85350","4":"14900.00","5":"UNKNOWN/NOTSTATED","6":"38384","7":"04 - Hispanic","8":"0.870","9":"3392 W COUNTY 16 1/2 STREET"},{"1":"M AND HS FAMILY LLC","2":"SOMERTON","3":"85350","4":"7817.00","5":"HISPANIC OR LATINO","6":"38384","7":"04 - Hispanic","8":"0.870","9":"18177 S COTTONWOOD DR"},{"1":"MAXX FORCE PEST CONTROL LLC","2":"SOMERTON","3":"85350","4":"6300.00","5":"UNKNOWN/NOTSTATED","6":"38384","7":"04 - Hispanic","8":"0.870","9":"328 E RAMONA ST"},{"1":"MCA AUTO LLC","2":"SOMERTON","3":"85350","4":"17500.00","5":"UNKNOWN/NOTSTATED","6":"38384","7":"04 - Hispanic","8":"0.870","9":"2572 W. COUNTY 15TH STREET"},{"1":"MIRANDA CONSTRUCTION LLC","2":"SOMERTON","3":"85350","4":"20200.00","5":"UNKNOWN/NOTSTATED","6":"38384","7":"04 - Hispanic","8":"0.870","9":"563 E JEFFERSON ST"},{"1":"MISSION PLUMBING LLC","2":"SOMERTON","3":"85350","4":"95462.00","5":"UNKNOWN/NOTSTATED","6":"38384","7":"04 - Hispanic","8":"0.870","9":"2411 W COUNTY 16TH ST"},{"1":"MONTES MULTIPLE SERVICES, LLC","2":"SOMERTON","3":"85350","4":"184617.00","5":"UNKNOWN/NOTSTATED","6":"38384","7":"04 - Hispanic","8":"0.870","9":"P. O. BOX 690"},{"1":"MR FARMS LLC","2":"SOMERTON","3":"85350","4":"322898.00","5":"UNKNOWN/NOTSTATED","6":"38384","7":"04 - Hispanic","8":"0.870","9":"607 W SPRING ST"},{"1":"NAFTA ENVIRONMENTAL INC","2":"SOMERTON","3":"85350","4":"21310.00","5":"UNKNOWN/NOTSTATED","6":"38384","7":"04 - Hispanic","8":"0.870","9":"17880 S AVE A"},{"1":"OPTIMUS PRODUCTS LLC","2":"SOMERTON","3":"85350","4":"9500.00","5":"UNKNOWN/NOTSTATED","6":"38384","7":"04 - Hispanic","8":"0.870","9":"19263 S AVENUE B"},{"1":"POLITRON PLUMBING LLC","2":"SOMERTON","3":"85350","4":"4832.00","5":"UNKNOWN/NOTSTATED","6":"38384","7":"04 - Hispanic","8":"0.870","9":"4568 W CYNTHIA LN"},{"1":"POLLOS EL CORRETEADO","2":"SOMERTON","3":"85350","4":"51500.00","5":"UNKNOWN/NOTSTATED","6":"38384","7":"04 - Hispanic","8":"0.870","9":"725 E MAIN ST SUITE 8 & 9"},{"1":"PRECIOUS TREASURES MISSION","2":"SOMERTON","3":"85350","4":"50502.00","5":"UNKNOWN/NOTSTATED","6":"38384","7":"04 - Hispanic","8":"0.870","9":"492 E. MAIN ST"},{"1":"PRECISION AGRICOLA LLC","2":"SOMERTON","3":"85350","4":"17884.00","5":"UNKNOWN/NOTSTATED","6":"38384","7":"04 - Hispanic","8":"0.870","9":"628 W FERN ST"},{"1":"PREFERRED CHOICE","2":"SOMERTON","3":"85350","4":"10711.00","5":"HISPANIC OR LATINO","6":"38384","7":"04 - Hispanic","8":"0.870","9":"4889 W SHARON LN"},{"1":"RAMIREZ ADMINISTRATIVE SERVICE","2":"SOMERTON","3":"85350","4":"6715.00","5":"UNKNOWN/NOTSTATED","6":"38384","7":"04 - Hispanic","8":"0.870","9":"725 E MAIN STREET STE 12"},{"1":"REGIONAL CENTER FOR BORDER HEALTH, INC.","2":"SOMERTON","3":"85350","4":"466200.00","5":"UNKNOWN/NOTSTATED","6":"38384","7":"04 - Hispanic","8":"0.870","9":"950 E MAIN ST BLDG A"},{"1":"REMINGTON INDUSTRIAL SUPPLY","2":"SOMERTON","3":"85350","4":"102700.00","5":"UNKNOWN/NOTSTATED","6":"38384","7":"04 - Hispanic","8":"0.870","9":"3424 E COUNTY 15TH STREET"},{"1":"RENEWABLE POWER AZ","2":"SOMERTON","3":"85350","4":"37061.00","5":"UNKNOWN/NOTSTATED","6":"38384","7":"04 - Hispanic","8":"0.870","9":"400 E 12TH PL"},{"1":"RIO COLORADO EXPORT LLC","2":"SOMERTON","3":"85350","4":"84206.45","5":"UNKNOWN/NOTSTATED","6":"38384","7":"04 - Hispanic","8":"0.870","9":"3425 E COUNTY 16TH ST"},{"1":"RIVERSIDE AG HARVESTING LLC","2":"SOMERTON","3":"85350","4":"555200.00","5":"UNKNOWN/NOTSTATED","6":"38384","7":"04 - Hispanic","8":"0.870","9":"19850 S. AVE G"},{"1":"RIVERSIDE AG WORKS L.L.C.","2":"SOMERTON","3":"85350","4":"1013400.00","5":"UNKNOWN/NOTSTATED","6":"38384","7":"04 - Hispanic","8":"0.870","9":"19850 SS AVE G"},{"1":"RUSTY'S PRODUCE SALES L.L.C.","2":"SOMERTON","3":"85350","4":"27400.00","5":"UNKNOWN/NOTSTATED","6":"38384","7":"04 - Hispanic","8":"0.870","9":"365 N BINGHAM AVE"},{"1":"RUSTY'S PRODUCE SALES, L.L.C.","2":"SOMERTON","3":"85350","4":"19750.00","5":"UNKNOWN/NOTSTATED","6":"38384","7":"04 - Hispanic","8":"0.870","9":"365 N BINGHAM AVE"},{"1":"SAHARA PALLETS, LLC","2":"SOMERTON","3":"85350","4":"25000.00","5":"UNKNOWN/NOTSTATED","6":"38384","7":"04 - Hispanic","8":"0.870","9":"19263 S AVENUE B"},{"1":"SAN LUIS WALK IN CLINIC, INC.","2":"SOMERTON","3":"85350","4":"1558900.00","5":"UNKNOWN/NOTSTATED","6":"38384","7":"04 - Hispanic","8":"0.870","9":"950 E. MAIN ST BLDG B"},{"1":"SOMERTON ELECTRIC L.L.C.","2":"SOMERTON","3":"85350","4":"36690.00","5":"UNKNOWN/NOTSTATED","6":"38384","7":"04 - Hispanic","8":"0.870","9":"203 W CANO ST"},{"1":"SOMERTON ELECTRIC LLC","2":"SOMERTON","3":"85350","4":"86900.00","5":"UNKNOWN/NOTSTATED","6":"38384","7":"04 - Hispanic","8":"0.870","9":"203 W CANO ST"},{"1":"SOMERTON EYECARE CENTER, INC.","2":"SOMERTON","3":"85350","4":"84152.00","5":"HISPANIC OR LATINO","6":"38384","7":"04 - Hispanic","8":"0.870","9":"725 E. MAIN ST. SUITE 1C"},{"1":"SOMERTON MAIN STREET CAFE, INC.","2":"SOMERTON","3":"85350","4":"17800.00","5":"UNKNOWN/NOTSTATED","6":"38384","7":"04 - Hispanic","8":"0.870","9":"950 E MAIN ST BLDG A"},{"1":"SOMERTON PHARMA LLC","2":"SOMERTON","3":"85350","4":"30155.00","5":"UNKNOWN/NOTSTATED","6":"38384","7":"04 - Hispanic","8":"0.870","9":"950 E MAIN ST BLDG B STE 135"},{"1":"SOUTH COUNTY DIAGNOSTIC SERVICES, LLC","2":"SOMERTON","3":"85350","4":"43000.00","5":"UNKNOWN/NOTSTATED","6":"38384","7":"04 - Hispanic","8":"0.870","9":"1233 S MAIN STREET STE A"},{"1":"SOUTHWEST SANITATION SERVICE LLC","2":"SOMERTON","3":"85350","4":"25881.00","5":"UNKNOWN/NOTSTATED","6":"38384","7":"04 - Hispanic","8":"0.870","9":"455 S TUMBAGA DR"},{"1":"THE COCOPAH INDIAN TRIBE","2":"SOMERTON","3":"85350","4":"1499800.00","5":"UNKNOWN/NOTSTATED","6":"38384","7":"04 - Hispanic","8":"0.870","9":"15318 S AVENUE B"},{"1":"TIMER REFRIGERATION AND AC","2":"SOMERTON","3":"85350","4":"5200.00","5":"HISPANIC OR LATINO","6":"38384","7":"04 - Hispanic","8":"0.870","9":"645 MENDOTA AVE"},{"1":"TOVAR FARMS LLC","2":"SOMERTON","3":"85350","4":"302200.00","5":"UNKNOWN/NOTSTATED","6":"38384","7":"04 - Hispanic","8":"0.870","9":"16165 S AVE G"},{"1":"TRI STATE STONE INC","2":"SOMERTON","3":"85350","4":"43100.00","5":"UNKNOWN/NOTSTATED","6":"38384","7":"04 - Hispanic","8":"0.870","9":"3200 E COUNTY 15TH ST"},{"1":"TRI-ROTOR, LLC","2":"SOMERTON","3":"85350","4":"435102.27","5":"NOT HISPANIC OR LATINO","6":"38384","7":"04 - Hispanic","8":"0.870","9":"PO BOX 498"},{"1":"URIAS FARM LLC","2":"SOMERTON","3":"85350","4":"21895.00","5":"UNKNOWN/NOTSTATED","6":"38384","7":"04 - Hispanic","8":"0.870","9":"16753 SOUTH AVENUE A 16753 S. AVE A"},{"1":"VEGA'S CUSTOM FARM SERVICES LLC","2":"SOMERTON","3":"85350","4":"10868.00","5":"UNKNOWN/NOTSTATED","6":"38384","7":"04 - Hispanic","8":"0.870","9":"17621 S AVE B AND HALF"},{"1":"VERONICA ZAMORA","2":"SOMERTON","3":"85350","4":"8813.00","5":"HISPANIC OR LATINO","6":"38384","7":"04 - Hispanic","8":"0.870","9":"599 S WILLIAMS AVE"},{"1":"VERONICA ZAMORA","2":"599 S WILLIAMS AVE","3":"85350","4":"2786.00","5":"HISPANIC OR LATINO","6":"38384","7":"04 - Hispanic","8":"0.870","9":"599 S WILLIAMS AVE"},{"1":"VIZLO CONSTRUCTION LLC","2":"SOMERTON","3":"85350","4":"66300.00","5":"UNKNOWN/NOTSTATED","6":"38384","7":"04 - Hispanic","8":"0.870","9":"20534 US HIGHWAY 95"},{"1":"WILD RIVER FAMILY ENTERTAINMENT CENTER","2":"SOMERTON","3":"85350","4":"96500.00","5":"UNKNOWN/NOTSTATED","6":"38384","7":"04 - Hispanic","8":"0.870","9":"15126 S. AVENUE B"},{"1":"YOLANDA RAMOS","2":"SOMERTON","3":"85350","4":"20092.00","5":"UNKNOWN/NOTSTATED","6":"38384","7":"04 - Hispanic","8":"0.870","9":"1455 NORTH STATE AVENUE"},{"1":"YOLANDA RAMOS","2":"SOMERTON","3":"85350","4":"20092.00","5":"UNKNOWN/NOTSTATED","6":"38384","7":"04 - Hispanic","8":"0.870","9":"NORTH STATE AVENUE"},{"1":"ZORKA, INC.","2":"SOMERTON","3":"85350","4":"50729.07","5":"NOT HISPANIC OR LATINO","6":"38384","7":"04 - Hispanic","8":"0.870","9":"611 E MAIN STREET"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":["25"],"max":["25"]},"pages":{}}}
+  </script>
+</div>
+</div>
+<div id="group-then-match" class="section level3">
+<h3>Group then match</h3>
+<p>The opposite strategy can be used to summarize how loans were made to minority and non-minority zip codes. You could use this to find places where very few businesses got loans , or where most of the businesses got loans, in minority neighborhoods. This is a lot more complicated and you have to be careful of data anomolies, but it is also very powerful: It lets you map out the kinds of neighborhoods that got, and didn’t get, loans.</p>
+<p>You can look at how much you can do with this approach by looking at <a href="https://cronkitedata.github.io/rstudyguide/extra/tx_dallas.html">one of the metro areas I profiled for the Reveal project</a>.</p>
+<p>You could also look at whether the Biden administration is, so far, doing more to serve minority or underserved areas.</p>
+<p>Here is a simple example, which looks at the distribution of loans by county, depending on the ethnicity of the zip code.</p>
+<div id="step-1-aggregate-sum-the-ppp-loans" class="section level4">
+<h4>Step 1: Aggregate (sum) the PPP loans</h4>
+<p>First, we have to get the number of loans and some other data about each zip code from the PPP loan data. We should also be sure we know how many businesses got loans, not just the number of loans, because we’re going to want to get a rate of participation later on.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>ppp_ziptotals <span class="ot">&lt;-</span> </span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  az_ppp_zip <span class="sc">%&gt;%</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span> ( census_zip ) <span class="sc">%&gt;%</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span> ( <span class="at">loans =</span> <span class="fu">n</span>(),</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>              <span class="at">borrowers =</span> <span class="fu">n_distinct</span> ( borrower, zip) , </span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>              <span class="at">total_amount =</span> <span class="fu">sum</span> ( payroll_amt <span class="sc">+</span> nonpayroll_amt)</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div>
+<p>Now we’re going to match them against the zip code information we kept earlier, making sure to keep all of the rows (not just thost that had loans in them). This will drop out any zipcodes that aren’t really in Arizona or are blank in our PPP data. We also have to make the number of loans zero in zip codes that didn’t exist in our PPP loan data.</p>
+<p>(This is a “left_join”, which means “keep everything from the first data frame mentioned, and only the things that match from the second one listed.”)</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>ppp_zip_sums <span class="ot">&lt;-</span> </span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  az_keep_zip <span class="sc">%&gt;%</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span> ( ppp_ziptotals, <span class="at">by=</span><span class="fu">c</span>(<span class="st">&quot;zcta&quot;</span><span class="ot">=</span><span class="st">&quot;census_zip&quot;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="co"># we are left with some NA&#39;s because not every zip code had any loans</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># There&#39;s a shortcut way to do this, but I don&#39;t want to make it more confusing than necessary right now.</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span> ( <span class="at">loans =</span> <span class="fu">replace_na</span> (loans, <span class="dv">0</span>), </span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>           <span class="at">borrowers =</span> <span class="fu">replace_na</span> (borrowers, <span class="dv">0</span>), </span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>           <span class="at">total_amount =</span> <span class="fu">replace_na</span> (total_amount, <span class="dv">0</span>)) </span></code></pre></div>
+<p>In practice, we’d have to decide what to do in cases in which there were more loans than businesses! In some cases, the Postal Service had no business addresses but there were loans . In others, there were many more loans than there were businesses. You have some choices:</p>
+<ul>
+<li><p>Set the % of businesses with loans to 100% if the number of loans was more than the number of unique businesses.</p></li>
+<li><p>Add together the number of businesses and the number of households, to get a stable basis for a comparison. This basically says, “out of all of the entities we know of in this zip code, what portion got loans?” If it’s a business district, that would be high. But it would never be more than 100%!</p></li>
+<li><p>Move up a level of aggregation – look at totals by county and ethnicity, or group the zipcodes together some other way, to summarize the data and paper over the data problems.</p></li>
+<li><p>Don’t worry about it, and pick out some interesting zip codes, such as some with relatively low income or some predominant ethnicity, and then compare their total loan rates with everyone else.</p></li>
+<li><p>Use the anomalies to your advantage – look at those places on a map or a satellite image, and see if they might be good places to center a story!</p></li>
+</ul>
+</div>
+</div>
 </div>
 
-<div id="rmd-source-code">LS0tCnRpdGxlOiAiUFBQIGxvYW5zIGluIEFyaXpvbmEiCmF1dGhvcjogIlNhcmFoIENvaGVuIgpkYXRlOiAiYHIgU3lzLkRhdGUoKWAiCm91dHB1dDogCiAgaHRtbF9kb2N1bWVudDoKICAgIHRoZW1lOiB5ZXRpCiAgICBoaWdobGlnaHQ6IGthdGUKICAgIGRmX3ByaW50OiBwYWdlZAogICAgdG9jOiB0cnVlCiAgICB0b2NfZmxvYXQ6IHRydWUKICAgIGNvZGVfZG93bmxvYWQ6IHRydWUKLS0tCgoKYGBge3Igc2V0dXAsIGluY2x1ZGU9RkFMU0UsIG1lc3NhZ2U9RkFMU0UsIHdhcm5pbmc9RkFMU0V9CgpsaWJyYXJ5KGtuaXRyKQpsaWJyYXJ5KHJtZGZvcm1hdHMpCgprbml0cjo6b3B0c19jaHVuayRzZXQoZWNobyA9IFRSVUUpCgpsaWJyYXJ5KHRpZHl2ZXJzZSkKbGlicmFyeShqYW5pdG9yKQpsaWJyYXJ5KGx1YnJpZGF0ZSkKCgpvcHRpb25zKHNjaXBlbj05OTksIGRpZ2l0cz0xNSkKbG9hZCAodXJsICggImh0dHBzOi8vZ2l0aHViLmNvbS9jcm9ua2l0ZWRhdGEvcnN0dWR5Z3VpZGUvYmxvYi9tYXN0ZXIvZGF0YS9hel9wcHAuUmRhP3Jhdz10cnVlIikgKQpgYGAKCgpUaGlzIGRvY3VtZW50IG91dGxpbmVzIHRoZSBpbmZvcm1hdGlvbiBpbiB0aGUgUGF5Y2hlY2sgUHJvdGVjdGlvbiBQcm9ncmFtIGRhdGFzZXQgdGhhdCB5b3Ugd2lsbCB1c2UgaW4geW91ciBwcmFjdGljZSBtZW1vLiBUaGVyZSBhcmUgb3RoZXIgYmFja2dyb3VuZCBkb2N1bWVudHMgYW5kIGV4YW1wbGUgc3RvcmllcyBpbiB0aGUgQ2FudmFzIG1vZHVsZSBmb3IgTWFyY2ggMSAgdGhhdCB5b3UgY2FuIGFsc28gcmV2aWV3LiAKCiMjIFJlYWQgdGhlIGRhdGEgCgpUaGUgZGF0YSBpcyBzYXZlZCBhcyBhIG5hdGl2ZSBSIGRhdGEgZmlsZSwgc29ydCBvZiBsaWtlIGFuIEV4Y2VsIGZpbGUgYnV0IGZvciBSLiBZb3UgY2FuIHJlYWQgaXQgYnkgcmVmZXJlbmNpbmcgdGhlIFVSTCB3aGVyZSBJJ3ZlIHN0b3JlZCBpdCwgc28geW91IGRvbid0IGhhdmUgdG8gZG93bmxvYWQgaXQgaW50byB5b3UgY29tcHV0ZXIgb3IgcHJvamVjdC4gCgpJbnN0ZWFkIG9mIGByZWFkX2NzdmAgb3IgYHJlYWRfRXhjZWxgICwgeW91IGdldCB0aGUgZGF0YSBpbnRvIHlvdXIgcHJvamVjdCBieSB1c2luZyB0aGUgYGxvYWRgIGNvbW1hbmQsIHdoaWNoIHRoZW4gdXNlcyB0aGUgYHVybGAgY29tbWFuZCB0byBpbmRpY2F0ZSB0aGF0IGl0IGlzIGNvbWluZyBmcm9tIGEgd2ViIHNpdGUgaW5zdGVhZCBvZiB5b3VyIGNvbXB1dGVyLiBDb3B5IHRoaXMgbGluZSBpbnRvIGEgY29kZSBjaHVuayBpbiB5b3VyIG1hcmtkb3duIGFuZCBydW4gaXQ6ICAKCiAgICAgIGxvYWQgKHVybCAoICJodHRwczovL2dpdGh1Yi5jb20vY3JvbmtpdGVkYXRhL3JzdHVkeWd1aWRlL2Jsb2IvbWFzdGVyL2RhdGEvYXpfcHBwLlJkYT9yYXc9dHJ1ZSIpICkKICAgICAgICAKClRoYXQgd2lsbCBjcmVhdGUgYSBkYXRhIGZyYW1lIGNhbGxlZCBgYXpfcHBwYCBpbiB5b3VyIFJTdHVkaW8gc2Vzc2lvbi4gIAoKCgojIyBTb3VyY2UKClRoZSBvcmlnaW5hbCBkYXRhIHdhcyBbcHVibGlzaGVkIGJ5IHRoZSBTQkFdKGh0dHBzOi8vc2JhLmFwcC5ib3guY29tL3MvNW15ZDFueHV0b3E4d3hlY3gyNTYyYmFydXo3NzRzaTYpIG9uIEZlYi4gMSwgMjAyMS4gSSBkb3dubG9hZGVkIGFuZCB1bnppcHBlZCB0aGUgUFBQIHBvcnRpb24sIGFuZCByZWFkIGl0IGludG8gUiB1c2luZyBhIGxvb3AgdGhhdCBzdGFja2VkIGVhY2ggZGF0YSBmaWxlIG9uIHRvcCBvZiBvbmUgYW5vdGhlci4gCgpUaGUgU0JBIGhhcyBuZXZlciByZWxlYXNlZCBhIHJlY29yZCBsYXlvdXQgb3IgZGF0YSBkaWN0aW9uYXJ5IGZvciB0aGlzIGRhdGEgdGhhdCBJIGNhbiBmaW5kLiBJIHdvcmtlZCBvbiBhIHByb2plY3Qgb3ZlciB0aGUgQ2hyaXN0bWFzIGJyZWFrIHVzaW5nIGFuIGVhcmxpZXIgdmVyc2lvbiBvZiB0aGUgZGF0YSwgc28gSSAqdGhpbmsqIEkgdW5kZXJzdGFuZCBtdWNoIG9mIHdoYXQgaXQgY29udGFpbnMuIAoKSSBzZWxlY3RlZCBhYm91dCBoYWxmIG9mIHRoZSB2YXJpYWJsZXMgdGhhdCBhcmUgaW5jbHVkZWQgaW4gdGhlIG9yaWdpbmFsIGRhdGEsIGFuZCBzaW1wbGlmaWVkIGEgZmV3IGFzIHNob3duIGJlbG93LiBJIGFsc28gY29udmVydGVkIGFsbCBjaGFyYWN0ZXIgZmllbGRzIHRvIHVwcGVyIGNhc2UgdG8gZWFzZSBmaWx0ZXJpbmcsIGFuZCBjb252ZXJ0ZWQgdGhlIFppcCBDb2RlcyB0byA1LWRpZ2l0cyAuIAoKVGhpcyBkYXRhc2V0IGluY2x1ZGVzIGFsbCBsb2FucyB0aGF0IHdlcmUgbWFkZSB0byBjb21wYW5pZXMgaW4gQXJpem9uYS4gQSBoYW5kZnVsICg2KSBvZiB0aGVzZSBhcmUgZ29pbmcgdG93YXJkIHByb2plY3RzIGluIG90aGVyIHN0YXRlcy4gICAKCkhlcmUgYXJlIHRoZSBjb2x1bW5zIEkga2VwdCwgYW5kIHdoYXQgSSB1bmRlcnN0YW5kIHRoZW0gdG8gbWVhbi4gQW55IGNoYW5nZXMgb3RoZXIgdGhhbiB0aG9zZSBhYm92ZSBhcmUgaW5kaWNhdGVkIGluIHRoZSByZWNvcmQgbGF5b3V0LiAKCgpJdCBtaWdodCBiZSBoZWxwZnVsIHRvIGxvb2sgYXQgdGhlICBbbG9hbiBhcHBsaWNhdGlvbiBmb3JtXShodHRwczovL3d3dy5zYmEuZ292L3NpdGVzL2RlZmF1bHQvZmlsZXMvMjAyMC0wNC9QUFAtQm9ycm93ZXItQXBwbGljYXRpb24tRm9ybS1GaWxsYWJsZS5wZGYpIC4gCgpUaGVyZSdzIG9uZSBpbXBvcnRhbnQgdGhpbmcgSSBkb24ndCBrbm93IHRoZSBhbnN3ZXIgdG86IFRoZXJlIGFyZSBubyByb3dzIHdpdGggYSBsb2FuIHN0YXR1c3QgdGhhdCBzdWdnZXN0cyB0aGF0IGl0IHdhcyBmb3JnaXZlbiwgdGhvdWdoIHdlIGtub3cgZnJvbSBbU0JBIHJlcG9ydHNdKGh0dHBzOi8vd3d3LnNiYS5nb3YvZnVuZGluZy1wcm9ncmFtcy9sb2Fucy9jb3JvbmF2aXJ1cy1yZWxpZWYtb3B0aW9ucy9wYXljaGVjay1wcm90ZWN0aW9uLXByb2dyYW0vcHBwLWRhdGEjc2VjdGlvbi1oZWFkZXItOCkgdGhhdCBtb3JlIHRoYW4gMS43IG1pbGxpb24gbG9hbnMgcmVwcmVzZW50aW5nICQxNjAgYmlsbGlvbiBoYXZlIGFscmVhZHkgYmVlbiBmb3JnaXZlbi4gVGhlcmUgaXMgYSAibG9hbiBzdGF0dXMiIGZpZWxkIGluIHRoZSBkYXRhLCBidXQgdGhhdCBkb2Vzbid0IGhhdmUgYW55dGhpbmcgcmVsYXRlZCB0byBmb3JnaXZlbmVzcywgYW5kIHRoZSAiUEFJRCBJTiBGVUxMIiBpbmRpY2F0b3IgZG9lc24ndCBhZGQgdXAgdG8gbmVhcmx5IGVub3VnaCBtb25leS4gSSdtIHRyeWluZyB0byBmaW5kIG91dCB3aGF0IHRoZSBhbnN3ZXIgaXMgdGhlcmUsIGJ1dCBJIHdhbnRlZCB0byB3YXJuIHlvdSBub3QgdG8gdXNlIHRoYXQgY29sdW1uIHVudGlsIHdlIGdldCBzb21lIGNsYXJpdHkgb24gaXQuIAoKIyMgWW91ciByZWNvcmQgbGF5b3V0Cgo8ZGl2IHN0eWxlPSJ3aWR0aDo5MCUiPgoKY29sdW1uIG5hbWUgICAgICAgfCB0eXBlIHwgZGVzY3JpcHRpb24KLS0tLS0tLS0tLS0tLS0tLS0tfCAtLS0tIHwgLS0tLS0tLS0tLS0KaWQgICAgICAgICAgICAgICAgfCAgbiAgfCBBIHVuaXF1ZSBpZGVudGlmaWVyIHN1cHBsaWVkIGJ5IHRoZSBTQkEKZGF0ZV9hcHByb3ZlZCAgICAgfCAgZCAgfCBEYXRlIHRoZSBsb2FuIHdhcyBpbml0aWFsbHkgYXBwcm92ZWQKc3RhdHVzX2RhdGUgICAgICAgfCAgZCAgfCBXaGVuIHRoZSBzdGF0dXMgd2FzIHJlcG9ydGVkIChOQSBpZiB1bnJlcG9ydGVkKQpib3Jyb3dlciAgICAgICAgICB8ICBjICB8IE5hbWUgb2YgdGhlIGJvcnJvd2VyLCBhbGwgdXBwZXIgY2FzZQphZGRyZXNzICAgICAgICAgICB8ICBjICB8IEFkZHJlc3Mgb2YgdGhlIGJvcnJvd2VyCmNpdHkgICAgICAgICAgICAgIHwgIGMgIHwKc3RhdGUgICAgICAgICAgICAgfCAgYyAgfAp6aXAgICAgICAgICAgICAgICB8ICBjICB8IDUtZGlnaXQgWmlwIGNvZGUgb2YgdGhlIGJvcnJvd2VyCmxvYW5fc3RhdHVzICAgICAgIHwgIGMgIHwgQmxhbmsgaWYgaXQgc2FpZCAiRVhFTVBUSU9OIDQiCnRlcm0gICAgICAgICAgICAgIHwgIG4gIHwgTW9udGhzIHRvIHBheSBiYWNrCmluaXRpYWxfYW10ICAgICAgIHwgIG4gIHwgSW5pdGlhbCBhbW91bnQgYXBwcm92ZWQgYnkgU0JBCnBheXJvbGxfYW10ICAgICAgIHwgIG4gIHwgQW1vdW50IHVzZWQgZm9yIHBheXJvbGwKbm9ucGF5cm9sbF9hbXQgICAgfCAgbiAgfCBUb3RhbCBhbW91bnQgdXNlZCBmb3Igb3RoZXIgY29zdHMKZnJhbmNoaXNlICAgICAgICAgfCAgYyAgfCBOYW1lIG9mIGEgZnJhbmNoaXNlZSAKYnVzaW5lc3NfdHlwZSAgICAgfCAgYyAgfCBUeXBlIG9mIGJ1c2luZXNzLCBzdWNoIGFzIExMQyBvciBjb3Jwb3JhdGlvbiAobm90IHN0YW5kYXJkaXplZCkKbGVuZGVyICAgICAgICAgICAgfCAgYyAgfCBOYW1lIG9mIG9yaWdpbmF0aW5nIGxlbmRlciAobm90IHNlcnZpY2luZyBsZW5kZXIpCmxlbmRlcl9zdGF0ZSAgICAgIHwgIGMgIHwKcnVyYWxfdXJiYW4gICAgICAgfCAgYyAgfApidXNpbmVzc19hZ2UgICAgICB8ICBjICB8IEhvdyBsb25nIHRoZSBidXNpbmVzcyBoYWQgYmVlbiBvcGVuIGJlZm9yZSB0aGUgbG9hbgpwcm9qZWN0X2NpdHkgICAgICB8ICBjICB8IENpdHkgd2hlcmUgdGhlIG1vbmV5IHdpbGwgYmUgdXNlZApwcm9qZWN0X2NvdW50eSAgICB8ICBjICB8IENvdW50eSB3aGVyZSB0aGUgbW9uZXkgd2lsbCBiZSB1c2VkCnByb2plY3Rfc3RhdGUgICAgIHwgIGMgIHwgU3RhdGUgd2hlcmUgdGhlIGNvdW50eSB3aWxsIGJlIHVzZWQKam9ic19yZXBvcnRlZCAgICAgfCAgbiAgfCBOdW1iZXIgb2Ygam9icyAic2F2ZWQiIGJ5IHRoZSBsb2FuCm5haWNzX2NvZGUgICAgICAgIHwgIGMgIHwgU3RhbmRhcmQgaW5kdXN0cnkgY29kZSB1c2VkIGluIHRoZSBmZWRlcmFsIGdvdmVybm1lbnQKbmFpY3Nfc2VjdG9yICAgICAgfCAgYyAgfCBTZWN0b3Igb2YgdGhhdCBzdGFuZGFyZCBpbmR1c3RyeSBjb2RlLCB3aGVyZSBpdCB3YXMgYSB2YWxpZCBvbmUKbmFpY3NfZGVzY3JpcHQgICAgfCAgYyAgfCAyMDE3IGRlc2NyaXB0aW9uIG9mIHRoZSBpbmR1c3RyeSwgYmxhbmsgaWYgYSBwcmV2aW91cyB5ZWFyJ3MgdmVyc2lvbiB1c2VkCnJhY2VfZXRobmljaXR5ICAgIHwgIGMgIHwgUmFjZSBhbmQgZXRobmljaXR5IG9mIHRoZSBidXNpbmVzcyBvd25lciwgYnV0IHVzdWFsbHkgbm90IGZpbGxlZCBvdXQKZ2VuZGVyICAgICAgICAgICAgfCAgYyAgfCBTYW1lIHdpdGggZ2VuZGVyCnZldGVyYW4gICAgICAgICAgIHwgIGMgIHwgU2FtZSB3aXRoIHZldGVyYW4Kbm9uX3Byb2ZpdCAgICAgICAgfCAgYyAgfCBPbmx5IGZpbGxlZCBvdXQgaWYgdGhlIGJvcnJvd2VyIGlzIGEgbm9uLXByb2ZpdCBvcmdhbml6YXRpb24KIAo8L2Rpdj4KCgpEdXJpbmcgY2xhc3MsIHdlJ2xsIHByYWN0aWNlIGZpbHRlcmluZywgc29ydGluZyBhbmQgc2VsZWN0aW5nIGNvbHVtbnMgb24gdGhpcyBkYXRhIGZpbGUuIEFmdGVyIHRoYXQsIHdlJ2xsIHdvcmsgb24gY291bnRpbmcgLCBzdW1taW5nIGFuZCBleHRyYWN0aW5nIG90aGVyIHVzZWZ1bCBzdGF0aXN0aWNzIGZyb20gaXQuIEZpbmFsbHksIHdlJ2xsIG1lcmdlIGl0IHdpdGggYSBkYXRhc2V0IHRoYXQgY29udGFpbnMgZGVtb2dyYXBoaWNzIG9mIHRoZSB6aXAgY29kZXMgYW5kIHRoZSBudW1iZXIgb2YgVVNQUyBidXNpbmVzcyBhZGRyZXNzZXMgdG8gdXNlIGFzIGEgZGVub21pbmF0b3IuIAo=</div>
+<div id="rmd-source-code">LS0tCnRpdGxlOiAiUFBQIGxvYW5zIGluIEFyaXpvbmEiCmF1dGhvcjogIlNhcmFoIENvaGVuIgpkYXRlOiAiYHIgU3lzLkRhdGUoKWAiCm91dHB1dDogCiAgaHRtbF9kb2N1bWVudDoKICAgIHRoZW1lOiB5ZXRpCiAgICBoaWdobGlnaHQ6IGthdGUKICAgIHRvYzogdHJ1ZQogICAgdG9jX2Zsb2F0OiB0cnVlCiAgICBkZl9wcmludDogcGFnZWQKICAgIGNvZGVfZG93bmxvYWQ6IHRydWUKLS0tCgoKYGBge3Igc2V0dXAsIGluY2x1ZGU9RkFMU0UsIG1lc3NhZ2U9RkFMU0UsIHdhcm5pbmc9RkFMU0V9CgpsaWJyYXJ5KGtuaXRyKQpsaWJyYXJ5KHJtZGZvcm1hdHMpCgprbml0cjo6b3B0c19jaHVuayRzZXQoZWNobyA9IFRSVUUpCgpsaWJyYXJ5KHRpZHl2ZXJzZSkKbGlicmFyeShqYW5pdG9yKQpsaWJyYXJ5KGx1YnJpZGF0ZSkKCgpvcHRpb25zKHNjaXBlbj05OTksIGRpZ2l0cz0xNSkKCmRhdGFfdXJsIDwtICJodHRwczovL2dpdGh1Yi5jb20vY3JvbmtpdGVkYXRhL3JzdHVkeWd1aWRlL2Jsb2IvbWFzdGVyL2RhdGEvYXpfcHBwX3ppcGNvZGVzLlJkYT9yYXc9dHJ1ZSIKbG9hZCAodXJsIChkYXRhX3VybCkgKQpgYGAKCgpUaGlzIG1hcmtkb3duIGdpdmVzIHlvdSBpbnN0cnVjdGlvbnMgZm9yIGltcG9ydGluZyBhbmQgdW5kZXJzdGFuZGluZyB0aGUgUFBQIGRhdGEgZm9yIHlvdXIgbWluaS1tZW1vLiBUaGVyZSBhcmUgb3RoZXIgYmFja2dyb3VuZCBkb2N1bWVudHMgYW5kIGV4YW1wbGUgc3RvcmllcyBpbiB0aGUgQ2FudmFzIG1vZHVsZSB0aGF0IHlvdSBjYW4gYWxzbyByZXZpZXcuIAoKIyMgRG93bmxvYWQgdGhlIGRhdGEgCgoKVG8gbG9hZCB0aGUgZGF0YSBpbnRvIHlvdXIgR2xvYmFsIEVudmlyb25tZW50IGFkZCB0aGlzIGxpbmUgdG8gYSBjb2RlIGNodW5rOiAKCiAgICAgICAgZGF0YV91cmwgPC0gImh0dHBzOi8vZ2l0aHViLmNvbS9jcm9ua2l0ZWRhdGEvcnN0dWR5Z3VpZGUvYmxvYi9tYXN0ZXIvZGF0YS9hel9wcHBfemlwY29kZXMuUmRhP3Jhdz10cnVlIgoKICAgICAgICBsb2FkICh1cmwgKCBkYXRhX3VybCkgKQogICAgICAgIAoKClRoaXMgd2lsbCBjcmVhdGUgdHdvIGRhdGEgZnJhbWVzIGluIHlvdXIgd29ya2luZyBlbnZpcm9ubWVudDogYGF6X3BwcF96aXBgLCB3aGljaCBpcyB0aGUgbGlzdCBvZiBsb2FucywgYW5kIGBhel9ieV96aXBjb2RlYCwgd2hpY2ggaGFzIGluZm9ybWF0aW9uIG9uIHRoZSB6aXAgY29kZXMuIAoKCiMjIFNvdXJjZXMKCgojIyMgUFBQIGxvYW5zCgpUaGUgb3JpZ2luYWwgZGF0YSB3YXMgcHVibGlzaGVkIGJ5IHRoZSBTQkEgaGVyZSA8aHR0cHM6Ly9zYmEuYXBwLmJveC5jb20vcy81bXlkMW54dXRvcTh3eGVjeDI1NjJiYXJ1ejc3NHNpNj4gb24gTWFyY2ggMSwgMjAyMS4gSSBkb3dubG9hZGVkIGFuZCB1bnppcHBlZCB0aGUgUFBQIHBvcnRpb24sIGFuZCByZWFkIGl0IGludG8gUiB1c2luZyBhIGRpZmZlcmVudCBwcm9ncmFtLiAKClRoZSBTQkEgaGFzIG5ldmVyIHJlbGVhc2VkIGEgcmVjb3JkIGxheW91dCBvciBkYXRhIGRpY3Rpb25hcnkgZm9yIHRoaXMgZGF0YSB0aGF0IEkgY2FuIGZpbmQuIEkgd29ya2VkIG9uIGEgcHJvamVjdCBvdmVyIHRoZSBDaHJpc3RtYXMgYnJlYWsgdXNpbmcgYW4gZWFybGllciB2ZXJzaW9uIG9mIHRoZSBkYXRhLCBzbyBJICp0aGluayogSSB1bmRlcnN0YW5kIG11Y2ggb2Ygd2hhdCBpdCBjb250YWlucy4gCgpJIHNlbGVjdGVkIGFib3V0IGhhbGYgb2YgdGhlIHZhcmlhYmxlcyB0aGF0IGFyZSBpbmNsdWRlZCBpbiB0aGUgb3JpZ2luYWwgZGF0YSwgYW5kIHNpbXBsaWZpZWQgYSBmZXcgYXMgc2hvd24gYmVsb3cuIEkgYWxzbyBjb252ZXJ0ZWQgYWxsIGNoYXJhY3RlciBmaWVsZHMgdG8gdXBwZXIgY2FzZSB0byBlYXNlIGZpbHRlcmluZywgYW5kIGNvbnZlcnRlZCB0aGUgWmlwIENvZGVzIHRvIDUtZGlnaXRzIC4gCgpUaGlzIGRhdGFzZXQgaW5jbHVkZXMgYWxsIGxvYW5zIHRoYXQgd2VyZSBtYWRlIHRvIGNvbXBhbmllcyBpbiBBcml6b25hLiBBIGhhbmRmdWwgKDYpIG9mIHRoZXNlIGFyZSBnb2luZyB0b3dhcmQgcHJvamVjdHMgaW4gb3RoZXIgc3RhdGVzLiAgIAoKSGVyZSBhcmUgdGhlIGNvbHVtbnMgSSBrZXB0LCBhbmQgd2hhdCBJIHVuZGVyc3RhbmQgdGhlbSB0byBtZWFuLiBBbnkgY2hhbmdlcyBvdGhlciB0aGFuIHRob3NlIGFib3ZlIGFyZSBpbmRpY2F0ZWQgaW4gdGhlIHJlY29yZCBsYXlvdXQuIAoKClRoZSBbbG9hbiBhcHBsaWNhdGlvbiBmb3JtXShodHRwczovL3d3dy5zYmEuZ292L3NpdGVzL2RlZmF1bHQvZmlsZXMvMjAyMC0wNC9QUFAtQm9ycm93ZXItQXBwbGljYXRpb24tRm9ybS1GaWxsYWJsZS5wZGYpIC4gVGhlcmUncyBvbmUgaW1wb3J0YW50IHRoaW5nIEkgZG9uJ3Qga25vdyB0aGUgYW5zd2VyIHRvOiBUaGVyZSBhcmUgbm8gcm93cyB3aXRoIGEgbG9hbiBzdGF0dXN0IHRoYXQgc3VnZ2VzdHMgdGhhdCBpdCB3YXMgZm9yZ2l2ZW4sIHRob3VnaCB3ZSBrbm93IGZyb20gcmVwb3J0cyB0aGF0IG1vcmUgdGhhbiAkMTAwIGJpbGxpb24gaGF2ZSBhbHJlYWR5IGJlZW4gZm9yZ2l2ZW4uIFRoZXJlIGlzIGEgImxvYW4gc3RhdHVzIiBmaWVsZCBpbiB0aGUgZGF0YSwgYnV0IHRoYXQgZG9lc24ndCBoYXZlIGFueXRoaW5nIHJlbGF0ZWQgdG8gZm9yZ2l2ZW5lc3MsIGFuZCB0aGUgIlBBSUQgSU4gRlVMTCIgaW5kaWNhdG9yIGRvZXNuJ3QgYWRkIHVwIHRvIG5lYXJseSBlbm91Z2ggbW9uZXkuIEknbSB0cnlpbmcgdG8gZmluZCBvdXQgd2hhdCB0aGUgYW5zd2VyIGlzIHRoZXJlLCBidXQgSSB3YW50ZWQgdG8gd2FybiB5b3Ugbm90IHRvIHVzZSB0aGF0IGNvbHVtbiB1bnRpbCB3ZSBnZXQgc29tZSBjbGFyaXR5IG9uIGl0LiAKCjxkaXYgc3R5bGU9IndpZHRoOjcwJSI+Cgpjb2x1bW4gbmFtZSAgICAgICB8IHR5cGUgfCBkZXNjcmlwdGlvbgotLS0tLS0tLS0tLS0tLS0tLS18IC0tLS0gfCAtLS0tLS0tLS0tLQppZCAgICAgICAgICAgICAgICB8ICBuICB8IEEgdW5pcXVlIGlkZW50aWZpZXIgc3VwcGxpZWQgYnkgdGhlIFNCQQpkYXRlX2FwcHJvdmVkICAgICB8ICBkICB8IERhdGUgdGhlIGxvYW4gd2FzIGluaXRpYWxseSBhcHByb3ZlZApzdGF0dXNfZGF0ZSAgICAgICB8ICBkICB8IFdoZW4gdGhlIHN0YXR1cyB3YXMgcmVwb3J0ZWQgKE5BIGlmIHVucmVwb3J0ZWQpCmJvcnJvd2VyICAgICAgICAgIHwgIGMgIHwgTmFtZSBvZiB0aGUgYm9ycm93ZXIsIGFsbCB1cHBlciBjYXNlCmFkZHJlc3MgICAgICAgICAgIHwgIGMgIHwgQWRkcmVzcyBvZiB0aGUgYm9ycm93ZXIKY2l0eSAgICAgICAgICAgICAgfCAgYyAgfApzdGF0ZSAgICAgICAgICAgICB8ICBjICB8CnppcCAgICAgICAgICAgICAgIHwgIGMgIHwgNS1kaWdpdCBaaXAgY29kZSBvZiB0aGUgYm9ycm93ZXIsIGFzIHJlcG9ydGVkIG9uIHRoZSBsb2FuCioqY2Vuc3VzX3ppcGNvZGUqKiAgICB8ICBjICB8IDUtZGlnaXQgInppcCBjb2RlIHRhYnVsYXRpb29uIGFyZWEiIHVzZWQgYnkgdGhlIENlbnN1cyBidXJlYXUqCmxvYW5fc3RhdHVzICAgICAgIHwgIGMgIHwgQmxhbmsgaWYgcmVkYWN0ZWQgYmVjYXVzZSBvZiBFWEVNUFRJT04gNCAtIFZFUlkgdW5jbGVhciB3aGF0IHRoaXMgbWVhbnMhIAp0ZXJtICAgICAgICAgICAgICB8ICBuICB8IE1vbnRocyB0byBwYXkgYmFjawppbml0aWFsX2FtdCAgICAgICB8ICBuICB8IEluaXRpYWwgYW1vdW50IGFwcHJvdmVkIGJ5IFNCQSwgYXMgcmVwb3J0ZWQgYnkgdGhlIGJhbmsuCnBheXJvbGxfYW10ICAgICAgIHwgIG4gIHwgQW1vdW50IHVzZWQgZm9yIHBheXJvbGwKbm9ucGF5cm9sbF9hbXQgICAgfCAgbiAgfCBUb3RhbCBhbW91bnQgdXNlZCBmb3Igb3RoZXIgY29zdHMgc3VjaCBhcyB1dGlsaXRpZXMsIHJlbnQsIG9yIGludGVyZXN0IG9uIGxvYW5zCmZyYW5jaGlzZSAgICAgICAgIHwgIGMgIHwgTmFtZSBvZiBhIGZyYW5jaGlzZWUgCmJ1c2luZXNzX3R5cGUgICAgIHwgIGMgIHwgSG93IHRoZSBidXNpbmVzcyBpcyBvcmdhbml6ZWQsIHN1Y2ggYXMgIlNPTEUgUFJPUFJJRVRPUiIgb3IgIkNPUlBPUkFUSU9OIgpsZW5kZXIgICAgICAgICAgICB8ICBjICB8IE5hbWUgb2Ygb3JpZ2luYXRpbmcgbGVuZGVyIChub3Qgc2VydmljaW5nIGxlbmRlcikKbGVuZGVyX3N0YXRlICAgICAgfCAgYyAgfApydXJhbF91cmJhbiAgICAgICB8ICBjICB8CmJ1c2luZXNzX2FnZSAgICAgIHwgIGMgIHwgSG93IGxvbmcgdGhlIGJ1c2luZXNzIGhhZCBiZWVuIG9wZW4gYmVmb3JlIHRoZSBsb2FuIC0gCnByb2plY3RfY2l0eSAgICAgIHwgIGMgIHwgQ2l0eSB3aGVyZSB0aGUgbW9uZXkgd2lsbCBiZSB1c2VkCnByb2plY3RfY291bnR5ICAgIHwgIGMgIHwgQ291bnR5IHdoZXJlIHRoZSBtb25leSB3aWxsIGJlIHVzZWQKcHJvamVjdF9zdGF0ZSAgICAgfCAgYyAgfCBTdGF0ZSB3aGVyZSB0aGUgY291bnR5IHdpbGwgYmUgdXNlZApqb2JzX3JlcG9ydGVkICAgICB8ICBuICB8IE51bWJlciBvZiBqb2JzICJzYXZlZCIgYnkgdGhlIGxvYW4KbmFpY3NfY29kZSAgICAgICAgfCAgYyAgfCBTdGFuZGFyZCBpbmR1c3RyeSBjb2RlIHVzZWQgaW4gdGhlIGZlZGVyYWwgZ292ZXJubWVudApuYWljc19zZWN0b3IgICAgICB8ICBjICB8IFNlY3RvciBvZiB0aGF0IHN0YW5kYXJkIGluZHVzdHJ5IGNvZGUsIHdoZXJlIGl0IHdhcyBhIHZhbGlkIG9uZQpuYWljc19kZXNjcmlwdCAgICB8ICBjICB8IDIwMTcgZGVzY3JpcHRpb24gb2YgdGhlIGluZHVzdHJ5LCBibGFuayBpZiBhIHByZXZpb3VzIHllYXIncyB2ZXJzaW9uIHVzZWQKcmFjZSAgICAgICAgICAgICAgfCAgYyAgfCBSYWNlIG9mIGJ1c2luZXNzIG93bmVyLCAiVU5BTlNXRVJFRCIgaXMgODUlIG9mIGxvYW5zLiBIaXNwYW5pYyBpcyBub3QgYSByYWNlLgpldGhuaWNpdHkgICAgICAgICB8ICBjICB8ICJISVNQQU5JQyBPUiBMQVRJTk8iLCAiTk9UIEhJU1BBTklDIE9SIExBVElOTyIsICJVTktOT1dOL05PVFNUQVRFRCIgKDg1JSBvZiBsb2FucykKZ2VuZGVyICAgICAgICAgICAgfCAgYyAgfCBTYW1lIHdpdGggZ2VuZGVyICAtIFVzdWFsbHkgbm90IGZpbGxlZCBvdXQKdmV0ZXJhbiAgICAgICAgICAgfCAgYyAgfCBTYW1lIHdpdGggdmV0ZXJhbiAtIFVzdWFsbHkgbm90IGZpbGxlZCBvdXQKbm9uX3Byb2ZpdCAgICAgICAgfCAgYyAgfCAiWSIgIGlmIHRoZSBib3Jyb3dlciBpcyBhIG5vbi1wcm9maXQgb3JnYW5pemF0aW9uCiAKPC9kaXY+CgoqIFRoZSBgY2Vuc3VzX3ppcGNvZGVgIGlzIHRoZSBvbmUgdGhhdCB5b3Ugd2lsbCB1c2UgdG8gbWF0Y2ggYWdhaW5zdCB0aGUgZGVtb2dyYXBoaWMgaW5mb3JtYXRpb24uIAoKVG8gZ2V0IGRlbW9ncmFwaGljIGluZm9ybWF0aW9uLCB3ZSBoYWQgdG8gdXNlICJ6aXAgY29kZSB0YWJ1bGF0aW9uIGFyZWFzIiwgd2hpY2ggaXMgd2hhdCB0aGUgQ2Vuc3VzIHVzZXMuIFRoZSByZWFzb24gaXMgdGhhdCBaaXAgQ29kZXMgYXJlIGFjdHVhbGx5IHBvc3RhbCBjb2RlcywgYW5kIHJlZmVsY3QgcG9zdCBvZmZpY2Ugcm91dGVzIHJhdGhlciB0aGFuIGFyZWFzLiBUaGV5IGNhbiBhbHNvIGNvbnRhaW4gcG9zdCBvZmZpY2UgYm94ZXMgYW5kIHNwZWNpYWwgemlwIGNvZGVzIGZvciBsYXJnZSBpbnN0aXR1dGlvbnMgbGlrZSBBU1UuIEkgY3JlYXRlZCBhIG5ldyBjb2x1bW4gaW4gdGhpcyBkYXRhc2V0IHRvIHJlZmxlY3QgdGhhdCBDZW5zdXMgemlwIGNvZGUsIHdoaWNoIGNhbiBiZSB1c2VkIHRvIG1hdGNoIGFnYWluc3QgdGhlIHJlc3Qgb2Ygb3VyIGRlbW9ncmFwaGljIGluZm9ybWF0aW9uLiAKCkNyZWF0aW5nIGl0IHdhcyBhIHR3by1zdGVwIHByb2Nlc3MuIEZpcnN0LCBJIG1hdGNoZWQgYWxsICJaQ1RBIiBkYXRhIGZyb20gdGhlIENlbnN1cyBpdHNlbGYgYWdhaW5zdCB0aGUgb3JpZ2luYWwgbGlzdCBhbmQga2VwdCB3aGF0ZXZlciBtYXRjaGVkLiBJZiB0aGV5IGRpZG4ndCwgSSBhcHBsaWVkIHRoZSBjZW5zdXMgWkNUQSBmb3VuZCBpbiB0aGUgIltVRFMgTWFwcGVyXShodHRwczovL3Vkc21hcHBlci5vcmcvemlwLWNvZGUtdG8temN0YS1jcm9zc3dhbGsvKSIgY3Jvc3N3YWxrLCB3aGljaCBpcyBhIGhlYWx0aCBjYXJlIGNvb3JkaW5hdGlvbiBjb25zb3J0aXVtIGNyZWF0ZWQgdG8gaGVscCBhZG1pbmlzdGVyIE9iYW1hY2FyZS4gIAoKT25lIGVsZW1lbnQgdGhhdCBpc24ndCBjbGVhciBpcyB3aGV0aGVyIHRoZSBsb2FuIHdhcyBmb3JnaXZlbiBvciBub3QgKHlldCkuIFRoZSBib3Jyb3dlciBoYXMgdXAgdG8gdHdvIHllYXJzIHRvIHJlcXVlc3QgZm9yZ2l2ZW5lc3MsIGFuZCB0aGV5IGNhbid0IGV2ZW4gYXNrIHVudGlsIHRoZXkndmUgdXNlZCBhbGwgdGhlIG1vbmV5LiAKCiMjIyBaaXAgY29kZSBkYXRhCgpUaGUgemlwIGNvZGUgZGF0YSB5b3UgYXJlIGdldHRpbmcgaXMgYSBjb21waWxhdGlvbiBvZiBzb3VyY2VzIHRoYXQgSSBjcmVhdGVkIGZvciBzb21lIHdvcmsgSSBkaWQgZm9yIFJldmVhbCBvdmVyIHRoZSBob2xpZGF5IGJyZWFrLiAoSXQgd2FzIHByZWxpbWluYXJ5IHdvcmsgdG8gZ2V0IHN0YXJ0ZWQgcmVwb3J0aW5nLCBhbmQgd29uJ3QgYmUgdXNlZCBpbiB0aGUgZmluYWwgc3RvcnkgLS0gdGhleSB3ZXJlIGluIHRoZSBwcm9jZXNzIG9mIGdlb2NvZGluZyBldmVyeSBsb2FuIHNvIHRoYXQgdGhleSBoYWQgQ2Vuc3VzIFRyYWN0IGluZm9ybWF0aW9uIHJhdGhlciB0aGFuIHppcCBjb2Rlcywgd2hpY2ggYXJlIG11Y2ggYmV0dGVyIGZvciBkZW1vZ3JhcGhpYyBwdXJwb3Nlcy4pCgoKIyMjIyBVU1BTIGJ1c2luZXNzZXMKClRoZXJlIGlzIG5vIGdvb2QgbWVhc3VyZSBvZiB0aGUgbnVtYmVyIG9mIGJ1c2luZXNzZXMgdGhhdCBleGlzdCBpbiBhbnkgc21hbGwgZ2VvZ3JhcGhpYyBhcmVhIGxpa2UgemlwIGNvZGUgb3IgQ2Vuc3VzIFRyYWN0LiBUaGUgcmVhc29uIGlzIHRoYXQgbW9zdCBnb3Zlcm5tZW50IHN1cnZleXMgb25seSBpbmNsdWRlIHByaXZhdGUsIGZvci1wcm9maXQgZW50aXRpZXMgd2l0aCBhdCBsZWFzdCA1IGVtcGxveWVlcy4gQWJvdXQgODAgcGVyY2VudCBvZiBhbGwgYnVzaW5lc3NlcyBoYXZlIE5PIGVtcGxveWVlcywgYW5kIGEgdmVyeSBsYXJnZSBwcm9wb3J0aW9uIG9mIHRoZSByZXN0IGhhdmUgZmV3ZXIgdGhhbiA1LiBUaGUgcHJvYmxlbSBpcywgdGhpcyBsb2FuIHByb2dyYW0gd2FzIHRhcmdldGVkIHNwZWNpZmljYWxseSBhdCB0aGVzZSBzbWFsbCBlbnRpdGllcyEgCgpUaGlzIG1lYW5zIGl0J3MgdmVyeSBkaWZmaWN1bHQgdG8gZXN0aW1hdGUgdGhlIHBlcmNlbnQgb2YgYWxsIGJ1c2luZXNzZXMgaW4gYSB6aXAgY29kZSB0aGF0IGdvdCBsb2FucyEgVGhlIGJlc3QgcHJveHkgSSBjb3VsZCBmaW5kIGlzIGZyb20gdGhlIFUuUy4gUG9zdGFsIFNlcnZpY2UsIHdoaWNoIHByb2R1Y2VzIFthIGZpbGUgZXZlcnkgcXVhcnRlciB0aGF0IGhhcyB0aGUgbnVtYmVyIG9mIGJ1c2luZXNzZXMgYW5kIHJlc2lkZW50aWFsIGFkZHJlc3Nlc10oaHR0cHM6Ly93d3cuaHVkdXNlci5nb3YvcG9ydGFsL2RhdGFzZXRzL3VzcHMuaHRtbCkgdGhhdCBjYW4gZ2V0IG1haWwuIEl0IGV4Y2x1ZGVzIFBPIGJveGVzLCBhbmQgd291bGQgY291bnQgYXMgInJlc2lkZW50aWFsIiBhIGJ1c2luZXNzIHJ1biBvdXQgb2YgYSBob21lLCBzbyBpdCdzIG5vdCBleGFjdC4gQnV0IGl0J3MgdGhlIGJlc3Qgd2UgY2FuIGZpbmQuIAoKIyMjIyBEZW1vZ3JhcGhpYyBpbmZvcm1hdGlvbgoKSSBvYnRhaW5lZCB0aGUgQ2Vuc3VzIGRhdGEgdXNpbmcgW1NvY2lhbCBFeHBsb3Jlcl0oaHR0cHM6Ly9zb2NpYWxleHBsb3Jlci5jb20pICwgd2hpY2ggeW91IGNhbiBhY2Nlc3MgdGhyb3VnaCB0aGUgQVNVIGxpYnJhcnkuIEl0IG1ha2VzIGl0IHJlbGF0aXZlbHkgZWFzeSB0byBvYnRhaW4gY3V0cyBvZiBDZW5zdXMgcHJvZHVjdHMgdGFpbG9yZWQgdG8geW91ciBuZWVkcy4gSSB1c2VkIHRoZSAyMDE0LTIwMTggQW1lcmljYW4gQ29tbXVuaXR5IFN1cnZleSB0byBvYnRhaW4gYmFzaWMgZGVtb2dyYXBoaWMgaW5mb3JtYXRpb24gYnkgWmlwIENvZGUgVGFidWxhdGlvbiBhcmVhLiAKCiMjIyMgR2VvZ3JhcGhpYyBpbmZvcm1hdGlvbgoKWmlwIGNvZGVzIGRvbid0IGhhdmUgYmFzaWMgZ2VvZ3JhcGhpYyBlbGVtZW50cyBjb25uZWN0ZWQgdG8gdGhlbSEgIEkgdXNlZCB0aGUgQ2Vuc3VzIFRJR0VSIG1hcHBpbmcgZmlsZXMgdG8gYXR0YWNoIHRoZSBjb3VudHksIGxhdGl0dWRlLCBsb25naXR1ZGUsIGV0Yy4gdG8gdGhlIHpjdGFzIHVzaW5nIHRoZWlyIGNlbnRlciBwb2ludHMuIAoKCgojIyMgRGVtb2dyYXBoaWMgZGF0YSByZWNvcmQgbGF5b3V0CgoKY29sdW1uIG5hbWUgICAgIHwgdHlwZSB8IERlc2NyaXB0aW9uCi0tLS0tLS0tLS0tLS0tLSB8IC0tLS0gfCAtLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLQp6Y3RhICAgICAgICAgICAgfCBjIHwgIFRoZSBjZW5zdXMgemlwIGNvZGUgKG1hdGNoZXMgdG8gY2Vuc3VzX3ppcCBpbiB0aGUgcHBwIGRhdGEpCnppcGNvZGVfY2l0eSAgICB8IGMgfCAgVGhlIG5hbWUgb2YgdGhlIHBvc3Qgb2ZmaWNlLCBmcm9tIFVEUyBtYXBwZXIgICAgICAKc3RfY291bnR5X2ZpcCAgIHwgYyB8ICBBIHN0YW5kYXJkIGNvZGUgaW5kaWNhdGluZyB0aGUgY291bnR5IHRoYXQgdGhlIHppcCBjb2RlIGlzIGluCmNvdW50eV9uYW1lICAgICB8IGMgfCAgVGhlIG5hbWUgb2YgdGhhdCBjb3VudHkKbWV0cm9fbmFtZSAgICAgIHwgYyB8ICBNZXRybyBhcmVhIG5hbWUgaWYgdGhlcmUgaXMgb25lIGZvciB0aGF0IHppcCBjb2RlICAgICAgICAKdXNwc19idXNpbmVzc2VzIHwgbiB8ICMgb2YgYnVzaW5lc3MgYWRkcmVzc2VzIGVzdGltYXRlZCBieSAgdGhlIFVTIFBvc3RhbCBTZXJ2aWNlCnRvdF9wb3AgICAgICAgICB8IG4gfCBUb3RhbCBwb3B1bGF0aW9uICAoU29tZSBhcmUgemVybykKaG91c2Vob2xkcyAgICAgIHwgbiB8ICMgb2YgaG91c2Vob2xkcyAgICAgICAgIApwY3Rfd2hpdGVfbmggICAgfCBuIHwgUHJvcG9ydGlvbiBvZiBXaGl0ZSwgbm9uLUhpc3BhbmljIHBvcHVsYXRpb24gKHBlcmNlbnQgaW4gZGVjaW1hbHMpCnBjdF9ibGFja19uaCAgICB8IG4gfCBQcm9wb3JhdGlvbiBvZiBCbGFjaywgbm9uLUhpc3BhbmljICAgICAgCnBjdF9haWFuX25oICAgICB8IG4gfCBQcm9wb3J0aW9uIG9mIEFtZXJpY2FuIEluZGlhbiBvciBBbGFza2EgTmF0aXZlIG5vbi1IaXNwYW5pYyAgICAgICAgCnBjdF9hc2lhbl9uaCAgICB8IG4gfCBQcm9wb3J0aW9uIG9mIEFzaWFuIG5vbi1IaXNwYW5pYyAgICAgICAKcGN0X2hpc3BhbmljICAgIHwgbiB8IFByb3BvcnRpb24gb2YgSGlzcGFuaWMgb3IgTGF0aW5vIHBvcHVsYXRpb24gICAgICAgIAp6Y3RhX2V0aG5pYyAgICAgfCBuIHwgRXRobmljaXR5IGNhdGVnb3JpemF0aW9uIHVzaW5nIFVyYmFuIEluc3RpdHV0ZSdzIG1ldGhvZG9sb2d5ICAgICAgIAp3aGl0ZV9uaF9ncm91cCAgfCBuIHwgQ2F0ZWdvcml6YXRpb24gb2YgdGhlIHByb3Aub2YgV2hpdGUgbm9uLUhpc3BhbmljIHBvcHVsYXRpb24sIHVzaW5nIFVyYmFuIEluc3RpdHV0ZSAgICAgCm1lZGlhbl9pbmNfMjAxOCB8IG0gfCBNZWRpYW4gaW5jb21lIGluIDIwMTggZG9sbGFycyAgICAKaW5jb21lX2x0MjUgICAgIHwgbiB8IE51bWJlciBvZiBob3VzZWhvbGRzIHdpdGggbGVzcyB0aGFuICQyNSwwMDAgYW5udWFsIGluY29tZSAgICAgICAgCmluY29tZV8xNTBrdXAgICB8IG4gfCBOdW1iZXIgb2YgaG91c2Vob2xkcyB3aXRoICQxNTAsMDAwIGFubnVhbCBpbmNvbWUgb3IgbW9yZSAgICAgIAphZ2dyZWdhdGVfaW5jb21lIHwgbiB8IFRvdGFsIGhvdXNlaG9sZCBpbmNvbWUgKGNhbiBiZSBkaXZpZGVkIGJ5IGhvdXNlaG9sZHMgZm9yIGF2ZXJhZ2UgaW5jb21lKQpwY3RfY29sbGVnZV9ncmFkIHwgIG4gfCBQcm9wb3J0aW9uIG9mIGFkdWx0cyB3aXRoIGNvbGxlZ2UgZGVncmVlICAKcGN0X2tpZHNfZHJvcHBlZG91dCB8IG4gfCBQcm9wb3J0aW9uIG9mIHlvdXRoIDE4IGFuZCB1bmRlciB3aG8gZHJvcHBlZCBvdXQgb2Ygc2Nob29sCnVuZW1wbF9yYXRlICAgICAgICAgfCBuIHwgQXZlcmFnZSB1bmVtcGxveW1lbnQgcmF0ZSAyMDE0LTIwMTggICAgICAgIApsYXRpdHVkZSAgICAgICAgICAgIHwgbiB8IFRoZSBsYXRpdHVkZSBvZiB0aGUgY2VudGVyIHBvaW50IG9mIHRoZSB6aXAgY29kZSAgICAgICAgICAgCmxvbmdpdHVkZSAgICAgICAgICAgfCBuIHwgVGhlIGxvbmdpdHVkZSBvZiB0aGUgY2VudGVyIHBvaW50IG9mIHRoZSB6aXAgY29kZSAgICAgICAgIAogCgojIyBIb3cgdG8gdXNlIHRoZSBkZW1vZ3JhcGhpYyBkYXRhCgoKWW91IGNhbiB1c2UgdGhlIGRlbW9ncmFwaGljIGluZm9ybWF0aW9uIGluIHR3byB3YXlzOiAKCiogVG8gYXR0YWNoIGluZm9ybWF0aW9uIGFib3V0IHRoZSBhcmVhIHRvIGVhY2ggaW5kaXZpZHVhbCBsb2FuLCBhbGxvd2luZyB5b3UgdG8gbG9vayB1cCBidXNpbmVzc2VzIHRoYXQgd2VyZSBsb2NhdGVkIGluIHppcCBjb2RlcyB3aXRoIHNwZWNpZmljIGNoYXJhY3RlcmlzdGljcy4gCgoqIFRvIHVzZSB3aXRoIHN1bW1hcmlzZWQgaW5mb3JtYXRpb24gZnJvbSB0aGUgbG9hbnMgdG8gZmluZCBvdXQsIGZvciBleGFtcGxlLCB3aGljaCBsZW5kZXJzIHByb3ZpZGVkIGxvYW5zIGluIG1pbm9yaXR5IGFyZWFzLiAKCgpIZXJlIGFyZSB0d28gZXhhbXBsZXM6IAoKIyMjIE1hdGNoIHRoZW4gZmlsdGVyCgpIZXJlLCB3ZSdsbCBwdWxsIG91dCBpbmZvcm1hdGlvbiBvbiB0aGUgZXRobmljaXR5IG9mIHRoZSB6aXAgY29kZSwgYW5kIGF0dGFjaCBpdCB0byB0aGUgaW5kaXZpZHVhbCBsb2FuIGluZm9ybWF0aW9uLiBUaGVuIHdlIGNhbiBsb29rIHVwIGJ1c2luZXNzZXMgdGhhdCB3ZXJlIGluIGNlcnRhaW4gYXJlYXMuIAoKCkZpcnN0LCBjcmVhdGUgYSBkYXRhIGZyYW1lIHdpdGggdGhlIGluZm9ybWF0aW9uIHRoYXQgeW91IHdhbnQgdG8ga2VlcCBmcm9tIHRoZSBkZW1vZ3JhcGhpYyBmaWxlOiAKCmBgYHtyfQoKCmF6X2tlZXBfemlwIDwtCiAgYXpfYnlfemlwY29kZSAlPiUKICBzZWxlY3QgKCB6Y3RhLCB6aXBjb2RlX2NpdHksIGNvdW50eV9uYW1lLCB1c3BzX2J1c2luZXNzZXM6IGhvdXNlaG9sZHMsIHpjdGFfZXRobmljLCB3aGl0ZV9uaF9ncm91cCwgcGN0X2hpc3BhbmljLCBwY3Rfd2hpdGVfbmgsIHBjdF9haWFuX25oLCBwY3RfYmxhY2tfbmgsIAogICAgICAgICAgIG1lZGlhbl9pbmNfMjAxOCkKICAKCgpgYGAKCgpOb3cgam9pbiBpdCB0byB0aGUgbG9hbiBkYXRhIGFuZCBwaWNrIG91dCBsb2FucyB0aGF0IG1hdGNoIGEgZmV3IGNyaXRlcmlhIGFuZCBzZWxlY3Qgc29tZSBjb2x1bW5zIHlvdSBtaWdodCB3YW50IHRvIGV4YW1pbmU6CgpgYGB7ciByb3dzLnByaW50PSIyNSJ9Cgphel9wcHBfemlwICU+JQogIGxlZnRfam9pbiAoIGF6X2tlZXBfemlwLCBieT1jKCJjZW5zdXNfemlwIj0iemN0YSIpKSAlPiUKICBmaWx0ZXIgKCBjb3VudHlfbmFtZSA9PSAiWXVtYSBDb3VudHkiLCAKICAgICAgICAgICBzdHJfZGV0ZWN0ICh6Y3RhX2V0aG5pYywgIkhpc3BhbmljIiksCiAgICAgICAgICAgd2hpdGVfbmhfZ3JvdXAgPT0gIjAgdG8gMTAlIikgJT4lCiAgc2VsZWN0ICggYm9ycm93ZXIsIGNpdHksIGNlbnN1c196aXAsIGluaXRpYWxfYW10LCBldGhuaWNpdHksCiAgICAgICAgICBtZWRpYW5faW5jXzIwMTgsIHpjdGFfZXRobmljLCBwY3RfaGlzcGFuaWMsIGFkZHJlc3MKICAgICAgICAgICkgJT4lCiAgYXJyYW5nZSAoIGNlbnN1c196aXAsIGJvcnJvd2VyKQogICAgICAgICAgIAoKCmBgYAoKCiMjIyBHcm91cCB0aGVuIG1hdGNoCgpUaGUgb3Bwb3NpdGUgc3RyYXRlZ3kgY2FuIGJlIHVzZWQgdG8gc3VtbWFyaXplIGhvdyBsb2FucyB3ZXJlIG1hZGUgdG8gbWlub3JpdHkgYW5kIG5vbi1taW5vcml0eSB6aXAgY29kZXMuIFlvdSBjb3VsZCB1c2UgdGhpcyB0byBmaW5kIHBsYWNlcyB3aGVyZSB2ZXJ5IGZldyBidXNpbmVzc2VzIGdvdCBsb2FucyAsIG9yIHdoZXJlIG1vc3Qgb2YgdGhlIGJ1c2luZXNzZXMgZ290IGxvYW5zLCBpbiBtaW5vcml0eSBuZWlnaGJvcmhvb2RzLiAgVGhpcyBpcyBhIGxvdCBtb3JlIGNvbXBsaWNhdGVkIGFuZCB5b3UgaGF2ZSB0byBiZSBjYXJlZnVsIG9mIGRhdGEgYW5vbW9saWVzLCBidXQgaXQgaXMgYWxzbyB2ZXJ5IHBvd2VyZnVsOiBJdCBsZXRzIHlvdSBtYXAgb3V0IHRoZSBraW5kcyBvZiBuZWlnaGJvcmhvb2RzIHRoYXQgZ290LCBhbmQgZGlkbid0IGdldCwgbG9hbnMuICAKCllvdSBjYW4gbG9vayBhdCBob3cgbXVjaCB5b3UgY2FuIGRvIHdpdGggdGhpcyBhcHByb2FjaCBieSBsb29raW5nIGF0IFtvbmUgb2YgdGhlIG1ldHJvIGFyZWFzIEkgcHJvZmlsZWQgZm9yIHRoZSBSZXZlYWwgcHJvamVjdF0oaHR0cHM6Ly9jcm9ua2l0ZWRhdGEuZ2l0aHViLmlvL3JzdHVkeWd1aWRlL2V4dHJhL3R4X2RhbGxhcy5odG1sKS4gCgoKWW91IGNvdWxkIGFsc28gbG9vayBhdCB3aGV0aGVyIHRoZSBCaWRlbiBhZG1pbmlzdHJhdGlvbiBpcywgc28gZmFyLCBkb2luZyBtb3JlIHRvIHNlcnZlIG1pbm9yaXR5IG9yIHVuZGVyc2VydmVkIGFyZWFzLiAKCkhlcmUgaXMgYSBzaW1wbGUgZXhhbXBsZSwgd2hpY2ggbG9va3MgYXQgdGhlIGRpc3RyaWJ1dGlvbiBvZiBsb2FucyBieSBjb3VudHksIGRlcGVuZGluZyBvbiB0aGUgZXRobmljaXR5IG9mIHRoZSB6aXAgY29kZS4gCgojIyMjIFN0ZXAgMTogQWdncmVnYXRlIChzdW0pIHRoZSBQUFAgbG9hbnMKCkZpcnN0LCB3ZSBoYXZlIHRvIGdldCB0aGUgbnVtYmVyIG9mIGxvYW5zIGFuZCBzb21lIG90aGVyIGRhdGEgYWJvdXQgZWFjaCB6aXAgY29kZSBmcm9tIHRoZSBQUFAgbG9hbiBkYXRhLiBXZSBzaG91bGQgYWxzbyBiZSBzdXJlIHdlIGtub3cgaG93IG1hbnkgYnVzaW5lc3NlcyBnb3QgbG9hbnMsIG5vdCBqdXN0IHRoZSBudW1iZXIgb2YgbG9hbnMsIGJlY2F1c2Ugd2UncmUgZ29pbmcgdG8gd2FudCB0byBnZXQgYSByYXRlIG9mIHBhcnRpY2lwYXRpb24gbGF0ZXIgb24uIAoKCmBgYHtyfQoKcHBwX3ppcHRvdGFscyA8LSAKICBhel9wcHBfemlwICU+JQogIGdyb3VwX2J5ICggY2Vuc3VzX3ppcCApICU+JQogIHN1bW1hcmlzZSAoIGxvYW5zID0gbigpLAogICAgICAgICAgICAgIGJvcnJvd2VycyA9IG5fZGlzdGluY3QgKCBib3Jyb3dlciwgemlwKSAsIAogICAgICAgICAgICAgIHRvdGFsX2Ftb3VudCA9IHN1bSAoIHBheXJvbGxfYW10ICsgbm9ucGF5cm9sbF9hbXQpCiAgKQoKYGBgCgpOb3cgd2UncmUgZ29pbmcgdG8gbWF0Y2ggdGhlbSBhZ2FpbnN0IHRoZSB6aXAgY29kZSBpbmZvcm1hdGlvbiB3ZSBrZXB0IGVhcmxpZXIsIG1ha2luZyBzdXJlIHRvIGtlZXAgYWxsIG9mIHRoZSByb3dzIChub3QganVzdCB0aG9zdCB0aGF0IGhhZCBsb2FucyBpbiB0aGVtKS4gVGhpcyB3aWxsIGRyb3Agb3V0IGFueSB6aXBjb2RlcyB0aGF0IGFyZW4ndCByZWFsbHkgaW4gQXJpem9uYSBvciBhcmUgYmxhbmsgaW4gb3VyIFBQUCBkYXRhLiBXZSBhbHNvIGhhdmUgdG8gbWFrZSB0aGUgbnVtYmVyIG9mIGxvYW5zIHplcm8gaW4gemlwIGNvZGVzIHRoYXQgZGlkbid0IGV4aXN0IGluIG91ciBQUFAgbG9hbiBkYXRhLiAgCgooVGhpcyBpcyBhICJsZWZ0X2pvaW4iLCB3aGljaCBtZWFucyAia2VlcCBldmVyeXRoaW5nIGZyb20gdGhlIGZpcnN0IGRhdGEgZnJhbWUgbWVudGlvbmVkLCBhbmQgb25seSB0aGUgdGhpbmdzIHRoYXQgbWF0Y2ggZnJvbSB0aGUgc2Vjb25kIG9uZSBsaXN0ZWQuIikKCgpgYGB7cn0KCnBwcF96aXBfc3VtcyA8LSAKICBhel9rZWVwX3ppcCAlPiUKICBsZWZ0X2pvaW4gKCBwcHBfemlwdG90YWxzLCBieT1jKCJ6Y3RhIj0iY2Vuc3VzX3ppcCIpKSAlPiUKICAjIHdlIGFyZSBsZWZ0IHdpdGggc29tZSBOQSdzIGJlY2F1c2Ugbm90IGV2ZXJ5IHppcCBjb2RlIGhhZCBhbnkgbG9hbnMKICAjIFRoZXJlJ3MgYSBzaG9ydGN1dCB3YXkgdG8gZG8gdGhpcywgYnV0IEkgZG9uJ3Qgd2FudCB0byBtYWtlIGl0IG1vcmUgY29uZnVzaW5nIHRoYW4gbmVjZXNzYXJ5IHJpZ2h0IG5vdy4KICBtdXRhdGUgKCBsb2FucyA9IHJlcGxhY2VfbmEgKGxvYW5zLCAwKSwgCiAgICAgICAgICAgYm9ycm93ZXJzID0gcmVwbGFjZV9uYSAoYm9ycm93ZXJzLCAwKSwgCiAgICAgICAgICAgdG90YWxfYW1vdW50ID0gcmVwbGFjZV9uYSAodG90YWxfYW1vdW50LCAwKSkgCiAgCgpgYGAKCgpJbiBwcmFjdGljZSwgd2UnZCBoYXZlIHRvIGRlY2lkZSB3aGF0IHRvIGRvIGluIGNhc2VzIGluIHdoaWNoIHRoZXJlIHdlcmUgbW9yZSBsb2FucyB0aGFuIGJ1c2luZXNzZXMhIEluIHNvbWUgY2FzZXMsIHRoZSBQb3N0YWwgU2VydmljZSBoYWQgbm8gYnVzaW5lc3MgYWRkcmVzc2VzIGJ1dCB0aGVyZSB3ZXJlIGxvYW5zIC4gSW4gb3RoZXJzLCB0aGVyZSB3ZXJlIG1hbnkgbW9yZSBsb2FucyB0aGFuIHRoZXJlIHdlcmUgYnVzaW5lc3Nlcy4gWW91IGhhdmUgc29tZSBjaG9pY2VzOiAKCiogU2V0IHRoZSAlIG9mIGJ1c2luZXNzZXMgd2l0aCBsb2FucyB0byAxMDAlIGlmIHRoZSBudW1iZXIgb2YgbG9hbnMgd2FzIG1vcmUgdGhhbiB0aGUgbnVtYmVyIG9mIHVuaXF1ZSBidXNpbmVzc2VzLiAKCiogQWRkIHRvZ2V0aGVyIHRoZSBudW1iZXIgb2YgYnVzaW5lc3NlcyBhbmQgdGhlIG51bWJlciBvZiBob3VzZWhvbGRzLCB0byBnZXQgYSBzdGFibGUgYmFzaXMgZm9yIGEgY29tcGFyaXNvbi4gVGhpcyBiYXNpY2FsbHkgc2F5cywgIm91dCBvZiBhbGwgb2YgdGhlIGVudGl0aWVzIHdlIGtub3cgb2YgaW4gdGhpcyB6aXAgY29kZSwgd2hhdCBwb3J0aW9uIGdvdCBsb2Fucz8iIElmIGl0J3MgYSBidXNpbmVzcyBkaXN0cmljdCwgdGhhdCB3b3VsZCBiZSBoaWdoLiBCdXQgaXQgd291bGQgbmV2ZXIgYmUgbW9yZSB0aGFuIDEwMCUhIAoKKiBNb3ZlIHVwIGEgbGV2ZWwgb2YgYWdncmVnYXRpb24gLS0gbG9vayBhdCB0b3RhbHMgYnkgY291bnR5IGFuZCBldGhuaWNpdHksIG9yIGdyb3VwIHRoZSB6aXBjb2RlcyB0b2dldGhlciBzb21lIG90aGVyIHdheSwgdG8gc3VtbWFyaXplIHRoZSBkYXRhIGFuZCBwYXBlciBvdmVyIHRoZSBkYXRhIHByb2JsZW1zLiAKCiogRG9uJ3Qgd29ycnkgYWJvdXQgaXQsIGFuZCBwaWNrIG91dCBzb21lIGludGVyZXN0aW5nIHppcCBjb2Rlcywgc3VjaCBhcyBzb21lIHdpdGggcmVsYXRpdmVseSBsb3cgaW5jb21lIG9yIHNvbWUgcHJlZG9taW5hbnQgZXRobmljaXR5LCBhbmQgdGhlbiBjb21wYXJlIHRoZWlyIHRvdGFsIGxvYW4gcmF0ZXMgd2l0aCBldmVyeW9uZSBlbHNlLiAKCiogVXNlIHRoZSBhbm9tYWxpZXMgdG8geW91ciBhZHZhbnRhZ2UgLS0gbG9vayBhdCB0aG9zZSBwbGFjZXMgb24gYSBtYXAgb3IgYSBzYXRlbGxpdGUgaW1hZ2UsIGFuZCBzZWUgaWYgdGhleSBtaWdodCBiZSBnb29kIHBsYWNlcyB0byBjZW50ZXIgYSBzdG9yeSEgCgoKCgoK</div>
 
 
 </div>
