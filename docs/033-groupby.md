@@ -10,8 +10,8 @@
 *  Together, they're usually used to answer questions like "how many?" and "how much?". 
 *  You will rarely use `group_by` without `summarise`. 
 * `group_by` is picky - it will create a separate answer for every variant of a category: "Lettuce" could be one, and "lettuce" could be another. 
-*  Rolling up your totals to allow for percentage changes
-*  Rearranging your data for easier reading with `pivot_wider` 
+*  Compute percentages using subtotals from a group (rolling up groups)
+*  Rearrange your data for easier reading with `pivot_wider` 
 
 
 This continues with the Arizona immunization data from chapter 4 and assumes you've gone through that chapter. It uses some of the other verbs introduced there.  If you've started a new project, you can [re-download the data in R form](https://github.com/cronkitedata/rstudyguide/blob/master/data/az-immunizations-grade6.Rda?raw=true), and the load it in an R Markdown code chunk with this line:
@@ -36,7 +36,7 @@ Reporters use grouping to:
 * Produce summary statistics for use in stories, such as the number of complaints by type of business or the number of c-sections by hospital or doctor.
 * Test data they receive from government and others for errors, such as missing codes, impossible combinations, sudden and suspicious patterns or incorrect totals when checked against an independent source.
 
-To refresh your memory, this query counts the number of schools and adds up the number of students by type of school while giving them descriptive names: 
+This query counts the number of schools and adds up the number of students by type of school while giving them descriptive names: 
 
 
 ```r
@@ -51,17 +51,22 @@ Notice the `na.rm=TRUE` in the sum() function. You should almost always add this
 
 ### Other summary functions
 
-Counting and summing are the most common, but you might also use these functions: 
+Here are some common functions you'll use in the `summarise` statement
 
 Function | description
 --- | --- 
+n() | the number of rows that are in a grouping
 n_distinct () | the number of unique values of the variable you name
+sum() | the total of a numeric variable
 median () , mean() | The median or mean of a numeric variable
-min() , max()   | Just what it looks like
+min() , max()   | The highest and lowest of a numeric variable
+first() , last() | The first and last of a variable - you can indicate the order. Useful to find the first or last address found in a date rather than grouping by them, to avoid minor misspellings. 
 
 ### Grouping by more than one variable
 
-An example of counting by school type, and whether a school nurse is on staff: 
+
+This creates every combination of school_type and school_nurse, and the number of schools that are in each of those piles. 
+
 
 
 ```r
@@ -87,11 +92,11 @@ grade6_counts %>%
 
 </div>
 
-It produces every combination of the school_type and school_nurse.
 
-### Rolling up to the next level
+### Percentages by rolling up totals
 
-If you wanted to know what percent of schools are charter, you'd need the total number of schools as a variable in your data frame. You can roll up to the next level this way: 
+To compute a percentage of total, use the summary statistic within a `mutate` statement (covered in the next chapter) to get a total for your denominator: 
+
 
 
 ```r
@@ -170,9 +175,7 @@ Walking through this code:
 `pivot_wider` is part of a whole set of functions designed to work with tidy data, and fix untidy data. You'll sometimes see it called `spread`, which is from an older version of the tidyverse, and is harder to understand. We'll come back to some of this later on. 
 
 
-
-
-## Resources & exercises
+## Grouping / summarising resources & exercises
 
 
 If you got through this, congratulations! You've mastered one of the things that people new to data analysis struggle find difficult to wrap their heads around. If you're still unsure, don't worry -- many people are. Maybe some of these resources will help:
@@ -185,5 +188,6 @@ If you got through this, congratulations! You've mastered one of the things that
 ### Exercises
 
 * Using one of the datasets you worked with in pivot tables, try to replicate at least some of your work in R. 
+* In the appendix of this book, there are some exercises to continue with the Murder Accountability Project data. 
 
 

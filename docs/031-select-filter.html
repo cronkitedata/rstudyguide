@@ -33,7 +33,7 @@
 <link rel="prev" href="030-intro-verbs.html"/>
 <link rel="next" href="033-groupby.html"/>
 <script src="libs/header-attrs-2.7/header-attrs.js"></script>
-<script src="libs/jquery-3.5.1/jquery.min.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -50,20 +50,19 @@
 
 
 
-<script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script>
-<script src="libs/plotly-binding-4.9.3/plotly.js"></script>
+<script src="libs/htmlwidgets-1.5.2/htmlwidgets.js"></script>
+<script src="libs/plotly-binding-4.9.2.1/plotly.js"></script>
 <script src="libs/typedarray-0.1/typedarray.min.js"></script>
-<link href="libs/crosstalk-1.1.1/css/crosstalk.css" rel="stylesheet" />
-<script src="libs/crosstalk-1.1.1/js/crosstalk.min.js"></script>
-<link href="libs/plotly-htmlwidgets-css-1.57.1/plotly-htmlwidgets.css" rel="stylesheet" />
-<script src="libs/plotly-main-1.57.1/plotly-latest.min.js"></script>
+<link href="libs/crosstalk-1.1.0.1/css/crosstalk.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.1.0.1/js/crosstalk.min.js"></script>
+<link href="libs/plotly-htmlwidgets-css-1.52.2/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="libs/plotly-main-1.52.2/plotly-latest.min.js"></script>
 
 
 <style type="text/css">
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
@@ -231,7 +230,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.4" data-path="031-select-filter.html"><a href="031-select-filter.html#arrange---change-the-order"><i class="fa fa-check"></i><b>5.4</b> Arrange - change the order</a></li>
 <li class="chapter" data-level="5.5" data-path="031-select-filter.html"><a href="031-select-filter.html#troubleshooting"><i class="fa fa-check"></i><b>5.5</b> Troubleshooting</a>
 <ul>
-<li class="chapter" data-level="5.5.1" data-path="031-select-filter.html"><a href="031-select-filter.html#variable-not-found"><i class="fa fa-check"></i><b>5.5.1</b> Variable not found</a></li>
+<li class="chapter" data-level="" data-path="031-select-filter.html"><a href="031-select-filter.html#importing-or-loading-data"><i class="fa fa-check"></i>Importing or loading data</a></li>
+<li class="chapter" data-level="" data-path="031-select-filter.html"><a href="031-select-filter.html#variable-object-not-found"><i class="fa fa-check"></i>Variable / object not found</a></li>
+<li class="chapter" data-level="" data-path="031-select-filter.html"><a href="031-select-filter.html#r-is-case-sensitive"><i class="fa fa-check"></i>R is case-sensitive</a></li>
+<li class="chapter" data-level="" data-path="031-select-filter.html"><a href="031-select-filter.html#equals-versus-double-equals"><i class="fa fa-check"></i>Equals versus double-equals</a></li>
+<li class="chapter" data-level="" data-path="031-select-filter.html"><a href="031-select-filter.html#forgetting-and-then-operator"><i class="fa fa-check"></i>Forgetting “and then” operator (%&gt;%)</a></li>
+<li><a href="031-select-filter.html#the-dreaded-na">The dreaded <code>NA</code></a></li>
 </ul></li>
 <li class="chapter" data-level="5.6" data-path="031-select-filter.html"><a href="031-select-filter.html#sort-filter-resources"><i class="fa fa-check"></i><b>5.6</b> Sort / filter resources</a>
 <ul>
@@ -246,13 +250,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="6.2.1" data-path="033-groupby.html"><a href="033-groupby.html#other-summary-functions"><i class="fa fa-check"></i><b>6.2.1</b> Other summary functions</a></li>
 <li class="chapter" data-level="6.2.2" data-path="033-groupby.html"><a href="033-groupby.html#grouping-by-more-than-one-variable"><i class="fa fa-check"></i><b>6.2.2</b> Grouping by more than one variable</a></li>
-<li class="chapter" data-level="6.2.3" data-path="033-groupby.html"><a href="033-groupby.html#rolling-up-to-the-next-level"><i class="fa fa-check"></i><b>6.2.3</b> Rolling up to the next level</a></li>
+<li class="chapter" data-level="6.2.3" data-path="033-groupby.html"><a href="033-groupby.html#percentages-by-rolling-up-totals"><i class="fa fa-check"></i><b>6.2.3</b> Percentages by rolling up totals</a></li>
 </ul></li>
 <li class="chapter" data-level="6.3" data-path="033-groupby.html"><a href="033-groupby.html#restructuring-for-a-report-with-pivot_wider"><i class="fa fa-check"></i><b>6.3</b> Restructuring for a report with <code>pivot_wider()</code></a>
 <ul>
 <li class="chapter" data-level="6.3.1" data-path="033-groupby.html"><a href="033-groupby.html#a-note-on-restructuring-your-data-frames"><i class="fa fa-check"></i><b>6.3.1</b> A note on restructuring your data frames</a></li>
 </ul></li>
-<li class="chapter" data-level="6.4" data-path="033-groupby.html"><a href="033-groupby.html#resources-exercises"><i class="fa fa-check"></i><b>6.4</b> Resources &amp; exercises</a>
+<li class="chapter" data-level="6.4" data-path="033-groupby.html"><a href="033-groupby.html#grouping-summarising-resources-exercises"><i class="fa fa-check"></i><b>6.4</b> Grouping / summarising resources &amp; exercises</a>
 <ul>
 <li class="chapter" data-level="6.4.1" data-path="033-groupby.html"><a href="033-groupby.html#exercises-2"><i class="fa fa-check"></i><b>6.4.1</b> Exercises</a></li>
 </ul></li>
@@ -276,17 +280,31 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="8.1" data-path="036-joins.html"><a href="036-joins.html#key-takeaways-7"><i class="fa fa-check"></i><b>8.1</b> Key takeaways</a>
 <ul>
-<li class="chapter" data-level="8.1.1" data-path="036-joins.html"><a href="036-joins.html#adding-rows-instead-of-columns"><i class="fa fa-check"></i><b>8.1.1</b> Adding rows instead of columns</a></li>
+<li class="chapter" data-level="" data-path="036-joins.html"><a href="036-joins.html#adding-rows-instead-of-columns"><i class="fa fa-check"></i>Adding rows instead of columns</a></li>
 </ul></li>
-<li class="chapter" data-level="8.2" data-path="036-joins.html"><a href="036-joins.html#concepts-of-joining"><i class="fa fa-check"></i><b>8.2</b> Concepts of joining</a></li>
-<li class="chapter" data-level="8.3" data-path="036-joins.html"><a href="036-joins.html#arizona-immunization-data"><i class="fa fa-check"></i><b>8.3</b> Arizona immunization data</a>
+<li class="chapter" data-level="8.2" data-path="036-joins.html"><a href="036-joins.html#concepts-of-joining"><i class="fa fa-check"></i><b>8.2</b> Concepts of joining</a>
 <ul>
-<li class="chapter" data-level="" data-path="036-joins.html"><a href="036-joins.html#setting-up-the-data"><i class="fa fa-check"></i>Setting up the data</a></li>
-<li class="chapter" data-level="" data-path="036-joins.html"><a href="036-joins.html#apply-the-join"><i class="fa fa-check"></i>Apply the join</a></li>
+<li class="chapter" data-level="8.2.1" data-path="036-joins.html"><a href="036-joins.html#relational-databases"><i class="fa fa-check"></i><b>8.2.1</b> Relational databases</a></li>
 </ul></li>
-<li class="chapter" data-level="8.4" data-path="036-joins.html"><a href="036-joins.html#resources-1"><i class="fa fa-check"></i><b>8.4</b> Resources</a>
+<li class="chapter" data-level="8.3" data-path="036-joins.html"><a href="036-joins.html#matchmaking-with-joins"><i class="fa fa-check"></i><b>8.3</b> Matchmaking with joins</a>
 <ul>
-<li class="chapter" data-level="8.4.1" data-path="036-joins.html"><a href="036-joins.html#practice"><i class="fa fa-check"></i><b>8.4.1</b> Practice</a></li>
+<li class="chapter" data-level="8.3.1" data-path="036-joins.html"><a href="036-joins.html#matchmaking-strategies"><i class="fa fa-check"></i><b>8.3.1</b> Matchmaking strategies</a></li>
+</ul></li>
+<li class="chapter" data-level="8.4" data-path="036-joins.html"><a href="036-joins.html#arizona-immunization-data"><i class="fa fa-check"></i><b>8.4</b> Arizona immunization data</a>
+<ul>
+<li class="chapter" data-level="8.4.1" data-path="036-joins.html"><a href="036-joins.html#setting-up-the-data"><i class="fa fa-check"></i><b>8.4.1</b> Setting up the data</a></li>
+<li class="chapter" data-level="8.4.2" data-path="036-joins.html"><a href="036-joins.html#apply-the-join"><i class="fa fa-check"></i><b>8.4.2</b> Apply the join</a></li>
+<li class="chapter" data-level="8.4.3" data-path="036-joins.html"><a href="036-joins.html#use-the-joined-table"><i class="fa fa-check"></i><b>8.4.3</b> Use the joined table</a></li>
+</ul></li>
+<li class="chapter" data-level="8.5" data-path="036-joins.html"><a href="036-joins.html#joining-risks"><i class="fa fa-check"></i><b>8.5</b> Joining risks</a>
+<ul>
+<li class="chapter" data-level="8.5.1" data-path="036-joins.html"><a href="036-joins.html#joining-tldr"><i class="fa fa-check"></i><b>8.5.1</b> joining tl;dr</a></li>
+<li class="chapter" data-level="8.5.2" data-path="036-joins.html"><a href="036-joins.html#double-counting-with-joins"><i class="fa fa-check"></i><b>8.5.2</b> Double counting with joins</a></li>
+<li class="chapter" data-level="8.5.3" data-path="036-joins.html"><a href="036-joins.html#losing-rows-with-joins"><i class="fa fa-check"></i><b>8.5.3</b> Losing rows with joins</a></li>
+</ul></li>
+<li class="chapter" data-level="8.6" data-path="036-joins.html"><a href="036-joins.html#resources-1"><i class="fa fa-check"></i><b>8.6</b> Resources</a>
+<ul>
+<li class="chapter" data-level="8.6.1" data-path="036-joins.html"><a href="036-joins.html#practice"><i class="fa fa-check"></i><b>8.6.1</b> Practice</a></li>
 </ul></li>
 </ul></li>
 <li class="part"><span><b>III Graphics, data cleaning, scraping and more</b></span></li>
@@ -523,20 +541,20 @@ Note that R is <b>case-sensitive</b>, meaning that the variable named <i>Age</i>
 <p>Put the <strong>name of the column</strong> on the left side of the comparison, connect it with <strong>two equal signs</strong>, and put the value you want to look for <strong>in quotes</strong> on the right. The two equal signs means that it must be EXACTLY the same – not sort of the same – including upper and lower case.</p>
 <div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="031-select-filter.html#cb42-1" aria-hidden="true" tabindex="-1"></a>opioid_calls <span class="sc">%&gt;%</span></span>
 <span id="cb42-2"><a href="031-select-filter.html#cb42-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span> (  narcan <span class="sc">==</span> <span class="st">&quot;Yes&quot;</span> ) <span class="sc">%&gt;%</span></span>
-<span id="cb42-3"><a href="031-select-filter.html#cb42-3" aria-hidden="true" tabindex="-1"></a>  glimpse  </span></code></pre></div>
+<span id="cb42-3"><a href="031-select-filter.html#cb42-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">glimpse</span>  ()</span></code></pre></div>
 <pre><code>## Rows: 370
 ## Columns: 11
-## $ id                 &lt;dbl&gt; 3, 7, 11, 12, 13, 18, 20, 21, 25, 29, 30, 34, 35, 3…
-## $ incident_date      &lt;chr&gt; &quot;1/9/2017 1:08&quot;, &quot;1/11/2017 11:10&quot;, &quot;1/14/2017 22:5…
-## $ dow                &lt;chr&gt; &quot;(1) Monday&quot;, &quot;(3) Wednesday&quot;, &quot;(6) Saturday&quot;, &quot;(7)…
-## $ narcan             &lt;chr&gt; &quot;Yes&quot;, &quot;Yes&quot;, &quot;Yes&quot;, &quot;Yes&quot;, &quot;Yes&quot;, &quot;Yes&quot;, &quot;Yes&quot;, &quot;Y…
-## $ impression         &lt;chr&gt; &quot;ALOC (R41.82)&quot;, &quot;ALOC (R41.82)&quot;, &quot;ALOC (R41.82)&quot;, …
-## $ age                &lt;chr&gt; &quot;40 to 44&quot;, &quot;80 to 84&quot;, &quot;35 to 39&quot;, &quot;40 to 44&quot;, &quot;30…
-## $ gender             &lt;chr&gt; &quot;Male&quot;, &quot;Male&quot;, &quot;Female&quot;, &quot;Male&quot;, &quot;Male&quot;, &quot;Male&quot;, &quot;…
-## $ asu_yn             &lt;chr&gt; &quot;No&quot;, &quot;No&quot;, &quot;No&quot;, &quot;No&quot;, &quot;No&quot;, &quot;Unknown&quot;, &quot;No&quot;, &quot;No&quot;…
-## $ vet_yn             &lt;chr&gt; &quot;No&quot;, &quot;No&quot;, &quot;No&quot;, &quot;No&quot;, &quot;No&quot;, &quot;Unknown&quot;, &quot;No&quot;, &quot;No&quot;…
-## $ homeless_yn        &lt;chr&gt; &quot;No&quot;, &quot;No&quot;, &quot;No&quot;, &quot;No&quot;, &quot;No&quot;, &quot;Unknown&quot;, &quot;No&quot;, &quot;No&quot;…
-## $ special_population &lt;chr&gt; &quot;No&quot;, &quot;No&quot;, &quot;No&quot;, &quot;No&quot;, &quot;No&quot;, &quot;Unknown&quot;, &quot;No&quot;, &quot;No&quot;…</code></pre>
+## $ id                 &lt;dbl&gt; 3, 7, 11, 12, 13, 18, 20, 21, 25, 29, 30, 34, 35, …
+## $ incident_date      &lt;chr&gt; &quot;1/9/2017 1:08&quot;, &quot;1/11/2017 11:10&quot;, &quot;1/14/2017 22:…
+## $ dow                &lt;chr&gt; &quot;(1) Monday&quot;, &quot;(3) Wednesday&quot;, &quot;(6) Saturday&quot;, &quot;(7…
+## $ narcan             &lt;chr&gt; &quot;Yes&quot;, &quot;Yes&quot;, &quot;Yes&quot;, &quot;Yes&quot;, &quot;Yes&quot;, &quot;Yes&quot;, &quot;Yes&quot;, &quot;…
+## $ impression         &lt;chr&gt; &quot;ALOC (R41.82)&quot;, &quot;ALOC (R41.82)&quot;, &quot;ALOC (R41.82)&quot;,…
+## $ age                &lt;chr&gt; &quot;40 to 44&quot;, &quot;80 to 84&quot;, &quot;35 to 39&quot;, &quot;40 to 44&quot;, &quot;3…
+## $ gender             &lt;chr&gt; &quot;Male&quot;, &quot;Male&quot;, &quot;Female&quot;, &quot;Male&quot;, &quot;Male&quot;, &quot;Male&quot;, …
+## $ asu_yn             &lt;chr&gt; &quot;No&quot;, &quot;No&quot;, &quot;No&quot;, &quot;No&quot;, &quot;No&quot;, &quot;Unknown&quot;, &quot;No&quot;, &quot;No…
+## $ vet_yn             &lt;chr&gt; &quot;No&quot;, &quot;No&quot;, &quot;No&quot;, &quot;No&quot;, &quot;No&quot;, &quot;Unknown&quot;, &quot;No&quot;, &quot;No…
+## $ homeless_yn        &lt;chr&gt; &quot;No&quot;, &quot;No&quot;, &quot;No&quot;, &quot;No&quot;, &quot;No&quot;, &quot;Unknown&quot;, &quot;No&quot;, &quot;No…
+## $ special_population &lt;chr&gt; &quot;No&quot;, &quot;No&quot;, &quot;No&quot;, &quot;No&quot;, &quot;No&quot;, &quot;Unknown&quot;, &quot;No&quot;, &quot;No…</code></pre>
 <p>In this case, you know that there were 370 rows that met your condition. It <em>looks</em> right – all of the <code>narcan</code> items that we can see are “Yes”.</p>
 </div>
 <div id="a-compound-filter" class="section level3" number="5.3.2">
@@ -579,850 +597,36 @@ Note that R is <b>case-sensitive</b>, meaning that the variable named <i>Age</i>
 <span id="cb48-3"><a href="031-select-filter.html#cb48-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span> (dow <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;(6) Saturday&quot;</span>, <span class="st">&quot;(7) Sunday&quot;</span>)  <span class="sc">&amp;</span></span>
 <span id="cb48-4"><a href="031-select-filter.html#cb48-4" aria-hidden="true" tabindex="-1"></a>            narcan <span class="sc">==</span> <span class="st">&quot;Yes&quot;</span>) <span class="sc">%&gt;%</span></span>
 <span id="cb48-5"><a href="031-select-filter.html#cb48-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span> ( age )</span></code></pre></div>
-<div class="kable-table">
-<table>
-<thead>
-<tr class="header">
-<th align="left">dow</th>
-<th align="left">narcan</th>
-<th align="left">age</th>
-<th align="left">gender</th>
-<th align="left">asu_yn</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left">(7) Sunday</td>
-<td align="left">Yes</td>
-<td align="left">15 to 19</td>
-<td align="left">Male</td>
-<td align="left">Unknown</td>
-</tr>
-<tr class="even">
-<td align="left">(7) Sunday</td>
-<td align="left">Yes</td>
-<td align="left">15 to 19</td>
-<td align="left">Male</td>
-<td align="left">Yes</td>
-</tr>
-<tr class="odd">
-<td align="left">(6) Saturday</td>
-<td align="left">Yes</td>
-<td align="left">15 to 19</td>
-<td align="left">Male</td>
-<td align="left">No</td>
-</tr>
-<tr class="even">
-<td align="left">(6) Saturday</td>
-<td align="left">Yes</td>
-<td align="left">15 to 19</td>
-<td align="left">Female</td>
-<td align="left">Unknown</td>
-</tr>
-<tr class="odd">
-<td align="left">(6) Saturday</td>
-<td align="left">Yes</td>
-<td align="left">15 to 19</td>
-<td align="left">Male</td>
-<td align="left">No</td>
-</tr>
-<tr class="even">
-<td align="left">(7) Sunday</td>
-<td align="left">Yes</td>
-<td align="left">15 to 19</td>
-<td align="left">Female</td>
-<td align="left">Unknown</td>
-</tr>
-<tr class="odd">
-<td align="left">(6) Saturday</td>
-<td align="left">Yes</td>
-<td align="left">15 to 19</td>
-<td align="left">Female</td>
-<td align="left">Unknown</td>
-</tr>
-<tr class="even">
-<td align="left">(7) Sunday</td>
-<td align="left">Yes</td>
-<td align="left">15 to 19</td>
-<td align="left">Male</td>
-<td align="left">No</td>
-</tr>
-<tr class="odd">
-<td align="left">(6) Saturday</td>
-<td align="left">Yes</td>
-<td align="left">15 to 19</td>
-<td align="left">Female</td>
-<td align="left">No</td>
-</tr>
-<tr class="even">
-<td align="left">(6) Saturday</td>
-<td align="left">Yes</td>
-<td align="left">20 to 24</td>
-<td align="left">Female</td>
-<td align="left">Unknown</td>
-</tr>
-<tr class="odd">
-<td align="left">(7) Sunday</td>
-<td align="left">Yes</td>
-<td align="left">20 to 24</td>
-<td align="left">Male</td>
-<td align="left">No</td>
-</tr>
-<tr class="even">
-<td align="left">(6) Saturday</td>
-<td align="left">Yes</td>
-<td align="left">20 to 24</td>
-<td align="left">Male</td>
-<td align="left">No</td>
-</tr>
-<tr class="odd">
-<td align="left">(7) Sunday</td>
-<td align="left">Yes</td>
-<td align="left">20 to 24</td>
-<td align="left">Female</td>
-<td align="left">Unknown</td>
-</tr>
-<tr class="even">
-<td align="left">(6) Saturday</td>
-<td align="left">Yes</td>
-<td align="left">20 to 24</td>
-<td align="left">Male</td>
-<td align="left">Unknown</td>
-</tr>
-<tr class="odd">
-<td align="left">(6) Saturday</td>
-<td align="left">Yes</td>
-<td align="left">20 to 24</td>
-<td align="left">Male</td>
-<td align="left">No</td>
-</tr>
-<tr class="even">
-<td align="left">(6) Saturday</td>
-<td align="left">Yes</td>
-<td align="left">20 to 24</td>
-<td align="left">Male</td>
-<td align="left">Unknown</td>
-</tr>
-<tr class="odd">
-<td align="left">(7) Sunday</td>
-<td align="left">Yes</td>
-<td align="left">20 to 24</td>
-<td align="left">Male</td>
-<td align="left">No</td>
-</tr>
-<tr class="even">
-<td align="left">(6) Saturday</td>
-<td align="left">Yes</td>
-<td align="left">20 to 24</td>
-<td align="left">Male</td>
-<td align="left">No</td>
-</tr>
-<tr class="odd">
-<td align="left">(6) Saturday</td>
-<td align="left">Yes</td>
-<td align="left">20 to 24</td>
-<td align="left">Female</td>
-<td align="left">No</td>
-</tr>
-<tr class="even">
-<td align="left">(6) Saturday</td>
-<td align="left">Yes</td>
-<td align="left">20 to 24</td>
-<td align="left">Male</td>
-<td align="left">No</td>
-</tr>
-<tr class="odd">
-<td align="left">(6) Saturday</td>
-<td align="left">Yes</td>
-<td align="left">20 to 24</td>
-<td align="left">Male</td>
-<td align="left">Yes</td>
-</tr>
-<tr class="even">
-<td align="left">(6) Saturday</td>
-<td align="left">Yes</td>
-<td align="left">20 to 24</td>
-<td align="left">Male</td>
-<td align="left">No</td>
-</tr>
-<tr class="odd">
-<td align="left">(7) Sunday</td>
-<td align="left">Yes</td>
-<td align="left">20 to 24</td>
-<td align="left">Female</td>
-<td align="left">Unknown</td>
-</tr>
-<tr class="even">
-<td align="left">(7) Sunday</td>
-<td align="left">Yes</td>
-<td align="left">20 to 24</td>
-<td align="left">Female</td>
-<td align="left">Unknown</td>
-</tr>
-<tr class="odd">
-<td align="left">(6) Saturday</td>
-<td align="left">Yes</td>
-<td align="left">20 to 24</td>
-<td align="left">Male</td>
-<td align="left">No</td>
-</tr>
-<tr class="even">
-<td align="left">(7) Sunday</td>
-<td align="left">Yes</td>
-<td align="left">20 to 24</td>
-<td align="left">Female</td>
-<td align="left">No</td>
-</tr>
-<tr class="odd">
-<td align="left">(7) Sunday</td>
-<td align="left">Yes</td>
-<td align="left">25 to 29</td>
-<td align="left">Female</td>
-<td align="left">No</td>
-</tr>
-<tr class="even">
-<td align="left">(7) Sunday</td>
-<td align="left">Yes</td>
-<td align="left">25 to 29</td>
-<td align="left">Female</td>
-<td align="left">Unknown</td>
-</tr>
-<tr class="odd">
-<td align="left">(6) Saturday</td>
-<td align="left">Yes</td>
-<td align="left">25 to 29</td>
-<td align="left">Female</td>
-<td align="left">Unknown</td>
-</tr>
-<tr class="even">
-<td align="left">(7) Sunday</td>
-<td align="left">Yes</td>
-<td align="left">25 to 29</td>
-<td align="left">Female</td>
-<td align="left">No</td>
-</tr>
-<tr class="odd">
-<td align="left">(7) Sunday</td>
-<td align="left">Yes</td>
-<td align="left">25 to 29</td>
-<td align="left">Female</td>
-<td align="left">No</td>
-</tr>
-<tr class="even">
-<td align="left">(6) Saturday</td>
-<td align="left">Yes</td>
-<td align="left">25 to 29</td>
-<td align="left">Male</td>
-<td align="left">Unknown</td>
-</tr>
-<tr class="odd">
-<td align="left">(6) Saturday</td>
-<td align="left">Yes</td>
-<td align="left">25 to 29</td>
-<td align="left">Male</td>
-<td align="left">Unknown</td>
-</tr>
-<tr class="even">
-<td align="left">(7) Sunday</td>
-<td align="left">Yes</td>
-<td align="left">25 to 29</td>
-<td align="left">Female</td>
-<td align="left">No</td>
-</tr>
-<tr class="odd">
-<td align="left">(6) Saturday</td>
-<td align="left">Yes</td>
-<td align="left">25 to 29</td>
-<td align="left">Male</td>
-<td align="left">Unknown</td>
-</tr>
-<tr class="even">
-<td align="left">(7) Sunday</td>
-<td align="left">Yes</td>
-<td align="left">25 to 29</td>
-<td align="left">Male</td>
-<td align="left">No</td>
-</tr>
-<tr class="odd">
-<td align="left">(6) Saturday</td>
-<td align="left">Yes</td>
-<td align="left">25 to 29</td>
-<td align="left">Male</td>
-<td align="left">Unknown</td>
-</tr>
-<tr class="even">
-<td align="left">(6) Saturday</td>
-<td align="left">Yes</td>
-<td align="left">25 to 29</td>
-<td align="left">Male</td>
-<td align="left">No</td>
-</tr>
-<tr class="odd">
-<td align="left">(6) Saturday</td>
-<td align="left">Yes</td>
-<td align="left">25 to 29</td>
-<td align="left">Female</td>
-<td align="left">No</td>
-</tr>
-<tr class="even">
-<td align="left">(6) Saturday</td>
-<td align="left">Yes</td>
-<td align="left">25 to 29</td>
-<td align="left">Male</td>
-<td align="left">No</td>
-</tr>
-<tr class="odd">
-<td align="left">(7) Sunday</td>
-<td align="left">Yes</td>
-<td align="left">25 to 29</td>
-<td align="left">Male</td>
-<td align="left">No</td>
-</tr>
-<tr class="even">
-<td align="left">(7) Sunday</td>
-<td align="left">Yes</td>
-<td align="left">25 to 29</td>
-<td align="left">Male</td>
-<td align="left">No</td>
-</tr>
-<tr class="odd">
-<td align="left">(7) Sunday</td>
-<td align="left">Yes</td>
-<td align="left">25 to 29</td>
-<td align="left">Female</td>
-<td align="left">No</td>
-</tr>
-<tr class="even">
-<td align="left">(6) Saturday</td>
-<td align="left">Yes</td>
-<td align="left">25 to 29</td>
-<td align="left">Male</td>
-<td align="left">No</td>
-</tr>
-<tr class="odd">
-<td align="left">(7) Sunday</td>
-<td align="left">Yes</td>
-<td align="left">25 to 29</td>
-<td align="left">Male</td>
-<td align="left">No</td>
-</tr>
-<tr class="even">
-<td align="left">(6) Saturday</td>
-<td align="left">Yes</td>
-<td align="left">25 to 29</td>
-<td align="left">Male</td>
-<td align="left">No</td>
-</tr>
-<tr class="odd">
-<td align="left">(6) Saturday</td>
-<td align="left">Yes</td>
-<td align="left">25 to 29</td>
-<td align="left">Male</td>
-<td align="left">No</td>
-</tr>
-<tr class="even">
-<td align="left">(7) Sunday</td>
-<td align="left">Yes</td>
-<td align="left">25 to 29</td>
-<td align="left">Female</td>
-<td align="left">No</td>
-</tr>
-<tr class="odd">
-<td align="left">(6) Saturday</td>
-<td align="left">Yes</td>
-<td align="left">25 to 29</td>
-<td align="left">Male</td>
-<td align="left">No</td>
-</tr>
-<tr class="even">
-<td align="left">(7) Sunday</td>
-<td align="left">Yes</td>
-<td align="left">25 to 29</td>
-<td align="left">Male</td>
-<td align="left">No</td>
-</tr>
-<tr class="odd">
-<td align="left">(7) Sunday</td>
-<td align="left">Yes</td>
-<td align="left">25 to 29</td>
-<td align="left">Male</td>
-<td align="left">Unknown</td>
-</tr>
-<tr class="even">
-<td align="left">(7) Sunday</td>
-<td align="left">Yes</td>
-<td align="left">25 to 29</td>
-<td align="left">Male</td>
-<td align="left">Unknown</td>
-</tr>
-<tr class="odd">
-<td align="left">(7) Sunday</td>
-<td align="left">Yes</td>
-<td align="left">30 to 34</td>
-<td align="left">Male</td>
-<td align="left">Unknown</td>
-</tr>
-<tr class="even">
-<td align="left">(6) Saturday</td>
-<td align="left">Yes</td>
-<td align="left">30 to 34</td>
-<td align="left">Male</td>
-<td align="left">Unknown</td>
-</tr>
-<tr class="odd">
-<td align="left">(6) Saturday</td>
-<td align="left">Yes</td>
-<td align="left">30 to 34</td>
-<td align="left">Male</td>
-<td align="left">No</td>
-</tr>
-<tr class="even">
-<td align="left">(7) Sunday</td>
-<td align="left">Yes</td>
-<td align="left">30 to 34</td>
-<td align="left">Male</td>
-<td align="left">No</td>
-</tr>
-<tr class="odd">
-<td align="left">(6) Saturday</td>
-<td align="left">Yes</td>
-<td align="left">30 to 34</td>
-<td align="left">Female</td>
-<td align="left">No</td>
-</tr>
-<tr class="even">
-<td align="left">(7) Sunday</td>
-<td align="left">Yes</td>
-<td align="left">30 to 34</td>
-<td align="left">Male</td>
-<td align="left">No</td>
-</tr>
-<tr class="odd">
-<td align="left">(6) Saturday</td>
-<td align="left">Yes</td>
-<td align="left">30 to 34</td>
-<td align="left">Male</td>
-<td align="left">No</td>
-</tr>
-<tr class="even">
-<td align="left">(7) Sunday</td>
-<td align="left">Yes</td>
-<td align="left">30 to 34</td>
-<td align="left">Female</td>
-<td align="left">No</td>
-</tr>
-<tr class="odd">
-<td align="left">(7) Sunday</td>
-<td align="left">Yes</td>
-<td align="left">30 to 34</td>
-<td align="left">Male</td>
-<td align="left">No</td>
-</tr>
-<tr class="even">
-<td align="left">(6) Saturday</td>
-<td align="left">Yes</td>
-<td align="left">30 to 34</td>
-<td align="left">Male</td>
-<td align="left">No</td>
-</tr>
-<tr class="odd">
-<td align="left">(6) Saturday</td>
-<td align="left">Yes</td>
-<td align="left">35 to 39</td>
-<td align="left">Female</td>
-<td align="left">No</td>
-</tr>
-<tr class="even">
-<td align="left">(7) Sunday</td>
-<td align="left">Yes</td>
-<td align="left">35 to 39</td>
-<td align="left">Female</td>
-<td align="left">No</td>
-</tr>
-<tr class="odd">
-<td align="left">(7) Sunday</td>
-<td align="left">Yes</td>
-<td align="left">35 to 39</td>
-<td align="left">Male</td>
-<td align="left">Unknown</td>
-</tr>
-<tr class="even">
-<td align="left">(6) Saturday</td>
-<td align="left">Yes</td>
-<td align="left">35 to 39</td>
-<td align="left">Male</td>
-<td align="left">No</td>
-</tr>
-<tr class="odd">
-<td align="left">(7) Sunday</td>
-<td align="left">Yes</td>
-<td align="left">35 to 39</td>
-<td align="left">Male</td>
-<td align="left">No</td>
-</tr>
-<tr class="even">
-<td align="left">(7) Sunday</td>
-<td align="left">Yes</td>
-<td align="left">35 to 39</td>
-<td align="left">Unknown (Unable to Determine)</td>
-<td align="left">No</td>
-</tr>
-<tr class="odd">
-<td align="left">(6) Saturday</td>
-<td align="left">Yes</td>
-<td align="left">35 to 39</td>
-<td align="left">Male</td>
-<td align="left">Unknown</td>
-</tr>
-<tr class="even">
-<td align="left">(6) Saturday</td>
-<td align="left">Yes</td>
-<td align="left">35 to 39</td>
-<td align="left">Male</td>
-<td align="left">No</td>
-</tr>
-<tr class="odd">
-<td align="left">(6) Saturday</td>
-<td align="left">Yes</td>
-<td align="left">35 to 39</td>
-<td align="left">Female</td>
-<td align="left">No</td>
-</tr>
-<tr class="even">
-<td align="left">(7) Sunday</td>
-<td align="left">Yes</td>
-<td align="left">35 to 39</td>
-<td align="left">Female</td>
-<td align="left">No</td>
-</tr>
-<tr class="odd">
-<td align="left">(7) Sunday</td>
-<td align="left">Yes</td>
-<td align="left">40 to 44</td>
-<td align="left">Male</td>
-<td align="left">No</td>
-</tr>
-<tr class="even">
-<td align="left">(6) Saturday</td>
-<td align="left">Yes</td>
-<td align="left">40 to 44</td>
-<td align="left">Male</td>
-<td align="left">No</td>
-</tr>
-<tr class="odd">
-<td align="left">(7) Sunday</td>
-<td align="left">Yes</td>
-<td align="left">40 to 44</td>
-<td align="left">Female</td>
-<td align="left">No</td>
-</tr>
-<tr class="even">
-<td align="left">(7) Sunday</td>
-<td align="left">Yes</td>
-<td align="left">40 to 44</td>
-<td align="left">Male</td>
-<td align="left">No</td>
-</tr>
-<tr class="odd">
-<td align="left">(6) Saturday</td>
-<td align="left">Yes</td>
-<td align="left">40 to 44</td>
-<td align="left">Male</td>
-<td align="left">No</td>
-</tr>
-<tr class="even">
-<td align="left">(6) Saturday</td>
-<td align="left">Yes</td>
-<td align="left">40 to 44</td>
-<td align="left">Male</td>
-<td align="left">Unknown</td>
-</tr>
-<tr class="odd">
-<td align="left">(7) Sunday</td>
-<td align="left">Yes</td>
-<td align="left">40 to 44</td>
-<td align="left">Male</td>
-<td align="left">Unknown</td>
-</tr>
-<tr class="even">
-<td align="left">(7) Sunday</td>
-<td align="left">Yes</td>
-<td align="left">40 to 44</td>
-<td align="left">Female</td>
-<td align="left">No</td>
-</tr>
-<tr class="odd">
-<td align="left">(6) Saturday</td>
-<td align="left">Yes</td>
-<td align="left">40 to 44</td>
-<td align="left">Male</td>
-<td align="left">No</td>
-</tr>
-<tr class="even">
-<td align="left">(6) Saturday</td>
-<td align="left">Yes</td>
-<td align="left">40 to 44</td>
-<td align="left">Male</td>
-<td align="left">N/A</td>
-</tr>
-<tr class="odd">
-<td align="left">(6) Saturday</td>
-<td align="left">Yes</td>
-<td align="left">40 to 44</td>
-<td align="left">Female</td>
-<td align="left">No</td>
-</tr>
-<tr class="even">
-<td align="left">(7) Sunday</td>
-<td align="left">Yes</td>
-<td align="left">45 to 49</td>
-<td align="left">Female</td>
-<td align="left">No</td>
-</tr>
-<tr class="odd">
-<td align="left">(7) Sunday</td>
-<td align="left">Yes</td>
-<td align="left">45 to 49</td>
-<td align="left">Female</td>
-<td align="left">No</td>
-</tr>
-<tr class="even">
-<td align="left">(6) Saturday</td>
-<td align="left">Yes</td>
-<td align="left">45 to 49</td>
-<td align="left">Female</td>
-<td align="left">No</td>
-</tr>
-<tr class="odd">
-<td align="left">(6) Saturday</td>
-<td align="left">Yes</td>
-<td align="left">45 to 49</td>
-<td align="left">Male</td>
-<td align="left">Unknown</td>
-</tr>
-<tr class="even">
-<td align="left">(7) Sunday</td>
-<td align="left">Yes</td>
-<td align="left">45 to 49</td>
-<td align="left">Female</td>
-<td align="left">No</td>
-</tr>
-<tr class="odd">
-<td align="left">(6) Saturday</td>
-<td align="left">Yes</td>
-<td align="left">45 to 49</td>
-<td align="left">Female</td>
-<td align="left">No</td>
-</tr>
-<tr class="even">
-<td align="left">(6) Saturday</td>
-<td align="left">Yes</td>
-<td align="left">45 to 49</td>
-<td align="left">Male</td>
-<td align="left">Unknown</td>
-</tr>
-<tr class="odd">
-<td align="left">(7) Sunday</td>
-<td align="left">Yes</td>
-<td align="left">45 to 49</td>
-<td align="left">Male</td>
-<td align="left">No</td>
-</tr>
-<tr class="even">
-<td align="left">(6) Saturday</td>
-<td align="left">Yes</td>
-<td align="left">45 to 49</td>
-<td align="left">Male</td>
-<td align="left">Unknown</td>
-</tr>
-<tr class="odd">
-<td align="left">(7) Sunday</td>
-<td align="left">Yes</td>
-<td align="left">50 to 54</td>
-<td align="left">N/A</td>
-<td align="left">No</td>
-</tr>
-<tr class="even">
-<td align="left">(7) Sunday</td>
-<td align="left">Yes</td>
-<td align="left">50 to 54</td>
-<td align="left">Male</td>
-<td align="left">Unknown</td>
-</tr>
-<tr class="odd">
-<td align="left">(6) Saturday</td>
-<td align="left">Yes</td>
-<td align="left">50 to 54</td>
-<td align="left">Female</td>
-<td align="left">Unknown</td>
-</tr>
-<tr class="even">
-<td align="left">(6) Saturday</td>
-<td align="left">Yes</td>
-<td align="left">50 to 54</td>
-<td align="left">Male</td>
-<td align="left">No</td>
-</tr>
-<tr class="odd">
-<td align="left">(7) Sunday</td>
-<td align="left">Yes</td>
-<td align="left">50 to 54</td>
-<td align="left">Female</td>
-<td align="left">No</td>
-</tr>
-<tr class="even">
-<td align="left">(7) Sunday</td>
-<td align="left">Yes</td>
-<td align="left">50 to 54</td>
-<td align="left">Female</td>
-<td align="left">No</td>
-</tr>
-<tr class="odd">
-<td align="left">(7) Sunday</td>
-<td align="left">Yes</td>
-<td align="left">55 to 59</td>
-<td align="left">Male</td>
-<td align="left">No</td>
-</tr>
-<tr class="even">
-<td align="left">(6) Saturday</td>
-<td align="left">Yes</td>
-<td align="left">55 to 59</td>
-<td align="left">Male</td>
-<td align="left">Unknown</td>
-</tr>
-<tr class="odd">
-<td align="left">(6) Saturday</td>
-<td align="left">Yes</td>
-<td align="left">55 to 59</td>
-<td align="left">Male</td>
-<td align="left">No</td>
-</tr>
-<tr class="even">
-<td align="left">(7) Sunday</td>
-<td align="left">Yes</td>
-<td align="left">55 to 59</td>
-<td align="left">Male</td>
-<td align="left">No</td>
-</tr>
-<tr class="odd">
-<td align="left">(7) Sunday</td>
-<td align="left">Yes</td>
-<td align="left">60 to 64</td>
-<td align="left">Male</td>
-<td align="left">No</td>
-</tr>
-<tr class="even">
-<td align="left">(6) Saturday</td>
-<td align="left">Yes</td>
-<td align="left">60 to 64</td>
-<td align="left">Male</td>
-<td align="left">No</td>
-</tr>
-<tr class="odd">
-<td align="left">(7) Sunday</td>
-<td align="left">Yes</td>
-<td align="left">60 to 64</td>
-<td align="left">Male</td>
-<td align="left">No</td>
-</tr>
-<tr class="even">
-<td align="left">(7) Sunday</td>
-<td align="left">Yes</td>
-<td align="left">60 to 64</td>
-<td align="left">Male</td>
-<td align="left">No</td>
-</tr>
-<tr class="odd">
-<td align="left">(6) Saturday</td>
-<td align="left">Yes</td>
-<td align="left">60 to 64</td>
-<td align="left">Female</td>
-<td align="left">No</td>
-</tr>
-<tr class="even">
-<td align="left">(7) Sunday</td>
-<td align="left">Yes</td>
-<td align="left">60 to 64</td>
-<td align="left">Female</td>
-<td align="left">Unknown</td>
-</tr>
-<tr class="odd">
-<td align="left">(7) Sunday</td>
-<td align="left">Yes</td>
-<td align="left">65 to 69</td>
-<td align="left">Male</td>
-<td align="left">No</td>
-</tr>
-<tr class="even">
-<td align="left">(7) Sunday</td>
-<td align="left">Yes</td>
-<td align="left">65 to 69</td>
-<td align="left">Male</td>
-<td align="left">Unknown</td>
-</tr>
-<tr class="odd">
-<td align="left">(6) Saturday</td>
-<td align="left">Yes</td>
-<td align="left">70 to 74</td>
-<td align="left">Female</td>
-<td align="left">No</td>
-</tr>
-<tr class="even">
-<td align="left">(6) Saturday</td>
-<td align="left">Yes</td>
-<td align="left">70 to 74</td>
-<td align="left">Female</td>
-<td align="left">No</td>
-</tr>
-<tr class="odd">
-<td align="left">(6) Saturday</td>
-<td align="left">Yes</td>
-<td align="left">70 to 74</td>
-<td align="left">Female</td>
-<td align="left">No</td>
-</tr>
-<tr class="even">
-<td align="left">(6) Saturday</td>
-<td align="left">Yes</td>
-<td align="left">75 to 79</td>
-<td align="left">Male</td>
-<td align="left">No</td>
-</tr>
-<tr class="odd">
-<td align="left">(6) Saturday</td>
-<td align="left">Yes</td>
-<td align="left">80 to 84</td>
-<td align="left">Male</td>
-<td align="left">No</td>
-</tr>
-<tr class="even">
-<td align="left">(7) Sunday</td>
-<td align="left">Yes</td>
-<td align="left">95 to 99</td>
-<td align="left">Male</td>
-<td align="left">No</td>
-</tr>
-</tbody>
-</table>
-</div>
 <p>(Reminder: the c() operator makes a list – it combines the two quoted values into a vector.)</p>
 </div>
 <div id="troubleshooting" class="section level2" number="5.5">
 <h2><span class="header-section-number">5.5</span> Troubleshooting</h2>
-<div id="importing-or-loading-data" class="section level5" number="5.5.0.0.1">
-<h5><span class="header-section-number">5.5.0.0.1</span> Importing or loading data</h5>
+<p>When knitting or running chunks, one of the most common problems is that R will start from scratch every time you open a markdown document, or any time you try to knit it.</p>
+<p>That means that, for example, if you have a chunk at the top that invokes the tidyverse, you have to actually run that chunk every time you open R. Before you tear your hair out, make sure that you’ve run all of the chunks that you know worked before by using the <code>Run-&gt; Run All Chunks Above</code>.</p>
+<div id="importing-or-loading-data" class="section level3 unnumbered">
+<h3>Importing or loading data</h3>
 <ul>
 <li>Have you run the chunk at the top (the one with <code>library(tidyverse)</code>) ? If not, almost nothing that we do will work! I forget this. every. single. time.</li>
-<li>Is it in the folder you have specified?</li>
+<li>Is the data in the current folder or the folder you specified? Be sure to open your folder as a project, not a file, to make sure it defaults to the right place.</li>
 <li>Is the name of the file in quotes? It should be.</li>
 <li>Have you assigned it to a new variable using the <code>&lt;-</code> operator?</li>
+<li>Spelling? Remember, every piece has to be spelled properly, including any spaces or special characters in the file name. That’s why you should use them when you save files.</li>
 </ul>
 </div>
-<div id="variable-not-found" class="section level3" number="5.5.1">
-<h3><span class="header-section-number">5.5.1</span> Variable not found</h3>
-<div id="r-is-case-sensitive" class="section level4" number="5.5.1.1">
-<h4><span class="header-section-number">5.5.1.1</span> R is case-sensitive</h4>
+<div id="variable-object-not-found" class="section level3 unnumbered">
+<h3>Variable / object not found</h3>
+<ul>
+<li><p>Is it <strong>spelled</strong> correctly, including upper and lower case?</p></li>
+<li><p>Are you <strong>missing a pipe</strong> (<code>%&gt;%</code>) in the line above the error? It may look like this, in which R first displays the contents of the data frame called <code>opioid_calls</code>. Now it goes on to a brand new command without any data to work with, trying to filter, which is why there are two output boxes. The fix is to put in the missing pipe, as in <code>opioid_calls %&gt;%</code></p></li>
+</ul>
+<div class="figure">
+<img src="images/24-trouble-nopipe.png" alt="" />
+<p class="caption">R error</p>
+</div>
+<p>This will come up A LOT. The hint is to look at the line <strong>above</strong> the one where the error is shown – it often is the source of the problem.</p>
+</div>
+<div id="r-is-case-sensitive" class="section level3 unnumbered">
+<h3>R is case-sensitive</h3>
 <p>R is always case-sensitive, which means that it makes a difference whether an object, a column name or the value of a variable (like Male) is upper-case, lower-case or some proper case. For example:</p>
 <div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="031-select-filter.html#cb49-1" aria-hidden="true" tabindex="-1"></a>opioid_calls <span class="sc">%&gt;%</span> </span>
 <span id="cb49-2"><a href="031-select-filter.html#cb49-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span> (narcan <span class="sc">==</span> <span class="st">&quot;yes&quot;</span>)</span></code></pre></div>
@@ -1462,8 +666,8 @@ Note that R is <b>case-sensitive</b>, meaning that the variable named <i>Age</i>
 </div>
 <p>.. results in 0 cases, because narcan is shown as “Yes”, not as “yes”. Instead, match the case to what you have in your data.</p>
 </div>
-<div id="equals-versus-double-equals" class="section level4 unnumbered">
-<h4>Equals versus double-equals</h4>
+<div id="equals-versus-double-equals" class="section level3 unnumbered">
+<h3>Equals versus double-equals</h3>
 <p>You’ll get this weird error if you try to use an equals sign as a comparison operator:</p>
 <div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="031-select-filter.html#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(opioid_calls, <span class="at">narcan =</span> <span class="st">&quot;Yes&quot;</span>)</span></code></pre></div>
 <pre><code>## Error: Problem with `filter()` input `..1`.
@@ -1472,8 +676,8 @@ Note that R is <b>case-sensitive</b>, meaning that the variable named <i>Age</i>
 ## ℹ Did you mean `narcan == &quot;Yes&quot;`?</code></pre>
 <p>If you read it carefully, a the end there’s hint that R is guessing that you meant “==” instead. It won’t always be so kind.</p>
 </div>
-<div id="forgetting-and-then-operator" class="section level4 unnumbered">
-<h4>Forgetting “and then” operator (%&gt;%)</h4>
+<div id="forgetting-and-then-operator" class="section level3 unnumbered">
+<h3>Forgetting “and then” operator (%&gt;%)</h3>
 <p>You also get a weird error if you forget to string together commands with the %&gt;% connector.</p>
 <p>A code chunk that looks like this:</p>
 <pre><code>  filter (opioid_calls, narcan == &quot;Yes&quot;)
@@ -1483,26 +687,25 @@ Note that R is <b>case-sensitive</b>, meaning that the variable named <i>Age</i>
   </code></pre>
 <p>It doesn’t make much sense, except it’s telling you that it is no longer finding a field called <em>dow</em>. It’s done the filter and thinks it was finished because there was no AND THEN connector. Then it tries to run another command, but it’s starting from scratch without a data frame to work from.</p>
 <p>This is really common and a pain. R thought you had TWO things you wanted to do – one is just the filter, the other is an error. The fix is to put the %&gt;% after the filter.</p>
-</div>
-<div id="spelling" class="section level4" number="5.5.1.2">
-<h4><span class="header-section-number">5.5.1.2</span> Spelling</h4>
+<div id="spelling" class="section level4 unnumbered">
+<h4>Spelling</h4>
 <p>Everything has to be spelled the way R expects it to be, not the way it should be. If a variable name is misspelled, it has to be misspelled every time you use it until you change the name.</p>
 </div>
-<div id="spelling-1" class="section level4" number="5.5.1.3">
-<h4><span class="header-section-number">5.5.1.3</span> Spelling</h4>
+<div id="spelling-1" class="section level4 unnumbered">
+<h4>Spelling</h4>
 <p>Just again. Spelling.</p>
 </div>
-<div id="the-dreaded-na" class="section level4 unnumbered">
-<h4>The dreaded NA</h4>
-<p>Missing information is recorded in R as <code>NA</code>. The problem is, this isn’t a value at all – it will never match anything, will never be bigger or smaller than anything, and will be ignored if you sort on it. We’ll come back to this, but just remember that it’s a problem.</p>
 </div>
+<div id="the-dreaded-na" class="section level3 unnumbered">
+<h3>The dreaded <code>NA</code></h3>
+<p>Missing information is recorded in R as <code>NA</code>. The problem is, this isn’t a value at all – it will never match anything, will never be bigger or smaller than anything, and will be ignored if you sort on it. We’ll come back to this, but just remember that it’s a problem.</p>
 </div>
 </div>
 <div id="sort-filter-resources" class="section level2" number="5.6">
 <h2><span class="header-section-number">5.6</span> Sort / filter resources</h2>
 <div id="exercises-1" class="section level3" number="5.6.1">
 <h3><span class="header-section-number">5.6.1</span> Exercises</h3>
-<p>In “<a href="https://www.newyorker.com/magazine/2017/11/27/the-serial-killer-detector">The Serial Killer Detector</a>”, Tom Hargrove spent years creating more complete murder data than the government has available. I have taken the data from that project and converted it into an R data object that includes only murders in the West. The appendix to this book has exercises using that data using skills that were outlined in each chapter.</p>
+<p>In “<a href="https://www.newyorker.com/magazine/2017/11/27/the-serial-killer-detector">The Serial Killer Detector</a>”, the New Yorker profiles how Tom Hargrove spent years creating more complete murder data than the government has available. I have taken the data from that project and converted it into an R data object that includes only murders in the West. The appendix to this book has exercises using that data using skills that were outlined in each chapter.</p>
 </div>
 <div id="tutorials" class="section level3" number="5.6.2">
 <h3><span class="header-section-number">5.6.2</span> Tutorials</h3>
@@ -1511,7 +714,7 @@ Note that R is <b>case-sensitive</b>, meaning that the variable named <i>Age</i>
 <li>“<a href="https://teachingr.com/">Teaching R</a>” videos. They’re a little more detailed than we need, but it’s a useful review of most of what we’ve done.</li>
 <li>Andrew Ba Tran’s “<a href="https://learn.r-journalism.com/en/wrangling/">Lesson 3: Wrangling data</a>” from the R for Journalists (learn-r) website. You can watch the videos and take the quizzes without following along on your computer.</li>
 <li>Matt Waite’s <a href="http://mattwaite.github.io/sports/filters-and-selections.html">chapter on filters</a> – note that it has a verb we haven’t looked at yet, called “mutate”</li>
-<li>Data School “<a href="https://www.dataschool.io/dplyr-tutorial-for-faster-data-manipulation-in-r/">Faster data maipulation with dplyr</a>”, which is a little more in-depth than we need but is easy to follow.</li>
+<li>Data School “<a href="https://www.dataschool.io/dplyr-tutorial-for-faster-data-manipulation-in-r/">Faster data manipulation with dplyr</a>”, which is a little more in-depth than we need but is easy to follow.</li>
 </ul>
 
 </div>

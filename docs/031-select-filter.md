@@ -133,23 +133,23 @@ Put the **name of the column** on the left side of the comparison, connect it wi
 ```r
 opioid_calls %>%
   filter (  narcan == "Yes" ) %>%
-  glimpse  
+  glimpse  ()
 ```
 
 ```
 ## Rows: 370
 ## Columns: 11
-## $ id                 <dbl> 3, 7, 11, 12, 13, 18, 20, 21, 25, 29, 30, 34, 35, 3…
-## $ incident_date      <chr> "1/9/2017 1:08", "1/11/2017 11:10", "1/14/2017 22:5…
-## $ dow                <chr> "(1) Monday", "(3) Wednesday", "(6) Saturday", "(7)…
-## $ narcan             <chr> "Yes", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes", "Y…
-## $ impression         <chr> "ALOC (R41.82)", "ALOC (R41.82)", "ALOC (R41.82)", …
-## $ age                <chr> "40 to 44", "80 to 84", "35 to 39", "40 to 44", "30…
-## $ gender             <chr> "Male", "Male", "Female", "Male", "Male", "Male", "…
-## $ asu_yn             <chr> "No", "No", "No", "No", "No", "Unknown", "No", "No"…
-## $ vet_yn             <chr> "No", "No", "No", "No", "No", "Unknown", "No", "No"…
-## $ homeless_yn        <chr> "No", "No", "No", "No", "No", "Unknown", "No", "No"…
-## $ special_population <chr> "No", "No", "No", "No", "No", "Unknown", "No", "No"…
+## $ id                 <dbl> 3, 7, 11, 12, 13, 18, 20, 21, 25, 29, 30, 34, 35, …
+## $ incident_date      <chr> "1/9/2017 1:08", "1/11/2017 11:10", "1/14/2017 22:…
+## $ dow                <chr> "(1) Monday", "(3) Wednesday", "(6) Saturday", "(7…
+## $ narcan             <chr> "Yes", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes", "…
+## $ impression         <chr> "ALOC (R41.82)", "ALOC (R41.82)", "ALOC (R41.82)",…
+## $ age                <chr> "40 to 44", "80 to 84", "35 to 39", "40 to 44", "3…
+## $ gender             <chr> "Male", "Male", "Female", "Male", "Male", "Male", …
+## $ asu_yn             <chr> "No", "No", "No", "No", "No", "Unknown", "No", "No…
+## $ vet_yn             <chr> "No", "No", "No", "No", "No", "Unknown", "No", "No…
+## $ homeless_yn        <chr> "No", "No", "No", "No", "No", "Unknown", "No", "No…
+## $ special_population <chr> "No", "No", "No", "No", "No", "Unknown", "No", "No…
 ```
 
 
@@ -221,129 +221,6 @@ opioid_calls %>%
   arrange ( age )
 ```
 
-<div class="kable-table">
-
-|dow          |narcan |age      |gender                        |asu_yn  |
-|:------------|:------|:--------|:-----------------------------|:-------|
-|(7) Sunday   |Yes    |15 to 19 |Male                          |Unknown |
-|(7) Sunday   |Yes    |15 to 19 |Male                          |Yes     |
-|(6) Saturday |Yes    |15 to 19 |Male                          |No      |
-|(6) Saturday |Yes    |15 to 19 |Female                        |Unknown |
-|(6) Saturday |Yes    |15 to 19 |Male                          |No      |
-|(7) Sunday   |Yes    |15 to 19 |Female                        |Unknown |
-|(6) Saturday |Yes    |15 to 19 |Female                        |Unknown |
-|(7) Sunday   |Yes    |15 to 19 |Male                          |No      |
-|(6) Saturday |Yes    |15 to 19 |Female                        |No      |
-|(6) Saturday |Yes    |20 to 24 |Female                        |Unknown |
-|(7) Sunday   |Yes    |20 to 24 |Male                          |No      |
-|(6) Saturday |Yes    |20 to 24 |Male                          |No      |
-|(7) Sunday   |Yes    |20 to 24 |Female                        |Unknown |
-|(6) Saturday |Yes    |20 to 24 |Male                          |Unknown |
-|(6) Saturday |Yes    |20 to 24 |Male                          |No      |
-|(6) Saturday |Yes    |20 to 24 |Male                          |Unknown |
-|(7) Sunday   |Yes    |20 to 24 |Male                          |No      |
-|(6) Saturday |Yes    |20 to 24 |Male                          |No      |
-|(6) Saturday |Yes    |20 to 24 |Female                        |No      |
-|(6) Saturday |Yes    |20 to 24 |Male                          |No      |
-|(6) Saturday |Yes    |20 to 24 |Male                          |Yes     |
-|(6) Saturday |Yes    |20 to 24 |Male                          |No      |
-|(7) Sunday   |Yes    |20 to 24 |Female                        |Unknown |
-|(7) Sunday   |Yes    |20 to 24 |Female                        |Unknown |
-|(6) Saturday |Yes    |20 to 24 |Male                          |No      |
-|(7) Sunday   |Yes    |20 to 24 |Female                        |No      |
-|(7) Sunday   |Yes    |25 to 29 |Female                        |No      |
-|(7) Sunday   |Yes    |25 to 29 |Female                        |Unknown |
-|(6) Saturday |Yes    |25 to 29 |Female                        |Unknown |
-|(7) Sunday   |Yes    |25 to 29 |Female                        |No      |
-|(7) Sunday   |Yes    |25 to 29 |Female                        |No      |
-|(6) Saturday |Yes    |25 to 29 |Male                          |Unknown |
-|(6) Saturday |Yes    |25 to 29 |Male                          |Unknown |
-|(7) Sunday   |Yes    |25 to 29 |Female                        |No      |
-|(6) Saturday |Yes    |25 to 29 |Male                          |Unknown |
-|(7) Sunday   |Yes    |25 to 29 |Male                          |No      |
-|(6) Saturday |Yes    |25 to 29 |Male                          |Unknown |
-|(6) Saturday |Yes    |25 to 29 |Male                          |No      |
-|(6) Saturday |Yes    |25 to 29 |Female                        |No      |
-|(6) Saturday |Yes    |25 to 29 |Male                          |No      |
-|(7) Sunday   |Yes    |25 to 29 |Male                          |No      |
-|(7) Sunday   |Yes    |25 to 29 |Male                          |No      |
-|(7) Sunday   |Yes    |25 to 29 |Female                        |No      |
-|(6) Saturday |Yes    |25 to 29 |Male                          |No      |
-|(7) Sunday   |Yes    |25 to 29 |Male                          |No      |
-|(6) Saturday |Yes    |25 to 29 |Male                          |No      |
-|(6) Saturday |Yes    |25 to 29 |Male                          |No      |
-|(7) Sunday   |Yes    |25 to 29 |Female                        |No      |
-|(6) Saturday |Yes    |25 to 29 |Male                          |No      |
-|(7) Sunday   |Yes    |25 to 29 |Male                          |No      |
-|(7) Sunday   |Yes    |25 to 29 |Male                          |Unknown |
-|(7) Sunday   |Yes    |25 to 29 |Male                          |Unknown |
-|(7) Sunday   |Yes    |30 to 34 |Male                          |Unknown |
-|(6) Saturday |Yes    |30 to 34 |Male                          |Unknown |
-|(6) Saturday |Yes    |30 to 34 |Male                          |No      |
-|(7) Sunday   |Yes    |30 to 34 |Male                          |No      |
-|(6) Saturday |Yes    |30 to 34 |Female                        |No      |
-|(7) Sunday   |Yes    |30 to 34 |Male                          |No      |
-|(6) Saturday |Yes    |30 to 34 |Male                          |No      |
-|(7) Sunday   |Yes    |30 to 34 |Female                        |No      |
-|(7) Sunday   |Yes    |30 to 34 |Male                          |No      |
-|(6) Saturday |Yes    |30 to 34 |Male                          |No      |
-|(6) Saturday |Yes    |35 to 39 |Female                        |No      |
-|(7) Sunday   |Yes    |35 to 39 |Female                        |No      |
-|(7) Sunday   |Yes    |35 to 39 |Male                          |Unknown |
-|(6) Saturday |Yes    |35 to 39 |Male                          |No      |
-|(7) Sunday   |Yes    |35 to 39 |Male                          |No      |
-|(7) Sunday   |Yes    |35 to 39 |Unknown (Unable to Determine) |No      |
-|(6) Saturday |Yes    |35 to 39 |Male                          |Unknown |
-|(6) Saturday |Yes    |35 to 39 |Male                          |No      |
-|(6) Saturday |Yes    |35 to 39 |Female                        |No      |
-|(7) Sunday   |Yes    |35 to 39 |Female                        |No      |
-|(7) Sunday   |Yes    |40 to 44 |Male                          |No      |
-|(6) Saturday |Yes    |40 to 44 |Male                          |No      |
-|(7) Sunday   |Yes    |40 to 44 |Female                        |No      |
-|(7) Sunday   |Yes    |40 to 44 |Male                          |No      |
-|(6) Saturday |Yes    |40 to 44 |Male                          |No      |
-|(6) Saturday |Yes    |40 to 44 |Male                          |Unknown |
-|(7) Sunday   |Yes    |40 to 44 |Male                          |Unknown |
-|(7) Sunday   |Yes    |40 to 44 |Female                        |No      |
-|(6) Saturday |Yes    |40 to 44 |Male                          |No      |
-|(6) Saturday |Yes    |40 to 44 |Male                          |N/A     |
-|(6) Saturday |Yes    |40 to 44 |Female                        |No      |
-|(7) Sunday   |Yes    |45 to 49 |Female                        |No      |
-|(7) Sunday   |Yes    |45 to 49 |Female                        |No      |
-|(6) Saturday |Yes    |45 to 49 |Female                        |No      |
-|(6) Saturday |Yes    |45 to 49 |Male                          |Unknown |
-|(7) Sunday   |Yes    |45 to 49 |Female                        |No      |
-|(6) Saturday |Yes    |45 to 49 |Female                        |No      |
-|(6) Saturday |Yes    |45 to 49 |Male                          |Unknown |
-|(7) Sunday   |Yes    |45 to 49 |Male                          |No      |
-|(6) Saturday |Yes    |45 to 49 |Male                          |Unknown |
-|(7) Sunday   |Yes    |50 to 54 |N/A                           |No      |
-|(7) Sunday   |Yes    |50 to 54 |Male                          |Unknown |
-|(6) Saturday |Yes    |50 to 54 |Female                        |Unknown |
-|(6) Saturday |Yes    |50 to 54 |Male                          |No      |
-|(7) Sunday   |Yes    |50 to 54 |Female                        |No      |
-|(7) Sunday   |Yes    |50 to 54 |Female                        |No      |
-|(7) Sunday   |Yes    |55 to 59 |Male                          |No      |
-|(6) Saturday |Yes    |55 to 59 |Male                          |Unknown |
-|(6) Saturday |Yes    |55 to 59 |Male                          |No      |
-|(7) Sunday   |Yes    |55 to 59 |Male                          |No      |
-|(7) Sunday   |Yes    |60 to 64 |Male                          |No      |
-|(6) Saturday |Yes    |60 to 64 |Male                          |No      |
-|(7) Sunday   |Yes    |60 to 64 |Male                          |No      |
-|(7) Sunday   |Yes    |60 to 64 |Male                          |No      |
-|(6) Saturday |Yes    |60 to 64 |Female                        |No      |
-|(7) Sunday   |Yes    |60 to 64 |Female                        |Unknown |
-|(7) Sunday   |Yes    |65 to 69 |Male                          |No      |
-|(7) Sunday   |Yes    |65 to 69 |Male                          |Unknown |
-|(6) Saturday |Yes    |70 to 74 |Female                        |No      |
-|(6) Saturday |Yes    |70 to 74 |Female                        |No      |
-|(6) Saturday |Yes    |70 to 74 |Female                        |No      |
-|(6) Saturday |Yes    |75 to 79 |Male                          |No      |
-|(6) Saturday |Yes    |80 to 84 |Male                          |No      |
-|(7) Sunday   |Yes    |95 to 99 |Male                          |No      |
-
-</div>
-
 
 (Reminder: the c() operator makes a list -- it combines the two quoted values into a vector.)
 
@@ -351,16 +228,30 @@ opioid_calls %>%
 ## Troubleshooting
 
 
-##### Importing or loading data
+When knitting or running chunks, one of the most common problems is that R will start from scratch every time you open a markdown document, or any time you try to knit it. 
+
+That means that, for example, if you have a chunk at the top that invokes the tidyverse, you have to actually run that chunk every time you open R. Before you tear your hair out, make sure that you've run all of the chunks that you know worked before by using the `Run-> Run All Chunks Above`.  
+
+### Importing or loading data {-}
 
 * Have  you run the chunk at the top (the one with `library(tidyverse)`) ? If not, almost nothing that we do will work! I forget this. every. single. time.
-* Is it in the folder you have specified? 
+* Is the data in the current folder or the folder you specified? Be sure to open your folder as a project, not a file, to make sure it defaults to the right place.
 * Is the name of the file in quotes? It should be. 
 * Have you assigned it to a new variable using the `<-` operator?
+* Spelling? Remember, every piece has to be spelled properly, including any spaces or special characters in the file name. That's why you should use them when you save files. 
 
-### Variable not found
 
-#### R is case-sensitive
+### Variable / object not found {-}
+
+* Is it **spelled** correctly, including upper and lower case? 
+
+* Are you **missing a pipe** (`%>%`) in the line above the error? It may look like this, in which R first displays the contents of the data frame called `opioid_calls`. Now it goes on to a brand new command without any data to work with, trying to filter, which is why there are two output boxes.  The fix is to put in the missing pipe, as in `opioid_calls %>%`
+
+![R error](images/24-trouble-nopipe.png)
+
+This will come up A LOT. The hint is to look at the line **above** the one where the error is shown -- it often is the source of the problem. 
+
+### R is case-sensitive {-}
 
 R is always case-sensitive, which means that it makes a difference whether an object, a column name or the value of a variable (like Male) is upper-case, lower-case or some proper case. For example:
 
@@ -380,7 +271,7 @@ opioid_calls %>%
 
 .. results in 0 cases, because narcan is shown as "Yes", not as "yes".  Instead, match the case to what you have in your data. 
 
-#### Equals versus double-equals {-}
+### Equals versus double-equals {-}
 
 You'll get this weird error if you try to use an equals sign as a comparison operator: 
 
@@ -398,7 +289,7 @@ filter(opioid_calls, narcan = "Yes")
 
 If you read it carefully, a the end there's hint that  R is guessing that you meant "==" instead. It won't always be so kind.
 
-#### Forgetting  "and then" operator (%>%) {-}
+### Forgetting  "and then" operator (%>%) {-}
 
 You also get a weird error if you forget to string together commands with  the %>% connector. 
 
@@ -416,17 +307,17 @@ It doesn't make much sense, except it's telling you that it is no longer finding
 
 This is really common and a pain. R thought you had TWO things you wanted to do -- one is just the filter, the other  is an error. The fix is to put the %>% after the filter.
 
-#### Spelling
+#### Spelling {-}
 
 Everything has to be spelled the way R expects it to be, not the way it should be. If a variable name is misspelled, it has to be misspelled every time you use it until you change the name. 
 
 
-#### Spelling
+#### Spelling {-}
 
 Just again. Spelling. 
 
 
-#### The dreaded NA {-}
+### The dreaded `NA` {-}
 
 Missing information is recorded in R as `NA`. The problem is, this isn't a value at all -- it will never match anything, will never be bigger or smaller than anything, and will be ignored if you sort on it. We'll come back to this, but just remember that it's a problem.
 
@@ -435,7 +326,7 @@ Missing information is recorded in R as `NA`. The problem is, this isn't a value
 
 ### Exercises
 
-In "[The Serial Killer Detector](https://www.newyorker.com/magazine/2017/11/27/the-serial-killer-detector)", Tom  Hargrove spent years creating more complete murder data than the government has available. I have taken the data from that project and converted it into an R data object that includes only murders in the West. The appendix to this book has exercises using that data using skills that were outlined in each chapter. 
+In "[The Serial Killer Detector](https://www.newyorker.com/magazine/2017/11/27/the-serial-killer-detector)", the New Yorker profiles how Tom  Hargrove spent years creating more complete murder data than the government has available. I have taken the data from that project and converted it into an R data object that includes only murders in the West. The appendix to this book has exercises using that data using skills that were outlined in each chapter. 
 
 ### Tutorials
 
@@ -444,5 +335,6 @@ Most tutorials on this topic go through all of the basic verbs, including some y
 * "[Teaching R](https://teachingr.com/)" videos. They're a little more detailed than we need, but it's a useful review of most of what we've done. 
 * Andrew Ba Tran's "[Lesson 3: Wrangling data](https://learn.r-journalism.com/en/wrangling/)" from the R for Journalists (learn-r) website. You can watch the videos and take the quizzes without following along on your computer. 
 * Matt Waite's [chapter on filters](http://mattwaite.github.io/sports/filters-and-selections.html) -- note that it has a verb we haven't looked at yet, called "mutate"
-* Data School "[Faster data maipulation with dplyr](https://www.dataschool.io/dplyr-tutorial-for-faster-data-manipulation-in-r/)", which is a little more in-depth than we need but is easy to follow. 
+* Data School "[Faster data manipulation with dplyr](https://www.dataschool.io/dplyr-tutorial-for-faster-data-manipulation-in-r/)", which is a little more in-depth than we need but is easy to follow. 
 
+ 

@@ -33,7 +33,7 @@
 <link rel="prev" href="021-r-markdown.html"/>
 <link rel="next" href="030-intro-verbs.html"/>
 <script src="libs/header-attrs-2.7/header-attrs.js"></script>
-<script src="libs/jquery-3.5.1/jquery.min.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -50,20 +50,19 @@
 
 
 
-<script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script>
-<script src="libs/plotly-binding-4.9.3/plotly.js"></script>
+<script src="libs/htmlwidgets-1.5.2/htmlwidgets.js"></script>
+<script src="libs/plotly-binding-4.9.2.1/plotly.js"></script>
 <script src="libs/typedarray-0.1/typedarray.min.js"></script>
-<link href="libs/crosstalk-1.1.1/css/crosstalk.css" rel="stylesheet" />
-<script src="libs/crosstalk-1.1.1/js/crosstalk.min.js"></script>
-<link href="libs/plotly-htmlwidgets-css-1.57.1/plotly-htmlwidgets.css" rel="stylesheet" />
-<script src="libs/plotly-main-1.57.1/plotly-latest.min.js"></script>
+<link href="libs/crosstalk-1.1.0.1/css/crosstalk.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.1.0.1/js/crosstalk.min.js"></script>
+<link href="libs/plotly-htmlwidgets-css-1.52.2/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="libs/plotly-main-1.52.2/plotly-latest.min.js"></script>
 
 
 <style type="text/css">
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
@@ -231,7 +230,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.4" data-path="031-select-filter.html"><a href="031-select-filter.html#arrange---change-the-order"><i class="fa fa-check"></i><b>5.4</b> Arrange - change the order</a></li>
 <li class="chapter" data-level="5.5" data-path="031-select-filter.html"><a href="031-select-filter.html#troubleshooting"><i class="fa fa-check"></i><b>5.5</b> Troubleshooting</a>
 <ul>
-<li class="chapter" data-level="5.5.1" data-path="031-select-filter.html"><a href="031-select-filter.html#variable-not-found"><i class="fa fa-check"></i><b>5.5.1</b> Variable not found</a></li>
+<li class="chapter" data-level="" data-path="031-select-filter.html"><a href="031-select-filter.html#importing-or-loading-data"><i class="fa fa-check"></i>Importing or loading data</a></li>
+<li class="chapter" data-level="" data-path="031-select-filter.html"><a href="031-select-filter.html#variable-object-not-found"><i class="fa fa-check"></i>Variable / object not found</a></li>
+<li class="chapter" data-level="" data-path="031-select-filter.html"><a href="031-select-filter.html#r-is-case-sensitive"><i class="fa fa-check"></i>R is case-sensitive</a></li>
+<li class="chapter" data-level="" data-path="031-select-filter.html"><a href="031-select-filter.html#equals-versus-double-equals"><i class="fa fa-check"></i>Equals versus double-equals</a></li>
+<li class="chapter" data-level="" data-path="031-select-filter.html"><a href="031-select-filter.html#forgetting-and-then-operator"><i class="fa fa-check"></i>Forgetting “and then” operator (%&gt;%)</a></li>
+<li><a href="031-select-filter.html#the-dreaded-na">The dreaded <code>NA</code></a></li>
 </ul></li>
 <li class="chapter" data-level="5.6" data-path="031-select-filter.html"><a href="031-select-filter.html#sort-filter-resources"><i class="fa fa-check"></i><b>5.6</b> Sort / filter resources</a>
 <ul>
@@ -246,13 +250,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="6.2.1" data-path="033-groupby.html"><a href="033-groupby.html#other-summary-functions"><i class="fa fa-check"></i><b>6.2.1</b> Other summary functions</a></li>
 <li class="chapter" data-level="6.2.2" data-path="033-groupby.html"><a href="033-groupby.html#grouping-by-more-than-one-variable"><i class="fa fa-check"></i><b>6.2.2</b> Grouping by more than one variable</a></li>
-<li class="chapter" data-level="6.2.3" data-path="033-groupby.html"><a href="033-groupby.html#rolling-up-to-the-next-level"><i class="fa fa-check"></i><b>6.2.3</b> Rolling up to the next level</a></li>
+<li class="chapter" data-level="6.2.3" data-path="033-groupby.html"><a href="033-groupby.html#percentages-by-rolling-up-totals"><i class="fa fa-check"></i><b>6.2.3</b> Percentages by rolling up totals</a></li>
 </ul></li>
 <li class="chapter" data-level="6.3" data-path="033-groupby.html"><a href="033-groupby.html#restructuring-for-a-report-with-pivot_wider"><i class="fa fa-check"></i><b>6.3</b> Restructuring for a report with <code>pivot_wider()</code></a>
 <ul>
 <li class="chapter" data-level="6.3.1" data-path="033-groupby.html"><a href="033-groupby.html#a-note-on-restructuring-your-data-frames"><i class="fa fa-check"></i><b>6.3.1</b> A note on restructuring your data frames</a></li>
 </ul></li>
-<li class="chapter" data-level="6.4" data-path="033-groupby.html"><a href="033-groupby.html#resources-exercises"><i class="fa fa-check"></i><b>6.4</b> Resources &amp; exercises</a>
+<li class="chapter" data-level="6.4" data-path="033-groupby.html"><a href="033-groupby.html#grouping-summarising-resources-exercises"><i class="fa fa-check"></i><b>6.4</b> Grouping / summarising resources &amp; exercises</a>
 <ul>
 <li class="chapter" data-level="6.4.1" data-path="033-groupby.html"><a href="033-groupby.html#exercises-2"><i class="fa fa-check"></i><b>6.4.1</b> Exercises</a></li>
 </ul></li>
@@ -276,17 +280,31 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="8.1" data-path="036-joins.html"><a href="036-joins.html#key-takeaways-7"><i class="fa fa-check"></i><b>8.1</b> Key takeaways</a>
 <ul>
-<li class="chapter" data-level="8.1.1" data-path="036-joins.html"><a href="036-joins.html#adding-rows-instead-of-columns"><i class="fa fa-check"></i><b>8.1.1</b> Adding rows instead of columns</a></li>
+<li class="chapter" data-level="" data-path="036-joins.html"><a href="036-joins.html#adding-rows-instead-of-columns"><i class="fa fa-check"></i>Adding rows instead of columns</a></li>
 </ul></li>
-<li class="chapter" data-level="8.2" data-path="036-joins.html"><a href="036-joins.html#concepts-of-joining"><i class="fa fa-check"></i><b>8.2</b> Concepts of joining</a></li>
-<li class="chapter" data-level="8.3" data-path="036-joins.html"><a href="036-joins.html#arizona-immunization-data"><i class="fa fa-check"></i><b>8.3</b> Arizona immunization data</a>
+<li class="chapter" data-level="8.2" data-path="036-joins.html"><a href="036-joins.html#concepts-of-joining"><i class="fa fa-check"></i><b>8.2</b> Concepts of joining</a>
 <ul>
-<li class="chapter" data-level="" data-path="036-joins.html"><a href="036-joins.html#setting-up-the-data"><i class="fa fa-check"></i>Setting up the data</a></li>
-<li class="chapter" data-level="" data-path="036-joins.html"><a href="036-joins.html#apply-the-join"><i class="fa fa-check"></i>Apply the join</a></li>
+<li class="chapter" data-level="8.2.1" data-path="036-joins.html"><a href="036-joins.html#relational-databases"><i class="fa fa-check"></i><b>8.2.1</b> Relational databases</a></li>
 </ul></li>
-<li class="chapter" data-level="8.4" data-path="036-joins.html"><a href="036-joins.html#resources-1"><i class="fa fa-check"></i><b>8.4</b> Resources</a>
+<li class="chapter" data-level="8.3" data-path="036-joins.html"><a href="036-joins.html#matchmaking-with-joins"><i class="fa fa-check"></i><b>8.3</b> Matchmaking with joins</a>
 <ul>
-<li class="chapter" data-level="8.4.1" data-path="036-joins.html"><a href="036-joins.html#practice"><i class="fa fa-check"></i><b>8.4.1</b> Practice</a></li>
+<li class="chapter" data-level="8.3.1" data-path="036-joins.html"><a href="036-joins.html#matchmaking-strategies"><i class="fa fa-check"></i><b>8.3.1</b> Matchmaking strategies</a></li>
+</ul></li>
+<li class="chapter" data-level="8.4" data-path="036-joins.html"><a href="036-joins.html#arizona-immunization-data"><i class="fa fa-check"></i><b>8.4</b> Arizona immunization data</a>
+<ul>
+<li class="chapter" data-level="8.4.1" data-path="036-joins.html"><a href="036-joins.html#setting-up-the-data"><i class="fa fa-check"></i><b>8.4.1</b> Setting up the data</a></li>
+<li class="chapter" data-level="8.4.2" data-path="036-joins.html"><a href="036-joins.html#apply-the-join"><i class="fa fa-check"></i><b>8.4.2</b> Apply the join</a></li>
+<li class="chapter" data-level="8.4.3" data-path="036-joins.html"><a href="036-joins.html#use-the-joined-table"><i class="fa fa-check"></i><b>8.4.3</b> Use the joined table</a></li>
+</ul></li>
+<li class="chapter" data-level="8.5" data-path="036-joins.html"><a href="036-joins.html#joining-risks"><i class="fa fa-check"></i><b>8.5</b> Joining risks</a>
+<ul>
+<li class="chapter" data-level="8.5.1" data-path="036-joins.html"><a href="036-joins.html#joining-tldr"><i class="fa fa-check"></i><b>8.5.1</b> joining tl;dr</a></li>
+<li class="chapter" data-level="8.5.2" data-path="036-joins.html"><a href="036-joins.html#double-counting-with-joins"><i class="fa fa-check"></i><b>8.5.2</b> Double counting with joins</a></li>
+<li class="chapter" data-level="8.5.3" data-path="036-joins.html"><a href="036-joins.html#losing-rows-with-joins"><i class="fa fa-check"></i><b>8.5.3</b> Losing rows with joins</a></li>
+</ul></li>
+<li class="chapter" data-level="8.6" data-path="036-joins.html"><a href="036-joins.html#resources-1"><i class="fa fa-check"></i><b>8.6</b> Resources</a>
+<ul>
+<li class="chapter" data-level="8.6.1" data-path="036-joins.html"><a href="036-joins.html#practice"><i class="fa fa-check"></i><b>8.6.1</b> Practice</a></li>
 </ul></li>
 </ul></li>
 <li class="part"><span><b>III Graphics, data cleaning, scraping and more</b></span></li>
@@ -491,7 +509,7 @@ read_delimited()</code></pre>
 </table>
 <p>.. and use the “structure” command to see the variable names and types.</p>
 <div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="022-data-frames.html#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(phx_salaries)</span></code></pre></div>
-<pre><code>## spec_tbl_df [11,956 × 4] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
+<pre><code>## tibble [11,956 × 4] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
 ##  $ LAST_NAME  : chr [1:11956] &quot;Aamodt&quot; &quot;Abbitt&quot; &quot;Abbott&quot; &quot;Abdellatif&quot; ...
 ##  $ FIRST_NAME : chr [1:11956] &quot;Gail&quot; &quot;Ryan&quot; &quot;Christie&quot; &quot;Tariq&quot; ...
 ##  $ DESCR      : chr [1:11956] &quot;Police Officer&quot; &quot;Firefighter 56hr&quot; &quot;Forensic Scientist IV&quot; &quot;Environmental Quality Spec&quot; ...
@@ -582,7 +600,7 @@ This is how I explain the ‘pipe’ to <a href="https://twitter.com/hashtag/rst
 <div id="data-frames-resources" class="section level2" number="3.6">
 <h2><span class="header-section-number">3.6</span> Data frames resources</h2>
 <p>Take a look at Jesse Lecy’s lesson on “<a href="http://ds4ps.org/dp4ss-textbook/ch-032-learning_r.html">Learning How to Learn</a>” from his data science class at ASU. It will make you feel better, I swear.</p>
-<p>Hadley Wickham’s “R for Data Science” <a href="https://r4ds.had.co.nz/data-import.html">chapter on importing data</a> goes into a lot of the options and variants of the read_csv command. RStudio has one of its many <a href="https://resources.rstudio.com/rstudio-cheatsheets/data-import-cheat-sheet">cheat sheets on the read_csv function</a> and its cousins.</p>
+<p>Hadley Wickham’s “R for Data Science” <a href="https://r4ds.had.co.nz/data-import.html">chapter on importing data</a> goes into a lot of the options and variants of the read_csv command. RStudio has one of its many <a href="https://github.com/rstudio/cheatsheets/raw/master/data-import.pdf">cheat sheets on the read_csv function</a> and its cousins.</p>
 <p>Unfortunately, a lot of the other resources we’ve seen don’t use the tidyverse versions of the import commands and they work somewhat differently. I think they’ll just be confusing, since we’re not dealing with the “base R” program.</p>
 <div id="on-your-own" class="section level3" number="3.6.1">
 <h3><span class="header-section-number">3.6.1</span> On your own</h3>

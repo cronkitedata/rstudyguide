@@ -123,7 +123,7 @@ str(phx_salaries)
 ```
 
 ```
-## spec_tbl_df [11,956 × 4] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
+## tibble [11,956 × 4] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
 ##  $ LAST_NAME  : chr [1:11956] "Aamodt" "Abbitt" "Abbott" "Abdellatif" ...
 ##  $ FIRST_NAME : chr [1:11956] "Gail" "Ryan" "Christie" "Tariq" ...
 ##  $ DESCR      : chr [1:11956] "Police Officer" "Firefighter 56hr" "Forensic Scientist IV" "Environmental Quality Spec" ...
@@ -201,7 +201,7 @@ Max van den Oetelaar via Unsplash
 
 Take a look at Jesse Lecy's lesson on "[Learning How to Learn](http://ds4ps.org/dp4ss-textbook/ch-032-learning_r.html)" from his data science class at ASU. It will make you feel better, I swear. 
 
-Hadley Wickham's "R for Data Science" [chapter on importing data](https://r4ds.had.co.nz/data-import.html) goes into a lot of the options and variants of the read_csv command. RStudio has one of its many [cheat sheets on the read_csv function](https://resources.rstudio.com/rstudio-cheatsheets/data-import-cheat-sheet) and its cousins. 
+Hadley Wickham's "R for Data Science" [chapter on importing data](https://r4ds.had.co.nz/data-import.html) goes into a lot of the options and variants of the read_csv command. RStudio has one of its many [cheat sheets on the read_csv function](https://github.com/rstudio/cheatsheets/raw/master/data-import.pdf) and its cousins. 
 
 Unfortunately, a lot of the other resources we've seen don't use the tidyverse versions of the import commands and they work somewhat differently. I think they'll just be confusing, since we're not dealing with the "base R" program. 
 
